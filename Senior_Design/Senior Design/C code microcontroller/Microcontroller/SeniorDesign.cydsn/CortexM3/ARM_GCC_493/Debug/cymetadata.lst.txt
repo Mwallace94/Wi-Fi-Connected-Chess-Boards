@@ -1,0 +1,2180 @@
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"cymetadata.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	cy_meta_configecc
+  19              		.global	cy_meta_loader
+  20              		.global	cy_meta_loadable
+  21              		.section	.cyconfigecc,"a",%progbits
+  22              		.align	2
+  23              		.type	cy_meta_configecc, %object
+  24              		.size	cy_meta_configecc, 1608
+  25              	cy_meta_configecc:
+  26 0000 08       		.byte	8
+  27 0001 52       		.byte	82
+  28 0002 00       		.byte	0
+  29 0003 40       		.byte	64
+  30 0004 03       		.byte	3
+  31 0005 64       		.byte	100
+  32 0006 00       		.byte	0
+  33 0007 40       		.byte	64
+  34 0008 03       		.byte	3
+  35 0009 65       		.byte	101
+  36 000a 00       		.byte	0
+  37 000b 40       		.byte	64
+  38 000c 02       		.byte	2
+  39 000d 07       		.byte	7
+  40 000e 01       		.byte	1
+  41 000f 40       		.byte	64
+  42 0010 66       		.byte	102
+  43 0011 08       		.byte	8
+  44 0012 01       		.byte	1
+  45 0013 40       		.byte	64
+  46 0014 49       		.byte	73
+  47 0015 09       		.byte	9
+  48 0016 01       		.byte	1
+  49 0017 40       		.byte	64
+  50 0018 18       		.byte	24
+  51 0019 0A       		.byte	10
+  52 001a 01       		.byte	1
+  53 001b 40       		.byte	64
+  54 001c 3C       		.byte	60
+  55 001d 0B       		.byte	11
+  56 001e 01       		.byte	1
+  57 001f 40       		.byte	64
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 2
+
+
+  58 0020 02       		.byte	2
+  59 0021 17       		.byte	23
+  60 0022 01       		.byte	1
+  61 0023 40       		.byte	64
+  62 0024 68       		.byte	104
+  63 0025 18       		.byte	24
+  64 0026 01       		.byte	1
+  65 0027 40       		.byte	64
+  66 0028 47       		.byte	71
+  67 0029 19       		.byte	25
+  68 002a 01       		.byte	1
+  69 002b 40       		.byte	64
+  70 002c 17       		.byte	23
+  71 002d 1A       		.byte	26
+  72 002e 01       		.byte	1
+  73 002f 40       		.byte	64
+  74 0030 3F       		.byte	63
+  75 0031 1B       		.byte	27
+  76 0032 01       		.byte	1
+  77 0033 40       		.byte	64
+  78 0034 05       		.byte	5
+  79 0035 40       		.byte	64
+  80 0036 01       		.byte	1
+  81 0037 40       		.byte	64
+  82 0038 04       		.byte	4
+  83 0039 41       		.byte	65
+  84 003a 01       		.byte	1
+  85 003b 40       		.byte	64
+  86 003c 04       		.byte	4
+  87 003d 42       		.byte	66
+  88 003e 01       		.byte	1
+  89 003f 40       		.byte	64
+  90 0040 07       		.byte	7
+  91 0041 43       		.byte	67
+  92 0042 01       		.byte	1
+  93 0043 40       		.byte	64
+  94 0044 03       		.byte	3
+  95 0045 47       		.byte	71
+  96 0046 01       		.byte	1
+  97 0047 40       		.byte	64
+  98 0048 06       		.byte	6
+  99 0049 48       		.byte	72
+ 100 004a 01       		.byte	1
+ 101 004b 40       		.byte	64
+ 102 004c 06       		.byte	6
+ 103 004d 4C       		.byte	76
+ 104 004e 01       		.byte	1
+ 105 004f 40       		.byte	64
+ 106 0050 0B       		.byte	11
+ 107 0051 4D       		.byte	77
+ 108 0052 01       		.byte	1
+ 109 0053 40       		.byte	64
+ 110 0054 08       		.byte	8
+ 111 0055 50       		.byte	80
+ 112 0056 01       		.byte	1
+ 113 0057 40       		.byte	64
+ 114 0058 01       		.byte	1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 3
+
+
+ 115 0059 51       		.byte	81
+ 116 005a 01       		.byte	1
+ 117 005b 40       		.byte	64
+ 118 005c 04       		.byte	4
+ 119 005d FF       		.byte	-1
+ 120 005e 08       		.byte	8
+ 121 005f 40       		.byte	64
+ 122 0060 09       		.byte	9
+ 123 0061 40       		.byte	64
+ 124 0062 24       		.byte	36
+ 125 0063 0F       		.byte	15
+ 126 0064 28       		.byte	40
+ 127 0065 01       		.byte	1
+ 128 0066 29       		.byte	41
+ 129 0067 01       		.byte	1
+ 130 0068 34       		.byte	52
+ 131 0069 C0       		.byte	-64
+ 132 006a 64       		.byte	100
+ 133 006b 07       		.byte	7
+ 134 006c 88       		.byte	-120
+ 135 006d 0F       		.byte	15
+ 136 006e 89       		.byte	-119
+ 137 006f 38       		.byte	56
+ 138 0070 8A       		.byte	-118
+ 139 0071 72       		.byte	114
+ 140 0072 88       		.byte	-120
+ 141 0073 38       		.byte	56
+ 142 0074 89       		.byte	-119
+ 143 0075 0F       		.byte	15
+ 144 0076 8B       		.byte	-117
+ 145 0077 72       		.byte	114
+ 146 0078 E2       		.byte	-30
+ 147 0079 02       		.byte	2
+ 148 007a E6       		.byte	-26
+ 149 007b 40       		.byte	64
+ 150 007c 00       		.byte	0
+ 151 007d 10       		.byte	16
+ 152 007e 02       		.byte	2
+ 153 007f 40       		.byte	64
+ 154 0080 04       		.byte	4
+ 155 0081 10       		.byte	16
+ 156 0082 06       		.byte	6
+ 157 0083 AC       		.byte	-84
+ 158 0084 0A       		.byte	10
+ 159 0085 03       		.byte	3
+ 160 0086 0C       		.byte	12
+ 161 0087 09       		.byte	9
+ 162 0088 0D       		.byte	13
+ 163 0089 18       		.byte	24
+ 164 008a 0E       		.byte	14
+ 165 008b D0       		.byte	-48
+ 166 008c 0F       		.byte	15
+ 167 008d 24       		.byte	36
+ 168 008e 14       		.byte	20
+ 169 008f 0C       		.byte	12
+ 170 0090 15       		.byte	21
+ 171 0091 52       		.byte	82
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 4
+
+
+ 172 0092 16       		.byte	22
+ 173 0093 71       		.byte	113
+ 174 0094 17       		.byte	23
+ 175 0095 24       		.byte	36
+ 176 0096 18       		.byte	24
+ 177 0097 14       		.byte	20
+ 178 0098 19       		.byte	25
+ 179 0099 1F       		.byte	31
+ 180 009a 1B       		.byte	27
+ 181 009b 60       		.byte	96
+ 182 009c 1F       		.byte	31
+ 183 009d 40       		.byte	64
+ 184 009e 24       		.byte	36
+ 185 009f DC       		.byte	-36
+ 186 00a0 26       		.byte	38
+ 187 00a1 22       		.byte	34
+ 188 00a2 29       		.byte	41
+ 189 00a3 1F       		.byte	31
+ 190 00a4 2B       		.byte	43
+ 191 00a5 20       		.byte	32
+ 192 00a6 2E       		.byte	46
+ 193 00a7 20       		.byte	32
+ 194 00a8 2F       		.byte	47
+ 195 00a9 2D       		.byte	45
+ 196 00aa 31       		.byte	49
+ 197 00ab 04       		.byte	4
+ 198 00ac 32       		.byte	50
+ 199 00ad E0       		.byte	-32
+ 200 00ae 33       		.byte	51
+ 201 00af 78       		.byte	120
+ 202 00b0 34       		.byte	52
+ 203 00b1 1F       		.byte	31
+ 204 00b2 37       		.byte	55
+ 205 00b3 03       		.byte	3
+ 206 00b4 39       		.byte	57
+ 207 00b5 80       		.byte	-128
+ 208 00b6 3A       		.byte	58
+ 209 00b7 08       		.byte	8
+ 210 00b8 3B       		.byte	59
+ 211 00b9 08       		.byte	8
+ 212 00ba 3F       		.byte	63
+ 213 00bb 41       		.byte	65
+ 214 00bc 40       		.byte	64
+ 215 00bd 25       		.byte	37
+ 216 00be 41       		.byte	65
+ 217 00bf 03       		.byte	3
+ 218 00c0 45       		.byte	69
+ 219 00c1 0B       		.byte	11
+ 220 00c2 46       		.byte	70
+ 221 00c3 0C       		.byte	12
+ 222 00c4 47       		.byte	71
+ 223 00c5 0E       		.byte	14
+ 224 00c6 48       		.byte	72
+ 225 00c7 15       		.byte	21
+ 226 00c8 49       		.byte	73
+ 227 00c9 FF       		.byte	-1
+ 228 00ca 4A       		.byte	74
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 5
+
+
+ 229 00cb FF       		.byte	-1
+ 230 00cc 4B       		.byte	75
+ 231 00cd FF       		.byte	-1
+ 232 00ce 4E       		.byte	78
+ 233 00cf F0       		.byte	-16
+ 234 00d0 4F       		.byte	79
+ 235 00d1 44       		.byte	68
+ 236 00d2 50       		.byte	80
+ 237 00d3 0C       		.byte	12
+ 238 00d4 54       		.byte	84
+ 239 00d5 01       		.byte	1
+ 240 00d6 56       		.byte	86
+ 241 00d7 04       		.byte	4
+ 242 00d8 58       		.byte	88
+ 243 00d9 04       		.byte	4
+ 244 00da 59       		.byte	89
+ 245 00db 04       		.byte	4
+ 246 00dc 5A       		.byte	90
+ 247 00dd 04       		.byte	4
+ 248 00de 5B       		.byte	91
+ 249 00df 04       		.byte	4
+ 250 00e0 5F       		.byte	95
+ 251 00e1 01       		.byte	1
+ 252 00e2 66       		.byte	102
+ 253 00e3 C0       		.byte	-64
+ 254 00e4 6A       		.byte	106
+ 255 00e5 40       		.byte	64
+ 256 00e6 6B       		.byte	107
+ 257 00e7 02       		.byte	2
+ 258 00e8 84       		.byte	-124
+ 259 00e9 50       		.byte	80
+ 260 00ea 85       		.byte	-123
+ 261 00eb 02       		.byte	2
+ 262 00ec 88       		.byte	-120
+ 263 00ed 02       		.byte	2
+ 264 00ee 8A       		.byte	-118
+ 265 00ef 0C       		.byte	12
+ 266 00f0 8B       		.byte	-117
+ 267 00f1 01       		.byte	1
+ 268 00f2 8C       		.byte	-116
+ 269 00f3 30       		.byte	48
+ 270 00f4 8E       		.byte	-114
+ 271 00f5 44       		.byte	68
+ 272 00f6 8F       		.byte	-113
+ 273 00f7 01       		.byte	1
+ 274 00f8 90       		.byte	-112
+ 275 00f9 24       		.byte	36
+ 276 00fa 92       		.byte	-110
+ 277 00fb 40       		.byte	64
+ 278 00fc 94       		.byte	-108
+ 279 00fd 40       		.byte	64
+ 280 00fe 96       		.byte	-106
+ 281 00ff 30       		.byte	48
+ 282 0100 9A       		.byte	-102
+ 283 0101 01       		.byte	1
+ 284 0102 9C       		.byte	-100
+ 285 0103 40       		.byte	64
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 6
+
+
+ 286 0104 A2       		.byte	-94
+ 287 0105 01       		.byte	1
+ 288 0106 A8       		.byte	-88
+ 289 0107 70       		.byte	112
+ 290 0108 AA       		.byte	-86
+ 291 0109 08       		.byte	8
+ 292 010a B0       		.byte	-80
+ 293 010b 01       		.byte	1
+ 294 010c B2       		.byte	-78
+ 295 010d 7C       		.byte	124
+ 296 010e B3       		.byte	-77
+ 297 010f 01       		.byte	1
+ 298 0110 B4       		.byte	-76
+ 299 0111 02       		.byte	2
+ 300 0112 B5       		.byte	-75
+ 301 0113 02       		.byte	2
+ 302 0114 BB       		.byte	-69
+ 303 0115 02       		.byte	2
+ 304 0116 BE       		.byte	-66
+ 305 0117 11       		.byte	17
+ 306 0118 BF       		.byte	-65
+ 307 0119 14       		.byte	20
+ 308 011a C0       		.byte	-64
+ 309 011b 03       		.byte	3
+ 310 011c C5       		.byte	-59
+ 311 011d 40       		.byte	64
+ 312 011e C9       		.byte	-55
+ 313 011f FF       		.byte	-1
+ 314 0120 CA       		.byte	-54
+ 315 0121 07       		.byte	7
+ 316 0122 CB       		.byte	-53
+ 317 0123 FF       		.byte	-1
+ 318 0124 CC       		.byte	-52
+ 319 0125 40       		.byte	64
+ 320 0126 CD       		.byte	-51
+ 321 0127 20       		.byte	32
+ 322 0128 CE       		.byte	-50
+ 323 0129 F0       		.byte	-16
+ 324 012a CF       		.byte	-49
+ 325 012b 05       		.byte	5
+ 326 012c D0       		.byte	-48
+ 327 012d 08       		.byte	8
+ 328 012e D4       		.byte	-44
+ 329 012f 18       		.byte	24
+ 330 0130 D6       		.byte	-42
+ 331 0131 04       		.byte	4
+ 332 0132 D8       		.byte	-40
+ 333 0133 04       		.byte	4
+ 334 0134 D9       		.byte	-39
+ 335 0135 04       		.byte	4
+ 336 0136 DA       		.byte	-38
+ 337 0137 04       		.byte	4
+ 338 0138 DB       		.byte	-37
+ 339 0139 04       		.byte	4
+ 340 013a DC       		.byte	-36
+ 341 013b 01       		.byte	1
+ 342 013c DD       		.byte	-35
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 7
+
+
+ 343 013d 01       		.byte	1
+ 344 013e DF       		.byte	-33
+ 345 013f 01       		.byte	1
+ 346 0140 E0       		.byte	-32
+ 347 0141 40       		.byte	64
+ 348 0142 E1       		.byte	-31
+ 349 0143 A8       		.byte	-88
+ 350 0144 E2       		.byte	-30
+ 351 0145 40       		.byte	64
+ 352 0146 E3       		.byte	-29
+ 353 0147 20       		.byte	32
+ 354 0148 00       		.byte	0
+ 355 0149 50       		.byte	80
+ 356 014a 02       		.byte	2
+ 357 014b 20       		.byte	32
+ 358 014c 05       		.byte	5
+ 359 014d 50       		.byte	80
+ 360 014e 06       		.byte	6
+ 361 014f 40       		.byte	64
+ 362 0150 07       		.byte	7
+ 363 0151 10       		.byte	16
+ 364 0152 09       		.byte	9
+ 365 0153 20       		.byte	32
+ 366 0154 0A       		.byte	10
+ 367 0155 A0       		.byte	-96
+ 368 0156 0B       		.byte	11
+ 369 0157 02       		.byte	2
+ 370 0158 0E       		.byte	14
+ 371 0159 20       		.byte	32
+ 372 015a 0F       		.byte	15
+ 373 015b 08       		.byte	8
+ 374 015c 11       		.byte	17
+ 375 015d 10       		.byte	16
+ 376 015e 12       		.byte	18
+ 377 015f 80       		.byte	-128
+ 378 0160 15       		.byte	21
+ 379 0161 40       		.byte	64
+ 380 0162 17       		.byte	23
+ 381 0163 04       		.byte	4
+ 382 0164 18       		.byte	24
+ 383 0165 10       		.byte	16
+ 384 0166 1A       		.byte	26
+ 385 0167 08       		.byte	8
+ 386 0168 1B       		.byte	27
+ 387 0169 01       		.byte	1
+ 388 016a 1D       		.byte	29
+ 389 016b 10       		.byte	16
+ 390 016c 1E       		.byte	30
+ 391 016d 20       		.byte	32
+ 392 016e 1F       		.byte	31
+ 393 016f 04       		.byte	4
+ 394 0170 20       		.byte	32
+ 395 0171 04       		.byte	4
+ 396 0172 21       		.byte	33
+ 397 0173 06       		.byte	6
+ 398 0174 27       		.byte	39
+ 399 0175 91       		.byte	-111
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 8
+
+
+ 400 0176 2D       		.byte	45
+ 401 0177 C0       		.byte	-64
+ 402 0178 2E       		.byte	46
+ 403 0179 20       		.byte	32
+ 404 017a 2F       		.byte	47
+ 405 017b 06       		.byte	6
+ 406 017c 35       		.byte	53
+ 407 017d 40       		.byte	64
+ 408 017e 36       		.byte	54
+ 409 017f 04       		.byte	4
+ 410 0180 37       		.byte	55
+ 411 0181 14       		.byte	20
+ 412 0182 39       		.byte	57
+ 413 0183 A0       		.byte	-96
+ 414 0184 3A       		.byte	58
+ 415 0185 04       		.byte	4
+ 416 0186 3F       		.byte	63
+ 417 0187 80       		.byte	-128
+ 418 0188 43       		.byte	67
+ 419 0189 08       		.byte	8
+ 420 018a 46       		.byte	70
+ 421 018b 20       		.byte	32
+ 422 018c 47       		.byte	71
+ 423 018d 10       		.byte	16
+ 424 018e 49       		.byte	73
+ 425 018f 02       		.byte	2
+ 426 0190 4B       		.byte	75
+ 427 0191 02       		.byte	2
+ 428 0192 4D       		.byte	77
+ 429 0193 80       		.byte	-128
+ 430 0194 4F       		.byte	79
+ 431 0195 08       		.byte	8
+ 432 0196 50       		.byte	80
+ 433 0197 08       		.byte	8
+ 434 0198 54       		.byte	84
+ 435 0199 80       		.byte	-128
+ 436 019a 56       		.byte	86
+ 437 019b 04       		.byte	4
+ 438 019c 57       		.byte	87
+ 439 019d 40       		.byte	64
+ 440 019e 5A       		.byte	90
+ 441 019f 02       		.byte	2
+ 442 01a0 5C       		.byte	92
+ 443 01a1 04       		.byte	4
+ 444 01a2 5F       		.byte	95
+ 445 01a3 91       		.byte	-111
+ 446 01a4 60       		.byte	96
+ 447 01a5 08       		.byte	8
+ 448 01a6 62       		.byte	98
+ 449 01a7 02       		.byte	2
+ 450 01a8 63       		.byte	99
+ 451 01a9 02       		.byte	2
+ 452 01aa 66       		.byte	102
+ 453 01ab 01       		.byte	1
+ 454 01ac 78       		.byte	120
+ 455 01ad 08       		.byte	8
+ 456 01ae 79       		.byte	121
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 9
+
+
+ 457 01af 08       		.byte	8
+ 458 01b0 86       		.byte	-122
+ 459 01b1 06       		.byte	6
+ 460 01b2 8E       		.byte	-114
+ 461 01b3 01       		.byte	1
+ 462 01b4 91       		.byte	-111
+ 463 01b5 A0       		.byte	-96
+ 464 01b6 92       		.byte	-110
+ 465 01b7 02       		.byte	2
+ 466 01b8 A1       		.byte	-95
+ 467 01b9 20       		.byte	32
+ 468 01ba A2       		.byte	-94
+ 469 01bb 80       		.byte	-128
+ 470 01bc A5       		.byte	-91
+ 471 01bd 02       		.byte	2
+ 472 01be AA       		.byte	-86
+ 473 01bf 40       		.byte	64
+ 474 01c0 C0       		.byte	-64
+ 475 01c1 F7       		.byte	-9
+ 476 01c2 C2       		.byte	-62
+ 477 01c3 6F       		.byte	111
+ 478 01c4 C4       		.byte	-60
+ 479 01c5 AA       		.byte	-86
+ 480 01c6 CA       		.byte	-54
+ 481 01c7 30       		.byte	48
+ 482 01c8 CC       		.byte	-52
+ 483 01c9 70       		.byte	112
+ 484 01ca CE       		.byte	-50
+ 485 01cb 1E       		.byte	30
+ 486 01cc D0       		.byte	-48
+ 487 01cd 62       		.byte	98
+ 488 01ce D2       		.byte	-46
+ 489 01cf 10       		.byte	16
+ 490 01d0 D6       		.byte	-42
+ 491 01d1 F1       		.byte	-15
+ 492 01d2 D8       		.byte	-40
+ 493 01d3 8D       		.byte	-115
+ 494 01d4 E4       		.byte	-28
+ 495 01d5 08       		.byte	8
+ 496 01d6 E6       		.byte	-26
+ 497 01d7 40       		.byte	64
+ 498 01d8 EA       		.byte	-22
+ 499 01d9 04       		.byte	4
+ 500 01da 83       		.byte	-125
+ 501 01db 01       		.byte	1
+ 502 01dc 85       		.byte	-123
+ 503 01dd 02       		.byte	2
+ 504 01de 89       		.byte	-119
+ 505 01df 02       		.byte	2
+ 506 01e0 8C       		.byte	-116
+ 507 01e1 01       		.byte	1
+ 508 01e2 8E       		.byte	-114
+ 509 01e3 0E       		.byte	14
+ 510 01e4 91       		.byte	-111
+ 511 01e5 02       		.byte	2
+ 512 01e6 98       		.byte	-104
+ 513 01e7 22       		.byte	34
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 10
+
+
+ 514 01e8 9A       		.byte	-102
+ 515 01e9 51       		.byte	81
+ 516 01ea 9C       		.byte	-100
+ 517 01eb 44       		.byte	68
+ 518 01ec 9E       		.byte	-98
+ 519 01ed 31       		.byte	49
+ 520 01ee A4       		.byte	-92
+ 521 01ef 67       		.byte	103
+ 522 01f0 A8       		.byte	-88
+ 523 01f1 67       		.byte	103
+ 524 01f2 B1       		.byte	-79
+ 525 01f3 02       		.byte	2
+ 526 01f4 B2       		.byte	-78
+ 527 01f5 18       		.byte	24
+ 528 01f6 B4       		.byte	-76
+ 529 01f7 60       		.byte	96
+ 530 01f8 B5       		.byte	-75
+ 531 01f9 01       		.byte	1
+ 532 01fa B6       		.byte	-74
+ 533 01fb 07       		.byte	7
+ 534 01fc BE       		.byte	-66
+ 535 01fd 04       		.byte	4
+ 536 01fe D6       		.byte	-42
+ 537 01ff 08       		.byte	8
+ 538 0200 D8       		.byte	-40
+ 539 0201 04       		.byte	4
+ 540 0202 D9       		.byte	-39
+ 541 0203 04       		.byte	4
+ 542 0204 DB       		.byte	-37
+ 543 0205 04       		.byte	4
+ 544 0206 DD       		.byte	-35
+ 545 0207 90       		.byte	-112
+ 546 0208 DF       		.byte	-33
+ 547 0209 01       		.byte	1
+ 548 020a 00       		.byte	0
+ 549 020b 44       		.byte	68
+ 550 020c 01       		.byte	1
+ 551 020d 02       		.byte	2
+ 552 020e 03       		.byte	3
+ 553 020f 04       		.byte	4
+ 554 0210 05       		.byte	5
+ 555 0211 40       		.byte	64
+ 556 0212 06       		.byte	6
+ 557 0213 01       		.byte	1
+ 558 0214 08       		.byte	8
+ 559 0215 10       		.byte	16
+ 560 0216 09       		.byte	9
+ 561 0217 02       		.byte	2
+ 562 0218 0A       		.byte	10
+ 563 0219 20       		.byte	32
+ 564 021a 0B       		.byte	11
+ 565 021b 01       		.byte	1
+ 566 021c 0C       		.byte	12
+ 567 021d 10       		.byte	16
+ 568 021e 0E       		.byte	14
+ 569 021f 08       		.byte	8
+ 570 0220 0F       		.byte	15
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 11
+
+
+ 571 0221 01       		.byte	1
+ 572 0222 10       		.byte	16
+ 573 0223 A8       		.byte	-88
+ 574 0224 12       		.byte	18
+ 575 0225 01       		.byte	1
+ 576 0226 17       		.byte	23
+ 577 0227 28       		.byte	40
+ 578 0228 18       		.byte	24
+ 579 0229 04       		.byte	4
+ 580 022a 19       		.byte	25
+ 581 022b 17       		.byte	23
+ 582 022c 1A       		.byte	26
+ 583 022d 20       		.byte	32
+ 584 022e 1D       		.byte	29
+ 585 022f 48       		.byte	72
+ 586 0230 1E       		.byte	30
+ 587 0231 08       		.byte	8
+ 588 0232 1F       		.byte	31
+ 589 0233 20       		.byte	32
+ 590 0234 21       		.byte	33
+ 591 0235 60       		.byte	96
+ 592 0236 22       		.byte	34
+ 593 0237 05       		.byte	5
+ 594 0238 24       		.byte	36
+ 595 0239 40       		.byte	64
+ 596 023a 27       		.byte	39
+ 597 023b 44       		.byte	68
+ 598 023c 29       		.byte	41
+ 599 023d 51       		.byte	81
+ 600 023e 30       		.byte	48
+ 601 023f 02       		.byte	2
+ 602 0240 31       		.byte	49
+ 603 0241 06       		.byte	6
+ 604 0242 33       		.byte	51
+ 605 0243 60       		.byte	96
+ 606 0244 37       		.byte	55
+ 607 0245 02       		.byte	2
+ 608 0246 38       		.byte	56
+ 609 0247 28       		.byte	40
+ 610 0248 3A       		.byte	58
+ 611 0249 42       		.byte	66
+ 612 024a 3E       		.byte	62
+ 613 024b 14       		.byte	20
+ 614 024c 3F       		.byte	63
+ 615 024d 01       		.byte	1
+ 616 024e 40       		.byte	64
+ 617 024f 40       		.byte	64
+ 618 0250 41       		.byte	65
+ 619 0251 28       		.byte	40
+ 620 0252 48       		.byte	72
+ 621 0253 02       		.byte	2
+ 622 0254 4A       		.byte	74
+ 623 0255 08       		.byte	8
+ 624 0256 51       		.byte	81
+ 625 0257 10       		.byte	16
+ 626 0258 52       		.byte	82
+ 627 0259 80       		.byte	-128
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 12
+
+
+ 628 025a 5A       		.byte	90
+ 629 025b 08       		.byte	8
+ 630 025c 5E       		.byte	94
+ 631 025d 40       		.byte	64
+ 632 025e 66       		.byte	102
+ 633 025f 40       		.byte	64
+ 634 0260 67       		.byte	103
+ 635 0261 01       		.byte	1
+ 636 0262 6A       		.byte	106
+ 637 0263 14       		.byte	20
+ 638 0264 6B       		.byte	107
+ 639 0265 2A       		.byte	42
+ 640 0266 70       		.byte	112
+ 641 0267 BC       		.byte	-68
+ 642 0268 72       		.byte	114
+ 643 0269 02       		.byte	2
+ 644 026a 8D       		.byte	-115
+ 645 026b 01       		.byte	1
+ 646 026c 8E       		.byte	-114
+ 647 026d 08       		.byte	8
+ 648 026e C0       		.byte	-64
+ 649 026f 8F       		.byte	-113
+ 650 0270 C2       		.byte	-62
+ 651 0271 CF       		.byte	-49
+ 652 0272 C4       		.byte	-60
+ 653 0273 6F       		.byte	111
+ 654 0274 CA       		.byte	-54
+ 655 0275 0D       		.byte	13
+ 656 0276 CC       		.byte	-52
+ 657 0277 8F       		.byte	-113
+ 658 0278 CE       		.byte	-50
+ 659 0279 EF       		.byte	-17
+ 660 027a D0       		.byte	-48
+ 661 027b 07       		.byte	7
+ 662 027c D2       		.byte	-46
+ 663 027d 0C       		.byte	12
+ 664 027e D6       		.byte	-42
+ 665 027f 12       		.byte	18
+ 666 0280 D8       		.byte	-40
+ 667 0281 10       		.byte	16
+ 668 0282 E2       		.byte	-30
+ 669 0283 04       		.byte	4
+ 670 0284 E6       		.byte	-26
+ 671 0285 08       		.byte	8
+ 672 0286 02       		.byte	2
+ 673 0287 40       		.byte	64
+ 674 0288 04       		.byte	4
+ 675 0289 30       		.byte	48
+ 676 028a 06       		.byte	6
+ 677 028b 0D       		.byte	13
+ 678 028c 0A       		.byte	10
+ 679 028d 80       		.byte	-128
+ 680 028e 0E       		.byte	14
+ 681 028f 30       		.byte	48
+ 682 0290 14       		.byte	20
+ 683 0291 05       		.byte	5
+ 684 0292 16       		.byte	22
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 13
+
+
+ 685 0293 38       		.byte	56
+ 686 0294 19       		.byte	25
+ 687 0295 01       		.byte	1
+ 688 0296 1E       		.byte	30
+ 689 0297 80       		.byte	-128
+ 690 0298 22       		.byte	34
+ 691 0299 20       		.byte	32
+ 692 029a 26       		.byte	38
+ 693 029b 40       		.byte	64
+ 694 029c 28       		.byte	40
+ 695 029d 05       		.byte	5
+ 696 029e 2A       		.byte	42
+ 697 029f 18       		.byte	24
+ 698 02a0 2C       		.byte	44
+ 699 02a1 02       		.byte	2
+ 700 02a2 2E       		.byte	46
+ 701 02a3 0C       		.byte	12
+ 702 02a4 30       		.byte	48
+ 703 02a5 80       		.byte	-128
+ 704 02a6 31       		.byte	49
+ 705 02a7 01       		.byte	1
+ 706 02a8 32       		.byte	50
+ 707 02a9 40       		.byte	64
+ 708 02aa 34       		.byte	52
+ 709 02ab 3C       		.byte	60
+ 710 02ac 36       		.byte	54
+ 711 02ad 03       		.byte	3
+ 712 02ae 38       		.byte	56
+ 713 02af 80       		.byte	-128
+ 714 02b0 3A       		.byte	58
+ 715 02b1 20       		.byte	32
+ 716 02b2 3E       		.byte	62
+ 717 02b3 05       		.byte	5
+ 718 02b4 3F       		.byte	63
+ 719 02b5 01       		.byte	1
+ 720 02b6 40       		.byte	64
+ 721 02b7 04       		.byte	4
+ 722 02b8 46       		.byte	70
+ 723 02b9 04       		.byte	4
+ 724 02ba 49       		.byte	73
+ 725 02bb FF       		.byte	-1
+ 726 02bc 4A       		.byte	74
+ 727 02bd 07       		.byte	7
+ 728 02be 4B       		.byte	75
+ 729 02bf FF       		.byte	-1
+ 730 02c0 4C       		.byte	76
+ 731 02c1 40       		.byte	64
+ 732 02c2 4D       		.byte	77
+ 733 02c3 20       		.byte	32
+ 734 02c4 4E       		.byte	78
+ 735 02c5 F0       		.byte	-16
+ 736 02c6 4F       		.byte	79
+ 737 02c7 05       		.byte	5
+ 738 02c8 50       		.byte	80
+ 739 02c9 08       		.byte	8
+ 740 02ca 54       		.byte	84
+ 741 02cb 18       		.byte	24
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 14
+
+
+ 742 02cc 56       		.byte	86
+ 743 02cd 04       		.byte	4
+ 744 02ce 58       		.byte	88
+ 745 02cf 04       		.byte	4
+ 746 02d0 59       		.byte	89
+ 747 02d1 04       		.byte	4
+ 748 02d2 5A       		.byte	90
+ 749 02d3 04       		.byte	4
+ 750 02d4 5B       		.byte	91
+ 751 02d5 04       		.byte	4
+ 752 02d6 5D       		.byte	93
+ 753 02d7 10       		.byte	16
+ 754 02d8 5F       		.byte	95
+ 755 02d9 01       		.byte	1
+ 756 02da 60       		.byte	96
+ 757 02db 40       		.byte	64
+ 758 02dc 61       		.byte	97
+ 759 02dd A8       		.byte	-88
+ 760 02de 62       		.byte	98
+ 761 02df 40       		.byte	64
+ 762 02e0 63       		.byte	99
+ 763 02e1 20       		.byte	32
+ 764 02e2 82       		.byte	-126
+ 765 02e3 02       		.byte	2
+ 766 02e4 84       		.byte	-124
+ 767 02e5 B8       		.byte	-72
+ 768 02e6 86       		.byte	-122
+ 769 02e7 45       		.byte	69
+ 770 02e8 88       		.byte	-120
+ 771 02e9 56       		.byte	86
+ 772 02ea 89       		.byte	-119
+ 773 02eb 13       		.byte	19
+ 774 02ec 8A       		.byte	-118
+ 775 02ed A1       		.byte	-95
+ 776 02ee 8B       		.byte	-117
+ 777 02ef 0C       		.byte	12
+ 778 02f0 8D       		.byte	-115
+ 779 02f1 13       		.byte	19
+ 780 02f2 8F       		.byte	-113
+ 781 02f3 04       		.byte	4
+ 782 02f4 92       		.byte	-110
+ 783 02f5 46       		.byte	70
+ 784 02f6 95       		.byte	-107
+ 785 02f7 20       		.byte	32
+ 786 02f8 97       		.byte	-105
+ 787 02f9 05       		.byte	5
+ 788 02fa 99       		.byte	-103
+ 789 02fb 03       		.byte	3
+ 790 02fc 9B       		.byte	-101
+ 791 02fd 04       		.byte	4
+ 792 02fe 9C       		.byte	-100
+ 793 02ff B8       		.byte	-72
+ 794 0300 9E       		.byte	-98
+ 795 0301 43       		.byte	67
+ 796 0302 9F       		.byte	-97
+ 797 0303 08       		.byte	8
+ 798 0304 A1       		.byte	-95
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 15
+
+
+ 799 0305 40       		.byte	64
+ 800 0306 A6       		.byte	-90
+ 801 0307 80       		.byte	-128
+ 802 0308 A9       		.byte	-87
+ 803 0309 0A       		.byte	10
+ 804 030a AA       		.byte	-86
+ 805 030b A9       		.byte	-87
+ 806 030c AB       		.byte	-85
+ 807 030d 14       		.byte	20
+ 808 030e B0       		.byte	-80
+ 809 030f 80       		.byte	-128
+ 810 0310 B2       		.byte	-78
+ 811 0311 18       		.byte	24
+ 812 0312 B3       		.byte	-77
+ 813 0313 40       		.byte	64
+ 814 0314 B4       		.byte	-76
+ 815 0315 63       		.byte	99
+ 816 0316 B5       		.byte	-75
+ 817 0317 0F       		.byte	15
+ 818 0318 B6       		.byte	-74
+ 819 0319 07       		.byte	7
+ 820 031a B7       		.byte	-73
+ 821 031b 30       		.byte	48
+ 822 031c B8       		.byte	-72
+ 823 031d 08       		.byte	8
+ 824 031e B9       		.byte	-71
+ 825 031f 80       		.byte	-128
+ 826 0320 BA       		.byte	-70
+ 827 0321 A0       		.byte	-96
+ 828 0322 BB       		.byte	-69
+ 829 0323 20       		.byte	32
+ 830 0324 BE       		.byte	-66
+ 831 0325 05       		.byte	5
+ 832 0326 BF       		.byte	-65
+ 833 0327 04       		.byte	4
+ 834 0328 C0       		.byte	-64
+ 835 0329 26       		.byte	38
+ 836 032a C1       		.byte	-63
+ 837 032b 04       		.byte	4
+ 838 032c C5       		.byte	-59
+ 839 032d 0C       		.byte	12
+ 840 032e C6       		.byte	-58
+ 841 032f BE       		.byte	-66
+ 842 0330 C8       		.byte	-56
+ 843 0331 0D       		.byte	13
+ 844 0332 C9       		.byte	-55
+ 845 0333 FF       		.byte	-1
+ 846 0334 CA       		.byte	-54
+ 847 0335 FF       		.byte	-1
+ 848 0336 CB       		.byte	-53
+ 849 0337 FF       		.byte	-1
+ 850 0338 CE       		.byte	-50
+ 851 0339 F0       		.byte	-16
+ 852 033a CF       		.byte	-49
+ 853 033b 44       		.byte	68
+ 854 033c D0       		.byte	-48
+ 855 033d 0C       		.byte	12
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 16
+
+
+ 856 033e D4       		.byte	-44
+ 857 033f 01       		.byte	1
+ 858 0340 D6       		.byte	-42
+ 859 0341 04       		.byte	4
+ 860 0342 D8       		.byte	-40
+ 861 0343 04       		.byte	4
+ 862 0344 D9       		.byte	-39
+ 863 0345 04       		.byte	4
+ 864 0346 DA       		.byte	-38
+ 865 0347 04       		.byte	4
+ 866 0348 DB       		.byte	-37
+ 867 0349 04       		.byte	4
+ 868 034a DC       		.byte	-36
+ 869 034b 11       		.byte	17
+ 870 034c DD       		.byte	-35
+ 871 034d 11       		.byte	17
+ 872 034e DF       		.byte	-33
+ 873 034f 01       		.byte	1
+ 874 0350 E6       		.byte	-26
+ 875 0351 C0       		.byte	-64
+ 876 0352 EA       		.byte	-22
+ 877 0353 40       		.byte	64
+ 878 0354 EB       		.byte	-21
+ 879 0355 02       		.byte	2
+ 880 0356 00       		.byte	0
+ 881 0357 08       		.byte	8
+ 882 0358 01       		.byte	1
+ 883 0359 32       		.byte	50
+ 884 035a 04       		.byte	4
+ 885 035b 26       		.byte	38
+ 886 035c 05       		.byte	5
+ 887 035d 40       		.byte	64
+ 888 035e 08       		.byte	8
+ 889 035f 80       		.byte	-128
+ 890 0360 0A       		.byte	10
+ 891 0361 82       		.byte	-126
+ 892 0362 0E       		.byte	14
+ 893 0363 20       		.byte	32
+ 894 0364 0F       		.byte	15
+ 895 0365 02       		.byte	2
+ 896 0366 10       		.byte	16
+ 897 0367 38       		.byte	56
+ 898 0368 16       		.byte	22
+ 899 0369 51       		.byte	81
+ 900 036a 17       		.byte	23
+ 901 036b 10       		.byte	16
+ 902 036c 19       		.byte	25
+ 903 036d 20       		.byte	32
+ 904 036e 1A       		.byte	26
+ 905 036f 42       		.byte	66
+ 906 0370 1B       		.byte	27
+ 907 0371 08       		.byte	8
+ 908 0372 1C       		.byte	28
+ 909 0373 04       		.byte	4
+ 910 0374 1D       		.byte	29
+ 911 0375 40       		.byte	64
+ 912 0376 1E       		.byte	30
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 17
+
+
+ 913 0377 08       		.byte	8
+ 914 0378 1F       		.byte	31
+ 915 0379 05       		.byte	5
+ 916 037a 20       		.byte	32
+ 917 037b 08       		.byte	8
+ 918 037c 21       		.byte	33
+ 919 037d 10       		.byte	16
+ 920 037e 22       		.byte	34
+ 921 037f 54       		.byte	84
+ 922 0380 25       		.byte	37
+ 923 0381 01       		.byte	1
+ 924 0382 29       		.byte	41
+ 925 0383 21       		.byte	33
+ 926 0384 2B       		.byte	43
+ 927 0385 80       		.byte	-128
+ 928 0386 30       		.byte	48
+ 929 0387 28       		.byte	40
+ 930 0388 32       		.byte	50
+ 931 0389 40       		.byte	64
+ 932 038a 35       		.byte	53
+ 933 038b 10       		.byte	16
+ 934 038c 38       		.byte	56
+ 935 038d 40       		.byte	64
+ 936 038e 39       		.byte	57
+ 937 038f 20       		.byte	32
+ 938 0390 40       		.byte	64
+ 939 0391 C0       		.byte	-64
+ 940 0392 41       		.byte	65
+ 941 0393 10       		.byte	16
+ 942 0394 47       		.byte	71
+ 943 0395 01       		.byte	1
+ 944 0396 48       		.byte	72
+ 945 0397 28       		.byte	40
+ 946 0398 52       		.byte	82
+ 947 0399 20       		.byte	32
+ 948 039a 53       		.byte	83
+ 949 039b 80       		.byte	-128
+ 950 039c 56       		.byte	86
+ 951 039d 41       		.byte	65
+ 952 039e 57       		.byte	87
+ 953 039f 02       		.byte	2
+ 954 03a0 58       		.byte	88
+ 955 03a1 10       		.byte	16
+ 956 03a2 59       		.byte	89
+ 957 03a3 01       		.byte	1
+ 958 03a4 5A       		.byte	90
+ 959 03a5 48       		.byte	72
+ 960 03a6 5E       		.byte	94
+ 961 03a7 02       		.byte	2
+ 962 03a8 63       		.byte	99
+ 963 03a9 80       		.byte	-128
+ 964 03aa 66       		.byte	102
+ 965 03ab 02       		.byte	2
+ 966 03ac 67       		.byte	103
+ 967 03ad 0A       		.byte	10
+ 968 03ae 83       		.byte	-125
+ 969 03af 40       		.byte	64
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 18
+
+
+ 970 03b0 86       		.byte	-122
+ 971 03b1 02       		.byte	2
+ 972 03b2 94       		.byte	-108
+ 973 03b3 40       		.byte	64
+ 974 03b4 95       		.byte	-107
+ 975 03b5 10       		.byte	16
+ 976 03b6 96       		.byte	-106
+ 977 03b7 A0       		.byte	-96
+ 978 03b8 99       		.byte	-103
+ 979 03b9 12       		.byte	18
+ 980 03ba 9B       		.byte	-101
+ 981 03bb 11       		.byte	17
+ 982 03bc 9D       		.byte	-99
+ 983 03bd 40       		.byte	64
+ 984 03be 9E       		.byte	-98
+ 985 03bf 40       		.byte	64
+ 986 03c0 A0       		.byte	-96
+ 987 03c1 08       		.byte	8
+ 988 03c2 A2       		.byte	-94
+ 989 03c3 10       		.byte	16
+ 990 03c4 A6       		.byte	-90
+ 991 03c5 24       		.byte	36
+ 992 03c6 A7       		.byte	-89
+ 993 03c7 0A       		.byte	10
+ 994 03c8 AA       		.byte	-86
+ 995 03c9 04       		.byte	4
+ 996 03ca AB       		.byte	-85
+ 997 03cb 01       		.byte	1
+ 998 03cc B0       		.byte	-80
+ 999 03cd 80       		.byte	-128
+ 1000 03ce B3       		.byte	-77
+ 1001 03cf 10       		.byte	16
+ 1002 03d0 C0       		.byte	-64
+ 1003 03d1 FE       		.byte	-2
+ 1004 03d2 C2       		.byte	-62
+ 1005 03d3 A9       		.byte	-87
+ 1006 03d4 C4       		.byte	-60
+ 1007 03d5 F6       		.byte	-10
+ 1008 03d6 CA       		.byte	-54
+ 1009 03d7 05       		.byte	5
+ 1010 03d8 CC       		.byte	-52
+ 1011 03d9 2E       		.byte	46
+ 1012 03da CE       		.byte	-50
+ 1013 03db 0C       		.byte	12
+ 1014 03dc D0       		.byte	-48
+ 1015 03dd 85       		.byte	-123
+ 1016 03de D2       		.byte	-46
+ 1017 03df 04       		.byte	4
+ 1018 03e0 D6       		.byte	-42
+ 1019 03e1 8F       		.byte	-113
+ 1020 03e2 D8       		.byte	-40
+ 1021 03e3 B1       		.byte	-79
+ 1022 03e4 04       		.byte	4
+ 1023 03e5 01       		.byte	1
+ 1024 03e6 06       		.byte	6
+ 1025 03e7 26       		.byte	38
+ 1026 03e8 0C       		.byte	12
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 19
+
+
+ 1027 03e9 0A       		.byte	10
+ 1028 03ea 0E       		.byte	14
+ 1029 03eb 51       		.byte	81
+ 1030 03ec 1C       		.byte	28
+ 1031 03ed 14       		.byte	20
+ 1032 03ee 1E       		.byte	30
+ 1033 03ef 49       		.byte	73
+ 1034 03f0 1F       		.byte	31
+ 1035 03f1 01       		.byte	1
+ 1036 03f2 24       		.byte	36
+ 1037 03f3 9F       		.byte	-97
+ 1038 03f4 28       		.byte	40
+ 1039 03f5 9F       		.byte	-97
+ 1040 03f6 2C       		.byte	44
+ 1041 03f7 80       		.byte	-128
+ 1042 03f8 30       		.byte	48
+ 1043 03f9 18       		.byte	24
+ 1044 03fa 31       		.byte	49
+ 1045 03fb 01       		.byte	1
+ 1046 03fc 32       		.byte	50
+ 1047 03fd 07       		.byte	7
+ 1048 03fe 34       		.byte	52
+ 1049 03ff 60       		.byte	96
+ 1050 0400 36       		.byte	54
+ 1051 0401 80       		.byte	-128
+ 1052 0402 3E       		.byte	62
+ 1053 0403 10       		.byte	16
+ 1054 0404 56       		.byte	86
+ 1055 0405 08       		.byte	8
+ 1056 0406 58       		.byte	88
+ 1057 0407 04       		.byte	4
+ 1058 0408 59       		.byte	89
+ 1059 0409 04       		.byte	4
+ 1060 040a 5B       		.byte	91
+ 1061 040b 04       		.byte	4
+ 1062 040c 5C       		.byte	92
+ 1063 040d 11       		.byte	17
+ 1064 040e 5D       		.byte	93
+ 1065 040f 90       		.byte	-112
+ 1066 0410 5F       		.byte	95
+ 1067 0411 01       		.byte	1
+ 1068 0412 00       		.byte	0
+ 1069 0413 40       		.byte	64
+ 1070 0414 01       		.byte	1
+ 1071 0415 08       		.byte	8
+ 1072 0416 02       		.byte	2
+ 1073 0417 20       		.byte	32
+ 1074 0418 03       		.byte	3
+ 1075 0419 10       		.byte	16
+ 1076 041a 05       		.byte	5
+ 1077 041b 42       		.byte	66
+ 1078 041c 07       		.byte	7
+ 1079 041d 28       		.byte	40
+ 1080 041e 09       		.byte	9
+ 1081 041f 80       		.byte	-128
+ 1082 0420 0C       		.byte	12
+ 1083 0421 80       		.byte	-128
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 20
+
+
+ 1084 0422 0D       		.byte	13
+ 1085 0423 28       		.byte	40
+ 1086 0424 0E       		.byte	14
+ 1087 0425 40       		.byte	64
+ 1088 0426 10       		.byte	16
+ 1089 0427 2A       		.byte	42
+ 1090 0428 15       		.byte	21
+ 1091 0429 42       		.byte	66
+ 1092 042a 17       		.byte	23
+ 1093 042b 14       		.byte	20
+ 1094 042c 18       		.byte	24
+ 1095 042d 40       		.byte	64
+ 1096 042e 19       		.byte	25
+ 1097 042f 0A       		.byte	10
+ 1098 0430 1B       		.byte	27
+ 1099 0431 50       		.byte	80
+ 1100 0432 1C       		.byte	28
+ 1101 0433 01       		.byte	1
+ 1102 0434 1D       		.byte	29
+ 1103 0435 28       		.byte	40
+ 1104 0436 1E       		.byte	30
+ 1105 0437 40       		.byte	64
+ 1106 0438 1F       		.byte	31
+ 1107 0439 28       		.byte	40
+ 1108 043a 21       		.byte	33
+ 1109 043b 01       		.byte	1
+ 1110 043c 24       		.byte	36
+ 1111 043d 22       		.byte	34
+ 1112 043e 25       		.byte	37
+ 1113 043f 04       		.byte	4
+ 1114 0440 26       		.byte	38
+ 1115 0441 11       		.byte	17
+ 1116 0442 2C       		.byte	44
+ 1117 0443 80       		.byte	-128
+ 1118 0444 2D       		.byte	45
+ 1119 0445 40       		.byte	64
+ 1120 0446 2F       		.byte	47
+ 1121 0447 28       		.byte	40
+ 1122 0448 31       		.byte	49
+ 1123 0449 80       		.byte	-128
+ 1124 044a 35       		.byte	53
+ 1125 044b 42       		.byte	66
+ 1126 044c 36       		.byte	54
+ 1127 044d 20       		.byte	32
+ 1128 044e 3C       		.byte	60
+ 1129 044f 01       		.byte	1
+ 1130 0450 3E       		.byte	62
+ 1131 0451 68       		.byte	104
+ 1132 0452 45       		.byte	69
+ 1133 0453 24       		.byte	36
+ 1134 0454 47       		.byte	71
+ 1135 0455 40       		.byte	64
+ 1136 0456 4D       		.byte	77
+ 1137 0457 40       		.byte	64
+ 1138 0458 4F       		.byte	79
+ 1139 0459 A0       		.byte	-96
+ 1140 045a 56       		.byte	86
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 21
+
+
+ 1141 045b 10       		.byte	16
+ 1142 045c 57       		.byte	87
+ 1143 045d 01       		.byte	1
+ 1144 045e 5A       		.byte	90
+ 1145 045f 80       		.byte	-128
+ 1146 0460 5E       		.byte	94
+ 1147 0461 20       		.byte	32
+ 1148 0462 61       		.byte	97
+ 1149 0463 C0       		.byte	-64
+ 1150 0464 6C       		.byte	108
+ 1151 0465 2A       		.byte	42
+ 1152 0466 74       		.byte	116
+ 1153 0467 80       		.byte	-128
+ 1154 0468 76       		.byte	118
+ 1155 0469 28       		.byte	40
+ 1156 046a 77       		.byte	119
+ 1157 046b 28       		.byte	40
+ 1158 046c 80       		.byte	-128
+ 1159 046d 01       		.byte	1
+ 1160 046e 83       		.byte	-125
+ 1161 046f 4C       		.byte	76
+ 1162 0470 8E       		.byte	-114
+ 1163 0471 40       		.byte	64
+ 1164 0472 94       		.byte	-108
+ 1165 0473 22       		.byte	34
+ 1166 0474 9E       		.byte	-98
+ 1167 0475 10       		.byte	16
+ 1168 0476 A6       		.byte	-90
+ 1169 0477 01       		.byte	1
+ 1170 0478 A7       		.byte	-89
+ 1171 0479 01       		.byte	1
+ 1172 047a B5       		.byte	-75
+ 1173 047b 01       		.byte	1
+ 1174 047c C0       		.byte	-64
+ 1175 047d F5       		.byte	-11
+ 1176 047e C2       		.byte	-62
+ 1177 047f F1       		.byte	-15
+ 1178 0480 C4       		.byte	-60
+ 1179 0481 F7       		.byte	-9
+ 1180 0482 CA       		.byte	-54
+ 1181 0483 F0       		.byte	-16
+ 1182 0484 CC       		.byte	-52
+ 1183 0485 B8       		.byte	-72
+ 1184 0486 CE       		.byte	-50
+ 1185 0487 F0       		.byte	-16
+ 1186 0488 D0       		.byte	-48
+ 1187 0489 70       		.byte	112
+ 1188 048a D2       		.byte	-46
+ 1189 048b 30       		.byte	48
+ 1190 048c D6       		.byte	-42
+ 1191 048d 28       		.byte	40
+ 1192 048e D8       		.byte	-40
+ 1193 048f 08       		.byte	8
+ 1194 0490 32       		.byte	50
+ 1195 0491 02       		.byte	2
+ 1196 0492 33       		.byte	51
+ 1197 0493 80       		.byte	-128
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 22
+
+
+ 1198 0494 35       		.byte	53
+ 1199 0495 80       		.byte	-128
+ 1200 0496 37       		.byte	55
+ 1201 0497 08       		.byte	8
+ 1202 0498 CC       		.byte	-52
+ 1203 0499 F0       		.byte	-16
+ 1204 049a 9D       		.byte	-99
+ 1205 049b 80       		.byte	-128
+ 1206 049c 9F       		.byte	-97
+ 1207 049d 08       		.byte	8
+ 1208 049e A6       		.byte	-90
+ 1209 049f 02       		.byte	2
+ 1210 04a0 A7       		.byte	-89
+ 1211 04a1 80       		.byte	-128
+ 1212 04a2 9D       		.byte	-99
+ 1213 04a3 80       		.byte	-128
+ 1214 04a4 9F       		.byte	-97
+ 1215 04a5 08       		.byte	8
+ 1216 04a6 A6       		.byte	-90
+ 1217 04a7 02       		.byte	2
+ 1218 04a8 A7       		.byte	-89
+ 1219 04a9 80       		.byte	-128
+ 1220 04aa 86       		.byte	-122
+ 1221 04ab 02       		.byte	2
+ 1222 04ac 8F       		.byte	-113
+ 1223 04ad 08       		.byte	8
+ 1224 04ae 9D       		.byte	-99
+ 1225 04af 80       		.byte	-128
+ 1226 04b0 9F       		.byte	-97
+ 1227 04b1 08       		.byte	8
+ 1228 04b2 A6       		.byte	-90
+ 1229 04b3 02       		.byte	2
+ 1230 04b4 A7       		.byte	-89
+ 1231 04b5 80       		.byte	-128
+ 1232 04b6 E2       		.byte	-30
+ 1233 04b7 40       		.byte	64
+ 1234 04b8 86       		.byte	-122
+ 1235 04b9 02       		.byte	2
+ 1236 04ba 9E       		.byte	-98
+ 1237 04bb 20       		.byte	32
+ 1238 04bc AA       		.byte	-86
+ 1239 04bd 20       		.byte	32
+ 1240 04be 81       		.byte	-127
+ 1241 04bf 80       		.byte	-128
+ 1242 04c0 87       		.byte	-121
+ 1243 04c1 80       		.byte	-128
+ 1244 04c2 9D       		.byte	-99
+ 1245 04c3 80       		.byte	-128
+ 1246 04c4 A7       		.byte	-89
+ 1247 04c5 80       		.byte	-128
+ 1248 04c6 E2       		.byte	-30
+ 1249 04c7 20       		.byte	32
+ 1250 04c8 E6       		.byte	-26
+ 1251 04c9 10       		.byte	16
+ 1252 04ca 0D       		.byte	13
+ 1253 04cb 80       		.byte	-128
+ 1254 04cc 66       		.byte	102
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 23
+
+
+ 1255 04cd 02       		.byte	2
+ 1256 04ce 9A       		.byte	-102
+ 1257 04cf 02       		.byte	2
+ 1258 04d0 9E       		.byte	-98
+ 1259 04d1 20       		.byte	32
+ 1260 04d2 C2       		.byte	-62
+ 1261 04d3 01       		.byte	1
+ 1262 04d4 D8       		.byte	-40
+ 1263 04d5 01       		.byte	1
+ 1264 04d6 06       		.byte	6
+ 1265 04d7 20       		.byte	32
+ 1266 04d8 5C       		.byte	92
+ 1267 04d9 10       		.byte	16
+ 1268 04da 8D       		.byte	-115
+ 1269 04db 80       		.byte	-128
+ 1270 04dc 90       		.byte	-112
+ 1271 04dd 10       		.byte	16
+ 1272 04de 9E       		.byte	-98
+ 1273 04df 20       		.byte	32
+ 1274 04e0 A1       		.byte	-95
+ 1275 04e1 80       		.byte	-128
+ 1276 04e2 B4       		.byte	-76
+ 1277 04e3 10       		.byte	16
+ 1278 04e4 C0       		.byte	-64
+ 1279 04e5 04       		.byte	4
+ 1280 04e6 D6       		.byte	-42
+ 1281 04e7 04       		.byte	4
+ 1282 04e8 E2       		.byte	-30
+ 1283 04e9 08       		.byte	8
+ 1284 04ea E8       		.byte	-24
+ 1285 04eb 08       		.byte	8
+ 1286 04ec 00       		.byte	0
+ 1287 04ed 03       		.byte	3
+ 1288 04ee 01       		.byte	1
+ 1289 04ef 01       		.byte	1
+ 1290 04f0 0C       		.byte	12
+ 1291 04f1 03       		.byte	3
+ 1292 04f2 0D       		.byte	13
+ 1293 04f3 01       		.byte	1
+ 1294 04f4 10       		.byte	16
+ 1295 04f5 03       		.byte	3
+ 1296 04f6 11       		.byte	17
+ 1297 04f7 01       		.byte	1
+ 1298 04f8 1C       		.byte	28
+ 1299 04f9 03       		.byte	3
+ 1300 04fa 1D       		.byte	29
+ 1301 04fb 01       		.byte	1
+ 1302 04fc 00       		.byte	0
+ 1303 04fd FF       		.byte	-1
+ 1304 04fe 00       		.byte	0
+ 1305 04ff 00       		.byte	0
+ 1306 0500 F3       		.byte	-13
+ 1307 0501 20       		.byte	32
+ 1308 0502 0C       		.byte	12
+ 1309 0503 00       		.byte	0
+ 1310 0504 4C       		.byte	76
+ 1311 0505 30       		.byte	48
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 24
+
+
+ 1312 0506 A3       		.byte	-93
+ 1313 0507 00       		.byte	0
+ 1314 0508 00       		.byte	0
+ 1315 0509 10       		.byte	16
+ 1316 050a 40       		.byte	64
+ 1317 050b 00       		.byte	0
+ 1318 050c 00       		.byte	0
+ 1319 050d 02       		.byte	2
+ 1320 050e B3       		.byte	-77
+ 1321 050f 00       		.byte	0
+ 1322 0510 FF       		.byte	-1
+ 1323 0511 7F       		.byte	127
+ 1324 0512 00       		.byte	0
+ 1325 0513 00       		.byte	0
+ 1326 0514 4F       		.byte	79
+ 1327 0515 70       		.byte	112
+ 1328 0516 90       		.byte	-112
+ 1329 0517 0F       		.byte	15
+ 1330 0518 01       		.byte	1
+ 1331 0519 01       		.byte	1
+ 1332 051a 00       		.byte	0
+ 1333 051b 00       		.byte	0
+ 1334 051c 42       		.byte	66
+ 1335 051d 00       		.byte	0
+ 1336 051e 00       		.byte	0
+ 1337 051f 0B       		.byte	11
+ 1338 0520 08       		.byte	8
+ 1339 0521 4F       		.byte	79
+ 1340 0522 00       		.byte	0
+ 1341 0523 30       		.byte	48
+ 1342 0524 04       		.byte	4
+ 1343 0525 00       		.byte	0
+ 1344 0526 00       		.byte	0
+ 1345 0527 00       		.byte	0
+ 1346 0528 0C       		.byte	12
+ 1347 0529 78       		.byte	120
+ 1348 052a 00       		.byte	0
+ 1349 052b 07       		.byte	7
+ 1350 052c 03       		.byte	3
+ 1351 052d 03       		.byte	3
+ 1352 052e 00       		.byte	0
+ 1353 052f 00       		.byte	0
+ 1354 0530 0F       		.byte	15
+ 1355 0531 03       		.byte	3
+ 1356 0532 8C       		.byte	-116
+ 1357 0533 40       		.byte	64
+ 1358 0534 7C       		.byte	124
+ 1359 0535 38       		.byte	56
+ 1360 0536 00       		.byte	0
+ 1361 0537 04       		.byte	4
+ 1362 0538 00       		.byte	0
+ 1363 0539 80       		.byte	-128
+ 1364 053a 2A       		.byte	42
+ 1365 053b 00       		.byte	0
+ 1366 053c 00       		.byte	0
+ 1367 053d 00       		.byte	0
+ 1368 053e 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 25
+
+
+ 1369 053f 04       		.byte	4
+ 1370 0540 64       		.byte	100
+ 1371 0541 05       		.byte	5
+ 1372 0542 02       		.byte	2
+ 1373 0543 00       		.byte	0
+ 1374 0544 03       		.byte	3
+ 1375 0545 00       		.byte	0
+ 1376 0546 EC       		.byte	-20
+ 1377 0547 00       		.byte	0
+ 1378 0548 0C       		.byte	12
+ 1379 0549 FF       		.byte	-1
+ 1380 054a FF       		.byte	-1
+ 1381 054b FF       		.byte	-1
+ 1382 054c 62       		.byte	98
+ 1383 054d A0       		.byte	-96
+ 1384 054e F0       		.byte	-16
+ 1385 054f 41       		.byte	65
+ 1386 0550 0C       		.byte	12
+ 1387 0551 00       		.byte	0
+ 1388 0552 00       		.byte	0
+ 1389 0553 00       		.byte	0
+ 1390 0554 00       		.byte	0
+ 1391 0555 00       		.byte	0
+ 1392 0556 02       		.byte	2
+ 1393 0557 12       		.byte	18
+ 1394 0558 04       		.byte	4
+ 1395 0559 04       		.byte	4
+ 1396 055a 04       		.byte	4
+ 1397 055b 04       		.byte	4
+ 1398 055c 00       		.byte	0
+ 1399 055d 00       		.byte	0
+ 1400 055e 00       		.byte	0
+ 1401 055f 01       		.byte	1
+ 1402 0560 00       		.byte	0
+ 1403 0561 00       		.byte	0
+ 1404 0562 00       		.byte	0
+ 1405 0563 00       		.byte	0
+ 1406 0564 00       		.byte	0
+ 1407 0565 00       		.byte	0
+ 1408 0566 40       		.byte	64
+ 1409 0567 02       		.byte	2
+ 1410 0568 00       		.byte	0
+ 1411 0569 10       		.byte	16
+ 1412 056a 30       		.byte	48
+ 1413 056b 10       		.byte	16
+ 1414 056c 00       		.byte	0
+ 1415 056d 10       		.byte	16
+ 1416 056e 10       		.byte	16
+ 1417 056f 12       		.byte	18
+ 1418 0570 00       		.byte	0
+ 1419 0571 00       		.byte	0
+ 1420 0572 00       		.byte	0
+ 1421 0573 00       		.byte	0
+ 1422 0574 00       		.byte	0
+ 1423 0575 00       		.byte	0
+ 1424 0576 00       		.byte	0
+ 1425 0577 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 26
+
+
+ 1426 0578 00       		.byte	0
+ 1427 0579 00       		.byte	0
+ 1428 057a 00       		.byte	0
+ 1429 057b 00       		.byte	0
+ 1430 057c 00       		.byte	0
+ 1431 057d 00       		.byte	0
+ 1432 057e 00       		.byte	0
+ 1433 057f 00       		.byte	0
+ 1434 0580 01       		.byte	1
+ 1435 0581 78       		.byte	120
+ 1436 0582 00       		.byte	0
+ 1437 0583 07       		.byte	7
+ 1438 0584 0C       		.byte	12
+ 1439 0585 10       		.byte	16
+ 1440 0586 00       		.byte	0
+ 1441 0587 00       		.byte	0
+ 1442 0588 04       		.byte	4
+ 1443 0589 30       		.byte	48
+ 1444 058a 00       		.byte	0
+ 1445 058b 00       		.byte	0
+ 1446 058c 42       		.byte	66
+ 1447 058d 70       		.byte	112
+ 1448 058e 00       		.byte	0
+ 1449 058f 0F       		.byte	15
+ 1450 0590 4F       		.byte	79
+ 1451 0591 01       		.byte	1
+ 1452 0592 90       		.byte	-112
+ 1453 0593 00       		.byte	0
+ 1454 0594 FF       		.byte	-1
+ 1455 0595 00       		.byte	0
+ 1456 0596 00       		.byte	0
+ 1457 0597 00       		.byte	0
+ 1458 0598 F3       		.byte	-13
+ 1459 0599 03       		.byte	3
+ 1460 059a 0C       		.byte	12
+ 1461 059b 00       		.byte	0
+ 1462 059c 08       		.byte	8
+ 1463 059d 02       		.byte	2
+ 1464 059e 00       		.byte	0
+ 1465 059f 00       		.byte	0
+ 1466 05a0 00       		.byte	0
+ 1467 05a1 20       		.byte	32
+ 1468 05a2 40       		.byte	64
+ 1469 05a3 00       		.byte	0
+ 1470 05a4 4C       		.byte	76
+ 1471 05a5 4F       		.byte	79
+ 1472 05a6 A3       		.byte	-93
+ 1473 05a7 30       		.byte	48
+ 1474 05a8 03       		.byte	3
+ 1475 05a9 7F       		.byte	127
+ 1476 05aa 00       		.byte	0
+ 1477 05ab 00       		.byte	0
+ 1478 05ac 00       		.byte	0
+ 1479 05ad 00       		.byte	0
+ 1480 05ae B3       		.byte	-77
+ 1481 05af 0B       		.byte	11
+ 1482 05b0 8C       		.byte	-116
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 27
+
+
+ 1483 05b1 03       		.byte	3
+ 1484 05b2 00       		.byte	0
+ 1485 05b3 38       		.byte	56
+ 1486 05b4 0F       		.byte	15
+ 1487 05b5 40       		.byte	64
+ 1488 05b6 7C       		.byte	124
+ 1489 05b7 04       		.byte	4
+ 1490 05b8 00       		.byte	0
+ 1491 05b9 80       		.byte	-128
+ 1492 05ba AA       		.byte	-86
+ 1493 05bb 00       		.byte	0
+ 1494 05bc 00       		.byte	0
+ 1495 05bd 00       		.byte	0
+ 1496 05be 00       		.byte	0
+ 1497 05bf 10       		.byte	16
+ 1498 05c0 25       		.byte	37
+ 1499 05c1 01       		.byte	1
+ 1500 05c2 03       		.byte	3
+ 1501 05c3 00       		.byte	0
+ 1502 05c4 06       		.byte	6
+ 1503 05c5 00       		.byte	0
+ 1504 05c6 E0       		.byte	-32
+ 1505 05c7 C0       		.byte	-64
+ 1506 05c8 28       		.byte	40
+ 1507 05c9 FF       		.byte	-1
+ 1508 05ca FF       		.byte	-1
+ 1509 05cb FF       		.byte	-1
+ 1510 05cc 62       		.byte	98
+ 1511 05cd A0       		.byte	-96
+ 1512 05ce F0       		.byte	-16
+ 1513 05cf 41       		.byte	65
+ 1514 05d0 0C       		.byte	12
+ 1515 05d1 00       		.byte	0
+ 1516 05d2 00       		.byte	0
+ 1517 05d3 00       		.byte	0
+ 1518 05d4 00       		.byte	0
+ 1519 05d5 00       		.byte	0
+ 1520 05d6 02       		.byte	2
+ 1521 05d7 11       		.byte	17
+ 1522 05d8 04       		.byte	4
+ 1523 05d9 04       		.byte	4
+ 1524 05da 04       		.byte	4
+ 1525 05db 04       		.byte	4
+ 1526 05dc 11       		.byte	17
+ 1527 05dd 11       		.byte	17
+ 1528 05de 00       		.byte	0
+ 1529 05df 01       		.byte	1
+ 1530 05e0 00       		.byte	0
+ 1531 05e1 00       		.byte	0
+ 1532 05e2 00       		.byte	0
+ 1533 05e3 00       		.byte	0
+ 1534 05e4 00       		.byte	0
+ 1535 05e5 00       		.byte	0
+ 1536 05e6 40       		.byte	64
+ 1537 05e7 02       		.byte	2
+ 1538 05e8 00       		.byte	0
+ 1539 05e9 10       		.byte	16
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 28
+
+
+ 1540 05ea 30       		.byte	48
+ 1541 05eb 10       		.byte	16
+ 1542 05ec 00       		.byte	0
+ 1543 05ed 10       		.byte	16
+ 1544 05ee 10       		.byte	16
+ 1545 05ef 12       		.byte	18
+ 1546 05f0 00       		.byte	0
+ 1547 05f1 00       		.byte	0
+ 1548 05f2 00       		.byte	0
+ 1549 05f3 00       		.byte	0
+ 1550 05f4 00       		.byte	0
+ 1551 05f5 00       		.byte	0
+ 1552 05f6 00       		.byte	0
+ 1553 05f7 00       		.byte	0
+ 1554 05f8 00       		.byte	0
+ 1555 05f9 00       		.byte	0
+ 1556 05fa 00       		.byte	0
+ 1557 05fb 00       		.byte	0
+ 1558 05fc 00       		.byte	0
+ 1559 05fd 00       		.byte	0
+ 1560 05fe 00       		.byte	0
+ 1561 05ff 00       		.byte	0
+ 1562 0600 FF       		.byte	-1
+ 1563 0601 00       		.byte	0
+ 1564 0602 00       		.byte	0
+ 1565 0603 00       		.byte	0
+ 1566 0604 00       		.byte	0
+ 1567 0605 00       		.byte	0
+ 1568 0606 00       		.byte	0
+ 1569 0607 00       		.byte	0
+ 1570 0608 07       		.byte	7
+ 1571 0609 08       		.byte	8
+ 1572 060a 08       		.byte	8
+ 1573 060b 00       		.byte	0
+ 1574 060c 00       		.byte	0
+ 1575 060d 00       		.byte	0
+ 1576 060e 00       		.byte	0
+ 1577 060f 00       		.byte	0
+ 1578 0610 40       		.byte	64
+ 1579 0611 00       		.byte	0
+ 1580 0612 80       		.byte	-128
+ 1581 0613 40       		.byte	64
+ 1582 0614 40       		.byte	64
+ 1583 0615 00       		.byte	0
+ 1584 0616 40       		.byte	64
+ 1585 0617 00       		.byte	0
+ 1586 0618 00       		.byte	0
+ 1587 0619 00       		.byte	0
+ 1588 061a 00       		.byte	0
+ 1589 061b 00       		.byte	0
+ 1590 061c 00       		.byte	0
+ 1591 061d 7F       		.byte	127
+ 1592 061e 7F       		.byte	127
+ 1593 061f 00       		.byte	0
+ 1594 0620 00       		.byte	0
+ 1595 0621 00       		.byte	0
+ 1596 0622 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 29
+
+
+ 1597 0623 00       		.byte	0
+ 1598 0624 00       		.byte	0
+ 1599 0625 FF       		.byte	-1
+ 1600 0626 FF       		.byte	-1
+ 1601 0627 00       		.byte	0
+ 1602 0628 00       		.byte	0
+ 1603 0629 00       		.byte	0
+ 1604 062a 00       		.byte	0
+ 1605 062b 00       		.byte	0
+ 1606 062c 0F       		.byte	15
+ 1607 062d 00       		.byte	0
+ 1608 062e 00       		.byte	0
+ 1609 062f 00       		.byte	0
+ 1610 0630 00       		.byte	0
+ 1611 0631 00       		.byte	0
+ 1612 0632 00       		.byte	0
+ 1613 0633 00       		.byte	0
+ 1614 0634 01       		.byte	1
+ 1615 0635 00       		.byte	0
+ 1616 0636 02       		.byte	2
+ 1617 0637 05       		.byte	5
+ 1618 0638 05       		.byte	5
+ 1619 0639 00       		.byte	0
+ 1620 063a 01       		.byte	1
+ 1621 063b 00       		.byte	0
+ 1622 063c 00       		.byte	0
+ 1623 063d 00       		.byte	0
+ 1624 063e 00       		.byte	0
+ 1625 063f 00       		.byte	0
+ 1626 0640 C0       		.byte	-64
+ 1627 0641 3F       		.byte	63
+ 1628 0642 3F       		.byte	63
+ 1629 0643 00       		.byte	0
+ 1630 0644 00       		.byte	0
+ 1631 0645 00       		.byte	0
+ 1632 0646 00       		.byte	0
+ 1633 0647 00       		.byte	0
+ 1634              		.section	.cyloadermeta,"a",%progbits
+ 1635              		.align	2
+ 1636              		.type	cy_meta_loader, %object
+ 1637              		.size	cy_meta_loader, 64
+ 1638              	cy_meta_loader:
+ 1639 0000 00       		.byte	0
+ 1640 0001 00       		.byte	0
+ 1641 0002 00       		.byte	0
+ 1642 0003 00       		.byte	0
+ 1643 0004 00       		.byte	0
+ 1644 0005 00       		.byte	0
+ 1645 0006 00       		.byte	0
+ 1646 0007 00       		.byte	0
+ 1647 0008 00       		.byte	0
+ 1648 0009 00       		.byte	0
+ 1649 000a 00       		.byte	0
+ 1650 000b 00       		.byte	0
+ 1651 000c 00       		.byte	0
+ 1652 000d 00       		.byte	0
+ 1653 000e 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 30
+
+
+ 1654 000f 00       		.byte	0
+ 1655 0010 00       		.byte	0
+ 1656 0011 00       		.byte	0
+ 1657 0012 00       		.byte	0
+ 1658 0013 00       		.byte	0
+ 1659 0014 01       		.byte	1
+ 1660 0015 00       		.byte	0
+ 1661 0016 01       		.byte	1
+ 1662 0017 00       		.byte	0
+ 1663 0018 00       		.byte	0
+ 1664 0019 00       		.byte	0
+ 1665 001a 00       		.byte	0
+ 1666 001b 00       		.byte	0
+ 1667 001c 00       		.byte	0
+ 1668 001d 00       		.byte	0
+ 1669 001e 00       		.byte	0
+ 1670 001f 00       		.byte	0
+ 1671 0020 00       		.byte	0
+ 1672 0021 00       		.byte	0
+ 1673 0022 00       		.byte	0
+ 1674 0023 00       		.byte	0
+ 1675 0024 00       		.byte	0
+ 1676 0025 00       		.byte	0
+ 1677 0026 00       		.byte	0
+ 1678 0027 00       		.byte	0
+ 1679 0028 00       		.byte	0
+ 1680 0029 00       		.byte	0
+ 1681 002a 00       		.byte	0
+ 1682 002b 00       		.byte	0
+ 1683 002c 00       		.byte	0
+ 1684 002d 00       		.byte	0
+ 1685 002e 00       		.byte	0
+ 1686 002f 00       		.byte	0
+ 1687 0030 00       		.byte	0
+ 1688 0031 00       		.byte	0
+ 1689 0032 00       		.byte	0
+ 1690 0033 00       		.byte	0
+ 1691 0034 00       		.byte	0
+ 1692 0035 00       		.byte	0
+ 1693 0036 00       		.byte	0
+ 1694 0037 00       		.byte	0
+ 1695 0038 00       		.byte	0
+ 1696 0039 00       		.byte	0
+ 1697 003a 00       		.byte	0
+ 1698 003b 00       		.byte	0
+ 1699 003c 00       		.byte	0
+ 1700 003d 00       		.byte	0
+ 1701 003e 00       		.byte	0
+ 1702 003f 00       		.byte	0
+ 1703              		.section	.cyloadablemeta,"a",%progbits
+ 1704              		.align	2
+ 1705              		.type	cy_meta_loadable, %object
+ 1706              		.size	cy_meta_loadable, 64
+ 1707              	cy_meta_loadable:
+ 1708 0000 00000000 		.space	64
+ 1708      00000000 
+ 1708      00000000 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 31
+
+
+ 1708      00000000 
+ 1708      00000000 
+ 1709              		.text
+ 1710              	.Letext0:
+ 1711              		.file 1 ".\\Generated_Source\\PSoC5\\cymetadata.c"
+ 1712              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 1713              		.section	.debug_info,"",%progbits
+ 1714              	.Ldebug_info0:
+ 1715 0000 EA000000 		.4byte	0xea
+ 1716 0004 0400     		.2byte	0x4
+ 1717 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1718 000a 04       		.byte	0x4
+ 1719 000b 01       		.uleb128 0x1
+ 1720 000c 87000000 		.4byte	.LASF16
+ 1721 0010 01       		.byte	0x1
+ 1722 0011 00000000 		.4byte	.LASF17
+ 1723 0015 66010000 		.4byte	.LASF18
+ 1724 0019 00000000 		.4byte	.Ldebug_line0
+ 1725 001d 02       		.uleb128 0x2
+ 1726 001e 01       		.byte	0x1
+ 1727 001f 06       		.byte	0x6
+ 1728 0020 E3010000 		.4byte	.LASF0
+ 1729 0024 02       		.uleb128 0x2
+ 1730 0025 01       		.byte	0x1
+ 1731 0026 08       		.byte	0x8
+ 1732 0027 3B000000 		.4byte	.LASF1
+ 1733 002b 02       		.uleb128 0x2
+ 1734 002c 02       		.byte	0x2
+ 1735 002d 05       		.byte	0x5
+ 1736 002e CA010000 		.4byte	.LASF2
+ 1737 0032 02       		.uleb128 0x2
+ 1738 0033 02       		.byte	0x2
+ 1739 0034 07       		.byte	0x7
+ 1740 0035 5B000000 		.4byte	.LASF3
+ 1741 0039 02       		.uleb128 0x2
+ 1742 003a 04       		.byte	0x4
+ 1743 003b 05       		.byte	0x5
+ 1744 003c DA010000 		.4byte	.LASF4
+ 1745 0040 02       		.uleb128 0x2
+ 1746 0041 04       		.byte	0x4
+ 1747 0042 07       		.byte	0x7
+ 1748 0043 49000000 		.4byte	.LASF5
+ 1749 0047 02       		.uleb128 0x2
+ 1750 0048 08       		.byte	0x8
+ 1751 0049 05       		.byte	0x5
+ 1752 004a 53010000 		.4byte	.LASF6
+ 1753 004e 02       		.uleb128 0x2
+ 1754 004f 08       		.byte	0x8
+ 1755 0050 07       		.byte	0x7
+ 1756 0051 22010000 		.4byte	.LASF7
+ 1757 0055 03       		.uleb128 0x3
+ 1758 0056 04       		.byte	0x4
+ 1759 0057 05       		.byte	0x5
+ 1760 0058 696E7400 		.ascii	"int\000"
+ 1761 005c 02       		.uleb128 0x2
+ 1762 005d 04       		.byte	0x4
+ 1763 005e 07       		.byte	0x7
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 32
+
+
+ 1764 005f 15010000 		.4byte	.LASF8
+ 1765 0063 04       		.uleb128 0x4
+ 1766 0064 D4010000 		.4byte	.LASF19
+ 1767 0068 02       		.byte	0x2
+ 1768 0069 C2       		.byte	0xc2
+ 1769 006a 24000000 		.4byte	0x24
+ 1770 006e 02       		.uleb128 0x2
+ 1771 006f 04       		.byte	0x4
+ 1772 0070 04       		.byte	0x4
+ 1773 0071 35000000 		.4byte	.LASF9
+ 1774 0075 02       		.uleb128 0x2
+ 1775 0076 08       		.byte	0x8
+ 1776 0077 04       		.byte	0x4
+ 1777 0078 6E000000 		.4byte	.LASF10
+ 1778 007c 02       		.uleb128 0x2
+ 1779 007d 01       		.byte	0x1
+ 1780 007e 08       		.byte	0x8
+ 1781 007f 61010000 		.4byte	.LASF11
+ 1782 0083 05       		.uleb128 0x5
+ 1783 0084 63000000 		.4byte	0x63
+ 1784 0088 93000000 		.4byte	0x93
+ 1785 008c 06       		.uleb128 0x6
+ 1786 008d 93000000 		.4byte	0x93
+ 1787 0091 3F       		.byte	0x3f
+ 1788 0092 00       		.byte	0
+ 1789 0093 02       		.uleb128 0x2
+ 1790 0094 04       		.byte	0x4
+ 1791 0095 07       		.byte	0x7
+ 1792 0096 4A010000 		.4byte	.LASF12
+ 1793 009a 07       		.uleb128 0x7
+ 1794 009b 39010000 		.4byte	.LASF13
+ 1795 009f 01       		.byte	0x1
+ 1796 00a0 1C       		.byte	0x1c
+ 1797 00a1 AB000000 		.4byte	0xab
+ 1798 00a5 05       		.uleb128 0x5
+ 1799 00a6 03       		.byte	0x3
+ 1800 00a7 00000000 		.4byte	cy_meta_loadable
+ 1801 00ab 08       		.uleb128 0x8
+ 1802 00ac 83000000 		.4byte	0x83
+ 1803 00b0 07       		.uleb128 0x7
+ 1804 00b1 26000000 		.4byte	.LASF14
+ 1805 00b5 01       		.byte	0x1
+ 1806 00b6 2E       		.byte	0x2e
+ 1807 00b7 C1000000 		.4byte	0xc1
+ 1808 00bb 05       		.uleb128 0x5
+ 1809 00bc 03       		.byte	0x3
+ 1810 00bd 00000000 		.4byte	cy_meta_loader
+ 1811 00c1 08       		.uleb128 0x8
+ 1812 00c2 83000000 		.4byte	0x83
+ 1813 00c6 05       		.uleb128 0x5
+ 1814 00c7 63000000 		.4byte	0x63
+ 1815 00cb D7000000 		.4byte	0xd7
+ 1816 00cf 09       		.uleb128 0x9
+ 1817 00d0 93000000 		.4byte	0x93
+ 1818 00d4 4706     		.2byte	0x647
+ 1819 00d6 00       		.byte	0
+ 1820 00d7 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 33
+
+
+ 1821 00d8 75000000 		.4byte	.LASF15
+ 1822 00dc 01       		.byte	0x1
+ 1823 00dd 40       		.byte	0x40
+ 1824 00de E8000000 		.4byte	0xe8
+ 1825 00e2 05       		.uleb128 0x5
+ 1826 00e3 03       		.byte	0x3
+ 1827 00e4 00000000 		.4byte	cy_meta_configecc
+ 1828 00e8 08       		.uleb128 0x8
+ 1829 00e9 C6000000 		.4byte	0xc6
+ 1830 00ed 00       		.byte	0
+ 1831              		.section	.debug_abbrev,"",%progbits
+ 1832              	.Ldebug_abbrev0:
+ 1833 0000 01       		.uleb128 0x1
+ 1834 0001 11       		.uleb128 0x11
+ 1835 0002 01       		.byte	0x1
+ 1836 0003 25       		.uleb128 0x25
+ 1837 0004 0E       		.uleb128 0xe
+ 1838 0005 13       		.uleb128 0x13
+ 1839 0006 0B       		.uleb128 0xb
+ 1840 0007 03       		.uleb128 0x3
+ 1841 0008 0E       		.uleb128 0xe
+ 1842 0009 1B       		.uleb128 0x1b
+ 1843 000a 0E       		.uleb128 0xe
+ 1844 000b 10       		.uleb128 0x10
+ 1845 000c 17       		.uleb128 0x17
+ 1846 000d 00       		.byte	0
+ 1847 000e 00       		.byte	0
+ 1848 000f 02       		.uleb128 0x2
+ 1849 0010 24       		.uleb128 0x24
+ 1850 0011 00       		.byte	0
+ 1851 0012 0B       		.uleb128 0xb
+ 1852 0013 0B       		.uleb128 0xb
+ 1853 0014 3E       		.uleb128 0x3e
+ 1854 0015 0B       		.uleb128 0xb
+ 1855 0016 03       		.uleb128 0x3
+ 1856 0017 0E       		.uleb128 0xe
+ 1857 0018 00       		.byte	0
+ 1858 0019 00       		.byte	0
+ 1859 001a 03       		.uleb128 0x3
+ 1860 001b 24       		.uleb128 0x24
+ 1861 001c 00       		.byte	0
+ 1862 001d 0B       		.uleb128 0xb
+ 1863 001e 0B       		.uleb128 0xb
+ 1864 001f 3E       		.uleb128 0x3e
+ 1865 0020 0B       		.uleb128 0xb
+ 1866 0021 03       		.uleb128 0x3
+ 1867 0022 08       		.uleb128 0x8
+ 1868 0023 00       		.byte	0
+ 1869 0024 00       		.byte	0
+ 1870 0025 04       		.uleb128 0x4
+ 1871 0026 16       		.uleb128 0x16
+ 1872 0027 00       		.byte	0
+ 1873 0028 03       		.uleb128 0x3
+ 1874 0029 0E       		.uleb128 0xe
+ 1875 002a 3A       		.uleb128 0x3a
+ 1876 002b 0B       		.uleb128 0xb
+ 1877 002c 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 34
+
+
+ 1878 002d 0B       		.uleb128 0xb
+ 1879 002e 49       		.uleb128 0x49
+ 1880 002f 13       		.uleb128 0x13
+ 1881 0030 00       		.byte	0
+ 1882 0031 00       		.byte	0
+ 1883 0032 05       		.uleb128 0x5
+ 1884 0033 01       		.uleb128 0x1
+ 1885 0034 01       		.byte	0x1
+ 1886 0035 49       		.uleb128 0x49
+ 1887 0036 13       		.uleb128 0x13
+ 1888 0037 01       		.uleb128 0x1
+ 1889 0038 13       		.uleb128 0x13
+ 1890 0039 00       		.byte	0
+ 1891 003a 00       		.byte	0
+ 1892 003b 06       		.uleb128 0x6
+ 1893 003c 21       		.uleb128 0x21
+ 1894 003d 00       		.byte	0
+ 1895 003e 49       		.uleb128 0x49
+ 1896 003f 13       		.uleb128 0x13
+ 1897 0040 2F       		.uleb128 0x2f
+ 1898 0041 0B       		.uleb128 0xb
+ 1899 0042 00       		.byte	0
+ 1900 0043 00       		.byte	0
+ 1901 0044 07       		.uleb128 0x7
+ 1902 0045 34       		.uleb128 0x34
+ 1903 0046 00       		.byte	0
+ 1904 0047 03       		.uleb128 0x3
+ 1905 0048 0E       		.uleb128 0xe
+ 1906 0049 3A       		.uleb128 0x3a
+ 1907 004a 0B       		.uleb128 0xb
+ 1908 004b 3B       		.uleb128 0x3b
+ 1909 004c 0B       		.uleb128 0xb
+ 1910 004d 49       		.uleb128 0x49
+ 1911 004e 13       		.uleb128 0x13
+ 1912 004f 3F       		.uleb128 0x3f
+ 1913 0050 19       		.uleb128 0x19
+ 1914 0051 02       		.uleb128 0x2
+ 1915 0052 18       		.uleb128 0x18
+ 1916 0053 00       		.byte	0
+ 1917 0054 00       		.byte	0
+ 1918 0055 08       		.uleb128 0x8
+ 1919 0056 26       		.uleb128 0x26
+ 1920 0057 00       		.byte	0
+ 1921 0058 49       		.uleb128 0x49
+ 1922 0059 13       		.uleb128 0x13
+ 1923 005a 00       		.byte	0
+ 1924 005b 00       		.byte	0
+ 1925 005c 09       		.uleb128 0x9
+ 1926 005d 21       		.uleb128 0x21
+ 1927 005e 00       		.byte	0
+ 1928 005f 49       		.uleb128 0x49
+ 1929 0060 13       		.uleb128 0x13
+ 1930 0061 2F       		.uleb128 0x2f
+ 1931 0062 05       		.uleb128 0x5
+ 1932 0063 00       		.byte	0
+ 1933 0064 00       		.byte	0
+ 1934 0065 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 35
+
+
+ 1935              		.section	.debug_aranges,"",%progbits
+ 1936 0000 14000000 		.4byte	0x14
+ 1937 0004 0200     		.2byte	0x2
+ 1938 0006 00000000 		.4byte	.Ldebug_info0
+ 1939 000a 04       		.byte	0x4
+ 1940 000b 00       		.byte	0
+ 1941 000c 0000     		.2byte	0
+ 1942 000e 0000     		.2byte	0
+ 1943 0010 00000000 		.4byte	0
+ 1944 0014 00000000 		.4byte	0
+ 1945              		.section	.debug_line,"",%progbits
+ 1946              	.Ldebug_line0:
+ 1947 0000 4F000000 		.section	.debug_str,"MS",%progbits,1
+ 1947      02004900 
+ 1947      00000201 
+ 1947      FB0E0D00 
+ 1947      01010101 
+ 1948              	.LASF17:
+ 1949 0000 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1949      6E657261 
+ 1949      7465645F 
+ 1949      536F7572 
+ 1949      63655C50 
+ 1950              	.LASF14:
+ 1951 0026 63795F6D 		.ascii	"cy_meta_loader\000"
+ 1951      6574615F 
+ 1951      6C6F6164 
+ 1951      657200
+ 1952              	.LASF9:
+ 1953 0035 666C6F61 		.ascii	"float\000"
+ 1953      7400
+ 1954              	.LASF1:
+ 1955 003b 756E7369 		.ascii	"unsigned char\000"
+ 1955      676E6564 
+ 1955      20636861 
+ 1955      7200
+ 1956              	.LASF5:
+ 1957 0049 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1957      20756E73 
+ 1957      69676E65 
+ 1957      6420696E 
+ 1957      7400
+ 1958              	.LASF3:
+ 1959 005b 73686F72 		.ascii	"short unsigned int\000"
+ 1959      7420756E 
+ 1959      7369676E 
+ 1959      65642069 
+ 1959      6E7400
+ 1960              	.LASF10:
+ 1961 006e 646F7562 		.ascii	"double\000"
+ 1961      6C6500
+ 1962              	.LASF15:
+ 1963 0075 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1963      6574615F 
+ 1963      636F6E66 
+ 1963      69676563 
+ 1963      6300
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 36
+
+
+ 1964              	.LASF16:
+ 1965 0087 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1965      4320342E 
+ 1965      392E3320 
+ 1965      32303135 
+ 1965      30333033 
+ 1966 00ba 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1966      20726576 
+ 1966      6973696F 
+ 1966      6E203232 
+ 1966      31323230 
+ 1967 00ed 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1967      66756E63 
+ 1967      74696F6E 
+ 1967      2D736563 
+ 1967      74696F6E 
+ 1968              	.LASF8:
+ 1969 0115 756E7369 		.ascii	"unsigned int\000"
+ 1969      676E6564 
+ 1969      20696E74 
+ 1969      00
+ 1970              	.LASF7:
+ 1971 0122 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1971      206C6F6E 
+ 1971      6720756E 
+ 1971      7369676E 
+ 1971      65642069 
+ 1972              	.LASF13:
+ 1973 0139 63795F6D 		.ascii	"cy_meta_loadable\000"
+ 1973      6574615F 
+ 1973      6C6F6164 
+ 1973      61626C65 
+ 1973      00
+ 1974              	.LASF12:
+ 1975 014a 73697A65 		.ascii	"sizetype\000"
+ 1975      74797065 
+ 1975      00
+ 1976              	.LASF6:
+ 1977 0153 6C6F6E67 		.ascii	"long long int\000"
+ 1977      206C6F6E 
+ 1977      6720696E 
+ 1977      7400
+ 1978              	.LASF11:
+ 1979 0161 63686172 		.ascii	"char\000"
+ 1979      00
+ 1980              	.LASF18:
+ 1981 0166 433A5C55 		.ascii	"C:\\Users\\Kyle\\Documents\\PSoC Creator\\Workspace"
+ 1981      73657273 
+ 1981      5C4B796C 
+ 1981      655C446F 
+ 1981      63756D65 
+ 1982 0194 30315C4D 		.ascii	"01\\Microcontroller\\Microcontroller\\SeniorDesign."
+ 1982      6963726F 
+ 1982      636F6E74 
+ 1982      726F6C6C 
+ 1982      65725C4D 
+ 1983 01c4 63796473 		.ascii	"cydsn\000"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cchPjr6h.s 			page 37
+
+
+ 1983      6E00
+ 1984              	.LASF2:
+ 1985 01ca 73686F72 		.ascii	"short int\000"
+ 1985      7420696E 
+ 1985      7400
+ 1986              	.LASF19:
+ 1987 01d4 75696E74 		.ascii	"uint8\000"
+ 1987      3800
+ 1988              	.LASF4:
+ 1989 01da 6C6F6E67 		.ascii	"long int\000"
+ 1989      20696E74 
+ 1989      00
+ 1990              	.LASF0:
+ 1991 01e3 7369676E 		.ascii	"signed char\000"
+ 1991      65642063 
+ 1991      68617200 
+ 1992              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

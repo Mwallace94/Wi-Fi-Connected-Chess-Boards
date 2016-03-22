@@ -1,0 +1,201 @@
+def reset(pieces):
+    temp = 1
+    while temp == 1:
+        temp = 0
+        for x in range(0, 12):
+            for y in range(0, 8):
+                if pieces[x][y] != (0, 0):
+                    moved = moveto(pieces, (x, y))
+                    if moved == 0:
+                        moveto(pieces, (x, y))
+                        temp = 1
+
+def closestFree(pieces, place):
+    lor = uod = 0
+    for x in range(0, 12):
+        lor = place[0] + x
+        if inRangeAndFree(pieces, (lor, place[1])) == 1:
+            return (lor, place[1])
+        uod = place[1] + x
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        lor = place[0]
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        lor = place[0] - x
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        uod = place[1]
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        uod = place[1] - x
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        lor = place[0]
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+        lor = place[0] + x
+        if inRangeAndFree(pieces, (lor, uod)) == 1:
+            return (lor, uod)
+    for x in range(2, 10):
+        for y in range(2, 6):
+            if inRangeAndFree(pieces, (x, y)):
+                return (x, y)
+
+
+
+def inRangeAndFree(pieces, place):
+    if place[0] >= 2 and place[0] < 10 and place[1] >= 2 and place[1] < 6:
+        if pieces[place[0]][place[1]] == (0, 0):
+            return 1
+    return 0
+
+def moveto(pieces, place):
+    destination = (0, 0)
+
+    #using Bishop so it won't triger en passent accidentally
+    if pieces[place[0]][place[1]][1] == WPAWN:
+        if place[0] >= 2 and place[0] < 10 and place[1] == 1:
+            return 1 
+        for x in range(2, 10):
+            if pieces[x][1] == (0, 0):
+                movepiece(pieces, (WBISHOP, place[0], place[1], x, 1))
+                return 1
+            if pieces[x][6][1] != WPAWN:
+                destination = (x, 1)
+
+    if pieces[place[0]][place[1]][1] == BPAWN:
+        if place[0] >= 2 and place[0] < 10 and place[1] == 6:
+            return 1 
+        for x in range(2, 10):
+            if pieces[x][6] == (0, 0):
+                movepiece(pieces, (BBISHOP, place[0], place[1], x, 6))
+                return 1
+            if pieces[x][6][1] != BPAWN:
+                destination = (x, 6)
+
+    if pieces[place[0]][place[1]][1] == WROOK:
+        if (place[0] == 2 or place[0] == 9) and place[1] == 0:
+            return 1
+        if pieces[2][0] == (0, 0):
+            movepiece(pieces, (WROOK, place[0], place[1], 2, 0))
+            return 1
+        if pieces[2][0][1] != WROOK:
+            destination = (2, 0)
+        if pieces[9][0] == (0, 0):
+            movepiece(pieces, (WROOK, place[0], place[1], 9, 0))
+            return 1
+        if pieces[9][0][1] != WROOK:
+            destination = (9, 0)
+
+    if pieces[place[0]][place[1]][1] == BROOK:
+        if (place[0] == 2 or place[0] == 9) and place[1] == 7:
+            return 1
+        if pieces[2][7] == (0, 0):
+            movepiece(pieces, (BROOK, place[0], place[1], 2, 7))
+            return 1
+        if pieces[2][7][1] != BROOK:
+            destination = (2, 7)
+        if pieces[9][7] == (0, 0):
+            movepiece(pieces, (BROOK, place[0], place[1], 9, 7))
+            return 1
+        if pieces[9][7][1] != BROOK:
+            destination = (9, 7)
+
+    if pieces[place[0]][place[1]][1] == WKNIGHT:
+        if (place[0] == 3 or place[0] == 8) and place[1] == 0:
+            return 1
+        if pieces[3][0] == (0, 0):
+            movepiece(pieces, (WKNIGHT, place[0], place[1], 3, 0))
+            return 1
+        if pieces[3][0][1] != WKNIGHT:
+            destination = (3, 0)
+        if pieces[8][0] == (0, 0):
+            movepiece(pieces, (WKNIGHT, place[0], place[1], 8, 0))
+            return 1
+        if pieces[8][0][1] != WKNIGHT:
+            destination = (8, 0)
+
+    if pieces[place[0]][place[1]][1] == BKNIGHT:
+        if (place[0] == 3 or place[0] == 8) and place[1] == 7:
+            return 1
+        if pieces[3][7] == (0, 0):
+            movepiece(pieces, (BKNIGHT, place[0], place[1], 3, 7))
+            return 1
+        if pieces[3][7][1] != BKNIGHT:
+            destination = (3, 7)
+        if pieces[8][7] == (0, 0):
+            movepiece(pieces, (BKNIGHT, place[0], place[1], 8, 7))
+            return 1
+        if pieces[8][7][1] != BKNIGHT:
+            destination = (8, 7)
+
+    if pieces[place[0]][place[1]][1] == WBISHOP:
+        if (place[0] == 4 or place[0] == 7) and place[1] == 0:
+            return 1
+        if pieces[4][0] == (0, 0):
+            movepiece(pieces, (WBISHOP, place[0], place[1], 4, 0))
+            return 1
+        if pieces[4][0][1] != WBISHOP:
+            destination = (4, 0)
+        if pieces[7][0] == (0, 0):
+            movepiece(pieces, (WBISHOP, place[0], place[1], 7, 0))
+            return 1
+        if pieces[7][0][1] != WBISHOP:
+            destination = (7, 0)
+
+    if pieces[place[0]][place[1]][1] == BBISHOP:
+        if (place[0] == 4 or place[0] == 7) and place[1] == 7:
+            return 1
+        if pieces[4][7] == (0, 0):
+            movepiece(pieces, (BBISHOP, place[0], place[1], 4, 7))
+            return 1
+        if pieces[4][7][1] != BBISHOP:
+            destination = (4, 7)
+        if pieces[7][7] == (0, 0):
+            movepiece(pieces, (BBISHOP, place[0], place[1], 7, 7))
+            return 1
+        if pieces[7][7][1] != BBISHOP:
+            destination = (7, 7)
+
+    if pieces[place[0]][place[1]][1] == WQUEEN:
+        if place[0] == 5 and place[1] == 0:
+            return 1
+        if pieces[5][0] == (0, 0):
+            movepiece(pieces, (WQUEEN, place[0], place[1], 5, 0))
+            return 1
+        if pieces[5][0][1] != WQUEEN:
+            destination = (5, 0)
+
+    if pieces[place[0]][place[1]][1] == BQUEEN:
+        if place[0] == 5 and place[1] == 7:
+            return 1
+        if pieces[5][7] == (0, 0):
+            movepiece(pieces, (BQUEEN, place[0], place[1], 5, 7))
+            return 1
+        if pieces[5][7][1] != BQUEEN:
+            destination = (5, 7)
+
+    if pieces[place[0]][place[1]][1] == WKING:
+        if place[0] == 6 and place[1] == 0:
+            return 1
+        if pieces[6][0] == (0, 0):
+            movepiece(pieces, (WKING, place[0], place[1], 6, 0))
+            return 1
+        if pieces[6][0][1] != WKING:
+            destination = (6, 0)
+
+    if pieces[place[0]][place[1]][1] == BKING:
+        if place[0] == 6 and place[1] == 7:
+            return 1
+        if pieces[6][7] == (0, 0):
+            movepiece(pieces, (BKING, place[0], place[1], 6, 7))
+            return 1
+        if pieces[6][7][1] != BKING:
+            destination = (6, 7)
+
+    #bishop to make sure it does not trigger special moves
+    away = closestFree(pieces, destination)
+    movepiece(pieces, (BBISHOP, destination[0], destination[1], away[0], away[1]))
+
+    return 0

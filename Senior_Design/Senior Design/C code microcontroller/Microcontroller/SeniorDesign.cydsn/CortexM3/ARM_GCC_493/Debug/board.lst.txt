@@ -1,0 +1,2450 @@
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"board.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.home,"ax",%progbits
+  19              		.align	2
+  20              		.global	home
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	home, %function
+  24              	home:
+  25              	.LFB63:
+  26              		.file 1 ".\\board.c"
+   1:.\board.c     **** #include "board.h"
+   2:.\board.c     **** 
+   3:.\board.c     **** void home() {
+  27              		.loc 1 3 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE63:
+  35              		.size	home, .-home
+  36 0002 00BF     		.section	.text.move_home,"ax",%progbits
+  37              		.align	2
+  38              		.global	move_home
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	move_home, %function
+  42              	move_home:
+  43              	.LFB64:
+   4:.\board.c     ****     
+   5:.\board.c     **** }
+   6:.\board.c     **** /*
+   7:.\board.c     **** void step(uint8 mm, char dir) {
+   8:.\board.c     ****     if(dir == 'F') DIR_Write(0);
+   9:.\board.c     ****     if(dir == 'B') DIR_Write(1);
+  10:.\board.c     ****     int i, j;
+  11:.\board.c     ****     for(i = 0; i < mm; i++) {
+  12:.\board.c     ****         for(j = 0; j < STEPS_PER_MM; j++) {
+  13:.\board.c     ****             STEP_Write(0);
+  14:.\board.c     ****             STEP_Write(1);
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 2
+
+
+  15:.\board.c     ****             CyDelay(5);
+  16:.\board.c     ****         }
+  17:.\board.c     ****     }
+  18:.\board.c     **** }*/
+  19:.\board.c     **** 
+  20:.\board.c     **** void move_home() {
+  44              		.loc 1 20 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		.loc 1 20 0
+  49 0000 38B5     		push	{r3, r4, r5, lr}
+  50              		.cfi_def_cfa_offset 16
+  51              		.cfi_offset 3, -16
+  52              		.cfi_offset 4, -12
+  53              		.cfi_offset 5, -8
+  54              		.cfi_offset 14, -4
+  21:.\board.c     ****     Slp_1_Write(1);
+  55              		.loc 1 21 0
+  56 0002 0120     		movs	r0, #1
+  57 0004 FFF7FEFF 		bl	Slp_1_Write
+  58              	.LVL0:
+  22:.\board.c     ****     Slp_2_Write(1);
+  59              		.loc 1 22 0
+  60 0008 0120     		movs	r0, #1
+  61 000a FFF7FEFF 		bl	Slp_2_Write
+  62              	.LVL1:
+  23:.\board.c     ****     
+  24:.\board.c     ****     uint8 x = Lim_1_Read(), y = Lim_2_Read();
+  63              		.loc 1 24 0
+  64 000e FFF7FEFF 		bl	Lim_1_Read
+  65              	.LVL2:
+  66 0012 0446     		mov	r4, r0
+  67              	.LVL3:
+  68 0014 FFF7FEFF 		bl	Lim_2_Read
+  69              	.LVL4:
+  70 0018 0546     		mov	r5, r0
+  71              	.LVL5:
+  25:.\board.c     ****     
+  26:.\board.c     ****     while(!x || !y) {    
+  72              		.loc 1 26 0
+  73 001a 2BE0     		b	.L5
+  74              	.L6:
+  27:.\board.c     ****         if(!x) {
+  75              		.loc 1 27 0
+  76 001c A4B9     		cbnz	r4, .L4
+  28:.\board.c     ****             Dir_1_Write(0);
+  77              		.loc 1 28 0
+  78 001e 0020     		movs	r0, #0
+  79 0020 FFF7FEFF 		bl	Dir_1_Write
+  80              	.LVL6:
+  29:.\board.c     ****             Dir_2_Write(0);
+  81              		.loc 1 29 0
+  82 0024 0020     		movs	r0, #0
+  83 0026 FFF7FEFF 		bl	Dir_2_Write
+  84              	.LVL7:
+  30:.\board.c     ****             
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 3
+
+
+  31:.\board.c     ****             Stp_1_Write(0);
+  85              		.loc 1 31 0
+  86 002a 0020     		movs	r0, #0
+  87 002c FFF7FEFF 		bl	Stp_1_Write
+  88              	.LVL8:
+  32:.\board.c     ****             Stp_1_Write(1);
+  89              		.loc 1 32 0
+  90 0030 0120     		movs	r0, #1
+  91 0032 FFF7FEFF 		bl	Stp_1_Write
+  92              	.LVL9:
+  33:.\board.c     ****             Stp_2_Write(0);
+  93              		.loc 1 33 0
+  94 0036 0020     		movs	r0, #0
+  95 0038 FFF7FEFF 		bl	Stp_2_Write
+  96              	.LVL10:
+  34:.\board.c     ****             Stp_2_Write(1);
+  97              		.loc 1 34 0
+  98 003c 0120     		movs	r0, #1
+  99 003e FFF7FEFF 		bl	Stp_2_Write
+ 100              	.LVL11:
+  35:.\board.c     ****             CyDelay(10);
+ 101              		.loc 1 35 0
+ 102 0042 0A20     		movs	r0, #10
+ 103 0044 FFF7FEFF 		bl	CyDelay
+ 104              	.LVL12:
+ 105              	.L4:
+  36:.\board.c     ****         }      
+  37:.\board.c     ****         if(!y) {
+ 106              		.loc 1 37 0
+ 107 0048 A5B9     		cbnz	r5, .L5
+  38:.\board.c     ****             Dir_1_Write(0);
+ 108              		.loc 1 38 0
+ 109 004a 0020     		movs	r0, #0
+ 110 004c FFF7FEFF 		bl	Dir_1_Write
+ 111              	.LVL13:
+  39:.\board.c     ****             Dir_2_Write(1);
+ 112              		.loc 1 39 0
+ 113 0050 0120     		movs	r0, #1
+ 114 0052 FFF7FEFF 		bl	Dir_2_Write
+ 115              	.LVL14:
+  40:.\board.c     ****             
+  41:.\board.c     ****             Stp_1_Write(0);
+ 116              		.loc 1 41 0
+ 117 0056 0020     		movs	r0, #0
+ 118 0058 FFF7FEFF 		bl	Stp_1_Write
+ 119              	.LVL15:
+  42:.\board.c     ****             Stp_1_Write(1);
+ 120              		.loc 1 42 0
+ 121 005c 0120     		movs	r0, #1
+ 122 005e FFF7FEFF 		bl	Stp_1_Write
+ 123              	.LVL16:
+  43:.\board.c     ****             Stp_2_Write(0);
+ 124              		.loc 1 43 0
+ 125 0062 0020     		movs	r0, #0
+ 126 0064 FFF7FEFF 		bl	Stp_2_Write
+ 127              	.LVL17:
+  44:.\board.c     ****             Stp_2_Write(1);
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 4
+
+
+ 128              		.loc 1 44 0
+ 129 0068 0120     		movs	r0, #1
+ 130 006a FFF7FEFF 		bl	Stp_2_Write
+ 131              	.LVL18:
+  45:.\board.c     ****             CyDelay(10);
+ 132              		.loc 1 45 0
+ 133 006e 0A20     		movs	r0, #10
+ 134 0070 FFF7FEFF 		bl	CyDelay
+ 135              	.LVL19:
+ 136              	.L5:
+  26:.\board.c     ****         if(!x) {
+ 137              		.loc 1 26 0
+ 138 0074 002C     		cmp	r4, #0
+ 139 0076 D1D0     		beq	.L6
+  26:.\board.c     ****         if(!x) {
+ 140              		.loc 1 26 0 is_stmt 0 discriminator 1
+ 141 0078 002D     		cmp	r5, #0
+ 142 007a CFD0     		beq	.L6
+  46:.\board.c     ****         }
+  47:.\board.c     ****     }
+  48:.\board.c     ****     Slp_1_Write(0);
+ 143              		.loc 1 48 0 is_stmt 1
+ 144 007c 0020     		movs	r0, #0
+ 145 007e FFF7FEFF 		bl	Slp_1_Write
+ 146              	.LVL20:
+  49:.\board.c     ****     Slp_2_Write(0);
+ 147              		.loc 1 49 0
+ 148 0082 0020     		movs	r0, #0
+ 149 0084 FFF7FEFF 		bl	Slp_2_Write
+ 150              	.LVL21:
+  50:.\board.c     ****     
+  51:.\board.c     ****     x_pos = 0;
+ 151              		.loc 1 51 0
+ 152 0088 0023     		movs	r3, #0
+ 153 008a 024A     		ldr	r2, .L8
+ 154 008c 1380     		strh	r3, [r2]	@ movhi
+  52:.\board.c     ****     y_pos = 0;
+ 155              		.loc 1 52 0
+ 156 008e 024A     		ldr	r2, .L8+4
+ 157 0090 1380     		strh	r3, [r2]	@ movhi
+ 158 0092 38BD     		pop	{r3, r4, r5, pc}
+ 159              	.LVL22:
+ 160              	.L9:
+ 161              		.align	2
+ 162              	.L8:
+ 163 0094 00000000 		.word	x_pos
+ 164 0098 00000000 		.word	y_pos
+ 165              		.cfi_endproc
+ 166              	.LFE64:
+ 167              		.size	move_home, .-move_home
+ 168              		.global	__aeabi_i2d
+ 169              		.global	__aeabi_dmul
+ 170              		.global	__aeabi_dcmplt
+ 171              		.section	.text.move_x,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	move_x
+ 174              		.thumb
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 5
+
+
+ 175              		.thumb_func
+ 176              		.type	move_x, %function
+ 177              	move_x:
+ 178              	.LFB65:
+  53:.\board.c     **** }
+  54:.\board.c     **** 
+  55:.\board.c     **** void move_x(int16 mm) { 
+ 179              		.loc 1 55 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              	.LVL23:
+ 184 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 185              		.cfi_def_cfa_offset 24
+ 186              		.cfi_offset 3, -24
+ 187              		.cfi_offset 4, -20
+ 188              		.cfi_offset 5, -16
+ 189              		.cfi_offset 6, -12
+ 190              		.cfi_offset 7, -8
+ 191              		.cfi_offset 14, -4
+ 192 0002 0546     		mov	r5, r0
+  56:.\board.c     ****     
+  57:.\board.c     ****     if(x_pos + mm > MAX_X_POS || x_pos + mm < MIN_X_POS) {
+ 193              		.loc 1 57 0
+ 194 0004 274B     		ldr	r3, .L17
+ 195 0006 1A88     		ldrh	r2, [r3]
+ 196 0008 13B2     		sxth	r3, r2
+ 197 000a 0344     		add	r3, r3, r0
+ 198 000c B3F57A7F 		cmp	r3, #1000
+ 199 0010 47D8     		bhi	.L10
+  58:.\board.c     ****         return;
+  59:.\board.c     ****     }
+  60:.\board.c     ****     
+  61:.\board.c     ****     x_pos += mm;
+ 200              		.loc 1 61 0
+ 201 0012 84B2     		uxth	r4, r0
+ 202 0014 2244     		add	r2, r2, r4
+ 203 0016 234B     		ldr	r3, .L17
+ 204 0018 1A80     		strh	r2, [r3]	@ movhi
+  62:.\board.c     ****     
+  63:.\board.c     ****     Slp_1_Write(1);
+ 205              		.loc 1 63 0
+ 206 001a 0120     		movs	r0, #1
+ 207              	.LVL24:
+ 208 001c FFF7FEFF 		bl	Slp_1_Write
+ 209              	.LVL25:
+  64:.\board.c     ****     Slp_2_Write(1);
+ 210              		.loc 1 64 0
+ 211 0020 0120     		movs	r0, #1
+ 212 0022 FFF7FEFF 		bl	Slp_2_Write
+ 213              	.LVL26:
+  65:.\board.c     ****     if(mm < 0) {
+ 214              		.loc 1 65 0
+ 215 0026 002D     		cmp	r5, #0
+ 216 0028 08DA     		bge	.L12
+  66:.\board.c     ****         Dir_1_Write(1);
+ 217              		.loc 1 66 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 6
+
+
+ 218 002a 0120     		movs	r0, #1
+ 219 002c FFF7FEFF 		bl	Dir_1_Write
+ 220              	.LVL27:
+  67:.\board.c     ****         Dir_2_Write(1);
+ 221              		.loc 1 67 0
+ 222 0030 0120     		movs	r0, #1
+ 223 0032 FFF7FEFF 		bl	Dir_2_Write
+ 224              	.LVL28:
+  68:.\board.c     ****         mm *= -1;
+ 225              		.loc 1 68 0
+ 226 0036 6542     		negs	r5, r4
+ 227 0038 2DB2     		sxth	r5, r5
+ 228              	.LVL29:
+ 229 003a 05E0     		b	.L13
+ 230              	.LVL30:
+ 231              	.L12:
+  69:.\board.c     ****     } else {
+  70:.\board.c     ****         Dir_1_Write(0);
+ 232              		.loc 1 70 0
+ 233 003c 0020     		movs	r0, #0
+ 234 003e FFF7FEFF 		bl	Dir_1_Write
+ 235              	.LVL31:
+  71:.\board.c     ****         Dir_2_Write(0);
+ 236              		.loc 1 71 0
+ 237 0042 0020     		movs	r0, #0
+ 238 0044 FFF7FEFF 		bl	Dir_2_Write
+ 239              	.LVL32:
+ 240              	.L13:
+  72:.\board.c     ****     }
+  73:.\board.c     ****     int j;
+  74:.\board.c     ****     
+  75:.\board.c     ****     for(j = 0; j < STEPS_PER_MM * mm * .5; j++) {
+ 241              		.loc 1 75 0
+ 242 0048 0024     		movs	r4, #0
+ 243 004a 0FE0     		b	.L14
+ 244              	.LVL33:
+ 245              	.L15:
+  76:.\board.c     ****         Stp_1_Write(0);
+ 246              		.loc 1 76 0 discriminator 3
+ 247 004c 0020     		movs	r0, #0
+ 248 004e FFF7FEFF 		bl	Stp_1_Write
+ 249              	.LVL34:
+  77:.\board.c     ****         Stp_1_Write(1);
+ 250              		.loc 1 77 0 discriminator 3
+ 251 0052 0120     		movs	r0, #1
+ 252 0054 FFF7FEFF 		bl	Stp_1_Write
+ 253              	.LVL35:
+  78:.\board.c     ****         Stp_2_Write(0);
+ 254              		.loc 1 78 0 discriminator 3
+ 255 0058 0020     		movs	r0, #0
+ 256 005a FFF7FEFF 		bl	Stp_2_Write
+ 257              	.LVL36:
+  79:.\board.c     ****         Stp_2_Write(1);
+ 258              		.loc 1 79 0 discriminator 3
+ 259 005e 0120     		movs	r0, #1
+ 260 0060 FFF7FEFF 		bl	Stp_2_Write
+ 261              	.LVL37:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 7
+
+
+  80:.\board.c     ****         CyDelay(10);
+ 262              		.loc 1 80 0 discriminator 3
+ 263 0064 0A20     		movs	r0, #10
+ 264 0066 FFF7FEFF 		bl	CyDelay
+ 265              	.LVL38:
+  75:.\board.c     ****         Stp_1_Write(0);
+ 266              		.loc 1 75 0 discriminator 3
+ 267 006a 0134     		adds	r4, r4, #1
+ 268              	.LVL39:
+ 269              	.L14:
+  75:.\board.c     ****         Stp_1_Write(0);
+ 270              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 271 006c 2046     		mov	r0, r4
+ 272 006e FFF7FEFF 		bl	__aeabi_i2d
+ 273              	.LVL40:
+ 274 0072 0646     		mov	r6, r0
+ 275 0074 0F46     		mov	r7, r1
+ 276 0076 3220     		movs	r0, #50
+ 277 0078 00FB05F0 		mul	r0, r0, r5
+ 278 007c FFF7FEFF 		bl	__aeabi_i2d
+ 279              	.LVL41:
+ 280 0080 0022     		movs	r2, #0
+ 281 0082 094B     		ldr	r3, .L17+4
+ 282 0084 FFF7FEFF 		bl	__aeabi_dmul
+ 283              	.LVL42:
+ 284 0088 0246     		mov	r2, r0
+ 285 008a 0B46     		mov	r3, r1
+ 286 008c 3046     		mov	r0, r6
+ 287 008e 3946     		mov	r1, r7
+ 288 0090 FFF7FEFF 		bl	__aeabi_dcmplt
+ 289              	.LVL43:
+ 290 0094 0028     		cmp	r0, #0
+ 291 0096 D9D1     		bne	.L15
+  81:.\board.c     ****     }
+  82:.\board.c     ****     
+  83:.\board.c     ****     Slp_1_Write(0);
+ 292              		.loc 1 83 0 is_stmt 1
+ 293 0098 FFF7FEFF 		bl	Slp_1_Write
+ 294              	.LVL44:
+  84:.\board.c     ****     Slp_2_Write(0);
+ 295              		.loc 1 84 0
+ 296 009c 0020     		movs	r0, #0
+ 297 009e FFF7FEFF 		bl	Slp_2_Write
+ 298              	.LVL45:
+ 299              	.L10:
+ 300 00a2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 301              	.L18:
+ 302              		.align	2
+ 303              	.L17:
+ 304 00a4 00000000 		.word	x_pos
+ 305 00a8 0000E03F 		.word	1071644672
+ 306              		.cfi_endproc
+ 307              	.LFE65:
+ 308              		.size	move_x, .-move_x
+ 309              		.section	.text.move_y,"ax",%progbits
+ 310              		.align	2
+ 311              		.global	move_y
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 8
+
+
+ 312              		.thumb
+ 313              		.thumb_func
+ 314              		.type	move_y, %function
+ 315              	move_y:
+ 316              	.LFB66:
+  85:.\board.c     **** }
+  86:.\board.c     ****     
+  87:.\board.c     **** void move_y(int16 mm) { 
+ 317              		.loc 1 87 0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321              	.LVL46:
+ 322 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 323              		.cfi_def_cfa_offset 24
+ 324              		.cfi_offset 3, -24
+ 325              		.cfi_offset 4, -20
+ 326              		.cfi_offset 5, -16
+ 327              		.cfi_offset 6, -12
+ 328              		.cfi_offset 7, -8
+ 329              		.cfi_offset 14, -4
+ 330 0002 0546     		mov	r5, r0
+  88:.\board.c     ****         
+  89:.\board.c     ****     if(y_pos + mm > MAX_Y_POS || y_pos + mm < MIN_Y_POS) {
+ 331              		.loc 1 89 0
+ 332 0004 284B     		ldr	r3, .L26
+ 333 0006 B3F90030 		ldrsh	r3, [r3]
+ 334 000a 0344     		add	r3, r3, r0
+ 335 000c B3F57A7F 		cmp	r3, #1000
+ 336 0010 48D8     		bhi	.L19
+  90:.\board.c     ****         return;
+  91:.\board.c     ****     }
+  92:.\board.c     ****     
+  93:.\board.c     ****     Slp_1_Write(1);
+ 337              		.loc 1 93 0
+ 338 0012 0120     		movs	r0, #1
+ 339              	.LVL47:
+ 340 0014 FFF7FEFF 		bl	Slp_1_Write
+ 341              	.LVL48:
+  94:.\board.c     ****     Slp_2_Write(1);
+ 342              		.loc 1 94 0
+ 343 0018 0120     		movs	r0, #1
+ 344 001a FFF7FEFF 		bl	Slp_2_Write
+ 345              	.LVL49:
+  95:.\board.c     ****     
+  96:.\board.c     ****     y_pos += mm;
+ 346              		.loc 1 96 0
+ 347 001e ACB2     		uxth	r4, r5
+ 348 0020 214A     		ldr	r2, .L26
+ 349 0022 1388     		ldrh	r3, [r2]
+ 350 0024 2344     		add	r3, r3, r4
+ 351 0026 1380     		strh	r3, [r2]	@ movhi
+  97:.\board.c     ****     
+  98:.\board.c     ****     if(mm < 0) {
+ 352              		.loc 1 98 0
+ 353 0028 002D     		cmp	r5, #0
+ 354 002a 08DA     		bge	.L21
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 9
+
+
+  99:.\board.c     ****         Dir_1_Write(1);
+ 355              		.loc 1 99 0
+ 356 002c 0120     		movs	r0, #1
+ 357 002e FFF7FEFF 		bl	Dir_1_Write
+ 358              	.LVL50:
+ 100:.\board.c     ****         Dir_2_Write(0);
+ 359              		.loc 1 100 0
+ 360 0032 0020     		movs	r0, #0
+ 361 0034 FFF7FEFF 		bl	Dir_2_Write
+ 362              	.LVL51:
+ 101:.\board.c     ****         mm *= -1;
+ 363              		.loc 1 101 0
+ 364 0038 6542     		negs	r5, r4
+ 365 003a 2DB2     		sxth	r5, r5
+ 366              	.LVL52:
+ 367 003c 05E0     		b	.L22
+ 368              	.LVL53:
+ 369              	.L21:
+ 102:.\board.c     ****     } else {
+ 103:.\board.c     ****         Dir_1_Write(0);
+ 370              		.loc 1 103 0
+ 371 003e 0020     		movs	r0, #0
+ 372 0040 FFF7FEFF 		bl	Dir_1_Write
+ 373              	.LVL54:
+ 104:.\board.c     ****         Dir_2_Write(1);
+ 374              		.loc 1 104 0
+ 375 0044 0120     		movs	r0, #1
+ 376 0046 FFF7FEFF 		bl	Dir_2_Write
+ 377              	.LVL55:
+ 378              	.L22:
+ 105:.\board.c     ****     }
+ 106:.\board.c     ****     int j;
+ 107:.\board.c     ****     
+ 108:.\board.c     ****     for(j = 0; j < STEPS_PER_MM * mm * .5; j++) {
+ 379              		.loc 1 108 0
+ 380 004a 0024     		movs	r4, #0
+ 381 004c 0FE0     		b	.L23
+ 382              	.LVL56:
+ 383              	.L24:
+ 109:.\board.c     ****         Stp_1_Write(0);
+ 384              		.loc 1 109 0 discriminator 3
+ 385 004e 0020     		movs	r0, #0
+ 386 0050 FFF7FEFF 		bl	Stp_1_Write
+ 387              	.LVL57:
+ 110:.\board.c     ****         Stp_1_Write(1);
+ 388              		.loc 1 110 0 discriminator 3
+ 389 0054 0120     		movs	r0, #1
+ 390 0056 FFF7FEFF 		bl	Stp_1_Write
+ 391              	.LVL58:
+ 111:.\board.c     ****         Stp_2_Write(0);
+ 392              		.loc 1 111 0 discriminator 3
+ 393 005a 0020     		movs	r0, #0
+ 394 005c FFF7FEFF 		bl	Stp_2_Write
+ 395              	.LVL59:
+ 112:.\board.c     ****         Stp_2_Write(1);
+ 396              		.loc 1 112 0 discriminator 3
+ 397 0060 0120     		movs	r0, #1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 10
+
+
+ 398 0062 FFF7FEFF 		bl	Stp_2_Write
+ 399              	.LVL60:
+ 113:.\board.c     ****         CyDelay(10);
+ 400              		.loc 1 113 0 discriminator 3
+ 401 0066 0A20     		movs	r0, #10
+ 402 0068 FFF7FEFF 		bl	CyDelay
+ 403              	.LVL61:
+ 108:.\board.c     ****         Stp_1_Write(0);
+ 404              		.loc 1 108 0 discriminator 3
+ 405 006c 0134     		adds	r4, r4, #1
+ 406              	.LVL62:
+ 407              	.L23:
+ 108:.\board.c     ****         Stp_1_Write(0);
+ 408              		.loc 1 108 0 is_stmt 0 discriminator 1
+ 409 006e 2046     		mov	r0, r4
+ 410 0070 FFF7FEFF 		bl	__aeabi_i2d
+ 411              	.LVL63:
+ 412 0074 0646     		mov	r6, r0
+ 413 0076 0F46     		mov	r7, r1
+ 414 0078 3220     		movs	r0, #50
+ 415 007a 00FB05F0 		mul	r0, r0, r5
+ 416 007e FFF7FEFF 		bl	__aeabi_i2d
+ 417              	.LVL64:
+ 418 0082 0022     		movs	r2, #0
+ 419 0084 094B     		ldr	r3, .L26+4
+ 420 0086 FFF7FEFF 		bl	__aeabi_dmul
+ 421              	.LVL65:
+ 422 008a 0246     		mov	r2, r0
+ 423 008c 0B46     		mov	r3, r1
+ 424 008e 3046     		mov	r0, r6
+ 425 0090 3946     		mov	r1, r7
+ 426 0092 FFF7FEFF 		bl	__aeabi_dcmplt
+ 427              	.LVL66:
+ 428 0096 0028     		cmp	r0, #0
+ 429 0098 D9D1     		bne	.L24
+ 114:.\board.c     ****     }
+ 115:.\board.c     ****     
+ 116:.\board.c     ****     Slp_1_Write(0);
+ 430              		.loc 1 116 0 is_stmt 1
+ 431 009a FFF7FEFF 		bl	Slp_1_Write
+ 432              	.LVL67:
+ 117:.\board.c     ****     Slp_2_Write(0);
+ 433              		.loc 1 117 0
+ 434 009e 0020     		movs	r0, #0
+ 435 00a0 FFF7FEFF 		bl	Slp_2_Write
+ 436              	.LVL68:
+ 437              	.L19:
+ 438 00a4 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 439              	.L27:
+ 440 00a6 00BF     		.align	2
+ 441              	.L26:
+ 442 00a8 00000000 		.word	y_pos
+ 443 00ac 0000E03F 		.word	1071644672
+ 444              		.cfi_endproc
+ 445              	.LFE66:
+ 446              		.size	move_y, .-move_y
+ 447              		.section	.text.read_reed_switches,"ax",%progbits
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 11
+
+
+ 448              		.align	2
+ 449              		.global	read_reed_switches
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.type	read_reed_switches, %function
+ 453              	read_reed_switches:
+ 454              	.LFB67:
+ 118:.\board.c     **** }
+ 119:.\board.c     **** 
+ 120:.\board.c     **** char** read_reed_switches() {
+ 455              		.loc 1 120 0
+ 456              		.cfi_startproc
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 70B5     		push	{r4, r5, r6, lr}
+ 460              		.cfi_def_cfa_offset 16
+ 461              		.cfi_offset 4, -16
+ 462              		.cfi_offset 5, -12
+ 463              		.cfi_offset 6, -8
+ 464              		.cfi_offset 14, -4
+ 465              	.LVL69:
+ 121:.\board.c     ****     
+ 122:.\board.c     ****     static char board[8][12];
+ 123:.\board.c     ****     
+ 124:.\board.c     ****     int i, j = 1;
+ 466              		.loc 1 124 0
+ 467 0002 0126     		movs	r6, #1
+ 125:.\board.c     ****     
+ 126:.\board.c     ****     for(i = 0; i < 8; i++) {
+ 468              		.loc 1 126 0
+ 469 0004 0025     		movs	r5, #0
+ 470 0006 2DE0     		b	.L29
+ 471              	.LVL70:
+ 472              	.L30:
+ 127:.\board.c     ****         Row_Write(j);
+ 473              		.loc 1 127 0 discriminator 3
+ 474 0008 F0B2     		uxtb	r0, r6
+ 475 000a FFF7FEFF 		bl	Row_Write
+ 476              	.LVL71:
+ 128:.\board.c     ****         j = j*2;
+ 477              		.loc 1 128 0 discriminator 3
+ 478 000e 7600     		lsls	r6, r6, #1
+ 479              	.LVL72:
+ 129:.\board.c     ****         board[i][0] = (char) Col_0_Read();
+ 480              		.loc 1 129 0 discriminator 3
+ 481 0010 FFF7FEFF 		bl	Col_0_Read
+ 482              	.LVL73:
+ 483 0014 154A     		ldr	r2, .L32
+ 484 0016 6B00     		lsls	r3, r5, #1
+ 485 0018 2B44     		add	r3, r3, r5
+ 486 001a 9B00     		lsls	r3, r3, #2
+ 487 001c D418     		adds	r4, r2, r3
+ 488 001e D054     		strb	r0, [r2, r3]
+ 130:.\board.c     ****         board[i][1] = (char) Col_1_Read();
+ 489              		.loc 1 130 0 discriminator 3
+ 490 0020 FFF7FEFF 		bl	Col_1_Read
+ 491              	.LVL74:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 12
+
+
+ 492 0024 6070     		strb	r0, [r4, #1]
+ 131:.\board.c     ****         board[i][2] = (char) Col_2_Read();
+ 493              		.loc 1 131 0 discriminator 3
+ 494 0026 FFF7FEFF 		bl	Col_2_Read
+ 495              	.LVL75:
+ 496 002a A070     		strb	r0, [r4, #2]
+ 132:.\board.c     ****         board[i][3] = (char) Col_3_Read();
+ 497              		.loc 1 132 0 discriminator 3
+ 498 002c FFF7FEFF 		bl	Col_3_Read
+ 499              	.LVL76:
+ 500 0030 E070     		strb	r0, [r4, #3]
+ 133:.\board.c     ****         board[i][4] = (char) Col_4_Read();
+ 501              		.loc 1 133 0 discriminator 3
+ 502 0032 FFF7FEFF 		bl	Col_4_Read
+ 503              	.LVL77:
+ 504 0036 2071     		strb	r0, [r4, #4]
+ 134:.\board.c     ****         board[i][5] = (char) Col_5_Read();
+ 505              		.loc 1 134 0 discriminator 3
+ 506 0038 FFF7FEFF 		bl	Col_5_Read
+ 507              	.LVL78:
+ 508 003c 6071     		strb	r0, [r4, #5]
+ 135:.\board.c     ****         board[i][6] = (char) Col_6_Read();
+ 509              		.loc 1 135 0 discriminator 3
+ 510 003e FFF7FEFF 		bl	Col_6_Read
+ 511              	.LVL79:
+ 512 0042 A071     		strb	r0, [r4, #6]
+ 136:.\board.c     ****         board[i][7] = (char) Col_7_Read();
+ 513              		.loc 1 136 0 discriminator 3
+ 514 0044 FFF7FEFF 		bl	Col_7_Read
+ 515              	.LVL80:
+ 516 0048 E071     		strb	r0, [r4, #7]
+ 137:.\board.c     ****         board[i][8] = (char) Col_8_Read();
+ 517              		.loc 1 137 0 discriminator 3
+ 518 004a FFF7FEFF 		bl	Col_8_Read
+ 519              	.LVL81:
+ 520 004e 2072     		strb	r0, [r4, #8]
+ 138:.\board.c     ****         board[i][9] = (char) Col_9_Read();
+ 521              		.loc 1 138 0 discriminator 3
+ 522 0050 FFF7FEFF 		bl	Col_9_Read
+ 523              	.LVL82:
+ 524 0054 6072     		strb	r0, [r4, #9]
+ 139:.\board.c     ****         board[i][10] = (char) Col_10_Read();
+ 525              		.loc 1 139 0 discriminator 3
+ 526 0056 FFF7FEFF 		bl	Col_10_Read
+ 527              	.LVL83:
+ 528 005a A072     		strb	r0, [r4, #10]
+ 140:.\board.c     ****         board[i][11] = (char) Col_11_Read();
+ 529              		.loc 1 140 0 discriminator 3
+ 530 005c FFF7FEFF 		bl	Col_11_Read
+ 531              	.LVL84:
+ 532 0060 E072     		strb	r0, [r4, #11]
+ 126:.\board.c     ****         Row_Write(j);
+ 533              		.loc 1 126 0 discriminator 3
+ 534 0062 0135     		adds	r5, r5, #1
+ 535              	.LVL85:
+ 536              	.L29:
+ 126:.\board.c     ****         Row_Write(j);
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 13
+
+
+ 537              		.loc 1 126 0 is_stmt 0 discriminator 1
+ 538 0064 072D     		cmp	r5, #7
+ 539 0066 CFDD     		ble	.L30
+ 141:.\board.c     ****     }
+ 142:.\board.c     ****     
+ 143:.\board.c     ****     return board;
+ 144:.\board.c     ****     
+ 145:.\board.c     **** }
+ 540              		.loc 1 145 0 is_stmt 1
+ 541 0068 0048     		ldr	r0, .L32
+ 542 006a 70BD     		pop	{r4, r5, r6, pc}
+ 543              	.LVL86:
+ 544              	.L33:
+ 545              		.align	2
+ 546              	.L32:
+ 547 006c 00000000 		.word	.LANCHOR0
+ 548              		.cfi_endproc
+ 549              	.LFE67:
+ 550              		.size	read_reed_switches, .-read_reed_switches
+ 551              		.comm	y_pos,2,2
+ 552              		.comm	x_pos,2,2
+ 553              		.bss
+ 554              		.align	2
+ 555              		.set	.LANCHOR0,. + 0
+ 556              		.type	board.5954, %object
+ 557              		.size	board.5954, 96
+ 558              	board.5954:
+ 559 0000 00000000 		.space	96
+ 559      00000000 
+ 559      00000000 
+ 559      00000000 
+ 559      00000000 
+ 560              		.text
+ 561              	.Letext0:
+ 562              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 563              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 564              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 565              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 566              		.file 6 ".\\board.h"
+ 567              		.file 7 "Generated_Source\\PSoC5/Slp_1.h"
+ 568              		.file 8 "Generated_Source\\PSoC5/Slp_2.h"
+ 569              		.file 9 "Generated_Source\\PSoC5/Lim_1.h"
+ 570              		.file 10 "Generated_Source\\PSoC5/Lim_2.h"
+ 571              		.file 11 "Generated_Source\\PSoC5/Dir_1.h"
+ 572              		.file 12 "Generated_Source\\PSoC5/Dir_2.h"
+ 573              		.file 13 "Generated_Source\\PSoC5/Stp_1.h"
+ 574              		.file 14 "Generated_Source\\PSoC5/Stp_2.h"
+ 575              		.file 15 "Generated_Source\\PSoC5/CyLib.h"
+ 576              		.file 16 "Generated_Source\\PSoC5/Row.h"
+ 577              		.file 17 "Generated_Source\\PSoC5/Col_0.h"
+ 578              		.file 18 "Generated_Source\\PSoC5/Col_1.h"
+ 579              		.file 19 "Generated_Source\\PSoC5/Col_2.h"
+ 580              		.file 20 "Generated_Source\\PSoC5/Col_3.h"
+ 581              		.file 21 "Generated_Source\\PSoC5/Col_4.h"
+ 582              		.file 22 "Generated_Source\\PSoC5/Col_5.h"
+ 583              		.file 23 "Generated_Source\\PSoC5/Col_6.h"
+ 584              		.file 24 "Generated_Source\\PSoC5/Col_7.h"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 14
+
+
+ 585              		.file 25 "Generated_Source\\PSoC5/Col_8.h"
+ 586              		.file 26 "Generated_Source\\PSoC5/Col_9.h"
+ 587              		.file 27 "Generated_Source\\PSoC5/Col_10.h"
+ 588              		.file 28 "Generated_Source\\PSoC5/Col_11.h"
+ 589              		.section	.debug_info,"",%progbits
+ 590              	.Ldebug_info0:
+ 591 0000 D0060000 		.4byte	0x6d0
+ 592 0004 0400     		.2byte	0x4
+ 593 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 594 000a 04       		.byte	0x4
+ 595 000b 01       		.uleb128 0x1
+ 596 000c 4A010000 		.4byte	.LASF47
+ 597 0010 01       		.byte	0x1
+ 598 0011 D8010000 		.4byte	.LASF48
+ 599 0015 19020000 		.4byte	.LASF49
+ 600 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 601 001d 00000000 		.4byte	0
+ 602 0021 00000000 		.4byte	.Ldebug_line0
+ 603 0025 02       		.uleb128 0x2
+ 604 0026 01       		.byte	0x1
+ 605 0027 06       		.byte	0x6
+ 606 0028 68000000 		.4byte	.LASF0
+ 607 002c 02       		.uleb128 0x2
+ 608 002d 01       		.byte	0x1
+ 609 002e 08       		.byte	0x8
+ 610 002f 74000000 		.4byte	.LASF1
+ 611 0033 02       		.uleb128 0x2
+ 612 0034 02       		.byte	0x2
+ 613 0035 05       		.byte	0x5
+ 614 0036 93020000 		.4byte	.LASF2
+ 615 003a 02       		.uleb128 0x2
+ 616 003b 02       		.byte	0x2
+ 617 003c 07       		.byte	0x7
+ 618 003d 15000000 		.4byte	.LASF3
+ 619 0041 03       		.uleb128 0x3
+ 620 0042 0B000000 		.4byte	.LASF9
+ 621 0046 02       		.byte	0x2
+ 622 0047 3F       		.byte	0x3f
+ 623 0048 4C000000 		.4byte	0x4c
+ 624 004c 02       		.uleb128 0x2
+ 625 004d 04       		.byte	0x4
+ 626 004e 05       		.byte	0x5
+ 627 004f C9020000 		.4byte	.LASF4
+ 628 0053 02       		.uleb128 0x2
+ 629 0054 04       		.byte	0x4
+ 630 0055 07       		.byte	0x7
+ 631 0056 AA000000 		.4byte	.LASF5
+ 632 005a 02       		.uleb128 0x2
+ 633 005b 08       		.byte	0x8
+ 634 005c 05       		.byte	0x5
+ 635 005d F9010000 		.4byte	.LASF6
+ 636 0061 02       		.uleb128 0x2
+ 637 0062 08       		.byte	0x8
+ 638 0063 07       		.byte	0x7
+ 639 0064 28010000 		.4byte	.LASF7
+ 640 0068 04       		.uleb128 0x4
+ 641 0069 04       		.byte	0x4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 15
+
+
+ 642 006a 05       		.byte	0x5
+ 643 006b 696E7400 		.ascii	"int\000"
+ 644 006f 02       		.uleb128 0x2
+ 645 0070 04       		.byte	0x4
+ 646 0071 07       		.byte	0x7
+ 647 0072 1B010000 		.4byte	.LASF8
+ 648 0076 03       		.uleb128 0x3
+ 649 0077 E8010000 		.4byte	.LASF10
+ 650 007b 03       		.byte	0x3
+ 651 007c 2C       		.byte	0x2c
+ 652 007d 41000000 		.4byte	0x41
+ 653 0081 03       		.uleb128 0x3
+ 654 0082 E2010000 		.4byte	.LASF11
+ 655 0086 04       		.byte	0x4
+ 656 0087 C2       		.byte	0xc2
+ 657 0088 2C000000 		.4byte	0x2c
+ 658 008c 03       		.uleb128 0x3
+ 659 008d 08010000 		.4byte	.LASF12
+ 660 0091 04       		.byte	0x4
+ 661 0092 C4       		.byte	0xc4
+ 662 0093 53000000 		.4byte	0x53
+ 663 0097 03       		.uleb128 0x3
+ 664 0098 A4000000 		.4byte	.LASF13
+ 665 009c 04       		.byte	0x4
+ 666 009d C6       		.byte	0xc6
+ 667 009e 33000000 		.4byte	0x33
+ 668 00a2 02       		.uleb128 0x2
+ 669 00a3 04       		.byte	0x4
+ 670 00a4 04       		.byte	0x4
+ 671 00a5 56000000 		.4byte	.LASF14
+ 672 00a9 02       		.uleb128 0x2
+ 673 00aa 08       		.byte	0x8
+ 674 00ab 04       		.byte	0x4
+ 675 00ac DA000000 		.4byte	.LASF15
+ 676 00b0 02       		.uleb128 0x2
+ 677 00b1 01       		.byte	0x1
+ 678 00b2 08       		.byte	0x8
+ 679 00b3 D2020000 		.4byte	.LASF16
+ 680 00b7 02       		.uleb128 0x2
+ 681 00b8 04       		.byte	0x4
+ 682 00b9 07       		.byte	0x7
+ 683 00ba F0010000 		.4byte	.LASF17
+ 684 00be 05       		.uleb128 0x5
+ 685 00bf 04       		.byte	0x4
+ 686 00c0 B0000000 		.4byte	0xb0
+ 687 00c4 06       		.uleb128 0x6
+ 688 00c5 C9000000 		.4byte	.LASF50
+ 689 00c9 01       		.byte	0x1
+ 690 00ca 03       		.byte	0x3
+ 691 00cb 00000000 		.4byte	.LFB63
+ 692 00cf 02000000 		.4byte	.LFE63-.LFB63
+ 693 00d3 01       		.uleb128 0x1
+ 694 00d4 9C       		.byte	0x9c
+ 695 00d5 07       		.uleb128 0x7
+ 696 00d6 8E000000 		.4byte	.LASF51
+ 697 00da 01       		.byte	0x1
+ 698 00db 14       		.byte	0x14
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 16
+
+
+ 699 00dc 00000000 		.4byte	.LFB64
+ 700 00e0 9C000000 		.4byte	.LFE64-.LFB64
+ 701 00e4 01       		.uleb128 0x1
+ 702 00e5 9C       		.byte	0x9c
+ 703 00e6 69020000 		.4byte	0x269
+ 704 00ea 08       		.uleb128 0x8
+ 705 00eb 7800     		.ascii	"x\000"
+ 706 00ed 01       		.byte	0x1
+ 707 00ee 18       		.byte	0x18
+ 708 00ef 81000000 		.4byte	0x81
+ 709 00f3 00000000 		.4byte	.LLST0
+ 710 00f7 08       		.uleb128 0x8
+ 711 00f8 7900     		.ascii	"y\000"
+ 712 00fa 01       		.byte	0x1
+ 713 00fb 18       		.byte	0x18
+ 714 00fc 81000000 		.4byte	0x81
+ 715 0100 13000000 		.4byte	.LLST1
+ 716 0104 09       		.uleb128 0x9
+ 717 0105 08000000 		.4byte	.LVL0
+ 718 0109 B1050000 		.4byte	0x5b1
+ 719 010d 17010000 		.4byte	0x117
+ 720 0111 0A       		.uleb128 0xa
+ 721 0112 01       		.uleb128 0x1
+ 722 0113 50       		.byte	0x50
+ 723 0114 01       		.uleb128 0x1
+ 724 0115 31       		.byte	0x31
+ 725 0116 00       		.byte	0
+ 726 0117 09       		.uleb128 0x9
+ 727 0118 0E000000 		.4byte	.LVL1
+ 728 011c C2050000 		.4byte	0x5c2
+ 729 0120 2A010000 		.4byte	0x12a
+ 730 0124 0A       		.uleb128 0xa
+ 731 0125 01       		.uleb128 0x1
+ 732 0126 50       		.byte	0x50
+ 733 0127 01       		.uleb128 0x1
+ 734 0128 31       		.byte	0x31
+ 735 0129 00       		.byte	0
+ 736 012a 0B       		.uleb128 0xb
+ 737 012b 12000000 		.4byte	.LVL2
+ 738 012f D3050000 		.4byte	0x5d3
+ 739 0133 0B       		.uleb128 0xb
+ 740 0134 18000000 		.4byte	.LVL4
+ 741 0138 DE050000 		.4byte	0x5de
+ 742 013c 09       		.uleb128 0x9
+ 743 013d 24000000 		.4byte	.LVL6
+ 744 0141 E9050000 		.4byte	0x5e9
+ 745 0145 4F010000 		.4byte	0x14f
+ 746 0149 0A       		.uleb128 0xa
+ 747 014a 01       		.uleb128 0x1
+ 748 014b 50       		.byte	0x50
+ 749 014c 01       		.uleb128 0x1
+ 750 014d 30       		.byte	0x30
+ 751 014e 00       		.byte	0
+ 752 014f 09       		.uleb128 0x9
+ 753 0150 2A000000 		.4byte	.LVL7
+ 754 0154 FA050000 		.4byte	0x5fa
+ 755 0158 62010000 		.4byte	0x162
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 17
+
+
+ 756 015c 0A       		.uleb128 0xa
+ 757 015d 01       		.uleb128 0x1
+ 758 015e 50       		.byte	0x50
+ 759 015f 01       		.uleb128 0x1
+ 760 0160 30       		.byte	0x30
+ 761 0161 00       		.byte	0
+ 762 0162 09       		.uleb128 0x9
+ 763 0163 30000000 		.4byte	.LVL8
+ 764 0167 0B060000 		.4byte	0x60b
+ 765 016b 75010000 		.4byte	0x175
+ 766 016f 0A       		.uleb128 0xa
+ 767 0170 01       		.uleb128 0x1
+ 768 0171 50       		.byte	0x50
+ 769 0172 01       		.uleb128 0x1
+ 770 0173 30       		.byte	0x30
+ 771 0174 00       		.byte	0
+ 772 0175 09       		.uleb128 0x9
+ 773 0176 36000000 		.4byte	.LVL9
+ 774 017a 0B060000 		.4byte	0x60b
+ 775 017e 88010000 		.4byte	0x188
+ 776 0182 0A       		.uleb128 0xa
+ 777 0183 01       		.uleb128 0x1
+ 778 0184 50       		.byte	0x50
+ 779 0185 01       		.uleb128 0x1
+ 780 0186 31       		.byte	0x31
+ 781 0187 00       		.byte	0
+ 782 0188 09       		.uleb128 0x9
+ 783 0189 3C000000 		.4byte	.LVL10
+ 784 018d 1C060000 		.4byte	0x61c
+ 785 0191 9B010000 		.4byte	0x19b
+ 786 0195 0A       		.uleb128 0xa
+ 787 0196 01       		.uleb128 0x1
+ 788 0197 50       		.byte	0x50
+ 789 0198 01       		.uleb128 0x1
+ 790 0199 30       		.byte	0x30
+ 791 019a 00       		.byte	0
+ 792 019b 09       		.uleb128 0x9
+ 793 019c 42000000 		.4byte	.LVL11
+ 794 01a0 1C060000 		.4byte	0x61c
+ 795 01a4 AE010000 		.4byte	0x1ae
+ 796 01a8 0A       		.uleb128 0xa
+ 797 01a9 01       		.uleb128 0x1
+ 798 01aa 50       		.byte	0x50
+ 799 01ab 01       		.uleb128 0x1
+ 800 01ac 31       		.byte	0x31
+ 801 01ad 00       		.byte	0
+ 802 01ae 09       		.uleb128 0x9
+ 803 01af 48000000 		.4byte	.LVL12
+ 804 01b3 2D060000 		.4byte	0x62d
+ 805 01b7 C1010000 		.4byte	0x1c1
+ 806 01bb 0A       		.uleb128 0xa
+ 807 01bc 01       		.uleb128 0x1
+ 808 01bd 50       		.byte	0x50
+ 809 01be 01       		.uleb128 0x1
+ 810 01bf 3A       		.byte	0x3a
+ 811 01c0 00       		.byte	0
+ 812 01c1 09       		.uleb128 0x9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 18
+
+
+ 813 01c2 50000000 		.4byte	.LVL13
+ 814 01c6 E9050000 		.4byte	0x5e9
+ 815 01ca D4010000 		.4byte	0x1d4
+ 816 01ce 0A       		.uleb128 0xa
+ 817 01cf 01       		.uleb128 0x1
+ 818 01d0 50       		.byte	0x50
+ 819 01d1 01       		.uleb128 0x1
+ 820 01d2 30       		.byte	0x30
+ 821 01d3 00       		.byte	0
+ 822 01d4 09       		.uleb128 0x9
+ 823 01d5 56000000 		.4byte	.LVL14
+ 824 01d9 FA050000 		.4byte	0x5fa
+ 825 01dd E7010000 		.4byte	0x1e7
+ 826 01e1 0A       		.uleb128 0xa
+ 827 01e2 01       		.uleb128 0x1
+ 828 01e3 50       		.byte	0x50
+ 829 01e4 01       		.uleb128 0x1
+ 830 01e5 31       		.byte	0x31
+ 831 01e6 00       		.byte	0
+ 832 01e7 09       		.uleb128 0x9
+ 833 01e8 5C000000 		.4byte	.LVL15
+ 834 01ec 0B060000 		.4byte	0x60b
+ 835 01f0 FA010000 		.4byte	0x1fa
+ 836 01f4 0A       		.uleb128 0xa
+ 837 01f5 01       		.uleb128 0x1
+ 838 01f6 50       		.byte	0x50
+ 839 01f7 01       		.uleb128 0x1
+ 840 01f8 30       		.byte	0x30
+ 841 01f9 00       		.byte	0
+ 842 01fa 09       		.uleb128 0x9
+ 843 01fb 62000000 		.4byte	.LVL16
+ 844 01ff 0B060000 		.4byte	0x60b
+ 845 0203 0D020000 		.4byte	0x20d
+ 846 0207 0A       		.uleb128 0xa
+ 847 0208 01       		.uleb128 0x1
+ 848 0209 50       		.byte	0x50
+ 849 020a 01       		.uleb128 0x1
+ 850 020b 31       		.byte	0x31
+ 851 020c 00       		.byte	0
+ 852 020d 09       		.uleb128 0x9
+ 853 020e 68000000 		.4byte	.LVL17
+ 854 0212 1C060000 		.4byte	0x61c
+ 855 0216 20020000 		.4byte	0x220
+ 856 021a 0A       		.uleb128 0xa
+ 857 021b 01       		.uleb128 0x1
+ 858 021c 50       		.byte	0x50
+ 859 021d 01       		.uleb128 0x1
+ 860 021e 30       		.byte	0x30
+ 861 021f 00       		.byte	0
+ 862 0220 09       		.uleb128 0x9
+ 863 0221 6E000000 		.4byte	.LVL18
+ 864 0225 1C060000 		.4byte	0x61c
+ 865 0229 33020000 		.4byte	0x233
+ 866 022d 0A       		.uleb128 0xa
+ 867 022e 01       		.uleb128 0x1
+ 868 022f 50       		.byte	0x50
+ 869 0230 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 19
+
+
+ 870 0231 31       		.byte	0x31
+ 871 0232 00       		.byte	0
+ 872 0233 09       		.uleb128 0x9
+ 873 0234 74000000 		.4byte	.LVL19
+ 874 0238 2D060000 		.4byte	0x62d
+ 875 023c 46020000 		.4byte	0x246
+ 876 0240 0A       		.uleb128 0xa
+ 877 0241 01       		.uleb128 0x1
+ 878 0242 50       		.byte	0x50
+ 879 0243 01       		.uleb128 0x1
+ 880 0244 3A       		.byte	0x3a
+ 881 0245 00       		.byte	0
+ 882 0246 09       		.uleb128 0x9
+ 883 0247 82000000 		.4byte	.LVL20
+ 884 024b B1050000 		.4byte	0x5b1
+ 885 024f 59020000 		.4byte	0x259
+ 886 0253 0A       		.uleb128 0xa
+ 887 0254 01       		.uleb128 0x1
+ 888 0255 50       		.byte	0x50
+ 889 0256 01       		.uleb128 0x1
+ 890 0257 30       		.byte	0x30
+ 891 0258 00       		.byte	0
+ 892 0259 0C       		.uleb128 0xc
+ 893 025a 88000000 		.4byte	.LVL21
+ 894 025e C2050000 		.4byte	0x5c2
+ 895 0262 0A       		.uleb128 0xa
+ 896 0263 01       		.uleb128 0x1
+ 897 0264 50       		.byte	0x50
+ 898 0265 01       		.uleb128 0x1
+ 899 0266 30       		.byte	0x30
+ 900 0267 00       		.byte	0
+ 901 0268 00       		.byte	0
+ 902 0269 0D       		.uleb128 0xd
+ 903 026a 9D020000 		.4byte	.LASF18
+ 904 026e 01       		.byte	0x1
+ 905 026f 37       		.byte	0x37
+ 906 0270 00000000 		.4byte	.LFB65
+ 907 0274 AC000000 		.4byte	.LFE65-.LFB65
+ 908 0278 01       		.uleb128 0x1
+ 909 0279 9C       		.byte	0x9c
+ 910 027a 83030000 		.4byte	0x383
+ 911 027e 0E       		.uleb128 0xe
+ 912 027f 6D6D00   		.ascii	"mm\000"
+ 913 0282 01       		.byte	0x1
+ 914 0283 37       		.byte	0x37
+ 915 0284 97000000 		.4byte	0x97
+ 916 0288 26000000 		.4byte	.LLST2
+ 917 028c 08       		.uleb128 0x8
+ 918 028d 6A00     		.ascii	"j\000"
+ 919 028f 01       		.byte	0x1
+ 920 0290 49       		.byte	0x49
+ 921 0291 68000000 		.4byte	0x68
+ 922 0295 65000000 		.4byte	.LLST3
+ 923 0299 09       		.uleb128 0x9
+ 924 029a 20000000 		.4byte	.LVL25
+ 925 029e B1050000 		.4byte	0x5b1
+ 926 02a2 AC020000 		.4byte	0x2ac
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 20
+
+
+ 927 02a6 0A       		.uleb128 0xa
+ 928 02a7 01       		.uleb128 0x1
+ 929 02a8 50       		.byte	0x50
+ 930 02a9 01       		.uleb128 0x1
+ 931 02aa 31       		.byte	0x31
+ 932 02ab 00       		.byte	0
+ 933 02ac 09       		.uleb128 0x9
+ 934 02ad 26000000 		.4byte	.LVL26
+ 935 02b1 C2050000 		.4byte	0x5c2
+ 936 02b5 BF020000 		.4byte	0x2bf
+ 937 02b9 0A       		.uleb128 0xa
+ 938 02ba 01       		.uleb128 0x1
+ 939 02bb 50       		.byte	0x50
+ 940 02bc 01       		.uleb128 0x1
+ 941 02bd 31       		.byte	0x31
+ 942 02be 00       		.byte	0
+ 943 02bf 09       		.uleb128 0x9
+ 944 02c0 30000000 		.4byte	.LVL27
+ 945 02c4 E9050000 		.4byte	0x5e9
+ 946 02c8 D2020000 		.4byte	0x2d2
+ 947 02cc 0A       		.uleb128 0xa
+ 948 02cd 01       		.uleb128 0x1
+ 949 02ce 50       		.byte	0x50
+ 950 02cf 01       		.uleb128 0x1
+ 951 02d0 31       		.byte	0x31
+ 952 02d1 00       		.byte	0
+ 953 02d2 09       		.uleb128 0x9
+ 954 02d3 36000000 		.4byte	.LVL28
+ 955 02d7 FA050000 		.4byte	0x5fa
+ 956 02db E5020000 		.4byte	0x2e5
+ 957 02df 0A       		.uleb128 0xa
+ 958 02e0 01       		.uleb128 0x1
+ 959 02e1 50       		.byte	0x50
+ 960 02e2 01       		.uleb128 0x1
+ 961 02e3 31       		.byte	0x31
+ 962 02e4 00       		.byte	0
+ 963 02e5 09       		.uleb128 0x9
+ 964 02e6 42000000 		.4byte	.LVL31
+ 965 02ea E9050000 		.4byte	0x5e9
+ 966 02ee F8020000 		.4byte	0x2f8
+ 967 02f2 0A       		.uleb128 0xa
+ 968 02f3 01       		.uleb128 0x1
+ 969 02f4 50       		.byte	0x50
+ 970 02f5 01       		.uleb128 0x1
+ 971 02f6 30       		.byte	0x30
+ 972 02f7 00       		.byte	0
+ 973 02f8 09       		.uleb128 0x9
+ 974 02f9 48000000 		.4byte	.LVL32
+ 975 02fd FA050000 		.4byte	0x5fa
+ 976 0301 0B030000 		.4byte	0x30b
+ 977 0305 0A       		.uleb128 0xa
+ 978 0306 01       		.uleb128 0x1
+ 979 0307 50       		.byte	0x50
+ 980 0308 01       		.uleb128 0x1
+ 981 0309 30       		.byte	0x30
+ 982 030a 00       		.byte	0
+ 983 030b 09       		.uleb128 0x9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 21
+
+
+ 984 030c 52000000 		.4byte	.LVL34
+ 985 0310 0B060000 		.4byte	0x60b
+ 986 0314 1E030000 		.4byte	0x31e
+ 987 0318 0A       		.uleb128 0xa
+ 988 0319 01       		.uleb128 0x1
+ 989 031a 50       		.byte	0x50
+ 990 031b 01       		.uleb128 0x1
+ 991 031c 30       		.byte	0x30
+ 992 031d 00       		.byte	0
+ 993 031e 09       		.uleb128 0x9
+ 994 031f 58000000 		.4byte	.LVL35
+ 995 0323 0B060000 		.4byte	0x60b
+ 996 0327 31030000 		.4byte	0x331
+ 997 032b 0A       		.uleb128 0xa
+ 998 032c 01       		.uleb128 0x1
+ 999 032d 50       		.byte	0x50
+ 1000 032e 01       		.uleb128 0x1
+ 1001 032f 31       		.byte	0x31
+ 1002 0330 00       		.byte	0
+ 1003 0331 09       		.uleb128 0x9
+ 1004 0332 5E000000 		.4byte	.LVL36
+ 1005 0336 1C060000 		.4byte	0x61c
+ 1006 033a 44030000 		.4byte	0x344
+ 1007 033e 0A       		.uleb128 0xa
+ 1008 033f 01       		.uleb128 0x1
+ 1009 0340 50       		.byte	0x50
+ 1010 0341 01       		.uleb128 0x1
+ 1011 0342 30       		.byte	0x30
+ 1012 0343 00       		.byte	0
+ 1013 0344 09       		.uleb128 0x9
+ 1014 0345 64000000 		.4byte	.LVL37
+ 1015 0349 1C060000 		.4byte	0x61c
+ 1016 034d 57030000 		.4byte	0x357
+ 1017 0351 0A       		.uleb128 0xa
+ 1018 0352 01       		.uleb128 0x1
+ 1019 0353 50       		.byte	0x50
+ 1020 0354 01       		.uleb128 0x1
+ 1021 0355 31       		.byte	0x31
+ 1022 0356 00       		.byte	0
+ 1023 0357 09       		.uleb128 0x9
+ 1024 0358 6A000000 		.4byte	.LVL38
+ 1025 035c 2D060000 		.4byte	0x62d
+ 1026 0360 6A030000 		.4byte	0x36a
+ 1027 0364 0A       		.uleb128 0xa
+ 1028 0365 01       		.uleb128 0x1
+ 1029 0366 50       		.byte	0x50
+ 1030 0367 01       		.uleb128 0x1
+ 1031 0368 3A       		.byte	0x3a
+ 1032 0369 00       		.byte	0
+ 1033 036a 0B       		.uleb128 0xb
+ 1034 036b 9C000000 		.4byte	.LVL44
+ 1035 036f B1050000 		.4byte	0x5b1
+ 1036 0373 0C       		.uleb128 0xc
+ 1037 0374 A2000000 		.4byte	.LVL45
+ 1038 0378 C2050000 		.4byte	0x5c2
+ 1039 037c 0A       		.uleb128 0xa
+ 1040 037d 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 22
+
+
+ 1041 037e 50       		.byte	0x50
+ 1042 037f 01       		.uleb128 0x1
+ 1043 0380 30       		.byte	0x30
+ 1044 0381 00       		.byte	0
+ 1045 0382 00       		.byte	0
+ 1046 0383 0D       		.uleb128 0xd
+ 1047 0384 A4020000 		.4byte	.LASF19
+ 1048 0388 01       		.byte	0x1
+ 1049 0389 57       		.byte	0x57
+ 1050 038a 00000000 		.4byte	.LFB66
+ 1051 038e B0000000 		.4byte	.LFE66-.LFB66
+ 1052 0392 01       		.uleb128 0x1
+ 1053 0393 9C       		.byte	0x9c
+ 1054 0394 9D040000 		.4byte	0x49d
+ 1055 0398 0E       		.uleb128 0xe
+ 1056 0399 6D6D00   		.ascii	"mm\000"
+ 1057 039c 01       		.byte	0x1
+ 1058 039d 57       		.byte	0x57
+ 1059 039e 97000000 		.4byte	0x97
+ 1060 03a2 84000000 		.4byte	.LLST4
+ 1061 03a6 08       		.uleb128 0x8
+ 1062 03a7 6A00     		.ascii	"j\000"
+ 1063 03a9 01       		.byte	0x1
+ 1064 03aa 6A       		.byte	0x6a
+ 1065 03ab 68000000 		.4byte	0x68
+ 1066 03af C9000000 		.4byte	.LLST5
+ 1067 03b3 09       		.uleb128 0x9
+ 1068 03b4 18000000 		.4byte	.LVL48
+ 1069 03b8 B1050000 		.4byte	0x5b1
+ 1070 03bc C6030000 		.4byte	0x3c6
+ 1071 03c0 0A       		.uleb128 0xa
+ 1072 03c1 01       		.uleb128 0x1
+ 1073 03c2 50       		.byte	0x50
+ 1074 03c3 01       		.uleb128 0x1
+ 1075 03c4 31       		.byte	0x31
+ 1076 03c5 00       		.byte	0
+ 1077 03c6 09       		.uleb128 0x9
+ 1078 03c7 1E000000 		.4byte	.LVL49
+ 1079 03cb C2050000 		.4byte	0x5c2
+ 1080 03cf D9030000 		.4byte	0x3d9
+ 1081 03d3 0A       		.uleb128 0xa
+ 1082 03d4 01       		.uleb128 0x1
+ 1083 03d5 50       		.byte	0x50
+ 1084 03d6 01       		.uleb128 0x1
+ 1085 03d7 31       		.byte	0x31
+ 1086 03d8 00       		.byte	0
+ 1087 03d9 09       		.uleb128 0x9
+ 1088 03da 32000000 		.4byte	.LVL50
+ 1089 03de E9050000 		.4byte	0x5e9
+ 1090 03e2 EC030000 		.4byte	0x3ec
+ 1091 03e6 0A       		.uleb128 0xa
+ 1092 03e7 01       		.uleb128 0x1
+ 1093 03e8 50       		.byte	0x50
+ 1094 03e9 01       		.uleb128 0x1
+ 1095 03ea 31       		.byte	0x31
+ 1096 03eb 00       		.byte	0
+ 1097 03ec 09       		.uleb128 0x9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 23
+
+
+ 1098 03ed 38000000 		.4byte	.LVL51
+ 1099 03f1 FA050000 		.4byte	0x5fa
+ 1100 03f5 FF030000 		.4byte	0x3ff
+ 1101 03f9 0A       		.uleb128 0xa
+ 1102 03fa 01       		.uleb128 0x1
+ 1103 03fb 50       		.byte	0x50
+ 1104 03fc 01       		.uleb128 0x1
+ 1105 03fd 30       		.byte	0x30
+ 1106 03fe 00       		.byte	0
+ 1107 03ff 09       		.uleb128 0x9
+ 1108 0400 44000000 		.4byte	.LVL54
+ 1109 0404 E9050000 		.4byte	0x5e9
+ 1110 0408 12040000 		.4byte	0x412
+ 1111 040c 0A       		.uleb128 0xa
+ 1112 040d 01       		.uleb128 0x1
+ 1113 040e 50       		.byte	0x50
+ 1114 040f 01       		.uleb128 0x1
+ 1115 0410 30       		.byte	0x30
+ 1116 0411 00       		.byte	0
+ 1117 0412 09       		.uleb128 0x9
+ 1118 0413 4A000000 		.4byte	.LVL55
+ 1119 0417 FA050000 		.4byte	0x5fa
+ 1120 041b 25040000 		.4byte	0x425
+ 1121 041f 0A       		.uleb128 0xa
+ 1122 0420 01       		.uleb128 0x1
+ 1123 0421 50       		.byte	0x50
+ 1124 0422 01       		.uleb128 0x1
+ 1125 0423 31       		.byte	0x31
+ 1126 0424 00       		.byte	0
+ 1127 0425 09       		.uleb128 0x9
+ 1128 0426 54000000 		.4byte	.LVL57
+ 1129 042a 0B060000 		.4byte	0x60b
+ 1130 042e 38040000 		.4byte	0x438
+ 1131 0432 0A       		.uleb128 0xa
+ 1132 0433 01       		.uleb128 0x1
+ 1133 0434 50       		.byte	0x50
+ 1134 0435 01       		.uleb128 0x1
+ 1135 0436 30       		.byte	0x30
+ 1136 0437 00       		.byte	0
+ 1137 0438 09       		.uleb128 0x9
+ 1138 0439 5A000000 		.4byte	.LVL58
+ 1139 043d 0B060000 		.4byte	0x60b
+ 1140 0441 4B040000 		.4byte	0x44b
+ 1141 0445 0A       		.uleb128 0xa
+ 1142 0446 01       		.uleb128 0x1
+ 1143 0447 50       		.byte	0x50
+ 1144 0448 01       		.uleb128 0x1
+ 1145 0449 31       		.byte	0x31
+ 1146 044a 00       		.byte	0
+ 1147 044b 09       		.uleb128 0x9
+ 1148 044c 60000000 		.4byte	.LVL59
+ 1149 0450 1C060000 		.4byte	0x61c
+ 1150 0454 5E040000 		.4byte	0x45e
+ 1151 0458 0A       		.uleb128 0xa
+ 1152 0459 01       		.uleb128 0x1
+ 1153 045a 50       		.byte	0x50
+ 1154 045b 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 24
+
+
+ 1155 045c 30       		.byte	0x30
+ 1156 045d 00       		.byte	0
+ 1157 045e 09       		.uleb128 0x9
+ 1158 045f 66000000 		.4byte	.LVL60
+ 1159 0463 1C060000 		.4byte	0x61c
+ 1160 0467 71040000 		.4byte	0x471
+ 1161 046b 0A       		.uleb128 0xa
+ 1162 046c 01       		.uleb128 0x1
+ 1163 046d 50       		.byte	0x50
+ 1164 046e 01       		.uleb128 0x1
+ 1165 046f 31       		.byte	0x31
+ 1166 0470 00       		.byte	0
+ 1167 0471 09       		.uleb128 0x9
+ 1168 0472 6C000000 		.4byte	.LVL61
+ 1169 0476 2D060000 		.4byte	0x62d
+ 1170 047a 84040000 		.4byte	0x484
+ 1171 047e 0A       		.uleb128 0xa
+ 1172 047f 01       		.uleb128 0x1
+ 1173 0480 50       		.byte	0x50
+ 1174 0481 01       		.uleb128 0x1
+ 1175 0482 3A       		.byte	0x3a
+ 1176 0483 00       		.byte	0
+ 1177 0484 0B       		.uleb128 0xb
+ 1178 0485 9E000000 		.4byte	.LVL67
+ 1179 0489 B1050000 		.4byte	0x5b1
+ 1180 048d 0C       		.uleb128 0xc
+ 1181 048e A4000000 		.4byte	.LVL68
+ 1182 0492 C2050000 		.4byte	0x5c2
+ 1183 0496 0A       		.uleb128 0xa
+ 1184 0497 01       		.uleb128 0x1
+ 1185 0498 50       		.byte	0x50
+ 1186 0499 01       		.uleb128 0x1
+ 1187 049a 30       		.byte	0x30
+ 1188 049b 00       		.byte	0
+ 1189 049c 00       		.byte	0
+ 1190 049d 0F       		.uleb128 0xf
+ 1191 049e B6020000 		.4byte	.LASF20
+ 1192 04a2 01       		.byte	0x1
+ 1193 04a3 78       		.byte	0x78
+ 1194 04a4 62050000 		.4byte	0x562
+ 1195 04a8 00000000 		.4byte	.LFB67
+ 1196 04ac 70000000 		.4byte	.LFE67-.LFB67
+ 1197 04b0 01       		.uleb128 0x1
+ 1198 04b1 9C       		.byte	0x9c
+ 1199 04b2 62050000 		.4byte	0x562
+ 1200 04b6 10       		.uleb128 0x10
+ 1201 04b7 EC020000 		.4byte	.LASF21
+ 1202 04bb 01       		.byte	0x1
+ 1203 04bc 7A       		.byte	0x7a
+ 1204 04bd 68050000 		.4byte	0x568
+ 1205 04c1 05       		.uleb128 0x5
+ 1206 04c2 03       		.byte	0x3
+ 1207 04c3 00000000 		.4byte	board.5954
+ 1208 04c7 08       		.uleb128 0x8
+ 1209 04c8 6900     		.ascii	"i\000"
+ 1210 04ca 01       		.byte	0x1
+ 1211 04cb 7C       		.byte	0x7c
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 25
+
+
+ 1212 04cc 68000000 		.4byte	0x68
+ 1213 04d0 E8000000 		.4byte	.LLST6
+ 1214 04d4 08       		.uleb128 0x8
+ 1215 04d5 6A00     		.ascii	"j\000"
+ 1216 04d7 01       		.byte	0x1
+ 1217 04d8 7C       		.byte	0x7c
+ 1218 04d9 68000000 		.4byte	0x68
+ 1219 04dd 07010000 		.4byte	.LLST7
+ 1220 04e1 09       		.uleb128 0x9
+ 1221 04e2 0E000000 		.4byte	.LVL71
+ 1222 04e6 3E060000 		.4byte	0x63e
+ 1223 04ea F5040000 		.4byte	0x4f5
+ 1224 04ee 0A       		.uleb128 0xa
+ 1225 04ef 01       		.uleb128 0x1
+ 1226 04f0 50       		.byte	0x50
+ 1227 04f1 02       		.uleb128 0x2
+ 1228 04f2 76       		.byte	0x76
+ 1229 04f3 00       		.sleb128 0
+ 1230 04f4 00       		.byte	0
+ 1231 04f5 0B       		.uleb128 0xb
+ 1232 04f6 14000000 		.4byte	.LVL73
+ 1233 04fa 4F060000 		.4byte	0x64f
+ 1234 04fe 0B       		.uleb128 0xb
+ 1235 04ff 24000000 		.4byte	.LVL74
+ 1236 0503 5A060000 		.4byte	0x65a
+ 1237 0507 0B       		.uleb128 0xb
+ 1238 0508 2A000000 		.4byte	.LVL75
+ 1239 050c 65060000 		.4byte	0x665
+ 1240 0510 0B       		.uleb128 0xb
+ 1241 0511 30000000 		.4byte	.LVL76
+ 1242 0515 70060000 		.4byte	0x670
+ 1243 0519 0B       		.uleb128 0xb
+ 1244 051a 36000000 		.4byte	.LVL77
+ 1245 051e 7B060000 		.4byte	0x67b
+ 1246 0522 0B       		.uleb128 0xb
+ 1247 0523 3C000000 		.4byte	.LVL78
+ 1248 0527 86060000 		.4byte	0x686
+ 1249 052b 0B       		.uleb128 0xb
+ 1250 052c 42000000 		.4byte	.LVL79
+ 1251 0530 91060000 		.4byte	0x691
+ 1252 0534 0B       		.uleb128 0xb
+ 1253 0535 48000000 		.4byte	.LVL80
+ 1254 0539 9C060000 		.4byte	0x69c
+ 1255 053d 0B       		.uleb128 0xb
+ 1256 053e 4E000000 		.4byte	.LVL81
+ 1257 0542 A7060000 		.4byte	0x6a7
+ 1258 0546 0B       		.uleb128 0xb
+ 1259 0547 54000000 		.4byte	.LVL82
+ 1260 054b B2060000 		.4byte	0x6b2
+ 1261 054f 0B       		.uleb128 0xb
+ 1262 0550 5A000000 		.4byte	.LVL83
+ 1263 0554 BD060000 		.4byte	0x6bd
+ 1264 0558 0B       		.uleb128 0xb
+ 1265 0559 60000000 		.4byte	.LVL84
+ 1266 055d C8060000 		.4byte	0x6c8
+ 1267 0561 00       		.byte	0
+ 1268 0562 05       		.uleb128 0x5
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 26
+
+
+ 1269 0563 04       		.byte	0x4
+ 1270 0564 BE000000 		.4byte	0xbe
+ 1271 0568 11       		.uleb128 0x11
+ 1272 0569 B0000000 		.4byte	0xb0
+ 1273 056d 7E050000 		.4byte	0x57e
+ 1274 0571 12       		.uleb128 0x12
+ 1275 0572 B7000000 		.4byte	0xb7
+ 1276 0576 07       		.byte	0x7
+ 1277 0577 12       		.uleb128 0x12
+ 1278 0578 B7000000 		.4byte	0xb7
+ 1279 057c 0B       		.byte	0xb
+ 1280 057d 00       		.byte	0
+ 1281 057e 13       		.uleb128 0x13
+ 1282 057f BC000000 		.4byte	.LASF22
+ 1283 0583 05       		.byte	0x5
+ 1284 0584 2A06     		.2byte	0x62a
+ 1285 0586 8A050000 		.4byte	0x58a
+ 1286 058a 14       		.uleb128 0x14
+ 1287 058b 76000000 		.4byte	0x76
+ 1288 058f 15       		.uleb128 0x15
+ 1289 0590 F7000000 		.4byte	.LASF23
+ 1290 0594 06       		.byte	0x6
+ 1291 0595 11       		.byte	0x11
+ 1292 0596 97000000 		.4byte	0x97
+ 1293 059a 05       		.uleb128 0x5
+ 1294 059b 03       		.byte	0x3
+ 1295 059c 00000000 		.4byte	x_pos
+ 1296 05a0 15       		.uleb128 0x15
+ 1297 05a1 13020000 		.4byte	.LASF24
+ 1298 05a5 06       		.byte	0x6
+ 1299 05a6 12       		.byte	0x12
+ 1300 05a7 97000000 		.4byte	0x97
+ 1301 05ab 05       		.uleb128 0x5
+ 1302 05ac 03       		.byte	0x3
+ 1303 05ad 00000000 		.4byte	y_pos
+ 1304 05b1 16       		.uleb128 0x16
+ 1305 05b2 82000000 		.4byte	.LASF25
+ 1306 05b6 07       		.byte	0x7
+ 1307 05b7 28       		.byte	0x28
+ 1308 05b8 C2050000 		.4byte	0x5c2
+ 1309 05bc 17       		.uleb128 0x17
+ 1310 05bd 81000000 		.4byte	0x81
+ 1311 05c1 00       		.byte	0
+ 1312 05c2 16       		.uleb128 0x16
+ 1313 05c3 07020000 		.4byte	.LASF26
+ 1314 05c7 08       		.byte	0x8
+ 1315 05c8 28       		.byte	0x28
+ 1316 05c9 D3050000 		.4byte	0x5d3
+ 1317 05cd 17       		.uleb128 0x17
+ 1318 05ce 81000000 		.4byte	0x81
+ 1319 05d2 00       		.byte	0
+ 1320 05d3 18       		.uleb128 0x18
+ 1321 05d4 E1000000 		.4byte	.LASF27
+ 1322 05d8 09       		.byte	0x9
+ 1323 05d9 2B       		.byte	0x2b
+ 1324 05da 81000000 		.4byte	0x81
+ 1325 05de 18       		.uleb128 0x18
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 27
+
+
+ 1326 05df 00000000 		.4byte	.LASF28
+ 1327 05e3 0A       		.byte	0xa
+ 1328 05e4 2B       		.byte	0x2b
+ 1329 05e5 81000000 		.4byte	0x81
+ 1330 05e9 16       		.uleb128 0x16
+ 1331 05ea CE000000 		.4byte	.LASF29
+ 1332 05ee 0B       		.byte	0xb
+ 1333 05ef 28       		.byte	0x28
+ 1334 05f0 FA050000 		.4byte	0x5fa
+ 1335 05f4 17       		.uleb128 0x17
+ 1336 05f5 81000000 		.4byte	0x81
+ 1337 05f9 00       		.byte	0
+ 1338 05fa 16       		.uleb128 0x16
+ 1339 05fb 5C000000 		.4byte	.LASF30
+ 1340 05ff 0C       		.byte	0xc
+ 1341 0600 28       		.byte	0x28
+ 1342 0601 0B060000 		.4byte	0x60b
+ 1343 0605 17       		.uleb128 0x17
+ 1344 0606 81000000 		.4byte	0x81
+ 1345 060a 00       		.byte	0
+ 1346 060b 16       		.uleb128 0x16
+ 1347 060c 4A000000 		.4byte	.LASF31
+ 1348 0610 0D       		.byte	0xd
+ 1349 0611 28       		.byte	0x28
+ 1350 0612 1C060000 		.4byte	0x61c
+ 1351 0616 17       		.uleb128 0x17
+ 1352 0617 81000000 		.4byte	0x81
+ 1353 061b 00       		.byte	0
+ 1354 061c 16       		.uleb128 0x16
+ 1355 061d 98000000 		.4byte	.LASF32
+ 1356 0621 0E       		.byte	0xe
+ 1357 0622 28       		.byte	0x28
+ 1358 0623 2D060000 		.4byte	0x62d
+ 1359 0627 17       		.uleb128 0x17
+ 1360 0628 81000000 		.4byte	0x81
+ 1361 062c 00       		.byte	0
+ 1362 062d 16       		.uleb128 0x16
+ 1363 062e FD020000 		.4byte	.LASF33
+ 1364 0632 0F       		.byte	0xf
+ 1365 0633 77       		.byte	0x77
+ 1366 0634 3E060000 		.4byte	0x63e
+ 1367 0638 17       		.uleb128 0x17
+ 1368 0639 8C000000 		.4byte	0x8c
+ 1369 063d 00       		.byte	0
+ 1370 063e 16       		.uleb128 0x16
+ 1371 063f E2020000 		.4byte	.LASF34
+ 1372 0643 10       		.byte	0x10
+ 1373 0644 28       		.byte	0x28
+ 1374 0645 4F060000 		.4byte	0x64f
+ 1375 0649 17       		.uleb128 0x17
+ 1376 064a 81000000 		.4byte	0x81
+ 1377 064e 00       		.byte	0
+ 1378 064f 18       		.uleb128 0x18
+ 1379 0650 F2020000 		.4byte	.LASF35
+ 1380 0654 11       		.byte	0x11
+ 1381 0655 2B       		.byte	0x2b
+ 1382 0656 81000000 		.4byte	0x81
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 28
+
+
+ 1383 065a 18       		.uleb128 0x18
+ 1384 065b 28000000 		.4byte	.LASF36
+ 1385 065f 12       		.byte	0x12
+ 1386 0660 2B       		.byte	0x2b
+ 1387 0661 81000000 		.4byte	0x81
+ 1388 0665 18       		.uleb128 0x18
+ 1389 0666 FD000000 		.4byte	.LASF37
+ 1390 066a 13       		.byte	0x13
+ 1391 066b 2B       		.byte	0x2b
+ 1392 066c 81000000 		.4byte	0x81
+ 1393 0670 18       		.uleb128 0x18
+ 1394 0671 33000000 		.4byte	.LASF38
+ 1395 0675 14       		.byte	0x14
+ 1396 0676 2B       		.byte	0x2b
+ 1397 0677 81000000 		.4byte	0x81
+ 1398 067b 18       		.uleb128 0x18
+ 1399 067c 7D020000 		.4byte	.LASF39
+ 1400 0680 15       		.byte	0x15
+ 1401 0681 2B       		.byte	0x2b
+ 1402 0682 81000000 		.4byte	0x81
+ 1403 0686 18       		.uleb128 0x18
+ 1404 0687 EC000000 		.4byte	.LASF40
+ 1405 068b 16       		.byte	0x16
+ 1406 068c 2B       		.byte	0x2b
+ 1407 068d 81000000 		.4byte	0x81
+ 1408 0691 18       		.uleb128 0x18
+ 1409 0692 AB020000 		.4byte	.LASF41
+ 1410 0696 17       		.byte	0x17
+ 1411 0697 2B       		.byte	0x2b
+ 1412 0698 81000000 		.4byte	0x81
+ 1413 069c 18       		.uleb128 0x18
+ 1414 069d D7020000 		.4byte	.LASF42
+ 1415 06a1 18       		.byte	0x18
+ 1416 06a2 2B       		.byte	0x2b
+ 1417 06a3 81000000 		.4byte	0x81
+ 1418 06a7 18       		.uleb128 0x18
+ 1419 06a8 3F010000 		.4byte	.LASF43
+ 1420 06ac 19       		.byte	0x19
+ 1421 06ad 2B       		.byte	0x2b
+ 1422 06ae 81000000 		.4byte	0x81
+ 1423 06b2 18       		.uleb128 0x18
+ 1424 06b3 88020000 		.4byte	.LASF44
+ 1425 06b7 1A       		.byte	0x1a
+ 1426 06b8 2B       		.byte	0x2b
+ 1427 06b9 81000000 		.4byte	0x81
+ 1428 06bd 18       		.uleb128 0x18
+ 1429 06be 3E000000 		.4byte	.LASF45
+ 1430 06c2 1B       		.byte	0x1b
+ 1431 06c3 2B       		.byte	0x2b
+ 1432 06c4 81000000 		.4byte	0x81
+ 1433 06c8 18       		.uleb128 0x18
+ 1434 06c9 0F010000 		.4byte	.LASF46
+ 1435 06cd 1C       		.byte	0x1c
+ 1436 06ce 2B       		.byte	0x2b
+ 1437 06cf 81000000 		.4byte	0x81
+ 1438 06d3 00       		.byte	0
+ 1439              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 29
+
+
+ 1440              	.Ldebug_abbrev0:
+ 1441 0000 01       		.uleb128 0x1
+ 1442 0001 11       		.uleb128 0x11
+ 1443 0002 01       		.byte	0x1
+ 1444 0003 25       		.uleb128 0x25
+ 1445 0004 0E       		.uleb128 0xe
+ 1446 0005 13       		.uleb128 0x13
+ 1447 0006 0B       		.uleb128 0xb
+ 1448 0007 03       		.uleb128 0x3
+ 1449 0008 0E       		.uleb128 0xe
+ 1450 0009 1B       		.uleb128 0x1b
+ 1451 000a 0E       		.uleb128 0xe
+ 1452 000b 55       		.uleb128 0x55
+ 1453 000c 17       		.uleb128 0x17
+ 1454 000d 11       		.uleb128 0x11
+ 1455 000e 01       		.uleb128 0x1
+ 1456 000f 10       		.uleb128 0x10
+ 1457 0010 17       		.uleb128 0x17
+ 1458 0011 00       		.byte	0
+ 1459 0012 00       		.byte	0
+ 1460 0013 02       		.uleb128 0x2
+ 1461 0014 24       		.uleb128 0x24
+ 1462 0015 00       		.byte	0
+ 1463 0016 0B       		.uleb128 0xb
+ 1464 0017 0B       		.uleb128 0xb
+ 1465 0018 3E       		.uleb128 0x3e
+ 1466 0019 0B       		.uleb128 0xb
+ 1467 001a 03       		.uleb128 0x3
+ 1468 001b 0E       		.uleb128 0xe
+ 1469 001c 00       		.byte	0
+ 1470 001d 00       		.byte	0
+ 1471 001e 03       		.uleb128 0x3
+ 1472 001f 16       		.uleb128 0x16
+ 1473 0020 00       		.byte	0
+ 1474 0021 03       		.uleb128 0x3
+ 1475 0022 0E       		.uleb128 0xe
+ 1476 0023 3A       		.uleb128 0x3a
+ 1477 0024 0B       		.uleb128 0xb
+ 1478 0025 3B       		.uleb128 0x3b
+ 1479 0026 0B       		.uleb128 0xb
+ 1480 0027 49       		.uleb128 0x49
+ 1481 0028 13       		.uleb128 0x13
+ 1482 0029 00       		.byte	0
+ 1483 002a 00       		.byte	0
+ 1484 002b 04       		.uleb128 0x4
+ 1485 002c 24       		.uleb128 0x24
+ 1486 002d 00       		.byte	0
+ 1487 002e 0B       		.uleb128 0xb
+ 1488 002f 0B       		.uleb128 0xb
+ 1489 0030 3E       		.uleb128 0x3e
+ 1490 0031 0B       		.uleb128 0xb
+ 1491 0032 03       		.uleb128 0x3
+ 1492 0033 08       		.uleb128 0x8
+ 1493 0034 00       		.byte	0
+ 1494 0035 00       		.byte	0
+ 1495 0036 05       		.uleb128 0x5
+ 1496 0037 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 30
+
+
+ 1497 0038 00       		.byte	0
+ 1498 0039 0B       		.uleb128 0xb
+ 1499 003a 0B       		.uleb128 0xb
+ 1500 003b 49       		.uleb128 0x49
+ 1501 003c 13       		.uleb128 0x13
+ 1502 003d 00       		.byte	0
+ 1503 003e 00       		.byte	0
+ 1504 003f 06       		.uleb128 0x6
+ 1505 0040 2E       		.uleb128 0x2e
+ 1506 0041 00       		.byte	0
+ 1507 0042 3F       		.uleb128 0x3f
+ 1508 0043 19       		.uleb128 0x19
+ 1509 0044 03       		.uleb128 0x3
+ 1510 0045 0E       		.uleb128 0xe
+ 1511 0046 3A       		.uleb128 0x3a
+ 1512 0047 0B       		.uleb128 0xb
+ 1513 0048 3B       		.uleb128 0x3b
+ 1514 0049 0B       		.uleb128 0xb
+ 1515 004a 11       		.uleb128 0x11
+ 1516 004b 01       		.uleb128 0x1
+ 1517 004c 12       		.uleb128 0x12
+ 1518 004d 06       		.uleb128 0x6
+ 1519 004e 40       		.uleb128 0x40
+ 1520 004f 18       		.uleb128 0x18
+ 1521 0050 9742     		.uleb128 0x2117
+ 1522 0052 19       		.uleb128 0x19
+ 1523 0053 00       		.byte	0
+ 1524 0054 00       		.byte	0
+ 1525 0055 07       		.uleb128 0x7
+ 1526 0056 2E       		.uleb128 0x2e
+ 1527 0057 01       		.byte	0x1
+ 1528 0058 3F       		.uleb128 0x3f
+ 1529 0059 19       		.uleb128 0x19
+ 1530 005a 03       		.uleb128 0x3
+ 1531 005b 0E       		.uleb128 0xe
+ 1532 005c 3A       		.uleb128 0x3a
+ 1533 005d 0B       		.uleb128 0xb
+ 1534 005e 3B       		.uleb128 0x3b
+ 1535 005f 0B       		.uleb128 0xb
+ 1536 0060 11       		.uleb128 0x11
+ 1537 0061 01       		.uleb128 0x1
+ 1538 0062 12       		.uleb128 0x12
+ 1539 0063 06       		.uleb128 0x6
+ 1540 0064 40       		.uleb128 0x40
+ 1541 0065 18       		.uleb128 0x18
+ 1542 0066 9742     		.uleb128 0x2117
+ 1543 0068 19       		.uleb128 0x19
+ 1544 0069 01       		.uleb128 0x1
+ 1545 006a 13       		.uleb128 0x13
+ 1546 006b 00       		.byte	0
+ 1547 006c 00       		.byte	0
+ 1548 006d 08       		.uleb128 0x8
+ 1549 006e 34       		.uleb128 0x34
+ 1550 006f 00       		.byte	0
+ 1551 0070 03       		.uleb128 0x3
+ 1552 0071 08       		.uleb128 0x8
+ 1553 0072 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 31
+
+
+ 1554 0073 0B       		.uleb128 0xb
+ 1555 0074 3B       		.uleb128 0x3b
+ 1556 0075 0B       		.uleb128 0xb
+ 1557 0076 49       		.uleb128 0x49
+ 1558 0077 13       		.uleb128 0x13
+ 1559 0078 02       		.uleb128 0x2
+ 1560 0079 17       		.uleb128 0x17
+ 1561 007a 00       		.byte	0
+ 1562 007b 00       		.byte	0
+ 1563 007c 09       		.uleb128 0x9
+ 1564 007d 898201   		.uleb128 0x4109
+ 1565 0080 01       		.byte	0x1
+ 1566 0081 11       		.uleb128 0x11
+ 1567 0082 01       		.uleb128 0x1
+ 1568 0083 31       		.uleb128 0x31
+ 1569 0084 13       		.uleb128 0x13
+ 1570 0085 01       		.uleb128 0x1
+ 1571 0086 13       		.uleb128 0x13
+ 1572 0087 00       		.byte	0
+ 1573 0088 00       		.byte	0
+ 1574 0089 0A       		.uleb128 0xa
+ 1575 008a 8A8201   		.uleb128 0x410a
+ 1576 008d 00       		.byte	0
+ 1577 008e 02       		.uleb128 0x2
+ 1578 008f 18       		.uleb128 0x18
+ 1579 0090 9142     		.uleb128 0x2111
+ 1580 0092 18       		.uleb128 0x18
+ 1581 0093 00       		.byte	0
+ 1582 0094 00       		.byte	0
+ 1583 0095 0B       		.uleb128 0xb
+ 1584 0096 898201   		.uleb128 0x4109
+ 1585 0099 00       		.byte	0
+ 1586 009a 11       		.uleb128 0x11
+ 1587 009b 01       		.uleb128 0x1
+ 1588 009c 31       		.uleb128 0x31
+ 1589 009d 13       		.uleb128 0x13
+ 1590 009e 00       		.byte	0
+ 1591 009f 00       		.byte	0
+ 1592 00a0 0C       		.uleb128 0xc
+ 1593 00a1 898201   		.uleb128 0x4109
+ 1594 00a4 01       		.byte	0x1
+ 1595 00a5 11       		.uleb128 0x11
+ 1596 00a6 01       		.uleb128 0x1
+ 1597 00a7 31       		.uleb128 0x31
+ 1598 00a8 13       		.uleb128 0x13
+ 1599 00a9 00       		.byte	0
+ 1600 00aa 00       		.byte	0
+ 1601 00ab 0D       		.uleb128 0xd
+ 1602 00ac 2E       		.uleb128 0x2e
+ 1603 00ad 01       		.byte	0x1
+ 1604 00ae 3F       		.uleb128 0x3f
+ 1605 00af 19       		.uleb128 0x19
+ 1606 00b0 03       		.uleb128 0x3
+ 1607 00b1 0E       		.uleb128 0xe
+ 1608 00b2 3A       		.uleb128 0x3a
+ 1609 00b3 0B       		.uleb128 0xb
+ 1610 00b4 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 32
+
+
+ 1611 00b5 0B       		.uleb128 0xb
+ 1612 00b6 27       		.uleb128 0x27
+ 1613 00b7 19       		.uleb128 0x19
+ 1614 00b8 11       		.uleb128 0x11
+ 1615 00b9 01       		.uleb128 0x1
+ 1616 00ba 12       		.uleb128 0x12
+ 1617 00bb 06       		.uleb128 0x6
+ 1618 00bc 40       		.uleb128 0x40
+ 1619 00bd 18       		.uleb128 0x18
+ 1620 00be 9642     		.uleb128 0x2116
+ 1621 00c0 19       		.uleb128 0x19
+ 1622 00c1 01       		.uleb128 0x1
+ 1623 00c2 13       		.uleb128 0x13
+ 1624 00c3 00       		.byte	0
+ 1625 00c4 00       		.byte	0
+ 1626 00c5 0E       		.uleb128 0xe
+ 1627 00c6 05       		.uleb128 0x5
+ 1628 00c7 00       		.byte	0
+ 1629 00c8 03       		.uleb128 0x3
+ 1630 00c9 08       		.uleb128 0x8
+ 1631 00ca 3A       		.uleb128 0x3a
+ 1632 00cb 0B       		.uleb128 0xb
+ 1633 00cc 3B       		.uleb128 0x3b
+ 1634 00cd 0B       		.uleb128 0xb
+ 1635 00ce 49       		.uleb128 0x49
+ 1636 00cf 13       		.uleb128 0x13
+ 1637 00d0 02       		.uleb128 0x2
+ 1638 00d1 17       		.uleb128 0x17
+ 1639 00d2 00       		.byte	0
+ 1640 00d3 00       		.byte	0
+ 1641 00d4 0F       		.uleb128 0xf
+ 1642 00d5 2E       		.uleb128 0x2e
+ 1643 00d6 01       		.byte	0x1
+ 1644 00d7 3F       		.uleb128 0x3f
+ 1645 00d8 19       		.uleb128 0x19
+ 1646 00d9 03       		.uleb128 0x3
+ 1647 00da 0E       		.uleb128 0xe
+ 1648 00db 3A       		.uleb128 0x3a
+ 1649 00dc 0B       		.uleb128 0xb
+ 1650 00dd 3B       		.uleb128 0x3b
+ 1651 00de 0B       		.uleb128 0xb
+ 1652 00df 49       		.uleb128 0x49
+ 1653 00e0 13       		.uleb128 0x13
+ 1654 00e1 11       		.uleb128 0x11
+ 1655 00e2 01       		.uleb128 0x1
+ 1656 00e3 12       		.uleb128 0x12
+ 1657 00e4 06       		.uleb128 0x6
+ 1658 00e5 40       		.uleb128 0x40
+ 1659 00e6 18       		.uleb128 0x18
+ 1660 00e7 9742     		.uleb128 0x2117
+ 1661 00e9 19       		.uleb128 0x19
+ 1662 00ea 01       		.uleb128 0x1
+ 1663 00eb 13       		.uleb128 0x13
+ 1664 00ec 00       		.byte	0
+ 1665 00ed 00       		.byte	0
+ 1666 00ee 10       		.uleb128 0x10
+ 1667 00ef 34       		.uleb128 0x34
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 33
+
+
+ 1668 00f0 00       		.byte	0
+ 1669 00f1 03       		.uleb128 0x3
+ 1670 00f2 0E       		.uleb128 0xe
+ 1671 00f3 3A       		.uleb128 0x3a
+ 1672 00f4 0B       		.uleb128 0xb
+ 1673 00f5 3B       		.uleb128 0x3b
+ 1674 00f6 0B       		.uleb128 0xb
+ 1675 00f7 49       		.uleb128 0x49
+ 1676 00f8 13       		.uleb128 0x13
+ 1677 00f9 02       		.uleb128 0x2
+ 1678 00fa 18       		.uleb128 0x18
+ 1679 00fb 00       		.byte	0
+ 1680 00fc 00       		.byte	0
+ 1681 00fd 11       		.uleb128 0x11
+ 1682 00fe 01       		.uleb128 0x1
+ 1683 00ff 01       		.byte	0x1
+ 1684 0100 49       		.uleb128 0x49
+ 1685 0101 13       		.uleb128 0x13
+ 1686 0102 01       		.uleb128 0x1
+ 1687 0103 13       		.uleb128 0x13
+ 1688 0104 00       		.byte	0
+ 1689 0105 00       		.byte	0
+ 1690 0106 12       		.uleb128 0x12
+ 1691 0107 21       		.uleb128 0x21
+ 1692 0108 00       		.byte	0
+ 1693 0109 49       		.uleb128 0x49
+ 1694 010a 13       		.uleb128 0x13
+ 1695 010b 2F       		.uleb128 0x2f
+ 1696 010c 0B       		.uleb128 0xb
+ 1697 010d 00       		.byte	0
+ 1698 010e 00       		.byte	0
+ 1699 010f 13       		.uleb128 0x13
+ 1700 0110 34       		.uleb128 0x34
+ 1701 0111 00       		.byte	0
+ 1702 0112 03       		.uleb128 0x3
+ 1703 0113 0E       		.uleb128 0xe
+ 1704 0114 3A       		.uleb128 0x3a
+ 1705 0115 0B       		.uleb128 0xb
+ 1706 0116 3B       		.uleb128 0x3b
+ 1707 0117 05       		.uleb128 0x5
+ 1708 0118 49       		.uleb128 0x49
+ 1709 0119 13       		.uleb128 0x13
+ 1710 011a 3F       		.uleb128 0x3f
+ 1711 011b 19       		.uleb128 0x19
+ 1712 011c 3C       		.uleb128 0x3c
+ 1713 011d 19       		.uleb128 0x19
+ 1714 011e 00       		.byte	0
+ 1715 011f 00       		.byte	0
+ 1716 0120 14       		.uleb128 0x14
+ 1717 0121 35       		.uleb128 0x35
+ 1718 0122 00       		.byte	0
+ 1719 0123 49       		.uleb128 0x49
+ 1720 0124 13       		.uleb128 0x13
+ 1721 0125 00       		.byte	0
+ 1722 0126 00       		.byte	0
+ 1723 0127 15       		.uleb128 0x15
+ 1724 0128 34       		.uleb128 0x34
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 34
+
+
+ 1725 0129 00       		.byte	0
+ 1726 012a 03       		.uleb128 0x3
+ 1727 012b 0E       		.uleb128 0xe
+ 1728 012c 3A       		.uleb128 0x3a
+ 1729 012d 0B       		.uleb128 0xb
+ 1730 012e 3B       		.uleb128 0x3b
+ 1731 012f 0B       		.uleb128 0xb
+ 1732 0130 49       		.uleb128 0x49
+ 1733 0131 13       		.uleb128 0x13
+ 1734 0132 3F       		.uleb128 0x3f
+ 1735 0133 19       		.uleb128 0x19
+ 1736 0134 02       		.uleb128 0x2
+ 1737 0135 18       		.uleb128 0x18
+ 1738 0136 00       		.byte	0
+ 1739 0137 00       		.byte	0
+ 1740 0138 16       		.uleb128 0x16
+ 1741 0139 2E       		.uleb128 0x2e
+ 1742 013a 01       		.byte	0x1
+ 1743 013b 3F       		.uleb128 0x3f
+ 1744 013c 19       		.uleb128 0x19
+ 1745 013d 03       		.uleb128 0x3
+ 1746 013e 0E       		.uleb128 0xe
+ 1747 013f 3A       		.uleb128 0x3a
+ 1748 0140 0B       		.uleb128 0xb
+ 1749 0141 3B       		.uleb128 0x3b
+ 1750 0142 0B       		.uleb128 0xb
+ 1751 0143 27       		.uleb128 0x27
+ 1752 0144 19       		.uleb128 0x19
+ 1753 0145 3C       		.uleb128 0x3c
+ 1754 0146 19       		.uleb128 0x19
+ 1755 0147 01       		.uleb128 0x1
+ 1756 0148 13       		.uleb128 0x13
+ 1757 0149 00       		.byte	0
+ 1758 014a 00       		.byte	0
+ 1759 014b 17       		.uleb128 0x17
+ 1760 014c 05       		.uleb128 0x5
+ 1761 014d 00       		.byte	0
+ 1762 014e 49       		.uleb128 0x49
+ 1763 014f 13       		.uleb128 0x13
+ 1764 0150 00       		.byte	0
+ 1765 0151 00       		.byte	0
+ 1766 0152 18       		.uleb128 0x18
+ 1767 0153 2E       		.uleb128 0x2e
+ 1768 0154 00       		.byte	0
+ 1769 0155 3F       		.uleb128 0x3f
+ 1770 0156 19       		.uleb128 0x19
+ 1771 0157 03       		.uleb128 0x3
+ 1772 0158 0E       		.uleb128 0xe
+ 1773 0159 3A       		.uleb128 0x3a
+ 1774 015a 0B       		.uleb128 0xb
+ 1775 015b 3B       		.uleb128 0x3b
+ 1776 015c 0B       		.uleb128 0xb
+ 1777 015d 27       		.uleb128 0x27
+ 1778 015e 19       		.uleb128 0x19
+ 1779 015f 49       		.uleb128 0x49
+ 1780 0160 13       		.uleb128 0x13
+ 1781 0161 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 35
+
+
+ 1782 0162 19       		.uleb128 0x19
+ 1783 0163 00       		.byte	0
+ 1784 0164 00       		.byte	0
+ 1785 0165 00       		.byte	0
+ 1786              		.section	.debug_loc,"",%progbits
+ 1787              	.Ldebug_loc0:
+ 1788              	.LLST0:
+ 1789 0000 14000000 		.4byte	.LVL3
+ 1790 0004 94000000 		.4byte	.LVL22
+ 1791 0008 0100     		.2byte	0x1
+ 1792 000a 54       		.byte	0x54
+ 1793 000b 00000000 		.4byte	0
+ 1794 000f 00000000 		.4byte	0
+ 1795              	.LLST1:
+ 1796 0013 1A000000 		.4byte	.LVL5
+ 1797 0017 94000000 		.4byte	.LVL22
+ 1798 001b 0100     		.2byte	0x1
+ 1799 001d 55       		.byte	0x55
+ 1800 001e 00000000 		.4byte	0
+ 1801 0022 00000000 		.4byte	0
+ 1802              	.LLST2:
+ 1803 0026 00000000 		.4byte	.LVL23
+ 1804 002a 1C000000 		.4byte	.LVL24
+ 1805 002e 0100     		.2byte	0x1
+ 1806 0030 50       		.byte	0x50
+ 1807 0031 1C000000 		.4byte	.LVL24
+ 1808 0035 3A000000 		.4byte	.LVL29
+ 1809 0039 0100     		.2byte	0x1
+ 1810 003b 54       		.byte	0x54
+ 1811 003c 3A000000 		.4byte	.LVL29
+ 1812 0040 3C000000 		.4byte	.LVL30
+ 1813 0044 0100     		.2byte	0x1
+ 1814 0046 55       		.byte	0x55
+ 1815 0047 3C000000 		.4byte	.LVL30
+ 1816 004b 48000000 		.4byte	.LVL32
+ 1817 004f 0100     		.2byte	0x1
+ 1818 0051 54       		.byte	0x54
+ 1819 0052 48000000 		.4byte	.LVL32
+ 1820 0056 A2000000 		.4byte	.LVL45
+ 1821 005a 0100     		.2byte	0x1
+ 1822 005c 55       		.byte	0x55
+ 1823 005d 00000000 		.4byte	0
+ 1824 0061 00000000 		.4byte	0
+ 1825              	.LLST3:
+ 1826 0065 48000000 		.4byte	.LVL32
+ 1827 0069 4C000000 		.4byte	.LVL33
+ 1828 006d 0200     		.2byte	0x2
+ 1829 006f 30       		.byte	0x30
+ 1830 0070 9F       		.byte	0x9f
+ 1831 0071 4C000000 		.4byte	.LVL33
+ 1832 0075 A2000000 		.4byte	.LVL45
+ 1833 0079 0100     		.2byte	0x1
+ 1834 007b 54       		.byte	0x54
+ 1835 007c 00000000 		.4byte	0
+ 1836 0080 00000000 		.4byte	0
+ 1837              	.LLST4:
+ 1838 0084 00000000 		.4byte	.LVL46
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 36
+
+
+ 1839 0088 14000000 		.4byte	.LVL47
+ 1840 008c 0100     		.2byte	0x1
+ 1841 008e 50       		.byte	0x50
+ 1842 008f 14000000 		.4byte	.LVL47
+ 1843 0093 3C000000 		.4byte	.LVL52
+ 1844 0097 0400     		.2byte	0x4
+ 1845 0099 F3       		.byte	0xf3
+ 1846 009a 01       		.uleb128 0x1
+ 1847 009b 50       		.byte	0x50
+ 1848 009c 9F       		.byte	0x9f
+ 1849 009d 3C000000 		.4byte	.LVL52
+ 1850 00a1 3E000000 		.4byte	.LVL53
+ 1851 00a5 0100     		.2byte	0x1
+ 1852 00a7 55       		.byte	0x55
+ 1853 00a8 3E000000 		.4byte	.LVL53
+ 1854 00ac 4A000000 		.4byte	.LVL55
+ 1855 00b0 0400     		.2byte	0x4
+ 1856 00b2 F3       		.byte	0xf3
+ 1857 00b3 01       		.uleb128 0x1
+ 1858 00b4 50       		.byte	0x50
+ 1859 00b5 9F       		.byte	0x9f
+ 1860 00b6 4A000000 		.4byte	.LVL55
+ 1861 00ba A4000000 		.4byte	.LVL68
+ 1862 00be 0100     		.2byte	0x1
+ 1863 00c0 55       		.byte	0x55
+ 1864 00c1 00000000 		.4byte	0
+ 1865 00c5 00000000 		.4byte	0
+ 1866              	.LLST5:
+ 1867 00c9 4A000000 		.4byte	.LVL55
+ 1868 00cd 4E000000 		.4byte	.LVL56
+ 1869 00d1 0200     		.2byte	0x2
+ 1870 00d3 30       		.byte	0x30
+ 1871 00d4 9F       		.byte	0x9f
+ 1872 00d5 4E000000 		.4byte	.LVL56
+ 1873 00d9 A4000000 		.4byte	.LVL68
+ 1874 00dd 0100     		.2byte	0x1
+ 1875 00df 54       		.byte	0x54
+ 1876 00e0 00000000 		.4byte	0
+ 1877 00e4 00000000 		.4byte	0
+ 1878              	.LLST6:
+ 1879 00e8 02000000 		.4byte	.LVL69
+ 1880 00ec 08000000 		.4byte	.LVL70
+ 1881 00f0 0200     		.2byte	0x2
+ 1882 00f2 30       		.byte	0x30
+ 1883 00f3 9F       		.byte	0x9f
+ 1884 00f4 08000000 		.4byte	.LVL70
+ 1885 00f8 6C000000 		.4byte	.LVL86
+ 1886 00fc 0100     		.2byte	0x1
+ 1887 00fe 55       		.byte	0x55
+ 1888 00ff 00000000 		.4byte	0
+ 1889 0103 00000000 		.4byte	0
+ 1890              	.LLST7:
+ 1891 0107 02000000 		.4byte	.LVL69
+ 1892 010b 08000000 		.4byte	.LVL70
+ 1893 010f 0200     		.2byte	0x2
+ 1894 0111 31       		.byte	0x31
+ 1895 0112 9F       		.byte	0x9f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 37
+
+
+ 1896 0113 08000000 		.4byte	.LVL70
+ 1897 0117 6C000000 		.4byte	.LVL86
+ 1898 011b 0100     		.2byte	0x1
+ 1899 011d 56       		.byte	0x56
+ 1900 011e 00000000 		.4byte	0
+ 1901 0122 00000000 		.4byte	0
+ 1902              		.section	.debug_aranges,"",%progbits
+ 1903 0000 3C000000 		.4byte	0x3c
+ 1904 0004 0200     		.2byte	0x2
+ 1905 0006 00000000 		.4byte	.Ldebug_info0
+ 1906 000a 04       		.byte	0x4
+ 1907 000b 00       		.byte	0
+ 1908 000c 0000     		.2byte	0
+ 1909 000e 0000     		.2byte	0
+ 1910 0010 00000000 		.4byte	.LFB63
+ 1911 0014 02000000 		.4byte	.LFE63-.LFB63
+ 1912 0018 00000000 		.4byte	.LFB64
+ 1913 001c 9C000000 		.4byte	.LFE64-.LFB64
+ 1914 0020 00000000 		.4byte	.LFB65
+ 1915 0024 AC000000 		.4byte	.LFE65-.LFB65
+ 1916 0028 00000000 		.4byte	.LFB66
+ 1917 002c B0000000 		.4byte	.LFE66-.LFB66
+ 1918 0030 00000000 		.4byte	.LFB67
+ 1919 0034 70000000 		.4byte	.LFE67-.LFB67
+ 1920 0038 00000000 		.4byte	0
+ 1921 003c 00000000 		.4byte	0
+ 1922              		.section	.debug_ranges,"",%progbits
+ 1923              	.Ldebug_ranges0:
+ 1924 0000 00000000 		.4byte	.LFB63
+ 1925 0004 02000000 		.4byte	.LFE63
+ 1926 0008 00000000 		.4byte	.LFB64
+ 1927 000c 9C000000 		.4byte	.LFE64
+ 1928 0010 00000000 		.4byte	.LFB65
+ 1929 0014 AC000000 		.4byte	.LFE65
+ 1930 0018 00000000 		.4byte	.LFB66
+ 1931 001c B0000000 		.4byte	.LFE66
+ 1932 0020 00000000 		.4byte	.LFB67
+ 1933 0024 70000000 		.4byte	.LFE67
+ 1934 0028 00000000 		.4byte	0
+ 1935 002c 00000000 		.4byte	0
+ 1936              		.section	.debug_line,"",%progbits
+ 1937              	.Ldebug_line0:
+ 1938 0000 7E030000 		.section	.debug_str,"MS",%progbits,1
+ 1938      02004902 
+ 1938      00000201 
+ 1938      FB0E0D00 
+ 1938      01010101 
+ 1939              	.LASF28:
+ 1940 0000 4C696D5F 		.ascii	"Lim_2_Read\000"
+ 1940      325F5265 
+ 1940      616400
+ 1941              	.LASF9:
+ 1942 000b 5F5F696E 		.ascii	"__int32_t\000"
+ 1942      7433325F 
+ 1942      7400
+ 1943              	.LASF3:
+ 1944 0015 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 38
+
+
+ 1944      7420756E 
+ 1944      7369676E 
+ 1944      65642069 
+ 1944      6E7400
+ 1945              	.LASF36:
+ 1946 0028 436F6C5F 		.ascii	"Col_1_Read\000"
+ 1946      315F5265 
+ 1946      616400
+ 1947              	.LASF38:
+ 1948 0033 436F6C5F 		.ascii	"Col_3_Read\000"
+ 1948      335F5265 
+ 1948      616400
+ 1949              	.LASF45:
+ 1950 003e 436F6C5F 		.ascii	"Col_10_Read\000"
+ 1950      31305F52 
+ 1950      65616400 
+ 1951              	.LASF31:
+ 1952 004a 5374705F 		.ascii	"Stp_1_Write\000"
+ 1952      315F5772 
+ 1952      69746500 
+ 1953              	.LASF14:
+ 1954 0056 666C6F61 		.ascii	"float\000"
+ 1954      7400
+ 1955              	.LASF30:
+ 1956 005c 4469725F 		.ascii	"Dir_2_Write\000"
+ 1956      325F5772 
+ 1956      69746500 
+ 1957              	.LASF0:
+ 1958 0068 7369676E 		.ascii	"signed char\000"
+ 1958      65642063 
+ 1958      68617200 
+ 1959              	.LASF1:
+ 1960 0074 756E7369 		.ascii	"unsigned char\000"
+ 1960      676E6564 
+ 1960      20636861 
+ 1960      7200
+ 1961              	.LASF25:
+ 1962 0082 536C705F 		.ascii	"Slp_1_Write\000"
+ 1962      315F5772 
+ 1962      69746500 
+ 1963              	.LASF51:
+ 1964 008e 6D6F7665 		.ascii	"move_home\000"
+ 1964      5F686F6D 
+ 1964      6500
+ 1965              	.LASF32:
+ 1966 0098 5374705F 		.ascii	"Stp_2_Write\000"
+ 1966      325F5772 
+ 1966      69746500 
+ 1967              	.LASF13:
+ 1968 00a4 696E7431 		.ascii	"int16\000"
+ 1968      3600
+ 1969              	.LASF5:
+ 1970 00aa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1970      20756E73 
+ 1970      69676E65 
+ 1970      6420696E 
+ 1970      7400
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 39
+
+
+ 1971              	.LASF22:
+ 1972 00bc 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1972      52784275 
+ 1972      66666572 
+ 1972      00
+ 1973              	.LASF50:
+ 1974 00c9 686F6D65 		.ascii	"home\000"
+ 1974      00
+ 1975              	.LASF29:
+ 1976 00ce 4469725F 		.ascii	"Dir_1_Write\000"
+ 1976      315F5772 
+ 1976      69746500 
+ 1977              	.LASF15:
+ 1978 00da 646F7562 		.ascii	"double\000"
+ 1978      6C6500
+ 1979              	.LASF27:
+ 1980 00e1 4C696D5F 		.ascii	"Lim_1_Read\000"
+ 1980      315F5265 
+ 1980      616400
+ 1981              	.LASF40:
+ 1982 00ec 436F6C5F 		.ascii	"Col_5_Read\000"
+ 1982      355F5265 
+ 1982      616400
+ 1983              	.LASF23:
+ 1984 00f7 785F706F 		.ascii	"x_pos\000"
+ 1984      7300
+ 1985              	.LASF37:
+ 1986 00fd 436F6C5F 		.ascii	"Col_2_Read\000"
+ 1986      325F5265 
+ 1986      616400
+ 1987              	.LASF12:
+ 1988 0108 75696E74 		.ascii	"uint32\000"
+ 1988      333200
+ 1989              	.LASF46:
+ 1990 010f 436F6C5F 		.ascii	"Col_11_Read\000"
+ 1990      31315F52 
+ 1990      65616400 
+ 1991              	.LASF8:
+ 1992 011b 756E7369 		.ascii	"unsigned int\000"
+ 1992      676E6564 
+ 1992      20696E74 
+ 1992      00
+ 1993              	.LASF7:
+ 1994 0128 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1994      206C6F6E 
+ 1994      6720756E 
+ 1994      7369676E 
+ 1994      65642069 
+ 1995              	.LASF43:
+ 1996 013f 436F6C5F 		.ascii	"Col_8_Read\000"
+ 1996      385F5265 
+ 1996      616400
+ 1997              	.LASF47:
+ 1998 014a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1998      4320342E 
+ 1998      392E3320 
+ 1998      32303135 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 40
+
+
+ 1998      30333033 
+ 1999 017d 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1999      20726576 
+ 1999      6973696F 
+ 1999      6E203232 
+ 1999      31323230 
+ 2000 01b0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2000      66756E63 
+ 2000      74696F6E 
+ 2000      2D736563 
+ 2000      74696F6E 
+ 2001              	.LASF48:
+ 2002 01d8 2E5C626F 		.ascii	".\\board.c\000"
+ 2002      6172642E 
+ 2002      6300
+ 2003              	.LASF11:
+ 2004 01e2 75696E74 		.ascii	"uint8\000"
+ 2004      3800
+ 2005              	.LASF10:
+ 2006 01e8 696E7433 		.ascii	"int32_t\000"
+ 2006      325F7400 
+ 2007              	.LASF17:
+ 2008 01f0 73697A65 		.ascii	"sizetype\000"
+ 2008      74797065 
+ 2008      00
+ 2009              	.LASF6:
+ 2010 01f9 6C6F6E67 		.ascii	"long long int\000"
+ 2010      206C6F6E 
+ 2010      6720696E 
+ 2010      7400
+ 2011              	.LASF26:
+ 2012 0207 536C705F 		.ascii	"Slp_2_Write\000"
+ 2012      325F5772 
+ 2012      69746500 
+ 2013              	.LASF24:
+ 2014 0213 795F706F 		.ascii	"y_pos\000"
+ 2014      7300
+ 2015              	.LASF49:
+ 2016 0219 433A5C55 		.ascii	"C:\\Users\\Kyle\\Documents\\PSoC Creator\\Workspace"
+ 2016      73657273 
+ 2016      5C4B796C 
+ 2016      655C446F 
+ 2016      63756D65 
+ 2017 0247 30315C4D 		.ascii	"01\\Microcontroller\\Microcontroller\\SeniorDesign."
+ 2017      6963726F 
+ 2017      636F6E74 
+ 2017      726F6C6C 
+ 2017      65725C4D 
+ 2018 0277 63796473 		.ascii	"cydsn\000"
+ 2018      6E00
+ 2019              	.LASF39:
+ 2020 027d 436F6C5F 		.ascii	"Col_4_Read\000"
+ 2020      345F5265 
+ 2020      616400
+ 2021              	.LASF44:
+ 2022 0288 436F6C5F 		.ascii	"Col_9_Read\000"
+ 2022      395F5265 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccizhOxd.s 			page 41
+
+
+ 2022      616400
+ 2023              	.LASF2:
+ 2024 0293 73686F72 		.ascii	"short int\000"
+ 2024      7420696E 
+ 2024      7400
+ 2025              	.LASF18:
+ 2026 029d 6D6F7665 		.ascii	"move_x\000"
+ 2026      5F7800
+ 2027              	.LASF19:
+ 2028 02a4 6D6F7665 		.ascii	"move_y\000"
+ 2028      5F7900
+ 2029              	.LASF41:
+ 2030 02ab 436F6C5F 		.ascii	"Col_6_Read\000"
+ 2030      365F5265 
+ 2030      616400
+ 2031              	.LASF20:
+ 2032 02b6 72656164 		.ascii	"read_reed_switches\000"
+ 2032      5F726565 
+ 2032      645F7377 
+ 2032      69746368 
+ 2032      657300
+ 2033              	.LASF4:
+ 2034 02c9 6C6F6E67 		.ascii	"long int\000"
+ 2034      20696E74 
+ 2034      00
+ 2035              	.LASF16:
+ 2036 02d2 63686172 		.ascii	"char\000"
+ 2036      00
+ 2037              	.LASF42:
+ 2038 02d7 436F6C5F 		.ascii	"Col_7_Read\000"
+ 2038      375F5265 
+ 2038      616400
+ 2039              	.LASF34:
+ 2040 02e2 526F775F 		.ascii	"Row_Write\000"
+ 2040      57726974 
+ 2040      6500
+ 2041              	.LASF21:
+ 2042 02ec 626F6172 		.ascii	"board\000"
+ 2042      6400
+ 2043              	.LASF35:
+ 2044 02f2 436F6C5F 		.ascii	"Col_0_Read\000"
+ 2044      305F5265 
+ 2044      616400
+ 2045              	.LASF33:
+ 2046 02fd 43794465 		.ascii	"CyDelay\000"
+ 2046      6C617900 
+ 2047              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

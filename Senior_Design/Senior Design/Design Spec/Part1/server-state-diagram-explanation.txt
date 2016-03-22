@@ -1,0 +1,5 @@
+The server starts by initializing all the variables and structures it needs before players begin connecting to it. When one player connects, the server will have that player wait for an opponent to connect. Once two players are connected, the game will start.
+
+During the game, a cycle will occur until the game ends by checkmate or by stalemate. The cycle begins with the server waiting on a move from player one. Once it receives a move from player one, the server will send that move to player two. The server then does the same for player two: it waits for player two to make a move, then it will send that move to player one. As stated above, this cycle repeats until one of the players makes a move that is checkmate (wherein the server will verify the checkmate and end the game), or by stalemate. Either player can declare a stalemate at any time, and the server will announce this decision to both players.
+
+In the case of a player accidentally disconnecting from the server, the server will alert the still-connected player and allow 5 minutes for the dropped player to re-connect. If the player does not reconnect in the allotted time, the game will end in a draw.
