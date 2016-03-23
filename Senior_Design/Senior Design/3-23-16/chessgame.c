@@ -55,6 +55,8 @@ int rightRookBMovedOnce = 0;
 int rightRookWMovedOnce = 0;
 int castleConfirmed = 0;
 int testing = 0;
+  
+char goodMove[9];
 
 void initStartState();
 void printState();
@@ -98,7 +100,13 @@ char getPieceFromPos(int fromX, int fromY) {
 
 //allows user to play the game based on input
 void playturn() {
-  int goodMove[1];
+  //int goodMove[1];
+	//moved to global
+  int reset;
+  for(reset = 0; reset < 9; reset++){
+  	goodMove[reset] = '\0';
+  }
+  
   int listen_fd;
   struct sockaddr_in servaddr;
   listen_fd = socket(AF_INET, SOCK_STREAM,0);
@@ -154,7 +162,9 @@ void playturn() {
       }
       if(!move){
       	goodMove[0] = 0;
-    	write(comm_fd,goodMove,1);
+
+      	//change write to write to comm_fd(goodmove, 2 potential moves)
+    	write(comm_fd,goodMove,9);
       }
 	}
     
@@ -208,7 +218,8 @@ void playturn() {
     if(yourcolor == WHITE) {yourcolor = BLACK; theircolor = WHITE;}
     else if(yourcolor == BLACK) {yourcolor = WHITE; theircolor = BLACK;}
     goodMove[0] = 1;
-    write(comm_fd,goodMove,1);
+    //write(comm_fd,goodMove,1);
+    write(comm_fd,goodMove,9);
   }
 }
 
@@ -276,17 +287,26 @@ void initTestState(){
 }
 
 int testMoveForCheck(transition t){
+	goodMove[1] = (char)t.fromRow; 
+  	goodMove[2] = (char)t.fromCol;
+  	goodMove[3] = (char)t.toRow;
+  	goodMove[4] = (char)t.toCol;
 
   if(teststate[t.toRow][t.toCol] != '\0'){
-
-      moveToGraveyard(teststate[t.toRow][t.toCol]);
+  	goodMove[5] = (char)t.toRow;
+  	goodMove[6] = (char) t.toCol;
+    moveToGraveyard(teststate[t.toRow][t.toCol]);
   }
   teststate[t.fromRow][t.fromCol] = EMPTY;
   teststate[t.toRow][t.toCol] = t.piece;
   if(enpassantW){
+  	goodMove[5] = (char)t.toRow-1;
+  	goodMove[6] = (char) t.toCol;
     moveToGraveyard(state[t.toRow-1][t.toCol]);
     teststate[t.toRow-1][t.toCol] = EMPTY;
   }else if(enpassantB){
+  	goodMove[5] = (char)t.toRow+1;
+  	goodMove[6] = (char) t.toCol;
     moveToGraveyard(state[t.toRow+1][t.toCol]);
     teststate[t.toRow+1][t.toCol] = EMPTY;
   }  
@@ -297,15 +317,31 @@ int testMoveForCheck(transition t){
       if(castleConfirmed == 1){
         teststate[0][2] = EMPTY;
         teststate[0][5] = WROOK;
+        goodMove[5] = (char)0;
+  		goodMove[6] = (char)2;
+  		goodMove[7] = (char)0;
+  		goodMove[8] = (char)5;
       }else if(castleConfirmed ==2){
         teststate[0][9] = EMPTY;
         teststate[0][7] = WROOK;
+        goodMove[5] = (char)0;
+  		goodMove[6] = (char)9;
+  		goodMove[7] = (char)0;
+  		goodMove[8] = (char)7;
       }else if(castleConfirmed ==3){
         teststate[7][2] = EMPTY;
         teststate[7][5] = BROOK;
+        goodMove[5] = (char)7;
+  		goodMove[6] = (char)2;
+  		goodMove[7] = (char)7;
+  		goodMove[8] = (char)5;
       }else{
         teststate[7][9] = EMPTY;
         teststate[7][7] = BROOK;
+        goodMove[5] = (char)7;
+  		goodMove[6] = (char)9;
+  		goodMove[7] = (char)7;
+  		goodMove[8] = (char)2;
       }
     }
   }
@@ -707,6 +743,8 @@ void moveToGraveyard(char piece){
       for(j = 0; j < 8; j++){
         if(teststate[j][i] == '\0'){
           teststate[j][i] = piece;
+  		  goodMove[7] = (char)j;
+  		  goodMove[8] = (char)i;
           return;
         }
       }
@@ -716,6 +754,8 @@ void moveToGraveyard(char piece){
         for(j = 0; j < 8; j++){
           if(teststate[j][i] == '\0'){
             teststate[j][i] = piece;
+            goodMove[7] = (char)j;
+  		  	goodMove[8] = (char)i;
             return;
           }
         }
