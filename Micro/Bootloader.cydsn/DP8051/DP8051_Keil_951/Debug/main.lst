@@ -1,0 +1,109 @@
+C51 COMPILER V9.51   MAIN                                                                  03/29/2016 02:24:01 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\main.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_
+                    -Keil_951\Debug/main.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include <stdlib.h>
+   3          
+   4          int main() {
+   5   1          
+   6   1          init();
+   7   1          
+   8   1          while(1) {
+   9   2              char message[8];
+  10   2              uint8 i, j = 0;
+  11   2              uint8 temp = 0;
+  12   2              while(temp < 1) {
+  13   3                  temp = Debug_UART_GetRxBufferSize();
+  14   3              }
+  15   2              message[j] = (char) Debug_UART_GetByte();
+  16   2              while(message[j++] != '\r' && j < 8) {
+  17   3                  uint8 temp = 0;
+  18   3                  while(temp < 1) {
+  19   4                      temp = Debug_UART_GetRxBufferSize();
+  20   4                  }
+  21   3                  message[j] = (char) Debug_UART_GetByte();
+  22   3              }
+  23   2              char num[4];
+*** ERROR C141 IN LINE 23 OF .\main.c: syntax error near 'char'
+*** ERROR C202 IN LINE 23 OF .\main.c: 'num': undefined identifier
+  24   2              switch (message[0]) {
+  25   3                  case 'x' :
+  26   3                      Debug_UART_PutChar(message[0]);
+  27   3                      if(j > 2) {
+  28   4                          for(i = 3; i < j; i++) {
+  29   5                              num[i-3] = message[i];
+*** ERROR C202 IN LINE 29 OF .\main.c: 'num': undefined identifier
+  30   5                          }
+  31   4                          Debug_UART_PutChar(atoi(num));
+*** ERROR C202 IN LINE 31 OF .\main.c: 'num': undefined identifier
+  32   4                          if(message[2] == '-') {
+  33   5                              move_x((int16) (atoi(num)*-1));
+*** ERROR C202 IN LINE 33 OF .\main.c: 'num': undefined identifier
+  34   5                          } else {
+  35   5                              move_x((int16) (atoi(num)));
+*** ERROR C202 IN LINE 35 OF .\main.c: 'num': undefined identifier
+  36   5                          }
+  37   4                      }
+  38   3                      break;  
+  39   3                  case 'y' :
+  40   3                      Debug_UART_PutChar(message[0]);
+  41   3                      if(j > 2) {
+  42   4                          for(i = 3; i < j; i++) {
+  43   5                              num[i-3] = message[i];
+*** ERROR C202 IN LINE 43 OF .\main.c: 'num': undefined identifier
+  44   5                          }
+  45   4                          Debug_UART_PutChar(atoi(num));
+*** ERROR C202 IN LINE 45 OF .\main.c: 'num': undefined identifier
+C51 COMPILER V9.51   MAIN                                                                  03/29/2016 02:24:01 PAGE 2   
+
+  46   4                          if(message[2] == '-') {
+  47   5                              move_y((int16) (atoi(num)*-1));
+*** ERROR C202 IN LINE 47 OF .\main.c: 'num': undefined identifier
+  48   5                          } else {
+  49   5                              move_y((int16) (atoi(num)));
+*** ERROR C202 IN LINE 49 OF .\main.c: 'num': undefined identifier
+  50   5                          }
+  51   4                      }
+  52   3                      break;  
+  53   3                  case 'h' :
+  54   3                      Debug_UART_PutChar(message[0]);
+  55   3                      move_home();
+  56   3                      break;
+  57   3                  case 'e' :
+  58   3                      Debug_UART_PutChar(message[0]);
+  59   3                      if(message[2] == 'o' && message[3] == 'n') {
+  60   4                          Debug_UART_PutString("on");
+  61   4                          Em_Write(1);
+  62   4                      } else {
+  63   4                          Debug_UART_PutString("off");
+  64   4                          Em_Write(0);
+  65   4                      }
+  66   3                      break;
+  67   3                  default :
+  68   3                      break;
+  69   3              }   
+  70   2          }
+  71   1      }
+  72          
+  73          void init() {
+  74   1          CyGlobalIntEnable;
+  75   1          
+  76   1          Bootloader_Start();
+  77   1          
+  78   1          Debug_UART_Start();
+  79   1          Debug_UART_PutString("CSE 4940: Wireless Chess Board\n\n");
+  80   1          
+  81   1          Esp_UART_Start();
+  82   1          
+  83   1          LCD_Start();
+  84   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  10 ERROR(S)

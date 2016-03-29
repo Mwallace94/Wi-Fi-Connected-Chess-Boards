@@ -1,0 +1,15 @@
+--------------- Build Started: 03/29/2016 02:24:00 Project: Bootloader, Configuration: DP8051 Keil 9.51 Debug ---------------
+The code generation step is up to date.
+c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/main.lst) CD OT(2 ,Size) OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+ERROR: .\main.c:23: syntax error near 'char'
+ERROR: .\main.c:23: 'num': undefined identifier
+ERROR: .\main.c:29: 'num': undefined identifier
+ERROR: .\main.c:31: 'num': undefined identifier
+ERROR: .\main.c:33: 'num': undefined identifier
+ERROR: .\main.c:35: 'num': undefined identifier
+ERROR: .\main.c:43: 'num': undefined identifier
+ERROR: .\main.c:45: 'num': undefined identifier
+ERROR: .\main.c:47: 'num': undefined identifier
+ERROR: .\main.c:49: 'num': undefined identifier
+The command 'c51.exe' failed with exit code '2'.
+--------------- Build Failed: 03/29/2016 02:24:01 ---------------
