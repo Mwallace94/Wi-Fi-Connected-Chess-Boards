@@ -1,0 +1,1724 @@
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Debug_UART_BOOT.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Debug_UART_CyBtldrCommStart,"ax",%progbits
+  19              		.align	2
+  20              		.global	Debug_UART_CyBtldrCommStart
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Debug_UART_CyBtldrCommStart, %function
+  24              	Debug_UART_CyBtldrCommStart:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Debug_UART_BOOT.c"
+   1:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * File Name: Debug_UART_BOOT.c
+   3:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Version 2.50
+   4:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+   5:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Description:
+   6:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  This file provides the source code of bootloader communication APIs for the
+   7:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  UART component.
+   8:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+   9:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Note:
+  10:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  11:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  18:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** #include "Debug_UART.h"
+  19:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  20:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** #if defined(CYDEV_BOOTLOADER_IO_COMP) && (0u != ((CYDEV_BOOTLOADER_IO_COMP == CyBtldr_Debug_UART) |
+  21:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                                           (CYDEV_BOOTLOADER_IO_COMP == CyBtldr_Custom_Interface)))
+  22:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  23:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  24:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Function Name: Debug_UART_CyBtldrCommStart
+  26:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  28:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Summary:
+  29:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  Starts the UART communication component.
+  30:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  31:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Parameters:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  33:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  34:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Return:
+  35:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  36:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  37:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Side Effects:
+  38:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  This component automatically enables global interrupt.
+  39:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  40:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+  41:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** void Debug_UART_CyBtldrCommStart(void) CYSMALL 
+  42:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** {
+  27              		.loc 1 42 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  43:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Start UART component and clear the Tx,Rx buffers */
+  44:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_Start();
+  35              		.loc 1 44 0
+  36 0002 FFF7FEFF 		bl	Debug_UART_Start
+  37              	.LVL0:
+  45:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_ClearRxBuffer();
+  38              		.loc 1 45 0
+  39 0006 FFF7FEFF 		bl	Debug_UART_ClearRxBuffer
+  40              	.LVL1:
+  46:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_ClearTxBuffer();
+  41              		.loc 1 46 0
+  42 000a FFF7FEFF 		bl	Debug_UART_ClearTxBuffer
+  43              	.LVL2:
+  44 000e 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE0:
+  47              		.size	Debug_UART_CyBtldrCommStart, .-Debug_UART_CyBtldrCommStart
+  48              		.section	.text.Debug_UART_CyBtldrCommStop,"ax",%progbits
+  49              		.align	2
+  50              		.global	Debug_UART_CyBtldrCommStop
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	Debug_UART_CyBtldrCommStop, %function
+  54              	Debug_UART_CyBtldrCommStop:
+  55              	.LFB1:
+  47:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** }
+  48:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  49:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  50:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Function Name: Debug_UART_CyBtldrCommStop
+  52:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  54:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Summary:
+  55:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  Disables the communication component and disables the interrupt.
+  56:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  57:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Parameters:
+  58:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  59:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 3
+
+
+  60:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Return:
+  61:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  62:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  63:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** void Debug_UART_CyBtldrCommStop(void) CYSMALL 
+  65:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** {
+  56              		.loc 1 65 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0000 08B5     		push	{r3, lr}
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  66:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Stop UART component */
+  67:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_Stop();
+  64              		.loc 1 67 0
+  65 0002 FFF7FEFF 		bl	Debug_UART_Stop
+  66              	.LVL3:
+  67 0006 08BD     		pop	{r3, pc}
+  68              		.cfi_endproc
+  69              	.LFE1:
+  70              		.size	Debug_UART_CyBtldrCommStop, .-Debug_UART_CyBtldrCommStop
+  71              		.section	.text.Debug_UART_CyBtldrCommReset,"ax",%progbits
+  72              		.align	2
+  73              		.global	Debug_UART_CyBtldrCommReset
+  74              		.thumb
+  75              		.thumb_func
+  76              		.type	Debug_UART_CyBtldrCommReset, %function
+  77              	Debug_UART_CyBtldrCommReset:
+  78              	.LFB2:
+  68:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** }
+  69:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  70:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  71:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+  72:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Function Name: Debug_UART_CyBtldrCommReset
+  73:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+  74:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  75:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Summary:
+  76:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  Resets the receive and transmit communication Buffers.
+  77:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  78:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Parameters:
+  79:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  80:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  81:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Return:
+  82:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  None
+  83:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  84:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+  85:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** void Debug_UART_CyBtldrCommReset(void) CYSMALL 
+  86:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** {
+  79              		.loc 1 86 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83 0000 08B5     		push	{r3, lr}
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 3, -8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 4
+
+
+  86              		.cfi_offset 14, -4
+  87:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Clear RX and TX buffers */
+  88:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_ClearRxBuffer();
+  87              		.loc 1 88 0
+  88 0002 FFF7FEFF 		bl	Debug_UART_ClearRxBuffer
+  89              	.LVL4:
+  89:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_ClearTxBuffer();
+  90              		.loc 1 89 0
+  91 0006 FFF7FEFF 		bl	Debug_UART_ClearTxBuffer
+  92              	.LVL5:
+  93 000a 08BD     		pop	{r3, pc}
+  94              		.cfi_endproc
+  95              	.LFE2:
+  96              		.size	Debug_UART_CyBtldrCommReset, .-Debug_UART_CyBtldrCommReset
+  97              		.section	.text.Debug_UART_CyBtldrCommWrite,"ax",%progbits
+  98              		.align	2
+  99              		.global	Debug_UART_CyBtldrCommWrite
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	Debug_UART_CyBtldrCommWrite, %function
+ 103              	Debug_UART_CyBtldrCommWrite:
+ 104              	.LFB3:
+  90:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** }
+  91:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  92:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+  93:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+  94:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Function Name: Debug_UART_CyBtldrCommWrite
+  95:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+  96:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+  97:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Summary:
+  98:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  Allows the caller to write data to the boot loader host. This function uses
+  99:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * a blocking write function for writing data using UART communication component.
+ 100:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 101:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Parameters:
+ 102:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  pData:    A pointer to the block of data to send to the device
+ 103:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  size:     The number of bytes to write.
+ 104:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  count:    Pointer to an unsigned short variable to write the number of
+ 105:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *             bytes actually written.
+ 106:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  timeOut:  Number of units to wait before returning because of a timeout.
+ 107:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 108:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Return:
+ 109:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *   cystatus: This function will return CYRET_SUCCESS if data is sent
+ 110:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *             successfully.
+ 111:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 112:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Side Effects:
+ 113:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  This function should be called after command was received .
+ 114:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 115:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+ 116:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** cystatus Debug_UART_CyBtldrCommWrite(const uint8 pData[], uint16 size, uint16 * count, uint8 timeOu
+ 117:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****          
+ 118:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** {
+ 105              		.loc 1 118 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              	.LVL6:
+ 110 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 5
+
+
+ 111              		.cfi_def_cfa_offset 24
+ 112              		.cfi_offset 3, -24
+ 113              		.cfi_offset 4, -20
+ 114              		.cfi_offset 5, -16
+ 115              		.cfi_offset 6, -12
+ 116              		.cfi_offset 7, -8
+ 117              		.cfi_offset 14, -4
+ 118 0002 0646     		mov	r6, r0
+ 119 0004 0D46     		mov	r5, r1
+ 120 0006 1746     		mov	r7, r2
+ 121              	.LVL7:
+ 119:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 bufIndex = 0u;
+ 120:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 121:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     if(0u != timeOut)
+ 122:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 123:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         /* Suppress compiler warning */
+ 124:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     }
+ 125:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 126:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Clear receive buffers */
+ 127:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     Debug_UART_ClearRxBuffer();
+ 122              		.loc 1 127 0
+ 123 0008 FFF7FEFF 		bl	Debug_UART_ClearRxBuffer
+ 124              	.LVL8:
+ 119:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 bufIndex = 0u;
+ 125              		.loc 1 119 0
+ 126 000c 0024     		movs	r4, #0
+ 128:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 129:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Write TX data using blocking function */
+ 130:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     while(bufIndex < size)
+ 127              		.loc 1 130 0
+ 128 000e 04E0     		b	.L8
+ 129              	.LVL9:
+ 130              	.L9:
+ 131:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 132:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         Debug_UART_PutChar(pData[bufIndex]);
+ 131              		.loc 1 132 0
+ 132 0010 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+ 133 0012 FFF7FEFF 		bl	Debug_UART_PutChar
+ 134              	.LVL10:
+ 133:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         bufIndex++;
+ 135              		.loc 1 133 0
+ 136 0016 0134     		adds	r4, r4, #1
+ 137              	.LVL11:
+ 138 0018 A4B2     		uxth	r4, r4
+ 139              	.LVL12:
+ 140              	.L8:
+ 130:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 141              		.loc 1 130 0
+ 142 001a AC42     		cmp	r4, r5
+ 143 001c F8D3     		bcc	.L9
+ 134:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     }
+ 135:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 136:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Return success code */
+ 137:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     *count = size;
+ 144              		.loc 1 137 0
+ 145 001e 3D80     		strh	r5, [r7]	@ movhi
+ 138:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 6
+
+
+ 139:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     return (CYRET_SUCCESS);
+ 140:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** }
+ 146              		.loc 1 140 0
+ 147 0020 0020     		movs	r0, #0
+ 148 0022 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 149              		.cfi_endproc
+ 150              	.LFE3:
+ 151              		.size	Debug_UART_CyBtldrCommWrite, .-Debug_UART_CyBtldrCommWrite
+ 152              		.section	.text.Debug_UART_CyBtldrCommRead,"ax",%progbits
+ 153              		.align	2
+ 154              		.global	Debug_UART_CyBtldrCommRead
+ 155              		.thumb
+ 156              		.thumb_func
+ 157              		.type	Debug_UART_CyBtldrCommRead, %function
+ 158              	Debug_UART_CyBtldrCommRead:
+ 159              	.LFB4:
+ 141:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 142:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 143:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** /*******************************************************************************
+ 144:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Function Name: Debug_UART_CyBtldrCommRead
+ 145:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** ********************************************************************************
+ 146:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 147:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Summary:
+ 148:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  Receives the command.
+ 149:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 150:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Parameters:
+ 151:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  pData:    A pointer to the area to store the block of data received
+ 152:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *             from the device.
+ 153:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  size:     Maximum size of the read buffer
+ 154:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  count:    Pointer to an unsigned short variable to write the number
+ 155:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *             of bytes actually read.
+ 156:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  timeOut:  Number of units to wait before returning because of a timeOut.
+ 157:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *            Time out is measured in 10s of ms.
+ 158:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 159:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** * Return:
+ 160:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  cystatus: This function will return CYRET_SUCCESS if at least one byte is
+ 161:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *            received successfully within the time out interval. If no data is
+ 162:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *            received  this function will return CYRET_EMPTY.
+ 163:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *
+ 164:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  BYTE2BYTE_TIME_OUT is used for detecting time out marking end of block data
+ 165:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  from host. This has to be set to a value which is greater than the expected
+ 166:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  maximum delay between two bytes during a block/packet transmission from the
+ 167:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  host. You have to account for the delay in hardware converters while
+ 168:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *  calculating this value, if you are using any USB-UART bridges.
+ 169:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** *******************************************************************************/
+ 170:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** cystatus Debug_UART_CyBtldrCommRead(uint8 pData[], uint16 size, uint16 * count, uint8 timeOut) CYSM
+ 171:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****          
+ 172:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** {
+ 160              		.loc 1 172 0
+ 161              		.cfi_startproc
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              	.LVL13:
+ 165 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 166              		.cfi_def_cfa_offset 32
+ 167              		.cfi_offset 4, -32
+ 168              		.cfi_offset 5, -28
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 7
+
+
+ 169              		.cfi_offset 6, -24
+ 170              		.cfi_offset 7, -20
+ 171              		.cfi_offset 8, -16
+ 172              		.cfi_offset 9, -12
+ 173              		.cfi_offset 10, -8
+ 174              		.cfi_offset 14, -4
+ 175 0004 0746     		mov	r7, r0
+ 176 0006 8946     		mov	r9, r1
+ 177 0008 9046     		mov	r8, r2
+ 178 000a 1D46     		mov	r5, r3
+ 179              	.LVL14:
+ 173:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 iCntr;
+ 174:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 dataIndexCntr;
+ 175:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 tempCount;
+ 176:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     uint16 oldDataCount;
+ 177:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 178:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     cystatus status = CYRET_EMPTY;
+ 179:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 180:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Check whether data is received within the time out period.
+ 181:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     *  Time out period is in units of 10ms.
+ 182:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     *  If at least one byte is received within the time out interval, wait for more data */
+ 183:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     for (iCntr = 0u; iCntr < ((uint16)10u * timeOut); iCntr++)
+ 180              		.loc 1 183 0
+ 181 000c 0024     		movs	r4, #0
+ 182 000e 14E0     		b	.L12
+ 183              	.LVL15:
+ 184              	.L16:
+ 184:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 185:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         /* If at least one byte is received within the timeout interval
+ 186:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         *  enter the next loop waiting for more data reception
+ 187:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         */
+ 188:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         if(0u != Debug_UART_GetRxBufferSize())
+ 185              		.loc 1 188 0
+ 186 0010 FFF7FEFF 		bl	Debug_UART_GetRxBufferSize
+ 187              	.LVL16:
+ 188 0014 60B1     		cbz	r0, .L13
+ 189              	.LVL17:
+ 190              	.L14:
+ 189:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         {
+ 190:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             /* Wait for more data until 25ms byte to byte time out interval.
+ 191:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             * If no data is received during the last 25 ms(BYTE2BYTE_TIME_OUT)
+ 192:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             * then it is considered as end of transmitted data block(packet)
+ 193:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             * from the host and the program execution will break from the
+ 194:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             * data awaiting loop with status=CYRET_SUCCESS
+ 195:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             */
+ 196:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             do
+ 197:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             {
+ 198:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 oldDataCount = Debug_UART_GetRxBufferSize();
+ 191              		.loc 1 198 0 discriminator 1
+ 192 0016 FFF7FEFF 		bl	Debug_UART_GetRxBufferSize
+ 193              	.LVL18:
+ 194 001a 0446     		mov	r4, r0
+ 195              	.LVL19:
+ 199:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 CyDelay(Debug_UART_BYTE2BYTE_TIME_OUT);
+ 196              		.loc 1 199 0 discriminator 1
+ 197 001c 1920     		movs	r0, #25
+ 198 001e FFF7FEFF 		bl	CyDelay
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 8
+
+
+ 199              	.LVL20:
+ 200:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             }
+ 201:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             while(Debug_UART_GetRxBufferSize() > oldDataCount);
+ 200              		.loc 1 201 0 discriminator 1
+ 201 0022 FFF7FEFF 		bl	Debug_UART_GetRxBufferSize
+ 202              	.LVL21:
+ 203 0026 8442     		cmp	r4, r0
+ 204 0028 F5D3     		bcc	.L14
+ 202:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 203:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             status = CYRET_SUCCESS;
+ 205              		.loc 1 203 0
+ 206 002a 4FF0000A 		mov	r10, #0
+ 207 002e 0BE0     		b	.L15
+ 208              	.LVL22:
+ 209              	.L13:
+ 204:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             break;
+ 205:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         }
+ 206:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         /* If the data is not received, give a delay of 
+ 207:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         *  Debug_UART_BL_CHK_DELAY_MS and check again until the timeOut specified.
+ 208:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         */
+ 209:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         else
+ 210:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         {
+ 211:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             CyDelay(Debug_UART_BL_CHK_DELAY_MS);
+ 210              		.loc 1 211 0 discriminator 2
+ 211 0030 0120     		movs	r0, #1
+ 212 0032 FFF7FEFF 		bl	CyDelay
+ 213              	.LVL23:
+ 183:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 214              		.loc 1 183 0 discriminator 2
+ 215 0036 0134     		adds	r4, r4, #1
+ 216              	.LVL24:
+ 217 0038 A4B2     		uxth	r4, r4
+ 218              	.LVL25:
+ 219              	.L12:
+ 183:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 220              		.loc 1 183 0 is_stmt 0 discriminator 1
+ 221 003a 05EB8503 		add	r3, r5, r5, lsl #2
+ 222 003e 5B00     		lsls	r3, r3, #1
+ 223 0040 9C42     		cmp	r4, r3
+ 224 0042 E5DB     		blt	.L16
+ 178:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 225              		.loc 1 178 0 is_stmt 1
+ 226 0044 4FF0050A 		mov	r10, #5
+ 227              	.LVL26:
+ 228              	.L15:
+ 212:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         }
+ 213:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     }
+ 214:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 215:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* Initialize the data read indexes and Count value */
+ 216:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     *count = 0u;
+ 229              		.loc 1 216 0
+ 230 0048 0025     		movs	r5, #0
+ 231 004a A8F80050 		strh	r5, [r8]	@ movhi
+ 232              	.LVL27:
+ 217:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     dataIndexCntr = 0u;
+ 218:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 219:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     /* If GetRxBufferSize()>0 , move the received data to the pData buffer */
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 9
+
+
+ 220:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     while(Debug_UART_GetRxBufferSize() > 0u)
+ 233              		.loc 1 220 0
+ 234 004e 23E0     		b	.L17
+ 235              	.LVL28:
+ 236              	.L23:
+ 221:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 222:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         tempCount = Debug_UART_GetRxBufferSize();
+ 237              		.loc 1 222 0
+ 238 0050 FFF7FEFF 		bl	Debug_UART_GetRxBufferSize
+ 239              	.LVL29:
+ 240 0054 86B2     		uxth	r6, r0
+ 241              	.LVL30:
+ 223:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         *count  =(*count) + tempCount;
+ 242              		.loc 1 223 0
+ 243 0056 B8F80030 		ldrh	r3, [r8]
+ 244 005a 3344     		add	r3, r3, r6
+ 245 005c 9BB2     		uxth	r3, r3
+ 246 005e A8F80030 		strh	r3, [r8]	@ movhi
+ 224:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 225:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         /* Check if buffer overflow will occur before moving the data */
+ 226:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         if(*count < size)
+ 247              		.loc 1 226 0
+ 248 0062 4B45     		cmp	r3, r9
+ 249 0064 08D3     		bcc	.L24
+ 250 0066 13E0     		b	.L25
+ 251              	.LVL31:
+ 252              	.L20:
+ 227:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         {
+ 228:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             for (iCntr = 0u; iCntr < tempCount; iCntr++)
+ 229:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             {
+ 230:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 /* Read the data and move it to the pData buffer */
+ 231:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 pData[dataIndexCntr] = Debug_UART_ReadRxData();
+ 253              		.loc 1 231 0 discriminator 3
+ 254 0068 FFF7FEFF 		bl	Debug_UART_ReadRxData
+ 255              	.LVL32:
+ 256 006c 7855     		strb	r0, [r7, r5]
+ 232:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 dataIndexCntr++;
+ 257              		.loc 1 232 0 discriminator 3
+ 258 006e 0135     		adds	r5, r5, #1
+ 259              	.LVL33:
+ 260 0070 ADB2     		uxth	r5, r5
+ 261              	.LVL34:
+ 228:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             {
+ 262              		.loc 1 228 0 discriminator 3
+ 263 0072 0134     		adds	r4, r4, #1
+ 264              	.LVL35:
+ 265 0074 A4B2     		uxth	r4, r4
+ 266              	.LVL36:
+ 267 0076 00E0     		b	.L18
+ 268              	.LVL37:
+ 269              	.L24:
+ 270 0078 0024     		movs	r4, #0
+ 271              	.L18:
+ 272              	.LVL38:
+ 228:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             {
+ 273              		.loc 1 228 0 is_stmt 0 discriminator 1
+ 274 007a B442     		cmp	r4, r6
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 10
+
+
+ 275 007c F4D3     		bcc	.L20
+ 233:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             }
+ 234:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 235:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             /* Check if the last received byte is end of packet defined by bootloader
+ 236:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             *  If not wait for additional Debug_UART_WAIT_EOP_DELAY ms.
+ 237:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             */
+ 238:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             if(pData[dataIndexCntr - 1u] != Debug_UART_PACKET_EOP)
+ 276              		.loc 1 238 0 is_stmt 1
+ 277 007e 7B19     		adds	r3, r7, r5
+ 278 0080 13F8013C 		ldrb	r3, [r3, #-1]	@ zero_extendqisi2
+ 279 0084 172B     		cmp	r3, #23
+ 280 0086 07D0     		beq	.L17
+ 239:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             {
+ 240:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****                 CyDelay(Debug_UART_WAIT_EOP_DELAY);
+ 281              		.loc 1 240 0
+ 282 0088 0520     		movs	r0, #5
+ 283 008a FFF7FEFF 		bl	CyDelay
+ 284              	.LVL39:
+ 285 008e 03E0     		b	.L17
+ 286              	.LVL40:
+ 287              	.L25:
+ 241:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             }
+ 242:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         }
+ 243:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         /* If there is no space to move data, break from the loop */
+ 244:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         else
+ 245:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         {
+ 246:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             *count = (*count) - tempCount;
+ 288              		.loc 1 246 0
+ 289 0090 9B1B     		subs	r3, r3, r6
+ 290 0092 A8F80030 		strh	r3, [r8]	@ movhi
+ 247:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****             break;
+ 291              		.loc 1 247 0
+ 292 0096 03E0     		b	.L22
+ 293              	.LVL41:
+ 294              	.L17:
+ 220:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     {
+ 295              		.loc 1 220 0
+ 296 0098 FFF7FEFF 		bl	Debug_UART_GetRxBufferSize
+ 297              	.LVL42:
+ 298 009c 0028     		cmp	r0, #0
+ 299 009e D7D1     		bne	.L23
+ 300              	.L22:
+ 248:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****         }
+ 249:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     }
+ 250:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** 
+ 251:.\Generated_Source\PSoC5/Debug_UART_BOOT.c ****     return (status);
+ 252:.\Generated_Source\PSoC5/Debug_UART_BOOT.c **** }
+ 301              		.loc 1 252 0
+ 302 00a0 5046     		mov	r0, r10
+ 303 00a2 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 304              		.cfi_endproc
+ 305              	.LFE4:
+ 306              		.size	Debug_UART_CyBtldrCommRead, .-Debug_UART_CyBtldrCommRead
+ 307 00a6 00BF     		.text
+ 308              	.Letext0:
+ 309              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 310              		.file 3 ".\\Generated_Source\\PSoC5\\Debug_UART.h"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 11
+
+
+ 311              		.file 4 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 312              		.section	.debug_info,"",%progbits
+ 313              	.Ldebug_info0:
+ 314 0000 1B030000 		.4byte	0x31b
+ 315 0004 0400     		.2byte	0x4
+ 316 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 317 000a 04       		.byte	0x4
+ 318 000b 01       		.uleb128 0x1
+ 319 000c 4E010000 		.4byte	.LASF40
+ 320 0010 01       		.byte	0x1
+ 321 0011 C5000000 		.4byte	.LASF41
+ 322 0015 82020000 		.4byte	.LASF42
+ 323 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 324 001d 00000000 		.4byte	0
+ 325 0021 00000000 		.4byte	.Ldebug_line0
+ 326 0025 02       		.uleb128 0x2
+ 327 0026 01       		.byte	0x1
+ 328 0027 06       		.byte	0x6
+ 329 0028 21030000 		.4byte	.LASF0
+ 330 002c 02       		.uleb128 0x2
+ 331 002d 01       		.byte	0x1
+ 332 002e 08       		.byte	0x8
+ 333 002f 03010000 		.4byte	.LASF1
+ 334 0033 02       		.uleb128 0x2
+ 335 0034 02       		.byte	0x2
+ 336 0035 05       		.byte	0x5
+ 337 0036 E6020000 		.4byte	.LASF2
+ 338 003a 02       		.uleb128 0x2
+ 339 003b 02       		.byte	0x2
+ 340 003c 07       		.byte	0x7
+ 341 003d 27000000 		.4byte	.LASF3
+ 342 0041 02       		.uleb128 0x2
+ 343 0042 04       		.byte	0x4
+ 344 0043 05       		.byte	0x5
+ 345 0044 13030000 		.4byte	.LASF4
+ 346 0048 02       		.uleb128 0x2
+ 347 0049 04       		.byte	0x4
+ 348 004a 07       		.byte	0x7
+ 349 004b AD000000 		.4byte	.LASF5
+ 350 004f 02       		.uleb128 0x2
+ 351 0050 08       		.byte	0x8
+ 352 0051 05       		.byte	0x5
+ 353 0052 5B020000 		.4byte	.LASF6
+ 354 0056 02       		.uleb128 0x2
+ 355 0057 08       		.byte	0x8
+ 356 0058 07       		.byte	0x7
+ 357 0059 E9010000 		.4byte	.LASF7
+ 358 005d 03       		.uleb128 0x3
+ 359 005e 04       		.byte	0x4
+ 360 005f 05       		.byte	0x5
+ 361 0060 696E7400 		.ascii	"int\000"
+ 362 0064 02       		.uleb128 0x2
+ 363 0065 04       		.byte	0x4
+ 364 0066 07       		.byte	0x7
+ 365 0067 DC010000 		.4byte	.LASF8
+ 366 006b 04       		.uleb128 0x4
+ 367 006c BF000000 		.4byte	.LASF9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 12
+
+
+ 368 0070 02       		.byte	0x2
+ 369 0071 C2       		.byte	0xc2
+ 370 0072 2C000000 		.4byte	0x2c
+ 371 0076 04       		.uleb128 0x4
+ 372 0077 33010000 		.4byte	.LASF10
+ 373 007b 02       		.byte	0x2
+ 374 007c C3       		.byte	0xc3
+ 375 007d 3A000000 		.4byte	0x3a
+ 376 0081 04       		.uleb128 0x4
+ 377 0082 47010000 		.4byte	.LASF11
+ 378 0086 02       		.byte	0x2
+ 379 0087 C4       		.byte	0xc4
+ 380 0088 48000000 		.4byte	0x48
+ 381 008c 02       		.uleb128 0x2
+ 382 008d 04       		.byte	0x4
+ 383 008e 04       		.byte	0x4
+ 384 008f A2000000 		.4byte	.LASF12
+ 385 0093 02       		.uleb128 0x2
+ 386 0094 08       		.byte	0x8
+ 387 0095 04       		.byte	0x4
+ 388 0096 2C010000 		.4byte	.LASF13
+ 389 009a 02       		.uleb128 0x2
+ 390 009b 01       		.byte	0x1
+ 391 009c 08       		.byte	0x8
+ 392 009d 1C030000 		.4byte	.LASF14
+ 393 00a1 05       		.uleb128 0x5
+ 394 00a2 00000000 		.4byte	.LASF15
+ 395 00a6 02       		.byte	0x2
+ 396 00a7 6401     		.2byte	0x164
+ 397 00a9 48000000 		.4byte	0x48
+ 398 00ad 02       		.uleb128 0x2
+ 399 00ae 04       		.byte	0x4
+ 400 00af 07       		.byte	0x7
+ 401 00b0 52020000 		.4byte	.LASF16
+ 402 00b4 06       		.uleb128 0x6
+ 403 00b5 36020000 		.4byte	.LASF17
+ 404 00b9 01       		.byte	0x1
+ 405 00ba 29       		.byte	0x29
+ 406 00bb 00000000 		.4byte	.LFB0
+ 407 00bf 10000000 		.4byte	.LFE0-.LFB0
+ 408 00c3 01       		.uleb128 0x1
+ 409 00c4 9C       		.byte	0x9c
+ 410 00c5 E5000000 		.4byte	0xe5
+ 411 00c9 07       		.uleb128 0x7
+ 412 00ca 06000000 		.4byte	.LVL0
+ 413 00ce CA020000 		.4byte	0x2ca
+ 414 00d2 07       		.uleb128 0x7
+ 415 00d3 0A000000 		.4byte	.LVL1
+ 416 00d7 D1020000 		.4byte	0x2d1
+ 417 00db 07       		.uleb128 0x7
+ 418 00dc 0E000000 		.4byte	.LVL2
+ 419 00e0 D8020000 		.4byte	0x2d8
+ 420 00e4 00       		.byte	0
+ 421 00e5 06       		.uleb128 0x6
+ 422 00e6 F0020000 		.4byte	.LASF18
+ 423 00ea 01       		.byte	0x1
+ 424 00eb 40       		.byte	0x40
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 13
+
+
+ 425 00ec 00000000 		.4byte	.LFB1
+ 426 00f0 08000000 		.4byte	.LFE1-.LFB1
+ 427 00f4 01       		.uleb128 0x1
+ 428 00f5 9C       		.byte	0x9c
+ 429 00f6 04010000 		.4byte	0x104
+ 430 00fa 07       		.uleb128 0x7
+ 431 00fb 06000000 		.4byte	.LVL3
+ 432 00ff DF020000 		.4byte	0x2df
+ 433 0103 00       		.byte	0
+ 434 0104 06       		.uleb128 0x6
+ 435 0105 00020000 		.4byte	.LASF19
+ 436 0109 01       		.byte	0x1
+ 437 010a 55       		.byte	0x55
+ 438 010b 00000000 		.4byte	.LFB2
+ 439 010f 0C000000 		.4byte	.LFE2-.LFB2
+ 440 0113 01       		.uleb128 0x1
+ 441 0114 9C       		.byte	0x9c
+ 442 0115 2C010000 		.4byte	0x12c
+ 443 0119 07       		.uleb128 0x7
+ 444 011a 06000000 		.4byte	.LVL4
+ 445 011e D1020000 		.4byte	0x2d1
+ 446 0122 07       		.uleb128 0x7
+ 447 0123 0A000000 		.4byte	.LVL5
+ 448 0127 D8020000 		.4byte	0x2d8
+ 449 012b 00       		.byte	0
+ 450 012c 08       		.uleb128 0x8
+ 451 012d 3A000000 		.4byte	.LASF24
+ 452 0131 01       		.byte	0x1
+ 453 0132 74       		.byte	0x74
+ 454 0133 A1000000 		.4byte	0xa1
+ 455 0137 00000000 		.4byte	.LFB3
+ 456 013b 24000000 		.4byte	.LFE3-.LFB3
+ 457 013f 01       		.uleb128 0x1
+ 458 0140 9C       		.byte	0x9c
+ 459 0141 A3010000 		.4byte	0x1a3
+ 460 0145 09       		.uleb128 0x9
+ 461 0146 8C000000 		.4byte	.LASF20
+ 462 014a 01       		.byte	0x1
+ 463 014b 74       		.byte	0x74
+ 464 014c A3010000 		.4byte	0x1a3
+ 465 0150 00000000 		.4byte	.LLST0
+ 466 0154 09       		.uleb128 0x9
+ 467 0155 A8000000 		.4byte	.LASF21
+ 468 0159 01       		.byte	0x1
+ 469 015a 74       		.byte	0x74
+ 470 015b 76000000 		.4byte	0x76
+ 471 015f 1E000000 		.4byte	.LLST1
+ 472 0163 09       		.uleb128 0x9
+ 473 0164 21000000 		.4byte	.LASF22
+ 474 0168 01       		.byte	0x1
+ 475 0169 74       		.byte	0x74
+ 476 016a AE010000 		.4byte	0x1ae
+ 477 016e 3F000000 		.4byte	.LLST2
+ 478 0172 09       		.uleb128 0x9
+ 479 0173 0B030000 		.4byte	.LASF23
+ 480 0177 01       		.byte	0x1
+ 481 0178 74       		.byte	0x74
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 14
+
+
+ 482 0179 6B000000 		.4byte	0x6b
+ 483 017d 5D000000 		.4byte	.LLST3
+ 484 0181 0A       		.uleb128 0xa
+ 485 0182 2D020000 		.4byte	.LASF26
+ 486 0186 01       		.byte	0x1
+ 487 0187 77       		.byte	0x77
+ 488 0188 76000000 		.4byte	0x76
+ 489 018c 7E000000 		.4byte	.LLST4
+ 490 0190 07       		.uleb128 0x7
+ 491 0191 0C000000 		.4byte	.LVL8
+ 492 0195 D1020000 		.4byte	0x2d1
+ 493 0199 07       		.uleb128 0x7
+ 494 019a 16000000 		.4byte	.LVL10
+ 495 019e E6020000 		.4byte	0x2e6
+ 496 01a2 00       		.byte	0
+ 497 01a3 0B       		.uleb128 0xb
+ 498 01a4 04       		.byte	0x4
+ 499 01a5 A9010000 		.4byte	0x1a9
+ 500 01a9 0C       		.uleb128 0xc
+ 501 01aa 6B000000 		.4byte	0x6b
+ 502 01ae 0B       		.uleb128 0xb
+ 503 01af 04       		.byte	0x4
+ 504 01b0 76000000 		.4byte	0x76
+ 505 01b4 08       		.uleb128 0x8
+ 506 01b5 2D030000 		.4byte	.LASF25
+ 507 01b9 01       		.byte	0x1
+ 508 01ba AA       		.byte	0xaa
+ 509 01bb A1000000 		.4byte	0xa1
+ 510 01bf 00000000 		.4byte	.LFB4
+ 511 01c3 A6000000 		.4byte	.LFE4-.LFB4
+ 512 01c7 01       		.uleb128 0x1
+ 513 01c8 9C       		.byte	0x9c
+ 514 01c9 C4020000 		.4byte	0x2c4
+ 515 01cd 09       		.uleb128 0x9
+ 516 01ce 8C000000 		.4byte	.LASF20
+ 517 01d2 01       		.byte	0x1
+ 518 01d3 AA       		.byte	0xaa
+ 519 01d4 C4020000 		.4byte	0x2c4
+ 520 01d8 A8000000 		.4byte	.LLST5
+ 521 01dc 09       		.uleb128 0x9
+ 522 01dd A8000000 		.4byte	.LASF21
+ 523 01e1 01       		.byte	0x1
+ 524 01e2 AA       		.byte	0xaa
+ 525 01e3 76000000 		.4byte	0x76
+ 526 01e7 C6000000 		.4byte	.LLST6
+ 527 01eb 09       		.uleb128 0x9
+ 528 01ec 21000000 		.4byte	.LASF22
+ 529 01f0 01       		.byte	0x1
+ 530 01f1 AA       		.byte	0xaa
+ 531 01f2 AE010000 		.4byte	0x1ae
+ 532 01f6 E7000000 		.4byte	.LLST7
+ 533 01fa 09       		.uleb128 0x9
+ 534 01fb 0B030000 		.4byte	.LASF23
+ 535 01ff 01       		.byte	0x1
+ 536 0200 AA       		.byte	0xaa
+ 537 0201 6B000000 		.4byte	0x6b
+ 538 0205 05010000 		.4byte	.LLST8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 15
+
+
+ 539 0209 0A       		.uleb128 0xa
+ 540 020a 48030000 		.4byte	.LASF27
+ 541 020e 01       		.byte	0x1
+ 542 020f AD       		.byte	0xad
+ 543 0210 76000000 		.4byte	0x76
+ 544 0214 26010000 		.4byte	.LLST9
+ 545 0218 0A       		.uleb128 0xa
+ 546 0219 13000000 		.4byte	.LASF28
+ 547 021d 01       		.byte	0x1
+ 548 021e AE       		.byte	0xae
+ 549 021f 76000000 		.4byte	0x76
+ 550 0223 7C010000 		.4byte	.LLST10
+ 551 0227 0A       		.uleb128 0xa
+ 552 0228 09000000 		.4byte	.LASF29
+ 553 022c 01       		.byte	0x1
+ 554 022d AF       		.byte	0xaf
+ 555 022e 76000000 		.4byte	0x76
+ 556 0232 A6010000 		.4byte	.LLST11
+ 557 0236 0A       		.uleb128 0xa
+ 558 0237 3A010000 		.4byte	.LASF30
+ 559 023b 01       		.byte	0x1
+ 560 023c B0       		.byte	0xb0
+ 561 023d 76000000 		.4byte	0x76
+ 562 0241 B9010000 		.4byte	.LLST12
+ 563 0245 0A       		.uleb128 0xa
+ 564 0246 6C000000 		.4byte	.LASF31
+ 565 024a 01       		.byte	0x1
+ 566 024b B2       		.byte	0xb2
+ 567 024c A1000000 		.4byte	0xa1
+ 568 0250 D1010000 		.4byte	.LLST13
+ 569 0254 07       		.uleb128 0x7
+ 570 0255 14000000 		.4byte	.LVL16
+ 571 0259 F7020000 		.4byte	0x2f7
+ 572 025d 07       		.uleb128 0x7
+ 573 025e 1A000000 		.4byte	.LVL18
+ 574 0262 F7020000 		.4byte	0x2f7
+ 575 0266 0D       		.uleb128 0xd
+ 576 0267 22000000 		.4byte	.LVL20
+ 577 026b 02030000 		.4byte	0x302
+ 578 026f 79020000 		.4byte	0x279
+ 579 0273 0E       		.uleb128 0xe
+ 580 0274 01       		.uleb128 0x1
+ 581 0275 50       		.byte	0x50
+ 582 0276 01       		.uleb128 0x1
+ 583 0277 49       		.byte	0x49
+ 584 0278 00       		.byte	0
+ 585 0279 07       		.uleb128 0x7
+ 586 027a 26000000 		.4byte	.LVL21
+ 587 027e F7020000 		.4byte	0x2f7
+ 588 0282 0D       		.uleb128 0xd
+ 589 0283 36000000 		.4byte	.LVL23
+ 590 0287 02030000 		.4byte	0x302
+ 591 028b 95020000 		.4byte	0x295
+ 592 028f 0E       		.uleb128 0xe
+ 593 0290 01       		.uleb128 0x1
+ 594 0291 50       		.byte	0x50
+ 595 0292 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 16
+
+
+ 596 0293 31       		.byte	0x31
+ 597 0294 00       		.byte	0
+ 598 0295 07       		.uleb128 0x7
+ 599 0296 54000000 		.4byte	.LVL29
+ 600 029a F7020000 		.4byte	0x2f7
+ 601 029e 07       		.uleb128 0x7
+ 602 029f 6C000000 		.4byte	.LVL32
+ 603 02a3 13030000 		.4byte	0x313
+ 604 02a7 0D       		.uleb128 0xd
+ 605 02a8 8E000000 		.4byte	.LVL39
+ 606 02ac 02030000 		.4byte	0x302
+ 607 02b0 BA020000 		.4byte	0x2ba
+ 608 02b4 0E       		.uleb128 0xe
+ 609 02b5 01       		.uleb128 0x1
+ 610 02b6 50       		.byte	0x50
+ 611 02b7 01       		.uleb128 0x1
+ 612 02b8 35       		.byte	0x35
+ 613 02b9 00       		.byte	0
+ 614 02ba 07       		.uleb128 0x7
+ 615 02bb 9C000000 		.4byte	.LVL42
+ 616 02bf F7020000 		.4byte	0x2f7
+ 617 02c3 00       		.byte	0
+ 618 02c4 0B       		.uleb128 0xb
+ 619 02c5 04       		.byte	0x4
+ 620 02c6 6B000000 		.4byte	0x6b
+ 621 02ca 0F       		.uleb128 0xf
+ 622 02cb 1C020000 		.4byte	.LASF32
+ 623 02cf 03       		.byte	0x3
+ 624 02d0 54       		.byte	0x54
+ 625 02d1 0F       		.uleb128 0xf
+ 626 02d2 73000000 		.4byte	.LASF33
+ 627 02d6 03       		.byte	0x3
+ 628 02d7 75       		.byte	0x75
+ 629 02d8 0F       		.uleb128 0xf
+ 630 02d9 69020000 		.4byte	.LASF34
+ 631 02dd 03       		.byte	0x3
+ 632 02de 8F       		.byte	0x8f
+ 633 02df 0F       		.uleb128 0xf
+ 634 02e0 92000000 		.4byte	.LASF35
+ 635 02e4 03       		.byte	0x3
+ 636 02e5 55       		.byte	0x55
+ 637 02e6 10       		.uleb128 0x10
+ 638 02e7 F0000000 		.4byte	.LASF36
+ 639 02eb 03       		.byte	0x3
+ 640 02ec 8A       		.byte	0x8a
+ 641 02ed F7020000 		.4byte	0x2f7
+ 642 02f1 11       		.uleb128 0x11
+ 643 02f2 6B000000 		.4byte	0x6b
+ 644 02f6 00       		.byte	0
+ 645 02f7 12       		.uleb128 0x12
+ 646 02f8 11010000 		.4byte	.LASF38
+ 647 02fc 03       		.byte	0x3
+ 648 02fd 73       		.byte	0x73
+ 649 02fe 6B000000 		.4byte	0x6b
+ 650 0302 10       		.uleb128 0x10
+ 651 0303 4E030000 		.4byte	.LASF37
+ 652 0307 04       		.byte	0x4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 17
+
+
+ 653 0308 77       		.byte	0x77
+ 654 0309 13030000 		.4byte	0x313
+ 655 030d 11       		.uleb128 0x11
+ 656 030e 81000000 		.4byte	0x81
+ 657 0312 00       		.byte	0
+ 658 0313 12       		.uleb128 0x12
+ 659 0314 56000000 		.4byte	.LASF39
+ 660 0318 03       		.byte	0x3
+ 661 0319 6F       		.byte	0x6f
+ 662 031a 6B000000 		.4byte	0x6b
+ 663 031e 00       		.byte	0
+ 664              		.section	.debug_abbrev,"",%progbits
+ 665              	.Ldebug_abbrev0:
+ 666 0000 01       		.uleb128 0x1
+ 667 0001 11       		.uleb128 0x11
+ 668 0002 01       		.byte	0x1
+ 669 0003 25       		.uleb128 0x25
+ 670 0004 0E       		.uleb128 0xe
+ 671 0005 13       		.uleb128 0x13
+ 672 0006 0B       		.uleb128 0xb
+ 673 0007 03       		.uleb128 0x3
+ 674 0008 0E       		.uleb128 0xe
+ 675 0009 1B       		.uleb128 0x1b
+ 676 000a 0E       		.uleb128 0xe
+ 677 000b 55       		.uleb128 0x55
+ 678 000c 17       		.uleb128 0x17
+ 679 000d 11       		.uleb128 0x11
+ 680 000e 01       		.uleb128 0x1
+ 681 000f 10       		.uleb128 0x10
+ 682 0010 17       		.uleb128 0x17
+ 683 0011 00       		.byte	0
+ 684 0012 00       		.byte	0
+ 685 0013 02       		.uleb128 0x2
+ 686 0014 24       		.uleb128 0x24
+ 687 0015 00       		.byte	0
+ 688 0016 0B       		.uleb128 0xb
+ 689 0017 0B       		.uleb128 0xb
+ 690 0018 3E       		.uleb128 0x3e
+ 691 0019 0B       		.uleb128 0xb
+ 692 001a 03       		.uleb128 0x3
+ 693 001b 0E       		.uleb128 0xe
+ 694 001c 00       		.byte	0
+ 695 001d 00       		.byte	0
+ 696 001e 03       		.uleb128 0x3
+ 697 001f 24       		.uleb128 0x24
+ 698 0020 00       		.byte	0
+ 699 0021 0B       		.uleb128 0xb
+ 700 0022 0B       		.uleb128 0xb
+ 701 0023 3E       		.uleb128 0x3e
+ 702 0024 0B       		.uleb128 0xb
+ 703 0025 03       		.uleb128 0x3
+ 704 0026 08       		.uleb128 0x8
+ 705 0027 00       		.byte	0
+ 706 0028 00       		.byte	0
+ 707 0029 04       		.uleb128 0x4
+ 708 002a 16       		.uleb128 0x16
+ 709 002b 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 18
+
+
+ 710 002c 03       		.uleb128 0x3
+ 711 002d 0E       		.uleb128 0xe
+ 712 002e 3A       		.uleb128 0x3a
+ 713 002f 0B       		.uleb128 0xb
+ 714 0030 3B       		.uleb128 0x3b
+ 715 0031 0B       		.uleb128 0xb
+ 716 0032 49       		.uleb128 0x49
+ 717 0033 13       		.uleb128 0x13
+ 718 0034 00       		.byte	0
+ 719 0035 00       		.byte	0
+ 720 0036 05       		.uleb128 0x5
+ 721 0037 16       		.uleb128 0x16
+ 722 0038 00       		.byte	0
+ 723 0039 03       		.uleb128 0x3
+ 724 003a 0E       		.uleb128 0xe
+ 725 003b 3A       		.uleb128 0x3a
+ 726 003c 0B       		.uleb128 0xb
+ 727 003d 3B       		.uleb128 0x3b
+ 728 003e 05       		.uleb128 0x5
+ 729 003f 49       		.uleb128 0x49
+ 730 0040 13       		.uleb128 0x13
+ 731 0041 00       		.byte	0
+ 732 0042 00       		.byte	0
+ 733 0043 06       		.uleb128 0x6
+ 734 0044 2E       		.uleb128 0x2e
+ 735 0045 01       		.byte	0x1
+ 736 0046 3F       		.uleb128 0x3f
+ 737 0047 19       		.uleb128 0x19
+ 738 0048 03       		.uleb128 0x3
+ 739 0049 0E       		.uleb128 0xe
+ 740 004a 3A       		.uleb128 0x3a
+ 741 004b 0B       		.uleb128 0xb
+ 742 004c 3B       		.uleb128 0x3b
+ 743 004d 0B       		.uleb128 0xb
+ 744 004e 27       		.uleb128 0x27
+ 745 004f 19       		.uleb128 0x19
+ 746 0050 11       		.uleb128 0x11
+ 747 0051 01       		.uleb128 0x1
+ 748 0052 12       		.uleb128 0x12
+ 749 0053 06       		.uleb128 0x6
+ 750 0054 40       		.uleb128 0x40
+ 751 0055 18       		.uleb128 0x18
+ 752 0056 9742     		.uleb128 0x2117
+ 753 0058 19       		.uleb128 0x19
+ 754 0059 01       		.uleb128 0x1
+ 755 005a 13       		.uleb128 0x13
+ 756 005b 00       		.byte	0
+ 757 005c 00       		.byte	0
+ 758 005d 07       		.uleb128 0x7
+ 759 005e 898201   		.uleb128 0x4109
+ 760 0061 00       		.byte	0
+ 761 0062 11       		.uleb128 0x11
+ 762 0063 01       		.uleb128 0x1
+ 763 0064 31       		.uleb128 0x31
+ 764 0065 13       		.uleb128 0x13
+ 765 0066 00       		.byte	0
+ 766 0067 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 19
+
+
+ 767 0068 08       		.uleb128 0x8
+ 768 0069 2E       		.uleb128 0x2e
+ 769 006a 01       		.byte	0x1
+ 770 006b 3F       		.uleb128 0x3f
+ 771 006c 19       		.uleb128 0x19
+ 772 006d 03       		.uleb128 0x3
+ 773 006e 0E       		.uleb128 0xe
+ 774 006f 3A       		.uleb128 0x3a
+ 775 0070 0B       		.uleb128 0xb
+ 776 0071 3B       		.uleb128 0x3b
+ 777 0072 0B       		.uleb128 0xb
+ 778 0073 27       		.uleb128 0x27
+ 779 0074 19       		.uleb128 0x19
+ 780 0075 49       		.uleb128 0x49
+ 781 0076 13       		.uleb128 0x13
+ 782 0077 11       		.uleb128 0x11
+ 783 0078 01       		.uleb128 0x1
+ 784 0079 12       		.uleb128 0x12
+ 785 007a 06       		.uleb128 0x6
+ 786 007b 40       		.uleb128 0x40
+ 787 007c 18       		.uleb128 0x18
+ 788 007d 9742     		.uleb128 0x2117
+ 789 007f 19       		.uleb128 0x19
+ 790 0080 01       		.uleb128 0x1
+ 791 0081 13       		.uleb128 0x13
+ 792 0082 00       		.byte	0
+ 793 0083 00       		.byte	0
+ 794 0084 09       		.uleb128 0x9
+ 795 0085 05       		.uleb128 0x5
+ 796 0086 00       		.byte	0
+ 797 0087 03       		.uleb128 0x3
+ 798 0088 0E       		.uleb128 0xe
+ 799 0089 3A       		.uleb128 0x3a
+ 800 008a 0B       		.uleb128 0xb
+ 801 008b 3B       		.uleb128 0x3b
+ 802 008c 0B       		.uleb128 0xb
+ 803 008d 49       		.uleb128 0x49
+ 804 008e 13       		.uleb128 0x13
+ 805 008f 02       		.uleb128 0x2
+ 806 0090 17       		.uleb128 0x17
+ 807 0091 00       		.byte	0
+ 808 0092 00       		.byte	0
+ 809 0093 0A       		.uleb128 0xa
+ 810 0094 34       		.uleb128 0x34
+ 811 0095 00       		.byte	0
+ 812 0096 03       		.uleb128 0x3
+ 813 0097 0E       		.uleb128 0xe
+ 814 0098 3A       		.uleb128 0x3a
+ 815 0099 0B       		.uleb128 0xb
+ 816 009a 3B       		.uleb128 0x3b
+ 817 009b 0B       		.uleb128 0xb
+ 818 009c 49       		.uleb128 0x49
+ 819 009d 13       		.uleb128 0x13
+ 820 009e 02       		.uleb128 0x2
+ 821 009f 17       		.uleb128 0x17
+ 822 00a0 00       		.byte	0
+ 823 00a1 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 20
+
+
+ 824 00a2 0B       		.uleb128 0xb
+ 825 00a3 0F       		.uleb128 0xf
+ 826 00a4 00       		.byte	0
+ 827 00a5 0B       		.uleb128 0xb
+ 828 00a6 0B       		.uleb128 0xb
+ 829 00a7 49       		.uleb128 0x49
+ 830 00a8 13       		.uleb128 0x13
+ 831 00a9 00       		.byte	0
+ 832 00aa 00       		.byte	0
+ 833 00ab 0C       		.uleb128 0xc
+ 834 00ac 26       		.uleb128 0x26
+ 835 00ad 00       		.byte	0
+ 836 00ae 49       		.uleb128 0x49
+ 837 00af 13       		.uleb128 0x13
+ 838 00b0 00       		.byte	0
+ 839 00b1 00       		.byte	0
+ 840 00b2 0D       		.uleb128 0xd
+ 841 00b3 898201   		.uleb128 0x4109
+ 842 00b6 01       		.byte	0x1
+ 843 00b7 11       		.uleb128 0x11
+ 844 00b8 01       		.uleb128 0x1
+ 845 00b9 31       		.uleb128 0x31
+ 846 00ba 13       		.uleb128 0x13
+ 847 00bb 01       		.uleb128 0x1
+ 848 00bc 13       		.uleb128 0x13
+ 849 00bd 00       		.byte	0
+ 850 00be 00       		.byte	0
+ 851 00bf 0E       		.uleb128 0xe
+ 852 00c0 8A8201   		.uleb128 0x410a
+ 853 00c3 00       		.byte	0
+ 854 00c4 02       		.uleb128 0x2
+ 855 00c5 18       		.uleb128 0x18
+ 856 00c6 9142     		.uleb128 0x2111
+ 857 00c8 18       		.uleb128 0x18
+ 858 00c9 00       		.byte	0
+ 859 00ca 00       		.byte	0
+ 860 00cb 0F       		.uleb128 0xf
+ 861 00cc 2E       		.uleb128 0x2e
+ 862 00cd 00       		.byte	0
+ 863 00ce 3F       		.uleb128 0x3f
+ 864 00cf 19       		.uleb128 0x19
+ 865 00d0 03       		.uleb128 0x3
+ 866 00d1 0E       		.uleb128 0xe
+ 867 00d2 3A       		.uleb128 0x3a
+ 868 00d3 0B       		.uleb128 0xb
+ 869 00d4 3B       		.uleb128 0x3b
+ 870 00d5 0B       		.uleb128 0xb
+ 871 00d6 27       		.uleb128 0x27
+ 872 00d7 19       		.uleb128 0x19
+ 873 00d8 3C       		.uleb128 0x3c
+ 874 00d9 19       		.uleb128 0x19
+ 875 00da 00       		.byte	0
+ 876 00db 00       		.byte	0
+ 877 00dc 10       		.uleb128 0x10
+ 878 00dd 2E       		.uleb128 0x2e
+ 879 00de 01       		.byte	0x1
+ 880 00df 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 21
+
+
+ 881 00e0 19       		.uleb128 0x19
+ 882 00e1 03       		.uleb128 0x3
+ 883 00e2 0E       		.uleb128 0xe
+ 884 00e3 3A       		.uleb128 0x3a
+ 885 00e4 0B       		.uleb128 0xb
+ 886 00e5 3B       		.uleb128 0x3b
+ 887 00e6 0B       		.uleb128 0xb
+ 888 00e7 27       		.uleb128 0x27
+ 889 00e8 19       		.uleb128 0x19
+ 890 00e9 3C       		.uleb128 0x3c
+ 891 00ea 19       		.uleb128 0x19
+ 892 00eb 01       		.uleb128 0x1
+ 893 00ec 13       		.uleb128 0x13
+ 894 00ed 00       		.byte	0
+ 895 00ee 00       		.byte	0
+ 896 00ef 11       		.uleb128 0x11
+ 897 00f0 05       		.uleb128 0x5
+ 898 00f1 00       		.byte	0
+ 899 00f2 49       		.uleb128 0x49
+ 900 00f3 13       		.uleb128 0x13
+ 901 00f4 00       		.byte	0
+ 902 00f5 00       		.byte	0
+ 903 00f6 12       		.uleb128 0x12
+ 904 00f7 2E       		.uleb128 0x2e
+ 905 00f8 00       		.byte	0
+ 906 00f9 3F       		.uleb128 0x3f
+ 907 00fa 19       		.uleb128 0x19
+ 908 00fb 03       		.uleb128 0x3
+ 909 00fc 0E       		.uleb128 0xe
+ 910 00fd 3A       		.uleb128 0x3a
+ 911 00fe 0B       		.uleb128 0xb
+ 912 00ff 3B       		.uleb128 0x3b
+ 913 0100 0B       		.uleb128 0xb
+ 914 0101 27       		.uleb128 0x27
+ 915 0102 19       		.uleb128 0x19
+ 916 0103 49       		.uleb128 0x49
+ 917 0104 13       		.uleb128 0x13
+ 918 0105 3C       		.uleb128 0x3c
+ 919 0106 19       		.uleb128 0x19
+ 920 0107 00       		.byte	0
+ 921 0108 00       		.byte	0
+ 922 0109 00       		.byte	0
+ 923              		.section	.debug_loc,"",%progbits
+ 924              	.Ldebug_loc0:
+ 925              	.LLST0:
+ 926 0000 00000000 		.4byte	.LVL6
+ 927 0004 0B000000 		.4byte	.LVL8-1
+ 928 0008 0100     		.2byte	0x1
+ 929 000a 50       		.byte	0x50
+ 930 000b 0B000000 		.4byte	.LVL8-1
+ 931 000f 24000000 		.4byte	.LFE3
+ 932 0013 0100     		.2byte	0x1
+ 933 0015 56       		.byte	0x56
+ 934 0016 00000000 		.4byte	0
+ 935 001a 00000000 		.4byte	0
+ 936              	.LLST1:
+ 937 001e 00000000 		.4byte	.LVL6
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 22
+
+
+ 938 0022 0B000000 		.4byte	.LVL8-1
+ 939 0026 0100     		.2byte	0x1
+ 940 0028 51       		.byte	0x51
+ 941 0029 0B000000 		.4byte	.LVL8-1
+ 942 002d 24000000 		.4byte	.LFE3
+ 943 0031 0400     		.2byte	0x4
+ 944 0033 F3       		.byte	0xf3
+ 945 0034 01       		.uleb128 0x1
+ 946 0035 51       		.byte	0x51
+ 947 0036 9F       		.byte	0x9f
+ 948 0037 00000000 		.4byte	0
+ 949 003b 00000000 		.4byte	0
+ 950              	.LLST2:
+ 951 003f 00000000 		.4byte	.LVL6
+ 952 0043 0B000000 		.4byte	.LVL8-1
+ 953 0047 0100     		.2byte	0x1
+ 954 0049 52       		.byte	0x52
+ 955 004a 0B000000 		.4byte	.LVL8-1
+ 956 004e 24000000 		.4byte	.LFE3
+ 957 0052 0100     		.2byte	0x1
+ 958 0054 57       		.byte	0x57
+ 959 0055 00000000 		.4byte	0
+ 960 0059 00000000 		.4byte	0
+ 961              	.LLST3:
+ 962 005d 00000000 		.4byte	.LVL6
+ 963 0061 0B000000 		.4byte	.LVL8-1
+ 964 0065 0100     		.2byte	0x1
+ 965 0067 53       		.byte	0x53
+ 966 0068 0B000000 		.4byte	.LVL8-1
+ 967 006c 24000000 		.4byte	.LFE3
+ 968 0070 0400     		.2byte	0x4
+ 969 0072 F3       		.byte	0xf3
+ 970 0073 01       		.uleb128 0x1
+ 971 0074 53       		.byte	0x53
+ 972 0075 9F       		.byte	0x9f
+ 973 0076 00000000 		.4byte	0
+ 974 007a 00000000 		.4byte	0
+ 975              	.LLST4:
+ 976 007e 08000000 		.4byte	.LVL7
+ 977 0082 10000000 		.4byte	.LVL9
+ 978 0086 0200     		.2byte	0x2
+ 979 0088 30       		.byte	0x30
+ 980 0089 9F       		.byte	0x9f
+ 981 008a 10000000 		.4byte	.LVL9
+ 982 008e 18000000 		.4byte	.LVL11
+ 983 0092 0100     		.2byte	0x1
+ 984 0094 54       		.byte	0x54
+ 985 0095 1A000000 		.4byte	.LVL12
+ 986 0099 24000000 		.4byte	.LFE3
+ 987 009d 0100     		.2byte	0x1
+ 988 009f 54       		.byte	0x54
+ 989 00a0 00000000 		.4byte	0
+ 990 00a4 00000000 		.4byte	0
+ 991              	.LLST5:
+ 992 00a8 00000000 		.4byte	.LVL13
+ 993 00ac 10000000 		.4byte	.LVL15
+ 994 00b0 0100     		.2byte	0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 23
+
+
+ 995 00b2 50       		.byte	0x50
+ 996 00b3 10000000 		.4byte	.LVL15
+ 997 00b7 A6000000 		.4byte	.LFE4
+ 998 00bb 0100     		.2byte	0x1
+ 999 00bd 57       		.byte	0x57
+ 1000 00be 00000000 		.4byte	0
+ 1001 00c2 00000000 		.4byte	0
+ 1002              	.LLST6:
+ 1003 00c6 00000000 		.4byte	.LVL13
+ 1004 00ca 10000000 		.4byte	.LVL15
+ 1005 00ce 0100     		.2byte	0x1
+ 1006 00d0 51       		.byte	0x51
+ 1007 00d1 10000000 		.4byte	.LVL15
+ 1008 00d5 A6000000 		.4byte	.LFE4
+ 1009 00d9 0400     		.2byte	0x4
+ 1010 00db F3       		.byte	0xf3
+ 1011 00dc 01       		.uleb128 0x1
+ 1012 00dd 51       		.byte	0x51
+ 1013 00de 9F       		.byte	0x9f
+ 1014 00df 00000000 		.4byte	0
+ 1015 00e3 00000000 		.4byte	0
+ 1016              	.LLST7:
+ 1017 00e7 00000000 		.4byte	.LVL13
+ 1018 00eb 10000000 		.4byte	.LVL15
+ 1019 00ef 0100     		.2byte	0x1
+ 1020 00f1 52       		.byte	0x52
+ 1021 00f2 10000000 		.4byte	.LVL15
+ 1022 00f6 A6000000 		.4byte	.LFE4
+ 1023 00fa 0100     		.2byte	0x1
+ 1024 00fc 58       		.byte	0x58
+ 1025 00fd 00000000 		.4byte	0
+ 1026 0101 00000000 		.4byte	0
+ 1027              	.LLST8:
+ 1028 0105 00000000 		.4byte	.LVL13
+ 1029 0109 10000000 		.4byte	.LVL15
+ 1030 010d 0100     		.2byte	0x1
+ 1031 010f 53       		.byte	0x53
+ 1032 0110 10000000 		.4byte	.LVL15
+ 1033 0114 A6000000 		.4byte	.LFE4
+ 1034 0118 0400     		.2byte	0x4
+ 1035 011a F3       		.byte	0xf3
+ 1036 011b 01       		.uleb128 0x1
+ 1037 011c 53       		.byte	0x53
+ 1038 011d 9F       		.byte	0x9f
+ 1039 011e 00000000 		.4byte	0
+ 1040 0122 00000000 		.4byte	0
+ 1041              	.LLST9:
+ 1042 0126 0C000000 		.4byte	.LVL14
+ 1043 012a 10000000 		.4byte	.LVL15
+ 1044 012e 0200     		.2byte	0x2
+ 1045 0130 30       		.byte	0x30
+ 1046 0131 9F       		.byte	0x9f
+ 1047 0132 10000000 		.4byte	.LVL15
+ 1048 0136 16000000 		.4byte	.LVL17
+ 1049 013a 0100     		.2byte	0x1
+ 1050 013c 54       		.byte	0x54
+ 1051 013d 30000000 		.4byte	.LVL22
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 24
+
+
+ 1052 0141 38000000 		.4byte	.LVL24
+ 1053 0145 0100     		.2byte	0x1
+ 1054 0147 54       		.byte	0x54
+ 1055 0148 3A000000 		.4byte	.LVL25
+ 1056 014c 48000000 		.4byte	.LVL26
+ 1057 0150 0100     		.2byte	0x1
+ 1058 0152 54       		.byte	0x54
+ 1059 0153 68000000 		.4byte	.LVL31
+ 1060 0157 74000000 		.4byte	.LVL35
+ 1061 015b 0100     		.2byte	0x1
+ 1062 015d 54       		.byte	0x54
+ 1063 015e 76000000 		.4byte	.LVL36
+ 1064 0162 78000000 		.4byte	.LVL37
+ 1065 0166 0100     		.2byte	0x1
+ 1066 0168 54       		.byte	0x54
+ 1067 0169 7A000000 		.4byte	.LVL38
+ 1068 016d 90000000 		.4byte	.LVL40
+ 1069 0171 0100     		.2byte	0x1
+ 1070 0173 54       		.byte	0x54
+ 1071 0174 00000000 		.4byte	0
+ 1072 0178 00000000 		.4byte	0
+ 1073              	.LLST10:
+ 1074 017c 4E000000 		.4byte	.LVL27
+ 1075 0180 50000000 		.4byte	.LVL28
+ 1076 0184 0200     		.2byte	0x2
+ 1077 0186 30       		.byte	0x30
+ 1078 0187 9F       		.byte	0x9f
+ 1079 0188 50000000 		.4byte	.LVL28
+ 1080 018c 70000000 		.4byte	.LVL33
+ 1081 0190 0100     		.2byte	0x1
+ 1082 0192 55       		.byte	0x55
+ 1083 0193 72000000 		.4byte	.LVL34
+ 1084 0197 A6000000 		.4byte	.LFE4
+ 1085 019b 0100     		.2byte	0x1
+ 1086 019d 55       		.byte	0x55
+ 1087 019e 00000000 		.4byte	0
+ 1088 01a2 00000000 		.4byte	0
+ 1089              	.LLST11:
+ 1090 01a6 56000000 		.4byte	.LVL30
+ 1091 01aa 98000000 		.4byte	.LVL41
+ 1092 01ae 0100     		.2byte	0x1
+ 1093 01b0 56       		.byte	0x56
+ 1094 01b1 00000000 		.4byte	0
+ 1095 01b5 00000000 		.4byte	0
+ 1096              	.LLST12:
+ 1097 01b9 1C000000 		.4byte	.LVL19
+ 1098 01bd 30000000 		.4byte	.LVL22
+ 1099 01c1 0600     		.2byte	0x6
+ 1100 01c3 74       		.byte	0x74
+ 1101 01c4 00       		.sleb128 0
+ 1102 01c5 08       		.byte	0x8
+ 1103 01c6 FF       		.byte	0xff
+ 1104 01c7 1A       		.byte	0x1a
+ 1105 01c8 9F       		.byte	0x9f
+ 1106 01c9 00000000 		.4byte	0
+ 1107 01cd 00000000 		.4byte	0
+ 1108              	.LLST13:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 25
+
+
+ 1109 01d1 0C000000 		.4byte	.LVL14
+ 1110 01d5 48000000 		.4byte	.LVL26
+ 1111 01d9 0200     		.2byte	0x2
+ 1112 01db 35       		.byte	0x35
+ 1113 01dc 9F       		.byte	0x9f
+ 1114 01dd 48000000 		.4byte	.LVL26
+ 1115 01e1 A6000000 		.4byte	.LFE4
+ 1116 01e5 0100     		.2byte	0x1
+ 1117 01e7 5A       		.byte	0x5a
+ 1118 01e8 00000000 		.4byte	0
+ 1119 01ec 00000000 		.4byte	0
+ 1120              		.section	.debug_aranges,"",%progbits
+ 1121 0000 3C000000 		.4byte	0x3c
+ 1122 0004 0200     		.2byte	0x2
+ 1123 0006 00000000 		.4byte	.Ldebug_info0
+ 1124 000a 04       		.byte	0x4
+ 1125 000b 00       		.byte	0
+ 1126 000c 0000     		.2byte	0
+ 1127 000e 0000     		.2byte	0
+ 1128 0010 00000000 		.4byte	.LFB0
+ 1129 0014 10000000 		.4byte	.LFE0-.LFB0
+ 1130 0018 00000000 		.4byte	.LFB1
+ 1131 001c 08000000 		.4byte	.LFE1-.LFB1
+ 1132 0020 00000000 		.4byte	.LFB2
+ 1133 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 1134 0028 00000000 		.4byte	.LFB3
+ 1135 002c 24000000 		.4byte	.LFE3-.LFB3
+ 1136 0030 00000000 		.4byte	.LFB4
+ 1137 0034 A6000000 		.4byte	.LFE4-.LFB4
+ 1138 0038 00000000 		.4byte	0
+ 1139 003c 00000000 		.4byte	0
+ 1140              		.section	.debug_ranges,"",%progbits
+ 1141              	.Ldebug_ranges0:
+ 1142 0000 00000000 		.4byte	.LFB0
+ 1143 0004 10000000 		.4byte	.LFE0
+ 1144 0008 00000000 		.4byte	.LFB1
+ 1145 000c 08000000 		.4byte	.LFE1
+ 1146 0010 00000000 		.4byte	.LFB2
+ 1147 0014 0C000000 		.4byte	.LFE2
+ 1148 0018 00000000 		.4byte	.LFB3
+ 1149 001c 24000000 		.4byte	.LFE3
+ 1150 0020 00000000 		.4byte	.LFB4
+ 1151 0024 A6000000 		.4byte	.LFE4
+ 1152 0028 00000000 		.4byte	0
+ 1153 002c 00000000 		.4byte	0
+ 1154              		.section	.debug_line,"",%progbits
+ 1155              	.Ldebug_line0:
+ 1156 0000 25010000 		.section	.debug_str,"MS",%progbits,1
+ 1156      02006900 
+ 1156      00000201 
+ 1156      FB0E0D00 
+ 1156      01010101 
+ 1157              	.LASF15:
+ 1158 0000 63797374 		.ascii	"cystatus\000"
+ 1158      61747573 
+ 1158      00
+ 1159              	.LASF29:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 26
+
+
+ 1160 0009 74656D70 		.ascii	"tempCount\000"
+ 1160      436F756E 
+ 1160      7400
+ 1161              	.LASF28:
+ 1162 0013 64617461 		.ascii	"dataIndexCntr\000"
+ 1162      496E6465 
+ 1162      78436E74 
+ 1162      7200
+ 1163              	.LASF22:
+ 1164 0021 636F756E 		.ascii	"count\000"
+ 1164      7400
+ 1165              	.LASF3:
+ 1166 0027 73686F72 		.ascii	"short unsigned int\000"
+ 1166      7420756E 
+ 1166      7369676E 
+ 1166      65642069 
+ 1166      6E7400
+ 1167              	.LASF24:
+ 1168 003a 44656275 		.ascii	"Debug_UART_CyBtldrCommWrite\000"
+ 1168      675F5541 
+ 1168      52545F43 
+ 1168      7942746C 
+ 1168      6472436F 
+ 1169              	.LASF39:
+ 1170 0056 44656275 		.ascii	"Debug_UART_ReadRxData\000"
+ 1170      675F5541 
+ 1170      52545F52 
+ 1170      65616452 
+ 1170      78446174 
+ 1171              	.LASF31:
+ 1172 006c 73746174 		.ascii	"status\000"
+ 1172      757300
+ 1173              	.LASF33:
+ 1174 0073 44656275 		.ascii	"Debug_UART_ClearRxBuffer\000"
+ 1174      675F5541 
+ 1174      52545F43 
+ 1174      6C656172 
+ 1174      52784275 
+ 1175              	.LASF20:
+ 1176 008c 70446174 		.ascii	"pData\000"
+ 1176      6100
+ 1177              	.LASF35:
+ 1178 0092 44656275 		.ascii	"Debug_UART_Stop\000"
+ 1178      675F5541 
+ 1178      52545F53 
+ 1178      746F7000 
+ 1179              	.LASF12:
+ 1180 00a2 666C6F61 		.ascii	"float\000"
+ 1180      7400
+ 1181              	.LASF21:
+ 1182 00a8 73697A65 		.ascii	"size\000"
+ 1182      00
+ 1183              	.LASF5:
+ 1184 00ad 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1184      20756E73 
+ 1184      69676E65 
+ 1184      6420696E 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 27
+
+
+ 1184      7400
+ 1185              	.LASF9:
+ 1186 00bf 75696E74 		.ascii	"uint8\000"
+ 1186      3800
+ 1187              	.LASF41:
+ 1188 00c5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Debug_UART_BOOT.c\000"
+ 1188      6E657261 
+ 1188      7465645F 
+ 1188      536F7572 
+ 1188      63655C50 
+ 1189              	.LASF36:
+ 1190 00f0 44656275 		.ascii	"Debug_UART_PutChar\000"
+ 1190      675F5541 
+ 1190      52545F50 
+ 1190      75744368 
+ 1190      617200
+ 1191              	.LASF1:
+ 1192 0103 756E7369 		.ascii	"unsigned char\000"
+ 1192      676E6564 
+ 1192      20636861 
+ 1192      7200
+ 1193              	.LASF38:
+ 1194 0111 44656275 		.ascii	"Debug_UART_GetRxBufferSize\000"
+ 1194      675F5541 
+ 1194      52545F47 
+ 1194      65745278 
+ 1194      42756666 
+ 1195              	.LASF13:
+ 1196 012c 646F7562 		.ascii	"double\000"
+ 1196      6C6500
+ 1197              	.LASF10:
+ 1198 0133 75696E74 		.ascii	"uint16\000"
+ 1198      313600
+ 1199              	.LASF30:
+ 1200 013a 6F6C6444 		.ascii	"oldDataCount\000"
+ 1200      61746143 
+ 1200      6F756E74 
+ 1200      00
+ 1201              	.LASF11:
+ 1202 0147 75696E74 		.ascii	"uint32\000"
+ 1202      333200
+ 1203              	.LASF40:
+ 1204 014e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1204      4320342E 
+ 1204      392E3320 
+ 1204      32303135 
+ 1204      30333033 
+ 1205 0181 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1205      20726576 
+ 1205      6973696F 
+ 1205      6E203232 
+ 1205      31323230 
+ 1206 01b4 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1206      66756E63 
+ 1206      74696F6E 
+ 1206      2D736563 
+ 1206      74696F6E 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 28
+
+
+ 1207              	.LASF8:
+ 1208 01dc 756E7369 		.ascii	"unsigned int\000"
+ 1208      676E6564 
+ 1208      20696E74 
+ 1208      00
+ 1209              	.LASF7:
+ 1210 01e9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1210      206C6F6E 
+ 1210      6720756E 
+ 1210      7369676E 
+ 1210      65642069 
+ 1211              	.LASF19:
+ 1212 0200 44656275 		.ascii	"Debug_UART_CyBtldrCommReset\000"
+ 1212      675F5541 
+ 1212      52545F43 
+ 1212      7942746C 
+ 1212      6472436F 
+ 1213              	.LASF32:
+ 1214 021c 44656275 		.ascii	"Debug_UART_Start\000"
+ 1214      675F5541 
+ 1214      52545F53 
+ 1214      74617274 
+ 1214      00
+ 1215              	.LASF26:
+ 1216 022d 62756649 		.ascii	"bufIndex\000"
+ 1216      6E646578 
+ 1216      00
+ 1217              	.LASF17:
+ 1218 0236 44656275 		.ascii	"Debug_UART_CyBtldrCommStart\000"
+ 1218      675F5541 
+ 1218      52545F43 
+ 1218      7942746C 
+ 1218      6472436F 
+ 1219              	.LASF16:
+ 1220 0252 73697A65 		.ascii	"sizetype\000"
+ 1220      74797065 
+ 1220      00
+ 1221              	.LASF6:
+ 1222 025b 6C6F6E67 		.ascii	"long long int\000"
+ 1222      206C6F6E 
+ 1222      6720696E 
+ 1222      7400
+ 1223              	.LASF34:
+ 1224 0269 44656275 		.ascii	"Debug_UART_ClearTxBuffer\000"
+ 1224      675F5541 
+ 1224      52545F43 
+ 1224      6C656172 
+ 1224      54784275 
+ 1225              	.LASF42:
+ 1226 0282 433A5C55 		.ascii	"C:\\Users\\Kyle\\Documents\\PSoC Creator\\Workspace"
+ 1226      73657273 
+ 1226      5C4B796C 
+ 1226      655C446F 
+ 1226      63756D65 
+ 1227 02b0 30315C4D 		.ascii	"01\\Microcontroller\\Microcontroller\\SeniorDesign."
+ 1227      6963726F 
+ 1227      636F6E74 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccGj8rFM.s 			page 29
+
+
+ 1227      726F6C6C 
+ 1227      65725C4D 
+ 1228 02e0 63796473 		.ascii	"cydsn\000"
+ 1228      6E00
+ 1229              	.LASF2:
+ 1230 02e6 73686F72 		.ascii	"short int\000"
+ 1230      7420696E 
+ 1230      7400
+ 1231              	.LASF18:
+ 1232 02f0 44656275 		.ascii	"Debug_UART_CyBtldrCommStop\000"
+ 1232      675F5541 
+ 1232      52545F43 
+ 1232      7942746C 
+ 1232      6472436F 
+ 1233              	.LASF23:
+ 1234 030b 74696D65 		.ascii	"timeOut\000"
+ 1234      4F757400 
+ 1235              	.LASF4:
+ 1236 0313 6C6F6E67 		.ascii	"long int\000"
+ 1236      20696E74 
+ 1236      00
+ 1237              	.LASF14:
+ 1238 031c 63686172 		.ascii	"char\000"
+ 1238      00
+ 1239              	.LASF0:
+ 1240 0321 7369676E 		.ascii	"signed char\000"
+ 1240      65642063 
+ 1240      68617200 
+ 1241              	.LASF25:
+ 1242 032d 44656275 		.ascii	"Debug_UART_CyBtldrCommRead\000"
+ 1242      675F5541 
+ 1242      52545F43 
+ 1242      7942746C 
+ 1242      6472436F 
+ 1243              	.LASF27:
+ 1244 0348 69436E74 		.ascii	"iCntr\000"
+ 1244      7200
+ 1245              	.LASF37:
+ 1246 034e 43794465 		.ascii	"CyDelay\000"
+ 1246      6C617900 
+ 1247              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
