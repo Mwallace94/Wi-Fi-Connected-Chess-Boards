@@ -125,7 +125,7 @@ void playturn() {
   char str[4];
   bzero(str,4);
 
-  transition t;
+  transition t; 
   int gameOn = 1;
   while(gameOn) {
     initTestState();
@@ -144,11 +144,11 @@ void playturn() {
       printf("\n");
 */
       printf("Finished Reading\n");
-      t.fromRow = (int)str[1]; 
-      t.fromCol = (int)str[2]; 
+      t.fromRow = (int)str[0]; 
+      t.fromCol = (int)str[1]; 
       t.piece = getPieceFromPos(t.fromRow, t.fromCol);
-      t.toRow = (int)str[3]; 
-      t.toCol = (int)str[4];
+      t.toRow = (int)str[2];
+      t.toCol = (int)str[3];
       printf("move(%c %d %d %d %d)\n", t.piece, t.fromRow, t.fromCol, t.toRow, t.toCol);
       if(t.piece == 0) printStateNoGrave();
       takenPiece = '\0';
@@ -162,11 +162,11 @@ void playturn() {
       }
       if(!move){
       	goodMove[0] = 0;
-
+        write(comm_fd,goodMove,9);
       	//change write to write to comm_fd(goodmove, 2 potential moves)
-    	write(comm_fd,goodMove,9);
       }
-	}
+    	
+	  }
     
       teststate[t.fromRow][t.fromCol] = EMPTY;
       teststate[t.toRow][t.toCol] = t.piece;
@@ -1205,5 +1205,5 @@ void restoreMove(transition t){
     // if enemy piece is moved to the graveyard detect move and make sure next piece takes that piece and is legel.
     // Keep old state, but create flag with position taken to make sure your piece takes theres
     // int partialMove(transition) {
-
+			//this
     // }

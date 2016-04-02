@@ -118,26 +118,35 @@ class myHandler(socketserver.BaseRequestHandler):
 
                         # Helper parses return value from C simulator.
                         def parseSimReturn(retval):
-                                isValid    = retval[:8]
-                                moves  = retval[8:]
+                                isValid    = retval[0]
+                                moves  = retval[0:]
                                 return (isValid, moves)
 
-                        print(self.client_address)
                         if self.players[0] == (self.client_address[0], PORT):
                                 if 1:#self.pstates[0] == MOVING:
                                         bargs = args2b(args)
                                         print(bargs)
                                         csock.sendto(bargs, (CIP, CPORT))
+                                        
                                         # 8 validity bits, 32 move bits, 32 move bits
-                                        retval = csock.recv(72)
+                                        retval = csock.recv(9)
                                         (isValid, moves) = parseSimReturn(retval)
-                                        print(isValid)
-                                        if isValid:
+                                        print(retval)
+                                        
+                                        # Regular valid move
+                                        if isValid == 1:
                                                 self.request.sendto(retval, self.players[0])
                                                 self.request.sendto(moves, self.players[1])
                                                 self.pstates[0] = WAITING
                                                 self.pstates[1] = MOVING
                                                 self.response[0] = b'22'
+                                                
+                                        # Pawn promotion, prompt for promotion argument
+                                        elif isValid == 2:
+                                                self.request.sendto(retval, self.players[0])
+                                                self.request.sendto(moves, self.players[1])
+                                                self.response[0] = b'24'
+                                                
                                         else:
                                                 self.request.sendto(isValid, self.players[0])
                                                 self.response[0] = b'21'
@@ -151,16 +160,26 @@ class myHandler(socketserver.BaseRequestHandler):
                                         bargs = args2b(args)
                                         print(bargs)
                                         csock.sendto(bargs, (CIP, CPORT))
+                                        
                                         # 8 validity bits, 32 move bits, 32 move bits
-                                        retval = csock.recv(72)
+                                        retval = csock.recv(9)
                                         (isValid, moves) = parseSimReturn(retval)
-                                        print(isValid)
-                                        if isValid:
+                                        print(retval)
+                                        
+                                        # Regular valid move
+                                        if isValid == 1:
                                                 self.request.sendto(retval, self.players[1])
                                                 self.request.sendto(moves, self.players[0])
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
                                                 self.response[0] = b'21'
+                                                
+                                        # Pawn promotion, prompt for promotion argument
+                                        elif isValid == 2:
+                                                self.request.sendto(retval, self.players[1])
+                                                self.request.sendto(moves, self.players[0])
+                                                self.response[0] = b'25'
+                                                
                                         else:
                                                 self.request.sendto(isValid, self.players[1])
                                                 self.response[0] = b'22'
@@ -170,7 +189,7 @@ class myHandler(socketserver.BaseRequestHandler):
 
                         else:
                                 self.request.sendto(b'Who?', self.client_address)
-                                self.response[0] = b'23' # Nobody will respond to this...
+                                self.response[0] = b'29' # Nobody will respond to this...
 
                 def end(args):
                         if self.players[0] != '':
