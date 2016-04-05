@@ -1,7 +1,7 @@
 @echo off
 
 :start
-   cd /d E:\Documents\GitHub\WiFiChessBoard\WiFiChessBoard\
+   cd /d E:\Documents\GitHub\WiFiChessBoard
    netsh wlan start hostednetwork
    timeout 2
    start call .\ChessSimulation\chessgame.exe

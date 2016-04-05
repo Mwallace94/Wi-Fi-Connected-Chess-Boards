@@ -1,6 +1,7 @@
 from graphics import *
 import subprocess
 import socket
+import time
 
 PORT = 666
 SERVER = '192.168.173.1'
@@ -665,8 +666,13 @@ def main():
 
             # Now, wait for the opponent's move.
             # TODO: Client receives before opponent's move is sent... fix it!
-            dataOpponent = sock.recv(8)
+            dataOpponent = sock.recv(9)
+            while dataOpponent == dataSelf or dataOpponent == b'':
+                print(dataOpponent)
+                time.sleep(5)
+                dataOpponent = sock.recv(9)
 
+            print(dataOpponent)
             movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
             movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
 
