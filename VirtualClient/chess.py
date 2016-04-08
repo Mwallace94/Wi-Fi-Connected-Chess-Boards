@@ -20,6 +20,7 @@ WBISHOP = 10
 WQUEEN = 11
 WKING = 12
 
+# If you change SQUARE_SZ, don't forget to change SQ_SZ_HALF!
 SQUARE_SZ = 50
 SQ_SZ_HALF = 25
 
@@ -42,6 +43,8 @@ END_BTN_TOPL_X = 480
 END_BTN_TOPL_Y = 425
 END_BTN_BOTR_X = 540
 END_BTN_BOTR_Y = 475
+
+# TODO: Add "Reset" button (no need for smooth movement, just setup_board()).
 
 #States
 NOTCONNECTED = 0
@@ -630,6 +633,8 @@ def main():
                 sock.sendto(b'.end', (SERVER, PORT))
                 return
 
+            # TODO: clicked on "Reset" button
+
         while state == READY:
             point = win.getMouse()
             
@@ -657,16 +662,9 @@ def main():
             t3.draw(win)            
             
         while state == WAITING:
-            point = win.getMouse()
-            
-            # clicked on "End" button       
-            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
-                sock = setup_connection()
-                sock.sendto(b'.end', (SERVER, PORT))
-                return
             
             dataOpponent = sock.recv(9)
-            if len(dataOpponent) >= 8
+            if len(dataOpponent) >= 8:
 
                 print(dataOpponent)
                 movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
@@ -681,11 +679,21 @@ def main():
 
                 state = MOVING
 
+            if dataOpponent == b'\x31':
+                
+                state = CONNECTED
+
         while state == MOVING:
             point = win.getMouse()
             
             fromrow = point.x // SQUARE_SZ
             fromcol = point.y // SQUARE_SZ
+
+            # clicked on "End" button       
+            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
+                sock = setup_connection()
+                sock.sendto(b'.end', (SERVER, PORT))
+                return
 
             #used to only be able to click on a piece in play
             temp = (0, 0)
@@ -718,7 +726,7 @@ def main():
                     squares[fromrow][fromcol].setFill("white")
 
             def concat(i):
-            return b' ' + str(i).encode()
+                 return b' ' + str(i).encode()
 
             sock = setup_connection()
 

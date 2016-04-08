@@ -193,9 +193,9 @@ class myHandler(socketserver.BaseRequestHandler):
 
                 def end(args):
                         if self.players[0] != '':
-                                self.request.sendto(b'Finished.', self.players[0])
+                                self.request.sendto(b'\x31', self.players[0])
                         if self.players[1] != '':
-                                self.request.sendto(b'Finished.', self.players[1])
+                                self.request.sendto(b'\x31', self.players[1])
                         self.players[0] = ''
                         self.players[1] = ''
                         self.pstates[0] = NOTCONNECTED
