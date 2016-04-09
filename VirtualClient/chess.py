@@ -582,9 +582,12 @@ def main():
 
     # Helper parses return value from C simulator.
     def parseSimReturn(retval):
-        isValid = retval[0]
-        moves  = retval[1:]
-        return (isValid, moves)
+        try:
+            isValid = retval[0]
+            moves  = retval[1:]
+            return (isValid, moves)
+        except:
+            return (retval, b'')
 
     # Set up graphics and board
     (win, squares) = setup_graphics()
@@ -614,6 +617,7 @@ def main():
 
         while state == CONNECTED:
 
+            print(state)
             point = win.getMouse()
 
             # clicked on "Ready" button       
@@ -627,10 +631,10 @@ def main():
                 if response == b'\x11':
                     displaytext = "Ready."
                     state = READY
-                if response == b'\x21':
+                if response == b'\x21' or response == b'!':
                     displaytext = "Your turn."
                     state = MOVING
-                if response == b'\x22':
+                if response == b'\x22' or response == b'"':
                     displaytext = "Their turn."
                     state = WAITING
                 
@@ -648,24 +652,27 @@ def main():
 
         while state == READY:
 
+            print(state)
+            
             sock = setup_connection()
             sock.sendto(b'.gib', (SERVER, PORT))
             response = sock.recv(1)
             
-            while response != b'\x21' or response != b'\x22':
+            while response != b'\x21' and response != b'\x22' and response != b'!' and response != b'"':
+                time.sleep(5)
                 sock = setup_connection()
                 sock.sendto(b'.gib', (SERVER, PORT))
-                time.sleep(5)
                 response = sock.recv(1)
+                print(response)
                         
             displaytext = ""
             if response == b'\x11':
                 displaytext = "Ready."
                 state = READY
-            if response == b'\x21':
+            if response == b'\x21' or response == b'!':
                 displaytext = "Your turn."
                 state = MOVING
-            if response == b'\x22':
+            if response == b'\x22' or response == b'"':
                 displaytext = "Their turn."
                 state = WAITING
                 
@@ -685,6 +692,8 @@ def main():
             
         while state == WAITING:
 
+            print(state)
+
             sock = setup_connection()
             sock.sendto(b'.gib', (SERVER, PORT))
             dataOpponent = sock.recv(8)
@@ -696,26 +705,29 @@ def main():
                 dataOpponent = sock.recv(8)
                 print(dataOpponent)
                 
-                if dataOpponent == b'\x31':
+                if dataOpponent == b'\x31' or dataOpponent == b'1':
                     break
 
-            if dataOpponent == b'\x31':
+            if dataOpponent == b'\x31' or dataOpponent == b'1':
                 state = CONNECTED
                 break
 
             movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
             movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
 
-            print(movementOpp1)
-            print(movementOpp2)
-
-            movepiece(pieces, movementOpp1)
+            # If movement2 exists, it must be done before movement1.
             if movementOpp2 != ((0, 0), 0, 0, 0, 0):
+                print(movementOpp2)
                 movepiece(pieces, movementOpp2)
 
+            print(movementOpp1)
+            movepiece(pieces, movementOpp1)
+            
             state = MOVING
 
         while state == MOVING:
+
+            print(state)
 
             point = win.getMouse()
             
@@ -780,12 +792,13 @@ def main():
                 movement1 = (pieces[moves[0]][moves[1]], moves[1], moves[0], moves[3], moves[2])
                 movement2 = (pieces[moves[4]][moves[5]], moves[5], moves[4], moves[7], moves[6])
 
-                print(movement1)
-                print(movement2)
-
-                movepiece(pieces, movement1)
+                # If movement2 exists, you must do it before movement1.
                 if movement2 != ((0, 0), 0, 0, 0, 0):
+                    print(movement2)
                     movepiece(pieces, movement2)
+                    
+                print(movement1)
+                movepiece(pieces, movement1)
 
                 state = WAITING
         
