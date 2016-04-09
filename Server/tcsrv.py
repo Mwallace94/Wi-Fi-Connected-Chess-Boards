@@ -78,34 +78,28 @@ class myHandler(socketserver.BaseRequestHandler):
                         if self.players[0] == (self.client_address[0], PORT):
                                 if self.pstates[0] == CONNECTED:
                                         self.pstates[0] = READY
-                                        self.request.sendto(b'\x11', self.client_address)
-                                        self.response[0] = b'11'
-                                elif self.pstates[0] == READY:
-                                        self.request.sendto(b'\x12', self.client_address)
-                                        self.response[0] = b'12'
-                                else:
-                                        self.request.sendto(b'\x13.', self.client_address)
-                                        self.response[0] = b'13'
+                                        if self.pstates == [READY, READY]:
+                                                self.pstates[0] = MOVING
+                                                self.pstates[1] = WAITING
+                                                self.request.sendto(b'\x21', self.players[0])
+                                                self.request.sendto(b'\x22', self.players[1])
+                                                self.response[0] = b'21'
+                                        else:
+                                                self.request.sendto(b'\x11', self.client_address)
+                                                self.response[0] = b'11'
                                 
                         elif self.players[1] == (self.client_address[0], PORT):
                                 if self.pstates[1] == CONNECTED:
                                         self.pstates[1] = READY
-                                        self.request.sendto(b'\x14', self.client_address)
-                                        self.response[0] = b'14'
-                                elif self.pstates[1] == READY:
-                                        self.request.sendto(b'\x15', self.client_address)
-                                        self.response[0] = b'15'
-                                else:
-                                        self.request.sendto(b'\x16', self.client_address)
-                                        self.response[0] = b'16'
-
-                        # Start game when both players are ready.
-                        if self.pstates == [READY, READY]:
-                                self.pstates[0] = MOVING
-                                self.pstates[1] = WAITING
-                                self.request.sendto(b'\x21', self.players[0])
-                                self.request.sendto(b'\x22', self.players[1])
-                                self.response[0] = b'21'
+                                        if self.pstates == [READY, READY]:
+                                                self.pstates[0] = MOVING
+                                                self.pstates[1] = WAITING
+                                                self.request.sendto(b'\x21', self.players[0])
+                                                self.request.sendto(b'\x22', self.players[1])
+                                                self.response[0] = b'21'
+                                        else:
+                                                self.request.sendto(b'\x11', self.client_address)
+                                                self.response[0] = b'11'
 
                 def move(args):
 

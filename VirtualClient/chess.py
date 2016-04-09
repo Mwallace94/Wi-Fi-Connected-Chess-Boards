@@ -104,6 +104,12 @@ def setup_connection():
     sock.connect((SERVER, PORT))
     return sock
 
+def setup_connection2():
+
+    listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    listen.bind(('', 0))
+    listen.listen(5)
+
 def setup_board(win, squares):
 
 #white pieces
@@ -589,6 +595,7 @@ def main():
     # Automatically set up connection
     state = NOTCONNECTED
     sock = setup_connection()
+    listen = setup_connection2()
     sock.sendto(b'.connect', (SERVER, PORT))
     response = sock.recv(4)
 
@@ -605,10 +612,13 @@ def main():
     while 1:
 
         while state == CONNECTED:
+
             point = win.getMouse()
 
             # clicked on "Ready" button       
             if(point.x >= READY_BTN_TOPL_X and point.x <= READY_BTN_BOTR_X and point.y >= READY_BTN_TOPL_Y and point.y <= READY_BTN_BOTR_Y):
+
+                sock = setup_connection()
                 sock.sendto(b'.ready', (SERVER, PORT))
                 response = sock.recv(4)
 
@@ -636,18 +646,13 @@ def main():
             # TODO: clicked on "Reset" button
 
         while state == READY:
-            point = win.getMouse()
-            
-            # clicked on "End" button       
-            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
-                sock = setup_connection()
-                sock.sendto(b'.end', (SERVER, PORT))
-                return
 
-            response = sock.recv(4)
-
+            listen = setup_connection2()
+            (sock2, addr2) = listen.accept()
+            response = sock2.recv(4)
+                        
             displaytext = ""
-            if response == b'\x11' or response == b'\x14':
+            if response == b'\x11':
                 displaytext = "Ready."
                 state = READY
             if response == b'\x21':
@@ -660,10 +665,21 @@ def main():
             t3.undraw()
             t3 = Text(Point(370, 450), displaytext)
             t3.draw(win)            
+
+            point = win.getMouse()
+            
+            # clicked on "End" button       
+            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
+                sock = setup_connection()
+                sock.sendto(b'.end', (SERVER, PORT))
+                return
             
         while state == WAITING:
+
+            listen = setup_connection2()
+            (sock2, addr2) = listen.accept()
+            dataOpponent = sock2.recv(9)
             
-            dataOpponent = sock.recv(9)
             if len(dataOpponent) >= 8:
 
                 print(dataOpponent)
@@ -684,6 +700,7 @@ def main():
                 state = CONNECTED
 
         while state == MOVING:
+
             point = win.getMouse()
             
             fromrow = point.x // SQUARE_SZ
