@@ -680,13 +680,17 @@ def main():
             
         while state == WAITING:
 
+            sock = setup_connection()
             sock.sendto(b'.gib', (SERVER, PORT))
             dataOpponent = sock.recv(8)
+            
             while len(dataOpponent) != 8:
                 time.sleep(5)
+                sock = setup_connection()
                 sock.sendto(b'.gib', (SERVER, PORT))
                 dataOpponent = sock.recv(8)
                 print(dataOpponent)
+                
                 if dataOpponent == b'\x31':
                     break
 
