@@ -109,6 +109,7 @@ def setup_connection2():
     listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     listen.bind(('', 0))
     listen.listen(5)
+    return listen
 
 def setup_board(win, squares):
 
@@ -620,10 +621,10 @@ def main():
 
                 sock = setup_connection()
                 sock.sendto(b'.ready', (SERVER, PORT))
-                response = sock.recv(4)
+                response = sock.recv(1)
 
                 displaytext = ""
-                if response == b'\x11' or response == b'\x14':
+                if response == b'\x11':
                     displaytext = "Ready."
                     state = READY
                 if response == b'\x21':
@@ -647,9 +648,10 @@ def main():
 
         while state == READY:
 
-            listen = setup_connection2()
-            (sock2, addr2) = listen.accept()
-            response = sock2.recv(4)
+            response = sock.recv(1)
+            while response != b'\x21' or response != b'\x22':
+                time.sleep(5)
+                response = sock.recv(1)
                         
             displaytext = ""
             if response == b'\x11':
@@ -666,38 +668,41 @@ def main():
             t3 = Text(Point(370, 450), displaytext)
             t3.draw(win)            
 
-            point = win.getMouse()
-            
-            # clicked on "End" button       
-            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
-                sock = setup_connection()
-                sock.sendto(b'.end', (SERVER, PORT))
-                return
+##            point = win.getMouse()
+##            
+##            # clicked on "End" button       
+##            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
+##                sock = setup_connection()
+##                sock.sendto(b'.end', (SERVER, PORT))
+##                return
+
+            # TODO: clicked on "Reset" button
             
         while state == WAITING:
 
-            listen = setup_connection2()
-            (sock2, addr2) = listen.accept()
-            dataOpponent = sock2.recv(9)
-            
-            if len(dataOpponent) >= 8:
-
+            dataOpponent = sock.recv(8)
+            while len(dataOpponent) != 8:
+                time.sleep(5)
+                dataOpponent = sock.recv(8)
                 print(dataOpponent)
-                movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
-                movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
-
-                print(movementOpp1)
-                print(movementOpp2)
-
-                movepiece(pieces, movementOpp1)
-                if movementOpp2 != ((0, 0), 0, 0, 0, 0):
-                    movepiece(pieces, movementOpp2)
-
-                state = MOVING
+                if dataOpponent == b'\x31':
+                    break
 
             if dataOpponent == b'\x31':
-                
                 state = CONNECTED
+                break
+
+            movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
+            movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
+
+            print(movementOpp1)
+            print(movementOpp2)
+
+            movepiece(pieces, movementOpp1)
+            if movementOpp2 != ((0, 0), 0, 0, 0, 0):
+                movepiece(pieces, movementOpp2)
+
+            state = MOVING
 
         while state == MOVING:
 
