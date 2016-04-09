@@ -83,7 +83,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
                                                 self.request.sendto(b'\x21', self.players[0])
-                                                self.request.sendto(b'\x22', self.players[1])
+                                                self.movesToSend = b'\x22'
                                                 self.response[0] = b'21'
                                         else:
                                                 self.request.sendto(b'\x11', self.client_address)
@@ -95,7 +95,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         if self.pstates == [READY, READY]:
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
-                                                self.request.sendto(b'\x21', self.players[0])
+                                                self.movesToSend = b'\x21'
                                                 self.request.sendto(b'\x22', self.players[1])
                                                 self.response[0] = b'21'
                                         else:

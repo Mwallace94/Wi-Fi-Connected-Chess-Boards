@@ -648,8 +648,13 @@ def main():
 
         while state == READY:
 
+            sock = setup_connection()
+            sock.sendto(b'.gib', (SERVER, PORT))
             response = sock.recv(1)
+            
             while response != b'\x21' or response != b'\x22':
+                sock = setup_connection()
+                sock.sendto(b'.gib', (SERVER, PORT))
                 time.sleep(5)
                 response = sock.recv(1)
                         
