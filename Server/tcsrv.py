@@ -34,9 +34,10 @@ MOVING = 4
 #This class will handles any incoming request.
 class myHandler(socketserver.BaseRequestHandler):
 
-        response = [b''] # Needs brackets, but not sure why.
+        response = [b''] # Needs brackets, but not sure why. TODO: Remove this. Not necessary.
         players = ['','']
         pstates = [NOTCONNECTED, NOTCONNECTED]
+        movesToSend = b''
 
         def handle(self):
 
@@ -130,7 +131,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Regular valid move
                                         if isValid == 1:
                                                 self.request.sendto(retval, self.players[0])
-                                                self.request.sendto(moves, self.players[1])
+                                                self.movesToSend = moves
                                                 self.pstates[0] = WAITING
                                                 self.pstates[1] = MOVING
                                                 self.response[0] = b'22'
@@ -138,7 +139,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Pawn promotion, prompt for promotion argument
                                         elif isValid == 2:
                                                 self.request.sendto(retval, self.players[0])
-                                                self.request.sendto(moves, self.players[1])
+                                                self.movesToSend = moves
                                                 self.response[0] = b'24'
                                                 
                                         else:
@@ -163,7 +164,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Regular valid move
                                         if isValid == 1:
                                                 self.request.sendto(retval, self.players[1])
-                                                self.request.sendto(moves, self.players[0])
+                                                self.movesToSend = moves
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
                                                 self.response[0] = b'21'
@@ -171,7 +172,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Pawn promotion, prompt for promotion argument
                                         elif isValid == 2:
                                                 self.request.sendto(retval, self.players[1])
-                                                self.request.sendto(moves, self.players[0])
+                                                self.movesToSend = moves
                                                 self.response[0] = b'25'
                                                 
                                         else:
@@ -185,11 +186,14 @@ class myHandler(socketserver.BaseRequestHandler):
                                 self.request.sendto(b'Who?', self.client_address)
                                 self.response[0] = b'29' # Nobody will respond to this...
 
+                def giveMoves(args):
+
+                        if self.movesToSend != b'':
+                                self.request.sendto(movesToSend, (self.client_address[0], PORT))
+                                self.movesToSend = b''
+
                 def end(args):
-                        if self.players[0] != '':
-                                self.request.sendto(b'\x31', self.players[0])
-                        if self.players[1] != '':
-                                self.request.sendto(b'\x31', self.players[1])
+                        movesToSend = b'\x31'
                         self.players[0] = ''
                         self.players[1] = ''
                         self.pstates[0] = NOTCONNECTED
@@ -208,7 +212,8 @@ class myHandler(socketserver.BaseRequestHandler):
                           b'.connect' : connect,
                           b'.ready' : ready,
                           b'.move' : move,
-                          b'.end' : end
+                          b'.end' : end,
+                          b'.gib' : giveMoves
                           }
 
                 print(self.client_address[0], ' : ', self.rawdata)
