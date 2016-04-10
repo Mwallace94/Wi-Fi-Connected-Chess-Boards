@@ -1,6 +1,7 @@
 from graphics import *
 import subprocess
 import socket
+import time
 
 PORT = 666
 SERVER = '192.168.173.1'
@@ -19,6 +20,7 @@ WBISHOP = 10
 WQUEEN = 11
 WKING = 12
 
+# If you change SQUARE_SZ, don't forget to change SQ_SZ_HALF!
 SQUARE_SZ = 50
 SQ_SZ_HALF = 25
 
@@ -41,6 +43,15 @@ END_BTN_TOPL_X = 480
 END_BTN_TOPL_Y = 425
 END_BTN_BOTR_X = 540
 END_BTN_BOTR_Y = 475
+
+# TODO: Add "Reset" button (no need for smooth movement, just setup_board()).
+
+#States
+NOTCONNECTED = 0
+CONNECTED = 1
+READY = 2
+WAITING = 3
+MOVING = 4
 
 #############################################
 # Functions for setup                       #
@@ -226,7 +237,7 @@ def movepiece(pieces, movement):
                         temp = 1
                         break        
 
-    steppermove(pieces, movement)         
+    steppermove(pieces, movement)        
 
     #en passent
     if (movement[0] == BPAWN or movement[0] == WPAWN) and abs(movement[3] - movement[1]) == 1 and pieces[movement[3]][movement[4]] == (0, 0) and pieces[movement[3]][movement[2]] != (0, 0):
@@ -562,79 +573,189 @@ def moveto(pieces, place):
 
 def main():
 
-    sock = setup_connection()
-    sock.sendto(b'.connect', (SERVER, PORT))
+    # Helper parses return value from C simulator.
+    def parseSimReturn(retval):
+        isValid = retval[0]
+        moves  = retval[1:]
+        return (isValid, moves)
+
+    # Set up graphics and board
     (win, squares) = setup_graphics()
     (win, squares, pieces) = setup_board(win, squares)
 
+    # Text screen is initialized
     t3 = Text(Point(370, 450), "")
 
+    # Automatically set up connection
+    state = NOTCONNECTED
+    sock = setup_connection()
+    sock.sendto(b'.connect', (SERVER, PORT))
+    response = sock.recv(4)
+
+    displaytext = ""
+    if response == b'\x01' or response == b'\x03':
+        displaytext = "Connected."
+        state = CONNECTED
+
+    t3.undraw()
+    t3 = Text(Point(370, 450), displaytext)
+    t3.draw(win)
+    
+    # Allow user to input whenever they want in this loop.
     while 1:
 
-        #used to only be able to click on a piece in play
-        temp = (0, 0)
-        while temp == (0, 0):
+        while state == CONNECTED:
             point = win.getMouse()
-            fromrow = point.x // SQUARE_SZ
-            fromcol = point.y // SQUARE_SZ
-            
-            if(point.y <= 400):
-                temp = pieces[fromrow][fromcol]
-                
-            if fromrow == 0 or fromrow == 1 or fromrow == 10 or fromrow == 11:
-                temp = (0, 0)
-                
-            if(point.x >= CONNECT_BTN_TOPL_X and point.x <= CONNECT_BTN_BOTR_X and point.y >= CONNECT_BTN_TOPL_Y and point.y <= CONNECT_BTN_BOTR_Y):
-                sock = setup_connection()
-                sock.sendto(b'.connect', (SERVER, PORT))
-                displaytext = str(sock.recv(1024), "utf-8")
-                print(displaytext)
-                t3.undraw()
-                t3 = Text(Point(370, 450), displaytext)
-                t3.draw(win)
-                
+
+            # clicked on "Ready" button       
             if(point.x >= READY_BTN_TOPL_X and point.x <= READY_BTN_BOTR_X and point.y >= READY_BTN_TOPL_Y and point.y <= READY_BTN_BOTR_Y):
-                sock = setup_connection()
                 sock.sendto(b'.ready', (SERVER, PORT))
-                displaytext = str(sock.recv(1024), "utf-8")
-                print(displaytext)
+                response = sock.recv(4)
+
+                displaytext = ""
+                if response == b'\x11' or response == b'\x14':
+                    displaytext = "Ready."
+                    state = READY
+                if response == b'\x21':
+                    displaytext = "Your turn."
+                    state = MOVING
+                if response == b'\x22':
+                    displaytext = "Their turn."
+                    state = WAITING
+                
                 t3.undraw()
                 t3 = Text(Point(370, 450), displaytext)
                 t3.draw(win)
-                
+
+            # clicked on "End" button       
             if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
                 sock = setup_connection()
                 sock.sendto(b'.end', (SERVER, PORT))
-                return    
-        
-        squares[fromrow][fromcol].setFill("lime")
-        point = win.getMouse()
-        while(point.y > 400):
+                return
+
+            # TODO: clicked on "Reset" button
+
+        while state == READY:
             point = win.getMouse()
+            
+            # clicked on "End" button       
+            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
+                sock = setup_connection()
+                sock.sendto(b'.end', (SERVER, PORT))
+                return
+
+            response = sock.recv(4)
+
+            displaytext = ""
+            if response == b'\x11' or response == b'\x14':
+                displaytext = "Ready."
+                state = READY
+            if response == b'\x21':
+                displaytext = "Your turn."
+                state = MOVING
+            if response == b'\x22':
+                displaytext = "Their turn."
+                state = WAITING
+                
+            t3.undraw()
+            t3 = Text(Point(370, 450), displaytext)
+            t3.draw(win)            
+            
+        while state == WAITING:
+            
+            dataOpponent = sock.recv(9)
+            if len(dataOpponent) >= 8:
+
+                print(dataOpponent)
+                movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
+                movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
+
+                print(movementOpp1)
+                print(movementOpp2)
+
+                movepiece(pieces, movementOpp1)
+                if movementOpp2 != ((0, 0), 0, 0, 0, 0):
+                    movepiece(pieces, movementOpp2)
+
+                state = MOVING
+
+            if dataOpponent == b'\x31':
+                
+                state = CONNECTED
+
+        while state == MOVING:
+            point = win.getMouse()
+            
+            fromrow = point.x // SQUARE_SZ
+            fromcol = point.y // SQUARE_SZ
+
+            # clicked on "End" button       
+            if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
+                sock = setup_connection()
+                sock.sendto(b'.end', (SERVER, PORT))
+                return
+
+            #used to only be able to click on a piece in play
+            temp = (0, 0)
+    
+            # clicked in the board space
+            if(point.y <= 400):
+                temp = pieces[fromrow][fromcol]
+
+            # clicked in the graveyard
+            if fromrow == 0 or fromrow == 1 or fromrow == 10 or fromrow == 11:
+                temp = (0, 0) 
+
+            if temp != (0, 0):
+                
+                squares[fromrow][fromcol].setFill("lime")
+                point2 = win.getMouse()
+
+                # Not clicked on board again.
+                if(point2.y > 400):
+                    continue
+
+                torow = point2.x // SQUARE_SZ
+                tocol = point2.y // SQUARE_SZ
+                
+                if fromrow < 2 or fromrow > 9:
+                    squares[fromrow][fromcol].setFill("linen")
+                elif (fromrow + fromcol) % 2 == 0:
+                    squares[fromrow][fromcol].setFill("gray")
+                else: 
+                    squares[fromrow][fromcol].setFill("white")
+
+            def concat(i):
+                 return b' ' + str(i).encode()
+
+            sock = setup_connection()
+
+            #movement = (piece-to-move, ...)
+            tempMovement = (pieces[fromrow][fromcol][1], fromrow, fromcol, torow, tocol)
+
+            # mixup during, microcontroller code asks for rows before cols.
+            # Removed piece from msg, server/simulator will expect only 4 numbers for XY positions.
+            msg = b'.move' + concat(tempMovement[2]) + concat(tempMovement[1]) + concat(tempMovement[4]) + concat(tempMovement[3])
+            sock.sendto(msg, (SERVER, PORT))
+
+            dataSelf = sock.recv(9)
+            print(dataSelf)
+            (isValid, moves) = parseSimReturn(dataSelf)
         
-        torow = point.x // SQUARE_SZ
-        tocol = point.y // SQUARE_SZ
-        if fromrow < 2 or fromrow > 9:
-            squares[fromrow][fromcol].setFill("linen")
-        elif (fromrow + fromcol) % 2 == 0:
-            squares[fromrow][fromcol].setFill("gray")
-        else: 
-            squares[fromrow][fromcol].setFill("white")
+            print(isValid)
+            if isValid:
+                movement1 = (pieces[moves[0]][moves[1]], moves[1], moves[0], moves[3], moves[2])
+                movement2 = (pieces[moves[4]][moves[5]], moves[5], moves[4], moves[7], moves[6])
 
-        #movement = (piece-to-move, ...)
-        movement = (pieces[fromrow][fromcol][1], fromrow, fromcol, torow, tocol)
-        movepiece(pieces, movement)
-        print(movement)
+                print(movement1)
+                print(movement2)
 
-        def concat(i):
-            return b' ' + str(i).encode()
+                movepiece(pieces, movement1)
+                if movement2 != ((0, 0), 0, 0, 0, 0):
+                    movepiece(pieces, movement2)
 
-        sock = setup_connection()
-        # mixup during, microcontroller code asks for rows before cols.
-        # Removed piece from msg, server/simulator will expect only 4 numbers for XY positions.
-        msg = b'.move' + concat(movement[2]) + concat(movement[1]) + concat(movement[4]) + concat(movement[3])
-        sock.sendto(msg, (SERVER, PORT))
-
+                state = WAITING
+        
 #############################################
 # Call to Main Function                     #
 ############################################# 

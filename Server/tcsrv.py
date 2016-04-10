@@ -48,10 +48,10 @@ class myHandler(socketserver.BaseRequestHandler):
                                 if self.pstates[0] == NOTCONNECTED:
                                         self.players[0] = (self.client_address[0], PORT)
                                         self.pstates[0] = CONNECTED
-                                        self.request.sendto(b'P1.', self.client_address)
+                                        self.request.sendto(b'\x01', self.client_address)
                                         self.response[0] = b'01'
                                 else:
-                                        self.request.sendto(b'Err:pstates[0].', self.client_address)
+                                        self.request.sendto(b'\x02', self.client_address)
                                         self.response[0] = b'02'
                                         
                         # Same player cannot connect twice.
@@ -59,18 +59,18 @@ class myHandler(socketserver.BaseRequestHandler):
                                 if self.pstates[1] == NOTCONNECTED:
                                         self.players[1] = (self.client_address[0], PORT)
                                         self.pstates[1] = CONNECTED
-                                        self.request.sendto(b'P2.', self.client_address)
+                                        self.request.sendto(b'\x03', self.client_address)
                                         self.response[0] = b'03'
                                 else:
-                                        self.request.sendto(b'Err:pstates[1].', self.client_address)
+                                        self.request.sendto(b'\x04', self.client_address)
                                         self.response[0] = b'04'
                                         
                         else:
                                 if self.players[0][0] == self.client_address[0] or self.players[1][0] == self.client_address[0]:
-                                        self.request.sendto(b'Connected.', self.client_address)
+                                        self.request.sendto(b'\x05', self.client_address)
                                         self.response[0] = b'05'
                                 else:
-                                        self.request.sendto(b'Closed.', self.client_address)
+                                        self.request.sendto(b'\x06', self.client_address)
                                         self.response[0] = b'06'
 
                 def ready(args):
@@ -78,33 +78,33 @@ class myHandler(socketserver.BaseRequestHandler):
                         if self.players[0] == (self.client_address[0], PORT):
                                 if self.pstates[0] == CONNECTED:
                                         self.pstates[0] = READY
-                                        self.request.sendto(b'Ready.', self.client_address)
+                                        self.request.sendto(b'\x11', self.client_address)
                                         self.response[0] = b'11'
                                 elif self.pstates[0] == READY:
-                                        self.request.sendto(b'Wait.', self.client_address)
+                                        self.request.sendto(b'\x12', self.client_address)
                                         self.response[0] = b'12'
                                 else:
-                                        self.request.sendto(b'Err:pstates[0].', self.client_address)
+                                        self.request.sendto(b'\x13.', self.client_address)
                                         self.response[0] = b'13'
                                 
                         elif self.players[1] == (self.client_address[0], PORT):
                                 if self.pstates[1] == CONNECTED:
                                         self.pstates[1] = READY
-                                        self.request.sendto(b'Ready.', self.client_address)
+                                        self.request.sendto(b'\x14', self.client_address)
                                         self.response[0] = b'14'
                                 elif self.pstates[1] == READY:
-                                        self.request.sendto(b'Wait.', self.client_address)
+                                        self.request.sendto(b'\x15', self.client_address)
                                         self.response[0] = b'15'
                                 else:
-                                        self.request.sendto(b'Err:pstates[1].', self.client_address)
+                                        self.request.sendto(b'\x16', self.client_address)
                                         self.response[0] = b'16'
 
                         # Start game when both players are ready.
                         if self.pstates == [READY, READY]:
                                 self.pstates[0] = MOVING
                                 self.pstates[1] = WAITING
-                                self.request.sendto(b'Go.', self.players[0])
-                                self.request.sendto(b'Wait.', self.players[1])
+                                self.request.sendto(b'\x21', self.players[0])
+                                self.request.sendto(b'\x22', self.players[1])
                                 self.response[0] = b'21'
 
                 def move(args):
@@ -118,26 +118,35 @@ class myHandler(socketserver.BaseRequestHandler):
 
                         # Helper parses return value from C simulator.
                         def parseSimReturn(retval):
-                                isValid    = retval[:8]
-                                moves  = retval[8:]
+                                isValid    = retval[0]
+                                moves  = retval[0:]
                                 return (isValid, moves)
 
-                        print(self.client_address)
                         if self.players[0] == (self.client_address[0], PORT):
                                 if 1:#self.pstates[0] == MOVING:
                                         bargs = args2b(args)
                                         print(bargs)
                                         csock.sendto(bargs, (CIP, CPORT))
+                                        
                                         # 8 validity bits, 32 move bits, 32 move bits
-                                        retval = csock.recv(72)
+                                        retval = csock.recv(9)
                                         (isValid, moves) = parseSimReturn(retval)
-                                        print(isValid)
-                                        if isValid:
+                                        print(retval)
+                                        
+                                        # Regular valid move
+                                        if isValid == 1:
                                                 self.request.sendto(retval, self.players[0])
                                                 self.request.sendto(moves, self.players[1])
                                                 self.pstates[0] = WAITING
                                                 self.pstates[1] = MOVING
                                                 self.response[0] = b'22'
+                                                
+                                        # Pawn promotion, prompt for promotion argument
+                                        elif isValid == 2:
+                                                self.request.sendto(retval, self.players[0])
+                                                self.request.sendto(moves, self.players[1])
+                                                self.response[0] = b'24'
+                                                
                                         else:
                                                 self.request.sendto(isValid, self.players[0])
                                                 self.response[0] = b'21'
@@ -151,16 +160,26 @@ class myHandler(socketserver.BaseRequestHandler):
                                         bargs = args2b(args)
                                         print(bargs)
                                         csock.sendto(bargs, (CIP, CPORT))
+                                        
                                         # 8 validity bits, 32 move bits, 32 move bits
-                                        retval = csock.recv(72)
+                                        retval = csock.recv(9)
                                         (isValid, moves) = parseSimReturn(retval)
-                                        print(isValid)
-                                        if isValid:
+                                        print(retval)
+                                        
+                                        # Regular valid move
+                                        if isValid == 1:
                                                 self.request.sendto(retval, self.players[1])
                                                 self.request.sendto(moves, self.players[0])
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
                                                 self.response[0] = b'21'
+                                                
+                                        # Pawn promotion, prompt for promotion argument
+                                        elif isValid == 2:
+                                                self.request.sendto(retval, self.players[1])
+                                                self.request.sendto(moves, self.players[0])
+                                                self.response[0] = b'25'
+                                                
                                         else:
                                                 self.request.sendto(isValid, self.players[1])
                                                 self.response[0] = b'22'
@@ -170,13 +189,13 @@ class myHandler(socketserver.BaseRequestHandler):
 
                         else:
                                 self.request.sendto(b'Who?', self.client_address)
-                                self.response[0] = b'23' # Nobody will respond to this...
+                                self.response[0] = b'29' # Nobody will respond to this...
 
                 def end(args):
                         if self.players[0] != '':
-                                self.request.sendto(b'Finished.', self.players[0])
+                                self.request.sendto(b'\x31', self.players[0])
                         if self.players[1] != '':
-                                self.request.sendto(b'Finished.', self.players[1])
+                                self.request.sendto(b'\x31', self.players[1])
                         self.players[0] = ''
                         self.players[1] = ''
                         self.pstates[0] = NOTCONNECTED
