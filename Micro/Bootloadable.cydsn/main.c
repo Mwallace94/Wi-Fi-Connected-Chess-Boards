@@ -19,9 +19,6 @@ int main() {
             }
             message[j] = (char) Debug_UART_GetByte();
         }
-        for(i = 0; i < j; i++) {
-            //Debug_UART_PutChar(message[i]);
-        }
         char num[4];
         switch (message[0]) {
             case 'x' :
@@ -66,6 +63,9 @@ int main() {
                     Em_Write(0);
                 }
                 break;
+            case 'r' :
+                read_reed_switches();
+                
             default :
                 break;
         }   

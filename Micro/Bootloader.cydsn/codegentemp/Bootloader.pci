@@ -1,5 +1,5 @@
 # Bootloader
-# 2016-03-29 06:38:12Z
+# 2016-04-09 19:50:04Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -45,14 +45,7 @@ set_io "En_A(0)" iocell 12 1
 set_io "En_Sw(0)" iocell 12 0
 set_io "Em(0)" iocell 12 3
 set_io "En_B(0)" iocell 12 2
-set_io "Row(0)" iocell 3 0
-set_io "Row(1)" iocell 3 1
-set_io "Row(2)" iocell 3 2
-set_io "Row(3)" iocell 3 3
-set_io "Row(4)" iocell 3 4
-set_io "Row(5)" iocell 3 5
-set_io "Row(6)" iocell 3 6
-set_io "Row(7)" iocell 3 7
+set_io "Row_0(0)" iocell 3 0
 set_io "Col_0(0)" iocell 0 0
 set_io "Col_1(0)" iocell 0 1
 set_io "Col_2(0)" iocell 0 2
@@ -65,3 +58,10 @@ set_io "Col_8(0)" iocell 4 0
 set_io "Col_9(0)" iocell 4 1
 set_io "Col_10(0)" iocell 4 2
 set_io "Col_11(0)" iocell 4 3
+set_io "Row_1(0)" iocell 3 1
+set_io "Row_2(0)" iocell 3 2
+set_io "Row_3(0)" iocell 3 3
+set_io "Row_4(0)" iocell 3 4
+set_io "Row_5(0)" iocell 3 5
+set_io "Row_6(0)" iocell 3 6
+set_io "Row_7(0)" iocell 3 7

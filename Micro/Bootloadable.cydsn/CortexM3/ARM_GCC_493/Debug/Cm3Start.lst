@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
   29:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_PRIGROUP_3_5  (0x00000400u)  /* Priority group 3.5 split */
   30:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_VECTKEY       (0x05FA0000u)  /* This key is required in order to write the NV
   31:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_CFG_STACKALIGN      (0x00000200u)  /* This specifies that the exception stack must 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Cm3Start.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
   86:.\Generated_Source\PSoC5/Cm3Start.c **** *  called before the system is setup.
   87:.\Generated_Source\PSoC5/Cm3Start.c **** *
   88:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 3
 
 
   89:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  123:.\Generated_Source\PSoC5/Cm3Start.c **** extern uint32 Image$$ARM_LIB_STACK$$ZI$$Limit;
  124:.\Generated_Source\PSoC5/Cm3Start.c **** 
  125:.\Generated_Source\PSoC5/Cm3Start.c **** /* RealView C Library initialization. */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 4
 
 
  126:.\Generated_Source\PSoC5/Cm3Start.c **** extern int __main(void);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  180:.\Generated_Source\PSoC5/Cm3Start.c **** *
  181:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
  182:.\Generated_Source\PSoC5/Cm3Start.c **** void $Sub$$main(void)
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 5
 
 
  183:.\Generated_Source\PSoC5/Cm3Start.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  237:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
  238:.\Generated_Source\PSoC5/Cm3Start.c **** *  status: Status caused program exit.
  239:.\Generated_Source\PSoC5/Cm3Start.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 6
 
 
  240:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  265:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
  266:.\Generated_Source\PSoC5/Cm3Start.c **** *  nbytes: The number of bytes requested (if the parameter value is positive)
  267:.\Generated_Source\PSoC5/Cm3Start.c **** *  from the heap or returned back to the heap (if the parameter value is
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 7
 
 
  268:.\Generated_Source\PSoC5/Cm3Start.c **** *  negative).
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  291:.\Generated_Source\PSoC5/Cm3Start.c ****         returnValue = (void *) -1;
  107              		.loc 1 291 0
  108 001e 4FF0FF32 		mov	r2, #-1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 8
 
 
  109              	.LVL9:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  325:.\Generated_Source\PSoC5/Cm3Start.c ****         *(reg32 *)(CYREG_PHUB_CFGMEM23_CFG1) = *(reg32 *)(CYREG_RESET_SR0);
  326:.\Generated_Source\PSoC5/Cm3Start.c **** 
  327:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE && CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_L
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 9
 
 
  328:.\Generated_Source\PSoC5/Cm3Start.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  362:.\Generated_Source\PSoC5/Cm3Start.c ****         uint32 *src = (uint32 *)rptr->init;
  149              		.loc 1 362 0
  150 0008 2968     		ldr	r1, [r5]
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 10
 
 
  151              	.LVL12:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  188 002c 0432     		adds	r2, r2, #4
  189              	.LVL22:
  190              	.L16:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 11
 
 
  374:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  228              	Reset:
  229              	.LFB3:
  314:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE && CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLEA
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 12
 
 
  230              		.loc 1 314 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  421:.\Generated_Source\PSoC5/Cm3Start.c ****             *(reg32 *)(CYDEV_DEBUG_ENABLE_REGISTER) |= CYDEV_DEBUG_ENABLE_MASK;
  422:.\Generated_Source\PSoC5/Cm3Start.c ****         #endif /* (CYDEV_DEBUGGING_ENABLE) */
  423:.\Generated_Source\PSoC5/Cm3Start.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 13
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 13
 
 
  424:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Reset Status Register has Read-to-clear SW access mode.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  478:.\Generated_Source\PSoC5/Cm3Start.c **** 
  479:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
  480:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: initialize_psoc
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 14
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 14
 
 
  481:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  512:.\Generated_Source\PSoC5/Cm3Start.c ****             CyRamVectors[i] = (i < CY_NUM_ROM_VECTORS) ? RomVectors[i] : &IntDefaultHandler;
  276              		.loc 1 512 0
  277 0016 032B     		cmp	r3, #3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 15
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 15
 
 
  278 0018 03D8     		bhi	.L29
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  533:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Actually, no need to clean this variable, just to make compiler happy. */
  534:.\Generated_Source\PSoC5/Cm3Start.c ****         cySysNoInitDataValid = 0u;
  310              		.loc 1 534 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 16
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 16
 
 
  311 0042 0022     		movs	r2, #0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  365              	CyRamVectors:
  366 0000 00000000 		.space	192
  366      00000000 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 17
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 17
 
 
  366      00000000 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  414 0050 08       		.byte	0x8
  415 0051 05       		.byte	0x5
  416 0052 70020000 		.4byte	.LASF6
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 18
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 18
 
 
  417 0056 02       		.uleb128 0x2
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  471 00c5 04       		.byte	0x4
  472 00c6 CA000000 		.4byte	0xca
  473 00ca 08       		.uleb128 0x8
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 19
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 19
 
 
  474 00cb 04       		.uleb128 0x4
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  528 0137 01       		.byte	0x1
  529 0138 62       		.byte	0x62
  530 0139 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 20
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 20
 
 
  531 013d 02000000 		.4byte	.LFE0-.LFB0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  585 01b5 1601     		.2byte	0x116
  586 01b7 DD000000 		.4byte	0xdd
  587 01bb 42000000 		.4byte	.LLST2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 21
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 21
 
 
  588 01bf 16       		.uleb128 0x16
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  642 024a D1000000 		.4byte	.LLST7
  643 024e 15       		.uleb128 0x15
  644 024f 4D000000 		.4byte	.LASF33
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 22
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 22
 
 
  645 0253 01       		.byte	0x1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  699 02d6 01       		.byte	0x1
  700 02d7 3F       		.byte	0x3f
  701 02d8 76000000 		.4byte	0x76
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 23
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 23
 
 
  702 02dc 05       		.uleb128 0x5
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  756 0355 01       		.byte	0x1
  757 0356 CD01     		.2byte	0x1cd
  758 0358 62030000 		.4byte	0x362
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 24
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 24
 
 
  759 035c 05       		.uleb128 0x5
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  813 0011 00       		.byte	0
  814 0012 00       		.byte	0
  815 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 25
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 25
 
 
  816 0014 24       		.uleb128 0x24
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  870 004a 07       		.uleb128 0x7
  871 004b 0F       		.uleb128 0xf
  872 004c 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 26
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 26
 
 
  873 004d 0B       		.uleb128 0xb
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  927 0083 0B       		.uleb128 0xb
  928 0084 00       		.byte	0
  929 0085 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 27
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 27
 
 
  930 0086 0D       		.uleb128 0xd
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  984 00be 0B       		.uleb128 0xb
  985 00bf 3B       		.uleb128 0x3b
  986 00c0 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 28
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 28
 
 
  987 00c1 49       		.uleb128 0x49
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1041 00fd 03       		.uleb128 0x3
  1042 00fe 0E       		.uleb128 0xe
  1043 00ff 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 29
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 29
 
 
  1044 0100 0B       		.uleb128 0xb
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1098 0136 00       		.byte	0
  1099 0137 00       		.byte	0
  1100 0138 17       		.uleb128 0x17
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 30
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 30
 
 
  1101 0139 898201   		.uleb128 0x4109
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1155 0172 13       		.uleb128 0x13
  1156 0173 02       		.uleb128 0x2
  1157 0174 17       		.uleb128 0x17
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 31
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 31
 
 
  1158 0175 00       		.byte	0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1212 01ab 00       		.byte	0
  1213 01ac 03       		.uleb128 0x3
  1214 01ad 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 32
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 32
 
 
  1215 01ae 3A       		.uleb128 0x3a
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1269 01e4 05       		.uleb128 0x5
  1270 01e5 00       		.byte	0
  1271 01e6 49       		.uleb128 0x49
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 33
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 33
 
 
  1272 01e7 13       		.uleb128 0x13
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1326 0019 00000000 		.4byte	0
  1327 001d 00000000 		.4byte	0
  1328              	.LLST1:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 34
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 34
 
 
  1329 0021 00000000 		.4byte	.LVL3
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1383 00aa 9F       		.byte	0x9f
  1384 00ab 1A000000 		.4byte	.LVL17
  1385 00af 26000000 		.4byte	.LVL20
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 35
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 35
 
 
  1386 00b3 0100     		.2byte	0x1
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1440 0140 00000000 		.4byte	0
  1441              		.section	.debug_aranges,"",%progbits
  1442 0000 44000000 		.4byte	0x44
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 36
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 36
 
 
  1443 0004 0200     		.2byte	0x2
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1487      5F7400
  1488              	.LASF52:
  1489 0031 43794861 		.ascii	"CyHalt\000"
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 37
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 37
 
 
  1489      6C7400
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1517      6C756500 
  1518              	.LASF41:
  1519 00c2 526F6D56 		.ascii	"RomVectors\000"
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 38
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 38
 
 
  1519      6563746F 
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1545              	.LASF46:
  1546 0175 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  1546      4320342E 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 39
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 39
 
 
  1546      392E3320 
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 1
  1567              	.LASF6:
  1568 0270 6C6F6E67 		.ascii	"long long int\000"
  1568      206C6F6E 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc154NZd.s 			page 40
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc62nGNx.s 			page 40
 
 
  1568      6720696E 

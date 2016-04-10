@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Row.c  
+* File Name: Row_1.c  
 * Version 2.10
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "Row.h"
+#include "Row_1.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 Row__PORT == 15 && ((Row__MASK & 0xC0) != 0))
+	 Row_1__PORT == 15 && ((Row_1__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: Row_Write
+* Function Name: Row_1_Write
 ********************************************************************************
 *
 * Summary:
@@ -36,15 +36,15 @@
 *  None
 *  
 *******************************************************************************/
-void Row_Write(uint8 value) 
+void Row_1_Write(uint8 value) 
 {
-    uint8 staticBits = (Row_DR & (uint8)(~Row_MASK));
-    Row_DR = staticBits | ((uint8)(value << Row_SHIFT) & Row_MASK);
+    uint8 staticBits = (Row_1_DR & (uint8)(~Row_1_MASK));
+    Row_1_DR = staticBits | ((uint8)(value << Row_1_SHIFT) & Row_1_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: Row_SetDriveMode
+* Function Name: Row_1_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,34 +53,27 @@ void Row_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  Row_DM_STRONG     Strong Drive 
-*  Row_DM_OD_HI      Open Drain, Drives High 
-*  Row_DM_OD_LO      Open Drain, Drives Low 
-*  Row_DM_RES_UP     Resistive Pull Up 
-*  Row_DM_RES_DWN    Resistive Pull Down 
-*  Row_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  Row_DM_DIG_HIZ    High Impedance Digital 
-*  Row_DM_ALG_HIZ    High Impedance Analog 
+*  Row_1_DM_STRONG     Strong Drive 
+*  Row_1_DM_OD_HI      Open Drain, Drives High 
+*  Row_1_DM_OD_LO      Open Drain, Drives Low 
+*  Row_1_DM_RES_UP     Resistive Pull Up 
+*  Row_1_DM_RES_DWN    Resistive Pull Down 
+*  Row_1_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  Row_1_DM_DIG_HIZ    High Impedance Digital 
+*  Row_1_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void Row_SetDriveMode(uint8 mode) 
+void Row_1_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(Row_0, mode);
-	CyPins_SetPinDriveMode(Row_1, mode);
-	CyPins_SetPinDriveMode(Row_2, mode);
-	CyPins_SetPinDriveMode(Row_3, mode);
-	CyPins_SetPinDriveMode(Row_4, mode);
-	CyPins_SetPinDriveMode(Row_5, mode);
-	CyPins_SetPinDriveMode(Row_6, mode);
-	CyPins_SetPinDriveMode(Row_7, mode);
+	CyPins_SetPinDriveMode(Row_1_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: Row_Read
+* Function Name: Row_1_Read
 ********************************************************************************
 *
 * Summary:
@@ -94,17 +87,17 @@ void Row_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro Row_ReadPS calls this function. 
+*  Macro Row_1_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 Row_Read(void) 
+uint8 Row_1_Read(void) 
 {
-    return (Row_PS & Row_MASK) >> Row_SHIFT;
+    return (Row_1_PS & Row_1_MASK) >> Row_1_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: Row_ReadDataReg
+* Function Name: Row_1_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -117,17 +110,17 @@ uint8 Row_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 Row_ReadDataReg(void) 
+uint8 Row_1_ReadDataReg(void) 
 {
-    return (Row_DR & Row_MASK) >> Row_SHIFT;
+    return (Row_1_DR & Row_1_MASK) >> Row_1_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(Row_INTSTAT) 
+#if defined(Row_1_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: Row_ClearInterrupt
+    * Function Name: Row_1_ClearInterrupt
     ********************************************************************************
     * Summary:
     *  Clears any active interrupts attached to port and returns the value of the 
@@ -140,9 +133,9 @@ uint8 Row_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 Row_ClearInterrupt(void) 
+    uint8 Row_1_ClearInterrupt(void) 
     {
-        return (Row_INTSTAT & Row_MASK) >> Row_SHIFT;
+        return (Row_1_INTSTAT & Row_1_MASK) >> Row_1_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

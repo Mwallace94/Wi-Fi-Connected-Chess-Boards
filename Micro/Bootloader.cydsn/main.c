@@ -63,6 +63,9 @@ int main() {
                     Em_Write(0);
                 }
                 break;
+            case 'r' :
+                read_reed_switches();
+                
             default :
                 break;
         }   
@@ -80,4 +83,8 @@ void init() {
     Esp_UART_Start();
     
     LCD_Start();
+}
+
+void debug() {
+    
 }

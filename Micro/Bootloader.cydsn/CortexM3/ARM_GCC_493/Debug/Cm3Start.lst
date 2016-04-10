@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
   29:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_PRIGROUP_3_5  (0x00000400u)  /* Priority group 3.5 split */
   30:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_VECTKEY       (0x05FA0000u)  /* This key is required in order to write the NV
   31:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_CFG_STACKALIGN      (0x00000200u)  /* This specifies that the exception stack must 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Cm3Start.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
   86:.\Generated_Source\PSoC5/Cm3Start.c **** *  called before the system is setup.
   87:.\Generated_Source\PSoC5/Cm3Start.c **** *
   88:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 3
 
 
   89:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  123:.\Generated_Source\PSoC5/Cm3Start.c **** extern uint32 Image$$ARM_LIB_STACK$$ZI$$Limit;
  124:.\Generated_Source\PSoC5/Cm3Start.c **** 
  125:.\Generated_Source\PSoC5/Cm3Start.c **** /* RealView C Library initialization. */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 4
 
 
  126:.\Generated_Source\PSoC5/Cm3Start.c **** extern int __main(void);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  180:.\Generated_Source\PSoC5/Cm3Start.c **** *
  181:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
  182:.\Generated_Source\PSoC5/Cm3Start.c **** void $Sub$$main(void)
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 5
 
 
  183:.\Generated_Source\PSoC5/Cm3Start.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  237:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
  238:.\Generated_Source\PSoC5/Cm3Start.c **** *  status: Status caused program exit.
  239:.\Generated_Source\PSoC5/Cm3Start.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 6
 
 
  240:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  265:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
  266:.\Generated_Source\PSoC5/Cm3Start.c **** *  nbytes: The number of bytes requested (if the parameter value is positive)
  267:.\Generated_Source\PSoC5/Cm3Start.c **** *  from the heap or returned back to the heap (if the parameter value is
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 7
 
 
  268:.\Generated_Source\PSoC5/Cm3Start.c **** *  negative).
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  291:.\Generated_Source\PSoC5/Cm3Start.c ****         returnValue = (void *) -1;
  107              		.loc 1 291 0
  108 001e 4FF0FF32 		mov	r2, #-1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 8
 
 
  109              	.LVL9:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  325:.\Generated_Source\PSoC5/Cm3Start.c ****         *(reg32 *)(CYREG_PHUB_CFGMEM23_CFG1) = *(reg32 *)(CYREG_RESET_SR0);
  326:.\Generated_Source\PSoC5/Cm3Start.c **** 
  327:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE && CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_L
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 9
 
 
  328:.\Generated_Source\PSoC5/Cm3Start.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  362:.\Generated_Source\PSoC5/Cm3Start.c ****         uint32 *src = (uint32 *)rptr->init;
  149              		.loc 1 362 0
  150 0008 2968     		ldr	r1, [r5]
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 10
 
 
  151              	.LVL12:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  188 002c 0432     		adds	r2, r2, #4
  189              	.LVL22:
  190              	.L16:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 11
 
 
  374:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  228              	Reset:
  229              	.LFB3:
  314:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE && CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLEA
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 12
 
 
  230              		.loc 1 314 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  406:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
  407:.\Generated_Source\PSoC5/Cm3Start.c **** *
  408:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 13
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 13
 
 
  409:.\Generated_Source\PSoC5/Cm3Start.c **** *  The value that determines whether or not data sections should be initialized
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  463:.\Generated_Source\PSoC5/Cm3Start.c **** {
  464:.\Generated_Source\PSoC5/Cm3Start.c ****     INITIAL_STACK_POINTER,   /* Initial stack pointer  0 */
  465:.\Generated_Source\PSoC5/Cm3Start.c ****     #if defined (__ICCARM__) /* Reset handler          1 */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 14
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 14
 
 
  466:.\Generated_Source\PSoC5/Cm3Start.c ****         __iar_program_start,
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  281 000c 43F40073 		orr	r3, r3, #512
  282 0010 1360     		str	r3, [r2]
  283              	.LVL29:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 15
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 15
 
 
  505:.\Generated_Source\PSoC5/Cm3Start.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  521:.\Generated_Source\PSoC5/Cm3Start.c **** 
  522:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Initialize the configuration registers. */
  523:.\Generated_Source\PSoC5/Cm3Start.c ****     cyfitter_cfg();
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 16
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 16
 
 
  320              		.loc 1 523 0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  363              		.size	heapPointer.4942, 4
  364              	heapPointer.4942:
  365 0000 00000000 		.word	end
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 17
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 17
 
 
  366              		.section	.noinit,"aw",%progbits
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  412 0035 05       		.byte	0x5
  413 0036 95020000 		.4byte	.LASF2
  414 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 18
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 18
 
 
  415 003b 02       		.byte	0x2
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  469 00a2 06       		.uleb128 0x6
  470 00a3 6B000000 		.4byte	0x6b
  471 00a7 05       		.uleb128 0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 19
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 19
 
 
  472 00a8 24000000 		.4byte	.LASF15
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  526 0119 D6       		.byte	0xd6
  527 011a CB000000 		.4byte	0xcb
  528 011e 08       		.byte	0x8
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 20
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 20
 
 
  529 011f 0C       		.uleb128 0xc
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  583 018f DB010000 		.4byte	0x1db
  584 0193 13       		.uleb128 0x13
  585 0194 F1020000 		.4byte	.LASF25
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 21
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 21
 
 
  586 0198 01       		.byte	0x1
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  640 0223 01       		.byte	0x1
  641 0224 6A01     		.2byte	0x16a
  642 0226 7D020000 		.4byte	0x27d
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 22
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 22
 
 
  643 022a 93000000 		.4byte	.LLST5
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  697 02b2 F001     		.2byte	0x1f0
  698 02b4 00000000 		.4byte	.LFB5
  699 02b8 74000000 		.4byte	.LFE5-.LFB5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 23
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 23
 
 
  700 02bc 01       		.uleb128 0x1
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  754 0334 DA       		.byte	0xda
  755 0335 39030000 		.4byte	0x339
  756 0339 0A       		.uleb128 0xa
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 24
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 24
 
 
  757 033a 23030000 		.4byte	0x323
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  811 03b0 06       		.byte	0x6
  812 03b1 16       		.byte	0x16
  813 03b2 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 25
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 25
 
 
  814              		.section	.debug_abbrev,"",%progbits
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  868 0034 00       		.byte	0
  869 0035 00       		.byte	0
  870 0036 05       		.uleb128 0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 26
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 26
 
 
  871 0037 16       		.uleb128 0x16
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  925 006d 0B       		.uleb128 0xb
  926 006e 0B       		.uleb128 0xb
  927 006f 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 27
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 27
 
 
  928 0070 0B       		.uleb128 0xb
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  982 00a7 3B       		.uleb128 0x3b
  983 00a8 0B       		.uleb128 0xb
  984 00a9 27       		.uleb128 0x27
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 28
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 28
 
 
  985 00aa 19       		.uleb128 0x19
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1039 00e6 0B       		.uleb128 0xb
  1040 00e7 3B       		.uleb128 0x3b
  1041 00e8 05       		.uleb128 0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 29
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 29
 
 
  1042 00e9 27       		.uleb128 0x27
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1096 0120 0B       		.uleb128 0xb
  1097 0121 3B       		.uleb128 0x3b
  1098 0122 05       		.uleb128 0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 30
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 30
 
 
  1099 0123 49       		.uleb128 0x49
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1153 015c 00       		.byte	0
  1154 015d 19       		.uleb128 0x19
  1155 015e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 31
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 31
 
 
  1156 015f 01       		.byte	0x1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1210 0195 00       		.byte	0
  1211 0196 00       		.byte	0
  1212 0197 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 32
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 32
 
 
  1213 0198 01       		.uleb128 0x1
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1267 01ce 00       		.byte	0
  1268 01cf 00       		.byte	0
  1269 01d0 22       		.uleb128 0x22
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 33
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 33
 
 
  1270 01d1 2E       		.uleb128 0x2e
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1324 0207 0B       		.uleb128 0xb
  1325 0208 27       		.uleb128 0x27
  1326 0209 19       		.uleb128 0x19
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 34
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 34
 
 
  1327 020a 3C       		.uleb128 0x3c
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1381 0071 4C000000 		.4byte	.LFE4
  1382 0075 0100     		.2byte	0x1
  1383 0077 56       		.byte	0x56
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 35
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 35
 
 
  1384 0078 00000000 		.4byte	0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1438 0106 22000000 		.4byte	.LVL19
  1439 010a 26000000 		.4byte	.LVL20
  1440 010e 0200     		.2byte	0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 36
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 36
 
 
  1441 0110 30       		.byte	0x30
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1495 0028 00000000 		.4byte	.LFB5
  1496 002c 74000000 		.4byte	.LFE5
  1497 0030 00000000 		.4byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 37
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 37
 
 
  1498 0034 00000000 		.4byte	0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1523      43686573 
  1524 00b1 736E00   		.ascii	"sn\000"
  1525              	.LASF20:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 38
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 38
 
 
  1526 00b4 696E6974 		.ascii	"init\000"
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1554      65666175 
  1554      6C744861 
  1554      6E646C65 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 39
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 39
 
 
  1554      7200
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1578 0238 63796973 		.ascii	"cyisraddress\000"
  1578      72616464 
  1578      72657373 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 40
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 40
 
 
  1578      00
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 1
  1603              	.LASF0:
  1604 02d0 7369676E 		.ascii	"signed char\000"
  1604      65642063 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccKHBeGa.s 			page 41
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3WnODh.s 			page 41
 
 
  1604      68617200 

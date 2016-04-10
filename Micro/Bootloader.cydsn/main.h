@@ -6,5 +6,7 @@
 #include "board.h"
     
 void init();
+
+void debug();
     
 #endif  
