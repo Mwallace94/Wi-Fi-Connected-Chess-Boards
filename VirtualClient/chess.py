@@ -722,6 +722,9 @@ def main():
 
             print(movementOpp1)
             movepiece(pieces, movementOpp1)
+
+            movementOpp1 = ((0, 0), 0, 0, 0, 0)
+            movementOpp2 = ((0, 0), 0, 0, 0, 0)
             
             state = MOVING
 
@@ -800,6 +803,9 @@ def main():
                 print(movement1)
                 movepiece(pieces, movement1)
 
+                movement1 = ((0, 0), 0, 0, 0, 0)
+                movement2 = ((0, 0), 0, 0, 0, 0)
+                
                 state = WAITING
         
 #############################################
