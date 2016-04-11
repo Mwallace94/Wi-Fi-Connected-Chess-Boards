@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
   29:.\Generated_Source\PSoC5/Col_11.c **** * Summary:
   30:.\Generated_Source\PSoC5/Col_11.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/Col_11.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Col_11.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
   53:.\Generated_Source\PSoC5/Col_11.c **** * Parameters:  
   54:.\Generated_Source\PSoC5/Col_11.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/Col_11.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 3
 
 
   56:.\Generated_Source\PSoC5/Col_11.c **** *  Col_11_DM_STRONG     Strong Drive 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
   80:.\Generated_Source\PSoC5/Col_11.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:.\Generated_Source\PSoC5/Col_11.c **** *  form.
   82:.\Generated_Source\PSoC5/Col_11.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 4
 
 
   83:.\Generated_Source\PSoC5/Col_11.c **** * Parameters:  
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  111:.\Generated_Source\PSoC5/Col_11.c **** *  
  112:.\Generated_Source\PSoC5/Col_11.c **** *******************************************************************************/
  113:.\Generated_Source\PSoC5/Col_11.c **** uint8 Col_11_ReadDataReg(void) 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 5
 
 
  114:.\Generated_Source\PSoC5/Col_11.c **** {
@@ -272,7 +272,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  141 0006 00000000 		.4byte	.Ldebug_abbrev0
  142 000a 04       		.byte	0x4
  143 000b 01       		.uleb128 0x1
- 144 000c CD000000 		.4byte	.LASF20
+ 144 000c 38010000 		.4byte	.LASF20
  145 0010 01       		.byte	0x1
  146 0011 25000000 		.4byte	.LASF21
  147 0015 8C000000 		.4byte	.LASF22
@@ -282,7 +282,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  151 0025 02       		.uleb128 0x2
  152 0026 01       		.byte	0x1
  153 0027 06       		.byte	0x6
- 154 0028 CF010000 		.4byte	.LASF0
+ 154 0028 DA010000 		.4byte	.LASF0
  155 002c 02       		.uleb128 0x2
  156 002d 01       		.byte	0x1
  157 002e 08       		.byte	0x8
@@ -290,7 +290,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  159 0033 02       		.uleb128 0x2
  160 0034 02       		.byte	0x2
  161 0035 05       		.byte	0x5
- 162 0036 B6010000 		.4byte	.LASF2
+ 162 0036 28010000 		.4byte	.LASF2
  163 003a 02       		.uleb128 0x2
  164 003b 02       		.byte	0x2
  165 003c 07       		.byte	0x7
@@ -298,10 +298,10 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  167 0041 02       		.uleb128 0x2
  168 0042 04       		.byte	0x4
  169 0043 05       		.byte	0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 6
 
 
- 170 0044 C6010000 		.4byte	.LASF4
+ 170 0044 D1010000 		.4byte	.LASF4
  171 0048 02       		.uleb128 0x2
  172 0049 04       		.byte	0x4
  173 004a 07       		.byte	0x7
@@ -309,11 +309,11 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  175 004f 02       		.uleb128 0x2
  176 0050 08       		.byte	0x8
  177 0051 05       		.byte	0x5
- 178 0052 90010000 		.4byte	.LASF6
+ 178 0052 02010000 		.4byte	.LASF6
  179 0056 02       		.uleb128 0x2
  180 0057 08       		.byte	0x8
  181 0058 07       		.byte	0x7
- 182 0059 74010000 		.4byte	.LASF7
+ 182 0059 E6000000 		.4byte	.LASF7
  183 005d 03       		.uleb128 0x3
  184 005e 04       		.byte	0x4
  185 005f 05       		.byte	0x5
@@ -321,9 +321,9 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  187 0064 02       		.uleb128 0x2
  188 0065 04       		.byte	0x4
  189 0066 07       		.byte	0x7
- 190 0067 67010000 		.4byte	.LASF8
+ 190 0067 D9000000 		.4byte	.LASF8
  191 006b 04       		.uleb128 0x4
- 192 006c C0010000 		.4byte	.LASF12
+ 192 006c 32010000 		.4byte	.LASF12
  193 0070 02       		.byte	0x2
  194 0071 C2       		.byte	0xc2
  195 0072 2C000000 		.4byte	0x2c
@@ -338,7 +338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  204 0084 02       		.uleb128 0x2
  205 0085 01       		.byte	0x1
  206 0086 08       		.byte	0x8
- 207 0087 9E010000 		.4byte	.LASF11
+ 207 0087 10010000 		.4byte	.LASF11
  208 008b 05       		.uleb128 0x5
  209 008c 5B000000 		.4byte	.LASF13
  210 0090 02       		.byte	0x2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  224 00b1 08       		.uleb128 0x8
  225 00b2 14000000 		.4byte	.LASF16
  226 00b6 01       		.byte	0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 7
 
 
  227 00b7 27       		.byte	0x27
@@ -382,14 +382,14 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  245 00de 9C       		.byte	0x9c
  246 00df F3000000 		.4byte	0xf3
  247 00e3 08       		.uleb128 0x8
- 248 00e4 8B010000 		.4byte	.LASF17
+ 248 00e4 FD000000 		.4byte	.LASF17
  249 00e8 01       		.byte	0x1
  250 00e9 45       		.byte	0x45
  251 00ea 6B000000 		.4byte	0x6b
  252 00ee 21000000 		.4byte	.LLST1
  253 00f2 00       		.byte	0
  254 00f3 0A       		.uleb128 0xa
- 255 00f4 5B010000 		.4byte	.LASF18
+ 255 00f4 CD000000 		.4byte	.LASF18
  256 00f8 01       		.byte	0x1
  257 00f9 5D       		.byte	0x5d
  258 00fa 6B000000 		.4byte	0x6b
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  261 0106 01       		.uleb128 0x1
  262 0107 9C       		.byte	0x9c
  263 0108 0A       		.uleb128 0xa
- 264 0109 A3010000 		.4byte	.LASF19
+ 264 0109 15010000 		.4byte	.LASF19
  265 010d 01       		.byte	0x1
  266 010e 71       		.byte	0x71
  267 010f 6B000000 		.4byte	0x6b
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  338 003f 49       		.uleb128 0x49
  339 0040 13       		.uleb128 0x13
  340 0041 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 9
 
 
  341 0042 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  395 0079 0B       		.uleb128 0xb
  396 007a 3B       		.uleb128 0x3b
  397 007b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 10
 
 
  398 007c 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  452 0030 18000000 		.4byte	.LFE1
  453 0034 0400     		.2byte	0x4
  454 0036 F3       		.byte	0xf3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 11
 
 
  455 0037 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  498      747300
  499              	.LASF21:
  500 0025 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Col_11.c\000"
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 12
 
 
  500      6E657261 
@@ -704,70 +704,70 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 1
  517      31315F57 
  517      72697465 
  517      00
- 518              	.LASF20:
- 519 00cd 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 519      4320342E 
- 519      392E3320 
- 519      32303135 
- 519      30333033 
- 520 0100 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 520      20726576 
- 520      6973696F 
- 520      6E203232 
- 520      31323230 
- 521 0133 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 521      66756E63 
- 521      74696F6E 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cc3moWTH.s 			page 13
+ 518              	.LASF18:
+ 519 00cd 436F6C5F 		.ascii	"Col_11_Read\000"
+ 519      31315F52 
+ 519      65616400 
+ 520              	.LASF8:
+ 521 00d9 756E7369 		.ascii	"unsigned int\000"
+ 521      676E6564 
+ 521      20696E74 
+ 521      00
+ 522              	.LASF7:
+ 523 00e6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 523      206C6F6E 
+ 523      6720756E 
+ 523      7369676E 
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccBU8tje.s 			page 13
 
 
- 521      2D736563 
- 521      74696F6E 
- 522              	.LASF18:
- 523 015b 436F6C5F 		.ascii	"Col_11_Read\000"
- 523      31315F52 
- 523      65616400 
- 524              	.LASF8:
- 525 0167 756E7369 		.ascii	"unsigned int\000"
- 525      676E6564 
- 525      20696E74 
+ 523      65642069 
+ 524              	.LASF17:
+ 525 00fd 6D6F6465 		.ascii	"mode\000"
  525      00
- 526              	.LASF7:
- 527 0174 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 526              	.LASF6:
+ 527 0102 6C6F6E67 		.ascii	"long long int\000"
  527      206C6F6E 
- 527      6720756E 
- 527      7369676E 
- 527      65642069 
- 528              	.LASF17:
- 529 018b 6D6F6465 		.ascii	"mode\000"
+ 527      6720696E 
+ 527      7400
+ 528              	.LASF11:
+ 529 0110 63686172 		.ascii	"char\000"
  529      00
- 530              	.LASF6:
- 531 0190 6C6F6E67 		.ascii	"long long int\000"
- 531      206C6F6E 
- 531      6720696E 
- 531      7400
- 532              	.LASF11:
- 533 019e 63686172 		.ascii	"char\000"
- 533      00
- 534              	.LASF19:
- 535 01a3 436F6C5F 		.ascii	"Col_11_ReadDataReg\000"
- 535      31315F52 
- 535      65616444 
- 535      61746152 
- 535      656700
- 536              	.LASF2:
- 537 01b6 73686F72 		.ascii	"short int\000"
- 537      7420696E 
- 537      7400
- 538              	.LASF12:
- 539 01c0 75696E74 		.ascii	"uint8\000"
- 539      3800
+ 530              	.LASF19:
+ 531 0115 436F6C5F 		.ascii	"Col_11_ReadDataReg\000"
+ 531      31315F52 
+ 531      65616444 
+ 531      61746152 
+ 531      656700
+ 532              	.LASF2:
+ 533 0128 73686F72 		.ascii	"short int\000"
+ 533      7420696E 
+ 533      7400
+ 534              	.LASF12:
+ 535 0132 75696E74 		.ascii	"uint8\000"
+ 535      3800
+ 536              	.LASF20:
+ 537 0138 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 537      4320342E 
+ 537      392E3320 
+ 537      32303135 
+ 537      30333033 
+ 538 016b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 538      20726576 
+ 538      6973696F 
+ 538      6E203232 
+ 538      31323230 
+ 539 019e 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 539      74643D67 
+ 539      6E753939 
+ 539      202D6666 
+ 539      756E6374 
  540              	.LASF4:
- 541 01c6 6C6F6E67 		.ascii	"long int\000"
+ 541 01d1 6C6F6E67 		.ascii	"long int\000"
  541      20696E74 
  541      00
  542              	.LASF0:
- 543 01cf 7369676E 		.ascii	"signed char\000"
+ 543 01da 7369676E 		.ascii	"signed char\000"
  543      65642063 
  543      68617200 
  544              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
