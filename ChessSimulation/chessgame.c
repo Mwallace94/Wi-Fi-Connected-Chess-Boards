@@ -196,6 +196,54 @@ void playturn() {
      
 	    printState();
       printf("\n");
+
+       //promotion
+      if(yourcolor == WHITE && t.toCol == 7 && t.piece ==WPAWN){
+      	printf("Pawn is up for promotion\n");
+      	goodMove[0] =  2;
+      	write(comm_fd,goodMove,9);
+      	if(read(comm_fd,str,1*sizeof(char)) == 0) {
+      		printf("Read Error\n");
+      		return;
+      	}
+      	int case = (int) str[1];
+      	if(str[1] == 1){
+      		teststate[t.toRow][t.toCol] = 11;//queen
+      	}else if(str[1] == 2){
+      		teststate[t.toRow][t.toCol] = 10;//bishop
+      	}else if(str[1] == 3){
+			teststate[t.toRow][t.toCol] = 9;//knight
+      	}else if(str[1] == 4){
+      		teststate[t.toRow][t.toCol] = 8;//rook
+      	}
+      }
+
+      //promotion
+      else if(yourcolor == BLACK && t.toCol = 0 && t.piece == BPAWN){
+      	printf("Pawn is up for promotion\n");
+      	goodMove[0] =  2;
+      	write(comm_fd,goodMove,9);
+      	if(read(comm_fd,str,1*sizeof(char)) == 0) {
+      		printf("Read Error\n");
+      		return;
+      	}
+      	int case = (int) str[1];
+      	if(str[1] == 1){
+      		teststate[t.toRow][t.toCol] = 5;//queen
+      	}else if(str[1] == 2){
+      		teststate[t.toRow][t.toCol] = 4;//bishop
+      	}else if(str[1] == 3){
+			teststate[t.toRow][t.toCol] = 3;//knight
+      	}else if(str[1] == 4){
+      		teststate[t.toRow][t.toCol] = 2;//rook
+      	}
+      }
+
+      else{
+      	goodMove[0] = 1;
+    	//write(comm_fd,goodMove,1);
+    	write(comm_fd,goodMove,9);
+      }
    
       int i, j;
       for(i = 0; i < BROWS; i++) {
@@ -203,9 +251,9 @@ void playturn() {
           state[i][j] = teststate[i][j];
         }
       }
-
       castlingMaintenance();
       printTestState();
+      
       int checkmate = isCheckForEnemy(t);
       if(checkmate == 1){
         printf("Opponent has been placed in check\n\n\n");
@@ -215,11 +263,9 @@ void playturn() {
       }else{
         printf("Opponent has not been placed in check\n\n\n");
       }
+
     if(yourcolor == WHITE) {yourcolor = BLACK; theircolor = WHITE;}
     else if(yourcolor == BLACK) {yourcolor = WHITE; theircolor = BLACK;}
-    goodMove[0] = 1;
-    //write(comm_fd,goodMove,1);
-    write(comm_fd,goodMove,9);
   }
 }
 

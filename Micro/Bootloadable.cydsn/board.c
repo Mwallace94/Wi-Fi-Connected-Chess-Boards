@@ -1,28 +1,10 @@
 #include "board.h"
 
-void home() {
-    
-}
-/*
-void step(uint8 mm, char dir) {
-    if(dir == 'F') DIR_Write(0);
-    if(dir == 'B') DIR_Write(1);
-    int i, j;
-    for(i = 0; i < mm; i++) {
-        for(j = 0; j < STEPS_PER_MM; j++) {
-            STEP_Write(0);
-            STEP_Write(1);
-            CyDelay(5);
-        }
-    }
-}*/
-
 void move_home() {
     Slp_1_Write(1);
     Slp_2_Write(1);
     
     uint8 x = Lim_1_Read(), y = Lim_2_Read();
-    Debug_UART_PutString("limit start");
     
     while(!x || !y) {    
         if(!y){
@@ -47,27 +29,12 @@ void move_home() {
         }
         x = Lim_1_Read();
         y = Lim_2_Read();
-        
-        if(x){
-         Debug_UART_PutString("limit 1 read");   
-        }
-        if(y){
-         Debug_UART_PutString("limit 2 read");   
-        }
     }
     Slp_1_Write(0);
     Slp_2_Write(0);
     
     x_pos = 0;
     y_pos = 0;
-}
-
-void limitTest() {
-    Debug_UART_PutChar((char) (Lim_1_Read() + 65));
-    Debug_UART_PutString(" ");
-    Debug_UART_PutChar((char) (Lim_2_Read() + 65));
-    Debug_UART_PutString("\n");
-    CyDelay(1000);
 }
 
 void move_x(int16 mm) { 
@@ -137,9 +104,6 @@ void move_y(int16 mm) {
 
 void read_reed_switches() {
     
-    uint8 i, k;
-    Debug_UART_PutString("checking \n\r");
-
     Row_0_SetDriveMode(Row_0_DM_DIG_HIZ);
     Row_1_SetDriveMode(Row_1_DM_DIG_HIZ);
     Row_2_SetDriveMode(Row_2_DM_DIG_HIZ);
@@ -284,19 +248,4 @@ void read_reed_switches() {
     board[7][1] = (char) Col_11_Read();
     Row_6_Write(0);
     Row_6_SetDriveMode(Row_6_DM_DIG_HIZ);
-    
-    //tell which switchs are on
-    for(i = 0; i < 8; i++) {
-    for(k = 0; k < 12; k++) {
-        //if(board[i][j] == 1) {
-            char on[4];
-            on[0] = ' ';
-            on[1] = board[i][k] + 48;
-            on[2] = ' ';
-            on[3] = ' ';
-            Debug_UART_PutString(on);
-        //}
-    }
-    Debug_UART_PutString("\n\r");
-    } 
 }
