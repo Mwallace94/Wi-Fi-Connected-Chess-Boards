@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
   29:.\Generated_Source\PSoC5/LCD_LCDPort.c **** * Summary:
   30:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/LCD_LCDPort.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
   54:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *
   56:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *  LCD_LCDPort_DM_STRONG     Strong Drive 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 3
 
 
   57:.\Generated_Source\PSoC5/LCD_LCDPort.c **** *  LCD_LCDPort_DM_OD_HI      Open Drain, Drives High 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
   94 0038 03F0F103 		and	r3, r3, #241
   95 003c 0343     		orrs	r3, r3, r0
   96 003e 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 4
 
 
   76:.\Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_5, mode);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  126              		.cfi_startproc
  127              		@ args = 0, pretend = 0, frame = 0
  128              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 5
 
 
  129              		@ link register save eliminated.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  161 0008 7047     		bx	lr
  162              	.L12:
  163 000a 00BF     		.align	2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 6
 
 
  164              	.L11:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  218 005d 03       		.uleb128 0x3
  219 005e 04       		.byte	0x4
  220 005f 05       		.byte	0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 7
 
 
  221 0060 696E7400 		.ascii	"int\000"
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  275 00d3 01       		.byte	0x1
  276 00d4 45       		.byte	0x45
  277 00d5 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 8
 
 
  278 00d9 60000000 		.4byte	.LFE1-.LFB1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  332 0016 0B       		.uleb128 0xb
  333 0017 0B       		.uleb128 0xb
  334 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 9
 
 
  335 0019 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  389 004f 03       		.uleb128 0x3
  390 0050 0E       		.uleb128 0xe
  391 0051 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 10
 
 
  392 0052 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  446 0089 3A       		.uleb128 0x3a
  447 008a 0B       		.uleb128 0xb
  448 008b 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 11
 
 
  449 008c 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  503 0010 00000000 		.4byte	.LFB0
  504 0014 18000000 		.4byte	.LFE0-.LFB0
  505 0018 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 12
 
 
  506 001c 60000000 		.4byte	.LFE1-.LFB1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  540      20636861 
  540      7200
  541              	.LASF23:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 13
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 13
 
 
  542 0076 73746174 		.ascii	"staticBits\000"
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 1
  561              	.LASF17:
  562 017d 6D6F6465 		.ascii	"mode\000"
  562      00
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV7uJgX.s 			page 14
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccICzEm2.s 			page 14
 
 
  563              	.LASF21:

@@ -24,8 +24,12 @@ void move_x(int16 mm);
 void move_y(int16 mm);
 void limitTest();
 
+// Reed Switch Variables
+
+static char board[8][12];
+
 // Reed Switch Functions
 
-char** reed_read_switches();
+void read_reed_switches();
 
 #endif 
