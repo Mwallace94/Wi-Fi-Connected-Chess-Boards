@@ -103,10 +103,6 @@ void playturn() {
   //int goodMove[1];
 	//moved to global
   int reset;
-  for(reset = 0; reset < 9; reset++){
-  	goodMove[reset] = '\0';
-  }
-  
   int listen_fd;
   struct sockaddr_in servaddr;
   listen_fd = socket(AF_INET, SOCK_STREAM,0);
@@ -128,6 +124,9 @@ void playturn() {
   transition t; 
   int gameOn = 1;
   while(gameOn) {
+    for(reset = 0; reset < 9; reset++){
+      goodMove[reset] = '\0';
+    }
     initTestState();
     int move = 0;
     int isCheck = 0;
