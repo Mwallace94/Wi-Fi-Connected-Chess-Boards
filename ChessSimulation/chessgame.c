@@ -205,20 +205,20 @@ void playturn() {
       		printf("Read Error\n");
       		return;
       	}
-      	int case = (int) str[1];
-      	if(str[1] == 1){
+      	int promocase = (int) str[1];
+      	if(promocase == 1){
       		teststate[t.toRow][t.toCol] = 11;//queen
-      	}else if(str[1] == 2){
+      	}else if(promocase == 2){
       		teststate[t.toRow][t.toCol] = 10;//bishop
-      	}else if(str[1] == 3){
+      	}else if(promocase == 3){
 			teststate[t.toRow][t.toCol] = 9;//knight
-      	}else if(str[1] == 4){
+      	}else if(promocase == 4){
       		teststate[t.toRow][t.toCol] = 8;//rook
       	}
       }
 
       //promotion
-      else if(yourcolor == BLACK && t.toCol = 0 && t.piece == BPAWN){
+      else if(yourcolor == BLACK && t.toCol == 0 && t.piece == BPAWN){
       	printf("Pawn is up for promotion\n");
       	goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
@@ -226,14 +226,14 @@ void playturn() {
       		printf("Read Error\n");
       		return;
       	}
-      	int case = (int) str[1];
-      	if(str[1] == 1){
+      	int promocase = (int) str[1];
+      	if(promocase  == 1){
       		teststate[t.toRow][t.toCol] = 5;//queen
-      	}else if(str[1] == 2){
+      	}else if(promocase  == 2){
       		teststate[t.toRow][t.toCol] = 4;//bishop
-      	}else if(str[1] == 3){
+      	}else if(promocase == 3){
 			teststate[t.toRow][t.toCol] = 3;//knight
-      	}else if(str[1] == 4){
+      	}else if(promocase  == 4){
       		teststate[t.toRow][t.toCol] = 2;//rook
       	}
       }
