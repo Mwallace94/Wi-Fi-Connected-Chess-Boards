@@ -722,8 +722,8 @@ def main():
                 break # out of WAITING loop.
 
             # Create move set.
-            movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
-            movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
+            movementOpp1 = (pieces[dataOpponent[1]][dataOpponent[0]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
+            movementOpp2 = (pieces[dataOpponent[5]][dataOpponent[4]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
 
             # If movement2 exists, it must be done, and done before movement1.
             if movementOpp2 != ((0, 0), 0, 0, 0, 0):
@@ -815,8 +815,8 @@ def main():
             if isValid:
 
                 # Create move set.
-                movement1 = (pieces[moves[0]][moves[1]], moves[1], moves[0], moves[3], moves[2])
-                movement2 = (pieces[moves[4]][moves[5]], moves[5], moves[4], moves[7], moves[6])
+                movement1 = (pieces[moves[1]][moves[0]], moves[1], moves[0], moves[3], moves[2])
+                movement2 = (pieces[moves[5]][moves[4]], moves[5], moves[4], moves[7], moves[6])
 
                 # If movement2 exists, you must do it, and do it before movement1.
                 if movement2 != ((0, 0), 0, 0, 0, 0):
