@@ -510,7 +510,7 @@ int isLegal(transition t) {
 	  return 0;
 	}
 	//enpassant 
-      else if(abs(ydist) == 1 && abs(xdist) == 1 && teststate[t.toRow-1][t.toCol] == 1 && (t.toRow-1 == 4)){
+      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 3)){
         enpassantW =1;
         return 1;
 	}
@@ -526,14 +526,14 @@ int isLegal(transition t) {
    else if(t.fromRow == 6 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
    //add taking piece here
 
-   else if(abs(ydist) == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
+   else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
      if(teststate[t.toRow][t.toCol]  >= 7 && teststate[t.toRow][t.toCol] <= 12){
        return 1;
      }
 	 return 0;
    }
 	 //enpassant
-     else if(abs(ydist) == 1 && abs(xdist) == 1 && teststate[t.toRow+1][t.toCol] == WPAWN && (t.toRow+1 == 3)){
+     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 4)){
        enpassantB = 1;
        return 1;
 	}
