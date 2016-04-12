@@ -104,13 +104,6 @@ def setup_connection():
     sock.connect((SERVER, PORT))
     return sock
 
-def setup_connection2():
-
-    listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    listen.bind(('', 0))
-    listen.listen(5)
-    return listen
-
 def setup_board(win, squares):
 
 #white pieces
@@ -599,7 +592,6 @@ def main():
     # Automatically set up connection
     state = NOTCONNECTED
     sock = setup_connection()
-    listen = setup_connection2()
     sock.sendto(b'.connect', (SERVER, PORT))
     response = sock.recv(4)
 
@@ -611,13 +603,13 @@ def main():
     t3.undraw()
     t3 = Text(Point(370, 450), displaytext)
     t3.draw(win)
-    
-    # Allow user to input whenever they want in this loop.
+
+    # Program is running.
     while 1:
 
         while state == CONNECTED:
 
-            print(state)
+            print("CONNECTED")
             point = win.getMouse()
 
             # clicked on "Ready" button       
@@ -627,14 +619,16 @@ def main():
                 sock.sendto(b'.ready', (SERVER, PORT))
                 response = sock.recv(1)
 
+                # May transition straight to MOVING/WAITING from CONNECTED.
                 displaytext = ""
                 if response == b'\x11':
                     displaytext = "Ready."
                     state = READY
-                if response == b'\x21' or response == b'!':
+                # Python may turn \x21 character into '!', \x22 into '"'. Check for both.
+                if response in [b'\x21', b'!']:
                     displaytext = "Your turn."
                     state = MOVING
-                if response == b'\x22' or response == b'"':
+                if response in [b'\x22', b'"']:
                     displaytext = "Their turn."
                     state = WAITING
                 
@@ -652,27 +646,30 @@ def main():
 
         while state == READY:
 
-            print(state)
+            print("READY")
             
             sock = setup_connection()
             sock.sendto(b'.gib', (SERVER, PORT))
             response = sock.recv(1)
             
-            while response != b'\x21' and response != b'\x22' and response != b'!' and response != b'"':
+            while response not in [b'\x21', b'\x22', b'!', b'"']:
                 time.sleep(5)
+                
                 sock = setup_connection()
                 sock.sendto(b'.gib', (SERVER, PORT))
                 response = sock.recv(1)
+                
                 print(response)
                         
             displaytext = ""
             if response == b'\x11':
                 displaytext = "Ready."
                 state = READY
-            if response == b'\x21' or response == b'!':
+            # Python may turn \x21 character into '!', \x22 into '"'. Check for both.
+            if response in [b'\x21', b'!']:
                 displaytext = "Your turn."
                 state = MOVING
-            if response == b'\x22' or response == b'"':
+            if response in [b'\x22', b'"']:
                 displaytext = "Their turn."
                 state = WAITING
                 
@@ -692,48 +689,69 @@ def main():
             
         while state == WAITING:
 
-            print(state)
+            # Print state to console and GUI screen.
+            print("WAITING")
 
+            t3.undraw()
+            t3 = Text(Point(370, 450), "Their turn.")
+            t3.draw(win)
+
+            # Clear old value.
+            dataOpponent = b''
+            
             sock = setup_connection()
             sock.sendto(b'.gib', (SERVER, PORT))
             dataOpponent = sock.recv(8)
             
             while len(dataOpponent) != 8:
                 time.sleep(5)
+                
                 sock = setup_connection()
                 sock.sendto(b'.gib', (SERVER, PORT))
                 dataOpponent = sock.recv(8)
-                print(dataOpponent)
                 
-                if dataOpponent == b'\x31' or dataOpponent == b'1':
-                    break
+                print(dataOpponent)
 
-            if dataOpponent == b'\x31' or dataOpponent == b'1':
+                # Python may turn \x31 into '1'. Check for both.
+                if dataOpponent in [b'\x31', b'1']:
+                    state = CONNECTED
+                    break # out of recv loop.
+
+            if dataOpponent in [b'\x31', b'1']:
                 state = CONNECTED
-                break
+                break # out of WAITING loop.
 
+            # Create move set.
             movementOpp1 = (pieces[dataOpponent[0]][dataOpponent[1]], dataOpponent[1], dataOpponent[0], dataOpponent[3], dataOpponent[2])
             movementOpp2 = (pieces[dataOpponent[4]][dataOpponent[5]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
 
-            # If movement2 exists, it must be done before movement1.
+            # If movement2 exists, it must be done, and done before movement1.
             if movementOpp2 != ((0, 0), 0, 0, 0, 0):
                 print(movementOpp2)
                 movepiece(pieces, movementOpp2)
 
+            # movement1 only exists when dataOpponent is non-empty or non-junk. It must always be done.
             print(movementOpp1)
             movepiece(pieces, movementOpp1)
 
+            # Clear these values after they have been executed.
             movementOpp1 = ((0, 0), 0, 0, 0, 0)
             movementOpp2 = ((0, 0), 0, 0, 0, 0)
-            
+
+            # Finally, transition to MOVING state.
             state = MOVING
 
         while state == MOVING:
 
-            print(state)
+            # Print state to console and GUI screen.
+            print("MOVING")
 
-            point = win.getMouse()
-            
+            t3.undraw()
+            t3 = Text(Point(370, 450), "Your turn.")
+            t3.draw(win)
+
+            # Get user input (no harm in calculating fromrow and fromcol now).
+            point = win.getMouse()            
             fromrow = point.x // SQUARE_SZ
             fromcol = point.y // SQUARE_SZ
 
@@ -741,16 +759,18 @@ def main():
             if(point.x >= END_BTN_TOPL_X and point.x <= END_BTN_BOTR_X and point.y >= END_BTN_TOPL_Y and point.y <= END_BTN_BOTR_Y):
                 sock = setup_connection()
                 sock.sendto(b'.end', (SERVER, PORT))
-                return
 
-            #used to only be able to click on a piece in play
+                state = CONNECTED
+                break
+
+            # Determines if piece was selected, or an empty square.
             temp = (0, 0)
     
-            # clicked in the board space
+            # Clicked in the board space
             if(point.y <= 400):
                 temp = pieces[fromrow][fromcol]
 
-            # clicked in the graveyard
+            # Clicked in the graveyard
             if fromrow == 0 or fromrow == 1 or fromrow == 10 or fromrow == 11:
                 temp = (0, 0) 
 
@@ -773,40 +793,48 @@ def main():
                 else: 
                     squares[fromrow][fromcol].setFill("white")
 
+            # Helper for creating msg.
             def concat(i):
                  return b' ' + str(i).encode()
-
-            sock = setup_connection()
-
+                
             #movement = (piece-to-move, ...)
             tempMovement = (pieces[fromrow][fromcol][1], fromrow, fromcol, torow, tocol)
 
             # mixup during, microcontroller code asks for rows before cols.
             # Removed piece from msg, server/simulator will expect only 4 numbers for XY positions.
             msg = b'.move' + concat(tempMovement[2]) + concat(tempMovement[1]) + concat(tempMovement[4]) + concat(tempMovement[3])
-            sock.sendto(msg, (SERVER, PORT))
 
+            sock = setup_connection()
+            sock.sendto(msg, (SERVER, PORT))
             dataSelf = sock.recv(9)
+            
             print(dataSelf)
             (isValid, moves) = parseSimReturn(dataSelf)
         
             print(isValid)
             if isValid:
+
+                # Create move set.
                 movement1 = (pieces[moves[0]][moves[1]], moves[1], moves[0], moves[3], moves[2])
                 movement2 = (pieces[moves[4]][moves[5]], moves[5], moves[4], moves[7], moves[6])
 
-                # If movement2 exists, you must do it before movement1.
+                # If movement2 exists, you must do it, and do it before movement1.
                 if movement2 != ((0, 0), 0, 0, 0, 0):
                     print(movement2)
                     movepiece(pieces, movement2)
-                    
+
+                # movement1 only exists if move was valid, so always do it.
                 print(movement1)
                 movepiece(pieces, movement1)
 
+                # Clear these values after they have been executed.
                 movement1 = ((0, 0), 0, 0, 0, 0)
                 movement2 = ((0, 0), 0, 0, 0, 0)
-                
+
+                # Finally, transition state. 
                 state = WAITING
+
+                # State only changes when move is valid, otherwise player must try again.
         
 #############################################
 # Call to Main Function                     #
