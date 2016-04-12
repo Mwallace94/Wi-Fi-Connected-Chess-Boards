@@ -357,6 +357,7 @@ int testMoveForCheck(transition t){
   }  
   if(castleConfirmed){
     if(!castleConfirmed < 1 || castleConfirmed > 4){
+      printf("What happened?\n\n\n");
       exit(-1);
     }else{
       if(castleConfirmed == 1){
@@ -740,19 +741,24 @@ int isLegal(transition t) {
  
 if(t.piece == BKING || t.piece == WKING) {
    if((dis == 1 || (dis == 2 && (xdis && ydis))) && teststate[t.toRow][t.toCol] == '\0'){
-	return 1;
+	   printf("Position 1\n\n\n");
+    return 1;
    }
    else if((dis == 1  || (dis == 2 && (xdis && ydis)))&& teststate[t.toRow][t.toCol] != '\0'){
      if(t.piece == WKING && teststate[t.toRow][t.toCol] >= 1 && teststate[t.toRow][t.toCol] <= 6){
+           printf("Position 2\n\n\n");
        return 1;
      }else if(t.piece == BKING && teststate[t.toRow][t.toCol] >= 7 && teststate[t.toRow][t.toCol] <= 12){
+           printf("Position 3\n\n\n");
+
        return 1;
      }
 	 
      return 0;
    }else if(dis == 2){ 
+        printf("Castling\n\n\n");
      if((kingWMovedOnce == 0) && t.piece == WKING){
-       if(!leftRookWMovedOnce && t.toCol < t.fromCol && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
+       if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
@@ -760,10 +766,10 @@ if(t.piece == BKING || t.piece == WKING) {
          return 1;
        }
      }else if((kingBMovedOnce == 0) && t.piece == BKING){
-       if(!leftRookBMovedOnce && t.toCol < t.fromCol && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
+       if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
          return 1;
-       }else if(!rightRookBMovedOnce && t.toCol > t.fromCol && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
+       }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
          castleConfirmed = 4;
          return 1;
        }
