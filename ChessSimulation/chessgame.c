@@ -357,6 +357,7 @@ int testMoveForCheck(transition t){
   }  
   if(castleConfirmed){
     if(!castleConfirmed < 1 || castleConfirmed > 4){
+      printf("Castling # %d \n\n\n", castleConfirmed);
       printf("What happened?\n\n\n");
       exit(-1);
     }else{
@@ -760,20 +761,25 @@ if(t.piece == BKING || t.piece == WKING) {
      if((kingWMovedOnce == 0) && t.piece == WKING){
        if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
+         printf("Castling # 1\n\n\n");
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
 		     castleConfirmed = 2;
+         printf("Castling # 2\n\n\n");
          return 1;
        }
      }else if((kingBMovedOnce == 0) && t.piece == BKING){
        if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
+        printf("Castling # 3\n\n\n");
          return 1;
        }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
          castleConfirmed = 4;
+         printf("Castling # 4\n\n\n");
          return 1;
        }
      }else{
+      printf("WTF\n\n\n");
        return 0;
      }
    }
