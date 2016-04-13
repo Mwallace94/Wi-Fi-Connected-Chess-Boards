@@ -726,7 +726,7 @@ def main():
             movementOpp2 = (pieces[dataOpponent[5]][dataOpponent[4]], dataOpponent[5], dataOpponent[4], dataOpponent[7], dataOpponent[6])
 
             # If movement2 exists, it must be done, and done before movement1.
-            if movementOpp2 != ((0, 0), 0, 0, 0, 0):
+            if movementOpp2[1:] != (0, 0, 0, 0):
                 print(movementOpp2)
                 movepiece(pieces, movementOpp2)
 
@@ -819,7 +819,7 @@ def main():
                 movement2 = (pieces[moves[5]][moves[4]], moves[5], moves[4], moves[7], moves[6])
 
                 # If movement2 exists, you must do it, and do it before movement1.
-                if movement2 != ((0, 0), 0, 0, 0, 0):
+                if movement2[1:] != (0, 0, 0, 0):
                     print(movement2)
                     movepiece(pieces, movement2)
 
