@@ -356,7 +356,7 @@ int testMoveForCheck(transition t){
     teststate[t.toRow+1][t.toCol] = EMPTY;
   }  
   if(castleConfirmed){
-    if(!castleConfirmed < 1 || castleConfirmed > 4){
+    if(castleConfirmed < 1 || castleConfirmed > 4){
       printf("Castling # %d \n\n\n", castleConfirmed);
       printf("What happened?\n\n\n");
       exit(-1);
