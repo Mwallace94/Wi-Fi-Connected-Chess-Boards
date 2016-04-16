@@ -593,7 +593,7 @@ def main():
     state = NOTCONNECTED
     sock = setup_connection()
     sock.sendto(b'.connect', (SERVER, PORT))
-    response = sock.recv(4)
+    response = sock.recv(1)
 
     displaytext = ""
     if response == b'\x01' or response == b'\x03':
