@@ -1,6 +1,6 @@
--- Project:   E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj
--- Generated: 04/10/2016 23:50:46
--- PSoC Creator  3.3
+-- Project:   C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj
+-- Generated: 04/11/2016 20:13:51
+-- PSoC Creator  3.3 CP2
 
 ENTITY Bootloadable IS
     PORT(
@@ -50,8 +50,8 @@ ENTITY Bootloadable IS
         Row_7(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO0 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO1 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO2 OF __DEFAULT__ : ENTITY IS 5e0;

@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name: cyfitter_cfg.c
 * 
-* PSoC Creator  3.3
+* PSoC Creator  3.3 CP2
 *
 * Description:
 * This file contains device initialization code.
@@ -30,7 +30,9 @@
     #define CYPACKED_ATTR __attribute__ ((packed))
     #define CYALIGNED __attribute__ ((aligned))
     #define CY_CFG_UNUSED __attribute__ ((unused))
-    #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
+    #ifndef CY_CFG_SECTION
+        #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
+    #endif
     
     #if defined(__ARMCC_VERSION)
         #define CY_CFG_MEMORY_BARRIER() __memory_changed()

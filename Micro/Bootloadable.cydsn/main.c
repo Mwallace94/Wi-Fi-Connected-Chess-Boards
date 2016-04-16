@@ -5,9 +5,24 @@ int main() {
     init();
     
     while(1) {
-
-        debug();
         
+        debug();
+
+        /*
+        if(Esp_UART_GetRxBufferSize() > 0) {
+            Debug_UART_PutChar(Esp_UART_GetChar());
+        }
+        if(Debug_UART_GetRxBufferSize() > 0) {
+            char temp = Debug_UART_GetChar();
+            Debug_UART_PutChar(temp);
+            Esp_UART_PutChar(temp);
+        }
+        
+        
+        Esp_UART_PutString("AT\n\n");
+        CyDelay(5000);
+        Debug_UART_PutChar(Esp_UART_GetChar());
+        */
     }
 }
 
@@ -15,7 +30,7 @@ void init() {
     CyGlobalIntEnable;
     
     Debug_UART_Start();
-    Debug_UART_PutString("CSE 4940: Wireless Chess Board\n\n");
+    Debug_UART_PutString("CSE 4940: Wireless Chess Board\r\n\r\n");
     
     Esp_UART_Start();
     
@@ -24,18 +39,20 @@ void init() {
 
 void debug() {
 
-    char message[8] = "";
+    char message[64] = "";
     char temp;
     char length;
 
-    if(Debug_UART_GetRxBufferSize > 0) {
+    if(Debug_UART_GetRxBufferSize() > 0) {
 
         for(int i = 0; (temp = Debug_UART_GetChar()) != '\r'; i++) {
             Debug_UART_PutChar(temp);
             message[i] = temp;
+            while(Debug_UART_GetRxBufferSize() == 0);
         }
 
         Debug_UART_PutChar('\r');
+        Debug_UART_PutChar('\n');
         Debug_UART_ClearRxBuffer();
 
         length = strlen(message);
@@ -68,15 +85,15 @@ void debug() {
                 break;
             case 'h':
                 move_home();
-                Debug_UART_PutString("moving home\n");
+                Debug_UART_PutString("moving home\r\n");
                 break;
             case 'e':
                 if(message[2] == 'o' && message[3] == 'n') {
                     Em_Write(1);
-                    Debug_UART_PutString("magnet now on\n");
+                    Debug_UART_PutString("magnet now on\r\n");
                 } else {
                     Em_Write(0);
-                    Debug_UART_PutString("magnet now off\n");
+                    Debug_UART_PutString("magnet now off\r\n");
                 }
                 break;
             case 'r':
@@ -88,14 +105,27 @@ void debug() {
                         on[1] = board[i][j] + 48;
                         Debug_UART_PutString(on);
                     }
-                    Debug_UART_PutString("\n\r");
+                    Debug_UART_PutString("\r\n");
                 }
                 break;
             case 'l':
                 Debug_UART_PutChar((char) (Lim_1_Read() + 65));
                 Debug_UART_PutString(" ");
                 Debug_UART_PutChar((char) (Lim_2_Read() + 65));
-                Debug_UART_PutString("\n");
+                Debug_UART_PutString("\r\n");
+                break;
+            case 'w':
+                if(message[2] == 'w') {
+                    Esp_UART_PutString(message + 4);
+                }
+                if(message[2] == 'r') {
+                    int mSize = Esp_UART_GetRxBufferSize();
+                    for (int i = 0; i < mSize; i++) {
+                        message[i] = Esp_UART_GetChar();
+                    }
+                    Debug_UART_PutString(message);
+                    Debug_UART_PutString("\r\n");
+                }
                 break;
             default:
                 break;
