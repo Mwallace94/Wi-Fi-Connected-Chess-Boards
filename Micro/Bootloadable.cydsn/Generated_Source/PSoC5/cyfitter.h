@@ -1584,7 +1584,7 @@
 #define BCLK__BUS_CLK__KHZ 48000U
 #define BCLK__BUS_CLK__MHZ 48U
 #define CY_PROJECT_NAME "Bootloadable"
-#define CY_VERSION "PSoC Creator  3.3"
+#define CY_VERSION "PSoC Creator  3.3 CP2"
 #define CYDEV_CHIP_DIE_LEOPARD 1u
 #define CYDEV_CHIP_DIE_PANTHER 18u
 #define CYDEV_CHIP_DIE_PSOC4A 10u

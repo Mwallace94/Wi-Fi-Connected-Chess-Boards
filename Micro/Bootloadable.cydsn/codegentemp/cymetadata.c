@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name: cymetadata.c
 * 
-* PSoC Creator  3.3
+* PSoC Creator  3.3 CP2
 *
 * Description:
 * This file defines all extra memory spaces that need to be included.
@@ -19,7 +19,10 @@
 
 
 #if defined(__GNUC__) || defined(__ARMCC_VERSION)
-__attribute__ ((__section__(".cyloadablemeta"), used))
+#ifndef CY_LOADABLE_META_SECTION
+#define CY_LOADABLE_META_SECTION __attribute__ ((__section__(".cyloadablemeta"), used))
+#endif
+CY_LOADABLE_META_SECTION
 #elif defined(__ICCARM__)
 #pragma  location=".cyloadablemeta"
 #else
@@ -37,7 +40,10 @@ const uint8 cy_meta_loadable[] = {
 };
 
 #if defined(__GNUC__) || defined(__ARMCC_VERSION)
-__attribute__ ((__section__(".cyconfigecc"), used))
+#ifndef CY_CONFIG_ECC_SECTION
+#define CY_CONFIG_ECC_SECTION __attribute__ ((__section__(".cyconfigecc"), used))
+#endif
+CY_CONFIG_ECC_SECTION
 #elif defined(__ICCARM__)
 #pragma  location=".cyconfigecc"
 #else
