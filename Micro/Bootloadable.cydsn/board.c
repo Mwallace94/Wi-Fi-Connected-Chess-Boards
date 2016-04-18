@@ -15,7 +15,7 @@ void move_home() {
             Stp_1_Write(1);
             Stp_2_Write(0);
             Stp_2_Write(1);
-            CyDelay(20);
+            CyDelay(10);
         }      
         else if(!x){
             Dir_1_Write(0);
@@ -25,7 +25,7 @@ void move_home() {
             Stp_1_Write(1);
             Stp_2_Write(0);
             Stp_2_Write(1);
-            CyDelay(20);
+            CyDelay(10);
         }
         x = Lim_1_Read();
         y = Lim_2_Read();
@@ -62,7 +62,7 @@ void move_x(int16 mm) {
         Stp_1_Write(1);
         Stp_2_Write(0);
         Stp_2_Write(1);
-        CyDelay(20);
+        CyDelay(10);
     }
     
     Slp_1_Write(0);
@@ -95,7 +95,7 @@ void move_y(int16 mm) {
         Stp_1_Write(1);
         Stp_2_Write(0);
         Stp_2_Write(1);
-        CyDelay(20);
+        CyDelay(10);
     }
     
     Slp_1_Write(0);
@@ -248,4 +248,5 @@ void read_reed_switches() {
     board[7][1] = (char) Col_11_Read();
     Row_6_Write(0);
     Row_6_SetDriveMode(Row_6_DM_DIG_HIZ);
+    
 }
