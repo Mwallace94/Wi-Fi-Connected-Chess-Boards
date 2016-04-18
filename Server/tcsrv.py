@@ -199,12 +199,12 @@ class myHandler(socketserver.BaseRequestHandler):
                                         self.movesToSend[1] = b''
 
                 def end(args):
-                        movesToSend[0] = b'\x31'
-                        movesToSend[1] = b'\x31'
+                        self.movesToSend[0] = b'\x31'
+                        self.movesToSend[1] = b'\x31'
                         self.players[0] = ''
                         self.players[1] = ''
-                        self.pstates[0] = NOTCONNECTED
-                        self.pstates[1] = NOTCONNECTED
+                        self.pstates[0] = CONNECTED
+                        self.pstates[1] = CONNECTED
                         self.response[0] = b'00'
                         
                 def emptyinput(args):

@@ -103,10 +103,6 @@ void playturn() {
   //int goodMove[1];
 	//moved to global
   int reset;
-  for(reset = 0; reset < 9; reset++){
-  	goodMove[reset] = '\0';
-  }
-  
   int listen_fd;
   struct sockaddr_in servaddr;
   listen_fd = socket(AF_INET, SOCK_STREAM,0);
@@ -128,6 +124,9 @@ void playturn() {
   transition t; 
   int gameOn = 1;
   while(gameOn) {
+    for(reset = 0; reset < 9; reset++){
+      goodMove[reset] = '\0';
+    }
     initTestState();
     int move = 0;
     int isCheck = 0;
@@ -206,20 +205,20 @@ void playturn() {
       		printf("Read Error\n");
       		return;
       	}
-      	int case = (int) str[1];
-      	if(str[1] == 1){
+      	int promocase = (int) str[1];
+      	if(promocase == 1){
       		teststate[t.toRow][t.toCol] = 11;//queen
-      	}else if(str[1] == 2){
+      	}else if(promocase == 2){
       		teststate[t.toRow][t.toCol] = 10;//bishop
-      	}else if(str[1] == 3){
+      	}else if(promocase == 3){
 			teststate[t.toRow][t.toCol] = 9;//knight
-      	}else if(str[1] == 4){
+      	}else if(promocase == 4){
       		teststate[t.toRow][t.toCol] = 8;//rook
       	}
       }
 
       //promotion
-      else if(yourcolor == BLACK && t.toCol = 0 && t.piece == BPAWN){
+      else if(yourcolor == BLACK && t.toCol == 0 && t.piece == BPAWN){
       	printf("Pawn is up for promotion\n");
       	goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
@@ -227,14 +226,14 @@ void playturn() {
       		printf("Read Error\n");
       		return;
       	}
-      	int case = (int) str[1];
-      	if(str[1] == 1){
+      	int promocase = (int) str[1];
+      	if(promocase  == 1){
       		teststate[t.toRow][t.toCol] = 5;//queen
-      	}else if(str[1] == 2){
+      	}else if(promocase  == 2){
       		teststate[t.toRow][t.toCol] = 4;//bishop
-      	}else if(str[1] == 3){
+      	}else if(promocase == 3){
 			teststate[t.toRow][t.toCol] = 3;//knight
-      	}else if(str[1] == 4){
+      	}else if(promocase  == 4){
       		teststate[t.toRow][t.toCol] = 2;//rook
       	}
       }
@@ -357,7 +356,9 @@ int testMoveForCheck(transition t){
     teststate[t.toRow+1][t.toCol] = EMPTY;
   }  
   if(castleConfirmed){
-    if(!castleConfirmed < 1 || castleConfirmed > 4){
+    if(castleConfirmed < 1 || castleConfirmed > 4){
+      printf("Castling # %d \n\n\n", castleConfirmed);
+      printf("What happened?\n\n\n");
       exit(-1);
     }else{
       if(castleConfirmed == 1){
@@ -511,7 +512,7 @@ int isLegal(transition t) {
 	  return 0;
 	}
 	//enpassant 
-      else if(abs(ydist) == 1 && abs(xdist) == 1 && teststate[t.toRow-1][t.toCol] == 1 && (t.toRow-1 == 4)){
+      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 3)){
         enpassantW =1;
         return 1;
 	}
@@ -527,14 +528,14 @@ int isLegal(transition t) {
    else if(t.fromRow == 6 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
    //add taking piece here
 
-   else if(abs(ydist) == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
+   else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
      if(teststate[t.toRow][t.toCol]  >= 7 && teststate[t.toRow][t.toCol] <= 12){
        return 1;
      }
 	 return 0;
    }
 	 //enpassant
-     else if(abs(ydist) == 1 && abs(xdist) == 1 && teststate[t.toRow+1][t.toCol] == WPAWN && (t.toRow+1 == 3)){
+     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 4)){
        enpassantB = 1;
        return 1;
 	}
@@ -741,34 +742,44 @@ int isLegal(transition t) {
  
 if(t.piece == BKING || t.piece == WKING) {
    if((dis == 1 || (dis == 2 && (xdis && ydis))) && teststate[t.toRow][t.toCol] == '\0'){
-	return 1;
+	   printf("Position 1\n\n\n");
+    return 1;
    }
    else if((dis == 1  || (dis == 2 && (xdis && ydis)))&& teststate[t.toRow][t.toCol] != '\0'){
      if(t.piece == WKING && teststate[t.toRow][t.toCol] >= 1 && teststate[t.toRow][t.toCol] <= 6){
+           printf("Position 2\n\n\n");
        return 1;
      }else if(t.piece == BKING && teststate[t.toRow][t.toCol] >= 7 && teststate[t.toRow][t.toCol] <= 12){
+           printf("Position 3\n\n\n");
+
        return 1;
      }
 	 
      return 0;
    }else if(dis == 2){ 
+        printf("Castling\n\n\n");
      if((kingWMovedOnce == 0) && t.piece == WKING){
-       if(!leftRookWMovedOnce && t.toCol < t.fromCol && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
+       if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
+         printf("Castling # 1\n\n\n");
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
 		     castleConfirmed = 2;
+         printf("Castling # 2\n\n\n");
          return 1;
        }
      }else if((kingBMovedOnce == 0) && t.piece == BKING){
-       if(!leftRookBMovedOnce && t.toCol < t.fromCol && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
+       if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
+        printf("Castling # 3\n\n\n");
          return 1;
-       }else if(!rightRookBMovedOnce && t.toCol > t.fromCol && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
+       }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
          castleConfirmed = 4;
+         printf("Castling # 4\n\n\n");
          return 1;
        }
      }else{
+      printf("WTF\n\n\n");
        return 0;
      }
    }
