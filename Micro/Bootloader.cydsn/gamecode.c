@@ -6,7 +6,6 @@ char bres1[1];
 char bres8[8];
 char bres9[9];
 
-
 // Initialization functions.
 
 /*

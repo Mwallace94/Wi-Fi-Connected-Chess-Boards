@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "board.h"
+#include "wifi.h"
 
 // Server and port
 
