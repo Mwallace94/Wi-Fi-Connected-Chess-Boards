@@ -111,7 +111,7 @@ int state_ready() {
 
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
-		sleep(5);
+		CyDelay(5000);
 		sockfd = setup_connection();
 
 		&bres1 = esp_transmit(&bstr_gib, "4");
@@ -147,7 +147,7 @@ int state_waiting() {
 	&bres8 = esp_transmit(&bstr_gib, "4");
 
 	while(strlen(bres8) != 8) {
-		sleep(5);
+		CyDelay(5000);
 		sockfd = setup_connection();
 
 		&bres8 = esp_transmit(&bstr_gib, "4");
@@ -260,7 +260,7 @@ int state_moving() {
 
 	while(move1 == { { 0, 0 }, { 0, 0 } }) {
 
-		//sleep(1);
+		CyDelay(1000);
 		read_reed_switches();
 		memcpy(&update1_board, &board, sizeof(board));
 
@@ -284,7 +284,7 @@ int state_moving() {
 
 		while(move2 == { { 0, 0 }, { 0, 0 } }) {
 
-			//sleep(1);
+			CyDelay(1000);
 			read_reed_switches();
 			memcpy(&update2_board, &board, sizeof(board));
 
