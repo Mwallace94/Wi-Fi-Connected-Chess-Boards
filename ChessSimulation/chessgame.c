@@ -388,7 +388,7 @@ int testMoveForCheck(transition t){
         goodMove[5] = (char)7;
   		  goodMove[6] = (char)9;
   		  goodMove[7] = (char)7;
-  		  goodMove[8] = (char)2;
+  		  goodMove[8] = (char)7;
       }
     }
   }
