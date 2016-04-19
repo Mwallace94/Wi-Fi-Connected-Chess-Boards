@@ -49,8 +49,7 @@ int state_notconnected() {
 	int sockfd = setup_connection();
 
 	// write ".connect"
-	write(sockfd, &bstr_connect, 8);
-	read(sockfd, &bres1, 1);
+	&bres1 = esp_transmit(&bstr_connect, "8");
 
 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
 
@@ -74,8 +73,7 @@ int state_connected() {
 	int sockfd = setup_connection();
 
 	// write ".ready"
-	write(sockfd, &bstr_ready, 6);
-	read(sockfd, &bres1, 1);
+	&bres1 = esp_transmit(&bstr_ready, "6");
 
 	if(bres1[0] == 0x11){
 		Debug_UART_PutString("Ready.");
@@ -109,16 +107,14 @@ int state_ready() {
 	int sockfd = setup_connection();
 
 	//write ".gib"
-	write(sockfd, &bstr_gib, 4);
-	read(sockfd, &bres1, 1);
+	&bres1 = esp_transmit(&bstr_gib, "4");
 
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
 		sleep(5);
 		sockfd = setup_connection();
 
-		write(sockfd, &bstr_gib, 4);
-		read(sockfd, &bres1, 1);
+		&bres1 = esp_transmit(&bstr_gib, "4");
 
 		Debug_UART_PutString(bres1[0]);
 	}
@@ -148,15 +144,13 @@ int state_waiting() {
 	int sockfd = setup_connection();
 
 	// write ".gib"
-	write(sockfd, &bstr_gib, 4);
-	read(sockfd, &bres8, 8);
+	&bres8 = esp_transmit(&bstr_gib, "4");
 
 	while(strlen(bres8) != 8) {
 		sleep(5);
 		sockfd = setup_connection();
 
-		write(sockfd, &bstr_gib, 4);
-		read(sockfd, &bres8, 8);
+		&bres8 = esp_transmit(&bstr_gib, "4");
 
 		Debug_UART_PutString(bres8);
 
@@ -183,12 +177,6 @@ int state_waiting() {
 	Debug_UART_PutString(movementOpp1);
 	//movepiece(board,movementOpp1);
 
-	/*
-	memset(&movementOpp1[0],'0',sizeof(movementOpp1));
-	memset(&movementOpp1Piece[0],'0',sizeof(movementOpp1Piece));
-	memset(&movementOpp2[0],'0',sizeof(movementOpp2));
-	memset(&movementOpp2Piece[0],'0',sizeof(movementOpp2Piece));
-	*/
 	game_state = MOVING;
 	return game_state;
 }
@@ -317,8 +305,7 @@ int state_moving() {
 
 	int sockfd = setup_connection();
 
-	write(sockfd, &msg, 13);
-	read(sockfd, &bres9, 9); // We don't need all 9 bytes.
+	&bres9 = esp_transmit(&msg, "13"); // We don't need all 9 bytes.
 
 	if(bres9[0] != 0x01) {
 		Debug_UART_PutString("Invalid move, please undo changes.\n");
