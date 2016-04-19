@@ -113,7 +113,7 @@ class myHandler(socketserver.BaseRequestHandler):
 
                         # Helper parses return value from C simulator.
                         def parseSimReturn(retval):
-                                isValid    = retval[0]
+                                isValid = retval[0]
                                 moves  = retval[1:]
                                 return (isValid, moves)
 
@@ -143,7 +143,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                                 self.response[0] = b'24'
                                                 
                                         else:
-                                                self.request.sendto(isValid, self.players[0])
+                                                self.request.sendto(b'\x00', self.players[0])
                                                 self.response[0] = b'21'
                                         
                                 else:
@@ -176,7 +176,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                                 self.response[0] = b'25'
                                                 
                                         else:
-                                                self.request.sendto(isValid, self.players[1])
+                                                self.request.sendto(b'\x00', self.players[1])
                                                 self.response[0] = b'22'
                                 else:
                                         self.request.sendto(b'Wait.', self.client_address)

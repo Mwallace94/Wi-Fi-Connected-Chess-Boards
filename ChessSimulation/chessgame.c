@@ -124,13 +124,13 @@ void playturn() {
   transition t; 
   int gameOn = 1;
   while(gameOn) {
-    for(reset = 0; reset < 9; reset++){
-      goodMove[reset] = '\0';
-    }
     initTestState();
     int move = 0;
     int isCheck = 0;
     while(move == 0) {
+      for(reset = 0; reset < 9; reset++){
+      	goodMove[reset] = '\0';
+      }
       initTestState();
       //if(scanf("%d %d %d %d %d", &t.piece, &t.fromRow, &t.fromCol, &t.toRow, &t.toCol) == EOF)  return;
       if(read(comm_fd,str,4*sizeof(char)) == 0) {
