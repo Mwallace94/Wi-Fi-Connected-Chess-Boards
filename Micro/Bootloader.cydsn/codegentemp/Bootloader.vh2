@@ -2,7 +2,7 @@
 --	Conversion of Bootloader.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Apr 11 14:03:16 2016
+--	Mon Apr 18 15:44:05 2016
 --
 
 USE cypress.cypress.all;
@@ -2156,7 +2156,7 @@ Debug_Tx:cy_psoc3_pins_v1_10
 		interrupt=>tmpINTERRUPT_0__Debug_Tx_net_0);
 Esp_Rst:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"27a8ab12-f30c-4615-bec8-9bb45916502f",
-		drive_mode=>"110",
+		drive_mode=>"001",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"1",

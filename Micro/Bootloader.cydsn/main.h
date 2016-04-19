@@ -8,5 +8,7 @@
 void init();
 
 void debug();
+
+extern char board[8][12];
     
 #endif  

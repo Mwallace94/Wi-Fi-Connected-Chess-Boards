@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
   29:.\Generated_Source\PSoC5/Stp_2.c **** * Summary:
   30:.\Generated_Source\PSoC5/Stp_2.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/Stp_2.c **** *
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Stp_2.c **** * Parameters:  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
   53:.\Generated_Source\PSoC5/Stp_2.c **** * Parameters:  
   54:.\Generated_Source\PSoC5/Stp_2.c **** *  mode:  Change the pins to one of the following drive modes.
   55:.\Generated_Source\PSoC5/Stp_2.c **** *
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 3
 
 
   56:.\Generated_Source\PSoC5/Stp_2.c **** *  Stp_2_DM_STRONG     Strong Drive 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
   80:.\Generated_Source\PSoC5/Stp_2.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:.\Generated_Source\PSoC5/Stp_2.c **** *  form.
   82:.\Generated_Source\PSoC5/Stp_2.c **** *
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 4
 
 
   83:.\Generated_Source\PSoC5/Stp_2.c **** * Parameters:  
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  111:.\Generated_Source\PSoC5/Stp_2.c **** *  
  112:.\Generated_Source\PSoC5/Stp_2.c **** *******************************************************************************/
  113:.\Generated_Source\PSoC5/Stp_2.c **** uint8 Stp_2_ReadDataReg(void) 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 5
 
 
  114:.\Generated_Source\PSoC5/Stp_2.c **** {
@@ -272,48 +272,48 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  141 0006 00000000 		.4byte	.Ldebug_abbrev0
  142 000a 04       		.byte	0x4
  143 000b 01       		.uleb128 0x1
- 144 000c 42010000 		.4byte	.LASF20
+ 144 000c 20010000 		.4byte	.LASF20
  145 0010 01       		.byte	0x1
- 146 0011 98000000 		.4byte	.LASF21
- 147 0015 00000000 		.4byte	.LASF22
+ 146 0011 48000000 		.4byte	.LASF21
+ 147 0015 95000000 		.4byte	.LASF22
  148 0019 00000000 		.4byte	.Ldebug_ranges0+0
  149 001d 00000000 		.4byte	0
  150 0021 00000000 		.4byte	.Ldebug_line0
  151 0025 02       		.uleb128 0x2
  152 0026 01       		.byte	0x1
  153 0027 06       		.byte	0x6
- 154 0028 F7010000 		.4byte	.LASF0
+ 154 0028 D5010000 		.4byte	.LASF0
  155 002c 02       		.uleb128 0x2
  156 002d 01       		.byte	0x1
  157 002e 08       		.byte	0x8
- 158 002f 79000000 		.4byte	.LASF1
+ 158 002f 29000000 		.4byte	.LASF1
  159 0033 02       		.uleb128 0x2
  160 0034 02       		.byte	0x2
  161 0035 05       		.byte	0x5
- 162 0036 32010000 		.4byte	.LASF2
+ 162 0036 10010000 		.4byte	.LASF2
  163 003a 02       		.uleb128 0x2
  164 003b 02       		.byte	0x2
  165 003c 07       		.byte	0x7
- 166 003d CB000000 		.4byte	.LASF3
+ 166 003d 7B000000 		.4byte	.LASF3
  167 0041 02       		.uleb128 0x2
  168 0042 04       		.byte	0x4
  169 0043 05       		.byte	0x5
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 6
 
 
- 170 0044 DB010000 		.4byte	.LASF4
+ 170 0044 B9010000 		.4byte	.LASF4
  171 0048 02       		.uleb128 0x2
  172 0049 04       		.byte	0x4
  173 004a 07       		.byte	0x7
- 174 004b B9000000 		.4byte	.LASF5
+ 174 004b 69000000 		.4byte	.LASF5
  175 004f 02       		.uleb128 0x2
  176 0050 08       		.byte	0x8
  177 0051 05       		.byte	0x5
- 178 0052 19010000 		.4byte	.LASF6
+ 178 0052 FD000000 		.4byte	.LASF6
  179 0056 02       		.uleb128 0x2
  180 0057 08       		.byte	0x8
  181 0058 07       		.byte	0x7
- 182 0059 FD000000 		.4byte	.LASF7
+ 182 0059 E1000000 		.4byte	.LASF7
  183 005d 03       		.uleb128 0x3
  184 005e 04       		.byte	0x4
  185 005f 05       		.byte	0x5
@@ -321,33 +321,33 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  187 0064 02       		.uleb128 0x2
  188 0065 04       		.byte	0x4
  189 0066 07       		.byte	0x7
- 190 0067 F0000000 		.4byte	.LASF8
+ 190 0067 D4000000 		.4byte	.LASF8
  191 006b 04       		.uleb128 0x4
- 192 006c 3C010000 		.4byte	.LASF12
+ 192 006c 1A010000 		.4byte	.LASF12
  193 0070 02       		.byte	0x2
  194 0071 C2       		.byte	0xc2
  195 0072 2C000000 		.4byte	0x2c
  196 0076 02       		.uleb128 0x2
  197 0077 04       		.byte	0x4
  198 0078 04       		.byte	0x4
- 199 0079 73000000 		.4byte	.LASF9
+ 199 0079 23000000 		.4byte	.LASF9
  200 007d 02       		.uleb128 0x2
  201 007e 08       		.byte	0x8
  202 007f 04       		.byte	0x4
- 203 0080 DE000000 		.4byte	.LASF10
+ 203 0080 8E000000 		.4byte	.LASF10
  204 0084 02       		.uleb128 0x2
  205 0085 01       		.byte	0x1
  206 0086 08       		.byte	0x8
- 207 0087 27010000 		.4byte	.LASF11
+ 207 0087 0B010000 		.4byte	.LASF11
  208 008b 05       		.uleb128 0x5
- 209 008c 87000000 		.4byte	.LASF13
+ 209 008c 37000000 		.4byte	.LASF13
  210 0090 02       		.byte	0x2
  211 0091 6C01     		.2byte	0x16c
  212 0093 97000000 		.4byte	0x97
  213 0097 06       		.uleb128 0x6
  214 0098 6B000000 		.4byte	0x6b
  215 009c 07       		.uleb128 0x7
- 216 009d 8C000000 		.4byte	.LASF14
+ 216 009d 3C000000 		.4byte	.LASF14
  217 00a1 01       		.byte	0x1
  218 00a2 27       		.byte	0x27
  219 00a3 00000000 		.4byte	.LFB0
@@ -356,16 +356,16 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  222 00ac 9C       		.byte	0x9c
  223 00ad CE000000 		.4byte	0xce
  224 00b1 08       		.uleb128 0x8
- 225 00b2 2C010000 		.4byte	.LASF16
+ 225 00b2 00000000 		.4byte	.LASF16
  226 00b6 01       		.byte	0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 7
 
 
  227 00b7 27       		.byte	0x27
  228 00b8 6B000000 		.4byte	0x6b
  229 00bc 00000000 		.4byte	.LLST0
  230 00c0 09       		.uleb128 0x9
- 231 00c1 68000000 		.4byte	.LASF23
+ 231 00c1 18000000 		.4byte	.LASF23
  232 00c5 01       		.byte	0x1
  233 00c6 29       		.byte	0x29
  234 00c7 6B000000 		.4byte	0x6b
@@ -373,7 +373,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  236 00cc 53       		.byte	0x53
  237 00cd 00       		.byte	0
  238 00ce 07       		.uleb128 0x7
- 239 00cf E4010000 		.4byte	.LASF15
+ 239 00cf C2010000 		.4byte	.LASF15
  240 00d3 01       		.byte	0x1
  241 00d4 45       		.byte	0x45
  242 00d5 00000000 		.4byte	.LFB1
@@ -382,14 +382,14 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  245 00de 9C       		.byte	0x9c
  246 00df F3000000 		.4byte	0xf3
  247 00e3 08       		.uleb128 0x8
- 248 00e4 14010000 		.4byte	.LASF17
+ 248 00e4 F8000000 		.4byte	.LASF17
  249 00e8 01       		.byte	0x1
  250 00e9 45       		.byte	0x45
  251 00ea 6B000000 		.4byte	0x6b
  252 00ee 21000000 		.4byte	.LLST1
  253 00f2 00       		.byte	0
  254 00f3 0A       		.uleb128 0xa
- 255 00f4 E5000000 		.4byte	.LASF18
+ 255 00f4 C9000000 		.4byte	.LASF18
  256 00f8 01       		.byte	0x1
  257 00f9 5D       		.byte	0x5d
  258 00fa 6B000000 		.4byte	0x6b
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  261 0106 01       		.uleb128 0x1
  262 0107 9C       		.byte	0x9c
  263 0108 0A       		.uleb128 0xa
- 264 0109 56000000 		.4byte	.LASF19
+ 264 0109 06000000 		.4byte	.LASF19
  265 010d 01       		.byte	0x1
  266 010e 71       		.byte	0x71
  267 010f 6B000000 		.4byte	0x6b
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  338 003f 49       		.uleb128 0x49
  339 0040 13       		.uleb128 0x13
  340 0041 00       		.byte	0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 9
 
 
  341 0042 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  395 0079 0B       		.uleb128 0xb
  396 007a 3B       		.uleb128 0x3b
  397 007b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 10
 
 
  398 007c 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  452 0030 18000000 		.4byte	.LFE1
  453 0034 0400     		.2byte	0x4
  454 0036 F3       		.byte	0xf3
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 11
 
 
  455 0037 01       		.uleb128 0x1
@@ -643,133 +643,130 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 1
  492      00000201 
  492      FB0E0D00 
  492      01010101 
- 493              	.LASF22:
- 494 0000 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
- 494      73657273 
- 494      5C4B796C 
- 494      655C446F 
- 494      776E6C6F 
- 495 002e 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloadable.cydsn\000"
- 495      43686573 
- 495      73426F61 
- 495      72645C4D 
- 495      6963726F 
- 496              	.LASF19:
- 497 0056 5374705F 		.ascii	"Stp_2_ReadDataReg\000"
- 497      325F5265 
- 497      61644461 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 12
+ 493              	.LASF16:
+ 494 0000 76616C75 		.ascii	"value\000"
+ 494      6500
+ 495              	.LASF19:
+ 496 0006 5374705F 		.ascii	"Stp_2_ReadDataReg\000"
+ 496      325F5265 
+ 496      61644461 
+ 496      74615265 
+ 496      6700
+ 497              	.LASF23:
+ 498 0018 73746174 		.ascii	"staticBits\000"
+ 498      69634269 
+ 498      747300
+ 499              	.LASF9:
+ 500 0023 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 12
 
 
- 497      74615265 
- 497      6700
- 498              	.LASF23:
- 499 0068 73746174 		.ascii	"staticBits\000"
- 499      69634269 
- 499      747300
- 500              	.LASF9:
- 501 0073 666C6F61 		.ascii	"float\000"
- 501      7400
- 502              	.LASF1:
- 503 0079 756E7369 		.ascii	"unsigned char\000"
- 503      676E6564 
- 503      20636861 
- 503      7200
- 504              	.LASF13:
- 505 0087 72656738 		.ascii	"reg8\000"
- 505      00
- 506              	.LASF14:
- 507 008c 5374705F 		.ascii	"Stp_2_Write\000"
- 507      325F5772 
- 507      69746500 
- 508              	.LASF21:
- 509 0098 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Stp_2.c\000"
- 509      6E657261 
- 509      7465645F 
- 509      536F7572 
- 509      63655C50 
- 510              	.LASF5:
- 511 00b9 6C6F6E67 		.ascii	"long unsigned int\000"
- 511      20756E73 
- 511      69676E65 
- 511      6420696E 
- 511      7400
- 512              	.LASF3:
- 513 00cb 73686F72 		.ascii	"short unsigned int\000"
- 513      7420756E 
- 513      7369676E 
- 513      65642069 
- 513      6E7400
- 514              	.LASF10:
- 515 00de 646F7562 		.ascii	"double\000"
- 515      6C6500
- 516              	.LASF18:
- 517 00e5 5374705F 		.ascii	"Stp_2_Read\000"
- 517      325F5265 
- 517      616400
- 518              	.LASF8:
- 519 00f0 756E7369 		.ascii	"unsigned int\000"
- 519      676E6564 
- 519      20696E74 
- 519      00
- 520              	.LASF7:
- 521 00fd 6C6F6E67 		.ascii	"long long unsigned int\000"
- 521      206C6F6E 
- 521      6720756E 
- 521      7369676E 
- 521      65642069 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\cczmjcNW.s 			page 13
+ 500      7400
+ 501              	.LASF1:
+ 502 0029 756E7369 		.ascii	"unsigned char\000"
+ 502      676E6564 
+ 502      20636861 
+ 502      7200
+ 503              	.LASF13:
+ 504 0037 72656738 		.ascii	"reg8\000"
+ 504      00
+ 505              	.LASF14:
+ 506 003c 5374705F 		.ascii	"Stp_2_Write\000"
+ 506      325F5772 
+ 506      69746500 
+ 507              	.LASF21:
+ 508 0048 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Stp_2.c\000"
+ 508      6E657261 
+ 508      7465645F 
+ 508      536F7572 
+ 508      63655C50 
+ 509              	.LASF5:
+ 510 0069 6C6F6E67 		.ascii	"long unsigned int\000"
+ 510      20756E73 
+ 510      69676E65 
+ 510      6420696E 
+ 510      7400
+ 511              	.LASF3:
+ 512 007b 73686F72 		.ascii	"short unsigned int\000"
+ 512      7420756E 
+ 512      7369676E 
+ 512      65642069 
+ 512      6E7400
+ 513              	.LASF10:
+ 514 008e 646F7562 		.ascii	"double\000"
+ 514      6C6500
+ 515              	.LASF22:
+ 516 0095 453A5C50 		.ascii	"E:\\Projects\\WiFiChessBoard\\Micro\\Bootloadable.c"
+ 516      726F6A65 
+ 516      6374735C 
+ 516      57694669 
+ 516      43686573 
+ 517 00c4 7964736E 		.ascii	"ydsn\000"
+ 517      00
+ 518              	.LASF18:
+ 519 00c9 5374705F 		.ascii	"Stp_2_Read\000"
+ 519      325F5265 
+ 519      616400
+ 520              	.LASF8:
+ 521 00d4 756E7369 		.ascii	"unsigned int\000"
+ 521      676E6564 
+ 521      20696E74 
+ 521      00
+ 522              	.LASF7:
+ 523 00e1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 523      206C6F6E 
+ 523      6720756E 
+ 523      7369676E 
+ 523      65642069 
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccV02Vx3.s 			page 13
 
 
- 522              	.LASF17:
- 523 0114 6D6F6465 		.ascii	"mode\000"
- 523      00
- 524              	.LASF6:
- 525 0119 6C6F6E67 		.ascii	"long long int\000"
- 525      206C6F6E 
- 525      6720696E 
- 525      7400
- 526              	.LASF11:
- 527 0127 63686172 		.ascii	"char\000"
- 527      00
- 528              	.LASF16:
- 529 012c 76616C75 		.ascii	"value\000"
- 529      6500
+ 524              	.LASF17:
+ 525 00f8 6D6F6465 		.ascii	"mode\000"
+ 525      00
+ 526              	.LASF6:
+ 527 00fd 6C6F6E67 		.ascii	"long long int\000"
+ 527      206C6F6E 
+ 527      6720696E 
+ 527      7400
+ 528              	.LASF11:
+ 529 010b 63686172 		.ascii	"char\000"
+ 529      00
  530              	.LASF2:
- 531 0132 73686F72 		.ascii	"short int\000"
+ 531 0110 73686F72 		.ascii	"short int\000"
  531      7420696E 
  531      7400
  532              	.LASF12:
- 533 013c 75696E74 		.ascii	"uint8\000"
+ 533 011a 75696E74 		.ascii	"uint8\000"
  533      3800
  534              	.LASF20:
- 535 0142 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 535 0120 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  535      4320342E 
  535      392E3320 
  535      32303135 
  535      30333033 
- 536 0175 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 536 0153 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  536      20726576 
  536      6973696F 
  536      6E203232 
  536      31323230 
- 537 01a8 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 537 0186 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
  537      74643D67 
  537      6E753939 
  537      202D6666 
  537      756E6374 
  538              	.LASF4:
- 539 01db 6C6F6E67 		.ascii	"long int\000"
+ 539 01b9 6C6F6E67 		.ascii	"long int\000"
  539      20696E74 
  539      00
  540              	.LASF15:
- 541 01e4 5374705F 		.ascii	"Stp_2_SetDriveMode\000"
+ 541 01c2 5374705F 		.ascii	"Stp_2_SetDriveMode\000"
  541      325F5365 
  541      74447269 
  541      76654D6F 
  541      646500
  542              	.LASF0:
- 543 01f7 7369676E 		.ascii	"signed char\000"
+ 543 01d5 7369676E 		.ascii	"signed char\000"
  543      65642063 
  543      68617200 
  544              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

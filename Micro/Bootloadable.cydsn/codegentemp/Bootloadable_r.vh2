@@ -1,6 +1,6 @@
 -- Project:   Bootloadable
--- Generated: 04/11/2016 20:13:47
--- PSoC Creator  3.3 CP2
+-- Generated: 04/18/2016 15:51:07
+-- PSoC Creator  3.3
 
 ENTITY Bootloadable IS
     PORT(
@@ -50,8 +50,8 @@ ENTITY Bootloadable IS
         Row_7(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO0 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO1 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO2 OF __DEFAULT__ : ENTITY IS 5e0;
@@ -281,9 +281,9 @@ ARCHITECTURE __DEFAULT__ OF Bootloadable IS
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
     ATTRIBUTE lib_model OF Esp_Rx(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Esp_Rx(0) : LABEL IS "P5[1]";
+    ATTRIBUTE Location OF Esp_Rx(0) : LABEL IS "P5[0]";
     ATTRIBUTE lib_model OF Esp_Tx(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF Esp_Tx(0) : LABEL IS "P5[0]";
+    ATTRIBUTE Location OF Esp_Tx(0) : LABEL IS "P5[1]";
     ATTRIBUTE lib_model OF Debug_Rx(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF Debug_Rx(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Debug_Tx(0) : LABEL IS "iocell11";
@@ -1371,7 +1371,7 @@ BEGIN
 
     Esp_Rst:logicalport
         GENERIC MAP(
-            drive_mode => "110",
+            drive_mode => "001",
             ibuf_enabled => "1",
             id => "27a8ab12-f30c-4615-bec8-9bb45916502f",
             init_dr_st => "0",

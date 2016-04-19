@@ -1152,11 +1152,11 @@
 .set Col_11__SLW, CYREG_PRT4_SLW
 
 /* Esp_Rx */
-.set Esp_Rx__0__INTTYPE, CYREG_PICU5_INTTYPE1
-.set Esp_Rx__0__MASK, 0x02
-.set Esp_Rx__0__PC, CYREG_PRT5_PC1
+.set Esp_Rx__0__INTTYPE, CYREG_PICU5_INTTYPE0
+.set Esp_Rx__0__MASK, 0x01
+.set Esp_Rx__0__PC, CYREG_PRT5_PC0
 .set Esp_Rx__0__PORT, 5
-.set Esp_Rx__0__SHIFT, 1
+.set Esp_Rx__0__SHIFT, 0
 .set Esp_Rx__AG, CYREG_PRT5_AG
 .set Esp_Rx__AMUX, CYREG_PRT5_AMUX
 .set Esp_Rx__BIE, CYREG_PRT5_BIE
@@ -1171,7 +1171,7 @@
 .set Esp_Rx__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU5_BASE
 .set Esp_Rx__LCD_COM_SEG, CYREG_PRT5_LCD_COM_SEG
 .set Esp_Rx__LCD_EN, CYREG_PRT5_LCD_EN
-.set Esp_Rx__MASK, 0x02
+.set Esp_Rx__MASK, 0x01
 .set Esp_Rx__PORT, 5
 .set Esp_Rx__PRT, CYREG_PRT5_PRT
 .set Esp_Rx__PRTDSI__CAPS_SEL, CYREG_PRT5_CAPS_SEL
@@ -1182,15 +1182,15 @@
 .set Esp_Rx__PRTDSI__OUT_SEL1, CYREG_PRT5_OUT_SEL1
 .set Esp_Rx__PRTDSI__SYNC_OUT, CYREG_PRT5_SYNC_OUT
 .set Esp_Rx__PS, CYREG_PRT5_PS
-.set Esp_Rx__SHIFT, 1
+.set Esp_Rx__SHIFT, 0
 .set Esp_Rx__SLW, CYREG_PRT5_SLW
 
 /* Esp_Tx */
-.set Esp_Tx__0__INTTYPE, CYREG_PICU5_INTTYPE0
-.set Esp_Tx__0__MASK, 0x01
-.set Esp_Tx__0__PC, CYREG_PRT5_PC0
+.set Esp_Tx__0__INTTYPE, CYREG_PICU5_INTTYPE1
+.set Esp_Tx__0__MASK, 0x02
+.set Esp_Tx__0__PC, CYREG_PRT5_PC1
 .set Esp_Tx__0__PORT, 5
-.set Esp_Tx__0__SHIFT, 0
+.set Esp_Tx__0__SHIFT, 1
 .set Esp_Tx__AG, CYREG_PRT5_AG
 .set Esp_Tx__AMUX, CYREG_PRT5_AMUX
 .set Esp_Tx__BIE, CYREG_PRT5_BIE
@@ -1205,7 +1205,7 @@
 .set Esp_Tx__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU5_BASE
 .set Esp_Tx__LCD_COM_SEG, CYREG_PRT5_LCD_COM_SEG
 .set Esp_Tx__LCD_EN, CYREG_PRT5_LCD_EN
-.set Esp_Tx__MASK, 0x01
+.set Esp_Tx__MASK, 0x02
 .set Esp_Tx__PORT, 5
 .set Esp_Tx__PRT, CYREG_PRT5_PRT
 .set Esp_Tx__PRTDSI__CAPS_SEL, CYREG_PRT5_CAPS_SEL
@@ -1216,7 +1216,7 @@
 .set Esp_Tx__PRTDSI__OUT_SEL1, CYREG_PRT5_OUT_SEL1
 .set Esp_Tx__PRTDSI__SYNC_OUT, CYREG_PRT5_SYNC_OUT
 .set Esp_Tx__PS, CYREG_PRT5_PS
-.set Esp_Tx__SHIFT, 0
+.set Esp_Tx__SHIFT, 1
 .set Esp_Tx__SLW, CYREG_PRT5_SLW
 
 /* Esp_Rst */

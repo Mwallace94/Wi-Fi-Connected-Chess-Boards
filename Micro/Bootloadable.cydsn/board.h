@@ -5,12 +5,12 @@
 
 // Motor Constants
     
-#define STEPS_PER_MM 70.8
+#define STEPS_PER_MM 10
     
 #define MIN_X_POS 0
-#define MAX_X_POS 1000
+#define MAX_X_POS 10000
 #define MIN_Y_POS 0
-#define MAX_Y_POS 1000
+#define MAX_Y_POS 10000
     
 // Motor Variables
     
@@ -26,7 +26,7 @@ void limitTest();
 
 // Reed Switch Variables
 
-static char board[8][12];
+char board[8][12];
 
 // Reed Switch Functions
 
