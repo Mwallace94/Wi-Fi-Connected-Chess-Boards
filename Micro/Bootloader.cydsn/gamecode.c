@@ -1,5 +1,6 @@
 
 #include "gamecode.h"
+#include <strings.h>
 
 // Can receive response from server of sizes 1, 8, or 9.
 char bres1[1];
@@ -49,7 +50,11 @@ int state_notconnected() {
 	int sockfd = setup_connection();
 
 	// write ".connect"
-	&bres1 = esp_transmit(&bstr_connect, "8");
+	strcpy(bres1, "");
+	while(!strcmp(bres1, "")) {
+		bres1 = esp_transmit(bstr_connect, "8");
+	}
+	
 
 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
 
@@ -73,7 +78,10 @@ int state_connected() {
 	int sockfd = setup_connection();
 
 	// write ".ready"
-	&bres1 = esp_transmit(&bstr_ready, "6");
+	strcpy(bres1, "");
+	while(!strcmp(bres1, "")) {
+		bres1 = esp_transmit(bstr_ready, "6");
+	}
 
 	if(bres1[0] == 0x11){
 		Debug_UART_PutString("Ready.");
@@ -107,14 +115,15 @@ int state_ready() {
 	int sockfd = setup_connection();
 
 	//write ".gib"
-	&bres1 = esp_transmit(&bstr_gib, "4");
+	strcpy(bres1, "");
+	bres1 = esp_transmit(bstr_gib, "4");
 
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
 		CyDelay(5000);
 		sockfd = setup_connection();
 
-		&bres1 = esp_transmit(&bstr_gib, "4");
+		bres1 = esp_transmit(bstr_gib, "4");
 
 		Debug_UART_PutString(bres1[0]);
 	}
@@ -144,13 +153,14 @@ int state_waiting() {
 	int sockfd = setup_connection();
 
 	// write ".gib"
-	&bres8 = esp_transmit(&bstr_gib, "4");
+	strcpy(bres8, "");
+	bres8 = esp_transmit(bstr_gib, "4");
 
 	while(strlen(bres8) != 8) {
 		CyDelay(5000);
 		sockfd = setup_connection();
 
-		&bres8 = esp_transmit(&bstr_gib, "4");
+		bres8 = esp_transmit(bstr_gib, "4");
 
 		Debug_UART_PutString(bres8);
 
@@ -305,7 +315,10 @@ int state_moving() {
 
 	int sockfd = setup_connection();
 
-	&bres9 = esp_transmit(&msg, "13"); // We don't need all 9 bytes.
+	strcpy(bres9, "");
+	while(!strcmp(bres9, "")) {
+		bres9 = esp_transmit(msg, "13");
+	}
 
 	if(bres9[0] != 0x01) {
 		Debug_UART_PutString("Invalid move, please undo changes.\n");
