@@ -9,8 +9,9 @@
  *
  * ========================================
 */
+#include<project.h>
 
-void esp_read(char* msg);
-char* esp_write();
+    char* esp_transmit(char* msg, char* numBytes);  
+    char* esp_helper();
 
 /* [] END OF FILE */

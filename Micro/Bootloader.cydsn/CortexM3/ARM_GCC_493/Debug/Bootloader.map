@@ -143,9 +143,17 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\main.o
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\main.o
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .text.debug    0x00000000      0x224 .\CortexM3\ARM_GCC_493\Debug\main.o
+ COMMON         0x00000000       0x64 .\CortexM3\ARM_GCC_493\Debug\main.o
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\board.o
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\board.o
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\board.o
+ .text.move_home
+                0x00000000       0xa8 .\CortexM3\ARM_GCC_493\Debug\board.o
+ .text.move_x   0x00000000       0xb0 .\CortexM3\ARM_GCC_493\Debug\board.o
+ .text.move_y   0x00000000       0xb0 .\CortexM3\ARM_GCC_493\Debug\board.o
+ .text.read_reed_switches
+                0x00000000      0x3bc .\CortexM3\ARM_GCC_493\Debug\board.o
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\espwifi.o
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\espwifi.o
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\espwifi.o
@@ -279,6 +287,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
+ .text.Slp_1_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
  .text.Slp_1_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
  .text.Slp_1_Read
@@ -288,6 +298,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
+ .text.Stp_1_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
  .text.Stp_1_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
  .text.Stp_1_Read
@@ -297,6 +309,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
+ .text.Dir_1_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
  .text.Dir_1_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
  .text.Dir_1_Read
@@ -306,6 +320,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
+ .text.Slp_2_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
  .text.Slp_2_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
  .text.Slp_2_Read
@@ -315,6 +331,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
+ .text.Stp_2_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
  .text.Stp_2_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
  .text.Stp_2_Read
@@ -324,6 +342,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
+ .text.Dir_2_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
  .text.Dir_2_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
  .text.Dir_2_Read
@@ -337,6 +357,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
  .text.Lim_1_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
+ .text.Lim_1_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
  .text.Lim_1_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
@@ -346,11 +368,15 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
  .text.Lim_2_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
+ .text.Lim_2_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
  .text.Lim_2_ReadDataReg
                 0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
+ .text.Em_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
  .text.Em_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
  .text.Em_Read  0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
@@ -359,6 +385,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+ .text.Row_0_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+ .text.Row_0_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
  .text.Row_0_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
  .text.Row_0_ReadDataReg
@@ -370,6 +400,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
  .text.Col_0_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
+ .text.Col_0_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
  .text.Col_0_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
@@ -379,6 +411,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
  .text.Col_1_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
+ .text.Col_1_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
  .text.Col_1_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
@@ -388,6 +422,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
  .text.Col_2_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
+ .text.Col_2_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
  .text.Col_2_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
@@ -397,6 +433,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
  .text.Col_3_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
+ .text.Col_3_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
  .text.Col_3_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
@@ -406,6 +444,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
  .text.Col_4_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
+ .text.Col_4_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
  .text.Col_4_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
@@ -415,6 +455,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
  .text.Col_5_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
+ .text.Col_5_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
  .text.Col_5_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
@@ -424,6 +466,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
  .text.Col_6_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
+ .text.Col_6_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
  .text.Col_6_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
@@ -433,6 +477,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
  .text.Col_7_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
+ .text.Col_7_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
  .text.Col_7_ReadDataReg
                 0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
@@ -442,6 +488,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
  .text.Col_8_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
+ .text.Col_8_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
  .text.Col_8_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
@@ -451,6 +499,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
  .text.Col_9_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
+ .text.Col_9_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
  .text.Col_9_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
@@ -460,6 +510,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
  .text.Col_10_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
+ .text.Col_10_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
  .text.Col_10_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
@@ -469,11 +521,17 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
  .text.Col_11_SetDriveMode
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
+ .text.Col_11_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
  .text.Col_11_ReadDataReg
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+ .text.Row_1_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+ .text.Row_1_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
  .text.Row_1_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
  .text.Row_1_ReadDataReg
@@ -481,6 +539,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+ .text.Row_2_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+ .text.Row_2_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
  .text.Row_2_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
  .text.Row_2_ReadDataReg
@@ -488,6 +550,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+ .text.Row_3_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+ .text.Row_3_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
  .text.Row_3_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
  .text.Row_3_ReadDataReg
@@ -495,6 +561,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+ .text.Row_4_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+ .text.Row_4_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
  .text.Row_4_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
  .text.Row_4_ReadDataReg
@@ -502,6 +572,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+ .text.Row_5_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+ .text.Row_5_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
  .text.Row_5_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
  .text.Row_5_ReadDataReg
@@ -509,6 +583,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+ .text.Row_6_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+ .text.Row_6_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
  .text.Row_6_Read
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
  .text.Row_6_ReadDataReg
@@ -516,6 +594,10 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+ .text.Row_7_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+ .text.Row_7_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
  .text.Row_7_Read
                 0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
  .text.Row_7_ReadDataReg
@@ -788,15 +870,19 @@ Discarded input sections
                 0x00000000        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
  .text.Debug_UART_CyBtldrCommReset
                 0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+ .text          0x00000000      0x370 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
+ .text          0x00000000      0x424 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
+ .text          0x00000000      0x110 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
+ .text.atoi     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
  .text._atoi_r  0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
@@ -809,6 +895,12 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000       0x60 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x00000000        0x2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .rodata._global_impure_ptr
                 0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
@@ -823,12 +915,20 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+ .text.strlen   0x00000000       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
+ .text._strtol_r
+                0x00000000      0x10c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
+ .text.strtol   0x00000000       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
+ .data.__ctype_ptr__
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
+ .rodata._ctype_
+                0x00000000      0x101 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
@@ -884,7 +984,7 @@ END GROUP
                 0x00000040                CY_METADATA_SIZE = 0x40
                 0x00000000                CY_APPL_LOADABLE = 0x0
                 0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
-                0x1fff8338                PROVIDE (__cy_heap_start, _end)
+                0x1fff8268                PROVIDE (__cy_heap_start, _end)
                 0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
                 0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x10000))
                 0x20007800                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
@@ -899,7 +999,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 0x00000000                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x301c
+.text           0x00000000     0x1b88
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -918,390 +1018,220 @@ END GROUP
  .text          0x0000002c       0x5c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
  .text.init     0x00000088       0x20 .\CortexM3\ARM_GCC_493\Debug\main.o
                 0x00000088                init
- .text.debug    0x000000a8      0x224 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000000a8                debug
- .text.main     0x000002cc        0xc .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000002cc                main
- .text.move_home
-                0x000002d8       0xa8 .\CortexM3\ARM_GCC_493\Debug\board.o
-                0x000002d8                move_home
- .text.move_x   0x00000380       0xb0 .\CortexM3\ARM_GCC_493\Debug\board.o
-                0x00000380                move_x
- .text.move_y   0x00000430       0xb0 .\CortexM3\ARM_GCC_493\Debug\board.o
-                0x00000430                move_y
- .text.read_reed_switches
-                0x000004e0      0x3bc .\CortexM3\ARM_GCC_493\Debug\board.o
-                0x000004e0                read_reed_switches
+ .text.main     0x000000a8       0x44 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000000a8                main
  .text.IntDefaultHandler
-                0x0000089c        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x0000089c                IntDefaultHandler
- .text.Start_c  0x000008a0       0x4c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000008a0                Start_c
+                0x000000ec        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x000000ec                IntDefaultHandler
+ .text.Start_c  0x000000f0       0x4c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x000000f0                Start_c
  .text.initialize_psoc
-                0x000008ec       0x74 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000008ec                initialize_psoc
+                0x0000013c       0x74 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x0000013c                initialize_psoc
  .text.CyClockStartupError
-                0x00000960        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x000001b0        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.cfg_write_bytes32
-                0x00000964       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x000001b4       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.AnalogSetDefault
-                0x00000998       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x000001e8       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.CYMEMZERO
-                0x000009c0        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x00000210        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.CYCONFIGCPYCODE
-                0x000009cc        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x0000021c        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.CYCONFIGCPY
-                0x000009d4        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x00000224        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.ClockSetup
-                0x000009dc       0xcc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x0000022c       0xcc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
  .text.cyfitter_cfg
-                0x00000aa8      0x160 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
-                0x00000aa8                cyfitter_cfg
+                0x000002f8      0x160 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                0x000002f8                cyfitter_cfg
  .text.LCD_WrCntrlNib
-                0x00000c08       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x00000458       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
  .text.LCD_IsReady
-                0x00000c3c       0xe4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x00000c3c                LCD_IsReady
+                0x0000048c       0xe4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x0000048c                LCD_IsReady
  .text.LCD_WriteControl
-                0x00000d20       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x00000d20                LCD_WriteControl
+                0x00000570       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x00000570                LCD_WriteControl
  .text.LCD_Init
-                0x00000d38       0x6c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x00000d38                LCD_Init
+                0x00000588       0x6c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x00000588                LCD_Init
  .text.LCD_Enable
-                0x00000da4       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x00000da4                LCD_Enable
+                0x000005f4       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x000005f4                LCD_Enable
  .text.LCD_Start
-                0x00000db8       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x00000db8                LCD_Start
+                0x00000608       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x00000608                LCD_Start
  .text.Esp_UART_Init
-                0x00000dd4       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000dd4                Esp_UART_Init
+                0x00000624       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x00000624                Esp_UART_Init
  .text.Esp_UART_Enable
-                0x00000e30       0x50 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000e30                Esp_UART_Enable
+                0x00000680       0x50 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x00000680                Esp_UART_Enable
  .text.Esp_UART_Start
-                0x00000e80       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000e80                Esp_UART_Start
+                0x000006d0       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x000006d0                Esp_UART_Start
  .text.Esp_UART_GetChar
-                0x00000e9c       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000e9c                Esp_UART_GetChar
+                0x000006ec       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x000006ec                Esp_UART_GetChar
  .text.Esp_UART_GetRxBufferSize
-                0x00000f1c       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000f1c                Esp_UART_GetRxBufferSize
+                0x0000076c       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x0000076c                Esp_UART_GetRxBufferSize
  .text.Esp_UART_PutChar
-                0x00000f78       0x70 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000f78                Esp_UART_PutChar
+                0x000007c8       0x70 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x000007c8                Esp_UART_PutChar
  .text.Esp_UART_PutString
-                0x00000fe8       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x00000fe8                Esp_UART_PutString
+                0x00000838       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x00000838                Esp_UART_PutString
  .text.Esp_UART_RXISR
-                0x0000100c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
-                0x0000100c                Esp_UART_RXISR
+                0x0000085c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+                0x0000085c                Esp_UART_RXISR
  .text.Esp_UART_TXISR
-                0x000010a0       0x58 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
-                0x000010a0                Esp_UART_TXISR
+                0x000008f0       0x58 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+                0x000008f0                Esp_UART_TXISR
  .text.Debug_UART_Init
-                0x000010f8       0x60 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000010f8                Debug_UART_Init
+                0x00000948       0x60 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000948                Debug_UART_Init
  .text.Debug_UART_Enable
-                0x00001158       0x50 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x00001158                Debug_UART_Enable
+                0x000009a8       0x50 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x000009a8                Debug_UART_Enable
  .text.Debug_UART_Start
-                0x000011a8       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000011a8                Debug_UART_Start
+                0x000009f8       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x000009f8                Debug_UART_Start
  .text.Debug_UART_ReadRxData
-                0x000011c4       0x64 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000011c4                Debug_UART_ReadRxData
+                0x00000a14       0x64 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000a14                Debug_UART_ReadRxData
  .text.Debug_UART_GetChar
-                0x00001228       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x00001228                Debug_UART_GetChar
+                0x00000a78       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000a78                Debug_UART_GetChar
  .text.Debug_UART_GetRxBufferSize
-                0x000012a8       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000012a8                Debug_UART_GetRxBufferSize
+                0x00000af8       0x5c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000af8                Debug_UART_GetRxBufferSize
  .text.Debug_UART_ClearRxBuffer
-                0x00001304       0x44 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x00001304                Debug_UART_ClearRxBuffer
+                0x00000b54       0x44 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000b54                Debug_UART_ClearRxBuffer
  .text.Debug_UART_PutChar
-                0x00001348       0x70 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x00001348                Debug_UART_PutChar
+                0x00000b98       0x70 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000b98                Debug_UART_PutChar
  .text.Debug_UART_PutString
-                0x000013b8       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000013b8                Debug_UART_PutString
+                0x00000c08       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000c08                Debug_UART_PutString
  .text.Debug_UART_ClearTxBuffer
-                0x000013dc       0x40 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x000013dc                Debug_UART_ClearTxBuffer
+                0x00000c2c       0x40 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x00000c2c                Debug_UART_ClearTxBuffer
  .text.Debug_UART_RXISR
-                0x0000141c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
-                0x0000141c                Debug_UART_RXISR
+                0x00000c6c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+                0x00000c6c                Debug_UART_RXISR
  .text.Debug_UART_TXISR
-                0x000014b0       0x58 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
-                0x000014b0                Debug_UART_TXISR
+                0x00000d00       0x58 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+                0x00000d00                Debug_UART_TXISR
  .text.Bootloader_CalcPacketChecksum
-                0x00001508       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000d58       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
  .text.Bootloader_LaunchBootloadable
-                0x00001524        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000d74        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
  .text.Bootloader_LaunchApplication
-                0x00001528       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000d78       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
  .text.Bootloader_WritePacket
-                0x0000153c       0x54 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000d8c       0x54 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
  .text.Bootloader_Calc8BitSum
-                0x00001590       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x00001590                Bootloader_Calc8BitSum
+                0x00000de0       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000de0                Bootloader_Calc8BitSum
  .text.Bootloader_GetMetadata
-                0x000015c0      0x114 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x000015c0                Bootloader_GetMetadata
+                0x00000e10      0x114 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000e10                Bootloader_GetMetadata
  .text.CyBtldr_CheckLaunch
-                0x000016d4       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x000016d4                CyBtldr_CheckLaunch
+                0x00000f24       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000f24                CyBtldr_CheckLaunch
  .text.Bootloader_ValidateBootloadable
-                0x00001704       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x00001704                Bootloader_ValidateBootloadable
+                0x00000f54       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000f54                Bootloader_ValidateBootloadable
  .text.Bootloader_HostLink
-                0x00001798      0x480 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00000fe8      0x480 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
  .text.Bootloader_Start
-                0x00001c18       0x68 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x00001c18                Bootloader_Start
- .text.Slp_1_Write
-                0x00001c80       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
-                0x00001c80                Slp_1_Write
- .text.Stp_1_Write
-                0x00001c98       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
-                0x00001c98                Stp_1_Write
- .text.Dir_1_Write
-                0x00001cb0       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
-                0x00001cb0                Dir_1_Write
- .text.Slp_2_Write
-                0x00001cc8       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
-                0x00001cc8                Slp_2_Write
- .text.Stp_2_Write
-                0x00001ce0       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
-                0x00001ce0                Stp_2_Write
- .text.Dir_2_Write
-                0x00001cf8       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
-                0x00001cf8                Dir_2_Write
- .text.Lim_1_Read
-                0x00001d10       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
-                0x00001d10                Lim_1_Read
- .text.Lim_2_Read
-                0x00001d20        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
-                0x00001d20                Lim_2_Read
- .text.Em_Write
-                0x00001d2c       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
-                0x00001d2c                Em_Write
- .text.Row_0_Write
-                0x00001d44       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
-                0x00001d44                Row_0_Write
- .text.Row_0_SetDriveMode
-                0x00001d5c       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
-                0x00001d5c                Row_0_SetDriveMode
- .text.Col_0_Read
-                0x00001d74       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
-                0x00001d74                Col_0_Read
- .text.Col_1_Read
-                0x00001d84       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
-                0x00001d84                Col_1_Read
- .text.Col_2_Read
-                0x00001d94       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
-                0x00001d94                Col_2_Read
- .text.Col_3_Read
-                0x00001da4       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
-                0x00001da4                Col_3_Read
- .text.Col_4_Read
-                0x00001db4       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
-                0x00001db4                Col_4_Read
- .text.Col_5_Read
-                0x00001dc4       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
-                0x00001dc4                Col_5_Read
- .text.Col_6_Read
-                0x00001dd4       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
-                0x00001dd4                Col_6_Read
- .text.Col_7_Read
-                0x00001de4        0xc .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
-                0x00001de4                Col_7_Read
- .text.Col_8_Read
-                0x00001df0       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
-                0x00001df0                Col_8_Read
- .text.Col_9_Read
-                0x00001e00       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
-                0x00001e00                Col_9_Read
- .text.Col_10_Read
-                0x00001e10       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
-                0x00001e10                Col_10_Read
- .text.Col_11_Read
-                0x00001e20       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
-                0x00001e20                Col_11_Read
- .text.Row_1_Write
-                0x00001e30       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
-                0x00001e30                Row_1_Write
- .text.Row_1_SetDriveMode
-                0x00001e48       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
-                0x00001e48                Row_1_SetDriveMode
- .text.Row_2_Write
-                0x00001e60       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
-                0x00001e60                Row_2_Write
- .text.Row_2_SetDriveMode
-                0x00001e78       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
-                0x00001e78                Row_2_SetDriveMode
- .text.Row_3_Write
-                0x00001e90       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
-                0x00001e90                Row_3_Write
- .text.Row_3_SetDriveMode
-                0x00001ea8       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
-                0x00001ea8                Row_3_SetDriveMode
- .text.Row_4_Write
-                0x00001ec0       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
-                0x00001ec0                Row_4_Write
- .text.Row_4_SetDriveMode
-                0x00001ed8       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
-                0x00001ed8                Row_4_SetDriveMode
- .text.Row_5_Write
-                0x00001ef0       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
-                0x00001ef0                Row_5_Write
- .text.Row_5_SetDriveMode
-                0x00001f08       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
-                0x00001f08                Row_5_SetDriveMode
- .text.Row_6_Write
-                0x00001f20       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
-                0x00001f20                Row_6_Write
- .text.Row_6_SetDriveMode
-                0x00001f38       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
-                0x00001f38                Row_6_SetDriveMode
- .text.Row_7_Write
-                0x00001f50       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
-                0x00001f50                Row_7_Write
- .text.Row_7_SetDriveMode
-                0x00001f68       0x18 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
-                0x00001f68                Row_7_SetDriveMode
+                0x00001468       0x68 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00001468                Bootloader_Start
  .text.Esp_UART_IntClock_Start
-                0x00001f80       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
-                0x00001f80                Esp_UART_IntClock_Start
+                0x000014d0       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
+                0x000014d0                Esp_UART_IntClock_Start
  .text.Debug_UART_IntClock_Start
-                0x00001f9c       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
-                0x00001f9c                Debug_UART_IntClock_Start
- .text          0x00001fb8       0x20 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
-                0x00001fb8                CyDelayCycles
-                0x00001fc8                CyEnterCriticalSection
-                0x00001fd0                CyExitCriticalSection
+                0x000014ec       0x1c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
+                0x000014ec                Debug_UART_IntClock_Start
+ .text          0x00001508       0x20 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
+                0x00001508                CyDelayCycles
+                0x00001518                CyEnterCriticalSection
+                0x00001520                CyExitCriticalSection
  .text.CyFlashGetSpcAlgorithm
-                0x00001fd8       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x00001528       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
  .text.CySetTempInt
-                0x00002024       0x60 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x00001574       0x60 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
  .text.CySetTemp
-                0x00002084       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
-                0x00002084                CySetTemp
+                0x000015d4       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x000015d4                CySetTemp
  .text.CyWriteRowFull
-                0x00002098       0xf8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
-                0x00002098                CyWriteRowFull
+                0x000015e8       0xf8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x000015e8                CyWriteRowFull
  .text.CyEEPROM_Start
-                0x00002190       0x54 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
-                0x00002190                CyEEPROM_Start
- .text.CyHalt   0x000021e4        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x000021e4                CyHalt
+                0x000016e0       0x54 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x000016e0                CyEEPROM_Start
+ .text.CyHalt   0x00001734        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x00001734                CyHalt
  .text.CySoftwareReset
-                0x000021e8       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x000021e8                CySoftwareReset
- .text.CyDelay  0x000021f8       0x2c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x000021f8                CyDelay
+                0x00001738       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x00001738                CySoftwareReset
+ .text.CyDelay  0x00001748       0x2c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x00001748                CyDelay
  .text.CyDelayUs
-                0x00002224       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x00002224                CyDelayUs
+                0x00001774       0x14 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x00001774                CyDelayUs
  .text.CyFlushCache
-                0x00002238       0x44 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x00002238                CyFlushCache
+                0x00001788       0x44 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x00001788                CyFlushCache
  .text.CyIntSetVector
-                0x0000227c       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x0000227c                CyIntSetVector
+                0x000017cc       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x000017cc                CyIntSetVector
  .text.CyIntSetPriority
-                0x000022a4       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                0x000022a4                CyIntSetPriority
+                0x000017f4       0x30 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                0x000017f4                CyIntSetPriority
  .text.CySpcStart
-                0x000022d4       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x000022d4                CySpcStart
+                0x00001824       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x00001824                CySpcStart
  .text.CySpcReadData
-                0x000022f8       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x000022f8                CySpcReadData
+                0x00001848       0x34 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x00001848                CySpcReadData
  .text.CySpcLoadRowFull
-                0x0000232c       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x0000232c                CySpcLoadRowFull
+                0x0000187c       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x0000187c                CySpcLoadRowFull
  .text.CySpcWriteRow
-                0x000023ac       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x000023ac                CySpcWriteRow
+                0x000018fc       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x000018fc                CySpcWriteRow
  .text.CySpcGetTemp
-                0x000023f8       0x3c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x000023f8                CySpcGetTemp
+                0x00001948       0x3c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x00001948                CySpcGetTemp
  .text.CySpcLock
-                0x00002434       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x00002434                CySpcLock
+                0x00001984       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x00001984                CySpcLock
  .text.CySpcUnlock
-                0x00002480       0x38 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x00002480                CySpcUnlock
+                0x000019d0       0x38 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x000019d0                CySpcUnlock
  .text.CySpcGetAlgorithm
-                0x000024b8       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x000024b8                CySpcGetAlgorithm
+                0x00001a08       0x28 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x00001a08                CySpcGetAlgorithm
  .text.Debug_UART_CyBtldrCommStart
-                0x000024e0       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
-                0x000024e0                Debug_UART_CyBtldrCommStart
+                0x00001a30       0x10 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+                0x00001a30                Debug_UART_CyBtldrCommStart
  .text.Debug_UART_CyBtldrCommWrite
-                0x000024f0       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
-                0x000024f0                Debug_UART_CyBtldrCommWrite
+                0x00001a40       0x24 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+                0x00001a40                Debug_UART_CyBtldrCommWrite
  .text.Debug_UART_CyBtldrCommRead
-                0x00002514       0xa8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
-                0x00002514                Debug_UART_CyBtldrCommRead
- .text          0x000025bc      0x370 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                0x000025bc                __aeabi_drsub
-                0x000025c4                __aeabi_dsub
-                0x000025c4                __subdf3
-                0x000025c8                __aeabi_dadd
-                0x000025c8                __adddf3
-                0x00002840                __floatunsidf
-                0x00002840                __aeabi_ui2d
-                0x00002860                __floatsidf
-                0x00002860                __aeabi_i2d
-                0x00002884                __aeabi_f2d
-                0x00002884                __extendsfdf2
-                0x000028c0                __floatundidf
-                0x000028c0                __aeabi_ul2d
-                0x000028d0                __floatdidf
-                0x000028d0                __aeabi_l2d
- .text          0x0000292c      0x424 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                0x0000292c                __aeabi_dmul
-                0x0000292c                __muldf3
-                0x00002b80                __divdf3
-                0x00002b80                __aeabi_ddiv
- .text          0x00002d50      0x110 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
-                0x00002d50                __gtdf2
-                0x00002d50                __gedf2
-                0x00002d58                __ltdf2
-                0x00002d58                __ledf2
-                0x00002d60                __nedf2
-                0x00002d60                __eqdf2
-                0x00002d60                __cmpdf2
-                0x00002ddc                __aeabi_cdrcmple
-                0x00002dec                __aeabi_cdcmpeq
-                0x00002dec                __aeabi_cdcmple
-                0x00002dfc                __aeabi_dcmpeq
-                0x00002e10                __aeabi_dcmplt
-                0x00002e24                __aeabi_dcmple
-                0x00002e38                __aeabi_dcmpge
-                0x00002e4c                __aeabi_dcmpgt
- .text.atoi     0x00002e60        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-atoi.o)
-                0x00002e60                atoi
+                0x00001a64       0xa8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+                0x00001a64                Debug_UART_CyBtldrCommRead
  .text.__libc_init_array
-                0x00002e68       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00002e68                __libc_init_array
- .text.memcpy   0x00002eb4       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
-                0x00002eb4                memcpy
- .text.memset   0x00002eca       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00002eca                memset
- .text.strlen   0x00002eda       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
-                0x00002eda                strlen
- *fill*         0x00002eea        0x2 
- .text._strtol_r
-                0x00002eec      0x10c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
-                0x00002eec                _strtol_r
- .text.strtol   0x00002ff8       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
-                0x00002ff8                strtol
+                0x00001b0c       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00001b0c                __libc_init_array
+ .text.memcpy   0x00001b58       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x00001b58                memcpy
+ .text.memset   0x00001b6e       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00001b6e                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -1311,94 +1241,89 @@ END GROUP
  *(.vfp11_veneer)
  .vfp11_veneer  0x00000000        0x0 linker stubs
  *(.bootloader)
- .bootloader    0x00003014        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                0x00003014                Bootloader_SizeBytes
-                0x00003018                Bootloader_Checksum
+ *fill*         0x00001b7e        0x2 
+ .bootloader    0x00001b80        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x00001b80                Bootloader_SizeBytes
+                0x00001b84                Bootloader_Checksum
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x0000301c        0x0
+.v4_bx          0x00001b88        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0000301c        0x0
+.iplt           0x00001b88        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x0000301c        0x4
+.eh_frame       0x00001b88        0x4
  *(.eh_frame)
- .eh_frame      0x0000301c        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .eh_frame      0x0000301c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
-                0x00003020                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00001b88        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .eh_frame      0x00001b88        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x00001b8c                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00003020                __exidx_end = .
+                0x00001b8c                __exidx_end = .
 
-.rodata         0x00003020      0x850
+.rodata         0x00001b8c      0x754
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x00003020       0x80 .\CortexM3\ARM_GCC_493\Debug\main.o
-                                 0x8c (size before relaxing)
- .rodata        0x000030a0      0x68c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
- .rodata        0x0000372c        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
- .rodata.str1.1
-                0x00003734        0x2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
- .rodata._ctype_
-                0x00003736      0x101 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
-                0x00003736                _ctype_
-                0x00003838                . = ALIGN (0x4)
- *fill*         0x00003837        0x1 
+                0x00001b8c       0x88 .\CortexM3\ARM_GCC_493\Debug\main.o
+                                 0x94 (size before relaxing)
+ .rodata        0x00001c14      0x68c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+ .rodata        0x000022a0        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                0x000022a8                . = ALIGN (0x4)
  *(.init)
- .init          0x00003838        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x00003838                _init
- .init          0x0000383c        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x00003844                . = ALIGN (0x4)
-                0x00003844                __preinit_array_start = .
+ .init          0x000022a8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x000022a8                _init
+ .init          0x000022ac        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x000022b4                . = ALIGN (0x4)
+                0x000022b4                __preinit_array_start = .
  *(.preinit_array)
-                0x00003844                __preinit_array_end = .
-                0x00003844                . = ALIGN (0x4)
-                0x00003844                __init_array_start = .
+                0x000022b4                __preinit_array_end = .
+                0x000022b4                . = ALIGN (0x4)
+                0x000022b4                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00003844        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .init_array    0x00003848        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x0000384c                __init_array_end = .
-                0x0000384c                . = ALIGN (0x4)
+ .init_array    0x000022b4        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .init_array    0x000022b8        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x000022bc                __init_array_end = .
+                0x000022bc                . = ALIGN (0x4)
  *(.fini)
- .fini          0x0000384c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x0000384c                _fini
- .fini          0x00003850        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x00003858                . = ALIGN (0x4)
-                0x00003858                __fini_array_start = .
+ .fini          0x000022bc        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x000022bc                _fini
+ .fini          0x000022c0        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x000022c8                . = ALIGN (0x4)
+                0x000022c8                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00003858        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .fini_array    0x000022c8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x0000385c                __fini_array_end = .
-                0x0000385c                . = ALIGN (0x4)
+                0x000022cc                __fini_array_end = .
+                0x000022cc                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x0000385c                . = ALIGN (0x4)
+                0x000022cc                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x0000385c                . = ALIGN (0x4)
-                0x0000385c                __cy_regions = .
-                0x0000385c        0x4 LONG 0x3870 __cy_region_init_ram
-                0x00003860        0x4 LONG 0x1fff8108 __cy_region_start_data
-                0x00003864        0x4 LONG 0x88 __cy_region_init_size_ram
-                0x00003868        0x4 LONG 0x1a8 __cy_region_zero_size_ram
-                0x0000386c                __cy_regions_end = .
-                0x00003870                . = ALIGN (0x8)
- *fill*         0x0000386c        0x4 
-                0x00003870                _etext = .
+                0x000022cc                . = ALIGN (0x4)
+                0x000022cc                __cy_regions = .
+                0x000022cc        0x4 LONG 0x22e0 __cy_region_init_ram
+                0x000022d0        0x4 LONG 0x1fff8108 __cy_region_start_data
+                0x000022d4        0x4 LONG 0x20 __cy_region_init_size_ram
+                0x000022d8        0x4 LONG 0x140 __cy_region_zero_size_ram
+                0x000022dc                __cy_regions_end = .
+                0x000022e0                . = ALIGN (0x8)
+ *fill*         0x000022dc        0x4 
+                0x000022e0                _etext = .
 
 .cy_checksum_exclude
-                0x00003870        0x0
+                0x000022e0        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000      0x100
@@ -1413,7 +1338,7 @@ END GROUP
  .noinit        0x1fff8104        0x1 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
                 0x1fff8104                CyResetStatus
 
-.data           0x1fff8108       0x88 load address 0x00003870
+.data           0x1fff8108       0x20 load address 0x000022e0
                 0x1fff8108                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff8108        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
@@ -1430,80 +1355,68 @@ END GROUP
                 0x1fff8118                cydelay_freq_khz
                 0x1fff811c                cydelay_freq_mhz
                 0x1fff8120                cydelay_freq_hz
- .data.impure_data
-                0x1fff8124       0x60 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
- .data._impure_ptr
-                0x1fff8184        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x1fff8184                _impure_ptr
- .data.__ctype_ptr__
-                0x1fff8188        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-ctype_.o)
-                0x1fff8188                __ctype_ptr__
-                0x1fff8190                . = ALIGN (0x8)
- *fill*         0x1fff818c        0x4 
+                0x1fff8128                . = ALIGN (0x8)
+ *fill*         0x1fff8124        0x4 
  *(.ram)
-                0x1fff8190                _edata = .
+                0x1fff8128                _edata = .
 
-.igot.plt       0x1fff8190        0x0 load address 0x000038f8
+.igot.plt       0x1fff8128        0x0 load address 0x00002300
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
-.bss            0x1fff8190      0x1a8 load address 0x000038f8
-                0x1fff8190                PROVIDE (__bss_start__, .)
+.bss            0x1fff8128      0x140 load address 0x00002300
+                0x1fff8128                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x1fff8190       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .bss           0x1fff81ac        0x2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                0x1fff81ac                LCD_enableState
-                0x1fff81ad                LCD_initVar
- .bss           0x1fff81ae        0x9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x1fff81ae                Esp_UART_errorStatus
-                0x1fff81af                Esp_UART_initVar
-                0x1fff81b0                Esp_UART_rxBufferRead
-                0x1fff81b1                Esp_UART_rxBufferWrite
-                0x1fff81b2                Esp_UART_rxBufferLoopDetect
-                0x1fff81b3                Esp_UART_rxBufferOverflow
-                0x1fff81b4                Esp_UART_txBufferRead
-                0x1fff81b5                Esp_UART_txBufferWrite
- .bss           0x1fff81b7        0x9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x1fff81b7                Debug_UART_errorStatus
-                0x1fff81b8                Debug_UART_initVar
-                0x1fff81b9                Debug_UART_rxBufferRead
-                0x1fff81ba                Debug_UART_rxBufferWrite
-                0x1fff81bb                Debug_UART_rxBufferLoopDetect
-                0x1fff81bc                Debug_UART_rxBufferOverflow
-                0x1fff81bd                Debug_UART_txBufferRead
-                0x1fff81be                Debug_UART_txBufferWrite
- .bss           0x1fff81c0        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
- .bss           0x1fff81c4        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                0x1fff81c4                SpcLockState
+ .bss           0x1fff8128       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .bss           0x1fff8144        0x2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                0x1fff8144                LCD_enableState
+                0x1fff8145                LCD_initVar
+ .bss           0x1fff8146        0x9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x1fff8146                Esp_UART_errorStatus
+                0x1fff8147                Esp_UART_initVar
+                0x1fff8148                Esp_UART_rxBufferRead
+                0x1fff8149                Esp_UART_rxBufferWrite
+                0x1fff814a                Esp_UART_rxBufferLoopDetect
+                0x1fff814b                Esp_UART_rxBufferOverflow
+                0x1fff814c                Esp_UART_txBufferRead
+                0x1fff814d                Esp_UART_txBufferWrite
+ .bss           0x1fff814f        0x9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x1fff814f                Debug_UART_errorStatus
+                0x1fff8150                Debug_UART_initVar
+                0x1fff8151                Debug_UART_rxBufferRead
+                0x1fff8152                Debug_UART_rxBufferWrite
+                0x1fff8153                Debug_UART_rxBufferLoopDetect
+                0x1fff8154                Debug_UART_rxBufferOverflow
+                0x1fff8155                Debug_UART_txBufferRead
+                0x1fff8156                Debug_UART_txBufferWrite
+ .bss           0x1fff8158        0x4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+ .bss           0x1fff815c        0x8 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                0x1fff815c                SpcLockState
  *(COMMON)
- COMMON         0x1fff81cc       0x64 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x1fff81cc                board
-                0x1fff822c                x_pos
-                0x1fff822e                y_pos
- COMMON         0x1fff8230       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                0x1fff8230                Esp_UART_rxBuffer
-                0x1fff8270                Esp_UART_txBuffer
- COMMON         0x1fff82b0       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                0x1fff82b0                Debug_UART_rxBuffer
-                0x1fff82f0                Debug_UART_txBuffer
- COMMON         0x1fff8330        0x2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
-                0x1fff8330                dieTemperature
-                0x1fff8338                . = ALIGN (0x8)
- *fill*         0x1fff8332        0x6 
+ COMMON         0x1fff8164       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                0x1fff8164                Esp_UART_rxBuffer
+                0x1fff81a4                Esp_UART_txBuffer
+ COMMON         0x1fff81e4       0x80 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                0x1fff81e4                Debug_UART_rxBuffer
+                0x1fff8224                Debug_UART_txBuffer
+ COMMON         0x1fff8264        0x2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                0x1fff8264                dieTemperature
+                0x1fff8268                . = ALIGN (0x8)
+ *fill*         0x1fff8266        0x2 
  *(.ram.b)
-                0x1fff8338                _end = .
-                0x1fff8338                __end = .
-                0x1fff8338                PROVIDE (end, .)
-                0x1fff8338                PROVIDE (__bss_end__, .)
-                0x00003870                __cy_region_init_ram = LOADADDR (.data)
-                0x00000088                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x000001a8                __cy_region_zero_size_ram = (_end - _edata)
+                0x1fff8268                _end = .
+                0x1fff8268                __end = .
+                0x1fff8268                PROVIDE (end, .)
+                0x1fff8268                PROVIDE (__bss_end__, .)
+                0x000022e0                __cy_region_init_ram = LOADADDR (.data)
+                0x00000020                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000140                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8338       0x80 load address 0x000038f8
-                0x1fff8338                . = _end
-                0x1fff83b8                . = (. + 0x80)
- *fill*         0x1fff8338       0x80 
-                0x1fff83b8                __cy_heap_limit = .
+.heap           0x1fff8268       0x80 load address 0x00002300
+                0x1fff8268                . = _end
+                0x1fff82e8                . = (. + 0x80)
+ *fill*         0x1fff8268       0x80 
+                0x1fff82e8                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1552,7 +1465,7 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000038f8        0x0 load address 0x9050000c
+.rel.dyn        0x00002300        0x0 load address 0x9050000c
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .stab
@@ -1675,56 +1588,56 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x9959
+.debug_info     0x00000000     0x9a38
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x69c .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_info    0x0000069c      0xd7a .\CortexM3\ARM_GCC_493\Debug\board.o
- .debug_info    0x00001416      0x15f .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_info    0x00001575      0x3b3 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_info    0x00001928      0x819 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
- .debug_info    0x00002141      0x712 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
- .debug_info    0x00002853      0x7ce .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
- .debug_info    0x00003021      0x17e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
- .debug_info    0x0000319f      0x7ce .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
- .debug_info    0x0000396d      0x17e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
- .debug_info    0x00003aeb      0xca9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
- .debug_info    0x00004794      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
- .debug_info    0x000048b2      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
- .debug_info    0x000049d0      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
- .debug_info    0x00004aee      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
- .debug_info    0x00004c0c      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
- .debug_info    0x00004d2a      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
- .debug_info    0x00004e48      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
- .debug_info    0x00004f66      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
- .debug_info    0x00005086      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
- .debug_info    0x000051a4      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
- .debug_info    0x000052c2      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
- .debug_info    0x000053e0      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
- .debug_info    0x000054fe      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
- .debug_info    0x0000561c      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
- .debug_info    0x0000573a      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
- .debug_info    0x00005858      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
- .debug_info    0x00005976      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
- .debug_info    0x00005a94      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
- .debug_info    0x00005bb4      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
- .debug_info    0x00005cd2      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
- .debug_info    0x00005df0      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
- .debug_info    0x00005f0e      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
- .debug_info    0x0000602c      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
- .debug_info    0x0000614a      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
- .debug_info    0x00006268      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
- .debug_info    0x00006386      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
- .debug_info    0x000064a4      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
- .debug_info    0x000065c2      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
- .debug_info    0x000066e0      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
- .debug_info    0x00006800      0x281 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
- .debug_info    0x00006a81      0x281 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
- .debug_info    0x00006d02       0x82 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
- .debug_info    0x00006d84      0x608 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
- .debug_info    0x0000738c     0x136c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
- .debug_info    0x000086f8      0xa55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
- .debug_info    0x0000914d      0x4ed .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
- .debug_info    0x0000963a      0x31f .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+ .debug_info    0x00000000      0x759 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_info    0x00000759      0xd7a .\CortexM3\ARM_GCC_493\Debug\board.o
+ .debug_info    0x000014d3      0x15f .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x00001632      0x3b3 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_info    0x000019e5      0x819 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+ .debug_info    0x000021fe      0x712 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+ .debug_info    0x00002910      0x7ce .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+ .debug_info    0x000030de      0x17e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+ .debug_info    0x0000325c      0x7ce .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+ .debug_info    0x00003a2a      0x17e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+ .debug_info    0x00003ba8      0xca9 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+ .debug_info    0x00004851      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
+ .debug_info    0x0000496f      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
+ .debug_info    0x00004a8d      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
+ .debug_info    0x00004bab      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
+ .debug_info    0x00004cc9      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
+ .debug_info    0x00004de7      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
+ .debug_info    0x00004f05      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
+ .debug_info    0x00005023      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
+ .debug_info    0x00005143      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
+ .debug_info    0x00005261      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+ .debug_info    0x0000537f      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
+ .debug_info    0x0000549d      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
+ .debug_info    0x000055bb      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
+ .debug_info    0x000056d9      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
+ .debug_info    0x000057f7      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
+ .debug_info    0x00005915      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
+ .debug_info    0x00005a33      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
+ .debug_info    0x00005b51      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
+ .debug_info    0x00005c71      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
+ .debug_info    0x00005d8f      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
+ .debug_info    0x00005ead      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
+ .debug_info    0x00005fcb      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
+ .debug_info    0x000060e9      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+ .debug_info    0x00006207      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+ .debug_info    0x00006325      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+ .debug_info    0x00006443      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+ .debug_info    0x00006561      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+ .debug_info    0x0000667f      0x11e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+ .debug_info    0x0000679d      0x120 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+ .debug_info    0x000068bd      0x281 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
+ .debug_info    0x00006b3e      0x281 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
+ .debug_info    0x00006dbf       0xa4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
+ .debug_info    0x00006e63      0x608 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+ .debug_info    0x0000746b     0x136c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+ .debug_info    0x000087d7      0xa55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
+ .debug_info    0x0000922c      0x4ed .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+ .debug_info    0x00009719      0x31f .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
 
 .debug_abbrev   0x00000000     0x2db6
  *(.debug_abbrev)
@@ -1777,57 +1690,57 @@ END GROUP
  .debug_abbrev  0x00002ade      0x1ce .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
  .debug_abbrev  0x00002cac      0x10a .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
 
-.debug_line     0x00000000     0x4084
+.debug_line     0x00000000     0x4096
  *(.debug_line)
- .debug_line    0x00000000      0x342 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_line    0x00000342      0x3f2 .\CortexM3\ARM_GCC_493\Debug\board.o
- .debug_line    0x00000734        0x0 .\CortexM3\ARM_GCC_493\Debug\espwifi.o
- .debug_line    0x00000734       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_line    0x00000787      0x24a .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_line    0x000009d1      0x21a .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
- .debug_line    0x00000beb      0x1de .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
- .debug_line    0x00000dc9      0x345 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
- .debug_line    0x0000110e       0xae .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
- .debug_line    0x000011bc      0x349 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
- .debug_line    0x00001505       0xb2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
- .debug_line    0x000015b7      0x5af .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
- .debug_line    0x00001b66       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
- .debug_line    0x00001bfa       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
- .debug_line    0x00001c8e       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
- .debug_line    0x00001d22       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
- .debug_line    0x00001db6       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
- .debug_line    0x00001e4a       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
- .debug_line    0x00001ede       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
- .debug_line    0x00001f72       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
- .debug_line    0x00002006       0x91 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
- .debug_line    0x00002097       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
- .debug_line    0x0000212b       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
- .debug_line    0x000021bf       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
- .debug_line    0x00002253       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
- .debug_line    0x000022e7       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
- .debug_line    0x0000237b       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
- .debug_line    0x0000240f       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
- .debug_line    0x000024a3       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
- .debug_line    0x00002537       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
- .debug_line    0x000025cb       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
- .debug_line    0x0000265f       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
- .debug_line    0x000026f3       0x95 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
- .debug_line    0x00002788       0x95 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
- .debug_line    0x0000281d       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
- .debug_line    0x000028b1       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
- .debug_line    0x00002945       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
- .debug_line    0x000029d9       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
- .debug_line    0x00002a6d       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
- .debug_line    0x00002b01       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
- .debug_line    0x00002b95       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
- .debug_line    0x00002c29      0x199 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
- .debug_line    0x00002dc2      0x19b .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
- .debug_line    0x00002f5d       0x68 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
- .debug_line    0x00002fc5      0x1ec .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
- .debug_line    0x000031b1      0x806 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
- .debug_line    0x000039b7      0x366 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
- .debug_line    0x00003d1d      0x23e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
- .debug_line    0x00003f5b      0x129 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+ .debug_line    0x00000000      0x354 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_line    0x00000354      0x3f2 .\CortexM3\ARM_GCC_493\Debug\board.o
+ .debug_line    0x00000746        0x0 .\CortexM3\ARM_GCC_493\Debug\espwifi.o
+ .debug_line    0x00000746       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x00000799      0x24a .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_line    0x000009e3      0x21a .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+ .debug_line    0x00000bfd      0x1de .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+ .debug_line    0x00000ddb      0x345 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+ .debug_line    0x00001120       0xae .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+ .debug_line    0x000011ce      0x349 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+ .debug_line    0x00001517       0xb2 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+ .debug_line    0x000015c9      0x5af .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+ .debug_line    0x00001b78       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
+ .debug_line    0x00001c0c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
+ .debug_line    0x00001ca0       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
+ .debug_line    0x00001d34       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
+ .debug_line    0x00001dc8       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
+ .debug_line    0x00001e5c       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
+ .debug_line    0x00001ef0       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
+ .debug_line    0x00001f84       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
+ .debug_line    0x00002018       0x91 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
+ .debug_line    0x000020a9       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+ .debug_line    0x0000213d       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
+ .debug_line    0x000021d1       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
+ .debug_line    0x00002265       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
+ .debug_line    0x000022f9       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
+ .debug_line    0x0000238d       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
+ .debug_line    0x00002421       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
+ .debug_line    0x000024b5       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
+ .debug_line    0x00002549       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
+ .debug_line    0x000025dd       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
+ .debug_line    0x00002671       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
+ .debug_line    0x00002705       0x95 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
+ .debug_line    0x0000279a       0x95 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
+ .debug_line    0x0000282f       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+ .debug_line    0x000028c3       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+ .debug_line    0x00002957       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+ .debug_line    0x000029eb       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+ .debug_line    0x00002a7f       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+ .debug_line    0x00002b13       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+ .debug_line    0x00002ba7       0x94 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+ .debug_line    0x00002c3b      0x199 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
+ .debug_line    0x00002dd4      0x19b .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
+ .debug_line    0x00002f6f       0x68 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyBootAsmGnu.o)
+ .debug_line    0x00002fd7      0x1ec .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+ .debug_line    0x000031c3      0x806 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+ .debug_line    0x000039c9      0x366 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
+ .debug_line    0x00003d2f      0x23e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+ .debug_line    0x00003f6d      0x129 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
 
 .debug_frame    0x00000000     0x2430
  *(.debug_frame)
@@ -1886,153 +1799,153 @@ END GROUP
  .debug_frame   0x000023bc       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .debug_frame   0x000023dc       0x54 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strtol.o)
 
-.debug_str      0x00000000     0x30dd
+.debug_str      0x00000000     0x30ff
  *(.debug_str)
- .debug_str     0x00000000      0x2e4 .\CortexM3\ARM_GCC_493\Debug\main.o
-                                0x32b (size before relaxing)
- .debug_str     0x000002e4      0x1df .\CortexM3\ARM_GCC_493\Debug\board.o
-                                0x3c7 (size before relaxing)
- .debug_str     0x000004c3        0xc .\CortexM3\ARM_GCC_493\Debug\espwifi.o
-                                 0xd7 (size before relaxing)
- .debug_str     0x000004cf       0x86 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
-                                0x1f6 (size before relaxing)
- .debug_str     0x00000555      0x16d .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                                0x30f (size before relaxing)
- .debug_str     0x000006c2      0x261 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
-                                0x421 (size before relaxing)
- .debug_str     0x00000923      0x173 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
-                                0x31c (size before relaxing)
- .debug_str     0x00000a96      0x433 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
-                                0x636 (size before relaxing)
- .debug_str     0x00000ec9       0x6c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
-                                0x2aa (size before relaxing)
- .debug_str     0x00000f35      0x33e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
-                                0x686 (size before relaxing)
- .debug_str     0x00001273       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
-                                0x2c2 (size before relaxing)
- .debug_str     0x000012bf      0x4bb .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
-                                0x6ba (size before relaxing)
- .debug_str     0x0000177a       0x61 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x000017db       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x0000182c       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x0000187d       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x000018ce       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x0000191f       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001970       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x000019c2       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001a14       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
-                                0x1d0 (size before relaxing)
- .debug_str     0x00001a59       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001a97       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001ae9       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001b3b       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001b8d       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001bdf       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001c31       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001c83       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001cd5       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001d27       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001d79       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001dcb       0x56 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
-                                0x1e4 (size before relaxing)
- .debug_str     0x00001e21       0x56 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
-                                0x1e4 (size before relaxing)
- .debug_str     0x00001e77       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001eb5       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001ef3       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001f31       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001f6f       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001fad       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00001feb       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
-                                0x1df (size before relaxing)
- .debug_str     0x00002029      0x1b3 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
-                                0x363 (size before relaxing)
- .debug_str     0x000021dc      0x176 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
-                                0x37b (size before relaxing)
- .debug_str     0x00002352      0x17a .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
-                                0x392 (size before relaxing)
- .debug_str     0x000024cc      0x78b .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
-                                0xa20 (size before relaxing)
- .debug_str     0x00002c57      0x345 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
-                                0x718 (size before relaxing)
- .debug_str     0x00002f9c       0xae .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
-                                0x31b (size before relaxing)
- .debug_str     0x0000304a       0x93 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
-                                0x32f (size before relaxing)
+ .debug_str     0x00000000      0x326 .\CortexM3\ARM_GCC_493\Debug\main.o
+                                0x36d (size before relaxing)
+ .debug_str     0x00000326      0x1d0 .\CortexM3\ARM_GCC_493\Debug\board.o
+                                0x3e9 (size before relaxing)
+ .debug_str     0x000004f6        0xc .\CortexM3\ARM_GCC_493\Debug\espwifi.o
+                                 0xf9 (size before relaxing)
+ .debug_str     0x00000502       0x86 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+                                0x218 (size before relaxing)
+ .debug_str     0x00000588      0x16d .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                                0x331 (size before relaxing)
+ .debug_str     0x000006f5      0x261 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+                                0x443 (size before relaxing)
+ .debug_str     0x00000956      0x173 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+                                0x33e (size before relaxing)
+ .debug_str     0x00000ac9      0x422 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+                                0x658 (size before relaxing)
+ .debug_str     0x00000eeb       0x6c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+                                0x2cc (size before relaxing)
+ .debug_str     0x00000f57      0x33e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+                                0x6a8 (size before relaxing)
+ .debug_str     0x00001295       0x4c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+                                0x2e4 (size before relaxing)
+ .debug_str     0x000012e1      0x4bb .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+                                0x6dc (size before relaxing)
+ .debug_str     0x0000179c       0x61 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x000017fd       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x0000184e       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x0000189f       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x000018f0       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001941       0x51 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001992       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x000019e4       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001a36       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
+                                0x1f2 (size before relaxing)
+ .debug_str     0x00001a7b       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001ab9       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001b0b       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001b5d       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001baf       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001c01       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001c53       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001ca5       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001cf7       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001d49       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001d9b       0x52 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001ded       0x56 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
+                                0x206 (size before relaxing)
+ .debug_str     0x00001e43       0x56 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
+                                0x206 (size before relaxing)
+ .debug_str     0x00001e99       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001ed7       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001f15       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001f53       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001f91       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x00001fcf       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x0000200d       0x3e .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+                                0x201 (size before relaxing)
+ .debug_str     0x0000204b      0x1b3 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
+                                0x385 (size before relaxing)
+ .debug_str     0x000021fe      0x176 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
+                                0x39d (size before relaxing)
+ .debug_str     0x00002374      0x17a .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+                                0x3b4 (size before relaxing)
+ .debug_str     0x000024ee      0x78b .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+                                0xa42 (size before relaxing)
+ .debug_str     0x00002c79      0x345 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
+                                0x73a (size before relaxing)
+ .debug_str     0x00002fbe       0xae .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+                                0x33d (size before relaxing)
+ .debug_str     0x0000306c       0x93 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+                                0x351 (size before relaxing)
 
-.debug_loc      0x00000000     0x405b
+.debug_loc      0x00000000     0x406e
  *(.debug_loc)
- .debug_loc     0x00000000      0x1e1 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_loc     0x000001e1       0xfe .\CortexM3\ARM_GCC_493\Debug\board.o
- .debug_loc     0x000002df      0x144 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_loc     0x00000423      0x2eb .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
- .debug_loc     0x0000070e      0x3c6 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
- .debug_loc     0x00000ad4      0x36c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
- .debug_loc     0x00000e40       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
- .debug_loc     0x00000e85      0x36c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
- .debug_loc     0x000011f1       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
- .debug_loc     0x00001236      0xcec .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
- .debug_loc     0x00001f22       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
- .debug_loc     0x00001f64       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
- .debug_loc     0x00001fa6       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
- .debug_loc     0x00001fe8       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
- .debug_loc     0x0000202a       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
- .debug_loc     0x0000206c       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
- .debug_loc     0x000020ae       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
- .debug_loc     0x000020f0       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
- .debug_loc     0x00002145       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
- .debug_loc     0x00002187       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
- .debug_loc     0x000021c9       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
- .debug_loc     0x0000220b       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
- .debug_loc     0x0000224d       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
- .debug_loc     0x0000228f       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
- .debug_loc     0x000022d1       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
- .debug_loc     0x00002313       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
- .debug_loc     0x00002355       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
- .debug_loc     0x00002397       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
- .debug_loc     0x000023ec       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
- .debug_loc     0x0000242e       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
- .debug_loc     0x00002470       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
- .debug_loc     0x000024b2       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
- .debug_loc     0x000024f4       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
- .debug_loc     0x00002536       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
- .debug_loc     0x00002578       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
- .debug_loc     0x000025ba       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
- .debug_loc     0x000025fc       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
- .debug_loc     0x0000263e       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
- .debug_loc     0x00002680       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
- .debug_loc     0x000026d5      0x12c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
- .debug_loc     0x00002801      0x128 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
- .debug_loc     0x00002929      0x300 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
- .debug_loc     0x00002c29      0xa11 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
- .debug_loc     0x0000363a      0x1e4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
- .debug_loc     0x0000381e      0x64d .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
- .debug_loc     0x00003e6b      0x1f0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
+ .debug_loc     0x00000000      0x1f4 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_loc     0x000001f4       0xfe .\CortexM3\ARM_GCC_493\Debug\board.o
+ .debug_loc     0x000002f2      0x144 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_loc     0x00000436      0x2eb .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyfitter_cfg.o)
+ .debug_loc     0x00000721      0x3c6 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(LCD.o)
+ .debug_loc     0x00000ae7      0x36c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART.o)
+ .debug_loc     0x00000e53       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_INT.o)
+ .debug_loc     0x00000e98      0x36c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART.o)
+ .debug_loc     0x00001204       0x45 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_INT.o)
+ .debug_loc     0x00001249      0xcec .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Bootloader.o)
+ .debug_loc     0x00001f35       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_1.o)
+ .debug_loc     0x00001f77       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_1.o)
+ .debug_loc     0x00001fb9       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_1.o)
+ .debug_loc     0x00001ffb       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Slp_2.o)
+ .debug_loc     0x0000203d       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Stp_2.o)
+ .debug_loc     0x0000207f       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Dir_2.o)
+ .debug_loc     0x000020c1       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_1.o)
+ .debug_loc     0x00002103       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Lim_2.o)
+ .debug_loc     0x00002158       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Em.o)
+ .debug_loc     0x0000219a       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_0.o)
+ .debug_loc     0x000021dc       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_0.o)
+ .debug_loc     0x0000221e       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_1.o)
+ .debug_loc     0x00002260       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_2.o)
+ .debug_loc     0x000022a2       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_3.o)
+ .debug_loc     0x000022e4       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_4.o)
+ .debug_loc     0x00002326       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_5.o)
+ .debug_loc     0x00002368       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_6.o)
+ .debug_loc     0x000023aa       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_7.o)
+ .debug_loc     0x000023ff       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_8.o)
+ .debug_loc     0x00002441       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_9.o)
+ .debug_loc     0x00002483       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_10.o)
+ .debug_loc     0x000024c5       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Col_11.o)
+ .debug_loc     0x00002507       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_1.o)
+ .debug_loc     0x00002549       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_2.o)
+ .debug_loc     0x0000258b       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_3.o)
+ .debug_loc     0x000025cd       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_4.o)
+ .debug_loc     0x0000260f       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_5.o)
+ .debug_loc     0x00002651       0x42 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_6.o)
+ .debug_loc     0x00002693       0x55 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Row_7.o)
+ .debug_loc     0x000026e8      0x12c .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Esp_UART_IntClock.o)
+ .debug_loc     0x00002814      0x128 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_IntClock.o)
+ .debug_loc     0x0000293c      0x300 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyFlash.o)
+ .debug_loc     0x00002c3c      0xa11 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CyLib.o)
+ .debug_loc     0x0000364d      0x1e4 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(cyPm.o)
+ .debug_loc     0x00003831      0x64d .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(CySpc.o)
+ .debug_loc     0x00003e7e      0x1f0 .\CortexM3\ARM_GCC_493\Debug\Bootloader.a(Debug_UART_BOOT.o)
 
 .debug_macinfo
  *(.debug_macinfo)

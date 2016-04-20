@@ -1816,6 +1816,12 @@
 <v>.\Generated_Source\PSoC5\CyBootAsmIar.s</v>
 <v>.\Generated_Source\PSoC5\project.h</v>
 <v>.\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>.\Generated_Source\PSoC5\Pin_1_aliases.h</v>
+<v>.\Generated_Source\PSoC5\Pin_1.c</v>
+<v>.\Generated_Source\PSoC5\Pin_1.h</v>
+<v>.\Generated_Source\PSoC5\Pin_2_aliases.h</v>
+<v>.\Generated_Source\PSoC5\Pin_2.c</v>
+<v>.\Generated_Source\PSoC5\Pin_2.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -1825,7 +1831,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131048714100368325" />
+<deps_time v="131055783094025216" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
@@ -2125,6 +2131,10 @@
 <dep name=".\board.h" />
 </file>
 <file name=".\board.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\espwifi.o">
+<dep name=".\espwifi.c" />
+</file>
+<file name=".\espwifi.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\Bootloader.o">
 <dep name=".\Generated_Source\PSoC5\Bootloader.c" />
 <dep name=".\Generated_Source\PSoC5\Bootloader.h" />
@@ -2872,6 +2882,7 @@
 <file name=".\CortexM3\ARM_GCC_493\Debug\Bootloader.hex">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\main.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\board.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\espwifi.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cymetadata.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\LCD.o" />
@@ -3002,6 +3013,7 @@
 <name_val_pair name=".\Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu99" />
 <name_val_pair name=".\Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu99" />
 <name_val_pair name="C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloader.cydsn\CortexM3\ARM_GCC_493\Debug\Bootloader.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
+<name_val_pair name=".\espwifi.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu99" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Kyle\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloader.cydsn\Bootloader.cyprj -d CY8C5287AXI-LP095 -s C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloader.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -3009,7 +3021,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131048936172607946" />
+<deps_time v="131055790693056889" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>

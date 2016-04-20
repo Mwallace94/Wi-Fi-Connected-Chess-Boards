@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*
 int main() {
     
     init();
@@ -10,8 +10,8 @@ int main() {
         
     }
 }
+*/
 
-/*
 int main() {
     
     init();
@@ -23,7 +23,9 @@ int main() {
     while(1) {
 
         if(Debug_UART_GetRxBufferSize() > 0) {
-            Esp_UART_PutChar(Debug_UART_GetChar());
+            char temp = Debug_UART_GetChar();
+            Esp_UART_PutChar(temp);
+            if(temp == '\r') Esp_UART_PutChar('\n');
         }
         if(Esp_UART_GetRxBufferSize() > 0) {
             Debug_UART_PutChar(Esp_UART_GetChar());
@@ -31,7 +33,7 @@ int main() {
         
     }
 }
-*/
+
 
 void init() {
     CyGlobalIntEnable;
