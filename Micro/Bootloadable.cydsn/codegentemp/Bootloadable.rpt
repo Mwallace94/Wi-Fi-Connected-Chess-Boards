@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.300ms
+Loading plugins phase: Elapsed time ==> 0s.285ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 -s C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 3s.097ms
+Elaboration phase: Elapsed time ==> 3s.007ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.078ms
+HDL generation phase: Elapsed time ==> 0s.062ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Apr 19 18:37:55 2016
+Wed Apr 20 15:34:57 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Bootloadable.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Apr 19 18:37:55 2016
+Wed Apr 20 15:34:57 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v'
@@ -94,7 +94,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Apr 19 18:37:55 2016
+Wed Apr 20 15:34:57 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -126,7 +126,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Apr 19 18:37:56 2016
+Wed Apr 20 15:34:58 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -885,14 +885,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.386ms
+Warp synthesis phase: Elapsed time ==> 1s.523ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Tuesday, 19 April 2016 18:37:56
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Wednesday, 20 April 2016 15:34:59
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 Bootloadable.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.031ms
+Design parsing phase: Elapsed time ==> 0s.046ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -4084,8 +4084,8 @@ SAR ADC                       :    0 :    1 :    1 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    1 :    1 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.146ms
-Tech mapping phase: Elapsed time ==> 0s.231ms
+Technology Mapping: Elapsed time ==> 0s.083ms
+Tech mapping phase: Elapsed time ==> 0s.168ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -4133,7 +4133,7 @@ IO_3@[IOP=(2)][IoId=(3)] : \LCD:LCDPort(3)\ (fixed)
 IO_4@[IOP=(2)][IoId=(4)] : \LCD:LCDPort(4)\ (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : \LCD:LCDPort(5)\ (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : \LCD:LCDPort(6)\ (fixed)
-Analog Placement phase: Elapsed time ==> 0s.037ms
+Analog Placement phase: Elapsed time ==> 0s.069ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -4151,11 +4151,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.485ms
+Analog Code Generation phase: Elapsed time ==> 0s.532ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.3 sec.
+I2076: Total run-time: 1.1 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -4186,10 +4186,10 @@ PLD Packing: Elapsed time ==> 0s.000ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.130ms
+Partitioning: Elapsed time ==> 0s.100ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.015ms
+Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 321, final cost is 321 (0.00% improvement).</CYPRESSTAG>
@@ -7496,31 +7496,31 @@ Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connectio
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 1s.819ms
+Digital Placement phase: Elapsed time ==> 1s.635ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 2s.489ms
+Digital Routing phase: Elapsed time ==> 2s.343ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.767ms
+Bitstream and API generation phase: Elapsed time ==> 0s.701ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.137ms
+Bitstream verification phase: Elapsed time ==> 0s.100ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Bootloadable_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.563ms
+Static timing analysis phase: Elapsed time ==> 0s.501ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.253ms
+Design database save phase: Elapsed time ==> 0s.316ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 6s.832ms
+cydsfit: Elapsed time ==> 6s.430ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 6s.886ms
-API generation phase: Elapsed time ==> 2s.803ms
-Dependency generation phase: Elapsed time ==> 0s.031ms
+Fitter phase: Elapsed time ==> 6s.483ms
+API generation phase: Elapsed time ==> 2s.668ms
+Dependency generation phase: Elapsed time ==> 0s.015ms
 Cleanup phase: Elapsed time ==> 0s.000ms

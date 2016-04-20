@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <project.h>
 #include "board.h"
+#include "espwifi.h"
     
 void init();
 

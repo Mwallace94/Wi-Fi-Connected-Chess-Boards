@@ -1,5 +1,5 @@
 #include "main.h"
-/*
+
 int main() {
     
     init();
@@ -10,8 +10,8 @@ int main() {
         
     }
 }
-*/
 
+/*
 int main() {
     
     init();
@@ -33,7 +33,7 @@ int main() {
         
     }
 }
-
+*/
 
 void init() {
     CyGlobalIntEnable;
@@ -67,7 +67,7 @@ void debug() {
 
         length = strlen(message);
 
-        char num[8] = "";
+        char num[16] = "";
         switch(message[0]) {
             case 'x':
                 if(length > 3) {
@@ -127,17 +127,10 @@ void debug() {
                 Debug_UART_PutString("\r\n\r\n");
                 break;
             case 'w':
-                if(message[2] == 'w') {
-                    Esp_UART_PutString(message + 4);
-                }
-                if(message[2] == 'r') {
-                    int mSize = Esp_UART_GetRxBufferSize();
-                    for (int i = 0; i < mSize; i++) {
-                        message[i] = Esp_UART_GetChar();
-                    }
-                    Debug_UART_PutString(message);
-                    Debug_UART_PutString("\r\n");
-                }
+                Debug_UART_PutString(esp_transmit(".connect", "8"));
+                Debug_UART_PutString(esp_transmit(".ready", "6"));
+                Debug_UART_PutString(esp_transmit(".gib", "4"));
+                Debug_UART_PutString(esp_transmit(".gib", "4"));
                 break;
             default:
                 break;
