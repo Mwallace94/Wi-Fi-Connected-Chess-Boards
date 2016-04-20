@@ -10,25 +10,6 @@ char bres9[9];
 // Initialization functions.
 
 /*
-	Creates a socket file desc 
-*/
-int setup_connection() {
-
-	int sockfd;
-    struct sockaddr_in servaddr;
-
-    sockfd = socket(AF_INET,SOCK_STREAM,0);
-    bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(PORT);
-
-    inet_pton(AF_INET, SERVER, &(servaddr.sin_addr));
-    connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr));
-
-    return sockfd;
-}
-
-/*
 	Initalizes the game state and board state.
 */
 int initialize() {
@@ -47,7 +28,6 @@ int initialize() {
 int state_notconnected() {
 
 	Debug_UART_PutString("NOTCONNECTED\n");
-	int sockfd = setup_connection();
 
 	// write ".connect"
 	strcpy(bres1, "");
@@ -75,7 +55,6 @@ int state_notconnected() {
 int state_connected() {
 
 	Debug_UART_PutString("CONNECTED\n");
-	int sockfd = setup_connection();
 
 	// write ".ready"
 	strcpy(bres1, "");
@@ -112,7 +91,6 @@ int state_connected() {
 int state_ready() {
 
 	Debug_UART_PutString("READY\n");
-	int sockfd = setup_connection();
 
 	//write ".gib"
 	strcpy(bres1, "");
@@ -121,7 +99,6 @@ int state_ready() {
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
 		CyDelay(5000);
-		sockfd = setup_connection();
 
 		bres1 = esp_transmit(bstr_gib, "4");
 
@@ -150,7 +127,6 @@ int state_ready() {
 int state_waiting() {
 
 	Debug_UART_PutString("WAITING");
-	int sockfd = setup_connection();
 
 	// write ".gib"
 	strcpy(bres8, "");
@@ -158,7 +134,6 @@ int state_waiting() {
 
 	while(strlen(bres8) != 8) {
 		CyDelay(5000);
-		sockfd = setup_connection();
 
 		bres8 = esp_transmit(bstr_gib, "4");
 
@@ -312,8 +287,6 @@ int state_moving() {
 	char msg[13];
 	msg = { 0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
 			locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
-
-	int sockfd = setup_connection();
 
 	strcpy(bres9, "");
 	while(!strcmp(bres9, "")) {
