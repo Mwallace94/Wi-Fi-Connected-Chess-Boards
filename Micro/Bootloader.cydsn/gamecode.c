@@ -1,5 +1,6 @@
 
 #include "gamecode.h"
+#include <strings.h>
 
 // Can receive response from server of sizes 1, 8, or 9.
 char bres1[1];
@@ -7,25 +8,6 @@ char bres8[8];
 char bres9[9];
 
 // Initialization functions.
-
-/*
-	Creates a socket file desc 
-*/
-int setup_connection() {
-
-	int sockfd;
-    struct sockaddr_in servaddr;
-
-    sockfd = socket(AF_INET,SOCK_STREAM,0);
-    bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(PORT);
-
-    inet_pton(AF_INET, SERVER, &(servaddr.sin_addr));
-    connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr));
-
-    return sockfd;
-}
 
 /*
 	Initalizes the game state and board state.
@@ -46,11 +28,13 @@ int initialize() {
 int state_notconnected() {
 
 	Debug_UART_PutString("NOTCONNECTED\n");
-	int sockfd = setup_connection();
 
 	// write ".connect"
-	write(sockfd, &bstr_connect, 8);
-	read(sockfd, &bres1, 1);
+	strcpy(bres1, "");
+	while(!strcmp(bres1, "")) {
+		bres1 = esp_transmit(bstr_connect, "8");
+	}
+	
 
 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
 
@@ -71,11 +55,12 @@ int state_notconnected() {
 int state_connected() {
 
 	Debug_UART_PutString("CONNECTED\n");
-	int sockfd = setup_connection();
 
 	// write ".ready"
-	write(sockfd, &bstr_ready, 6);
-	read(sockfd, &bres1, 1);
+	strcpy(bres1, "");
+	while(!strcmp(bres1, "")) {
+		bres1 = esp_transmit(bstr_ready, "6");
+	}
 
 	if(bres1[0] == 0x11){
 		Debug_UART_PutString("Ready.");
@@ -106,19 +91,16 @@ int state_connected() {
 int state_ready() {
 
 	Debug_UART_PutString("READY\n");
-	int sockfd = setup_connection();
 
 	//write ".gib"
-	write(sockfd, &bstr_gib, 4);
-	read(sockfd, &bres1, 1);
+	strcpy(bres1, "");
+	bres1 = esp_transmit(bstr_gib, "4");
 
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
-		sleep(5);
-		sockfd = setup_connection();
+		CyDelay(5000);
 
-		write(sockfd, &bstr_gib, 4);
-		read(sockfd, &bres1, 1);
+		bres1 = esp_transmit(bstr_gib, "4");
 
 		Debug_UART_PutString(bres1[0]);
 	}
@@ -145,18 +127,15 @@ int state_ready() {
 int state_waiting() {
 
 	Debug_UART_PutString("WAITING");
-	int sockfd = setup_connection();
 
 	// write ".gib"
-	write(sockfd, &bstr_gib, 4);
-	read(sockfd, &bres8, 8);
+	strcpy(bres8, "");
+	bres8 = esp_transmit(bstr_gib, "4");
 
 	while(strlen(bres8) != 8) {
-		sleep(5);
-		sockfd = setup_connection();
+		CyDelay(5000);
 
-		write(sockfd, &bstr_gib, 4);
-		read(sockfd, &bres8, 8);
+		bres8 = esp_transmit(bstr_gib, "4");
 
 		Debug_UART_PutString(bres8);
 
@@ -183,12 +162,6 @@ int state_waiting() {
 	Debug_UART_PutString(movementOpp1);
 	//movepiece(board,movementOpp1);
 
-	/*
-	memset(&movementOpp1[0],'0',sizeof(movementOpp1));
-	memset(&movementOpp1Piece[0],'0',sizeof(movementOpp1Piece));
-	memset(&movementOpp2[0],'0',sizeof(movementOpp2));
-	memset(&movementOpp2Piece[0],'0',sizeof(movementOpp2Piece));
-	*/
 	game_state = MOVING;
 	return game_state;
 }
@@ -272,7 +245,7 @@ int state_moving() {
 
 	while(move1 == { { 0, 0 }, { 0, 0 } }) {
 
-		//sleep(1);
+		CyDelay(1000);
 		read_reed_switches();
 		memcpy(&update1_board, &board, sizeof(board));
 
@@ -296,7 +269,7 @@ int state_moving() {
 
 		while(move2 == { { 0, 0 }, { 0, 0 } }) {
 
-			//sleep(1);
+			CyDelay(1000);
 			read_reed_switches();
 			memcpy(&update2_board, &board, sizeof(board));
 
@@ -315,10 +288,10 @@ int state_moving() {
 	msg = { 0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
 			locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
 
-	int sockfd = setup_connection();
-
-	write(sockfd, &msg, 13);
-	read(sockfd, &bres9, 9); // We don't need all 9 bytes.
+	strcpy(bres9, "");
+	while(!strcmp(bres9, "")) {
+		bres9 = esp_transmit(msg, "13");
+	}
 
 	if(bres9[0] != 0x01) {
 		Debug_UART_PutString("Invalid move, please undo changes.\n");

@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "board.h"
-#include "wifi.h"
+#include "espwifi.h"
 
 // Server and port
 

@@ -9,6 +9,10 @@
  *
  * ========================================
 */
+
+void esp_read(char* msg);
+char* esp_write();
+=======
 #include<project.h>
 
     char* esp_transmit(char* msg, char* numBytes);
