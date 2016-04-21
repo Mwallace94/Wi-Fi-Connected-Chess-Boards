@@ -1,7 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include<project.h>
+#include <project.h>
+#include <stdlib.h>
 
 // Motor Constants
     
@@ -13,6 +14,13 @@
 #define MAX_Y_POS 10000
     
 // Motor Variables
+
+struct movement {
+	int fromRow;
+	int fromCol;
+	int toRow;
+	int toCol;
+};
     
 int16 x_pos;
 int16 y_pos;
@@ -23,6 +31,12 @@ void move_home();
 void move_x(int16 mm);
 void move_y(int16 mm);
 void limitTest();
+
+void movepiece(struct movement move);
+void moveRow(int dis);
+void moveCol(int dis);
+void moveColHalf(int dis);
+void moveRowHalf(int dis);
 
 // Reed Switch Variables
 

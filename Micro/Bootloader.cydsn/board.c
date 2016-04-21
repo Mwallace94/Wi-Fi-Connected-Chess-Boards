@@ -35,6 +35,9 @@ void move_home() {
     
     x_pos = 0;
     y_pos = 0;
+    
+    move_x(60);
+    move_y(25);
 }
 
 void move_x(int16 mm) { 
@@ -250,3 +253,120 @@ void read_reed_switches() {
     Row_6_SetDriveMode(Row_6_DM_DIG_HIZ);
     
 }
+
+void moveCol(int dis) {
+    move_x(50 * dis * -1);
+}
+
+void moveRow(int dis) {
+    move_y(50 * dis);
+}
+
+void moveRowHalf(int dis) {
+    move_y(25 * dis);
+}
+
+void moveColHalf(int dis) {
+    move_x(25 * dis * -1);
+}
+
+void movepiece(struct movement move) {
+
+    moveRow(move.fromRow);
+    moveCol(11 - move.fromCol);
+
+    int rowdis = move.fromRow - move.toRow;
+    int coldis = move.fromCol - move.toCol;
+
+    //diagnal movement if clear path
+    if (abs(rowdis) == abs(coldis)) {
+        int temp = 0;
+        for(int i = 1; i <= abs(coldis); i++) {
+            if (board[move.fromRow + i * rowdis / abs(coldis)][move.fromCol + i * coldis / abs(coldis)] != 0) temp++;
+        }
+        if (temp == 0) {
+            for(int i = 0; i < abs(coldis) * 51; i++) {
+                move_x(coldis / abs(coldis) * -1);
+                move_y(rowdis / abs(rowdis));
+            }
+        }
+        return;
+    }
+
+    //col movement if clear path
+    if (rowdis == 0) {
+        int temp = 0;
+        for(int i = 1; i <= abs(coldis); i++) {
+            if (board[move.fromRow][move.fromCol + i * coldis / abs(coldis)] != 0) temp++;
+        }
+        moveCol(coldis);
+        return;
+    }
+
+    //row movement if clear path
+    if (coldis == 0) {
+        int temp = 0;
+        for(int i = 1; i <= abs(rowdis); i++) {
+            if (board[move.fromRow + i * rowdis / abs(rowdis)][move.fromCol] != 0) temp++;
+        }
+        moveRow(rowdis);
+        return;
+    }
+
+    //up or down indicator for end adjustment, where down is 1 and up -1
+    //left or right indicator for end adjustment, where left is -1 and right is 1       
+    int uod = 0, lor = 0;
+
+    //determines the best path between spaces for cols
+
+    if (move.fromCol < move.toCol) {
+        lor = -1;
+    } else if (move.fromCol > move.toCol) {
+        lor = 1;
+    } else if (move.fromCol < 6) {
+        lor = -1;
+    } else {
+        lor = 1;
+    }
+    moveColHalf(lor * -1);
+
+    //determines the best path between spaces for rows
+    if (move.fromRow > move.toRow) {
+        uod = 1;
+    } else if (move.fromRow < move.toRow) {
+        uod = -1;
+    } else if (move.toRow < 4) {
+        uod = 1;
+    } else {
+        uod = -1;
+    }
+
+    //moves across the rows with the adjustment
+    if (rowdis == 0) {
+        moveRowHalf(uod);
+    } else if (rowdis > 0) {
+        moveRowHalf(rowdis / abs(rowdis) * (rowdis * 2 - uod * -1));
+    } else {
+        moveRowHalf(rowdis / abs(rowdis) * (abs(rowdis) * 2 - uod));
+    }
+    //moves across the rows
+    if (coldis == 0) {
+        moveColHalf(lor);
+    } else if (coldis > 0) {
+        moveColHalf(coldis / abs(coldis) * (coldis * 2 - lor * -1));
+    } else {
+        moveColHalf(coldis / abs(coldis) * (abs(coldis) * 2 - lor));
+    }
+
+    //moves row adjustment
+    moveRowHalf(-1 * uod);
+
+    move_home();
+}
+
+//movement move;
+//move.fromCol = 8;
+//move.fromRow = 1;
+//move.toCol = 7;
+//move.toRow = 3;
+//movepiece()
