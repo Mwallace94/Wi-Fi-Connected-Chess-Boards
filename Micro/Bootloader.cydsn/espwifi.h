@@ -18,7 +18,7 @@
 static char recv[9];
 
     char* esp_transmit(char* msg, char* numBytes);  
-    char* esp_helper();
+    char* esp_helper(uint32 time);
 
 #endif
     

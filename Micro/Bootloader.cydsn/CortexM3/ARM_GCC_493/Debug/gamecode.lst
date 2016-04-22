@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
   27              		.loc 1 28 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 2
 
 
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
   65              	.L4:
   48:.\gamecode.c  **** 		esp_transmit(bstr_connect, "8");
   66              		.loc 1 48 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 3
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 3
 
 
   67 0010 0F48     		ldr	r0, .L9+8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  105 0044 1868     		ldr	r0, [r3]
  106 0046 08BD     		pop	{r3, pc}
  107              	.L10:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 4
 
 
  108              		.align	2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  150 0014 FFF7FEFF 		bl	esp_transmit
  151              	.LVL6:
   76:.\gamecode.c  ****         strncpy(bres1, recv, 1);
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 5
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 5
 
 
  152              		.loc 1 76 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  192 0050 222B     		cmp	r3, #34
  193 0052 06D1     		bne	.L17
   90:.\gamecode.c  **** 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 6
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 6
 
 
   91:.\gamecode.c  **** 		Debug_UART_PutString("Their turn.");
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  238              		.type	state_ready, %function
  239              	state_ready:
  240              	.LFB66:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 7
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 7
 
 
  101:.\gamecode.c  **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  277 002c 1949     		ldr	r1, .L28+12
  278 002e FFF7FEFF 		bl	esp_transmit
  279              	.LVL16:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 8
 
 
  119:.\gamecode.c  ****         strncpy(bres1, recv, 1);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  319 006a 0C4B     		ldr	r3, .L28+20
  320 006c 1A60     		str	r2, [r3]
  321 006e 07E0     		b	.L25
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 9
 
 
  322              	.L26:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  363              		@ args = 0, pretend = 0, frame = 16
  364              		@ frame_needed = 0, uses_anonymous_args = 0
  365 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 10
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 10
 
 
  366              		.cfi_def_cfa_offset 8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  407 003c FFF7FEFF 		bl	strncpy
  408              	.LVL26:
  157:.\gamecode.c  ****         
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 11
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 11
 
 
  158:.\gamecode.c  **** 		Debug_UART_PutString(bres8);
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  450 0080 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
  451 0082 8DF80F20 		strb	r2, [sp, #15]
  170:.\gamecode.c  **** 	char movementOpp2[5] = { bres8[5], bres8[4], bres8[7], bres8[6] };
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 12
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 12
 
 
  452              		.loc 1 170 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  494 00c8 00000000 		.word	bres8
  495 00cc 10000000 		.word	.LANCHOR0+16
  496 00d0 84000000 		.word	.LC11
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 13
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 13
 
 
  497 00d4 00000000 		.word	.LANCHOR1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  196:.\gamecode.c  ****     			// Pick-up location, use diff_loc[0].
  197:.\gamecode.c  ****     			if(initial_board[i][j] == 0x01 && update1_board[i][j] == 0x00) {
  538              		.loc 1 197 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 14
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 14
 
 
  539 0016 05EB4503 		add	r3, r5, r5, lsl #1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  581 0066 2344     		add	r3, r3, r4
  582 0068 274A     		ldr	r2, .L58+8
  583 006a D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 15
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 15
 
 
  584 006c 012B     		cmp	r3, #1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  621 0090 9B00     		lsls	r3, r3, #2
  622 0092 2344     		add	r3, r3, r4
  623 0094 1C4A     		ldr	r2, .L58+8
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 16
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 16
 
 
  624 0096 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  666 00e4 02D1     		bne	.L51
  235:.\gamecode.c  **** 
  236:.\gamecode.c  ****     				diff_loc[1][0] = i;
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 17
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 17
 
 
  667              		.loc 1 236 0 is_stmt 1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  241:.\gamecode.c  ****     }
  242:.\gamecode.c  **** }
  243:.\gamecode.c  **** 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 18
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 18
 
 
  244:.\gamecode.c  **** uint8 itoc(int i) {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  760 0024 0420     		movs	r0, #4
  761              	.LVL54:
  762 0026 7047     		bx	lr
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 19
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 19
 
 
  763              	.LVL55:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  809              	.LVL70:
  810 0046 7047     		bx	lr
  811              	.LVL71:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 20
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 20
 
 
  812              	.L76:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  854              		.cfi_offset 5, -16
  855              		.cfi_offset 6, -12
  856              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 21
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 21
 
 
  857              		.cfi_offset 14, -4
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  890 002c 4FF47A70 		mov	r0, #1000
  891 0030 FFF7FEFF 		bl	CyDelay
  892              	.LVL84:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 22
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 22
 
 
  291:.\gamecode.c  **** 		read_reed_switches();
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  933              		.loc 1 303 0
  934 006c 0229     		cmp	r1, #2
  935 006e 03D1     		bne	.L80
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 23
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 23
 
 
  936 0070 01E0     		b	.L94
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  977              		.loc 1 312 0
  978 00aa 0C98     		ldr	r0, [sp, #48]
  979 00ac FFF7FEFF 		bl	itoc
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 24
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 24
 
 
  980              	.LVL94:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1017              		.loc 1 329 0
  1018 00f2 5868     		ldr	r0, [r3, #4]
  1019 00f4 0790     		str	r0, [sp, #28]
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 25
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 25
 
 
  330:.\gamecode.c  ****             move2[1][0] = diff_loc[1][0];
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  338:.\gamecode.c  **** 			}
  339:.\gamecode.c  **** 		}
  340:.\gamecode.c  **** 	}
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 26
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 26
 
 
  341:.\gamecode.c  **** 	// Construct message to send to server.
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1104 0194 FFF7FEFF 		bl	esp_transmit
  1105              	.LVL103:
  349:.\gamecode.c  **** 	    strncpy(bres9, recv, 9);
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 27
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 27
 
 
  1106              		.loc 1 349 0
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1147              	.LVL107:
  1148              	.L97:
  1149              		.align	2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 28
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 28
 
 
  1150              	.L96:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1194 000e 0E4B     		ldr	r3, .L106
  1195 0010 1B68     		ldr	r3, [r3]
  1196 0012 2BB9     		cbnz	r3, .L100
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 29
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 29
 
 
  372:.\gamecode.c  **** 			Debug_UART_PutString("Attempting to connect again.\n");
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1233              		.loc 1 389 0
  1234 0042 FFF7FEFF 		bl	state_moving
  1235              	.LVL114:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 30
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 30
 
 
  1236 0046 E2E7     		b	.L99
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1290 0013 62       		.byte	98
  1291              		.section	.rodata.str1.4,"aMS",%progbits,1
  1292              		.align	2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 31
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 31
 
 
  1293              	.LC0:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1327 0088 57414954 		.ascii	"WAITING\000"
  1327      494E4700 
  1328              	.LC13:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 32
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 32
 
 
  1329 0090 446F206E 		.ascii	"Do not pick up graveyard pieces!\012\000"
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1365              	.Ldebug_info0:
  1366 0000 AA0A0000 		.4byte	0xaaa
  1367 0004 0400     		.2byte	0x4
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 33
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 33
 
 
  1368 0006 00000000 		.4byte	.Ldebug_abbrev0
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1422 0072 67010000 		.4byte	.LASF8
  1423 0076 03       		.uleb128 0x3
  1424 0077 1D000000 		.4byte	.LASF10
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 34
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 34
 
 
  1425 007b 03       		.byte	0x3
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1479 00e7 04       		.byte	0x4
  1480 00e8 CB000000 		.4byte	.LASF17
  1481 00ec 02       		.uleb128 0x2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 35
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 35
 
 
  1482 00ed 08       		.byte	0x8
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1536 0159 01       		.byte	0x1
  1537 015a 1C       		.byte	0x1c
  1538 015b 68000000 		.4byte	0x68
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 36
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 36
 
 
  1539 015f 00000000 		.4byte	.LFB63
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1593 01d7 12       		.uleb128 0x12
  1594 01d8 01       		.uleb128 0x1
  1595 01d9 50       		.byte	0x50
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 37
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 37
 
 
  1596 01da 05       		.uleb128 0x5
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1650 0246 22000000 		.4byte	.LVL7
  1651 024a 420A0000 		.4byte	0xa42
  1652 024e 6A020000 		.4byte	0x26a
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 38
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 38
 
 
  1653 0252 12       		.uleb128 0x12
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1707 02b8 12       		.uleb128 0x12
  1708 02b9 01       		.uleb128 0x1
  1709 02ba 50       		.byte	0x50
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 39
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 39
 
 
  1710 02bb 05       		.uleb128 0x5
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1764 0327 51       		.byte	0x51
  1765 0328 05       		.uleb128 0x5
  1766 0329 03       		.byte	0x3
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 40
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 40
 
 
  1767 032a 00000000 		.4byte	.LANCHOR1
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1821 0388 02       		.uleb128 0x2
  1822 0389 74       		.byte	0x74
  1823 038a 00       		.sleb128 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 41
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 41
 
 
  1824 038b 00       		.byte	0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1878 03f7 01       		.byte	0x1
  1879 03f8 AA       		.byte	0xaa
  1880 03f9 0D050000 		.4byte	0x50d
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 42
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 42
 
 
  1881 03fd 02       		.uleb128 0x2
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1935 045a 2C000000 		.4byte	.LVL24
  1936 045e 610A0000 		.4byte	0xa61
  1937 0462 6E040000 		.4byte	0x46e
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 43
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 43
 
 
  1938 0466 12       		.uleb128 0x12
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  1992 04c1 74       		.byte	0x74
  1993 04c2 00       		.sleb128 0
  1994 04c3 00       		.byte	0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 44
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 44
 
 
  1995 04c4 11       		.uleb128 0x11
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2049 052d 9C       		.byte	0x9c
  2050 052e 84050000 		.4byte	0x584
  2051 0532 16       		.uleb128 0x16
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 45
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 45
 
 
  2052 0533 7800     		.ascii	"x\000"
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2106 05a6 8C000000 		.4byte	.LLST3
  2107 05aa 00       		.byte	0
  2108 05ab 19       		.uleb128 0x19
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 46
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 46
 
 
  2109 05ac B8000000 		.4byte	.LASF35
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2163 0622 05       		.uleb128 0x5
  2164 0623 03       		.byte	0x3
  2165 0624 B4000000 		.4byte	.LC14
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 47
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 47
 
 
  2166 0628 00       		.byte	0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2220 068c 05       		.uleb128 0x5
  2221 068d 03       		.byte	0x3
  2222 068e 00000000 		.4byte	board
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 48
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 48
 
 
  2223 0692 12       		.uleb128 0x12
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2277 06f5 01070000 		.4byte	0x701
  2278 06f9 12       		.uleb128 0x12
  2279 06fa 01       		.uleb128 0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 49
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 49
 
 
  2280 06fb 50       		.byte	0x50
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2334 0759 04010000 		.4byte	.LVL99
  2335 075d 84050000 		.4byte	0x584
  2336 0761 6D070000 		.4byte	0x76d
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 50
 
 
  2337 0765 12       		.uleb128 0x12
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2391 07c2 03       		.uleb128 0x3
  2392 07c3 91       		.byte	0x91
  2393 07c4 B47F     		.sleb128 -76
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 51
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 51
 
 
  2394 07c6 00       		.byte	0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2448 082c 00       		.byte	0
  2449 082d 08       		.uleb128 0x8
  2450 082e 90000000 		.4byte	0x90
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 52
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 52
 
 
  2451 0832 3D080000 		.4byte	0x83d
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2505 08ba 01       		.byte	0x1
  2506 08bb 15       		.byte	0x15
  2507 08bc A5080000 		.4byte	0x8a5
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 53
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 53
 
 
  2508 08c0 05       		.uleb128 0x5
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2562 0936 08       		.byte	0x8
  2563 0937 16       		.byte	0x16
  2564 0938 A2000000 		.4byte	0xa2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 54
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 54
 
 
  2565 093c 05       		.uleb128 0x5
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2619 09b1 05       		.uleb128 0x5
  2620 09b2 03       		.byte	0x3
  2621 09b3 00000000 		.4byte	bres8
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 55
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 55
 
 
  2622 09b7 20       		.uleb128 0x20
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2676 0a29 4B030000 		.4byte	.LASF58
  2677 0a2d 09       		.byte	0x9
  2678 0a2e 14       		.byte	0x14
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 56
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 56
 
 
  2679 0a2f 8A000000 		.4byte	0x8a
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2733 0aad 00       		.byte	0
  2734              		.section	.debug_abbrev,"",%progbits
  2735              	.Ldebug_abbrev0:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 57
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 57
 
 
  2736 0000 01       		.uleb128 0x1
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2790 0036 05       		.uleb128 0x5
  2791 0037 0F       		.uleb128 0xf
  2792 0038 00       		.byte	0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 58
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 58
 
 
  2793 0039 0B       		.uleb128 0xb
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2847 006f 01       		.uleb128 0x1
  2848 0070 13       		.uleb128 0x13
  2849 0071 00       		.byte	0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 59
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 59
 
 
  2850 0072 00       		.byte	0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2904 00a8 01       		.uleb128 0x1
  2905 00a9 12       		.uleb128 0x12
  2906 00aa 06       		.uleb128 0x6
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 60
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 60
 
 
  2907 00ab 40       		.uleb128 0x40
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  2961 00e9 00       		.byte	0
  2962 00ea 03       		.uleb128 0x3
  2963 00eb 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 61
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 61
 
 
  2964 00ec 3A       		.uleb128 0x3a
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3018 0123 08       		.uleb128 0x8
  3019 0124 3A       		.uleb128 0x3a
  3020 0125 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 62
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 62
 
 
  3021 0126 3B       		.uleb128 0x3b
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3075 015d 9742     		.uleb128 0x2117
  3076 015f 19       		.uleb128 0x19
  3077 0160 01       		.uleb128 0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 63
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 63
 
 
  3078 0161 13       		.uleb128 0x13
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3132 0199 13       		.uleb128 0x13
  3133 019a 00       		.byte	0
  3134 019b 00       		.byte	0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 64
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 64
 
 
  3135 019c 1E       		.uleb128 0x1e
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3189 01d2 3C       		.uleb128 0x3c
  3190 01d3 19       		.uleb128 0x19
  3191 01d4 01       		.uleb128 0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 65
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 65
 
 
  3192 01d5 13       		.uleb128 0x13
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3246 020b 2E       		.uleb128 0x2e
  3247 020c 01       		.byte	0x1
  3248 020d 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 66
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 66
 
 
  3249 020e 19       		.uleb128 0x19
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3303 005c 7A000000 		.4byte	.LVL35
  3304 0060 0100     		.2byte	0x1
  3305 0062 54       		.byte	0x54
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 67
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 67
 
 
  3306 0063 7C000000 		.4byte	.LVL36
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3360 00ea 0400     		.2byte	0x4
  3361 00ec F3       		.byte	0xf3
  3362 00ed 01       		.uleb128 0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 68
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 68
 
 
  3363 00ee 50       		.byte	0x50
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3417 016a 01       		.uleb128 0x1
  3418 016b 50       		.byte	0x50
  3419 016c 9F       		.byte	0x9f
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 69
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 69
 
 
  3420 016d 3C000000 		.4byte	.LVL65
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3474 01e9 9F       		.byte	0x9f
  3475 01ea 50000000 		.4byte	.LVL75
  3476 01ee 52000000 		.4byte	.LVL76
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 70
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 70
 
 
  3477 01f2 0100     		.2byte	0x1
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3531 0030 00000000 		.4byte	.LFB67
  3532 0034 DC000000 		.4byte	.LFE67-.LFB67
  3533 0038 00000000 		.4byte	.LFB68
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 71
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 71
 
 
  3534 003c 14010000 		.4byte	.LFE68-.LFB68
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3577      655F636F 
  3577      6E6E6563 
  3577      74656400 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 72
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 72
 
 
  3578              	.LASF11:
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3608              	.LASF35:
  3609 00b8 73746174 		.ascii	"state_moving\000"
  3609      655F6D6F 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 73
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 73
 
 
  3609      76696E67 
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3637      206C6F6E 
  3637      6720756E 
  3637      7369676E 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 74
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 74
 
 
  3637      65642069 
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3664      6963726F 
  3665              	.LASF9:
  3666 0210 5F5F696E 		.ascii	"__int32_t\000"
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 75
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 75
 
 
  3666      7433325F 
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
  3688      6D65636F 
  3688      64652E63 
  3688      00
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 76
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccwZ83MD.s 			page 76
 
 
  3689              	.LASF56:
