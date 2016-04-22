@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccRQKUM0.s 			page 1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 1
 
 
    1              		.syntax unified
@@ -18,40 +18,4538 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccRQKUM0.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              	.Letext0:
-  19              		.section	.debug_line,"",%progbits
-  20              	.Ldebug_line0:
-  21              		.section	.debug_str,"MS",%progbits,1
-  22              	.LASF0:
-  23 0000 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
-  23      73657273 
-  23      5C4B796C 
-  23      655C446F 
-  23      776E6C6F 
-  24 002e 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloader.cydsn\000"
-  24      43686573 
-  24      73426F61 
-  24      72645C4D 
-  24      6963726F 
-  25              	.LASF1:
-  26 0054 2E5C6761 		.ascii	".\\gamecode.c\000"
-  26      6D65636F 
-  26      64652E63 
-  26      00
-  27              	.LASF2:
-  28 0061 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
-  28      4320342E 
-  28      392E3320 
-  28      32303135 
-  28      30333033 
-  29 0094 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
-  29      20726576 
-  29      6973696F 
-  29      6E203232 
-  29      31323230 
-  30 00c7 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
-  30      74643D67 
-  30      6E753939 
-  30      202D6666 
-  30      756E6374 
-  31              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+  18              		.section	.text.initialize,"ax",%progbits
+  19              		.align	2
+  20              		.global	initialize
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	initialize, %function
+  24              	initialize:
+  25              	.LFB63:
+  26              		.file 1 ".\\gamecode.c"
+   1:.\gamecode.c  **** 
+   2:.\gamecode.c  **** #include "gamecode.h"
+   3:.\gamecode.c  **** #include <strings.h>
+   4:.\gamecode.c  **** 
+   5:.\gamecode.c  **** // Can receive response from server of sizes 1, 8, or 9.
+   6:.\gamecode.c  **** char bres1[1];
+   7:.\gamecode.c  **** char bres8[8];
+   8:.\gamecode.c  **** char bres9[9];
+   9:.\gamecode.c  **** 
+  10:.\gamecode.c  **** int diff_loc[2][2];
+  11:.\gamecode.c  **** // Different board states to use at this time.
+  12:.\gamecode.c  **** char initial_board[8][12];
+  13:.\gamecode.c  **** char update1_board[8][12];
+  14:.\gamecode.c  **** char update2_board[8][12];
+  15:.\gamecode.c  **** 
+  16:.\gamecode.c  **** enum Diff {
+  17:.\gamecode.c  ****     UPDATE1 = 1,
+  18:.\gamecode.c  ****     UPDATE2 = 2,
+  19:.\gamecode.c  **** };
+  20:.\gamecode.c  **** 
+  21:.\gamecode.c  **** extern char recv[9];
+  22:.\gamecode.c  **** 
+  23:.\gamecode.c  **** // Initialization functions.
+  24:.\gamecode.c  **** 
+  25:.\gamecode.c  **** /*
+  26:.\gamecode.c  **** 	Initalizes the game state and board state.
+  27:.\gamecode.c  **** */
+  28:.\gamecode.c  **** int initialize() {
+  27              		.loc 1 28 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 2
+
+
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  29:.\gamecode.c  **** 
+  30:.\gamecode.c  **** 	int new_game_state;
+  31:.\gamecode.c  **** 
+  32:.\gamecode.c  **** 	new_game_state = CONNECTED;
+  33:.\gamecode.c  **** 	return new_game_state;
+  34:.\gamecode.c  **** }
+  33              		.loc 1 34 0
+  34 0000 0120     		movs	r0, #1
+  35 0002 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE63:
+  38              		.size	initialize, .-initialize
+  39              		.section	.text.state_notconnected,"ax",%progbits
+  40              		.align	2
+  41              		.global	state_notconnected
+  42              		.thumb
+  43              		.thumb_func
+  44              		.type	state_notconnected, %function
+  45              	state_notconnected:
+  46              	.LFB64:
+  35:.\gamecode.c  **** 
+  36:.\gamecode.c  **** // State functions.
+  37:.\gamecode.c  **** 
+  38:.\gamecode.c  **** /*
+  39:.\gamecode.c  **** 	Runs when game_state == NOTCONNECTED
+  40:.\gamecode.c  **** */
+  41:.\gamecode.c  **** int state_notconnected() {
+  47              		.loc 1 41 0
+  48              		.cfi_startproc
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51 0000 08B5     		push	{r3, lr}
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 3, -8
+  54              		.cfi_offset 14, -4
+  42:.\gamecode.c  **** 
+  43:.\gamecode.c  **** 	Debug_UART_PutString("NOTCONNECTED\n");
+  55              		.loc 1 43 0
+  56 0002 1148     		ldr	r0, .L9
+  57 0004 FFF7FEFF 		bl	Debug_UART_PutString
+  58              	.LVL1:
+  44:.\gamecode.c  **** 
+  45:.\gamecode.c  **** 	// write ".connect"
+  46:.\gamecode.c  **** 	strcpy(bres1, "");
+  59              		.loc 1 46 0
+  60 0008 0022     		movs	r2, #0
+  61 000a 104B     		ldr	r3, .L9+4
+  62 000c 1A70     		strb	r2, [r3]
+  47:.\gamecode.c  **** 	while(!strcmp(bres1, "")) {
+  63              		.loc 1 47 0
+  64 000e 03E0     		b	.L3
+  65              	.L4:
+  48:.\gamecode.c  **** 		esp_transmit(bstr_connect, "8");
+  66              		.loc 1 48 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 3
+
+
+  67 0010 0F48     		ldr	r0, .L9+8
+  68 0012 1049     		ldr	r1, .L9+12
+  69 0014 FFF7FEFF 		bl	esp_transmit
+  70              	.LVL2:
+  71              	.L3:
+  47:.\gamecode.c  **** 	while(!strcmp(bres1, "")) {
+  72              		.loc 1 47 0
+  73 0018 0C4B     		ldr	r3, .L9+4
+  74 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  75 001c 002B     		cmp	r3, #0
+  76 001e F7D0     		beq	.L4
+  49:.\gamecode.c  **** 	}
+  50:.\gamecode.c  **** 	
+  51:.\gamecode.c  **** 
+  52:.\gamecode.c  **** 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
+  77              		.loc 1 52 0
+  78 0020 012B     		cmp	r3, #1
+  79 0022 01D0     		beq	.L5
+  80              		.loc 1 52 0 is_stmt 0 discriminator 1
+  81 0024 032B     		cmp	r3, #3
+  82 0026 06D1     		bne	.L6
+  83              	.L5:
+  53:.\gamecode.c  **** 
+  54:.\gamecode.c  **** 		Debug_UART_PutString("Connected.\n");
+  84              		.loc 1 54 0 is_stmt 1
+  85 0028 0B48     		ldr	r0, .L9+16
+  86 002a FFF7FEFF 		bl	Debug_UART_PutString
+  87              	.LVL3:
+  55:.\gamecode.c  **** 		game_state = CONNECTED;
+  88              		.loc 1 55 0
+  89 002e 0122     		movs	r2, #1
+  90 0030 0A4B     		ldr	r3, .L9+20
+  91 0032 1A60     		str	r2, [r3]
+  92 0034 05E0     		b	.L7
+  93              	.L6:
+  56:.\gamecode.c  **** 	}
+  57:.\gamecode.c  **** 	else {
+  58:.\gamecode.c  **** 
+  59:.\gamecode.c  **** 		Debug_UART_PutString("Not connected.\n");
+  94              		.loc 1 59 0
+  95 0036 0A48     		ldr	r0, .L9+24
+  96 0038 FFF7FEFF 		bl	Debug_UART_PutString
+  97              	.LVL4:
+  60:.\gamecode.c  **** 		game_state = NOTCONNECTED;
+  98              		.loc 1 60 0
+  99 003c 0022     		movs	r2, #0
+ 100 003e 074B     		ldr	r3, .L9+20
+ 101 0040 1A60     		str	r2, [r3]
+ 102              	.L7:
+  61:.\gamecode.c  **** 	}
+  62:.\gamecode.c  **** 	return game_state;
+  63:.\gamecode.c  **** }
+ 103              		.loc 1 63 0
+ 104 0042 064B     		ldr	r3, .L9+20
+ 105 0044 1868     		ldr	r0, [r3]
+ 106 0046 08BD     		pop	{r3, pc}
+ 107              	.L10:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 4
+
+
+ 108              		.align	2
+ 109              	.L9:
+ 110 0048 00000000 		.word	.LC0
+ 111 004c 00000000 		.word	bres1
+ 112 0050 00000000 		.word	.LANCHOR0
+ 113 0054 10000000 		.word	.LC1
+ 114 0058 14000000 		.word	.LC2
+ 115 005c 00000000 		.word	game_state
+ 116 0060 20000000 		.word	.LC3
+ 117              		.cfi_endproc
+ 118              	.LFE64:
+ 119              		.size	state_notconnected, .-state_notconnected
+ 120              		.section	.text.state_connected,"ax",%progbits
+ 121              		.align	2
+ 122              		.global	state_connected
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.type	state_connected, %function
+ 126              	state_connected:
+ 127              	.LFB65:
+  64:.\gamecode.c  **** 
+  65:.\gamecode.c  **** /*
+  66:.\gamecode.c  **** 	Runs when game_state == CONNECTED
+  67:.\gamecode.c  **** */
+  68:.\gamecode.c  **** int state_connected() {
+ 128              		.loc 1 68 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132 0000 08B5     		push	{r3, lr}
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 3, -8
+ 135              		.cfi_offset 14, -4
+  69:.\gamecode.c  **** 
+  70:.\gamecode.c  **** 	Debug_UART_PutString("CONNECTED\n");
+ 136              		.loc 1 70 0
+ 137 0002 1C48     		ldr	r0, .L19
+ 138 0004 FFF7FEFF 		bl	Debug_UART_PutString
+ 139              	.LVL5:
+  71:.\gamecode.c  **** 
+  72:.\gamecode.c  **** 	// write ".ready"
+  73:.\gamecode.c  **** 	strcpy(bres1, "");
+ 140              		.loc 1 73 0
+ 141 0008 0022     		movs	r2, #0
+ 142 000a 1B4B     		ldr	r3, .L19+4
+ 143 000c 1A70     		strb	r2, [r3]
+  74:.\gamecode.c  **** 	while(!strcmp(bres1, "")) {
+ 144              		.loc 1 74 0
+ 145 000e 08E0     		b	.L12
+ 146              	.L13:
+  75:.\gamecode.c  **** 		esp_transmit(bstr_ready, "6");
+ 147              		.loc 1 75 0
+ 148 0010 1A48     		ldr	r0, .L19+8
+ 149 0012 1B49     		ldr	r1, .L19+12
+ 150 0014 FFF7FEFF 		bl	esp_transmit
+ 151              	.LVL6:
+  76:.\gamecode.c  ****         strncpy(bres1, recv, 1);
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 5
+
+
+ 152              		.loc 1 76 0
+ 153 0018 1748     		ldr	r0, .L19+4
+ 154 001a 1A49     		ldr	r1, .L19+16
+ 155 001c 0122     		movs	r2, #1
+ 156 001e FFF7FEFF 		bl	strncpy
+ 157              	.LVL7:
+ 158              	.L12:
+  74:.\gamecode.c  **** 	while(!strcmp(bres1, "")) {
+ 159              		.loc 1 74 0
+ 160 0022 154B     		ldr	r3, .L19+4
+ 161 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 162 0026 002B     		cmp	r3, #0
+ 163 0028 F2D0     		beq	.L13
+  77:.\gamecode.c  **** 	}
+  78:.\gamecode.c  **** 
+  79:.\gamecode.c  **** 	if(bres1[0] == 0x11){
+ 164              		.loc 1 79 0
+ 165 002a 112B     		cmp	r3, #17
+ 166 002c 05D1     		bne	.L14
+  80:.\gamecode.c  **** 		Debug_UART_PutString("Ready.");
+ 167              		.loc 1 80 0
+ 168 002e 1648     		ldr	r0, .L19+20
+ 169 0030 FFF7FEFF 		bl	Debug_UART_PutString
+ 170              	.LVL8:
+  81:.\gamecode.c  **** 		game_state = READY;
+ 171              		.loc 1 81 0
+ 172 0034 0222     		movs	r2, #2
+ 173 0036 154B     		ldr	r3, .L19+24
+ 174 0038 1A60     		str	r2, [r3]
+ 175              	.L14:
+  82:.\gamecode.c  **** 	}
+  83:.\gamecode.c  **** 
+  84:.\gamecode.c  **** 	if(bres1[0] == 0x21 || bres1[0] == '!') {
+ 176              		.loc 1 84 0
+ 177 003a 0F4B     		ldr	r3, .L19+4
+ 178 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 179 003e 212B     		cmp	r3, #33
+ 180 0040 06D1     		bne	.L15
+  85:.\gamecode.c  **** 
+  86:.\gamecode.c  **** 		Debug_UART_PutString("Your turn.");
+ 181              		.loc 1 86 0
+ 182 0042 1348     		ldr	r0, .L19+28
+ 183 0044 FFF7FEFF 		bl	Debug_UART_PutString
+ 184              	.LVL9:
+  87:.\gamecode.c  **** 		game_state = MOVING;
+ 185              		.loc 1 87 0
+ 186 0048 0422     		movs	r2, #4
+ 187 004a 104B     		ldr	r3, .L19+24
+ 188 004c 1A60     		str	r2, [r3]
+ 189 004e 0EE0     		b	.L16
+ 190              	.L15:
+  88:.\gamecode.c  **** 	}
+  89:.\gamecode.c  **** 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
+ 191              		.loc 1 89 0
+ 192 0050 222B     		cmp	r3, #34
+ 193 0052 06D1     		bne	.L17
+  90:.\gamecode.c  **** 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 6
+
+
+  91:.\gamecode.c  **** 		Debug_UART_PutString("Their turn.");
+ 194              		.loc 1 91 0
+ 195 0054 0F48     		ldr	r0, .L19+32
+ 196 0056 FFF7FEFF 		bl	Debug_UART_PutString
+ 197              	.LVL10:
+  92:.\gamecode.c  **** 		game_state = WAITING;
+ 198              		.loc 1 92 0
+ 199 005a 0322     		movs	r2, #3
+ 200 005c 0B4B     		ldr	r3, .L19+24
+ 201 005e 1A60     		str	r2, [r3]
+ 202 0060 05E0     		b	.L16
+ 203              	.L17:
+  93:.\gamecode.c  **** 	}
+  94:.\gamecode.c  **** 	else {
+  95:.\gamecode.c  **** 		Debug_UART_PutString("Connection State Failure.");
+ 204              		.loc 1 95 0
+ 205 0062 0D48     		ldr	r0, .L19+36
+ 206 0064 FFF7FEFF 		bl	Debug_UART_PutString
+ 207              	.LVL11:
+  96:.\gamecode.c  **** 		game_state = CONNECTED;
+ 208              		.loc 1 96 0
+ 209 0068 0122     		movs	r2, #1
+ 210 006a 084B     		ldr	r3, .L19+24
+ 211 006c 1A60     		str	r2, [r3]
+ 212              	.L16:
+  97:.\gamecode.c  **** 	}
+  98:.\gamecode.c  **** 
+  99:.\gamecode.c  **** 	return game_state;
+ 100:.\gamecode.c  **** }
+ 213              		.loc 1 100 0
+ 214 006e 074B     		ldr	r3, .L19+24
+ 215 0070 1868     		ldr	r0, [r3]
+ 216 0072 08BD     		pop	{r3, pc}
+ 217              	.L20:
+ 218              		.align	2
+ 219              	.L19:
+ 220 0074 30000000 		.word	.LC4
+ 221 0078 00000000 		.word	bres1
+ 222 007c 08000000 		.word	.LANCHOR0+8
+ 223 0080 3C000000 		.word	.LC5
+ 224 0084 00000000 		.word	.LANCHOR1
+ 225 0088 40000000 		.word	.LC6
+ 226 008c 00000000 		.word	game_state
+ 227 0090 48000000 		.word	.LC7
+ 228 0094 54000000 		.word	.LC8
+ 229 0098 60000000 		.word	.LC9
+ 230              		.cfi_endproc
+ 231              	.LFE65:
+ 232              		.size	state_connected, .-state_connected
+ 233              		.section	.text.state_ready,"ax",%progbits
+ 234              		.align	2
+ 235              		.global	state_ready
+ 236              		.thumb
+ 237              		.thumb_func
+ 238              		.type	state_ready, %function
+ 239              	state_ready:
+ 240              	.LFB66:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 7
+
+
+ 101:.\gamecode.c  **** 
+ 102:.\gamecode.c  **** /*
+ 103:.\gamecode.c  **** 	Runs when game_state == READY
+ 104:.\gamecode.c  **** */
+ 105:.\gamecode.c  **** int state_ready() {
+ 241              		.loc 1 105 0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245 0000 10B5     		push	{r4, lr}
+ 246              		.cfi_def_cfa_offset 8
+ 247              		.cfi_offset 4, -8
+ 248              		.cfi_offset 14, -4
+ 106:.\gamecode.c  **** 
+ 107:.\gamecode.c  **** 	Debug_UART_PutString("READY\n");
+ 249              		.loc 1 107 0
+ 250 0002 2148     		ldr	r0, .L28
+ 251 0004 FFF7FEFF 		bl	Debug_UART_PutString
+ 252              	.LVL12:
+ 108:.\gamecode.c  **** 
+ 109:.\gamecode.c  **** 	//write ".gib"
+ 110:.\gamecode.c  **** 	strcpy(bres1, "");
+ 253              		.loc 1 110 0
+ 254 0008 204C     		ldr	r4, .L28+4
+ 255 000a 0023     		movs	r3, #0
+ 256 000c 2370     		strb	r3, [r4]
+ 111:.\gamecode.c  **** 	esp_transmit(bstr_gib, "4");
+ 257              		.loc 1 111 0
+ 258 000e 2048     		ldr	r0, .L28+8
+ 259 0010 2049     		ldr	r1, .L28+12
+ 260 0012 FFF7FEFF 		bl	esp_transmit
+ 261              	.LVL13:
+ 112:.\gamecode.c  ****     strncpy(bres1, recv, 1);
+ 262              		.loc 1 112 0
+ 263 0016 2046     		mov	r0, r4
+ 264 0018 1F49     		ldr	r1, .L28+16
+ 265 001a 0122     		movs	r2, #1
+ 266 001c FFF7FEFF 		bl	strncpy
+ 267              	.LVL14:
+ 113:.\gamecode.c  ****     
+ 114:.\gamecode.c  **** 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
+ 268              		.loc 1 114 0
+ 269 0020 10E0     		b	.L22
+ 270              	.L23:
+ 115:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 116:.\gamecode.c  **** 		CyDelay(5000);
+ 271              		.loc 1 116 0
+ 272 0022 41F28830 		movw	r0, #5000
+ 273 0026 FFF7FEFF 		bl	CyDelay
+ 274              	.LVL15:
+ 117:.\gamecode.c  **** 
+ 118:.\gamecode.c  **** 		esp_transmit(bstr_gib, "4");
+ 275              		.loc 1 118 0
+ 276 002a 1948     		ldr	r0, .L28+8
+ 277 002c 1949     		ldr	r1, .L28+12
+ 278 002e FFF7FEFF 		bl	esp_transmit
+ 279              	.LVL16:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 8
+
+
+ 119:.\gamecode.c  ****         strncpy(bres1, recv, 1);
+ 280              		.loc 1 119 0
+ 281 0032 164C     		ldr	r4, .L28+4
+ 282 0034 2046     		mov	r0, r4
+ 283 0036 1849     		ldr	r1, .L28+16
+ 284 0038 0122     		movs	r2, #1
+ 285 003a FFF7FEFF 		bl	strncpy
+ 286              	.LVL17:
+ 120:.\gamecode.c  **** 
+ 121:.\gamecode.c  **** 		Debug_UART_PutString(&bres1[0]);
+ 287              		.loc 1 121 0
+ 288 003e 2046     		mov	r0, r4
+ 289 0040 FFF7FEFF 		bl	Debug_UART_PutString
+ 290              	.LVL18:
+ 291              	.L22:
+ 114:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 292              		.loc 1 114 0
+ 293 0044 114B     		ldr	r3, .L28+4
+ 294 0046 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 115:.\gamecode.c  **** 		CyDelay(5000);
+ 295              		.loc 1 115 0
+ 296 0048 A2F12103 		sub	r3, r2, #33
+ 297 004c DBB2     		uxtb	r3, r3
+ 114:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 298              		.loc 1 114 0
+ 299 004e 012B     		cmp	r3, #1
+ 300 0050 E7D8     		bhi	.L23
+ 122:.\gamecode.c  **** 	}
+ 123:.\gamecode.c  **** 
+ 124:.\gamecode.c  **** 	if(bres1[0] == 0x11) {
+ 301              		.loc 1 124 0
+ 302 0052 112A     		cmp	r2, #17
+ 303 0054 03D1     		bne	.L24
+ 125:.\gamecode.c  **** 		game_state = READY;
+ 304              		.loc 1 125 0
+ 305 0056 0222     		movs	r2, #2
+ 306 0058 104B     		ldr	r3, .L28+20
+ 307 005a 1A60     		str	r2, [r3]
+ 308 005c 10E0     		b	.L25
+ 309              	.L24:
+ 126:.\gamecode.c  **** 	} 
+ 127:.\gamecode.c  **** 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
+ 310              		.loc 1 127 0
+ 311 005e 212A     		cmp	r2, #33
+ 312 0060 06D1     		bne	.L26
+ 128:.\gamecode.c  **** 
+ 129:.\gamecode.c  **** 		Debug_UART_PutString("Your turn.");
+ 313              		.loc 1 129 0
+ 314 0062 0F48     		ldr	r0, .L28+24
+ 315 0064 FFF7FEFF 		bl	Debug_UART_PutString
+ 316              	.LVL19:
+ 130:.\gamecode.c  **** 		game_state = MOVING;
+ 317              		.loc 1 130 0
+ 318 0068 0422     		movs	r2, #4
+ 319 006a 0C4B     		ldr	r3, .L28+20
+ 320 006c 1A60     		str	r2, [r3]
+ 321 006e 07E0     		b	.L25
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 9
+
+
+ 322              	.L26:
+ 131:.\gamecode.c  **** 	} 
+ 132:.\gamecode.c  **** 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
+ 323              		.loc 1 132 0
+ 324 0070 222A     		cmp	r2, #34
+ 325 0072 05D1     		bne	.L25
+ 133:.\gamecode.c  **** 
+ 134:.\gamecode.c  **** 		Debug_UART_PutString("Their turn.");
+ 326              		.loc 1 134 0
+ 327 0074 0B48     		ldr	r0, .L28+28
+ 328 0076 FFF7FEFF 		bl	Debug_UART_PutString
+ 329              	.LVL20:
+ 135:.\gamecode.c  **** 		game_state = WAITING;
+ 330              		.loc 1 135 0
+ 331 007a 0322     		movs	r2, #3
+ 332 007c 074B     		ldr	r3, .L28+20
+ 333 007e 1A60     		str	r2, [r3]
+ 334              	.L25:
+ 136:.\gamecode.c  **** 	}
+ 137:.\gamecode.c  **** 	return game_state;
+ 138:.\gamecode.c  **** }
+ 335              		.loc 1 138 0
+ 336 0080 064B     		ldr	r3, .L28+20
+ 337 0082 1868     		ldr	r0, [r3]
+ 338 0084 10BD     		pop	{r4, pc}
+ 339              	.L29:
+ 340 0086 00BF     		.align	2
+ 341              	.L28:
+ 342 0088 7C000000 		.word	.LC10
+ 343 008c 00000000 		.word	bres1
+ 344 0090 10000000 		.word	.LANCHOR0+16
+ 345 0094 84000000 		.word	.LC11
+ 346 0098 00000000 		.word	.LANCHOR1
+ 347 009c 00000000 		.word	game_state
+ 348 00a0 48000000 		.word	.LC7
+ 349 00a4 54000000 		.word	.LC8
+ 350              		.cfi_endproc
+ 351              	.LFE66:
+ 352              		.size	state_ready, .-state_ready
+ 353              		.section	.text.state_waiting,"ax",%progbits
+ 354              		.align	2
+ 355              		.global	state_waiting
+ 356              		.thumb
+ 357              		.thumb_func
+ 358              		.type	state_waiting, %function
+ 359              	state_waiting:
+ 360              	.LFB67:
+ 139:.\gamecode.c  **** 
+ 140:.\gamecode.c  **** /*
+ 141:.\gamecode.c  **** 	Runs when game_state == WAITING
+ 142:.\gamecode.c  **** */
+ 143:.\gamecode.c  **** int state_waiting() {
+ 361              		.loc 1 143 0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 16
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 365 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 10
+
+
+ 366              		.cfi_def_cfa_offset 8
+ 367              		.cfi_offset 4, -8
+ 368              		.cfi_offset 14, -4
+ 369 0002 84B0     		sub	sp, sp, #16
+ 370              		.cfi_def_cfa_offset 24
+ 144:.\gamecode.c  **** 
+ 145:.\gamecode.c  **** 	Debug_UART_PutString("WAITING");
+ 371              		.loc 1 145 0
+ 372 0004 2F48     		ldr	r0, .L38
+ 373 0006 FFF7FEFF 		bl	Debug_UART_PutString
+ 374              	.LVL21:
+ 146:.\gamecode.c  **** 
+ 147:.\gamecode.c  **** 	// write ".gib"
+ 148:.\gamecode.c  **** 	strcpy(bres8, "");
+ 375              		.loc 1 148 0
+ 376 000a 2F4C     		ldr	r4, .L38+4
+ 377 000c 0023     		movs	r3, #0
+ 378 000e 2370     		strb	r3, [r4]
+ 149:.\gamecode.c  ****     esp_transmit(bstr_gib, "4");
+ 379              		.loc 1 149 0
+ 380 0010 2E48     		ldr	r0, .L38+8
+ 381 0012 2F49     		ldr	r1, .L38+12
+ 382 0014 FFF7FEFF 		bl	esp_transmit
+ 383              	.LVL22:
+ 150:.\gamecode.c  ****     strncpy(bres8, recv, 8);
+ 384              		.loc 1 150 0
+ 385 0018 2046     		mov	r0, r4
+ 386 001a 2E49     		ldr	r1, .L38+16
+ 387 001c 0822     		movs	r2, #8
+ 388 001e FFF7FEFF 		bl	strncpy
+ 389              	.LVL23:
+ 151:.\gamecode.c  ****     
+ 152:.\gamecode.c  **** 	while(strlen(bres8) != 8) {
+ 390              		.loc 1 152 0
+ 391 0022 17E0     		b	.L31
+ 392              	.L33:
+ 153:.\gamecode.c  **** 		CyDelay(5000);
+ 393              		.loc 1 153 0
+ 394 0024 41F28830 		movw	r0, #5000
+ 395 0028 FFF7FEFF 		bl	CyDelay
+ 396              	.LVL24:
+ 154:.\gamecode.c  **** 
+ 155:.\gamecode.c  **** 		esp_transmit(bstr_gib, "4");
+ 397              		.loc 1 155 0
+ 398 002c 2748     		ldr	r0, .L38+8
+ 399 002e 2849     		ldr	r1, .L38+12
+ 400 0030 FFF7FEFF 		bl	esp_transmit
+ 401              	.LVL25:
+ 156:.\gamecode.c  ****         strncpy(bres8, recv, 8);
+ 402              		.loc 1 156 0
+ 403 0034 244C     		ldr	r4, .L38+4
+ 404 0036 2046     		mov	r0, r4
+ 405 0038 2649     		ldr	r1, .L38+16
+ 406 003a 0822     		movs	r2, #8
+ 407 003c FFF7FEFF 		bl	strncpy
+ 408              	.LVL26:
+ 157:.\gamecode.c  ****         
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 11
+
+
+ 158:.\gamecode.c  **** 		Debug_UART_PutString(bres8);
+ 409              		.loc 1 158 0
+ 410 0040 2046     		mov	r0, r4
+ 411 0042 FFF7FEFF 		bl	Debug_UART_PutString
+ 412              	.LVL27:
+ 159:.\gamecode.c  **** 
+ 160:.\gamecode.c  **** 		if(bres8[0] == 0x31 || bres8[0] == '1'){
+ 413              		.loc 1 160 0
+ 414 0046 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 415 0048 312B     		cmp	r3, #49
+ 416 004a 03D1     		bne	.L31
+ 161:.\gamecode.c  **** 			game_state = CONNECTED;
+ 417              		.loc 1 161 0
+ 418 004c 0122     		movs	r2, #1
+ 419 004e 224B     		ldr	r3, .L38+20
+ 420 0050 1A60     		str	r2, [r3]
+ 162:.\gamecode.c  **** 			break;
+ 421              		.loc 1 162 0
+ 422 0052 04E0     		b	.L32
+ 423              	.L31:
+ 152:.\gamecode.c  **** 		CyDelay(5000);
+ 424              		.loc 1 152 0
+ 425 0054 1C48     		ldr	r0, .L38+4
+ 426 0056 FFF7FEFF 		bl	strlen
+ 427              	.LVL28:
+ 428 005a 0828     		cmp	r0, #8
+ 429 005c E2D1     		bne	.L33
+ 430              	.L32:
+ 163:.\gamecode.c  **** 		}
+ 164:.\gamecode.c  **** 	}
+ 165:.\gamecode.c  **** 	if(bres8[0] == 0x31 || bres8[0] == '1'){
+ 431              		.loc 1 165 0
+ 432 005e 1A4B     		ldr	r3, .L38+4
+ 433 0060 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 434 0062 312A     		cmp	r2, #49
+ 435 0064 03D1     		bne	.L34
+ 166:.\gamecode.c  **** 		game_state = CONNECTED;
+ 436              		.loc 1 166 0
+ 437 0066 0120     		movs	r0, #1
+ 438 0068 1B4B     		ldr	r3, .L38+20
+ 439 006a 1860     		str	r0, [r3]
+ 167:.\gamecode.c  **** 		return game_state;
+ 440              		.loc 1 167 0
+ 441 006c 27E0     		b	.L35
+ 442              	.L34:
+ 168:.\gamecode.c  **** 	}
+ 169:.\gamecode.c  **** 	char movementOpp1[4] = { bres8[1], bres8[0], bres8[3], bres8[2] };
+ 443              		.loc 1 169 0
+ 444 006e 164B     		ldr	r3, .L38+4
+ 445 0070 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2
+ 446 0072 8DF80C10 		strb	r1, [sp, #12]
+ 447 0076 8DF80D20 		strb	r2, [sp, #13]
+ 448 007a DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 449 007c 8DF80E20 		strb	r2, [sp, #14]
+ 450 0080 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 451 0082 8DF80F20 		strb	r2, [sp, #15]
+ 170:.\gamecode.c  **** 	char movementOpp2[5] = { bres8[5], bres8[4], bres8[7], bres8[6] };
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 12
+
+
+ 452              		.loc 1 170 0
+ 453 0086 0022     		movs	r2, #0
+ 454 0088 8DF80820 		strb	r2, [sp, #8]
+ 455 008c 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
+ 456 008e 8DF80420 		strb	r2, [sp, #4]
+ 457 0092 1979     		ldrb	r1, [r3, #4]	@ zero_extendqisi2
+ 458 0094 8DF80510 		strb	r1, [sp, #5]
+ 459 0098 D879     		ldrb	r0, [r3, #7]	@ zero_extendqisi2
+ 460 009a 8DF80600 		strb	r0, [sp, #6]
+ 461 009e 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 462 00a0 8DF80730 		strb	r3, [sp, #7]
+ 171:.\gamecode.c  **** 
+ 172:.\gamecode.c  **** 	if(	movementOpp2[0] != 0 && movementOpp2[1] != 0 && 
+ 463              		.loc 1 172 0
+ 464 00a4 2AB1     		cbz	r2, .L36
+ 465              		.loc 1 172 0 is_stmt 0 discriminator 1
+ 466 00a6 21B1     		cbz	r1, .L36
+ 467              		.loc 1 172 0 discriminator 2
+ 468 00a8 18B1     		cbz	r0, .L36
+ 173:.\gamecode.c  **** 		movementOpp2[2] != 0 && movementOpp2[3] != 0) {
+ 469              		.loc 1 173 0 is_stmt 1
+ 470 00aa 13B1     		cbz	r3, .L36
+ 174:.\gamecode.c  **** 		Debug_UART_PutString(movementOpp2);
+ 471              		.loc 1 174 0
+ 472 00ac 01A8     		add	r0, sp, #4
+ 473 00ae FFF7FEFF 		bl	Debug_UART_PutString
+ 474              	.LVL29:
+ 475              	.L36:
+ 175:.\gamecode.c  **** 		//movepiece(board,movementOpp2);
+ 176:.\gamecode.c  **** 	}
+ 177:.\gamecode.c  **** 	Debug_UART_PutString(movementOpp1);
+ 476              		.loc 1 177 0
+ 477 00b2 03A8     		add	r0, sp, #12
+ 478 00b4 FFF7FEFF 		bl	Debug_UART_PutString
+ 479              	.LVL30:
+ 178:.\gamecode.c  **** 	//movepiece(board,movementOpp1);
+ 179:.\gamecode.c  **** 
+ 180:.\gamecode.c  **** 	game_state = MOVING;
+ 480              		.loc 1 180 0
+ 481 00b8 0420     		movs	r0, #4
+ 482 00ba 074B     		ldr	r3, .L38+20
+ 483 00bc 1860     		str	r0, [r3]
+ 484              	.L35:
+ 181:.\gamecode.c  **** 	return game_state;
+ 182:.\gamecode.c  **** }
+ 485              		.loc 1 182 0
+ 486 00be 04B0     		add	sp, sp, #16
+ 487              		.cfi_def_cfa_offset 8
+ 488              		@ sp needed
+ 489 00c0 10BD     		pop	{r4, pc}
+ 490              	.L39:
+ 491 00c2 00BF     		.align	2
+ 492              	.L38:
+ 493 00c4 88000000 		.word	.LC12
+ 494 00c8 00000000 		.word	bres8
+ 495 00cc 10000000 		.word	.LANCHOR0+16
+ 496 00d0 84000000 		.word	.LC11
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 13
+
+
+ 497 00d4 00000000 		.word	.LANCHOR1
+ 498 00d8 00000000 		.word	game_state
+ 499              		.cfi_endproc
+ 500              	.LFE67:
+ 501              		.size	state_waiting, .-state_waiting
+ 502              		.section	.text.diff_boards,"ax",%progbits
+ 503              		.align	2
+ 504              		.global	diff_boards
+ 505              		.thumb
+ 506              		.thumb_func
+ 507              		.type	diff_boards, %function
+ 508              	diff_boards:
+ 509              	.LFB68:
+ 183:.\gamecode.c  **** 
+ 184:.\gamecode.c  **** void diff_boards(enum Diff x) {
+ 510              		.loc 1 184 0
+ 511              		.cfi_startproc
+ 512              		@ args = 0, pretend = 0, frame = 0
+ 513              		@ frame_needed = 0, uses_anonymous_args = 0
+ 514              	.LVL31:
+ 515 0000 38B5     		push	{r3, r4, r5, lr}
+ 516              		.cfi_def_cfa_offset 16
+ 517              		.cfi_offset 3, -16
+ 518              		.cfi_offset 4, -12
+ 519              		.cfi_offset 5, -8
+ 520              		.cfi_offset 14, -4
+ 185:.\gamecode.c  **** 
+ 186:.\gamecode.c  **** 	diff_loc[0][0] = 0;
+ 521              		.loc 1 186 0
+ 522 0002 3F4B     		ldr	r3, .L58
+ 523 0004 0022     		movs	r2, #0
+ 524 0006 1A60     		str	r2, [r3]
+ 187:.\gamecode.c  ****     diff_loc[0][1] = 0;
+ 525              		.loc 1 187 0
+ 526 0008 5A60     		str	r2, [r3, #4]
+ 188:.\gamecode.c  ****     diff_loc[1][0] = 0;
+ 527              		.loc 1 188 0
+ 528 000a 9A60     		str	r2, [r3, #8]
+ 189:.\gamecode.c  ****     diff_loc[1][1] = 0;
+ 529              		.loc 1 189 0
+ 530 000c DA60     		str	r2, [r3, #12]
+ 190:.\gamecode.c  **** 
+ 191:.\gamecode.c  **** 	int i, j;
+ 192:.\gamecode.c  ****     if(x == UPDATE1) {
+ 531              		.loc 1 192 0
+ 532 000e 0128     		cmp	r0, #1
+ 533 0010 38D0     		beq	.L54
+ 534 0012 1546     		mov	r5, r2
+ 535 0014 70E0     		b	.L42
+ 536              	.LVL32:
+ 537              	.L46:
+ 193:.\gamecode.c  ****         for(i = 0; i < 8; i++) {
+ 194:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 195:.\gamecode.c  **** 
+ 196:.\gamecode.c  ****     			// Pick-up location, use diff_loc[0].
+ 197:.\gamecode.c  ****     			if(initial_board[i][j] == 0x01 && update1_board[i][j] == 0x00) {
+ 538              		.loc 1 197 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 14
+
+
+ 539 0016 05EB4503 		add	r3, r5, r5, lsl #1
+ 540 001a 9B00     		lsls	r3, r3, #2
+ 541 001c 2344     		add	r3, r3, r4
+ 542 001e 394A     		ldr	r2, .L58+4
+ 543 0020 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 544 0022 012B     		cmp	r3, #1
+ 545 0024 1BD1     		bne	.L43
+ 546              		.loc 1 197 0 is_stmt 0 discriminator 1
+ 547 0026 05EB4502 		add	r2, r5, r5, lsl #1
+ 548 002a 9200     		lsls	r2, r2, #2
+ 549 002c 2244     		add	r2, r2, r4
+ 550 002e 3649     		ldr	r1, .L58+8
+ 551 0030 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 552 0032 A2B9     		cbnz	r2, .L43
+ 198:.\gamecode.c  **** 
+ 199:.\gamecode.c  ****     				// Picked up in graveyard, warn user.
+ 200:.\gamecode.c  ****     				if((j % 10) == 0 || (j % 10) == 1) {
+ 553              		.loc 1 200 0 is_stmt 1
+ 554 0034 03F16633 		add	r3, r3, #1717986918
+ 555 0038 83FB0432 		smull	r3, r2, r3, r4
+ 556 003c E317     		asrs	r3, r4, #31
+ 557 003e C3EBA203 		rsb	r3, r3, r2, asr #2
+ 558 0042 03EB8303 		add	r3, r3, r3, lsl #2
+ 559 0046 5B00     		lsls	r3, r3, #1
+ 560 0048 E31A     		subs	r3, r4, r3
+ 561 004a 012B     		cmp	r3, #1
+ 562 004c 03D8     		bhi	.L44
+ 201:.\gamecode.c  ****     					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+ 563              		.loc 1 201 0
+ 564 004e 2F48     		ldr	r0, .L58+12
+ 565 0050 FFF7FEFF 		bl	Debug_UART_PutString
+ 566              	.LVL33:
+ 567 0054 0FE0     		b	.L45
+ 568              	.L44:
+ 202:.\gamecode.c  ****     				}
+ 203:.\gamecode.c  ****     				else {
+ 204:.\gamecode.c  ****     					diff_loc[0][0] = i;
+ 569              		.loc 1 204 0
+ 570 0056 2A4B     		ldr	r3, .L58
+ 571 0058 1D60     		str	r5, [r3]
+ 205:.\gamecode.c  ****     					diff_loc[0][1] = j;
+ 572              		.loc 1 205 0
+ 573 005a 5C60     		str	r4, [r3, #4]
+ 574 005c 0BE0     		b	.L45
+ 575              	.L43:
+ 206:.\gamecode.c  ****     				}
+ 207:.\gamecode.c  ****     			}
+ 208:.\gamecode.c  ****     			// Drop-off location, use diff_loc[1].
+ 209:.\gamecode.c  ****     			else if(initial_board[i][j] == 0x00 && update1_board[i][j] == 0x01) {
+ 576              		.loc 1 209 0
+ 577 005e 53B9     		cbnz	r3, .L45
+ 578              		.loc 1 209 0 is_stmt 0 discriminator 1
+ 579 0060 05EB4503 		add	r3, r5, r5, lsl #1
+ 580 0064 9B00     		lsls	r3, r3, #2
+ 581 0066 2344     		add	r3, r3, r4
+ 582 0068 274A     		ldr	r2, .L58+8
+ 583 006a D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 15
+
+
+ 584 006c 012B     		cmp	r3, #1
+ 585 006e 02D1     		bne	.L45
+ 210:.\gamecode.c  **** 
+ 211:.\gamecode.c  ****     				diff_loc[1][0] = i;
+ 586              		.loc 1 211 0 is_stmt 1
+ 587 0070 234B     		ldr	r3, .L58
+ 588 0072 9D60     		str	r5, [r3, #8]
+ 212:.\gamecode.c  ****     				diff_loc[1][1] = j;
+ 589              		.loc 1 212 0
+ 590 0074 DC60     		str	r4, [r3, #12]
+ 591              	.L45:
+ 194:.\gamecode.c  **** 
+ 592              		.loc 1 194 0 discriminator 2
+ 593 0076 0134     		adds	r4, r4, #1
+ 594              	.LVL34:
+ 595 0078 00E0     		b	.L47
+ 596              	.LVL35:
+ 597              	.L55:
+ 598 007a 0024     		movs	r4, #0
+ 599              	.L47:
+ 600              	.LVL36:
+ 194:.\gamecode.c  **** 
+ 601              		.loc 1 194 0 is_stmt 0 discriminator 1
+ 602 007c 0B2C     		cmp	r4, #11
+ 603 007e CADD     		ble	.L46
+ 193:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 604              		.loc 1 193 0 is_stmt 1 discriminator 2
+ 605 0080 0135     		adds	r5, r5, #1
+ 606              	.LVL37:
+ 607 0082 00E0     		b	.L41
+ 608              	.LVL38:
+ 609              	.L54:
+ 610 0084 0025     		movs	r5, #0
+ 611              	.LVL39:
+ 612              	.L41:
+ 193:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 613              		.loc 1 193 0 is_stmt 0 discriminator 1
+ 614 0086 072D     		cmp	r5, #7
+ 615 0088 F7DD     		ble	.L55
+ 616 008a 38BD     		pop	{r3, r4, r5, pc}
+ 617              	.LVL40:
+ 618              	.L52:
+ 213:.\gamecode.c  ****     			}
+ 214:.\gamecode.c  ****     		}
+ 215:.\gamecode.c  ****     	}    
+ 216:.\gamecode.c  ****     }
+ 217:.\gamecode.c  ****     else {
+ 218:.\gamecode.c  ****         for(i = 0; i < 8; i++) {
+ 219:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 220:.\gamecode.c  **** 
+ 221:.\gamecode.c  ****     			// Pick-up location, use diff_loc[0].
+ 222:.\gamecode.c  ****     			if(update1_board[i][j] == 0x01 && update2_board[i][j] == 0x00) {
+ 619              		.loc 1 222 0 is_stmt 1
+ 620 008c 05EB4503 		add	r3, r5, r5, lsl #1
+ 621 0090 9B00     		lsls	r3, r3, #2
+ 622 0092 2344     		add	r3, r3, r4
+ 623 0094 1C4A     		ldr	r2, .L58+8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 16
+
+
+ 624 0096 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 625 0098 012B     		cmp	r3, #1
+ 626 009a 1BD1     		bne	.L49
+ 627              		.loc 1 222 0 is_stmt 0 discriminator 1
+ 628 009c 05EB4502 		add	r2, r5, r5, lsl #1
+ 629 00a0 9200     		lsls	r2, r2, #2
+ 630 00a2 2244     		add	r2, r2, r4
+ 631 00a4 1A49     		ldr	r1, .L58+16
+ 632 00a6 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 633 00a8 A2B9     		cbnz	r2, .L49
+ 223:.\gamecode.c  **** 
+ 224:.\gamecode.c  ****     				// Picked up in graveyard, warn user.
+ 225:.\gamecode.c  ****     				if((j % 10) == 0 || (j % 10) == 1) {
+ 634              		.loc 1 225 0 is_stmt 1
+ 635 00aa 03F16633 		add	r3, r3, #1717986918
+ 636 00ae 83FB0432 		smull	r3, r2, r3, r4
+ 637 00b2 E317     		asrs	r3, r4, #31
+ 638 00b4 C3EBA203 		rsb	r3, r3, r2, asr #2
+ 639 00b8 03EB8303 		add	r3, r3, r3, lsl #2
+ 640 00bc 5B00     		lsls	r3, r3, #1
+ 641 00be E31A     		subs	r3, r4, r3
+ 642 00c0 012B     		cmp	r3, #1
+ 643 00c2 03D8     		bhi	.L50
+ 226:.\gamecode.c  ****     					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+ 644              		.loc 1 226 0
+ 645 00c4 1148     		ldr	r0, .L58+12
+ 646 00c6 FFF7FEFF 		bl	Debug_UART_PutString
+ 647              	.LVL41:
+ 648 00ca 0FE0     		b	.L51
+ 649              	.L50:
+ 227:.\gamecode.c  ****     				}
+ 228:.\gamecode.c  ****     				else {
+ 229:.\gamecode.c  ****     					diff_loc[0][0] = i;
+ 650              		.loc 1 229 0
+ 651 00cc 0C4B     		ldr	r3, .L58
+ 652 00ce 1D60     		str	r5, [r3]
+ 230:.\gamecode.c  ****     					diff_loc[0][1] = j;
+ 653              		.loc 1 230 0
+ 654 00d0 5C60     		str	r4, [r3, #4]
+ 655 00d2 0BE0     		b	.L51
+ 656              	.L49:
+ 231:.\gamecode.c  ****     				}
+ 232:.\gamecode.c  ****     			}
+ 233:.\gamecode.c  ****     			// Drop-off location, use diff_loc[1].
+ 234:.\gamecode.c  ****     			else if(update1_board[i][j] == 0x00 && update2_board[i][j] == 0x01) {
+ 657              		.loc 1 234 0
+ 658 00d4 53B9     		cbnz	r3, .L51
+ 659              		.loc 1 234 0 is_stmt 0 discriminator 1
+ 660 00d6 05EB4503 		add	r3, r5, r5, lsl #1
+ 661 00da 9B00     		lsls	r3, r3, #2
+ 662 00dc 2344     		add	r3, r3, r4
+ 663 00de 0C4A     		ldr	r2, .L58+16
+ 664 00e0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 665 00e2 012B     		cmp	r3, #1
+ 666 00e4 02D1     		bne	.L51
+ 235:.\gamecode.c  **** 
+ 236:.\gamecode.c  ****     				diff_loc[1][0] = i;
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 17
+
+
+ 667              		.loc 1 236 0 is_stmt 1
+ 668 00e6 064B     		ldr	r3, .L58
+ 669 00e8 9D60     		str	r5, [r3, #8]
+ 237:.\gamecode.c  ****     				diff_loc[1][1] = j;
+ 670              		.loc 1 237 0
+ 671 00ea DC60     		str	r4, [r3, #12]
+ 672              	.L51:
+ 219:.\gamecode.c  **** 
+ 673              		.loc 1 219 0 discriminator 2
+ 674 00ec 0134     		adds	r4, r4, #1
+ 675              	.LVL42:
+ 676 00ee 00E0     		b	.L53
+ 677              	.LVL43:
+ 678              	.L56:
+ 679 00f0 0024     		movs	r4, #0
+ 680              	.L53:
+ 681              	.LVL44:
+ 219:.\gamecode.c  **** 
+ 682              		.loc 1 219 0 is_stmt 0 discriminator 1
+ 683 00f2 0B2C     		cmp	r4, #11
+ 684 00f4 CADD     		ble	.L52
+ 218:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 685              		.loc 1 218 0 is_stmt 1 discriminator 2
+ 686 00f6 0135     		adds	r5, r5, #1
+ 687              	.LVL45:
+ 688              	.L42:
+ 218:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 689              		.loc 1 218 0 is_stmt 0 discriminator 1
+ 690 00f8 072D     		cmp	r5, #7
+ 691 00fa F9DD     		ble	.L56
+ 692 00fc 38BD     		pop	{r3, r4, r5, pc}
+ 693              	.LVL46:
+ 694              	.L59:
+ 695 00fe 00BF     		.align	2
+ 696              	.L58:
+ 697 0100 00000000 		.word	diff_loc
+ 698 0104 00000000 		.word	initial_board
+ 699 0108 00000000 		.word	update1_board
+ 700 010c 90000000 		.word	.LC13
+ 701 0110 00000000 		.word	update2_board
+ 702              		.cfi_endproc
+ 703              	.LFE68:
+ 704              		.size	diff_boards, .-diff_boards
+ 705              		.section	.text.itoc,"ax",%progbits
+ 706              		.align	2
+ 707              		.global	itoc
+ 708              		.thumb
+ 709              		.thumb_func
+ 710              		.type	itoc, %function
+ 711              	itoc:
+ 712              	.LFB69:
+ 238:.\gamecode.c  ****     			}
+ 239:.\gamecode.c  ****     		}
+ 240:.\gamecode.c  ****     	}
+ 241:.\gamecode.c  ****     }
+ 242:.\gamecode.c  **** }
+ 243:.\gamecode.c  **** 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 18
+
+
+ 244:.\gamecode.c  **** uint8 itoc(int i) {
+ 713              		.loc 1 244 0 is_stmt 1
+ 714              		.cfi_startproc
+ 715              		@ args = 0, pretend = 0, frame = 0
+ 716              		@ frame_needed = 0, uses_anonymous_args = 0
+ 717              		@ link register save eliminated.
+ 718              	.LVL47:
+ 245:.\gamecode.c  **** 	switch(i) {
+ 719              		.loc 1 245 0
+ 720 0000 0E28     		cmp	r0, #14
+ 721 0002 25D8     		bhi	.L61
+ 722 0004 DFE800F0 		tbb	[pc, r0]
+ 723              	.L63:
+ 724 0008 08       		.byte	(.L62-.L63)/2
+ 725 0009 26       		.byte	(.L78-.L63)/2
+ 726 000a 0A       		.byte	(.L65-.L63)/2
+ 727 000b 0C       		.byte	(.L66-.L63)/2
+ 728 000c 0E       		.byte	(.L67-.L63)/2
+ 729 000d 10       		.byte	(.L68-.L63)/2
+ 730 000e 12       		.byte	(.L69-.L63)/2
+ 731 000f 14       		.byte	(.L70-.L63)/2
+ 732 0010 16       		.byte	(.L71-.L63)/2
+ 733 0011 18       		.byte	(.L72-.L63)/2
+ 734 0012 1A       		.byte	(.L73-.L63)/2
+ 735 0013 1C       		.byte	(.L74-.L63)/2
+ 736 0014 1E       		.byte	(.L75-.L63)/2
+ 737 0015 20       		.byte	(.L76-.L63)/2
+ 738 0016 22       		.byte	(.L77-.L63)/2
+ 739 0017 00       		.p2align 1
+ 740              	.L62:
+ 246:.\gamecode.c  **** 		case 0: return 0x00;
+ 741              		.loc 1 246 0
+ 742 0018 0020     		movs	r0, #0
+ 743              	.LVL48:
+ 744 001a 7047     		bx	lr
+ 745              	.LVL49:
+ 746              	.L65:
+ 247:.\gamecode.c  **** 		case 1: return 0x01;
+ 248:.\gamecode.c  **** 		case 2: return 0x02;
+ 747              		.loc 1 248 0
+ 748 001c 0220     		movs	r0, #2
+ 749              	.LVL50:
+ 750 001e 7047     		bx	lr
+ 751              	.LVL51:
+ 752              	.L66:
+ 249:.\gamecode.c  **** 		case 3: return 0x03;
+ 753              		.loc 1 249 0
+ 754 0020 0320     		movs	r0, #3
+ 755              	.LVL52:
+ 756 0022 7047     		bx	lr
+ 757              	.LVL53:
+ 758              	.L67:
+ 250:.\gamecode.c  **** 		case 4: return 0x04;
+ 759              		.loc 1 250 0
+ 760 0024 0420     		movs	r0, #4
+ 761              	.LVL54:
+ 762 0026 7047     		bx	lr
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 19
+
+
+ 763              	.LVL55:
+ 764              	.L68:
+ 251:.\gamecode.c  **** 		case 5: return 0x05;
+ 765              		.loc 1 251 0
+ 766 0028 0520     		movs	r0, #5
+ 767              	.LVL56:
+ 768 002a 7047     		bx	lr
+ 769              	.LVL57:
+ 770              	.L69:
+ 252:.\gamecode.c  **** 		case 6: return 0x06;
+ 771              		.loc 1 252 0
+ 772 002c 0620     		movs	r0, #6
+ 773              	.LVL58:
+ 774 002e 7047     		bx	lr
+ 775              	.LVL59:
+ 776              	.L70:
+ 253:.\gamecode.c  **** 		case 7: return 0x07;
+ 777              		.loc 1 253 0
+ 778 0030 0720     		movs	r0, #7
+ 779              	.LVL60:
+ 780 0032 7047     		bx	lr
+ 781              	.LVL61:
+ 782              	.L71:
+ 254:.\gamecode.c  **** 		case 8: return 0x08;
+ 783              		.loc 1 254 0
+ 784 0034 0820     		movs	r0, #8
+ 785              	.LVL62:
+ 786 0036 7047     		bx	lr
+ 787              	.LVL63:
+ 788              	.L72:
+ 255:.\gamecode.c  **** 		case 9: return 0x09;
+ 789              		.loc 1 255 0
+ 790 0038 0920     		movs	r0, #9
+ 791              	.LVL64:
+ 792 003a 7047     		bx	lr
+ 793              	.LVL65:
+ 794              	.L73:
+ 256:.\gamecode.c  **** 		case 10: return 0x0A;
+ 795              		.loc 1 256 0
+ 796 003c 0A20     		movs	r0, #10
+ 797              	.LVL66:
+ 798 003e 7047     		bx	lr
+ 799              	.LVL67:
+ 800              	.L74:
+ 257:.\gamecode.c  **** 		case 11: return 0x0B;
+ 801              		.loc 1 257 0
+ 802 0040 0B20     		movs	r0, #11
+ 803              	.LVL68:
+ 804 0042 7047     		bx	lr
+ 805              	.LVL69:
+ 806              	.L75:
+ 258:.\gamecode.c  **** 		case 12: return 0x0C;
+ 807              		.loc 1 258 0
+ 808 0044 0C20     		movs	r0, #12
+ 809              	.LVL70:
+ 810 0046 7047     		bx	lr
+ 811              	.LVL71:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 20
+
+
+ 812              	.L76:
+ 259:.\gamecode.c  **** 		case 13: return 0x0D;
+ 813              		.loc 1 259 0
+ 814 0048 0D20     		movs	r0, #13
+ 815              	.LVL72:
+ 816 004a 7047     		bx	lr
+ 817              	.LVL73:
+ 818              	.L77:
+ 260:.\gamecode.c  **** 		case 14: return 0x0E;
+ 819              		.loc 1 260 0
+ 820 004c 0E20     		movs	r0, #14
+ 821              	.LVL74:
+ 822 004e 7047     		bx	lr
+ 823              	.LVL75:
+ 824              	.L61:
+ 261:.\gamecode.c  **** 		default: return 0x0F;
+ 825              		.loc 1 261 0
+ 826 0050 0F20     		movs	r0, #15
+ 827              	.LVL76:
+ 828 0052 7047     		bx	lr
+ 829              	.LVL77:
+ 830              	.L78:
+ 247:.\gamecode.c  **** 		case 2: return 0x02;
+ 831              		.loc 1 247 0
+ 832 0054 0120     		movs	r0, #1
+ 833              	.LVL78:
+ 262:.\gamecode.c  **** 	}
+ 263:.\gamecode.c  **** }
+ 834              		.loc 1 263 0
+ 835 0056 7047     		bx	lr
+ 836              		.cfi_endproc
+ 837              	.LFE69:
+ 838              		.size	itoc, .-itoc
+ 839              		.section	.text.state_moving,"ax",%progbits
+ 840              		.align	2
+ 841              		.global	state_moving
+ 842              		.thumb
+ 843              		.thumb_func
+ 844              		.type	state_moving, %function
+ 845              	state_moving:
+ 846              	.LFB70:
+ 264:.\gamecode.c  **** 
+ 265:.\gamecode.c  **** /*
+ 266:.\gamecode.c  **** 	Runs when game_state == MOVING
+ 267:.\gamecode.c  **** 	Helpers: diff_boards(bold, bnew)
+ 268:.\gamecode.c  **** */
+ 269:.\gamecode.c  **** int state_moving() {
+ 847              		.loc 1 269 0
+ 848              		.cfi_startproc
+ 849              		@ args = 0, pretend = 0, frame = 56
+ 850              		@ frame_needed = 0, uses_anonymous_args = 0
+ 851 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 852              		.cfi_def_cfa_offset 20
+ 853              		.cfi_offset 4, -20
+ 854              		.cfi_offset 5, -16
+ 855              		.cfi_offset 6, -12
+ 856              		.cfi_offset 7, -8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 21
+
+
+ 857              		.cfi_offset 14, -4
+ 858 0002 8FB0     		sub	sp, sp, #60
+ 859              		.cfi_def_cfa_offset 80
+ 270:.\gamecode.c  **** 
+ 271:.\gamecode.c  **** 	Debug_UART_PutString("MOVING");
+ 860              		.loc 1 271 0
+ 861 0004 7248     		ldr	r0, .L96
+ 862 0006 FFF7FEFF 		bl	Debug_UART_PutString
+ 863              	.LVL79:
+ 272:.\gamecode.c  **** 
+ 273:.\gamecode.c  **** 	// initial_board holds the state of the board just before this call.
+ 274:.\gamecode.c  **** 	read_reed_switches();
+ 864              		.loc 1 274 0
+ 865 000a FFF7FEFF 		bl	read_reed_switches
+ 866              	.LVL80:
+ 275:.\gamecode.c  **** 	memcpy(&initial_board, &board, sizeof(board));
+ 867              		.loc 1 275 0
+ 868 000e 7148     		ldr	r0, .L96+4
+ 869 0010 7149     		ldr	r1, .L96+8
+ 870 0012 6022     		movs	r2, #96
+ 871 0014 FFF7FEFF 		bl	memcpy
+ 872              	.LVL81:
+ 276:.\gamecode.c  **** 
+ 277:.\gamecode.c  **** 	// Locations of piece movement.
+ 278:.\gamecode.c  **** 	int move1[2][2] = { { 0, 0 }, { 0, 0 } };
+ 873              		.loc 1 278 0
+ 874 0018 0025     		movs	r5, #0
+ 875 001a 0A95     		str	r5, [sp, #40]
+ 876 001c 0B95     		str	r5, [sp, #44]
+ 877 001e 0C95     		str	r5, [sp, #48]
+ 878 0020 0D95     		str	r5, [sp, #52]
+ 279:.\gamecode.c  **** 	int move2[2][2] = { { 0, 0 }, { 0, 0 } };
+ 879              		.loc 1 279 0
+ 880 0022 0695     		str	r5, [sp, #24]
+ 881 0024 0795     		str	r5, [sp, #28]
+ 882 0026 0895     		str	r5, [sp, #32]
+ 883 0028 0995     		str	r5, [sp, #36]
+ 884              	.LVL82:
+ 280:.\gamecode.c  **** 	char locs[4] = { 0x00, 0x00, 0x00, 0x00 };
+ 281:.\gamecode.c  **** 
+ 282:.\gamecode.c  **** 	// Flag for castling.
+ 283:.\gamecode.c  **** 	int castling = 0;
+ 284:.\gamecode.c  **** 
+ 285:.\gamecode.c  **** 	while(  move1[0][0] == 0 && 
+ 885              		.loc 1 285 0
+ 886 002a 25E0     		b	.L80
+ 887              	.LVL83:
+ 888              	.L84:
+ 286:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 287:.\gamecode.c  ****             move1[1][0] == 0 &&
+ 288:.\gamecode.c  ****             move1[1][1] == 0) {
+ 289:.\gamecode.c  **** 
+ 290:.\gamecode.c  **** 		CyDelay(1000);
+ 889              		.loc 1 290 0
+ 890 002c 4FF47A70 		mov	r0, #1000
+ 891 0030 FFF7FEFF 		bl	CyDelay
+ 892              	.LVL84:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 22
+
+
+ 291:.\gamecode.c  **** 		read_reed_switches();
+ 893              		.loc 1 291 0
+ 894 0034 FFF7FEFF 		bl	read_reed_switches
+ 895              	.LVL85:
+ 292:.\gamecode.c  **** 		memcpy(&update1_board, &board, sizeof(board));
+ 896              		.loc 1 292 0
+ 897 0038 6848     		ldr	r0, .L96+12
+ 898 003a 6749     		ldr	r1, .L96+8
+ 899 003c 6022     		movs	r2, #96
+ 900 003e FFF7FEFF 		bl	memcpy
+ 901              	.LVL86:
+ 293:.\gamecode.c  **** 
+ 294:.\gamecode.c  **** 		diff_boards(UPDATE1);
+ 902              		.loc 1 294 0
+ 903 0042 0120     		movs	r0, #1
+ 904 0044 FFF7FEFF 		bl	diff_boards
+ 905              	.LVL87:
+ 295:.\gamecode.c  **** 
+ 296:.\gamecode.c  ****         move1[0][0] = diff_loc[0][0];
+ 906              		.loc 1 296 0
+ 907 0048 654B     		ldr	r3, .L96+16
+ 908 004a 1A68     		ldr	r2, [r3]
+ 909 004c 0A92     		str	r2, [sp, #40]
+ 297:.\gamecode.c  ****         move1[0][1] = diff_loc[0][1];
+ 910              		.loc 1 297 0
+ 911 004e 5968     		ldr	r1, [r3, #4]
+ 912 0050 0B91     		str	r1, [sp, #44]
+ 298:.\gamecode.c  ****         move1[1][0] = diff_loc[1][0];
+ 913              		.loc 1 298 0
+ 914 0052 9868     		ldr	r0, [r3, #8]
+ 915 0054 0C90     		str	r0, [sp, #48]
+ 299:.\gamecode.c  ****         move1[1][1] = diff_loc[1][1];
+ 916              		.loc 1 299 0
+ 917 0056 DB68     		ldr	r3, [r3, #12]
+ 918 0058 0D93     		str	r3, [sp, #52]
+ 300:.\gamecode.c  ****         
+ 301:.\gamecode.c  **** 		if( ((move1[0][0] == 0 && move1[0][1] == 6) || 
+ 919              		.loc 1 301 0
+ 920 005a 0AB1     		cbz	r2, .L81
+ 921              		.loc 1 301 0 is_stmt 0 discriminator 2
+ 922 005c 072A     		cmp	r2, #7
+ 923 005e 0BD1     		bne	.L80
+ 924              	.L81:
+ 925              		.loc 1 301 0 discriminator 3
+ 926 0060 0629     		cmp	r1, #6
+ 927 0062 09D1     		bne	.L80
+ 302:.\gamecode.c  ****             (move1[0][0] == 7 && move1[0][1] == 6 )) &&
+ 303:.\gamecode.c  **** 			((move1[1][1] - move1[0][1]) == -2 || 
+ 928              		.loc 1 303 0 is_stmt 1
+ 929 0064 591A     		subs	r1, r3, r1
+ 302:.\gamecode.c  ****             (move1[0][0] == 7 && move1[0][1] == 6 )) &&
+ 930              		.loc 1 302 0
+ 931 0066 11F1020F 		cmn	r1, #2
+ 932 006a 02D0     		beq	.L93
+ 933              		.loc 1 303 0
+ 934 006c 0229     		cmp	r1, #2
+ 935 006e 03D1     		bne	.L80
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 23
+
+
+ 936 0070 01E0     		b	.L94
+ 937              	.L93:
+ 304:.\gamecode.c  **** 			(move1[1][1] - move1[0][1]) == 2)) {
+ 305:.\gamecode.c  **** 
+ 306:.\gamecode.c  **** 			castling = 1;
+ 938              		.loc 1 306 0
+ 939 0072 0125     		movs	r5, #1
+ 940              	.LVL88:
+ 941 0074 00E0     		b	.L80
+ 942              	.LVL89:
+ 943              	.L94:
+ 944 0076 0125     		movs	r5, #1
+ 945              	.LVL90:
+ 946              	.L80:
+ 285:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 947              		.loc 1 285 0
+ 948 0078 0A9C     		ldr	r4, [sp, #40]
+ 949 007a 34B9     		cbnz	r4, .L83
+ 285:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 950              		.loc 1 285 0 is_stmt 0 discriminator 1
+ 951 007c 0B9B     		ldr	r3, [sp, #44]
+ 952 007e 23B9     		cbnz	r3, .L83
+ 286:.\gamecode.c  ****             move1[1][0] == 0 &&
+ 953              		.loc 1 286 0 is_stmt 1
+ 954 0080 0C9B     		ldr	r3, [sp, #48]
+ 955 0082 13B9     		cbnz	r3, .L83
+ 287:.\gamecode.c  ****             move1[1][1] == 0) {
+ 956              		.loc 1 287 0
+ 957 0084 0D9B     		ldr	r3, [sp, #52]
+ 958 0086 002B     		cmp	r3, #0
+ 959 0088 D0D0     		beq	.L84
+ 960              	.L83:
+ 307:.\gamecode.c  **** 		}
+ 308:.\gamecode.c  **** 	}
+ 309:.\gamecode.c  **** 	locs[0] = itoc(move1[0][1]); 
+ 961              		.loc 1 309 0
+ 962 008a 0B98     		ldr	r0, [sp, #44]
+ 963 008c FFF7FEFF 		bl	itoc
+ 964              	.LVL91:
+ 965 0090 8DF81400 		strb	r0, [sp, #20]
+ 310:.\gamecode.c  **** 	locs[1]	= itoc(move1[0][0]); 
+ 966              		.loc 1 310 0
+ 967 0094 2046     		mov	r0, r4
+ 968 0096 FFF7FEFF 		bl	itoc
+ 969              	.LVL92:
+ 970 009a 8DF81500 		strb	r0, [sp, #21]
+ 311:.\gamecode.c  **** 	locs[2]	= itoc(move1[1][1]); 
+ 971              		.loc 1 311 0
+ 972 009e 0D9C     		ldr	r4, [sp, #52]
+ 973 00a0 2046     		mov	r0, r4
+ 974 00a2 FFF7FEFF 		bl	itoc
+ 975              	.LVL93:
+ 976 00a6 8DF81600 		strb	r0, [sp, #22]
+ 312:.\gamecode.c  **** 	locs[3]	= itoc(move1[1][0]);
+ 977              		.loc 1 312 0
+ 978 00aa 0C98     		ldr	r0, [sp, #48]
+ 979 00ac FFF7FEFF 		bl	itoc
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 24
+
+
+ 980              	.LVL94:
+ 981 00b0 8DF81700 		strb	r0, [sp, #23]
+ 313:.\gamecode.c  **** 
+ 314:.\gamecode.c  **** 	// Moved piece to graveyard, get corresponding attack OR castling.
+ 315:.\gamecode.c  **** 	if((move1[1][1] % 10) == 0 || (move1[1][1] % 10) == 1 || castling) {
+ 982              		.loc 1 315 0
+ 983 00b4 4B4B     		ldr	r3, .L96+20
+ 984 00b6 83FB0432 		smull	r3, r2, r3, r4
+ 985 00ba E317     		asrs	r3, r4, #31
+ 986 00bc C3EBA203 		rsb	r3, r3, r2, asr #2
+ 987 00c0 03EB8303 		add	r3, r3, r3, lsl #2
+ 988 00c4 5B00     		lsls	r3, r3, #1
+ 989 00c6 E31A     		subs	r3, r4, r3
+ 990 00c8 012B     		cmp	r3, #1
+ 991 00ca 2CD9     		bls	.L87
+ 992              		.loc 1 315 0 is_stmt 0 discriminator 1
+ 993 00cc 5DBB     		cbnz	r5, .L87
+ 994 00ce 33E0     		b	.L86
+ 995              	.L88:
+ 316:.\gamecode.c  **** 
+ 317:.\gamecode.c  **** 		while(  move2[0][0] == 0 && 
+ 318:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 319:.\gamecode.c  ****                 move2[1][0] == 0 &&
+ 320:.\gamecode.c  ****                 move2[1][1] == 0) {
+ 321:.\gamecode.c  **** 
+ 322:.\gamecode.c  **** 			CyDelay(1000);
+ 996              		.loc 1 322 0 is_stmt 1
+ 997 00d0 4FF47A70 		mov	r0, #1000
+ 998 00d4 FFF7FEFF 		bl	CyDelay
+ 999              	.LVL95:
+ 323:.\gamecode.c  **** 			read_reed_switches();
+ 1000              		.loc 1 323 0
+ 1001 00d8 FFF7FEFF 		bl	read_reed_switches
+ 1002              	.LVL96:
+ 324:.\gamecode.c  **** 			memcpy(&update2_board, &board, sizeof(board));
+ 1003              		.loc 1 324 0
+ 1004 00dc 4248     		ldr	r0, .L96+24
+ 1005 00de 3E49     		ldr	r1, .L96+8
+ 1006 00e0 6022     		movs	r2, #96
+ 1007 00e2 FFF7FEFF 		bl	memcpy
+ 1008              	.LVL97:
+ 325:.\gamecode.c  **** 
+ 326:.\gamecode.c  ****             diff_boards(UPDATE2);
+ 1009              		.loc 1 326 0
+ 1010 00e6 0220     		movs	r0, #2
+ 1011 00e8 FFF7FEFF 		bl	diff_boards
+ 1012              	.LVL98:
+ 327:.\gamecode.c  **** 
+ 328:.\gamecode.c  ****             move2[0][0] = diff_loc[0][0];
+ 1013              		.loc 1 328 0
+ 1014 00ec 3C4B     		ldr	r3, .L96+16
+ 1015 00ee 1F68     		ldr	r7, [r3]
+ 1016 00f0 0697     		str	r7, [sp, #24]
+ 329:.\gamecode.c  ****             move2[0][1] = diff_loc[0][1];
+ 1017              		.loc 1 329 0
+ 1018 00f2 5868     		ldr	r0, [r3, #4]
+ 1019 00f4 0790     		str	r0, [sp, #28]
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 25
+
+
+ 330:.\gamecode.c  ****             move2[1][0] = diff_loc[1][0];
+ 1020              		.loc 1 330 0
+ 1021 00f6 9C68     		ldr	r4, [r3, #8]
+ 1022 00f8 0894     		str	r4, [sp, #32]
+ 331:.\gamecode.c  ****             move2[1][1] = diff_loc[1][1];
+ 1023              		.loc 1 331 0
+ 1024 00fa DE68     		ldr	r6, [r3, #12]
+ 1025 00fc 0996     		str	r6, [sp, #36]
+ 332:.\gamecode.c  ****         
+ 333:.\gamecode.c  **** 			if(!castling) {
+ 1026              		.loc 1 333 0
+ 1027 00fe 95B9     		cbnz	r5, .L87
+ 334:.\gamecode.c  **** 	            locs[0] = itoc(move2[0][1]); 
+ 1028              		.loc 1 334 0
+ 1029 0100 FFF7FEFF 		bl	itoc
+ 1030              	.LVL99:
+ 1031 0104 8DF81400 		strb	r0, [sp, #20]
+ 335:.\gamecode.c  **** 	            locs[1]	= itoc(move2[0][0]); 
+ 1032              		.loc 1 335 0
+ 1033 0108 3846     		mov	r0, r7
+ 1034 010a FFF7FEFF 		bl	itoc
+ 1035              	.LVL100:
+ 1036 010e 8DF81500 		strb	r0, [sp, #21]
+ 336:.\gamecode.c  **** 	            locs[2]	= itoc(move2[1][1]); 
+ 1037              		.loc 1 336 0
+ 1038 0112 3046     		mov	r0, r6
+ 1039 0114 FFF7FEFF 		bl	itoc
+ 1040              	.LVL101:
+ 1041 0118 8DF81600 		strb	r0, [sp, #22]
+ 337:.\gamecode.c  **** 	            locs[3]	= itoc(move2[1][0]);
+ 1042              		.loc 1 337 0
+ 1043 011c 2046     		mov	r0, r4
+ 1044 011e FFF7FEFF 		bl	itoc
+ 1045              	.LVL102:
+ 1046 0122 8DF81700 		strb	r0, [sp, #23]
+ 1047              	.L87:
+ 317:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 1048              		.loc 1 317 0
+ 1049 0126 069B     		ldr	r3, [sp, #24]
+ 1050 0128 33B9     		cbnz	r3, .L86
+ 317:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 1051              		.loc 1 317 0 is_stmt 0 discriminator 1
+ 1052 012a 079B     		ldr	r3, [sp, #28]
+ 1053 012c 23B9     		cbnz	r3, .L86
+ 318:.\gamecode.c  ****                 move2[1][0] == 0 &&
+ 1054              		.loc 1 318 0 is_stmt 1
+ 1055 012e 089B     		ldr	r3, [sp, #32]
+ 1056 0130 13B9     		cbnz	r3, .L86
+ 319:.\gamecode.c  ****                 move2[1][1] == 0) {
+ 1057              		.loc 1 319 0
+ 1058 0132 099B     		ldr	r3, [sp, #36]
+ 1059 0134 002B     		cmp	r3, #0
+ 1060 0136 CBD0     		beq	.L88
+ 1061              	.L86:
+ 338:.\gamecode.c  **** 			}
+ 339:.\gamecode.c  **** 		}
+ 340:.\gamecode.c  **** 	}
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 26
+
+
+ 341:.\gamecode.c  **** 	// Construct message to send to server.
+ 342:.\gamecode.c  **** 	// ".move (space) fromCol (s) fromRow (s) toCol (s) toRow"
+ 343:.\gamecode.c  **** 	char msg[13] = {0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
+ 1062              		.loc 1 343 0
+ 1063 0138 2E23     		movs	r3, #46
+ 1064 013a 8DF80430 		strb	r3, [sp, #4]
+ 1065 013e 6D23     		movs	r3, #109
+ 1066 0140 8DF80530 		strb	r3, [sp, #5]
+ 1067 0144 6F23     		movs	r3, #111
+ 1068 0146 8DF80630 		strb	r3, [sp, #6]
+ 1069 014a 7623     		movs	r3, #118
+ 1070 014c 8DF80730 		strb	r3, [sp, #7]
+ 1071 0150 6523     		movs	r3, #101
+ 1072 0152 8DF80830 		strb	r3, [sp, #8]
+ 1073 0156 2023     		movs	r3, #32
+ 1074 0158 8DF80930 		strb	r3, [sp, #9]
+ 344:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1075              		.loc 1 344 0
+ 1076 015c 9DF81420 		ldrb	r2, [sp, #20]	@ zero_extendqisi2
+ 343:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1077              		.loc 1 343 0
+ 1078 0160 8DF80A20 		strb	r2, [sp, #10]
+ 1079 0164 8DF80B30 		strb	r3, [sp, #11]
+ 1080              		.loc 1 344 0
+ 1081 0168 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
+ 343:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1082              		.loc 1 343 0
+ 1083 016c 8DF80C20 		strb	r2, [sp, #12]
+ 1084 0170 8DF80D30 		strb	r3, [sp, #13]
+ 1085              		.loc 1 344 0
+ 1086 0174 9DF81620 		ldrb	r2, [sp, #22]	@ zero_extendqisi2
+ 343:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1087              		.loc 1 343 0
+ 1088 0178 8DF80E20 		strb	r2, [sp, #14]
+ 1089 017c 8DF80F30 		strb	r3, [sp, #15]
+ 1090              		.loc 1 344 0
+ 1091 0180 9DF81730 		ldrb	r3, [sp, #23]	@ zero_extendqisi2
+ 343:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1092              		.loc 1 343 0
+ 1093 0184 8DF81030 		strb	r3, [sp, #16]
+ 345:.\gamecode.c  **** 
+ 346:.\gamecode.c  **** 	strcpy(bres9, "");
+ 1094              		.loc 1 346 0
+ 1095 0188 0022     		movs	r2, #0
+ 1096 018a 184B     		ldr	r3, .L96+28
+ 1097 018c 1A70     		strb	r2, [r3]
+ 347:.\gamecode.c  **** 	while(!strcmp(bres9, "")) {
+ 1098              		.loc 1 347 0
+ 1099 018e 08E0     		b	.L89
+ 1100              	.L90:
+ 348:.\gamecode.c  **** 		esp_transmit(msg, "13");
+ 1101              		.loc 1 348 0
+ 1102 0190 01A8     		add	r0, sp, #4
+ 1103 0192 1749     		ldr	r1, .L96+32
+ 1104 0194 FFF7FEFF 		bl	esp_transmit
+ 1105              	.LVL103:
+ 349:.\gamecode.c  **** 	    strncpy(bres9, recv, 9);
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 27
+
+
+ 1106              		.loc 1 349 0
+ 1107 0198 1448     		ldr	r0, .L96+28
+ 1108 019a 1649     		ldr	r1, .L96+36
+ 1109 019c 0922     		movs	r2, #9
+ 1110 019e FFF7FEFF 		bl	strncpy
+ 1111              	.LVL104:
+ 1112              	.L89:
+ 347:.\gamecode.c  **** 	while(!strcmp(bres9, "")) {
+ 1113              		.loc 1 347 0
+ 1114 01a2 124B     		ldr	r3, .L96+28
+ 1115 01a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1116 01a6 002B     		cmp	r3, #0
+ 1117 01a8 F2D0     		beq	.L90
+ 350:.\gamecode.c  ****     }
+ 351:.\gamecode.c  **** 
+ 352:.\gamecode.c  **** 	if(bres9[0] != 0x01) {
+ 1118              		.loc 1 352 0
+ 1119 01aa 012B     		cmp	r3, #1
+ 1120 01ac 06D0     		beq	.L91
+ 353:.\gamecode.c  **** 		Debug_UART_PutString("Invalid move, please undo changes.\n");
+ 1121              		.loc 1 353 0
+ 1122 01ae 1248     		ldr	r0, .L96+40
+ 1123 01b0 FFF7FEFF 		bl	Debug_UART_PutString
+ 1124              	.LVL105:
+ 354:.\gamecode.c  **** 		game_state = MOVING;
+ 1125              		.loc 1 354 0
+ 1126 01b4 0422     		movs	r2, #4
+ 1127 01b6 114B     		ldr	r3, .L96+44
+ 1128 01b8 1A60     		str	r2, [r3]
+ 1129 01ba 05E0     		b	.L92
+ 1130              	.L91:
+ 355:.\gamecode.c  **** 	}
+ 356:.\gamecode.c  **** 	else {
+ 357:.\gamecode.c  **** 		Debug_UART_PutString("Valid move.\n");
+ 1131              		.loc 1 357 0
+ 1132 01bc 1048     		ldr	r0, .L96+48
+ 1133 01be FFF7FEFF 		bl	Debug_UART_PutString
+ 1134              	.LVL106:
+ 358:.\gamecode.c  **** 		game_state = WAITING;
+ 1135              		.loc 1 358 0
+ 1136 01c2 0322     		movs	r2, #3
+ 1137 01c4 0D4B     		ldr	r3, .L96+44
+ 1138 01c6 1A60     		str	r2, [r3]
+ 1139              	.L92:
+ 359:.\gamecode.c  **** 	}
+ 360:.\gamecode.c  **** 	return game_state;
+ 361:.\gamecode.c  **** }
+ 1140              		.loc 1 361 0
+ 1141 01c8 0C4B     		ldr	r3, .L96+44
+ 1142 01ca 1868     		ldr	r0, [r3]
+ 1143 01cc 0FB0     		add	sp, sp, #60
+ 1144              		.cfi_def_cfa_offset 20
+ 1145              		@ sp needed
+ 1146 01ce F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1147              	.LVL107:
+ 1148              	.L97:
+ 1149              		.align	2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 28
+
+
+ 1150              	.L96:
+ 1151 01d0 B4000000 		.word	.LC14
+ 1152 01d4 00000000 		.word	initial_board
+ 1153 01d8 00000000 		.word	board
+ 1154 01dc 00000000 		.word	update1_board
+ 1155 01e0 00000000 		.word	diff_loc
+ 1156 01e4 67666666 		.word	1717986919
+ 1157 01e8 00000000 		.word	update2_board
+ 1158 01ec 00000000 		.word	bres9
+ 1159 01f0 BC000000 		.word	.LC15
+ 1160 01f4 00000000 		.word	.LANCHOR1
+ 1161 01f8 C0000000 		.word	.LC16
+ 1162 01fc 00000000 		.word	game_state
+ 1163 0200 E4000000 		.word	.LC17
+ 1164              		.cfi_endproc
+ 1165              	.LFE70:
+ 1166              		.size	state_moving, .-state_moving
+ 1167              		.section	.text.game,"ax",%progbits
+ 1168              		.align	2
+ 1169              		.global	game
+ 1170              		.thumb
+ 1171              		.thumb_func
+ 1172              		.type	game, %function
+ 1173              	game:
+ 1174              	.LFB71:
+ 362:.\gamecode.c  **** 
+ 363:.\gamecode.c  **** int game() {
+ 1175              		.loc 1 363 0
+ 1176              		.cfi_startproc
+ 1177              		@ Volatile: function does not return.
+ 1178              		@ args = 0, pretend = 0, frame = 0
+ 1179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1180 0000 08B5     		push	{r3, lr}
+ 1181              		.cfi_def_cfa_offset 8
+ 1182              		.cfi_offset 3, -8
+ 1183              		.cfi_offset 14, -4
+ 364:.\gamecode.c  **** 
+ 365:.\gamecode.c  **** 	game_state = NOTCONNECTED;
+ 1184              		.loc 1 365 0
+ 1185 0002 114C     		ldr	r4, .L106
+ 1186 0004 0023     		movs	r3, #0
+ 1187 0006 2360     		str	r3, [r4]
+ 366:.\gamecode.c  **** 
+ 367:.\gamecode.c  **** 	game_state = state_notconnected();
+ 1188              		.loc 1 367 0
+ 1189 0008 FFF7FEFF 		bl	state_notconnected
+ 1190              	.LVL108:
+ 1191 000c 2060     		str	r0, [r4]
+ 1192              	.L99:
+ 368:.\gamecode.c  **** 
+ 369:.\gamecode.c  **** 	while(1) {
+ 370:.\gamecode.c  **** 
+ 371:.\gamecode.c  **** 		if(game_state == NOTCONNECTED) { 
+ 1193              		.loc 1 371 0
+ 1194 000e 0E4B     		ldr	r3, .L106
+ 1195 0010 1B68     		ldr	r3, [r3]
+ 1196 0012 2BB9     		cbnz	r3, .L100
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 29
+
+
+ 372:.\gamecode.c  **** 			Debug_UART_PutString("Attempting to connect again.\n");
+ 1197              		.loc 1 372 0
+ 1198 0014 0D48     		ldr	r0, .L106+4
+ 1199 0016 FFF7FEFF 		bl	Debug_UART_PutString
+ 1200              	.LVL109:
+ 373:.\gamecode.c  **** 			state_notconnected(); 
+ 1201              		.loc 1 373 0
+ 1202 001a FFF7FEFF 		bl	state_notconnected
+ 1203              	.LVL110:
+ 1204 001e F6E7     		b	.L99
+ 1205              	.L100:
+ 374:.\gamecode.c  **** 		}
+ 375:.\gamecode.c  **** 
+ 376:.\gamecode.c  **** 		else if(game_state == CONNECTED) {
+ 1206              		.loc 1 376 0
+ 1207 0020 012B     		cmp	r3, #1
+ 1208 0022 02D1     		bne	.L102
+ 377:.\gamecode.c  **** 		 	state_connected();
+ 1209              		.loc 1 377 0
+ 1210 0024 FFF7FEFF 		bl	state_connected
+ 1211              	.LVL111:
+ 1212 0028 F1E7     		b	.L99
+ 1213              	.L102:
+ 378:.\gamecode.c  **** 		}
+ 379:.\gamecode.c  **** 
+ 380:.\gamecode.c  **** 		else if(game_state == READY) {
+ 1214              		.loc 1 380 0
+ 1215 002a 022B     		cmp	r3, #2
+ 1216 002c 02D1     		bne	.L103
+ 381:.\gamecode.c  **** 		 	state_ready();
+ 1217              		.loc 1 381 0
+ 1218 002e FFF7FEFF 		bl	state_ready
+ 1219              	.LVL112:
+ 1220 0032 ECE7     		b	.L99
+ 1221              	.L103:
+ 382:.\gamecode.c  **** 		}
+ 383:.\gamecode.c  **** 
+ 384:.\gamecode.c  **** 		else if(game_state == WAITING) { 
+ 1222              		.loc 1 384 0
+ 1223 0034 032B     		cmp	r3, #3
+ 1224 0036 02D1     		bne	.L104
+ 385:.\gamecode.c  **** 			state_waiting(); 
+ 1225              		.loc 1 385 0
+ 1226 0038 FFF7FEFF 		bl	state_waiting
+ 1227              	.LVL113:
+ 1228 003c E7E7     		b	.L99
+ 1229              	.L104:
+ 386:.\gamecode.c  **** 		}
+ 387:.\gamecode.c  **** 
+ 388:.\gamecode.c  **** 		else if(game_state == MOVING) {
+ 1230              		.loc 1 388 0
+ 1231 003e 042B     		cmp	r3, #4
+ 1232 0040 E5D1     		bne	.L99
+ 389:.\gamecode.c  **** 			state_moving(); 
+ 1233              		.loc 1 389 0
+ 1234 0042 FFF7FEFF 		bl	state_moving
+ 1235              	.LVL114:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 30
+
+
+ 1236 0046 E2E7     		b	.L99
+ 1237              	.L107:
+ 1238              		.align	2
+ 1239              	.L106:
+ 1240 0048 00000000 		.word	game_state
+ 1241 004c F4000000 		.word	.LC18
+ 1242              		.cfi_endproc
+ 1243              	.LFE71:
+ 1244              		.size	game, .-game
+ 1245              		.comm	update2_board,96,4
+ 1246              		.comm	update1_board,96,4
+ 1247              		.comm	initial_board,96,4
+ 1248              		.comm	diff_loc,16,4
+ 1249              		.comm	bres9,9,4
+ 1250              		.comm	bres8,8,4
+ 1251              		.comm	bres1,1,4
+ 1252              		.comm	game_state,4,4
+ 1253              		.global	bstr_gib
+ 1254              		.global	bstr_ready
+ 1255              		.global	bstr_connect
+ 1256              		.comm	move,16,4
+ 1257              		.comm	board,96,4
+ 1258              		.comm	y_pos,2,2
+ 1259              		.comm	x_pos,2,2
+ 1260              		.data
+ 1261              		.align	2
+ 1262              		.set	.LANCHOR0,. + 0
+ 1263              		.type	bstr_connect, %object
+ 1264              		.size	bstr_connect, 8
+ 1265              	bstr_connect:
+ 1266 0000 2E       		.byte	46
+ 1267 0001 63       		.byte	99
+ 1268 0002 6F       		.byte	111
+ 1269 0003 6E       		.byte	110
+ 1270 0004 6E       		.byte	110
+ 1271 0005 65       		.byte	101
+ 1272 0006 63       		.byte	99
+ 1273 0007 74       		.byte	116
+ 1274              		.type	bstr_ready, %object
+ 1275              		.size	bstr_ready, 6
+ 1276              	bstr_ready:
+ 1277 0008 2E       		.byte	46
+ 1278 0009 72       		.byte	114
+ 1279 000a 65       		.byte	101
+ 1280 000b 61       		.byte	97
+ 1281 000c 64       		.byte	100
+ 1282 000d 79       		.byte	121
+ 1283 000e 0000     		.space	2
+ 1284              		.type	bstr_gib, %object
+ 1285              		.size	bstr_gib, 4
+ 1286              	bstr_gib:
+ 1287 0010 2E       		.byte	46
+ 1288 0011 67       		.byte	103
+ 1289 0012 69       		.byte	105
+ 1290 0013 62       		.byte	98
+ 1291              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 1292              		.align	2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 31
+
+
+ 1293              	.LC0:
+ 1294 0000 4E4F5443 		.ascii	"NOTCONNECTED\012\000"
+ 1294      4F4E4E45 
+ 1294      43544544 
+ 1294      0A00
+ 1295 000e 0000     		.space	2
+ 1296              	.LC1:
+ 1297 0010 3800     		.ascii	"8\000"
+ 1298 0012 0000     		.space	2
+ 1299              	.LC2:
+ 1300 0014 436F6E6E 		.ascii	"Connected.\012\000"
+ 1300      65637465 
+ 1300      642E0A00 
+ 1301              	.LC3:
+ 1302 0020 4E6F7420 		.ascii	"Not connected.\012\000"
+ 1302      636F6E6E 
+ 1302      65637465 
+ 1302      642E0A00 
+ 1303              	.LC4:
+ 1304 0030 434F4E4E 		.ascii	"CONNECTED\012\000"
+ 1304      45435445 
+ 1304      440A00
+ 1305 003b 00       		.space	1
+ 1306              	.LC5:
+ 1307 003c 3600     		.ascii	"6\000"
+ 1308 003e 0000     		.space	2
+ 1309              	.LC6:
+ 1310 0040 52656164 		.ascii	"Ready.\000"
+ 1310      792E00
+ 1311 0047 00       		.space	1
+ 1312              	.LC7:
+ 1313 0048 596F7572 		.ascii	"Your turn.\000"
+ 1313      20747572 
+ 1313      6E2E00
+ 1314 0053 00       		.space	1
+ 1315              	.LC8:
+ 1316 0054 54686569 		.ascii	"Their turn.\000"
+ 1316      72207475 
+ 1316      726E2E00 
+ 1317              	.LC9:
+ 1318 0060 436F6E6E 		.ascii	"Connection State Failure.\000"
+ 1318      65637469 
+ 1318      6F6E2053 
+ 1318      74617465 
+ 1318      20466169 
+ 1319 007a 0000     		.space	2
+ 1320              	.LC10:
+ 1321 007c 52454144 		.ascii	"READY\012\000"
+ 1321      590A00
+ 1322 0083 00       		.space	1
+ 1323              	.LC11:
+ 1324 0084 3400     		.ascii	"4\000"
+ 1325 0086 0000     		.space	2
+ 1326              	.LC12:
+ 1327 0088 57414954 		.ascii	"WAITING\000"
+ 1327      494E4700 
+ 1328              	.LC13:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 32
+
+
+ 1329 0090 446F206E 		.ascii	"Do not pick up graveyard pieces!\012\000"
+ 1329      6F742070 
+ 1329      69636B20 
+ 1329      75702067 
+ 1329      72617665 
+ 1330 00b2 0000     		.space	2
+ 1331              	.LC14:
+ 1332 00b4 4D4F5649 		.ascii	"MOVING\000"
+ 1332      4E4700
+ 1333 00bb 00       		.space	1
+ 1334              	.LC15:
+ 1335 00bc 313300   		.ascii	"13\000"
+ 1336 00bf 00       		.space	1
+ 1337              	.LC16:
+ 1338 00c0 496E7661 		.ascii	"Invalid move, please undo changes.\012\000"
+ 1338      6C696420 
+ 1338      6D6F7665 
+ 1338      2C20706C 
+ 1338      65617365 
+ 1339              	.LC17:
+ 1340 00e4 56616C69 		.ascii	"Valid move.\012\000"
+ 1340      64206D6F 
+ 1340      76652E0A 
+ 1340      00
+ 1341 00f1 000000   		.space	3
+ 1342              	.LC18:
+ 1343 00f4 41747465 		.ascii	"Attempting to connect again.\012\000"
+ 1343      6D707469 
+ 1343      6E672074 
+ 1343      6F20636F 
+ 1343      6E6E6563 
+ 1344 0112 0000     		.bss
+ 1345              		.align	2
+ 1346              		.set	.LANCHOR1,. + 0
+ 1347              		.type	recv, %object
+ 1348              		.size	recv, 9
+ 1349              	recv:
+ 1350 0000 00000000 		.space	9
+ 1350      00000000 
+ 1350      00
+ 1351 0009 000000   		.text
+ 1352              	.Letext0:
+ 1353              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1354              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1355              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1356              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 1357              		.file 6 ".\\board.h"
+ 1358              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 1359              		.file 8 ".\\gamecode.h"
+ 1360              		.file 9 ".\\espwifi.h"
+ 1361              		.file 10 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9
+ 1362              		.file 11 "Generated_Source\\PSoC5/Debug_UART.h"
+ 1363              		.file 12 "Generated_Source\\PSoC5/CyLib.h"
+ 1364              		.section	.debug_info,"",%progbits
+ 1365              	.Ldebug_info0:
+ 1366 0000 AA0A0000 		.4byte	0xaaa
+ 1367 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 33
+
+
+ 1368 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1369 000a 04       		.byte	0x4
+ 1370 000b 01       		.uleb128 0x1
+ 1371 000c 32020000 		.4byte	.LASF65
+ 1372 0010 01       		.byte	0x1
+ 1373 0011 0F030000 		.4byte	.LASF66
+ 1374 0015 BC010000 		.4byte	.LASF67
+ 1375 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1376 001d 00000000 		.4byte	0
+ 1377 0021 00000000 		.4byte	.Ldebug_line0
+ 1378 0025 02       		.uleb128 0x2
+ 1379 0026 01       		.byte	0x1
+ 1380 0027 06       		.byte	0x6
+ 1381 0028 38010000 		.4byte	.LASF0
+ 1382 002c 02       		.uleb128 0x2
+ 1383 002d 01       		.byte	0x1
+ 1384 002e 08       		.byte	0x8
+ 1385 002f 2A010000 		.4byte	.LASF1
+ 1386 0033 02       		.uleb128 0x2
+ 1387 0034 02       		.byte	0x2
+ 1388 0035 05       		.byte	0x5
+ 1389 0036 86000000 		.4byte	.LASF2
+ 1390 003a 02       		.uleb128 0x2
+ 1391 003b 02       		.byte	0x2
+ 1392 003c 07       		.byte	0x7
+ 1393 003d 1A020000 		.4byte	.LASF3
+ 1394 0041 03       		.uleb128 0x3
+ 1395 0042 10020000 		.4byte	.LASF9
+ 1396 0046 02       		.byte	0x2
+ 1397 0047 3F       		.byte	0x3f
+ 1398 0048 4C000000 		.4byte	0x4c
+ 1399 004c 02       		.uleb128 0x2
+ 1400 004d 04       		.byte	0x4
+ 1401 004e 05       		.byte	0x5
+ 1402 004f F0000000 		.4byte	.LASF4
+ 1403 0053 02       		.uleb128 0x2
+ 1404 0054 04       		.byte	0x4
+ 1405 0055 07       		.byte	0x7
+ 1406 0056 FD020000 		.4byte	.LASF5
+ 1407 005a 02       		.uleb128 0x2
+ 1408 005b 08       		.byte	0x8
+ 1409 005c 05       		.byte	0x5
+ 1410 005d D1000000 		.4byte	.LASF6
+ 1411 0061 02       		.uleb128 0x2
+ 1412 0062 08       		.byte	0x8
+ 1413 0063 07       		.byte	0x7
+ 1414 0064 44010000 		.4byte	.LASF7
+ 1415 0068 04       		.uleb128 0x4
+ 1416 0069 04       		.byte	0x4
+ 1417 006a 05       		.byte	0x5
+ 1418 006b 696E7400 		.ascii	"int\000"
+ 1419 006f 02       		.uleb128 0x2
+ 1420 0070 04       		.byte	0x4
+ 1421 0071 07       		.byte	0x7
+ 1422 0072 67010000 		.4byte	.LASF8
+ 1423 0076 03       		.uleb128 0x3
+ 1424 0077 1D000000 		.4byte	.LASF10
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 34
+
+
+ 1425 007b 03       		.byte	0x3
+ 1426 007c D4       		.byte	0xd4
+ 1427 007d 6F000000 		.4byte	0x6f
+ 1428 0081 05       		.uleb128 0x5
+ 1429 0082 04       		.byte	0x4
+ 1430 0083 02       		.uleb128 0x2
+ 1431 0084 04       		.byte	0x4
+ 1432 0085 07       		.byte	0x7
+ 1433 0086 34000000 		.4byte	.LASF11
+ 1434 008a 06       		.uleb128 0x6
+ 1435 008b 04       		.byte	0x4
+ 1436 008c 90000000 		.4byte	0x90
+ 1437 0090 02       		.uleb128 0x2
+ 1438 0091 01       		.byte	0x1
+ 1439 0092 08       		.byte	0x8
+ 1440 0093 A8010000 		.4byte	.LASF12
+ 1441 0097 06       		.uleb128 0x6
+ 1442 0098 04       		.byte	0x4
+ 1443 0099 9D000000 		.4byte	0x9d
+ 1444 009d 07       		.uleb128 0x7
+ 1445 009e 90000000 		.4byte	0x90
+ 1446 00a2 08       		.uleb128 0x8
+ 1447 00a3 90000000 		.4byte	0x90
+ 1448 00a7 B2000000 		.4byte	0xb2
+ 1449 00ab 09       		.uleb128 0x9
+ 1450 00ac 83000000 		.4byte	0x83
+ 1451 00b0 07       		.byte	0x7
+ 1452 00b1 00       		.byte	0
+ 1453 00b2 06       		.uleb128 0x6
+ 1454 00b3 04       		.byte	0x4
+ 1455 00b4 B8000000 		.4byte	0xb8
+ 1456 00b8 0A       		.uleb128 0xa
+ 1457 00b9 03       		.uleb128 0x3
+ 1458 00ba B4010000 		.4byte	.LASF13
+ 1459 00be 04       		.byte	0x4
+ 1460 00bf 2C       		.byte	0x2c
+ 1461 00c0 41000000 		.4byte	0x41
+ 1462 00c4 03       		.uleb128 0x3
+ 1463 00c5 B2000000 		.4byte	.LASF14
+ 1464 00c9 05       		.byte	0x5
+ 1465 00ca C2       		.byte	0xc2
+ 1466 00cb 2C000000 		.4byte	0x2c
+ 1467 00cf 03       		.uleb128 0x3
+ 1468 00d0 F6020000 		.4byte	.LASF15
+ 1469 00d4 05       		.byte	0x5
+ 1470 00d5 C4       		.byte	0xc4
+ 1471 00d6 53000000 		.4byte	0x53
+ 1472 00da 03       		.uleb128 0x3
+ 1473 00db AC000000 		.4byte	.LASF16
+ 1474 00df 05       		.byte	0x5
+ 1475 00e0 C6       		.byte	0xc6
+ 1476 00e1 33000000 		.4byte	0x33
+ 1477 00e5 02       		.uleb128 0x2
+ 1478 00e6 04       		.byte	0x4
+ 1479 00e7 04       		.byte	0x4
+ 1480 00e8 CB000000 		.4byte	.LASF17
+ 1481 00ec 02       		.uleb128 0x2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 35
+
+
+ 1482 00ed 08       		.byte	0x8
+ 1483 00ee 04       		.byte	0x4
+ 1484 00ef 2A030000 		.4byte	.LASF18
+ 1485 00f3 03       		.uleb128 0x3
+ 1486 00f4 3D000000 		.4byte	.LASF19
+ 1487 00f8 05       		.byte	0x5
+ 1488 00f9 D3       		.byte	0xd3
+ 1489 00fa 90000000 		.4byte	0x90
+ 1490 00fe 0B       		.uleb128 0xb
+ 1491 00ff DF000000 		.4byte	.LASF68
+ 1492 0103 10       		.byte	0x10
+ 1493 0104 06       		.byte	0x6
+ 1494 0105 12       		.byte	0x12
+ 1495 0106 3B010000 		.4byte	0x13b
+ 1496 010a 0C       		.uleb128 0xc
+ 1497 010b E8000000 		.4byte	.LASF20
+ 1498 010f 06       		.byte	0x6
+ 1499 0110 13       		.byte	0x13
+ 1500 0111 68000000 		.4byte	0x68
+ 1501 0115 00       		.byte	0
+ 1502 0116 0C       		.uleb128 0xc
+ 1503 0117 08000000 		.4byte	.LASF21
+ 1504 011b 06       		.byte	0x6
+ 1505 011c 14       		.byte	0x14
+ 1506 011d 68000000 		.4byte	0x68
+ 1507 0121 04       		.byte	0x4
+ 1508 0122 0C       		.uleb128 0xc
+ 1509 0123 8B010000 		.4byte	.LASF22
+ 1510 0127 06       		.byte	0x6
+ 1511 0128 15       		.byte	0x15
+ 1512 0129 68000000 		.4byte	0x68
+ 1513 012d 08       		.byte	0x8
+ 1514 012e 0C       		.uleb128 0xc
+ 1515 012f C5000000 		.4byte	.LASF23
+ 1516 0133 06       		.byte	0x6
+ 1517 0134 16       		.byte	0x16
+ 1518 0135 68000000 		.4byte	0x68
+ 1519 0139 0C       		.byte	0xc
+ 1520 013a 00       		.byte	0
+ 1521 013b 0D       		.uleb128 0xd
+ 1522 013c 3D030000 		.4byte	.LASF69
+ 1523 0140 01       		.byte	0x1
+ 1524 0141 01       		.byte	0x1
+ 1525 0142 10       		.byte	0x10
+ 1526 0143 54010000 		.4byte	0x154
+ 1527 0147 0E       		.uleb128 0xe
+ 1528 0148 6A000000 		.4byte	.LASF24
+ 1529 014c 01       		.sleb128 1
+ 1530 014d 0E       		.uleb128 0xe
+ 1531 014e 72000000 		.4byte	.LASF25
+ 1532 0152 02       		.sleb128 2
+ 1533 0153 00       		.byte	0
+ 1534 0154 0F       		.uleb128 0xf
+ 1535 0155 1F010000 		.4byte	.LASF26
+ 1536 0159 01       		.byte	0x1
+ 1537 015a 1C       		.byte	0x1c
+ 1538 015b 68000000 		.4byte	0x68
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 36
+
+
+ 1539 015f 00000000 		.4byte	.LFB63
+ 1540 0163 04000000 		.4byte	.LFE63-.LFB63
+ 1541 0167 01       		.uleb128 0x1
+ 1542 0168 9C       		.byte	0x9c
+ 1543 0169 7A010000 		.4byte	0x17a
+ 1544 016d 10       		.uleb128 0x10
+ 1545 016e 0A010000 		.4byte	.LASF31
+ 1546 0172 01       		.byte	0x1
+ 1547 0173 1E       		.byte	0x1e
+ 1548 0174 68000000 		.4byte	0x68
+ 1549 0178 01       		.byte	0x1
+ 1550 0179 00       		.byte	0
+ 1551 017a 0F       		.uleb128 0xf
+ 1552 017b 66030000 		.4byte	.LASF27
+ 1553 017f 01       		.byte	0x1
+ 1554 0180 29       		.byte	0x29
+ 1555 0181 68000000 		.4byte	0x68
+ 1556 0185 00000000 		.4byte	.LFB64
+ 1557 0189 64000000 		.4byte	.LFE64-.LFB64
+ 1558 018d 01       		.uleb128 0x1
+ 1559 018e 9C       		.byte	0x9c
+ 1560 018f F5010000 		.4byte	0x1f5
+ 1561 0193 11       		.uleb128 0x11
+ 1562 0194 08000000 		.4byte	.LVL1
+ 1563 0198 0C0A0000 		.4byte	0xa0c
+ 1564 019c AA010000 		.4byte	0x1aa
+ 1565 01a0 12       		.uleb128 0x12
+ 1566 01a1 01       		.uleb128 0x1
+ 1567 01a2 50       		.byte	0x50
+ 1568 01a3 05       		.uleb128 0x5
+ 1569 01a4 03       		.byte	0x3
+ 1570 01a5 00000000 		.4byte	.LC0
+ 1571 01a9 00       		.byte	0
+ 1572 01aa 11       		.uleb128 0x11
+ 1573 01ab 18000000 		.4byte	.LVL2
+ 1574 01af 280A0000 		.4byte	0xa28
+ 1575 01b3 CA010000 		.4byte	0x1ca
+ 1576 01b7 12       		.uleb128 0x12
+ 1577 01b8 01       		.uleb128 0x1
+ 1578 01b9 51       		.byte	0x51
+ 1579 01ba 05       		.uleb128 0x5
+ 1580 01bb 03       		.byte	0x3
+ 1581 01bc 10000000 		.4byte	.LC1
+ 1582 01c0 12       		.uleb128 0x12
+ 1583 01c1 01       		.uleb128 0x1
+ 1584 01c2 50       		.byte	0x50
+ 1585 01c3 05       		.uleb128 0x5
+ 1586 01c4 03       		.byte	0x3
+ 1587 01c5 00000000 		.4byte	.LANCHOR0
+ 1588 01c9 00       		.byte	0
+ 1589 01ca 11       		.uleb128 0x11
+ 1590 01cb 2E000000 		.4byte	.LVL3
+ 1591 01cf 0C0A0000 		.4byte	0xa0c
+ 1592 01d3 E1010000 		.4byte	0x1e1
+ 1593 01d7 12       		.uleb128 0x12
+ 1594 01d8 01       		.uleb128 0x1
+ 1595 01d9 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 37
+
+
+ 1596 01da 05       		.uleb128 0x5
+ 1597 01db 03       		.byte	0x3
+ 1598 01dc 14000000 		.4byte	.LC2
+ 1599 01e0 00       		.byte	0
+ 1600 01e1 13       		.uleb128 0x13
+ 1601 01e2 3C000000 		.4byte	.LVL4
+ 1602 01e6 0C0A0000 		.4byte	0xa0c
+ 1603 01ea 12       		.uleb128 0x12
+ 1604 01eb 01       		.uleb128 0x1
+ 1605 01ec 50       		.byte	0x50
+ 1606 01ed 05       		.uleb128 0x5
+ 1607 01ee 03       		.byte	0x3
+ 1608 01ef 20000000 		.4byte	.LC3
+ 1609 01f3 00       		.byte	0
+ 1610 01f4 00       		.byte	0
+ 1611 01f5 0F       		.uleb128 0xf
+ 1612 01f6 24000000 		.4byte	.LASF28
+ 1613 01fa 01       		.byte	0x1
+ 1614 01fb 44       		.byte	0x44
+ 1615 01fc 68000000 		.4byte	0x68
+ 1616 0200 00000000 		.4byte	.LFB65
+ 1617 0204 9C000000 		.4byte	.LFE65-.LFB65
+ 1618 0208 01       		.uleb128 0x1
+ 1619 0209 9C       		.byte	0x9c
+ 1620 020a C3020000 		.4byte	0x2c3
+ 1621 020e 11       		.uleb128 0x11
+ 1622 020f 08000000 		.4byte	.LVL5
+ 1623 0213 0C0A0000 		.4byte	0xa0c
+ 1624 0217 25020000 		.4byte	0x225
+ 1625 021b 12       		.uleb128 0x12
+ 1626 021c 01       		.uleb128 0x1
+ 1627 021d 50       		.byte	0x50
+ 1628 021e 05       		.uleb128 0x5
+ 1629 021f 03       		.byte	0x3
+ 1630 0220 30000000 		.4byte	.LC4
+ 1631 0224 00       		.byte	0
+ 1632 0225 11       		.uleb128 0x11
+ 1633 0226 18000000 		.4byte	.LVL6
+ 1634 022a 280A0000 		.4byte	0xa28
+ 1635 022e 45020000 		.4byte	0x245
+ 1636 0232 12       		.uleb128 0x12
+ 1637 0233 01       		.uleb128 0x1
+ 1638 0234 51       		.byte	0x51
+ 1639 0235 05       		.uleb128 0x5
+ 1640 0236 03       		.byte	0x3
+ 1641 0237 3C000000 		.4byte	.LC5
+ 1642 023b 12       		.uleb128 0x12
+ 1643 023c 01       		.uleb128 0x1
+ 1644 023d 50       		.byte	0x50
+ 1645 023e 05       		.uleb128 0x5
+ 1646 023f 03       		.byte	0x3
+ 1647 0240 08000000 		.4byte	.LANCHOR0+8
+ 1648 0244 00       		.byte	0
+ 1649 0245 11       		.uleb128 0x11
+ 1650 0246 22000000 		.4byte	.LVL7
+ 1651 024a 420A0000 		.4byte	0xa42
+ 1652 024e 6A020000 		.4byte	0x26a
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 38
+
+
+ 1653 0252 12       		.uleb128 0x12
+ 1654 0253 01       		.uleb128 0x1
+ 1655 0254 52       		.byte	0x52
+ 1656 0255 01       		.uleb128 0x1
+ 1657 0256 31       		.byte	0x31
+ 1658 0257 12       		.uleb128 0x12
+ 1659 0258 01       		.uleb128 0x1
+ 1660 0259 51       		.byte	0x51
+ 1661 025a 05       		.uleb128 0x5
+ 1662 025b 03       		.byte	0x3
+ 1663 025c 00000000 		.4byte	.LANCHOR1
+ 1664 0260 12       		.uleb128 0x12
+ 1665 0261 01       		.uleb128 0x1
+ 1666 0262 50       		.byte	0x50
+ 1667 0263 05       		.uleb128 0x5
+ 1668 0264 03       		.byte	0x3
+ 1669 0265 00000000 		.4byte	bres1
+ 1670 0269 00       		.byte	0
+ 1671 026a 11       		.uleb128 0x11
+ 1672 026b 34000000 		.4byte	.LVL8
+ 1673 026f 0C0A0000 		.4byte	0xa0c
+ 1674 0273 81020000 		.4byte	0x281
+ 1675 0277 12       		.uleb128 0x12
+ 1676 0278 01       		.uleb128 0x1
+ 1677 0279 50       		.byte	0x50
+ 1678 027a 05       		.uleb128 0x5
+ 1679 027b 03       		.byte	0x3
+ 1680 027c 40000000 		.4byte	.LC6
+ 1681 0280 00       		.byte	0
+ 1682 0281 11       		.uleb128 0x11
+ 1683 0282 48000000 		.4byte	.LVL9
+ 1684 0286 0C0A0000 		.4byte	0xa0c
+ 1685 028a 98020000 		.4byte	0x298
+ 1686 028e 12       		.uleb128 0x12
+ 1687 028f 01       		.uleb128 0x1
+ 1688 0290 50       		.byte	0x50
+ 1689 0291 05       		.uleb128 0x5
+ 1690 0292 03       		.byte	0x3
+ 1691 0293 48000000 		.4byte	.LC7
+ 1692 0297 00       		.byte	0
+ 1693 0298 11       		.uleb128 0x11
+ 1694 0299 5A000000 		.4byte	.LVL10
+ 1695 029d 0C0A0000 		.4byte	0xa0c
+ 1696 02a1 AF020000 		.4byte	0x2af
+ 1697 02a5 12       		.uleb128 0x12
+ 1698 02a6 01       		.uleb128 0x1
+ 1699 02a7 50       		.byte	0x50
+ 1700 02a8 05       		.uleb128 0x5
+ 1701 02a9 03       		.byte	0x3
+ 1702 02aa 54000000 		.4byte	.LC8
+ 1703 02ae 00       		.byte	0
+ 1704 02af 13       		.uleb128 0x13
+ 1705 02b0 68000000 		.4byte	.LVL11
+ 1706 02b4 0C0A0000 		.4byte	0xa0c
+ 1707 02b8 12       		.uleb128 0x12
+ 1708 02b9 01       		.uleb128 0x1
+ 1709 02ba 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 39
+
+
+ 1710 02bb 05       		.uleb128 0x5
+ 1711 02bc 03       		.byte	0x3
+ 1712 02bd 60000000 		.4byte	.LC9
+ 1713 02c1 00       		.byte	0
+ 1714 02c2 00       		.byte	0
+ 1715 02c3 0F       		.uleb128 0xf
+ 1716 02c4 5E000000 		.4byte	.LASF29
+ 1717 02c8 01       		.byte	0x1
+ 1718 02c9 69       		.byte	0x69
+ 1719 02ca 68000000 		.4byte	0x68
+ 1720 02ce 00000000 		.4byte	.LFB66
+ 1721 02d2 A8000000 		.4byte	.LFE66-.LFB66
+ 1722 02d6 01       		.uleb128 0x1
+ 1723 02d7 9C       		.byte	0x9c
+ 1724 02d8 CB030000 		.4byte	0x3cb
+ 1725 02dc 11       		.uleb128 0x11
+ 1726 02dd 08000000 		.4byte	.LVL12
+ 1727 02e1 0C0A0000 		.4byte	0xa0c
+ 1728 02e5 F3020000 		.4byte	0x2f3
+ 1729 02e9 12       		.uleb128 0x12
+ 1730 02ea 01       		.uleb128 0x1
+ 1731 02eb 50       		.byte	0x50
+ 1732 02ec 05       		.uleb128 0x5
+ 1733 02ed 03       		.byte	0x3
+ 1734 02ee 7C000000 		.4byte	.LC10
+ 1735 02f2 00       		.byte	0
+ 1736 02f3 11       		.uleb128 0x11
+ 1737 02f4 16000000 		.4byte	.LVL13
+ 1738 02f8 280A0000 		.4byte	0xa28
+ 1739 02fc 13030000 		.4byte	0x313
+ 1740 0300 12       		.uleb128 0x12
+ 1741 0301 01       		.uleb128 0x1
+ 1742 0302 51       		.byte	0x51
+ 1743 0303 05       		.uleb128 0x5
+ 1744 0304 03       		.byte	0x3
+ 1745 0305 84000000 		.4byte	.LC11
+ 1746 0309 12       		.uleb128 0x12
+ 1747 030a 01       		.uleb128 0x1
+ 1748 030b 50       		.byte	0x50
+ 1749 030c 05       		.uleb128 0x5
+ 1750 030d 03       		.byte	0x3
+ 1751 030e 10000000 		.4byte	.LANCHOR0+16
+ 1752 0312 00       		.byte	0
+ 1753 0313 11       		.uleb128 0x11
+ 1754 0314 20000000 		.4byte	.LVL14
+ 1755 0318 420A0000 		.4byte	0xa42
+ 1756 031c 35030000 		.4byte	0x335
+ 1757 0320 12       		.uleb128 0x12
+ 1758 0321 01       		.uleb128 0x1
+ 1759 0322 52       		.byte	0x52
+ 1760 0323 01       		.uleb128 0x1
+ 1761 0324 31       		.byte	0x31
+ 1762 0325 12       		.uleb128 0x12
+ 1763 0326 01       		.uleb128 0x1
+ 1764 0327 51       		.byte	0x51
+ 1765 0328 05       		.uleb128 0x5
+ 1766 0329 03       		.byte	0x3
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 40
+
+
+ 1767 032a 00000000 		.4byte	.LANCHOR1
+ 1768 032e 12       		.uleb128 0x12
+ 1769 032f 01       		.uleb128 0x1
+ 1770 0330 50       		.byte	0x50
+ 1771 0331 02       		.uleb128 0x2
+ 1772 0332 74       		.byte	0x74
+ 1773 0333 00       		.sleb128 0
+ 1774 0334 00       		.byte	0
+ 1775 0335 11       		.uleb128 0x11
+ 1776 0336 2A000000 		.4byte	.LVL15
+ 1777 033a 610A0000 		.4byte	0xa61
+ 1778 033e 4A030000 		.4byte	0x34a
+ 1779 0342 12       		.uleb128 0x12
+ 1780 0343 01       		.uleb128 0x1
+ 1781 0344 50       		.byte	0x50
+ 1782 0345 03       		.uleb128 0x3
+ 1783 0346 0A       		.byte	0xa
+ 1784 0347 8813     		.2byte	0x1388
+ 1785 0349 00       		.byte	0
+ 1786 034a 11       		.uleb128 0x11
+ 1787 034b 32000000 		.4byte	.LVL16
+ 1788 034f 280A0000 		.4byte	0xa28
+ 1789 0353 6A030000 		.4byte	0x36a
+ 1790 0357 12       		.uleb128 0x12
+ 1791 0358 01       		.uleb128 0x1
+ 1792 0359 51       		.byte	0x51
+ 1793 035a 05       		.uleb128 0x5
+ 1794 035b 03       		.byte	0x3
+ 1795 035c 84000000 		.4byte	.LC11
+ 1796 0360 12       		.uleb128 0x12
+ 1797 0361 01       		.uleb128 0x1
+ 1798 0362 50       		.byte	0x50
+ 1799 0363 05       		.uleb128 0x5
+ 1800 0364 03       		.byte	0x3
+ 1801 0365 10000000 		.4byte	.LANCHOR0+16
+ 1802 0369 00       		.byte	0
+ 1803 036a 11       		.uleb128 0x11
+ 1804 036b 3E000000 		.4byte	.LVL17
+ 1805 036f 420A0000 		.4byte	0xa42
+ 1806 0373 8C030000 		.4byte	0x38c
+ 1807 0377 12       		.uleb128 0x12
+ 1808 0378 01       		.uleb128 0x1
+ 1809 0379 52       		.byte	0x52
+ 1810 037a 01       		.uleb128 0x1
+ 1811 037b 31       		.byte	0x31
+ 1812 037c 12       		.uleb128 0x12
+ 1813 037d 01       		.uleb128 0x1
+ 1814 037e 51       		.byte	0x51
+ 1815 037f 05       		.uleb128 0x5
+ 1816 0380 03       		.byte	0x3
+ 1817 0381 00000000 		.4byte	.LANCHOR1
+ 1818 0385 12       		.uleb128 0x12
+ 1819 0386 01       		.uleb128 0x1
+ 1820 0387 50       		.byte	0x50
+ 1821 0388 02       		.uleb128 0x2
+ 1822 0389 74       		.byte	0x74
+ 1823 038a 00       		.sleb128 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 41
+
+
+ 1824 038b 00       		.byte	0
+ 1825 038c 11       		.uleb128 0x11
+ 1826 038d 44000000 		.4byte	.LVL18
+ 1827 0391 0C0A0000 		.4byte	0xa0c
+ 1828 0395 A0030000 		.4byte	0x3a0
+ 1829 0399 12       		.uleb128 0x12
+ 1830 039a 01       		.uleb128 0x1
+ 1831 039b 50       		.byte	0x50
+ 1832 039c 02       		.uleb128 0x2
+ 1833 039d 74       		.byte	0x74
+ 1834 039e 00       		.sleb128 0
+ 1835 039f 00       		.byte	0
+ 1836 03a0 11       		.uleb128 0x11
+ 1837 03a1 68000000 		.4byte	.LVL19
+ 1838 03a5 0C0A0000 		.4byte	0xa0c
+ 1839 03a9 B7030000 		.4byte	0x3b7
+ 1840 03ad 12       		.uleb128 0x12
+ 1841 03ae 01       		.uleb128 0x1
+ 1842 03af 50       		.byte	0x50
+ 1843 03b0 05       		.uleb128 0x5
+ 1844 03b1 03       		.byte	0x3
+ 1845 03b2 48000000 		.4byte	.LC7
+ 1846 03b6 00       		.byte	0
+ 1847 03b7 13       		.uleb128 0x13
+ 1848 03b8 7A000000 		.4byte	.LVL20
+ 1849 03bc 0C0A0000 		.4byte	0xa0c
+ 1850 03c0 12       		.uleb128 0x12
+ 1851 03c1 01       		.uleb128 0x1
+ 1852 03c2 50       		.byte	0x50
+ 1853 03c3 05       		.uleb128 0x5
+ 1854 03c4 03       		.byte	0x3
+ 1855 03c5 54000000 		.4byte	.LC8
+ 1856 03c9 00       		.byte	0
+ 1857 03ca 00       		.byte	0
+ 1858 03cb 0F       		.uleb128 0xf
+ 1859 03cc 58030000 		.4byte	.LASF30
+ 1860 03d0 01       		.byte	0x1
+ 1861 03d1 8F       		.byte	0x8f
+ 1862 03d2 68000000 		.4byte	0x68
+ 1863 03d6 00000000 		.4byte	.LFB67
+ 1864 03da DC000000 		.4byte	.LFE67-.LFB67
+ 1865 03de 01       		.uleb128 0x1
+ 1866 03df 9C       		.byte	0x9c
+ 1867 03e0 FD040000 		.4byte	0x4fd
+ 1868 03e4 14       		.uleb128 0x14
+ 1869 03e5 79030000 		.4byte	.LASF32
+ 1870 03e9 01       		.byte	0x1
+ 1871 03ea A9       		.byte	0xa9
+ 1872 03eb FD040000 		.4byte	0x4fd
+ 1873 03ef 02       		.uleb128 0x2
+ 1874 03f0 91       		.byte	0x91
+ 1875 03f1 74       		.sleb128 -12
+ 1876 03f2 14       		.uleb128 0x14
+ 1877 03f3 91010000 		.4byte	.LASF33
+ 1878 03f7 01       		.byte	0x1
+ 1879 03f8 AA       		.byte	0xaa
+ 1880 03f9 0D050000 		.4byte	0x50d
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 42
+
+
+ 1881 03fd 02       		.uleb128 0x2
+ 1882 03fe 91       		.byte	0x91
+ 1883 03ff 6C       		.sleb128 -20
+ 1884 0400 11       		.uleb128 0x11
+ 1885 0401 0A000000 		.4byte	.LVL21
+ 1886 0405 0C0A0000 		.4byte	0xa0c
+ 1887 0409 17040000 		.4byte	0x417
+ 1888 040d 12       		.uleb128 0x12
+ 1889 040e 01       		.uleb128 0x1
+ 1890 040f 50       		.byte	0x50
+ 1891 0410 05       		.uleb128 0x5
+ 1892 0411 03       		.byte	0x3
+ 1893 0412 88000000 		.4byte	.LC12
+ 1894 0416 00       		.byte	0
+ 1895 0417 11       		.uleb128 0x11
+ 1896 0418 18000000 		.4byte	.LVL22
+ 1897 041c 280A0000 		.4byte	0xa28
+ 1898 0420 37040000 		.4byte	0x437
+ 1899 0424 12       		.uleb128 0x12
+ 1900 0425 01       		.uleb128 0x1
+ 1901 0426 51       		.byte	0x51
+ 1902 0427 05       		.uleb128 0x5
+ 1903 0428 03       		.byte	0x3
+ 1904 0429 84000000 		.4byte	.LC11
+ 1905 042d 12       		.uleb128 0x12
+ 1906 042e 01       		.uleb128 0x1
+ 1907 042f 50       		.byte	0x50
+ 1908 0430 05       		.uleb128 0x5
+ 1909 0431 03       		.byte	0x3
+ 1910 0432 10000000 		.4byte	.LANCHOR0+16
+ 1911 0436 00       		.byte	0
+ 1912 0437 11       		.uleb128 0x11
+ 1913 0438 22000000 		.4byte	.LVL23
+ 1914 043c 420A0000 		.4byte	0xa42
+ 1915 0440 59040000 		.4byte	0x459
+ 1916 0444 12       		.uleb128 0x12
+ 1917 0445 01       		.uleb128 0x1
+ 1918 0446 52       		.byte	0x52
+ 1919 0447 01       		.uleb128 0x1
+ 1920 0448 38       		.byte	0x38
+ 1921 0449 12       		.uleb128 0x12
+ 1922 044a 01       		.uleb128 0x1
+ 1923 044b 51       		.byte	0x51
+ 1924 044c 05       		.uleb128 0x5
+ 1925 044d 03       		.byte	0x3
+ 1926 044e 00000000 		.4byte	.LANCHOR1
+ 1927 0452 12       		.uleb128 0x12
+ 1928 0453 01       		.uleb128 0x1
+ 1929 0454 50       		.byte	0x50
+ 1930 0455 02       		.uleb128 0x2
+ 1931 0456 74       		.byte	0x74
+ 1932 0457 00       		.sleb128 0
+ 1933 0458 00       		.byte	0
+ 1934 0459 11       		.uleb128 0x11
+ 1935 045a 2C000000 		.4byte	.LVL24
+ 1936 045e 610A0000 		.4byte	0xa61
+ 1937 0462 6E040000 		.4byte	0x46e
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 43
+
+
+ 1938 0466 12       		.uleb128 0x12
+ 1939 0467 01       		.uleb128 0x1
+ 1940 0468 50       		.byte	0x50
+ 1941 0469 03       		.uleb128 0x3
+ 1942 046a 0A       		.byte	0xa
+ 1943 046b 8813     		.2byte	0x1388
+ 1944 046d 00       		.byte	0
+ 1945 046e 11       		.uleb128 0x11
+ 1946 046f 34000000 		.4byte	.LVL25
+ 1947 0473 280A0000 		.4byte	0xa28
+ 1948 0477 8E040000 		.4byte	0x48e
+ 1949 047b 12       		.uleb128 0x12
+ 1950 047c 01       		.uleb128 0x1
+ 1951 047d 51       		.byte	0x51
+ 1952 047e 05       		.uleb128 0x5
+ 1953 047f 03       		.byte	0x3
+ 1954 0480 84000000 		.4byte	.LC11
+ 1955 0484 12       		.uleb128 0x12
+ 1956 0485 01       		.uleb128 0x1
+ 1957 0486 50       		.byte	0x50
+ 1958 0487 05       		.uleb128 0x5
+ 1959 0488 03       		.byte	0x3
+ 1960 0489 10000000 		.4byte	.LANCHOR0+16
+ 1961 048d 00       		.byte	0
+ 1962 048e 11       		.uleb128 0x11
+ 1963 048f 40000000 		.4byte	.LVL26
+ 1964 0493 420A0000 		.4byte	0xa42
+ 1965 0497 B0040000 		.4byte	0x4b0
+ 1966 049b 12       		.uleb128 0x12
+ 1967 049c 01       		.uleb128 0x1
+ 1968 049d 52       		.byte	0x52
+ 1969 049e 01       		.uleb128 0x1
+ 1970 049f 38       		.byte	0x38
+ 1971 04a0 12       		.uleb128 0x12
+ 1972 04a1 01       		.uleb128 0x1
+ 1973 04a2 51       		.byte	0x51
+ 1974 04a3 05       		.uleb128 0x5
+ 1975 04a4 03       		.byte	0x3
+ 1976 04a5 00000000 		.4byte	.LANCHOR1
+ 1977 04a9 12       		.uleb128 0x12
+ 1978 04aa 01       		.uleb128 0x1
+ 1979 04ab 50       		.byte	0x50
+ 1980 04ac 02       		.uleb128 0x2
+ 1981 04ad 74       		.byte	0x74
+ 1982 04ae 00       		.sleb128 0
+ 1983 04af 00       		.byte	0
+ 1984 04b0 11       		.uleb128 0x11
+ 1985 04b1 46000000 		.4byte	.LVL27
+ 1986 04b5 0C0A0000 		.4byte	0xa0c
+ 1987 04b9 C4040000 		.4byte	0x4c4
+ 1988 04bd 12       		.uleb128 0x12
+ 1989 04be 01       		.uleb128 0x1
+ 1990 04bf 50       		.byte	0x50
+ 1991 04c0 02       		.uleb128 0x2
+ 1992 04c1 74       		.byte	0x74
+ 1993 04c2 00       		.sleb128 0
+ 1994 04c3 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 44
+
+
+ 1995 04c4 11       		.uleb128 0x11
+ 1996 04c5 5A000000 		.4byte	.LVL28
+ 1997 04c9 720A0000 		.4byte	0xa72
+ 1998 04cd D8040000 		.4byte	0x4d8
+ 1999 04d1 12       		.uleb128 0x12
+ 2000 04d2 01       		.uleb128 0x1
+ 2001 04d3 50       		.byte	0x50
+ 2002 04d4 02       		.uleb128 0x2
+ 2003 04d5 74       		.byte	0x74
+ 2004 04d6 00       		.sleb128 0
+ 2005 04d7 00       		.byte	0
+ 2006 04d8 11       		.uleb128 0x11
+ 2007 04d9 B2000000 		.4byte	.LVL29
+ 2008 04dd 0C0A0000 		.4byte	0xa0c
+ 2009 04e1 EC040000 		.4byte	0x4ec
+ 2010 04e5 12       		.uleb128 0x12
+ 2011 04e6 01       		.uleb128 0x1
+ 2012 04e7 50       		.byte	0x50
+ 2013 04e8 02       		.uleb128 0x2
+ 2014 04e9 91       		.byte	0x91
+ 2015 04ea 6C       		.sleb128 -20
+ 2016 04eb 00       		.byte	0
+ 2017 04ec 13       		.uleb128 0x13
+ 2018 04ed B8000000 		.4byte	.LVL30
+ 2019 04f1 0C0A0000 		.4byte	0xa0c
+ 2020 04f5 12       		.uleb128 0x12
+ 2021 04f6 01       		.uleb128 0x1
+ 2022 04f7 50       		.byte	0x50
+ 2023 04f8 02       		.uleb128 0x2
+ 2024 04f9 91       		.byte	0x91
+ 2025 04fa 74       		.sleb128 -12
+ 2026 04fb 00       		.byte	0
+ 2027 04fc 00       		.byte	0
+ 2028 04fd 08       		.uleb128 0x8
+ 2029 04fe 90000000 		.4byte	0x90
+ 2030 0502 0D050000 		.4byte	0x50d
+ 2031 0506 09       		.uleb128 0x9
+ 2032 0507 83000000 		.4byte	0x83
+ 2033 050b 03       		.byte	0x3
+ 2034 050c 00       		.byte	0
+ 2035 050d 08       		.uleb128 0x8
+ 2036 050e 90000000 		.4byte	0x90
+ 2037 0512 1D050000 		.4byte	0x51d
+ 2038 0516 09       		.uleb128 0x9
+ 2039 0517 83000000 		.4byte	0x83
+ 2040 051b 04       		.byte	0x4
+ 2041 051c 00       		.byte	0
+ 2042 051d 15       		.uleb128 0x15
+ 2043 051e 31030000 		.4byte	.LASF34
+ 2044 0522 01       		.byte	0x1
+ 2045 0523 B8       		.byte	0xb8
+ 2046 0524 00000000 		.4byte	.LFB68
+ 2047 0528 14010000 		.4byte	.LFE68-.LFB68
+ 2048 052c 01       		.uleb128 0x1
+ 2049 052d 9C       		.byte	0x9c
+ 2050 052e 84050000 		.4byte	0x584
+ 2051 0532 16       		.uleb128 0x16
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 45
+
+
+ 2052 0533 7800     		.ascii	"x\000"
+ 2053 0535 01       		.byte	0x1
+ 2054 0536 B8       		.byte	0xb8
+ 2055 0537 3B010000 		.4byte	0x13b
+ 2056 053b 00000000 		.4byte	.LLST0
+ 2057 053f 17       		.uleb128 0x17
+ 2058 0540 6900     		.ascii	"i\000"
+ 2059 0542 01       		.byte	0x1
+ 2060 0543 BF       		.byte	0xbf
+ 2061 0544 68000000 		.4byte	0x68
+ 2062 0548 3A000000 		.4byte	.LLST1
+ 2063 054c 17       		.uleb128 0x17
+ 2064 054d 6A00     		.ascii	"j\000"
+ 2065 054f 01       		.byte	0x1
+ 2066 0550 BF       		.byte	0xbf
+ 2067 0551 68000000 		.4byte	0x68
+ 2068 0555 58000000 		.4byte	.LLST2
+ 2069 0559 11       		.uleb128 0x11
+ 2070 055a 54000000 		.4byte	.LVL33
+ 2071 055e 0C0A0000 		.4byte	0xa0c
+ 2072 0562 70050000 		.4byte	0x570
+ 2073 0566 12       		.uleb128 0x12
+ 2074 0567 01       		.uleb128 0x1
+ 2075 0568 50       		.byte	0x50
+ 2076 0569 05       		.uleb128 0x5
+ 2077 056a 03       		.byte	0x3
+ 2078 056b 90000000 		.4byte	.LC13
+ 2079 056f 00       		.byte	0
+ 2080 0570 13       		.uleb128 0x13
+ 2081 0571 CA000000 		.4byte	.LVL41
+ 2082 0575 0C0A0000 		.4byte	0xa0c
+ 2083 0579 12       		.uleb128 0x12
+ 2084 057a 01       		.uleb128 0x1
+ 2085 057b 50       		.byte	0x50
+ 2086 057c 05       		.uleb128 0x5
+ 2087 057d 03       		.byte	0x3
+ 2088 057e 90000000 		.4byte	.LC13
+ 2089 0582 00       		.byte	0
+ 2090 0583 00       		.byte	0
+ 2091 0584 18       		.uleb128 0x18
+ 2092 0585 9E010000 		.4byte	.LASF70
+ 2093 0589 01       		.byte	0x1
+ 2094 058a F4       		.byte	0xf4
+ 2095 058b C4000000 		.4byte	0xc4
+ 2096 058f 00000000 		.4byte	.LFB69
+ 2097 0593 58000000 		.4byte	.LFE69-.LFB69
+ 2098 0597 01       		.uleb128 0x1
+ 2099 0598 9C       		.byte	0x9c
+ 2100 0599 AB050000 		.4byte	0x5ab
+ 2101 059d 16       		.uleb128 0x16
+ 2102 059e 6900     		.ascii	"i\000"
+ 2103 05a0 01       		.byte	0x1
+ 2104 05a1 F4       		.byte	0xf4
+ 2105 05a2 68000000 		.4byte	0x68
+ 2106 05a6 8C000000 		.4byte	.LLST3
+ 2107 05aa 00       		.byte	0
+ 2108 05ab 19       		.uleb128 0x19
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 46
+
+
+ 2109 05ac B8000000 		.4byte	.LASF35
+ 2110 05b0 01       		.byte	0x1
+ 2111 05b1 0D01     		.2byte	0x10d
+ 2112 05b3 68000000 		.4byte	0x68
+ 2113 05b7 00000000 		.4byte	.LFB70
+ 2114 05bb 04020000 		.4byte	.LFE70-.LFB70
+ 2115 05bf 01       		.uleb128 0x1
+ 2116 05c0 9C       		.byte	0x9c
+ 2117 05c1 17080000 		.4byte	0x817
+ 2118 05c5 1A       		.uleb128 0x1a
+ 2119 05c6 5B010000 		.4byte	.LASF36
+ 2120 05ca 01       		.byte	0x1
+ 2121 05cb 1601     		.2byte	0x116
+ 2122 05cd 17080000 		.4byte	0x817
+ 2123 05d1 02       		.uleb128 0x2
+ 2124 05d2 91       		.byte	0x91
+ 2125 05d3 58       		.sleb128 -40
+ 2126 05d4 1A       		.uleb128 0x1a
+ 2127 05d5 61010000 		.4byte	.LASF37
+ 2128 05d9 01       		.byte	0x1
+ 2129 05da 1701     		.2byte	0x117
+ 2130 05dc 17080000 		.4byte	0x817
+ 2131 05e0 02       		.uleb128 0x2
+ 2132 05e1 91       		.byte	0x91
+ 2133 05e2 48       		.sleb128 -56
+ 2134 05e3 1A       		.uleb128 0x1a
+ 2135 05e4 2D020000 		.4byte	.LASF38
+ 2136 05e8 01       		.byte	0x1
+ 2137 05e9 1801     		.2byte	0x118
+ 2138 05eb FD040000 		.4byte	0x4fd
+ 2139 05ef 02       		.uleb128 0x2
+ 2140 05f0 91       		.byte	0x91
+ 2141 05f1 44       		.sleb128 -60
+ 2142 05f2 1B       		.uleb128 0x1b
+ 2143 05f3 42030000 		.4byte	.LASF39
+ 2144 05f7 01       		.byte	0x1
+ 2145 05f8 1B01     		.2byte	0x11b
+ 2146 05fa 68000000 		.4byte	0x68
+ 2147 05fe 24020000 		.4byte	.LLST4
+ 2148 0602 1C       		.uleb128 0x1c
+ 2149 0603 6D736700 		.ascii	"msg\000"
+ 2150 0607 01       		.byte	0x1
+ 2151 0608 5701     		.2byte	0x157
+ 2152 060a 2D080000 		.4byte	0x82d
+ 2153 060e 03       		.uleb128 0x3
+ 2154 060f 91       		.byte	0x91
+ 2155 0610 B47F     		.sleb128 -76
+ 2156 0612 11       		.uleb128 0x11
+ 2157 0613 0A000000 		.4byte	.LVL79
+ 2158 0617 0C0A0000 		.4byte	0xa0c
+ 2159 061b 29060000 		.4byte	0x629
+ 2160 061f 12       		.uleb128 0x12
+ 2161 0620 01       		.uleb128 0x1
+ 2162 0621 50       		.byte	0x50
+ 2163 0622 05       		.uleb128 0x5
+ 2164 0623 03       		.byte	0x3
+ 2165 0624 B4000000 		.4byte	.LC14
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 47
+
+
+ 2166 0628 00       		.byte	0
+ 2167 0629 1D       		.uleb128 0x1d
+ 2168 062a 0E000000 		.4byte	.LVL80
+ 2169 062e 870A0000 		.4byte	0xa87
+ 2170 0632 11       		.uleb128 0x11
+ 2171 0633 18000000 		.4byte	.LVL81
+ 2172 0637 940A0000 		.4byte	0xa94
+ 2173 063b 58060000 		.4byte	0x658
+ 2174 063f 12       		.uleb128 0x12
+ 2175 0640 01       		.uleb128 0x1
+ 2176 0641 52       		.byte	0x52
+ 2177 0642 02       		.uleb128 0x2
+ 2178 0643 08       		.byte	0x8
+ 2179 0644 60       		.byte	0x60
+ 2180 0645 12       		.uleb128 0x12
+ 2181 0646 01       		.uleb128 0x1
+ 2182 0647 51       		.byte	0x51
+ 2183 0648 05       		.uleb128 0x5
+ 2184 0649 03       		.byte	0x3
+ 2185 064a 00000000 		.4byte	board
+ 2186 064e 12       		.uleb128 0x12
+ 2187 064f 01       		.uleb128 0x1
+ 2188 0650 50       		.byte	0x50
+ 2189 0651 05       		.uleb128 0x5
+ 2190 0652 03       		.byte	0x3
+ 2191 0653 00000000 		.4byte	initial_board
+ 2192 0657 00       		.byte	0
+ 2193 0658 11       		.uleb128 0x11
+ 2194 0659 34000000 		.4byte	.LVL84
+ 2195 065d 610A0000 		.4byte	0xa61
+ 2196 0661 6D060000 		.4byte	0x66d
+ 2197 0665 12       		.uleb128 0x12
+ 2198 0666 01       		.uleb128 0x1
+ 2199 0667 50       		.byte	0x50
+ 2200 0668 03       		.uleb128 0x3
+ 2201 0669 0A       		.byte	0xa
+ 2202 066a E803     		.2byte	0x3e8
+ 2203 066c 00       		.byte	0
+ 2204 066d 1D       		.uleb128 0x1d
+ 2205 066e 38000000 		.4byte	.LVL85
+ 2206 0672 870A0000 		.4byte	0xa87
+ 2207 0676 11       		.uleb128 0x11
+ 2208 0677 42000000 		.4byte	.LVL86
+ 2209 067b 940A0000 		.4byte	0xa94
+ 2210 067f 9C060000 		.4byte	0x69c
+ 2211 0683 12       		.uleb128 0x12
+ 2212 0684 01       		.uleb128 0x1
+ 2213 0685 52       		.byte	0x52
+ 2214 0686 02       		.uleb128 0x2
+ 2215 0687 08       		.byte	0x8
+ 2216 0688 60       		.byte	0x60
+ 2217 0689 12       		.uleb128 0x12
+ 2218 068a 01       		.uleb128 0x1
+ 2219 068b 51       		.byte	0x51
+ 2220 068c 05       		.uleb128 0x5
+ 2221 068d 03       		.byte	0x3
+ 2222 068e 00000000 		.4byte	board
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 48
+
+
+ 2223 0692 12       		.uleb128 0x12
+ 2224 0693 01       		.uleb128 0x1
+ 2225 0694 50       		.byte	0x50
+ 2226 0695 05       		.uleb128 0x5
+ 2227 0696 03       		.byte	0x3
+ 2228 0697 00000000 		.4byte	update1_board
+ 2229 069b 00       		.byte	0
+ 2230 069c 11       		.uleb128 0x11
+ 2231 069d 48000000 		.4byte	.LVL87
+ 2232 06a1 1D050000 		.4byte	0x51d
+ 2233 06a5 AF060000 		.4byte	0x6af
+ 2234 06a9 12       		.uleb128 0x12
+ 2235 06aa 01       		.uleb128 0x1
+ 2236 06ab 50       		.byte	0x50
+ 2237 06ac 01       		.uleb128 0x1
+ 2238 06ad 31       		.byte	0x31
+ 2239 06ae 00       		.byte	0
+ 2240 06af 11       		.uleb128 0x11
+ 2241 06b0 90000000 		.4byte	.LVL91
+ 2242 06b4 84050000 		.4byte	0x584
+ 2243 06b8 C4060000 		.4byte	0x6c4
+ 2244 06bc 12       		.uleb128 0x12
+ 2245 06bd 01       		.uleb128 0x1
+ 2246 06be 50       		.byte	0x50
+ 2247 06bf 03       		.uleb128 0x3
+ 2248 06c0 91       		.byte	0x91
+ 2249 06c1 5C       		.sleb128 -36
+ 2250 06c2 06       		.byte	0x6
+ 2251 06c3 00       		.byte	0
+ 2252 06c4 11       		.uleb128 0x11
+ 2253 06c5 9A000000 		.4byte	.LVL92
+ 2254 06c9 84050000 		.4byte	0x584
+ 2255 06cd D8060000 		.4byte	0x6d8
+ 2256 06d1 12       		.uleb128 0x12
+ 2257 06d2 01       		.uleb128 0x1
+ 2258 06d3 50       		.byte	0x50
+ 2259 06d4 02       		.uleb128 0x2
+ 2260 06d5 74       		.byte	0x74
+ 2261 06d6 00       		.sleb128 0
+ 2262 06d7 00       		.byte	0
+ 2263 06d8 11       		.uleb128 0x11
+ 2264 06d9 A6000000 		.4byte	.LVL93
+ 2265 06dd 84050000 		.4byte	0x584
+ 2266 06e1 EC060000 		.4byte	0x6ec
+ 2267 06e5 12       		.uleb128 0x12
+ 2268 06e6 01       		.uleb128 0x1
+ 2269 06e7 50       		.byte	0x50
+ 2270 06e8 02       		.uleb128 0x2
+ 2271 06e9 74       		.byte	0x74
+ 2272 06ea 00       		.sleb128 0
+ 2273 06eb 00       		.byte	0
+ 2274 06ec 11       		.uleb128 0x11
+ 2275 06ed B0000000 		.4byte	.LVL94
+ 2276 06f1 84050000 		.4byte	0x584
+ 2277 06f5 01070000 		.4byte	0x701
+ 2278 06f9 12       		.uleb128 0x12
+ 2279 06fa 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 49
+
+
+ 2280 06fb 50       		.byte	0x50
+ 2281 06fc 03       		.uleb128 0x3
+ 2282 06fd 91       		.byte	0x91
+ 2283 06fe 60       		.sleb128 -32
+ 2284 06ff 06       		.byte	0x6
+ 2285 0700 00       		.byte	0
+ 2286 0701 11       		.uleb128 0x11
+ 2287 0702 D8000000 		.4byte	.LVL95
+ 2288 0706 610A0000 		.4byte	0xa61
+ 2289 070a 16070000 		.4byte	0x716
+ 2290 070e 12       		.uleb128 0x12
+ 2291 070f 01       		.uleb128 0x1
+ 2292 0710 50       		.byte	0x50
+ 2293 0711 03       		.uleb128 0x3
+ 2294 0712 0A       		.byte	0xa
+ 2295 0713 E803     		.2byte	0x3e8
+ 2296 0715 00       		.byte	0
+ 2297 0716 1D       		.uleb128 0x1d
+ 2298 0717 DC000000 		.4byte	.LVL96
+ 2299 071b 870A0000 		.4byte	0xa87
+ 2300 071f 11       		.uleb128 0x11
+ 2301 0720 E6000000 		.4byte	.LVL97
+ 2302 0724 940A0000 		.4byte	0xa94
+ 2303 0728 45070000 		.4byte	0x745
+ 2304 072c 12       		.uleb128 0x12
+ 2305 072d 01       		.uleb128 0x1
+ 2306 072e 52       		.byte	0x52
+ 2307 072f 02       		.uleb128 0x2
+ 2308 0730 08       		.byte	0x8
+ 2309 0731 60       		.byte	0x60
+ 2310 0732 12       		.uleb128 0x12
+ 2311 0733 01       		.uleb128 0x1
+ 2312 0734 51       		.byte	0x51
+ 2313 0735 05       		.uleb128 0x5
+ 2314 0736 03       		.byte	0x3
+ 2315 0737 00000000 		.4byte	board
+ 2316 073b 12       		.uleb128 0x12
+ 2317 073c 01       		.uleb128 0x1
+ 2318 073d 50       		.byte	0x50
+ 2319 073e 05       		.uleb128 0x5
+ 2320 073f 03       		.byte	0x3
+ 2321 0740 00000000 		.4byte	update2_board
+ 2322 0744 00       		.byte	0
+ 2323 0745 11       		.uleb128 0x11
+ 2324 0746 EC000000 		.4byte	.LVL98
+ 2325 074a 1D050000 		.4byte	0x51d
+ 2326 074e 58070000 		.4byte	0x758
+ 2327 0752 12       		.uleb128 0x12
+ 2328 0753 01       		.uleb128 0x1
+ 2329 0754 50       		.byte	0x50
+ 2330 0755 01       		.uleb128 0x1
+ 2331 0756 32       		.byte	0x32
+ 2332 0757 00       		.byte	0
+ 2333 0758 11       		.uleb128 0x11
+ 2334 0759 04010000 		.4byte	.LVL99
+ 2335 075d 84050000 		.4byte	0x584
+ 2336 0761 6D070000 		.4byte	0x76d
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 50
+
+
+ 2337 0765 12       		.uleb128 0x12
+ 2338 0766 01       		.uleb128 0x1
+ 2339 0767 50       		.byte	0x50
+ 2340 0768 03       		.uleb128 0x3
+ 2341 0769 91       		.byte	0x91
+ 2342 076a 4C       		.sleb128 -52
+ 2343 076b 06       		.byte	0x6
+ 2344 076c 00       		.byte	0
+ 2345 076d 11       		.uleb128 0x11
+ 2346 076e 0E010000 		.4byte	.LVL100
+ 2347 0772 84050000 		.4byte	0x584
+ 2348 0776 81070000 		.4byte	0x781
+ 2349 077a 12       		.uleb128 0x12
+ 2350 077b 01       		.uleb128 0x1
+ 2351 077c 50       		.byte	0x50
+ 2352 077d 02       		.uleb128 0x2
+ 2353 077e 77       		.byte	0x77
+ 2354 077f 00       		.sleb128 0
+ 2355 0780 00       		.byte	0
+ 2356 0781 11       		.uleb128 0x11
+ 2357 0782 18010000 		.4byte	.LVL101
+ 2358 0786 84050000 		.4byte	0x584
+ 2359 078a 95070000 		.4byte	0x795
+ 2360 078e 12       		.uleb128 0x12
+ 2361 078f 01       		.uleb128 0x1
+ 2362 0790 50       		.byte	0x50
+ 2363 0791 02       		.uleb128 0x2
+ 2364 0792 76       		.byte	0x76
+ 2365 0793 00       		.sleb128 0
+ 2366 0794 00       		.byte	0
+ 2367 0795 11       		.uleb128 0x11
+ 2368 0796 22010000 		.4byte	.LVL102
+ 2369 079a 84050000 		.4byte	0x584
+ 2370 079e A9070000 		.4byte	0x7a9
+ 2371 07a2 12       		.uleb128 0x12
+ 2372 07a3 01       		.uleb128 0x1
+ 2373 07a4 50       		.byte	0x50
+ 2374 07a5 02       		.uleb128 0x2
+ 2375 07a6 74       		.byte	0x74
+ 2376 07a7 00       		.sleb128 0
+ 2377 07a8 00       		.byte	0
+ 2378 07a9 11       		.uleb128 0x11
+ 2379 07aa 98010000 		.4byte	.LVL103
+ 2380 07ae 280A0000 		.4byte	0xa28
+ 2381 07b2 C7070000 		.4byte	0x7c7
+ 2382 07b6 12       		.uleb128 0x12
+ 2383 07b7 01       		.uleb128 0x1
+ 2384 07b8 51       		.byte	0x51
+ 2385 07b9 05       		.uleb128 0x5
+ 2386 07ba 03       		.byte	0x3
+ 2387 07bb BC000000 		.4byte	.LC15
+ 2388 07bf 12       		.uleb128 0x12
+ 2389 07c0 01       		.uleb128 0x1
+ 2390 07c1 50       		.byte	0x50
+ 2391 07c2 03       		.uleb128 0x3
+ 2392 07c3 91       		.byte	0x91
+ 2393 07c4 B47F     		.sleb128 -76
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 51
+
+
+ 2394 07c6 00       		.byte	0
+ 2395 07c7 11       		.uleb128 0x11
+ 2396 07c8 A2010000 		.4byte	.LVL104
+ 2397 07cc 420A0000 		.4byte	0xa42
+ 2398 07d0 EC070000 		.4byte	0x7ec
+ 2399 07d4 12       		.uleb128 0x12
+ 2400 07d5 01       		.uleb128 0x1
+ 2401 07d6 52       		.byte	0x52
+ 2402 07d7 01       		.uleb128 0x1
+ 2403 07d8 39       		.byte	0x39
+ 2404 07d9 12       		.uleb128 0x12
+ 2405 07da 01       		.uleb128 0x1
+ 2406 07db 51       		.byte	0x51
+ 2407 07dc 05       		.uleb128 0x5
+ 2408 07dd 03       		.byte	0x3
+ 2409 07de 00000000 		.4byte	.LANCHOR1
+ 2410 07e2 12       		.uleb128 0x12
+ 2411 07e3 01       		.uleb128 0x1
+ 2412 07e4 50       		.byte	0x50
+ 2413 07e5 05       		.uleb128 0x5
+ 2414 07e6 03       		.byte	0x3
+ 2415 07e7 00000000 		.4byte	bres9
+ 2416 07eb 00       		.byte	0
+ 2417 07ec 11       		.uleb128 0x11
+ 2418 07ed B4010000 		.4byte	.LVL105
+ 2419 07f1 0C0A0000 		.4byte	0xa0c
+ 2420 07f5 03080000 		.4byte	0x803
+ 2421 07f9 12       		.uleb128 0x12
+ 2422 07fa 01       		.uleb128 0x1
+ 2423 07fb 50       		.byte	0x50
+ 2424 07fc 05       		.uleb128 0x5
+ 2425 07fd 03       		.byte	0x3
+ 2426 07fe C0000000 		.4byte	.LC16
+ 2427 0802 00       		.byte	0
+ 2428 0803 13       		.uleb128 0x13
+ 2429 0804 C2010000 		.4byte	.LVL106
+ 2430 0808 0C0A0000 		.4byte	0xa0c
+ 2431 080c 12       		.uleb128 0x12
+ 2432 080d 01       		.uleb128 0x1
+ 2433 080e 50       		.byte	0x50
+ 2434 080f 05       		.uleb128 0x5
+ 2435 0810 03       		.byte	0x3
+ 2436 0811 E4000000 		.4byte	.LC17
+ 2437 0815 00       		.byte	0
+ 2438 0816 00       		.byte	0
+ 2439 0817 08       		.uleb128 0x8
+ 2440 0818 68000000 		.4byte	0x68
+ 2441 081c 2D080000 		.4byte	0x82d
+ 2442 0820 09       		.uleb128 0x9
+ 2443 0821 83000000 		.4byte	0x83
+ 2444 0825 01       		.byte	0x1
+ 2445 0826 09       		.uleb128 0x9
+ 2446 0827 83000000 		.4byte	0x83
+ 2447 082b 01       		.byte	0x1
+ 2448 082c 00       		.byte	0
+ 2449 082d 08       		.uleb128 0x8
+ 2450 082e 90000000 		.4byte	0x90
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 52
+
+
+ 2451 0832 3D080000 		.4byte	0x83d
+ 2452 0836 09       		.uleb128 0x9
+ 2453 0837 83000000 		.4byte	0x83
+ 2454 083b 0C       		.byte	0xc
+ 2455 083c 00       		.byte	0
+ 2456 083d 19       		.uleb128 0x19
+ 2457 083e A3010000 		.4byte	.LASF40
+ 2458 0842 01       		.byte	0x1
+ 2459 0843 6B01     		.2byte	0x16b
+ 2460 0845 68000000 		.4byte	0x68
+ 2461 0849 00000000 		.4byte	.LFB71
+ 2462 084d 50000000 		.4byte	.LFE71-.LFB71
+ 2463 0851 01       		.uleb128 0x1
+ 2464 0852 9C       		.byte	0x9c
+ 2465 0853 A5080000 		.4byte	0x8a5
+ 2466 0857 1D       		.uleb128 0x1d
+ 2467 0858 0C000000 		.4byte	.LVL108
+ 2468 085c 7A010000 		.4byte	0x17a
+ 2469 0860 11       		.uleb128 0x11
+ 2470 0861 1A000000 		.4byte	.LVL109
+ 2471 0865 0C0A0000 		.4byte	0xa0c
+ 2472 0869 77080000 		.4byte	0x877
+ 2473 086d 12       		.uleb128 0x12
+ 2474 086e 01       		.uleb128 0x1
+ 2475 086f 50       		.byte	0x50
+ 2476 0870 05       		.uleb128 0x5
+ 2477 0871 03       		.byte	0x3
+ 2478 0872 F4000000 		.4byte	.LC18
+ 2479 0876 00       		.byte	0
+ 2480 0877 1D       		.uleb128 0x1d
+ 2481 0878 1E000000 		.4byte	.LVL110
+ 2482 087c 7A010000 		.4byte	0x17a
+ 2483 0880 1D       		.uleb128 0x1d
+ 2484 0881 28000000 		.4byte	.LVL111
+ 2485 0885 F5010000 		.4byte	0x1f5
+ 2486 0889 1D       		.uleb128 0x1d
+ 2487 088a 32000000 		.4byte	.LVL112
+ 2488 088e C3020000 		.4byte	0x2c3
+ 2489 0892 1D       		.uleb128 0x1d
+ 2490 0893 3C000000 		.4byte	.LVL113
+ 2491 0897 CB030000 		.4byte	0x3cb
+ 2492 089b 1D       		.uleb128 0x1d
+ 2493 089c 46000000 		.4byte	.LVL114
+ 2494 08a0 AB050000 		.4byte	0x5ab
+ 2495 08a4 00       		.byte	0
+ 2496 08a5 08       		.uleb128 0x8
+ 2497 08a6 90000000 		.4byte	0x90
+ 2498 08aa B5080000 		.4byte	0x8b5
+ 2499 08ae 09       		.uleb128 0x9
+ 2500 08af 83000000 		.4byte	0x83
+ 2501 08b3 08       		.byte	0x8
+ 2502 08b4 00       		.byte	0
+ 2503 08b5 14       		.uleb128 0x14
+ 2504 08b6 E0020000 		.4byte	.LASF41
+ 2505 08ba 01       		.byte	0x1
+ 2506 08bb 15       		.byte	0x15
+ 2507 08bc A5080000 		.4byte	0x8a5
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 53
+
+
+ 2508 08c0 05       		.uleb128 0x5
+ 2509 08c1 03       		.byte	0x3
+ 2510 08c2 00000000 		.4byte	recv
+ 2511 08c6 1E       		.uleb128 0x1e
+ 2512 08c7 86030000 		.4byte	.LASF42
+ 2513 08cb 07       		.byte	0x7
+ 2514 08cc 2A06     		.2byte	0x62a
+ 2515 08ce D2080000 		.4byte	0x8d2
+ 2516 08d2 1F       		.uleb128 0x1f
+ 2517 08d3 B9000000 		.4byte	0xb9
+ 2518 08d7 20       		.uleb128 0x20
+ 2519 08d8 F9000000 		.4byte	.LASF43
+ 2520 08dc 06       		.byte	0x6
+ 2521 08dd 19       		.byte	0x19
+ 2522 08de DA000000 		.4byte	0xda
+ 2523 08e2 05       		.uleb128 0x5
+ 2524 08e3 03       		.byte	0x3
+ 2525 08e4 00000000 		.4byte	x_pos
+ 2526 08e8 20       		.uleb128 0x20
+ 2527 08e9 F0020000 		.4byte	.LASF44
+ 2528 08ed 06       		.byte	0x6
+ 2529 08ee 1A       		.byte	0x1a
+ 2530 08ef DA000000 		.4byte	0xda
+ 2531 08f3 05       		.uleb128 0x5
+ 2532 08f4 03       		.byte	0x3
+ 2533 08f5 00000000 		.4byte	y_pos
+ 2534 08f9 08       		.uleb128 0x8
+ 2535 08fa 90000000 		.4byte	0x90
+ 2536 08fe 0F090000 		.4byte	0x90f
+ 2537 0902 09       		.uleb128 0x9
+ 2538 0903 83000000 		.4byte	0x83
+ 2539 0907 07       		.byte	0x7
+ 2540 0908 09       		.uleb128 0x9
+ 2541 0909 83000000 		.4byte	0x83
+ 2542 090d 0B       		.byte	0xb
+ 2543 090e 00       		.byte	0
+ 2544 090f 20       		.uleb128 0x20
+ 2545 0910 19010000 		.4byte	.LASF45
+ 2546 0914 06       		.byte	0x6
+ 2547 0915 2B       		.byte	0x2b
+ 2548 0916 F9080000 		.4byte	0x8f9
+ 2549 091a 05       		.uleb128 0x5
+ 2550 091b 03       		.byte	0x3
+ 2551 091c 00000000 		.4byte	board
+ 2552 0920 20       		.uleb128 0x20
+ 2553 0921 9B030000 		.4byte	.LASF46
+ 2554 0925 08       		.byte	0x8
+ 2555 0926 11       		.byte	0x11
+ 2556 0927 FE000000 		.4byte	0xfe
+ 2557 092b 05       		.uleb128 0x5
+ 2558 092c 03       		.byte	0x3
+ 2559 092d 00000000 		.4byte	move
+ 2560 0931 20       		.uleb128 0x20
+ 2561 0932 10000000 		.4byte	.LASF47
+ 2562 0936 08       		.byte	0x8
+ 2563 0937 16       		.byte	0x16
+ 2564 0938 A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 54
+
+
+ 2565 093c 05       		.uleb128 0x5
+ 2566 093d 03       		.byte	0x3
+ 2567 093e 00000000 		.4byte	bstr_connect
+ 2568 0942 08       		.uleb128 0x8
+ 2569 0943 90000000 		.4byte	0x90
+ 2570 0947 52090000 		.4byte	0x952
+ 2571 094b 09       		.uleb128 0x9
+ 2572 094c 83000000 		.4byte	0x83
+ 2573 0950 05       		.byte	0x5
+ 2574 0951 00       		.byte	0
+ 2575 0952 20       		.uleb128 0x20
+ 2576 0953 FF000000 		.4byte	.LASF48
+ 2577 0957 08       		.byte	0x8
+ 2578 0958 19       		.byte	0x19
+ 2579 0959 42090000 		.4byte	0x942
+ 2580 095d 05       		.uleb128 0x5
+ 2581 095e 03       		.byte	0x3
+ 2582 095f 00000000 		.4byte	bstr_ready
+ 2583 0963 20       		.uleb128 0x20
+ 2584 0964 74010000 		.4byte	.LASF49
+ 2585 0968 08       		.byte	0x8
+ 2586 0969 1C       		.byte	0x1c
+ 2587 096a FD040000 		.4byte	0x4fd
+ 2588 096e 05       		.uleb128 0x5
+ 2589 096f 03       		.byte	0x3
+ 2590 0970 00000000 		.4byte	bstr_gib
+ 2591 0974 20       		.uleb128 0x20
+ 2592 0975 E5020000 		.4byte	.LASF50
+ 2593 0979 08       		.byte	0x8
+ 2594 097a 27       		.byte	0x27
+ 2595 097b 68000000 		.4byte	0x68
+ 2596 097f 05       		.uleb128 0x5
+ 2597 0980 03       		.byte	0x3
+ 2598 0981 00000000 		.4byte	game_state
+ 2599 0985 08       		.uleb128 0x8
+ 2600 0986 90000000 		.4byte	0x90
+ 2601 098a 95090000 		.4byte	0x995
+ 2602 098e 09       		.uleb128 0x9
+ 2603 098f 83000000 		.4byte	0x83
+ 2604 0993 00       		.byte	0
+ 2605 0994 00       		.byte	0
+ 2606 0995 20       		.uleb128 0x20
+ 2607 0996 51000000 		.4byte	.LASF51
+ 2608 099a 01       		.byte	0x1
+ 2609 099b 06       		.byte	0x6
+ 2610 099c 85090000 		.4byte	0x985
+ 2611 09a0 05       		.uleb128 0x5
+ 2612 09a1 03       		.byte	0x3
+ 2613 09a2 00000000 		.4byte	bres1
+ 2614 09a6 20       		.uleb128 0x20
+ 2615 09a7 7A000000 		.4byte	.LASF52
+ 2616 09ab 01       		.byte	0x1
+ 2617 09ac 07       		.byte	0x7
+ 2618 09ad A2000000 		.4byte	0xa2
+ 2619 09b1 05       		.uleb128 0x5
+ 2620 09b2 03       		.byte	0x3
+ 2621 09b3 00000000 		.4byte	bres8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 55
+
+
+ 2622 09b7 20       		.uleb128 0x20
+ 2623 09b8 80000000 		.4byte	.LASF53
+ 2624 09bc 01       		.byte	0x1
+ 2625 09bd 08       		.byte	0x8
+ 2626 09be A5080000 		.4byte	0x8a5
+ 2627 09c2 05       		.uleb128 0x5
+ 2628 09c3 03       		.byte	0x3
+ 2629 09c4 00000000 		.4byte	bres9
+ 2630 09c8 20       		.uleb128 0x20
+ 2631 09c9 A3000000 		.4byte	.LASF54
+ 2632 09cd 01       		.byte	0x1
+ 2633 09ce 0A       		.byte	0xa
+ 2634 09cf 17080000 		.4byte	0x817
+ 2635 09d3 05       		.uleb128 0x5
+ 2636 09d4 03       		.byte	0x3
+ 2637 09d5 00000000 		.4byte	diff_loc
+ 2638 09d9 20       		.uleb128 0x20
+ 2639 09da 43000000 		.4byte	.LASF55
+ 2640 09de 01       		.byte	0x1
+ 2641 09df 0C       		.byte	0xc
+ 2642 09e0 F9080000 		.4byte	0x8f9
+ 2643 09e4 05       		.uleb128 0x5
+ 2644 09e5 03       		.byte	0x3
+ 2645 09e6 00000000 		.4byte	initial_board
+ 2646 09ea 20       		.uleb128 0x20
+ 2647 09eb 1C030000 		.4byte	.LASF56
+ 2648 09ef 01       		.byte	0x1
+ 2649 09f0 0D       		.byte	0xd
+ 2650 09f1 F9080000 		.4byte	0x8f9
+ 2651 09f5 05       		.uleb128 0x5
+ 2652 09f6 03       		.byte	0x3
+ 2653 09f7 00000000 		.4byte	update1_board
+ 2654 09fb 20       		.uleb128 0x20
+ 2655 09fc 7D010000 		.4byte	.LASF57
+ 2656 0a00 01       		.byte	0x1
+ 2657 0a01 0E       		.byte	0xe
+ 2658 0a02 F9080000 		.4byte	0x8f9
+ 2659 0a06 05       		.uleb128 0x5
+ 2660 0a07 03       		.byte	0x3
+ 2661 0a08 00000000 		.4byte	update2_board
+ 2662 0a0c 21       		.uleb128 0x21
+ 2663 0a0d CB020000 		.4byte	.LASF60
+ 2664 0a11 0B       		.byte	0xb
+ 2665 0a12 8B       		.byte	0x8b
+ 2666 0a13 1D0A0000 		.4byte	0xa1d
+ 2667 0a17 22       		.uleb128 0x22
+ 2668 0a18 1D0A0000 		.4byte	0xa1d
+ 2669 0a1c 00       		.byte	0
+ 2670 0a1d 06       		.uleb128 0x6
+ 2671 0a1e 04       		.byte	0x4
+ 2672 0a1f 230A0000 		.4byte	0xa23
+ 2673 0a23 07       		.uleb128 0x7
+ 2674 0a24 F3000000 		.4byte	0xf3
+ 2675 0a28 23       		.uleb128 0x23
+ 2676 0a29 4B030000 		.4byte	.LASF58
+ 2677 0a2d 09       		.byte	0x9
+ 2678 0a2e 14       		.byte	0x14
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 56
+
+
+ 2679 0a2f 8A000000 		.4byte	0x8a
+ 2680 0a33 420A0000 		.4byte	0xa42
+ 2681 0a37 22       		.uleb128 0x22
+ 2682 0a38 8A000000 		.4byte	0x8a
+ 2683 0a3c 22       		.uleb128 0x22
+ 2684 0a3d 8A000000 		.4byte	0x8a
+ 2685 0a41 00       		.byte	0
+ 2686 0a42 23       		.uleb128 0x23
+ 2687 0a43 00000000 		.4byte	.LASF59
+ 2688 0a47 0A       		.byte	0xa
+ 2689 0a48 24       		.byte	0x24
+ 2690 0a49 8A000000 		.4byte	0x8a
+ 2691 0a4d 610A0000 		.4byte	0xa61
+ 2692 0a51 22       		.uleb128 0x22
+ 2693 0a52 8A000000 		.4byte	0x8a
+ 2694 0a56 22       		.uleb128 0x22
+ 2695 0a57 97000000 		.4byte	0x97
+ 2696 0a5b 22       		.uleb128 0x22
+ 2697 0a5c 76000000 		.4byte	0x76
+ 2698 0a60 00       		.byte	0
+ 2699 0a61 21       		.uleb128 0x21
+ 2700 0a62 93030000 		.4byte	.LASF61
+ 2701 0a66 0C       		.byte	0xc
+ 2702 0a67 77       		.byte	0x77
+ 2703 0a68 720A0000 		.4byte	0xa72
+ 2704 0a6c 22       		.uleb128 0x22
+ 2705 0a6d CF000000 		.4byte	0xcf
+ 2706 0a71 00       		.byte	0
+ 2707 0a72 23       		.uleb128 0x23
+ 2708 0a73 AD010000 		.4byte	.LASF62
+ 2709 0a77 0A       		.byte	0xa
+ 2710 0a78 21       		.byte	0x21
+ 2711 0a79 76000000 		.4byte	0x76
+ 2712 0a7d 870A0000 		.4byte	0xa87
+ 2713 0a81 22       		.uleb128 0x22
+ 2714 0a82 97000000 		.4byte	0x97
+ 2715 0a86 00       		.byte	0
+ 2716 0a87 24       		.uleb128 0x24
+ 2717 0a88 90000000 		.4byte	.LASF63
+ 2718 0a8c 06       		.byte	0x6
+ 2719 0a8d 2F       		.byte	0x2f
+ 2720 0a8e 940A0000 		.4byte	0xa94
+ 2721 0a92 25       		.uleb128 0x25
+ 2722 0a93 00       		.byte	0
+ 2723 0a94 26       		.uleb128 0x26
+ 2724 0a95 57000000 		.4byte	.LASF64
+ 2725 0a99 81000000 		.4byte	0x81
+ 2726 0a9d 22       		.uleb128 0x22
+ 2727 0a9e 81000000 		.4byte	0x81
+ 2728 0aa2 22       		.uleb128 0x22
+ 2729 0aa3 B2000000 		.4byte	0xb2
+ 2730 0aa7 22       		.uleb128 0x22
+ 2731 0aa8 83000000 		.4byte	0x83
+ 2732 0aac 00       		.byte	0
+ 2733 0aad 00       		.byte	0
+ 2734              		.section	.debug_abbrev,"",%progbits
+ 2735              	.Ldebug_abbrev0:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 57
+
+
+ 2736 0000 01       		.uleb128 0x1
+ 2737 0001 11       		.uleb128 0x11
+ 2738 0002 01       		.byte	0x1
+ 2739 0003 25       		.uleb128 0x25
+ 2740 0004 0E       		.uleb128 0xe
+ 2741 0005 13       		.uleb128 0x13
+ 2742 0006 0B       		.uleb128 0xb
+ 2743 0007 03       		.uleb128 0x3
+ 2744 0008 0E       		.uleb128 0xe
+ 2745 0009 1B       		.uleb128 0x1b
+ 2746 000a 0E       		.uleb128 0xe
+ 2747 000b 55       		.uleb128 0x55
+ 2748 000c 17       		.uleb128 0x17
+ 2749 000d 11       		.uleb128 0x11
+ 2750 000e 01       		.uleb128 0x1
+ 2751 000f 10       		.uleb128 0x10
+ 2752 0010 17       		.uleb128 0x17
+ 2753 0011 00       		.byte	0
+ 2754 0012 00       		.byte	0
+ 2755 0013 02       		.uleb128 0x2
+ 2756 0014 24       		.uleb128 0x24
+ 2757 0015 00       		.byte	0
+ 2758 0016 0B       		.uleb128 0xb
+ 2759 0017 0B       		.uleb128 0xb
+ 2760 0018 3E       		.uleb128 0x3e
+ 2761 0019 0B       		.uleb128 0xb
+ 2762 001a 03       		.uleb128 0x3
+ 2763 001b 0E       		.uleb128 0xe
+ 2764 001c 00       		.byte	0
+ 2765 001d 00       		.byte	0
+ 2766 001e 03       		.uleb128 0x3
+ 2767 001f 16       		.uleb128 0x16
+ 2768 0020 00       		.byte	0
+ 2769 0021 03       		.uleb128 0x3
+ 2770 0022 0E       		.uleb128 0xe
+ 2771 0023 3A       		.uleb128 0x3a
+ 2772 0024 0B       		.uleb128 0xb
+ 2773 0025 3B       		.uleb128 0x3b
+ 2774 0026 0B       		.uleb128 0xb
+ 2775 0027 49       		.uleb128 0x49
+ 2776 0028 13       		.uleb128 0x13
+ 2777 0029 00       		.byte	0
+ 2778 002a 00       		.byte	0
+ 2779 002b 04       		.uleb128 0x4
+ 2780 002c 24       		.uleb128 0x24
+ 2781 002d 00       		.byte	0
+ 2782 002e 0B       		.uleb128 0xb
+ 2783 002f 0B       		.uleb128 0xb
+ 2784 0030 3E       		.uleb128 0x3e
+ 2785 0031 0B       		.uleb128 0xb
+ 2786 0032 03       		.uleb128 0x3
+ 2787 0033 08       		.uleb128 0x8
+ 2788 0034 00       		.byte	0
+ 2789 0035 00       		.byte	0
+ 2790 0036 05       		.uleb128 0x5
+ 2791 0037 0F       		.uleb128 0xf
+ 2792 0038 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 58
+
+
+ 2793 0039 0B       		.uleb128 0xb
+ 2794 003a 0B       		.uleb128 0xb
+ 2795 003b 00       		.byte	0
+ 2796 003c 00       		.byte	0
+ 2797 003d 06       		.uleb128 0x6
+ 2798 003e 0F       		.uleb128 0xf
+ 2799 003f 00       		.byte	0
+ 2800 0040 0B       		.uleb128 0xb
+ 2801 0041 0B       		.uleb128 0xb
+ 2802 0042 49       		.uleb128 0x49
+ 2803 0043 13       		.uleb128 0x13
+ 2804 0044 00       		.byte	0
+ 2805 0045 00       		.byte	0
+ 2806 0046 07       		.uleb128 0x7
+ 2807 0047 26       		.uleb128 0x26
+ 2808 0048 00       		.byte	0
+ 2809 0049 49       		.uleb128 0x49
+ 2810 004a 13       		.uleb128 0x13
+ 2811 004b 00       		.byte	0
+ 2812 004c 00       		.byte	0
+ 2813 004d 08       		.uleb128 0x8
+ 2814 004e 01       		.uleb128 0x1
+ 2815 004f 01       		.byte	0x1
+ 2816 0050 49       		.uleb128 0x49
+ 2817 0051 13       		.uleb128 0x13
+ 2818 0052 01       		.uleb128 0x1
+ 2819 0053 13       		.uleb128 0x13
+ 2820 0054 00       		.byte	0
+ 2821 0055 00       		.byte	0
+ 2822 0056 09       		.uleb128 0x9
+ 2823 0057 21       		.uleb128 0x21
+ 2824 0058 00       		.byte	0
+ 2825 0059 49       		.uleb128 0x49
+ 2826 005a 13       		.uleb128 0x13
+ 2827 005b 2F       		.uleb128 0x2f
+ 2828 005c 0B       		.uleb128 0xb
+ 2829 005d 00       		.byte	0
+ 2830 005e 00       		.byte	0
+ 2831 005f 0A       		.uleb128 0xa
+ 2832 0060 26       		.uleb128 0x26
+ 2833 0061 00       		.byte	0
+ 2834 0062 00       		.byte	0
+ 2835 0063 00       		.byte	0
+ 2836 0064 0B       		.uleb128 0xb
+ 2837 0065 13       		.uleb128 0x13
+ 2838 0066 01       		.byte	0x1
+ 2839 0067 03       		.uleb128 0x3
+ 2840 0068 0E       		.uleb128 0xe
+ 2841 0069 0B       		.uleb128 0xb
+ 2842 006a 0B       		.uleb128 0xb
+ 2843 006b 3A       		.uleb128 0x3a
+ 2844 006c 0B       		.uleb128 0xb
+ 2845 006d 3B       		.uleb128 0x3b
+ 2846 006e 0B       		.uleb128 0xb
+ 2847 006f 01       		.uleb128 0x1
+ 2848 0070 13       		.uleb128 0x13
+ 2849 0071 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 59
+
+
+ 2850 0072 00       		.byte	0
+ 2851 0073 0C       		.uleb128 0xc
+ 2852 0074 0D       		.uleb128 0xd
+ 2853 0075 00       		.byte	0
+ 2854 0076 03       		.uleb128 0x3
+ 2855 0077 0E       		.uleb128 0xe
+ 2856 0078 3A       		.uleb128 0x3a
+ 2857 0079 0B       		.uleb128 0xb
+ 2858 007a 3B       		.uleb128 0x3b
+ 2859 007b 0B       		.uleb128 0xb
+ 2860 007c 49       		.uleb128 0x49
+ 2861 007d 13       		.uleb128 0x13
+ 2862 007e 38       		.uleb128 0x38
+ 2863 007f 0B       		.uleb128 0xb
+ 2864 0080 00       		.byte	0
+ 2865 0081 00       		.byte	0
+ 2866 0082 0D       		.uleb128 0xd
+ 2867 0083 04       		.uleb128 0x4
+ 2868 0084 01       		.byte	0x1
+ 2869 0085 03       		.uleb128 0x3
+ 2870 0086 0E       		.uleb128 0xe
+ 2871 0087 0B       		.uleb128 0xb
+ 2872 0088 0B       		.uleb128 0xb
+ 2873 0089 3A       		.uleb128 0x3a
+ 2874 008a 0B       		.uleb128 0xb
+ 2875 008b 3B       		.uleb128 0x3b
+ 2876 008c 0B       		.uleb128 0xb
+ 2877 008d 01       		.uleb128 0x1
+ 2878 008e 13       		.uleb128 0x13
+ 2879 008f 00       		.byte	0
+ 2880 0090 00       		.byte	0
+ 2881 0091 0E       		.uleb128 0xe
+ 2882 0092 28       		.uleb128 0x28
+ 2883 0093 00       		.byte	0
+ 2884 0094 03       		.uleb128 0x3
+ 2885 0095 0E       		.uleb128 0xe
+ 2886 0096 1C       		.uleb128 0x1c
+ 2887 0097 0D       		.uleb128 0xd
+ 2888 0098 00       		.byte	0
+ 2889 0099 00       		.byte	0
+ 2890 009a 0F       		.uleb128 0xf
+ 2891 009b 2E       		.uleb128 0x2e
+ 2892 009c 01       		.byte	0x1
+ 2893 009d 3F       		.uleb128 0x3f
+ 2894 009e 19       		.uleb128 0x19
+ 2895 009f 03       		.uleb128 0x3
+ 2896 00a0 0E       		.uleb128 0xe
+ 2897 00a1 3A       		.uleb128 0x3a
+ 2898 00a2 0B       		.uleb128 0xb
+ 2899 00a3 3B       		.uleb128 0x3b
+ 2900 00a4 0B       		.uleb128 0xb
+ 2901 00a5 49       		.uleb128 0x49
+ 2902 00a6 13       		.uleb128 0x13
+ 2903 00a7 11       		.uleb128 0x11
+ 2904 00a8 01       		.uleb128 0x1
+ 2905 00a9 12       		.uleb128 0x12
+ 2906 00aa 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 60
+
+
+ 2907 00ab 40       		.uleb128 0x40
+ 2908 00ac 18       		.uleb128 0x18
+ 2909 00ad 9742     		.uleb128 0x2117
+ 2910 00af 19       		.uleb128 0x19
+ 2911 00b0 01       		.uleb128 0x1
+ 2912 00b1 13       		.uleb128 0x13
+ 2913 00b2 00       		.byte	0
+ 2914 00b3 00       		.byte	0
+ 2915 00b4 10       		.uleb128 0x10
+ 2916 00b5 34       		.uleb128 0x34
+ 2917 00b6 00       		.byte	0
+ 2918 00b7 03       		.uleb128 0x3
+ 2919 00b8 0E       		.uleb128 0xe
+ 2920 00b9 3A       		.uleb128 0x3a
+ 2921 00ba 0B       		.uleb128 0xb
+ 2922 00bb 3B       		.uleb128 0x3b
+ 2923 00bc 0B       		.uleb128 0xb
+ 2924 00bd 49       		.uleb128 0x49
+ 2925 00be 13       		.uleb128 0x13
+ 2926 00bf 1C       		.uleb128 0x1c
+ 2927 00c0 0B       		.uleb128 0xb
+ 2928 00c1 00       		.byte	0
+ 2929 00c2 00       		.byte	0
+ 2930 00c3 11       		.uleb128 0x11
+ 2931 00c4 898201   		.uleb128 0x4109
+ 2932 00c7 01       		.byte	0x1
+ 2933 00c8 11       		.uleb128 0x11
+ 2934 00c9 01       		.uleb128 0x1
+ 2935 00ca 31       		.uleb128 0x31
+ 2936 00cb 13       		.uleb128 0x13
+ 2937 00cc 01       		.uleb128 0x1
+ 2938 00cd 13       		.uleb128 0x13
+ 2939 00ce 00       		.byte	0
+ 2940 00cf 00       		.byte	0
+ 2941 00d0 12       		.uleb128 0x12
+ 2942 00d1 8A8201   		.uleb128 0x410a
+ 2943 00d4 00       		.byte	0
+ 2944 00d5 02       		.uleb128 0x2
+ 2945 00d6 18       		.uleb128 0x18
+ 2946 00d7 9142     		.uleb128 0x2111
+ 2947 00d9 18       		.uleb128 0x18
+ 2948 00da 00       		.byte	0
+ 2949 00db 00       		.byte	0
+ 2950 00dc 13       		.uleb128 0x13
+ 2951 00dd 898201   		.uleb128 0x4109
+ 2952 00e0 01       		.byte	0x1
+ 2953 00e1 11       		.uleb128 0x11
+ 2954 00e2 01       		.uleb128 0x1
+ 2955 00e3 31       		.uleb128 0x31
+ 2956 00e4 13       		.uleb128 0x13
+ 2957 00e5 00       		.byte	0
+ 2958 00e6 00       		.byte	0
+ 2959 00e7 14       		.uleb128 0x14
+ 2960 00e8 34       		.uleb128 0x34
+ 2961 00e9 00       		.byte	0
+ 2962 00ea 03       		.uleb128 0x3
+ 2963 00eb 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 61
+
+
+ 2964 00ec 3A       		.uleb128 0x3a
+ 2965 00ed 0B       		.uleb128 0xb
+ 2966 00ee 3B       		.uleb128 0x3b
+ 2967 00ef 0B       		.uleb128 0xb
+ 2968 00f0 49       		.uleb128 0x49
+ 2969 00f1 13       		.uleb128 0x13
+ 2970 00f2 02       		.uleb128 0x2
+ 2971 00f3 18       		.uleb128 0x18
+ 2972 00f4 00       		.byte	0
+ 2973 00f5 00       		.byte	0
+ 2974 00f6 15       		.uleb128 0x15
+ 2975 00f7 2E       		.uleb128 0x2e
+ 2976 00f8 01       		.byte	0x1
+ 2977 00f9 3F       		.uleb128 0x3f
+ 2978 00fa 19       		.uleb128 0x19
+ 2979 00fb 03       		.uleb128 0x3
+ 2980 00fc 0E       		.uleb128 0xe
+ 2981 00fd 3A       		.uleb128 0x3a
+ 2982 00fe 0B       		.uleb128 0xb
+ 2983 00ff 3B       		.uleb128 0x3b
+ 2984 0100 0B       		.uleb128 0xb
+ 2985 0101 27       		.uleb128 0x27
+ 2986 0102 19       		.uleb128 0x19
+ 2987 0103 11       		.uleb128 0x11
+ 2988 0104 01       		.uleb128 0x1
+ 2989 0105 12       		.uleb128 0x12
+ 2990 0106 06       		.uleb128 0x6
+ 2991 0107 40       		.uleb128 0x40
+ 2992 0108 18       		.uleb128 0x18
+ 2993 0109 9742     		.uleb128 0x2117
+ 2994 010b 19       		.uleb128 0x19
+ 2995 010c 01       		.uleb128 0x1
+ 2996 010d 13       		.uleb128 0x13
+ 2997 010e 00       		.byte	0
+ 2998 010f 00       		.byte	0
+ 2999 0110 16       		.uleb128 0x16
+ 3000 0111 05       		.uleb128 0x5
+ 3001 0112 00       		.byte	0
+ 3002 0113 03       		.uleb128 0x3
+ 3003 0114 08       		.uleb128 0x8
+ 3004 0115 3A       		.uleb128 0x3a
+ 3005 0116 0B       		.uleb128 0xb
+ 3006 0117 3B       		.uleb128 0x3b
+ 3007 0118 0B       		.uleb128 0xb
+ 3008 0119 49       		.uleb128 0x49
+ 3009 011a 13       		.uleb128 0x13
+ 3010 011b 02       		.uleb128 0x2
+ 3011 011c 17       		.uleb128 0x17
+ 3012 011d 00       		.byte	0
+ 3013 011e 00       		.byte	0
+ 3014 011f 17       		.uleb128 0x17
+ 3015 0120 34       		.uleb128 0x34
+ 3016 0121 00       		.byte	0
+ 3017 0122 03       		.uleb128 0x3
+ 3018 0123 08       		.uleb128 0x8
+ 3019 0124 3A       		.uleb128 0x3a
+ 3020 0125 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 62
+
+
+ 3021 0126 3B       		.uleb128 0x3b
+ 3022 0127 0B       		.uleb128 0xb
+ 3023 0128 49       		.uleb128 0x49
+ 3024 0129 13       		.uleb128 0x13
+ 3025 012a 02       		.uleb128 0x2
+ 3026 012b 17       		.uleb128 0x17
+ 3027 012c 00       		.byte	0
+ 3028 012d 00       		.byte	0
+ 3029 012e 18       		.uleb128 0x18
+ 3030 012f 2E       		.uleb128 0x2e
+ 3031 0130 01       		.byte	0x1
+ 3032 0131 3F       		.uleb128 0x3f
+ 3033 0132 19       		.uleb128 0x19
+ 3034 0133 03       		.uleb128 0x3
+ 3035 0134 0E       		.uleb128 0xe
+ 3036 0135 3A       		.uleb128 0x3a
+ 3037 0136 0B       		.uleb128 0xb
+ 3038 0137 3B       		.uleb128 0x3b
+ 3039 0138 0B       		.uleb128 0xb
+ 3040 0139 27       		.uleb128 0x27
+ 3041 013a 19       		.uleb128 0x19
+ 3042 013b 49       		.uleb128 0x49
+ 3043 013c 13       		.uleb128 0x13
+ 3044 013d 11       		.uleb128 0x11
+ 3045 013e 01       		.uleb128 0x1
+ 3046 013f 12       		.uleb128 0x12
+ 3047 0140 06       		.uleb128 0x6
+ 3048 0141 40       		.uleb128 0x40
+ 3049 0142 18       		.uleb128 0x18
+ 3050 0143 9742     		.uleb128 0x2117
+ 3051 0145 19       		.uleb128 0x19
+ 3052 0146 01       		.uleb128 0x1
+ 3053 0147 13       		.uleb128 0x13
+ 3054 0148 00       		.byte	0
+ 3055 0149 00       		.byte	0
+ 3056 014a 19       		.uleb128 0x19
+ 3057 014b 2E       		.uleb128 0x2e
+ 3058 014c 01       		.byte	0x1
+ 3059 014d 3F       		.uleb128 0x3f
+ 3060 014e 19       		.uleb128 0x19
+ 3061 014f 03       		.uleb128 0x3
+ 3062 0150 0E       		.uleb128 0xe
+ 3063 0151 3A       		.uleb128 0x3a
+ 3064 0152 0B       		.uleb128 0xb
+ 3065 0153 3B       		.uleb128 0x3b
+ 3066 0154 05       		.uleb128 0x5
+ 3067 0155 49       		.uleb128 0x49
+ 3068 0156 13       		.uleb128 0x13
+ 3069 0157 11       		.uleb128 0x11
+ 3070 0158 01       		.uleb128 0x1
+ 3071 0159 12       		.uleb128 0x12
+ 3072 015a 06       		.uleb128 0x6
+ 3073 015b 40       		.uleb128 0x40
+ 3074 015c 18       		.uleb128 0x18
+ 3075 015d 9742     		.uleb128 0x2117
+ 3076 015f 19       		.uleb128 0x19
+ 3077 0160 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 63
+
+
+ 3078 0161 13       		.uleb128 0x13
+ 3079 0162 00       		.byte	0
+ 3080 0163 00       		.byte	0
+ 3081 0164 1A       		.uleb128 0x1a
+ 3082 0165 34       		.uleb128 0x34
+ 3083 0166 00       		.byte	0
+ 3084 0167 03       		.uleb128 0x3
+ 3085 0168 0E       		.uleb128 0xe
+ 3086 0169 3A       		.uleb128 0x3a
+ 3087 016a 0B       		.uleb128 0xb
+ 3088 016b 3B       		.uleb128 0x3b
+ 3089 016c 05       		.uleb128 0x5
+ 3090 016d 49       		.uleb128 0x49
+ 3091 016e 13       		.uleb128 0x13
+ 3092 016f 02       		.uleb128 0x2
+ 3093 0170 18       		.uleb128 0x18
+ 3094 0171 00       		.byte	0
+ 3095 0172 00       		.byte	0
+ 3096 0173 1B       		.uleb128 0x1b
+ 3097 0174 34       		.uleb128 0x34
+ 3098 0175 00       		.byte	0
+ 3099 0176 03       		.uleb128 0x3
+ 3100 0177 0E       		.uleb128 0xe
+ 3101 0178 3A       		.uleb128 0x3a
+ 3102 0179 0B       		.uleb128 0xb
+ 3103 017a 3B       		.uleb128 0x3b
+ 3104 017b 05       		.uleb128 0x5
+ 3105 017c 49       		.uleb128 0x49
+ 3106 017d 13       		.uleb128 0x13
+ 3107 017e 02       		.uleb128 0x2
+ 3108 017f 17       		.uleb128 0x17
+ 3109 0180 00       		.byte	0
+ 3110 0181 00       		.byte	0
+ 3111 0182 1C       		.uleb128 0x1c
+ 3112 0183 34       		.uleb128 0x34
+ 3113 0184 00       		.byte	0
+ 3114 0185 03       		.uleb128 0x3
+ 3115 0186 08       		.uleb128 0x8
+ 3116 0187 3A       		.uleb128 0x3a
+ 3117 0188 0B       		.uleb128 0xb
+ 3118 0189 3B       		.uleb128 0x3b
+ 3119 018a 05       		.uleb128 0x5
+ 3120 018b 49       		.uleb128 0x49
+ 3121 018c 13       		.uleb128 0x13
+ 3122 018d 02       		.uleb128 0x2
+ 3123 018e 18       		.uleb128 0x18
+ 3124 018f 00       		.byte	0
+ 3125 0190 00       		.byte	0
+ 3126 0191 1D       		.uleb128 0x1d
+ 3127 0192 898201   		.uleb128 0x4109
+ 3128 0195 00       		.byte	0
+ 3129 0196 11       		.uleb128 0x11
+ 3130 0197 01       		.uleb128 0x1
+ 3131 0198 31       		.uleb128 0x31
+ 3132 0199 13       		.uleb128 0x13
+ 3133 019a 00       		.byte	0
+ 3134 019b 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 64
+
+
+ 3135 019c 1E       		.uleb128 0x1e
+ 3136 019d 34       		.uleb128 0x34
+ 3137 019e 00       		.byte	0
+ 3138 019f 03       		.uleb128 0x3
+ 3139 01a0 0E       		.uleb128 0xe
+ 3140 01a1 3A       		.uleb128 0x3a
+ 3141 01a2 0B       		.uleb128 0xb
+ 3142 01a3 3B       		.uleb128 0x3b
+ 3143 01a4 05       		.uleb128 0x5
+ 3144 01a5 49       		.uleb128 0x49
+ 3145 01a6 13       		.uleb128 0x13
+ 3146 01a7 3F       		.uleb128 0x3f
+ 3147 01a8 19       		.uleb128 0x19
+ 3148 01a9 3C       		.uleb128 0x3c
+ 3149 01aa 19       		.uleb128 0x19
+ 3150 01ab 00       		.byte	0
+ 3151 01ac 00       		.byte	0
+ 3152 01ad 1F       		.uleb128 0x1f
+ 3153 01ae 35       		.uleb128 0x35
+ 3154 01af 00       		.byte	0
+ 3155 01b0 49       		.uleb128 0x49
+ 3156 01b1 13       		.uleb128 0x13
+ 3157 01b2 00       		.byte	0
+ 3158 01b3 00       		.byte	0
+ 3159 01b4 20       		.uleb128 0x20
+ 3160 01b5 34       		.uleb128 0x34
+ 3161 01b6 00       		.byte	0
+ 3162 01b7 03       		.uleb128 0x3
+ 3163 01b8 0E       		.uleb128 0xe
+ 3164 01b9 3A       		.uleb128 0x3a
+ 3165 01ba 0B       		.uleb128 0xb
+ 3166 01bb 3B       		.uleb128 0x3b
+ 3167 01bc 0B       		.uleb128 0xb
+ 3168 01bd 49       		.uleb128 0x49
+ 3169 01be 13       		.uleb128 0x13
+ 3170 01bf 3F       		.uleb128 0x3f
+ 3171 01c0 19       		.uleb128 0x19
+ 3172 01c1 02       		.uleb128 0x2
+ 3173 01c2 18       		.uleb128 0x18
+ 3174 01c3 00       		.byte	0
+ 3175 01c4 00       		.byte	0
+ 3176 01c5 21       		.uleb128 0x21
+ 3177 01c6 2E       		.uleb128 0x2e
+ 3178 01c7 01       		.byte	0x1
+ 3179 01c8 3F       		.uleb128 0x3f
+ 3180 01c9 19       		.uleb128 0x19
+ 3181 01ca 03       		.uleb128 0x3
+ 3182 01cb 0E       		.uleb128 0xe
+ 3183 01cc 3A       		.uleb128 0x3a
+ 3184 01cd 0B       		.uleb128 0xb
+ 3185 01ce 3B       		.uleb128 0x3b
+ 3186 01cf 0B       		.uleb128 0xb
+ 3187 01d0 27       		.uleb128 0x27
+ 3188 01d1 19       		.uleb128 0x19
+ 3189 01d2 3C       		.uleb128 0x3c
+ 3190 01d3 19       		.uleb128 0x19
+ 3191 01d4 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 65
+
+
+ 3192 01d5 13       		.uleb128 0x13
+ 3193 01d6 00       		.byte	0
+ 3194 01d7 00       		.byte	0
+ 3195 01d8 22       		.uleb128 0x22
+ 3196 01d9 05       		.uleb128 0x5
+ 3197 01da 00       		.byte	0
+ 3198 01db 49       		.uleb128 0x49
+ 3199 01dc 13       		.uleb128 0x13
+ 3200 01dd 00       		.byte	0
+ 3201 01de 00       		.byte	0
+ 3202 01df 23       		.uleb128 0x23
+ 3203 01e0 2E       		.uleb128 0x2e
+ 3204 01e1 01       		.byte	0x1
+ 3205 01e2 3F       		.uleb128 0x3f
+ 3206 01e3 19       		.uleb128 0x19
+ 3207 01e4 03       		.uleb128 0x3
+ 3208 01e5 0E       		.uleb128 0xe
+ 3209 01e6 3A       		.uleb128 0x3a
+ 3210 01e7 0B       		.uleb128 0xb
+ 3211 01e8 3B       		.uleb128 0x3b
+ 3212 01e9 0B       		.uleb128 0xb
+ 3213 01ea 27       		.uleb128 0x27
+ 3214 01eb 19       		.uleb128 0x19
+ 3215 01ec 49       		.uleb128 0x49
+ 3216 01ed 13       		.uleb128 0x13
+ 3217 01ee 3C       		.uleb128 0x3c
+ 3218 01ef 19       		.uleb128 0x19
+ 3219 01f0 01       		.uleb128 0x1
+ 3220 01f1 13       		.uleb128 0x13
+ 3221 01f2 00       		.byte	0
+ 3222 01f3 00       		.byte	0
+ 3223 01f4 24       		.uleb128 0x24
+ 3224 01f5 2E       		.uleb128 0x2e
+ 3225 01f6 01       		.byte	0x1
+ 3226 01f7 3F       		.uleb128 0x3f
+ 3227 01f8 19       		.uleb128 0x19
+ 3228 01f9 03       		.uleb128 0x3
+ 3229 01fa 0E       		.uleb128 0xe
+ 3230 01fb 3A       		.uleb128 0x3a
+ 3231 01fc 0B       		.uleb128 0xb
+ 3232 01fd 3B       		.uleb128 0x3b
+ 3233 01fe 0B       		.uleb128 0xb
+ 3234 01ff 3C       		.uleb128 0x3c
+ 3235 0200 19       		.uleb128 0x19
+ 3236 0201 01       		.uleb128 0x1
+ 3237 0202 13       		.uleb128 0x13
+ 3238 0203 00       		.byte	0
+ 3239 0204 00       		.byte	0
+ 3240 0205 25       		.uleb128 0x25
+ 3241 0206 18       		.uleb128 0x18
+ 3242 0207 00       		.byte	0
+ 3243 0208 00       		.byte	0
+ 3244 0209 00       		.byte	0
+ 3245 020a 26       		.uleb128 0x26
+ 3246 020b 2E       		.uleb128 0x2e
+ 3247 020c 01       		.byte	0x1
+ 3248 020d 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 66
+
+
+ 3249 020e 19       		.uleb128 0x19
+ 3250 020f 03       		.uleb128 0x3
+ 3251 0210 0E       		.uleb128 0xe
+ 3252 0211 27       		.uleb128 0x27
+ 3253 0212 19       		.uleb128 0x19
+ 3254 0213 49       		.uleb128 0x49
+ 3255 0214 13       		.uleb128 0x13
+ 3256 0215 34       		.uleb128 0x34
+ 3257 0216 19       		.uleb128 0x19
+ 3258 0217 3C       		.uleb128 0x3c
+ 3259 0218 19       		.uleb128 0x19
+ 3260 0219 00       		.byte	0
+ 3261 021a 00       		.byte	0
+ 3262 021b 00       		.byte	0
+ 3263              		.section	.debug_loc,"",%progbits
+ 3264              	.Ldebug_loc0:
+ 3265              	.LLST0:
+ 3266 0000 00000000 		.4byte	.LVL31
+ 3267 0004 16000000 		.4byte	.LVL32
+ 3268 0008 0100     		.2byte	0x1
+ 3269 000a 50       		.byte	0x50
+ 3270 000b 16000000 		.4byte	.LVL32
+ 3271 000f 84000000 		.4byte	.LVL38
+ 3272 0013 0400     		.2byte	0x4
+ 3273 0015 F3       		.byte	0xf3
+ 3274 0016 01       		.uleb128 0x1
+ 3275 0017 50       		.byte	0x50
+ 3276 0018 9F       		.byte	0x9f
+ 3277 0019 84000000 		.4byte	.LVL38
+ 3278 001d 86000000 		.4byte	.LVL39
+ 3279 0021 0100     		.2byte	0x1
+ 3280 0023 50       		.byte	0x50
+ 3281 0024 86000000 		.4byte	.LVL39
+ 3282 0028 14010000 		.4byte	.LFE68
+ 3283 002c 0400     		.2byte	0x4
+ 3284 002e F3       		.byte	0xf3
+ 3285 002f 01       		.uleb128 0x1
+ 3286 0030 50       		.byte	0x50
+ 3287 0031 9F       		.byte	0x9f
+ 3288 0032 00000000 		.4byte	0
+ 3289 0036 00000000 		.4byte	0
+ 3290              	.LLST1:
+ 3291 003a 16000000 		.4byte	.LVL32
+ 3292 003e 84000000 		.4byte	.LVL38
+ 3293 0042 0100     		.2byte	0x1
+ 3294 0044 55       		.byte	0x55
+ 3295 0045 86000000 		.4byte	.LVL39
+ 3296 0049 FE000000 		.4byte	.LVL46
+ 3297 004d 0100     		.2byte	0x1
+ 3298 004f 55       		.byte	0x55
+ 3299 0050 00000000 		.4byte	0
+ 3300 0054 00000000 		.4byte	0
+ 3301              	.LLST2:
+ 3302 0058 16000000 		.4byte	.LVL32
+ 3303 005c 7A000000 		.4byte	.LVL35
+ 3304 0060 0100     		.2byte	0x1
+ 3305 0062 54       		.byte	0x54
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 67
+
+
+ 3306 0063 7C000000 		.4byte	.LVL36
+ 3307 0067 84000000 		.4byte	.LVL38
+ 3308 006b 0100     		.2byte	0x1
+ 3309 006d 54       		.byte	0x54
+ 3310 006e 8C000000 		.4byte	.LVL40
+ 3311 0072 F0000000 		.4byte	.LVL43
+ 3312 0076 0100     		.2byte	0x1
+ 3313 0078 54       		.byte	0x54
+ 3314 0079 F2000000 		.4byte	.LVL44
+ 3315 007d F8000000 		.4byte	.LVL45
+ 3316 0081 0100     		.2byte	0x1
+ 3317 0083 54       		.byte	0x54
+ 3318 0084 00000000 		.4byte	0
+ 3319 0088 00000000 		.4byte	0
+ 3320              	.LLST3:
+ 3321 008c 00000000 		.4byte	.LVL47
+ 3322 0090 1A000000 		.4byte	.LVL48
+ 3323 0094 0100     		.2byte	0x1
+ 3324 0096 50       		.byte	0x50
+ 3325 0097 1A000000 		.4byte	.LVL48
+ 3326 009b 1C000000 		.4byte	.LVL49
+ 3327 009f 0400     		.2byte	0x4
+ 3328 00a1 F3       		.byte	0xf3
+ 3329 00a2 01       		.uleb128 0x1
+ 3330 00a3 50       		.byte	0x50
+ 3331 00a4 9F       		.byte	0x9f
+ 3332 00a5 1C000000 		.4byte	.LVL49
+ 3333 00a9 1E000000 		.4byte	.LVL50
+ 3334 00ad 0100     		.2byte	0x1
+ 3335 00af 50       		.byte	0x50
+ 3336 00b0 1E000000 		.4byte	.LVL50
+ 3337 00b4 20000000 		.4byte	.LVL51
+ 3338 00b8 0400     		.2byte	0x4
+ 3339 00ba F3       		.byte	0xf3
+ 3340 00bb 01       		.uleb128 0x1
+ 3341 00bc 50       		.byte	0x50
+ 3342 00bd 9F       		.byte	0x9f
+ 3343 00be 20000000 		.4byte	.LVL51
+ 3344 00c2 22000000 		.4byte	.LVL52
+ 3345 00c6 0100     		.2byte	0x1
+ 3346 00c8 50       		.byte	0x50
+ 3347 00c9 22000000 		.4byte	.LVL52
+ 3348 00cd 24000000 		.4byte	.LVL53
+ 3349 00d1 0400     		.2byte	0x4
+ 3350 00d3 F3       		.byte	0xf3
+ 3351 00d4 01       		.uleb128 0x1
+ 3352 00d5 50       		.byte	0x50
+ 3353 00d6 9F       		.byte	0x9f
+ 3354 00d7 24000000 		.4byte	.LVL53
+ 3355 00db 26000000 		.4byte	.LVL54
+ 3356 00df 0100     		.2byte	0x1
+ 3357 00e1 50       		.byte	0x50
+ 3358 00e2 26000000 		.4byte	.LVL54
+ 3359 00e6 28000000 		.4byte	.LVL55
+ 3360 00ea 0400     		.2byte	0x4
+ 3361 00ec F3       		.byte	0xf3
+ 3362 00ed 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 68
+
+
+ 3363 00ee 50       		.byte	0x50
+ 3364 00ef 9F       		.byte	0x9f
+ 3365 00f0 28000000 		.4byte	.LVL55
+ 3366 00f4 2A000000 		.4byte	.LVL56
+ 3367 00f8 0100     		.2byte	0x1
+ 3368 00fa 50       		.byte	0x50
+ 3369 00fb 2A000000 		.4byte	.LVL56
+ 3370 00ff 2C000000 		.4byte	.LVL57
+ 3371 0103 0400     		.2byte	0x4
+ 3372 0105 F3       		.byte	0xf3
+ 3373 0106 01       		.uleb128 0x1
+ 3374 0107 50       		.byte	0x50
+ 3375 0108 9F       		.byte	0x9f
+ 3376 0109 2C000000 		.4byte	.LVL57
+ 3377 010d 2E000000 		.4byte	.LVL58
+ 3378 0111 0100     		.2byte	0x1
+ 3379 0113 50       		.byte	0x50
+ 3380 0114 2E000000 		.4byte	.LVL58
+ 3381 0118 30000000 		.4byte	.LVL59
+ 3382 011c 0400     		.2byte	0x4
+ 3383 011e F3       		.byte	0xf3
+ 3384 011f 01       		.uleb128 0x1
+ 3385 0120 50       		.byte	0x50
+ 3386 0121 9F       		.byte	0x9f
+ 3387 0122 30000000 		.4byte	.LVL59
+ 3388 0126 32000000 		.4byte	.LVL60
+ 3389 012a 0100     		.2byte	0x1
+ 3390 012c 50       		.byte	0x50
+ 3391 012d 32000000 		.4byte	.LVL60
+ 3392 0131 34000000 		.4byte	.LVL61
+ 3393 0135 0400     		.2byte	0x4
+ 3394 0137 F3       		.byte	0xf3
+ 3395 0138 01       		.uleb128 0x1
+ 3396 0139 50       		.byte	0x50
+ 3397 013a 9F       		.byte	0x9f
+ 3398 013b 34000000 		.4byte	.LVL61
+ 3399 013f 36000000 		.4byte	.LVL62
+ 3400 0143 0100     		.2byte	0x1
+ 3401 0145 50       		.byte	0x50
+ 3402 0146 36000000 		.4byte	.LVL62
+ 3403 014a 38000000 		.4byte	.LVL63
+ 3404 014e 0400     		.2byte	0x4
+ 3405 0150 F3       		.byte	0xf3
+ 3406 0151 01       		.uleb128 0x1
+ 3407 0152 50       		.byte	0x50
+ 3408 0153 9F       		.byte	0x9f
+ 3409 0154 38000000 		.4byte	.LVL63
+ 3410 0158 3A000000 		.4byte	.LVL64
+ 3411 015c 0100     		.2byte	0x1
+ 3412 015e 50       		.byte	0x50
+ 3413 015f 3A000000 		.4byte	.LVL64
+ 3414 0163 3C000000 		.4byte	.LVL65
+ 3415 0167 0400     		.2byte	0x4
+ 3416 0169 F3       		.byte	0xf3
+ 3417 016a 01       		.uleb128 0x1
+ 3418 016b 50       		.byte	0x50
+ 3419 016c 9F       		.byte	0x9f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 69
+
+
+ 3420 016d 3C000000 		.4byte	.LVL65
+ 3421 0171 3E000000 		.4byte	.LVL66
+ 3422 0175 0100     		.2byte	0x1
+ 3423 0177 50       		.byte	0x50
+ 3424 0178 3E000000 		.4byte	.LVL66
+ 3425 017c 40000000 		.4byte	.LVL67
+ 3426 0180 0400     		.2byte	0x4
+ 3427 0182 F3       		.byte	0xf3
+ 3428 0183 01       		.uleb128 0x1
+ 3429 0184 50       		.byte	0x50
+ 3430 0185 9F       		.byte	0x9f
+ 3431 0186 40000000 		.4byte	.LVL67
+ 3432 018a 42000000 		.4byte	.LVL68
+ 3433 018e 0100     		.2byte	0x1
+ 3434 0190 50       		.byte	0x50
+ 3435 0191 42000000 		.4byte	.LVL68
+ 3436 0195 44000000 		.4byte	.LVL69
+ 3437 0199 0400     		.2byte	0x4
+ 3438 019b F3       		.byte	0xf3
+ 3439 019c 01       		.uleb128 0x1
+ 3440 019d 50       		.byte	0x50
+ 3441 019e 9F       		.byte	0x9f
+ 3442 019f 44000000 		.4byte	.LVL69
+ 3443 01a3 46000000 		.4byte	.LVL70
+ 3444 01a7 0100     		.2byte	0x1
+ 3445 01a9 50       		.byte	0x50
+ 3446 01aa 46000000 		.4byte	.LVL70
+ 3447 01ae 48000000 		.4byte	.LVL71
+ 3448 01b2 0400     		.2byte	0x4
+ 3449 01b4 F3       		.byte	0xf3
+ 3450 01b5 01       		.uleb128 0x1
+ 3451 01b6 50       		.byte	0x50
+ 3452 01b7 9F       		.byte	0x9f
+ 3453 01b8 48000000 		.4byte	.LVL71
+ 3454 01bc 4A000000 		.4byte	.LVL72
+ 3455 01c0 0100     		.2byte	0x1
+ 3456 01c2 50       		.byte	0x50
+ 3457 01c3 4A000000 		.4byte	.LVL72
+ 3458 01c7 4C000000 		.4byte	.LVL73
+ 3459 01cb 0400     		.2byte	0x4
+ 3460 01cd F3       		.byte	0xf3
+ 3461 01ce 01       		.uleb128 0x1
+ 3462 01cf 50       		.byte	0x50
+ 3463 01d0 9F       		.byte	0x9f
+ 3464 01d1 4C000000 		.4byte	.LVL73
+ 3465 01d5 4E000000 		.4byte	.LVL74
+ 3466 01d9 0100     		.2byte	0x1
+ 3467 01db 50       		.byte	0x50
+ 3468 01dc 4E000000 		.4byte	.LVL74
+ 3469 01e0 50000000 		.4byte	.LVL75
+ 3470 01e4 0400     		.2byte	0x4
+ 3471 01e6 F3       		.byte	0xf3
+ 3472 01e7 01       		.uleb128 0x1
+ 3473 01e8 50       		.byte	0x50
+ 3474 01e9 9F       		.byte	0x9f
+ 3475 01ea 50000000 		.4byte	.LVL75
+ 3476 01ee 52000000 		.4byte	.LVL76
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 70
+
+
+ 3477 01f2 0100     		.2byte	0x1
+ 3478 01f4 50       		.byte	0x50
+ 3479 01f5 52000000 		.4byte	.LVL76
+ 3480 01f9 54000000 		.4byte	.LVL77
+ 3481 01fd 0400     		.2byte	0x4
+ 3482 01ff F3       		.byte	0xf3
+ 3483 0200 01       		.uleb128 0x1
+ 3484 0201 50       		.byte	0x50
+ 3485 0202 9F       		.byte	0x9f
+ 3486 0203 54000000 		.4byte	.LVL77
+ 3487 0207 56000000 		.4byte	.LVL78
+ 3488 020b 0100     		.2byte	0x1
+ 3489 020d 50       		.byte	0x50
+ 3490 020e 56000000 		.4byte	.LVL78
+ 3491 0212 58000000 		.4byte	.LFE69
+ 3492 0216 0400     		.2byte	0x4
+ 3493 0218 F3       		.byte	0xf3
+ 3494 0219 01       		.uleb128 0x1
+ 3495 021a 50       		.byte	0x50
+ 3496 021b 9F       		.byte	0x9f
+ 3497 021c 00000000 		.4byte	0
+ 3498 0220 00000000 		.4byte	0
+ 3499              	.LLST4:
+ 3500 0224 2A000000 		.4byte	.LVL82
+ 3501 0228 2C000000 		.4byte	.LVL83
+ 3502 022c 0200     		.2byte	0x2
+ 3503 022e 30       		.byte	0x30
+ 3504 022f 9F       		.byte	0x9f
+ 3505 0230 2C000000 		.4byte	.LVL83
+ 3506 0234 74000000 		.4byte	.LVL88
+ 3507 0238 0100     		.2byte	0x1
+ 3508 023a 55       		.byte	0x55
+ 3509 023b 76000000 		.4byte	.LVL89
+ 3510 023f D0010000 		.4byte	.LVL107
+ 3511 0243 0100     		.2byte	0x1
+ 3512 0245 55       		.byte	0x55
+ 3513 0246 00000000 		.4byte	0
+ 3514 024a 00000000 		.4byte	0
+ 3515              		.section	.debug_aranges,"",%progbits
+ 3516 0000 5C000000 		.4byte	0x5c
+ 3517 0004 0200     		.2byte	0x2
+ 3518 0006 00000000 		.4byte	.Ldebug_info0
+ 3519 000a 04       		.byte	0x4
+ 3520 000b 00       		.byte	0
+ 3521 000c 0000     		.2byte	0
+ 3522 000e 0000     		.2byte	0
+ 3523 0010 00000000 		.4byte	.LFB63
+ 3524 0014 04000000 		.4byte	.LFE63-.LFB63
+ 3525 0018 00000000 		.4byte	.LFB64
+ 3526 001c 64000000 		.4byte	.LFE64-.LFB64
+ 3527 0020 00000000 		.4byte	.LFB65
+ 3528 0024 9C000000 		.4byte	.LFE65-.LFB65
+ 3529 0028 00000000 		.4byte	.LFB66
+ 3530 002c A8000000 		.4byte	.LFE66-.LFB66
+ 3531 0030 00000000 		.4byte	.LFB67
+ 3532 0034 DC000000 		.4byte	.LFE67-.LFB67
+ 3533 0038 00000000 		.4byte	.LFB68
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 71
+
+
+ 3534 003c 14010000 		.4byte	.LFE68-.LFB68
+ 3535 0040 00000000 		.4byte	.LFB69
+ 3536 0044 58000000 		.4byte	.LFE69-.LFB69
+ 3537 0048 00000000 		.4byte	.LFB70
+ 3538 004c 04020000 		.4byte	.LFE70-.LFB70
+ 3539 0050 00000000 		.4byte	.LFB71
+ 3540 0054 50000000 		.4byte	.LFE71-.LFB71
+ 3541 0058 00000000 		.4byte	0
+ 3542 005c 00000000 		.4byte	0
+ 3543              		.section	.debug_ranges,"",%progbits
+ 3544              	.Ldebug_ranges0:
+ 3545 0000 00000000 		.4byte	.LFB63
+ 3546 0004 04000000 		.4byte	.LFE63
+ 3547 0008 00000000 		.4byte	.LFB64
+ 3548 000c 64000000 		.4byte	.LFE64
+ 3549 0010 00000000 		.4byte	.LFB65
+ 3550 0014 9C000000 		.4byte	.LFE65
+ 3551 0018 00000000 		.4byte	.LFB66
+ 3552 001c A8000000 		.4byte	.LFE66
+ 3553 0020 00000000 		.4byte	.LFB67
+ 3554 0024 DC000000 		.4byte	.LFE67
+ 3555 0028 00000000 		.4byte	.LFB68
+ 3556 002c 14010000 		.4byte	.LFE68
+ 3557 0030 00000000 		.4byte	.LFB69
+ 3558 0034 58000000 		.4byte	.LFE69
+ 3559 0038 00000000 		.4byte	.LFB70
+ 3560 003c 04020000 		.4byte	.LFE70
+ 3561 0040 00000000 		.4byte	.LFB71
+ 3562 0044 50000000 		.4byte	.LFE71
+ 3563 0048 00000000 		.4byte	0
+ 3564 004c 00000000 		.4byte	0
+ 3565              		.section	.debug_line,"",%progbits
+ 3566              	.Ldebug_line0:
+ 3567 0000 0D040000 		.section	.debug_str,"MS",%progbits,1
+ 3567      02002202 
+ 3567      00000201 
+ 3567      FB0E0D00 
+ 3567      01010101 
+ 3568              	.LASF59:
+ 3569 0000 7374726E 		.ascii	"strncpy\000"
+ 3569      63707900 
+ 3570              	.LASF21:
+ 3571 0008 66726F6D 		.ascii	"fromCol\000"
+ 3571      436F6C00 
+ 3572              	.LASF47:
+ 3573 0010 62737472 		.ascii	"bstr_connect\000"
+ 3573      5F636F6E 
+ 3573      6E656374 
+ 3573      00
+ 3574              	.LASF10:
+ 3575 001d 73697A65 		.ascii	"size_t\000"
+ 3575      5F7400
+ 3576              	.LASF28:
+ 3577 0024 73746174 		.ascii	"state_connected\000"
+ 3577      655F636F 
+ 3577      6E6E6563 
+ 3577      74656400 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 72
+
+
+ 3578              	.LASF11:
+ 3579 0034 73697A65 		.ascii	"sizetype\000"
+ 3579      74797065 
+ 3579      00
+ 3580              	.LASF19:
+ 3581 003d 63686172 		.ascii	"char8\000"
+ 3581      3800
+ 3582              	.LASF55:
+ 3583 0043 696E6974 		.ascii	"initial_board\000"
+ 3583      69616C5F 
+ 3583      626F6172 
+ 3583      6400
+ 3584              	.LASF51:
+ 3585 0051 62726573 		.ascii	"bres1\000"
+ 3585      3100
+ 3586              	.LASF64:
+ 3587 0057 6D656D63 		.ascii	"memcpy\000"
+ 3587      707900
+ 3588              	.LASF29:
+ 3589 005e 73746174 		.ascii	"state_ready\000"
+ 3589      655F7265 
+ 3589      61647900 
+ 3590              	.LASF24:
+ 3591 006a 55504441 		.ascii	"UPDATE1\000"
+ 3591      54453100 
+ 3592              	.LASF25:
+ 3593 0072 55504441 		.ascii	"UPDATE2\000"
+ 3593      54453200 
+ 3594              	.LASF52:
+ 3595 007a 62726573 		.ascii	"bres8\000"
+ 3595      3800
+ 3596              	.LASF53:
+ 3597 0080 62726573 		.ascii	"bres9\000"
+ 3597      3900
+ 3598              	.LASF2:
+ 3599 0086 73686F72 		.ascii	"short int\000"
+ 3599      7420696E 
+ 3599      7400
+ 3600              	.LASF63:
+ 3601 0090 72656164 		.ascii	"read_reed_switches\000"
+ 3601      5F726565 
+ 3601      645F7377 
+ 3601      69746368 
+ 3601      657300
+ 3602              	.LASF54:
+ 3603 00a3 64696666 		.ascii	"diff_loc\000"
+ 3603      5F6C6F63 
+ 3603      00
+ 3604              	.LASF16:
+ 3605 00ac 696E7431 		.ascii	"int16\000"
+ 3605      3600
+ 3606              	.LASF14:
+ 3607 00b2 75696E74 		.ascii	"uint8\000"
+ 3607      3800
+ 3608              	.LASF35:
+ 3609 00b8 73746174 		.ascii	"state_moving\000"
+ 3609      655F6D6F 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 73
+
+
+ 3609      76696E67 
+ 3609      00
+ 3610              	.LASF23:
+ 3611 00c5 746F436F 		.ascii	"toCol\000"
+ 3611      6C00
+ 3612              	.LASF17:
+ 3613 00cb 666C6F61 		.ascii	"float\000"
+ 3613      7400
+ 3614              	.LASF6:
+ 3615 00d1 6C6F6E67 		.ascii	"long long int\000"
+ 3615      206C6F6E 
+ 3615      6720696E 
+ 3615      7400
+ 3616              	.LASF68:
+ 3617 00df 6D6F7665 		.ascii	"movement\000"
+ 3617      6D656E74 
+ 3617      00
+ 3618              	.LASF20:
+ 3619 00e8 66726F6D 		.ascii	"fromRow\000"
+ 3619      526F7700 
+ 3620              	.LASF4:
+ 3621 00f0 6C6F6E67 		.ascii	"long int\000"
+ 3621      20696E74 
+ 3621      00
+ 3622              	.LASF43:
+ 3623 00f9 785F706F 		.ascii	"x_pos\000"
+ 3623      7300
+ 3624              	.LASF48:
+ 3625 00ff 62737472 		.ascii	"bstr_ready\000"
+ 3625      5F726561 
+ 3625      647900
+ 3626              	.LASF31:
+ 3627 010a 6E65775F 		.ascii	"new_game_state\000"
+ 3627      67616D65 
+ 3627      5F737461 
+ 3627      746500
+ 3628              	.LASF45:
+ 3629 0119 626F6172 		.ascii	"board\000"
+ 3629      6400
+ 3630              	.LASF26:
+ 3631 011f 696E6974 		.ascii	"initialize\000"
+ 3631      69616C69 
+ 3631      7A6500
+ 3632              	.LASF1:
+ 3633 012a 756E7369 		.ascii	"unsigned char\000"
+ 3633      676E6564 
+ 3633      20636861 
+ 3633      7200
+ 3634              	.LASF0:
+ 3635 0138 7369676E 		.ascii	"signed char\000"
+ 3635      65642063 
+ 3635      68617200 
+ 3636              	.LASF7:
+ 3637 0144 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3637      206C6F6E 
+ 3637      6720756E 
+ 3637      7369676E 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 74
+
+
+ 3637      65642069 
+ 3638              	.LASF36:
+ 3639 015b 6D6F7665 		.ascii	"move1\000"
+ 3639      3100
+ 3640              	.LASF37:
+ 3641 0161 6D6F7665 		.ascii	"move2\000"
+ 3641      3200
+ 3642              	.LASF8:
+ 3643 0167 756E7369 		.ascii	"unsigned int\000"
+ 3643      676E6564 
+ 3643      20696E74 
+ 3643      00
+ 3644              	.LASF49:
+ 3645 0174 62737472 		.ascii	"bstr_gib\000"
+ 3645      5F676962 
+ 3645      00
+ 3646              	.LASF57:
+ 3647 017d 75706461 		.ascii	"update2_board\000"
+ 3647      7465325F 
+ 3647      626F6172 
+ 3647      6400
+ 3648              	.LASF22:
+ 3649 018b 746F526F 		.ascii	"toRow\000"
+ 3649      7700
+ 3650              	.LASF33:
+ 3651 0191 6D6F7665 		.ascii	"movementOpp2\000"
+ 3651      6D656E74 
+ 3651      4F707032 
+ 3651      00
+ 3652              	.LASF70:
+ 3653 019e 69746F63 		.ascii	"itoc\000"
+ 3653      00
+ 3654              	.LASF40:
+ 3655 01a3 67616D65 		.ascii	"game\000"
+ 3655      00
+ 3656              	.LASF12:
+ 3657 01a8 63686172 		.ascii	"char\000"
+ 3657      00
+ 3658              	.LASF62:
+ 3659 01ad 7374726C 		.ascii	"strlen\000"
+ 3659      656E00
+ 3660              	.LASF13:
+ 3661 01b4 696E7433 		.ascii	"int32_t\000"
+ 3661      325F7400 
+ 3662              	.LASF67:
+ 3663 01bc 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
+ 3663      73657273 
+ 3663      5C4B796C 
+ 3663      655C446F 
+ 3663      776E6C6F 
+ 3664 01ea 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloader.cydsn\000"
+ 3664      43686573 
+ 3664      73426F61 
+ 3664      72645C4D 
+ 3664      6963726F 
+ 3665              	.LASF9:
+ 3666 0210 5F5F696E 		.ascii	"__int32_t\000"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 75
+
+
+ 3666      7433325F 
+ 3666      7400
+ 3667              	.LASF3:
+ 3668 021a 73686F72 		.ascii	"short unsigned int\000"
+ 3668      7420756E 
+ 3668      7369676E 
+ 3668      65642069 
+ 3668      6E7400
+ 3669              	.LASF38:
+ 3670 022d 6C6F6373 		.ascii	"locs\000"
+ 3670      00
+ 3671              	.LASF65:
+ 3672 0232 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3672      4320342E 
+ 3672      392E3320 
+ 3672      32303135 
+ 3672      30333033 
+ 3673 0265 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 3673      20726576 
+ 3673      6973696F 
+ 3673      6E203232 
+ 3673      31323230 
+ 3674 0298 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 3674      74643D67 
+ 3674      6E753939 
+ 3674      202D6666 
+ 3674      756E6374 
+ 3675              	.LASF60:
+ 3676 02cb 44656275 		.ascii	"Debug_UART_PutString\000"
+ 3676      675F5541 
+ 3676      52545F50 
+ 3676      75745374 
+ 3676      72696E67 
+ 3677              	.LASF41:
+ 3678 02e0 72656376 		.ascii	"recv\000"
+ 3678      00
+ 3679              	.LASF50:
+ 3680 02e5 67616D65 		.ascii	"game_state\000"
+ 3680      5F737461 
+ 3680      746500
+ 3681              	.LASF44:
+ 3682 02f0 795F706F 		.ascii	"y_pos\000"
+ 3682      7300
+ 3683              	.LASF15:
+ 3684 02f6 75696E74 		.ascii	"uint32\000"
+ 3684      333200
+ 3685              	.LASF5:
+ 3686 02fd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3686      20756E73 
+ 3686      69676E65 
+ 3686      6420696E 
+ 3686      7400
+ 3687              	.LASF66:
+ 3688 030f 2E5C6761 		.ascii	".\\gamecode.c\000"
+ 3688      6D65636F 
+ 3688      64652E63 
+ 3688      00
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccQCDObm.s 			page 76
+
+
+ 3689              	.LASF56:
+ 3690 031c 75706461 		.ascii	"update1_board\000"
+ 3690      7465315F 
+ 3690      626F6172 
+ 3690      6400
+ 3691              	.LASF18:
+ 3692 032a 646F7562 		.ascii	"double\000"
+ 3692      6C6500
+ 3693              	.LASF34:
+ 3694 0331 64696666 		.ascii	"diff_boards\000"
+ 3694      5F626F61 
+ 3694      72647300 
+ 3695              	.LASF69:
+ 3696 033d 44696666 		.ascii	"Diff\000"
+ 3696      00
+ 3697              	.LASF39:
+ 3698 0342 63617374 		.ascii	"castling\000"
+ 3698      6C696E67 
+ 3698      00
+ 3699              	.LASF58:
+ 3700 034b 6573705F 		.ascii	"esp_transmit\000"
+ 3700      7472616E 
+ 3700      736D6974 
+ 3700      00
+ 3701              	.LASF30:
+ 3702 0358 73746174 		.ascii	"state_waiting\000"
+ 3702      655F7761 
+ 3702      6974696E 
+ 3702      6700
+ 3703              	.LASF27:
+ 3704 0366 73746174 		.ascii	"state_notconnected\000"
+ 3704      655F6E6F 
+ 3704      74636F6E 
+ 3704      6E656374 
+ 3704      656400
+ 3705              	.LASF32:
+ 3706 0379 6D6F7665 		.ascii	"movementOpp1\000"
+ 3706      6D656E74 
+ 3706      4F707031 
+ 3706      00
+ 3707              	.LASF42:
+ 3708 0386 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3708      52784275 
+ 3708      66666572 
+ 3708      00
+ 3709              	.LASF61:
+ 3710 0393 43794465 		.ascii	"CyDelay\000"
+ 3710      6C617900 
+ 3711              	.LASF46:
+ 3712 039b 6D6F7665 		.ascii	"move\000"
+ 3712      00
+ 3713              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

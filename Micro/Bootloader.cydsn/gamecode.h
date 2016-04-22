@@ -10,8 +10,8 @@
     
 // Server and port
 
-#define SERVER = "192.168.173.1"
-#define PORT   = 666
+#define SERVER "192.168.173.1"
+#define PORT   666
 
 //initialization of movement struct
 struct movement move;        
@@ -30,13 +30,13 @@ char bstr_gib[4] = {0x2E, 0x67, 0x69, 0x62};
 
 // States of game (a la state machine)
 
-int game_state;
+#define NOTCONNECTED   0
+#define CONNECTED      1
+#define READY          2
+#define WAITING        3
+#define MOVING         4
 
-#define NOTCONNECTED = 0
-#define CONNECTED    = 1
-#define READY        = 2
-#define WAITING      = 3
-#define MOVING       = 4
+int game_state;
 
 // Functions for initialization (and helpers)
 

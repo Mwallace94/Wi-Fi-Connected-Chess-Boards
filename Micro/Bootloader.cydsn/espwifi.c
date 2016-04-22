@@ -10,32 +10,30 @@
  * ========================================
 */
 #include "espwifi.h"
-#include <string.h>
 
-static char recv[9];
+
 static char blank[9] = "";
 
     char* esp_transmit(char* msg, char* numBytes) {
         char* temp;
         Esp_UART_PutString("AT+CIPSTART=\"TCP\",\"192.168.173.1\",666\r\n");
-        Debug_UART_PutString("AT+CIPSTART=\"TCP\",\"192.168.173.1\",666\r\n");
-        temp = esp_helper();
+        temp = esp_helper(1000);
         if (strcmp(temp, "") != 0) return temp;
         Esp_UART_PutString("AT+CIPSEND=");
-        temp = esp_helper();
+        temp = esp_helper(100);
         if (strcmp(temp, "") != 0) return temp;
         Esp_UART_PutString(numBytes);
-        temp = esp_helper();
+        temp = esp_helper(100);
         if (strcmp(temp, "") != 0) return temp;
         Esp_UART_PutString("\r\n");
-        temp = esp_helper();
+        temp = esp_helper(1000);
         if (strcmp(temp, "") != 0) return temp;
         Esp_UART_PutString(msg);
-        return esp_helper();
+        return esp_helper(2500);
     }
     
-    char* esp_helper() {
-        CyDelay(1000);
+    char* esp_helper(uint32 time) {
+        CyDelay(time);
         uint8 size = Esp_UART_GetRxBufferSize();
         Debug_UART_PutChar(size + 48);
         uint8 temp = size;

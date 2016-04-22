@@ -9,9 +9,16 @@
  *
  * ========================================
 */
-#include<project.h>
+#ifndef ESPWIFI_H
+#define ESPWIFI_H
+    
+#include <string.h>
+#include <project.h>
+
+static char recv[9];
 
     char* esp_transmit(char* msg, char* numBytes);  
     char* esp_helper();
 
-/* [] END OF FILE */
+#endif
+    

@@ -1,4 +1,4 @@
-/*
+
 #include "gamecode.h"
 #include <strings.h>
 
@@ -7,11 +7,24 @@ char bres1[1];
 char bres8[8];
 char bres9[9];
 
+int diff_loc[2][2];
+// Different board states to use at this time.
+char initial_board[8][12];
+char update1_board[8][12];
+char update2_board[8][12];
+
+enum Diff {
+    UPDATE1 = 1,
+    UPDATE2 = 2,
+};
+
+extern char recv[9];
+
 // Initialization functions.
 
 /*
 	Initalizes the game state and board state.
-/
+*/
 int initialize() {
 
 	int new_game_state;
@@ -24,7 +37,7 @@ int initialize() {
 
 /*
 	Runs when game_state == NOTCONNECTED
-/
+*/
 int state_notconnected() {
 
 	Debug_UART_PutString("NOTCONNECTED\n");
@@ -32,7 +45,7 @@ int state_notconnected() {
 	// write ".connect"
 	strcpy(bres1, "");
 	while(!strcmp(bres1, "")) {
-		bres1 = esp_transmit(bstr_connect, "8");
+		esp_transmit(bstr_connect, "8");
 	}
 	
 
@@ -51,7 +64,7 @@ int state_notconnected() {
 
 /*
 	Runs when game_state == CONNECTED
-/
+*/
 int state_connected() {
 
 	Debug_UART_PutString("CONNECTED\n");
@@ -59,7 +72,8 @@ int state_connected() {
 	// write ".ready"
 	strcpy(bres1, "");
 	while(!strcmp(bres1, "")) {
-		bres1 = esp_transmit(bstr_ready, "6");
+		esp_transmit(bstr_ready, "6");
+        strncpy(bres1, recv, 1);
 	}
 
 	if(bres1[0] == 0x11){
@@ -67,12 +81,12 @@ int state_connected() {
 		game_state = READY;
 	}
 
-	if(bres[0] == 0x21 || bres[0] == '!') {
+	if(bres1[0] == 0x21 || bres1[0] == '!') {
 
 		Debug_UART_PutString("Your turn.");
 		game_state = MOVING;
 	}
-	else if(bres[0] == 0x22 || bres[0] == '"') {
+	else if(bres1[0] == 0x22 || bres1[0] == '"') {
 
 		Debug_UART_PutString("Their turn.");
 		game_state = WAITING;
@@ -87,22 +101,24 @@ int state_connected() {
 
 /*
 	Runs when game_state == READY
-/
+*/
 int state_ready() {
 
 	Debug_UART_PutString("READY\n");
 
 	//write ".gib"
 	strcpy(bres1, "");
-	bres1 = esp_transmit(bstr_gib, "4");
-
+	esp_transmit(bstr_gib, "4");
+    strncpy(bres1, recv, 1);
+    
 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
 			bres1[0] != '!'  && bres1[0] != '"') { 
 		CyDelay(5000);
 
-		bres1 = esp_transmit(bstr_gib, "4");
+		esp_transmit(bstr_gib, "4");
+        strncpy(bres1, recv, 1);
 
-		Debug_UART_PutString(bres1[0]);
+		Debug_UART_PutString(&bres1[0]);
 	}
 
 	if(bres1[0] == 0x11) {
@@ -123,36 +139,35 @@ int state_ready() {
 
 /*
 	Runs when game_state == WAITING
-/
+*/
 int state_waiting() {
 
 	Debug_UART_PutString("WAITING");
 
 	// write ".gib"
 	strcpy(bres8, "");
-	bres8 = esp_transmit(bstr_gib, "4");
-
+    esp_transmit(bstr_gib, "4");
+    strncpy(bres8, recv, 8);
+    
 	while(strlen(bres8) != 8) {
 		CyDelay(5000);
 
-		bres8 = esp_transmit(bstr_gib, "4");
-
+		esp_transmit(bstr_gib, "4");
+        strncpy(bres8, recv, 8);
+        
 		Debug_UART_PutString(bres8);
 
-		if(bres8[0] == 0x31 || bres8[0] = '1'){
+		if(bres8[0] == 0x31 || bres8[0] == '1'){
 			game_state = CONNECTED;
 			break;
 		}
 	}
-	if(bres8[0] == 0x31 || bres8[0] = '1'){
+	if(bres8[0] == 0x31 || bres8[0] == '1'){
 		game_state = CONNECTED;
 		return game_state;
 	}
 	char movementOpp1[4] = { bres8[1], bres8[0], bres8[3], bres8[2] };
-	char movementOpp1Piece = { board[bres8[1]][bres8[0]] };
-
 	char movementOpp2[5] = { bres8[5], bres8[4], bres8[7], bres8[6] };
-	char movementOpp2Piece = { board[bres8[5]][bres8[4]] };
 
 	if(	movementOpp2[0] != 0 && movementOpp2[1] != 0 && 
 		movementOpp2[2] != 0 && movementOpp2[3] != 0) {
@@ -166,38 +181,67 @@ int state_waiting() {
 	return game_state;
 }
 
-int** diff_boards(char** bold, char** bnew) {
+void diff_boards(enum Diff x) {
 
-	int diff_loc[2][2] = { { 0, 0 }, { 0, 0 } };
+	diff_loc[0][0] = 0;
+    diff_loc[0][1] = 0;
+    diff_loc[1][0] = 0;
+    diff_loc[1][1] = 0;
 
 	int i, j;
-	for(i = 0; i < 8; i++) {
-		for(j = 0; j < 12; j++) {
+    if(x == UPDATE1) {
+        for(i = 0; i < 8; i++) {
+    		for(j = 0; j < 12; j++) {
 
-			// Pick-up location, use diff_loc[0].
-			if(bold[i][j] == 0x01 && bnew[i][j] == 0x00) {
+    			// Pick-up location, use diff_loc[0].
+    			if(initial_board[i][j] == 0x01 && update1_board[i][j] == 0x00) {
 
-				// Picked up in graveyard, warn user.
-				if((j % 10) == 0 || (j % 10) == 1) {
-					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
-				}
-				else {
-					diff_loc[0][0] = i;
-					diff_loc[0][1] = j;
-				}
-			}
-			// Drop-off location, use diff_loc[1].
-			else if(bold[i][j] == 0x00 && bnew[i][j] == 0x01) {
+    				// Picked up in graveyard, warn user.
+    				if((j % 10) == 0 || (j % 10) == 1) {
+    					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+    				}
+    				else {
+    					diff_loc[0][0] = i;
+    					diff_loc[0][1] = j;
+    				}
+    			}
+    			// Drop-off location, use diff_loc[1].
+    			else if(initial_board[i][j] == 0x00 && update1_board[i][j] == 0x01) {
 
-				diff_loc[1][0] = i;
-				diff_loc[1][1] = j;
-			}
-		}
-	}
-	return diff_loc;
+    				diff_loc[1][0] = i;
+    				diff_loc[1][1] = j;
+    			}
+    		}
+    	}    
+    }
+    else {
+        for(i = 0; i < 8; i++) {
+    		for(j = 0; j < 12; j++) {
+
+    			// Pick-up location, use diff_loc[0].
+    			if(update1_board[i][j] == 0x01 && update2_board[i][j] == 0x00) {
+
+    				// Picked up in graveyard, warn user.
+    				if((j % 10) == 0 || (j % 10) == 1) {
+    					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+    				}
+    				else {
+    					diff_loc[0][0] = i;
+    					diff_loc[0][1] = j;
+    				}
+    			}
+    			// Drop-off location, use diff_loc[1].
+    			else if(update1_board[i][j] == 0x00 && update2_board[i][j] == 0x01) {
+
+    				diff_loc[1][0] = i;
+    				diff_loc[1][1] = j;
+    			}
+    		}
+    	}
+    }
 }
 
-char itoc(int i) {
+uint8 itoc(int i) {
 	switch(i) {
 		case 0: return 0x00;
 		case 1: return 0x01;
@@ -221,15 +265,10 @@ char itoc(int i) {
 /*
 	Runs when game_state == MOVING
 	Helpers: diff_boards(bold, bnew)
-/
+*/
 int state_moving() {
 
 	Debug_UART_PutString("MOVING");
-
-	// Different board states to use at this time.
-	char initial_board[8][12];
-	char update1_board[8][12];
-	char update2_board[8][12];
 
 	// initial_board holds the state of the board just before this call.
 	read_reed_switches();
@@ -243,55 +282,72 @@ int state_moving() {
 	// Flag for castling.
 	int castling = 0;
 
-	while(move1 == { { 0, 0 }, { 0, 0 } }) {
+	while(  move1[0][0] == 0 && 
+            move1[0][1] == 0 &&
+            move1[1][0] == 0 &&
+            move1[1][1] == 0) {
 
 		CyDelay(1000);
 		read_reed_switches();
 		memcpy(&update1_board, &board, sizeof(board));
 
-		move1 = diff_boards(initial_board, update1_board);
+		diff_boards(UPDATE1);
 
-		if(	(move1[0] == { 0, 6 } || 
-			move1[0] == { 7, 6 }) &&
+        move1[0][0] = diff_loc[0][0];
+        move1[0][1] = diff_loc[0][1];
+        move1[1][0] = diff_loc[1][0];
+        move1[1][1] = diff_loc[1][1];
+        
+		if( ((move1[0][0] == 0 && move1[0][1] == 6) || 
+            (move1[0][0] == 7 && move1[0][1] == 6 )) &&
 			((move1[1][1] - move1[0][1]) == -2 || 
 			(move1[1][1] - move1[0][1]) == 2)) {
 
 			castling = 1;
 		}
 	}
-	locs[4] = { itoc(move1[0][1]), 
-				itoc(move1[0][0]), 
-				itoc(move1[1][1]), 
-				itoc(move1[1][0]) };
+	locs[0] = itoc(move1[0][1]); 
+	locs[1]	= itoc(move1[0][0]); 
+	locs[2]	= itoc(move1[1][1]); 
+	locs[3]	= itoc(move1[1][0]);
 
 	// Moved piece to graveyard, get corresponding attack OR castling.
 	if((move1[1][1] % 10) == 0 || (move1[1][1] % 10) == 1 || castling) {
 
-		while(move2 == { { 0, 0 }, { 0, 0 } }) {
+		while(  move2[0][0] == 0 && 
+                move2[0][1] == 0 &&
+                move2[1][0] == 0 &&
+                move2[1][1] == 0) {
 
 			CyDelay(1000);
 			read_reed_switches();
 			memcpy(&update2_board, &board, sizeof(board));
 
-			move2 = diff_boards(update1_board, update2_board);
+            diff_boards(UPDATE2);
+
+            move2[0][0] = diff_loc[0][0];
+            move2[0][1] = diff_loc[0][1];
+            move2[1][0] = diff_loc[1][0];
+            move2[1][1] = diff_loc[1][1];
+        
 			if(!castling) {
-				locs[4] = { itoc(move2[0][1]), 
-							itoc(move2[0][0]), 
-							itoc(move2[1][1]), 
-							itoc(move2[1][0]) };
+	            locs[0] = itoc(move2[0][1]); 
+	            locs[1]	= itoc(move2[0][0]); 
+	            locs[2]	= itoc(move2[1][1]); 
+	            locs[3]	= itoc(move2[1][0]);
 			}
 		}
 	}
 	// Construct message to send to server.
 	// ".move (space) fromCol (s) fromRow (s) toCol (s) toRow"
-	char msg[13];
-	msg = { 0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
-			locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+	char msg[13] = {0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
+			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
 
 	strcpy(bres9, "");
 	while(!strcmp(bres9, "")) {
-		bres9 = esp_transmit(msg, "13");
-	}
+		esp_transmit(msg, "13");
+	    strncpy(bres9, recv, 9);
+    }
 
 	if(bres9[0] != 0x01) {
 		Debug_UART_PutString("Invalid move, please undo changes.\n");
@@ -304,7 +360,7 @@ int state_moving() {
 	return game_state;
 }
 
-int main(int argc, char** argv) {
+int game() {
 
 	game_state = NOTCONNECTED;
 
@@ -336,5 +392,3 @@ int main(int argc, char** argv) {
 	}
 
 }
-
-*/
