@@ -65,7 +65,7 @@ void debug() {
 
         length = strlen(message);
 
-        char num[8] = "";
+        char num[16] = "";
         switch(message[0]) {
             case 'x':
                 if(length > 3) {
@@ -130,6 +130,12 @@ void debug() {
                 Debug_UART_PutString(esp_transmit(".gib", "4"));
                 Debug_UART_PutString(esp_transmit(".gib", "4"));
                 break;
+            case 't':
+                move.fromCol = 11;
+                move.fromRow = 0;
+                move.toCol = 10;
+                move.toRow = 3;
+                movepiece(move);
             default:
                 break;
         }

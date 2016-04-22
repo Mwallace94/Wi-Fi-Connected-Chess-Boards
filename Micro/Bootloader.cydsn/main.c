@@ -131,7 +131,13 @@ void debug() {
                 Debug_UART_PutString(esp_transmit(".ready", "6"));
                 Debug_UART_PutString(esp_transmit(".gib", "4"));
                 Debug_UART_PutString(esp_transmit(".gib", "4"));
-                break;
+                break;              
+            case 't':
+                move.fromCol = 11;
+                move.fromRow = 0;
+                move.toCol = 10;
+                move.toRow = 3;
+                movepiece(move);
             default:
                 break;
         }

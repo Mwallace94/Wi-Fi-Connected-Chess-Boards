@@ -1,4 +1,4 @@
-
+/*
 #include "gamecode.h"
 #include <strings.h>
 
@@ -11,7 +11,7 @@ char bres9[9];
 
 /*
 	Initalizes the game state and board state.
-*/
+/
 int initialize() {
 
 	int new_game_state;
@@ -24,7 +24,7 @@ int initialize() {
 
 /*
 	Runs when game_state == NOTCONNECTED
-*/
+/
 int state_notconnected() {
 
 	Debug_UART_PutString("NOTCONNECTED\n");
@@ -51,7 +51,7 @@ int state_notconnected() {
 
 /*
 	Runs when game_state == CONNECTED
-*/
+/
 int state_connected() {
 
 	Debug_UART_PutString("CONNECTED\n");
@@ -87,7 +87,7 @@ int state_connected() {
 
 /*
 	Runs when game_state == READY
-*/
+/
 int state_ready() {
 
 	Debug_UART_PutString("READY\n");
@@ -123,7 +123,7 @@ int state_ready() {
 
 /*
 	Runs when game_state == WAITING
-*/
+/
 int state_waiting() {
 
 	Debug_UART_PutString("WAITING");
@@ -221,7 +221,7 @@ char itoc(int i) {
 /*
 	Runs when game_state == MOVING
 	Helpers: diff_boards(bold, bnew)
-*/
+/
 int state_moving() {
 
 	Debug_UART_PutString("MOVING");
@@ -337,4 +337,4 @@ int main(int argc, char** argv) {
 
 }
 
-
+*/

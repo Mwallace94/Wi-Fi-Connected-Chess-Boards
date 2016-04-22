@@ -11,5 +11,7 @@ void init();
 void debug();
 
 extern char board[8][12];
+
+struct movement move;
     
 #endif  

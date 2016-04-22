@@ -39,10 +39,12 @@
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
           <File BuildType="BUILD" Toolchain="">.\board.c</File>
           <File BuildType="BUILD" Toolchain="">.\espwifi.c</File>
+          <File BuildType="BUILD" Toolchain="">.\gamecode.c</File>
           <File BuildType="BUILD" Toolchain="">.\cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="DP8051 Keil Generic">.\board.h</File>
           <File BuildType="BUILD" Toolchain="">.\main.h</File>
           <File BuildType="BUILD" Toolchain="">.\espwifi.h</File>
+          <File BuildType="BUILD" Toolchain="">.\gamecode.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloader.cydsn\Generated_Source\PSoC5">

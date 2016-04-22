@@ -36,8 +36,8 @@ void move_home() {
     x_pos = 0;
     y_pos = 0;
     
-    move_x(60);
-    move_y(25);
+    //move_x(60);
+    //move_y(25);
 }
 
 void move_x(int16 mm) { 
@@ -255,29 +255,31 @@ void read_reed_switches() {
 }
 
 void moveCol(int dis) {
-    move_x(50 * dis * -1);
+    move_x(50 * dis);
 }
 
 void moveRow(int dis) {
-    move_y(50 * dis);
+    move_y(50 * dis * -1);
 }
 
 void moveRowHalf(int dis) {
-    move_y(25 * dis);
+    move_y(25 * dis * -1);
 }
 
 void moveColHalf(int dis) {
-    move_x(25 * dis * -1);
+    move_x(25 * dis);
 }
 
 void movepiece(struct movement move) {
 
-    moveRow(move.fromRow);
-    moveCol(11 - move.fromCol);
+    //moveRow(move.fromRow);
+    //moveCol(11 - move.fromCol);
+    
+    CyDelay(5000);
 
     int rowdis = move.fromRow - move.toRow;
     int coldis = move.fromCol - move.toCol;
-
+    
     //diagnal movement if clear path
     if (abs(rowdis) == abs(coldis)) {
         int temp = 0;
@@ -286,8 +288,8 @@ void movepiece(struct movement move) {
         }
         if (temp == 0) {
             for(int i = 0; i < abs(coldis) * 51; i++) {
-                move_x(coldis / abs(coldis) * -1);
-                move_y(rowdis / abs(rowdis));
+                move_x(coldis / abs(coldis));
+                move_y(rowdis / abs(rowdis) * -1);
             }
         }
         return;
@@ -320,25 +322,25 @@ void movepiece(struct movement move) {
     //determines the best path between spaces for cols
 
     if (move.fromCol < move.toCol) {
-        lor = -1;
+        lor = 1;
     } else if (move.fromCol > move.toCol) {
-        lor = 1;
-    } else if (move.fromCol < 6) {
         lor = -1;
-    } else {
+    } else if (move.fromCol < 6) {
         lor = 1;
+    } else {
+        lor = -1;
     }
     moveColHalf(lor * -1);
 
     //determines the best path between spaces for rows
     if (move.fromRow > move.toRow) {
-        uod = 1;
+        uod = -1;
     } else if (move.fromRow < move.toRow) {
-        uod = -1;
-    } else if (move.toRow < 4) {
         uod = 1;
-    } else {
+    } else if (move.toRow < 4) {
         uod = -1;
+    } else {
+        uod = 1;
     }
 
     //moves across the rows with the adjustment
@@ -360,13 +362,5 @@ void movepiece(struct movement move) {
 
     //moves row adjustment
     moveRowHalf(-1 * uod);
-
-    move_home();
+    
 }
-
-//movement move;
-//move.fromCol = 8;
-//move.fromRow = 1;
-//move.toCol = 7;
-//move.toRow = 3;
-//movepiece()

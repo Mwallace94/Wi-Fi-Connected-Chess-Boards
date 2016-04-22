@@ -7,12 +7,15 @@
 #include <string.h>
 #include "board.h"
 #include "espwifi.h"
-
+    
 // Server and port
 
 #define SERVER = "192.168.173.1"
 #define PORT   = 666
 
+//initialization of movement struct
+struct movement move;        
+    
 // Common messages to send to server
 
 //.connect
