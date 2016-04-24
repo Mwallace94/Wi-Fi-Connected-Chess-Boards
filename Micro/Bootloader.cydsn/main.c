@@ -138,6 +138,10 @@ void debug() {
                 move.toCol = 10;
                 move.toRow = 3;
                 movepiece(move);
+                break;
+            case 'g':
+                game();
+                break;
             default:
                 break;
         }

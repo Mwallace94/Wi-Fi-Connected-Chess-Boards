@@ -28,6 +28,9 @@ static char blank[9] = "";
         Esp_UART_PutString("\r\n");
         temp = esp_helper(1000);
         if (strcmp(temp, "") != 0) return temp;
+        for(int i = 0; i < atoi(numBytes); i++) {
+            Esp_UART_PutChar(msg[i]);
+        }
         Esp_UART_PutString(msg);
         return esp_helper(2500);
     }
@@ -48,7 +51,7 @@ static char blank[9] = "";
                 Esp_UART_GetChar();
                 Debug_UART_PutString("\n\r!");
                 for(int j = 0; j < temp; j++) {
-                    recv[j] = Esp_UART_GetChar() + 48;
+                    recv[j] = Esp_UART_GetChar();
                 }
                 return recv;
                     

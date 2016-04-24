@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*
 int main() {
     
     init();
@@ -10,8 +10,8 @@ int main() {
         
     }
 }
+*/
 
-/*
 int main() {
     
     init();
@@ -33,7 +33,7 @@ int main() {
         
     }
 }
-*/
+
 
 void init() {
     CyGlobalIntEnable;
@@ -136,6 +136,10 @@ void debug() {
                 move.toCol = 10;
                 move.toRow = 3;
                 movepiece(move);
+                break;
+            case 'g':
+                game();
+                break;
             default:
                 break;
         }

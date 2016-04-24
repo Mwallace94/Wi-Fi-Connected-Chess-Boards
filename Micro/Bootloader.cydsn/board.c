@@ -36,8 +36,11 @@ void move_home() {
     x_pos = 0;
     y_pos = 0;
     
-    //move_x(60);
-    //move_y(25);
+    col_square = 11;
+    row_square = 0;
+    
+    move_x(35);
+    move_y(15);
 }
 
 void move_x(int16 mm) { 
@@ -271,12 +274,17 @@ void moveColHalf(int dis) {
 }
 
 void movepiece(struct movement move) {
-
-    //moveRow(move.fromRow);
-    //moveCol(11 - move.fromCol);
+    
+    moveRow(row_square - move.fromRow);
+    moveCol(col_square - move.fromCol);
+    
+    row_square = move.toRow;
+    col_square = move.toCol;
     
     CyDelay(5000);
 
+    Em_Write(1);
+    
     int rowdis = move.fromRow - move.toRow;
     int coldis = move.fromCol - move.toCol;
     
@@ -362,5 +370,7 @@ void movepiece(struct movement move) {
 
     //moves row adjustment
     moveRowHalf(-1 * uod);
+    
+    Em_Write(0);
     
 }

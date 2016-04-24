@@ -14,8 +14,9 @@
     
 #include <string.h>
 #include <project.h>
+#include <stdlib.h>
 
-static char recv[9];
+char recv[9];
 
     char* esp_transmit(char* msg, char* numBytes);  
     char* esp_helper(uint32 time);

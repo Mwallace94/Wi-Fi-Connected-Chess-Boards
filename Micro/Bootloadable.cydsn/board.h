@@ -24,6 +24,8 @@ struct movement {
     
 int16 x_pos;
 int16 y_pos;
+int16 row_square;
+int16 col_square;
     
 // Motor Functions
 

@@ -258,22 +258,22 @@ void diff_boards(enum Diff x) {
 
 uint8 itoc(int i) {
 	switch(i) {
-		case 0: return 0x30;
-		case 1: return 0x31;
-		case 2: return 0x32;
-		case 3: return 0x33;
-		case 4: return 0x34;
-		case 5: return 0x35;
-		case 6: return 0x36;
-		case 7: return 0x37;
-		case 8: return 0x38;
-		case 9: return 0x39;
-		case 10: return 0x41;
-		case 11: return 0x42;
-		case 12: return 0x43;
-		case 13: return 0x44;
-		case 14: return 0x45;
-		default: return 0x46;
+		case 0: return 0x00;
+		case 1: return 0x01;
+		case 2: return 0x02;
+		case 3: return 0x03;
+		case 4: return 0x04;
+		case 5: return 0x05;
+		case 6: return 0x06;
+		case 7: return 0x07;
+		case 8: return 0x08;
+		case 9: return 0x09;
+		case 10: return 0x0A;
+		case 11: return 0x0B;
+		case 12: return 0x0C;
+		case 13: return 0x0D;
+		case 14: return 0x0E;
+		default: return 0x0F;
 	}
 }
 
