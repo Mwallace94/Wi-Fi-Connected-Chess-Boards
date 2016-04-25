@@ -39,7 +39,7 @@ void move_home() {
     col_square = 11;
     row_square = 0;
     
-    move_x(35);
+    move_x(37);
     move_y(15);
 }
 
@@ -258,11 +258,11 @@ void read_reed_switches() {
 }
 
 void moveCol(int dis) {
-    move_x(50 * dis);
+    move_x(51 * dis);
 }
 
 void moveRow(int dis) {
-    move_y(50 * dis * -1);
+    move_y(51 * dis * -1);
 }
 
 void moveRowHalf(int dis) {
@@ -281,7 +281,7 @@ void movepiece(struct movement move) {
     row_square = move.toRow;
     col_square = move.toCol;
     
-    CyDelay(5000);
+    CyDelay(1000);
 
     Em_Write(1);
     
@@ -371,6 +371,19 @@ void movepiece(struct movement move) {
     //moves row adjustment
     moveRowHalf(-1 * uod);
     
+    absolute_x();
+    absolute_y();
+    
     Em_Write(0);
     
+}
+
+void absolute_x() {
+    int absX = 599 - (51 * col_square) - (row_square / 3);
+    move_x(absX - x_pos);
+}
+
+void absolute_y() {
+    int absY = (int) (15 + ((7 - row_square) / 2) + (51.3 - (((11 - col_square) / 4) * .45)) * row_square);
+    move_y(absY - y_pos);
 }

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
   29:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** 
   30:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** /*******************************************************************************
   31:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** * Function Name: Debug_UART_IntClock_Start
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
   55:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** ********************************************************************************
   56:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *
   57:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** * Summary:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 3
 
 
   58:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *  Stops the clock and returns immediately. This API does not require the
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
   81:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** 
   82:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** /*******************************************************************************
   83:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** * Function Name: Debug_UART_IntClock_StopBlock
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 4
 
 
   84:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** ********************************************************************************
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  116:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** #endif /* Debug_UART_IntClock__CFG3 */
  117:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** 
  118:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****         /* Clear mask of bus clock. */
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 5
 
 
  119:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****         CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  147              		.loc 1 136 0
  148 0056 8333     		adds	r3, r3, #131
  149 0058 1A80     		strh	r2, [r3]	@ movhi
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 6
 
 
  150              	.LVL1:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  161:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****         Debug_UART_IntClock_CLKSTBY &= (uint8)(~Debug_UART_IntClock_CLKSTBY_MASK);
  180              		.loc 1 161 0
  181 0002 064A     		ldr	r2, .L15
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 7
 
 
  182 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  190:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *  None
  191:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *
  192:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *******************************************************************************/
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 8
 
 
  193:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** void Debug_UART_IntClock_SetDividerRegister(uint16 clkDivider, uint8 restart)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  247:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** 
  249:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****                     /* Wait for clock to be disabled */
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 9
 
 
  250:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****                     while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  299:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****     return CY_GET_REG16(Debug_UART_IntClock_DIV_PTR);
  213              		.loc 1 299 0
  214 0000 014B     		ldr	r3, .L18
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 10
 
 
  215 0002 1888     		ldrh	r0, [r3]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  235              		.cfi_startproc
  236              		@ args = 0, pretend = 0, frame = 0
  237              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 11
 
 
  238              		@ link register save eliminated.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  363:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** * Returns:
  364:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *  None
  365:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 12
 
 
  366:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** *******************************************************************************/
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  389:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** {
  294              		.loc 1 389 0
  295              		.cfi_startproc
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 13
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 13
 
 
  296              		@ args = 0, pretend = 0, frame = 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  420:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** {
  421:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****     uint16 currDiv = Debug_UART_IntClock_GetDividerRegister();
  422:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****     uint8 oldSrc = Debug_UART_IntClock_GetSourceRegister();
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 14
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 14
 
 
  423:.\Generated_Source\PSoC5/Debug_UART_IntClock.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  329 0004 00F00700 		and	r0, r0, #7
  330 0008 7047     		bx	lr
  331              	.L31:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 15
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 15
 
 
  332 000a 00BF     		.align	2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  379 0020 00B1     		cbz	r0, .L35
  205:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****         {
  380              		.loc 1 205 0 discriminator 2
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 16
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 16
 
 
  381 0022 84B9     		cbnz	r4, .L34
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  425 0058 0C39     		subs	r1, r1, #12
  426 005a 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
  427 005c 03F07F03 		and	r3, r3, #127
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 17
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 17
 
 
  428 0060 0B70     		strb	r3, [r1]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  472 00a4 00E0     		b	.L41
  473              	.LVL19:
  474              	.L43:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 18
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 18
 
 
  475 00a6 0122     		movs	r2, #1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  524              	.LVL23:
  525 0000 38B5     		push	{r3, r4, r5, lr}
  526              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 19
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 19
 
 
  527              		.cfi_offset 3, -16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  569 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  438:.\Generated_Source\PSoC5/Debug_UART_IntClock.c ****             (Debug_UART_IntClock_MOD_SRC & (uint8)(~Debug_UART_IntClock_SRC_SEL_MSK)) | clkSource;
  570              		.loc 1 438 0
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 20
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 20
 
 
  571 0036 03F0F803 		and	r3, r3, #248
@@ -1180,48 +1180,48 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  604 0006 00000000 		.4byte	.Ldebug_abbrev0
  605 000a 04       		.byte	0x4
  606 000b 01       		.uleb128 0x1
- 607 000c 64020000 		.4byte	.LASF36
+ 607 000c 0E020000 		.4byte	.LASF36
  608 0010 01       		.byte	0x1
- 609 0011 1B030000 		.4byte	.LASF37
- 610 0015 6F000000 		.4byte	.LASF38
+ 609 0011 C5020000 		.4byte	.LASF37
+ 610 0015 22030000 		.4byte	.LASF38
  611 0019 00000000 		.4byte	.Ldebug_ranges0+0
  612 001d 00000000 		.4byte	0
  613 0021 00000000 		.4byte	.Ldebug_line0
  614 0025 02       		.uleb128 0x2
  615 0026 01       		.byte	0x1
  616 0027 06       		.byte	0x6
- 617 0028 70010000 		.4byte	.LASF0
+ 617 0028 1A010000 		.4byte	.LASF0
  618 002c 02       		.uleb128 0x2
  619 002d 01       		.byte	0x1
  620 002e 08       		.byte	0x8
- 621 002f 56010000 		.4byte	.LASF1
+ 621 002f 00010000 		.4byte	.LASF1
  622 0033 02       		.uleb128 0x2
  623 0034 02       		.byte	0x2
  624 0035 05       		.byte	0x5
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 21
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 21
 
 
  625 0036 4B000000 		.4byte	.LASF2
  626 003a 02       		.uleb128 0x2
  627 003b 02       		.byte	0x2
  628 003c 07       		.byte	0x7
- 629 003d 11020000 		.4byte	.LASF3
+ 629 003d BB010000 		.4byte	.LASF3
  630 0041 02       		.uleb128 0x2
  631 0042 04       		.byte	0x4
  632 0043 05       		.byte	0x5
- 633 0044 47010000 		.4byte	.LASF4
+ 633 0044 F1000000 		.4byte	.LASF4
  634 0048 02       		.uleb128 0x2
  635 0049 04       		.byte	0x4
  636 004a 07       		.byte	0x7
- 637 004b 02030000 		.4byte	.LASF5
+ 637 004b AC020000 		.4byte	.LASF5
  638 004f 02       		.uleb128 0x2
  639 0050 08       		.byte	0x8
  640 0051 05       		.byte	0x5
- 641 0052 39010000 		.4byte	.LASF6
+ 641 0052 E3000000 		.4byte	.LASF6
  642 0056 02       		.uleb128 0x2
  643 0057 08       		.byte	0x8
  644 0058 07       		.byte	0x7
- 645 0059 7C010000 		.4byte	.LASF7
+ 645 0059 26010000 		.4byte	.LASF7
  646 005d 03       		.uleb128 0x3
  647 005e 04       		.byte	0x4
  648 005f 05       		.byte	0x5
@@ -1229,36 +1229,36 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  650 0064 02       		.uleb128 0x2
  651 0065 04       		.byte	0x4
  652 0066 07       		.byte	0x7
- 653 0067 93010000 		.4byte	.LASF8
+ 653 0067 3D010000 		.4byte	.LASF8
  654 006b 04       		.uleb128 0x4
- 655 006c FC000000 		.4byte	.LASF9
+ 655 006c A6000000 		.4byte	.LASF9
  656 0070 02       		.byte	0x2
  657 0071 C2       		.byte	0xc2
  658 0072 2C000000 		.4byte	0x2c
  659 0076 04       		.uleb128 0x4
- 660 0077 C5000000 		.4byte	.LASF10
+ 660 0077 6F000000 		.4byte	.LASF10
  661 007b 02       		.byte	0x2
  662 007c C3       		.byte	0xc3
  663 007d 3A000000 		.4byte	0x3a
  664 0081 02       		.uleb128 0x2
  665 0082 04       		.byte	0x4
  666 0083 04       		.byte	0x4
- 667 0084 33010000 		.4byte	.LASF11
+ 667 0084 DD000000 		.4byte	.LASF11
  668 0088 02       		.uleb128 0x2
  669 0089 08       		.byte	0x8
  670 008a 04       		.byte	0x4
- 671 008b 14030000 		.4byte	.LASF12
+ 671 008b BE020000 		.4byte	.LASF12
  672 008f 02       		.uleb128 0x2
  673 0090 01       		.byte	0x1
  674 0091 08       		.byte	0x8
- 675 0092 42020000 		.4byte	.LASF13
+ 675 0092 EC010000 		.4byte	.LASF13
  676 0096 05       		.uleb128 0x5
- 677 0097 FD020000 		.4byte	.LASF14
+ 677 0097 A7020000 		.4byte	.LASF14
  678 009b 02       		.byte	0x2
  679 009c 6C01     		.2byte	0x16c
  680 009e A2000000 		.4byte	0xa2
  681 00a2 06       		.uleb128 0x6
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 22
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 22
 
 
  682 00a3 6B000000 		.4byte	0x6b
@@ -1286,7 +1286,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  704 00d8 01       		.uleb128 0x1
  705 00d9 9C       		.byte	0x9c
  706 00da 08       		.uleb128 0x8
- 707 00db 24020000 		.4byte	.LASF18
+ 707 00db CE010000 		.4byte	.LASF18
  708 00df 01       		.byte	0x1
  709 00e0 64       		.byte	0x64
  710 00e1 00000000 		.4byte	.LFB2
@@ -1298,7 +1298,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  716 00f0 0A000000 		.4byte	.LBB2
  717 00f4 62000000 		.4byte	.LBE2-.LBB2
  718 00f8 0A       		.uleb128 0xa
- 719 00f9 59020000 		.4byte	.LASF30
+ 719 00f9 03020000 		.4byte	.LASF30
  720 00fd 01       		.byte	0x1
  721 00fe 69       		.byte	0x69
  722 00ff 76000000 		.4byte	0x76
@@ -1306,7 +1306,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  724 0107 00       		.byte	0
  725 0108 00       		.byte	0
  726 0109 08       		.uleb128 0x8
- 727 010a D4000000 		.4byte	.LASF19
+ 727 010a 7E000000 		.4byte	.LASF19
  728 010e 01       		.byte	0x1
  729 010f 9D       		.byte	0x9d
  730 0110 00000000 		.4byte	.LFB3
@@ -1315,10 +1315,10 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  733 0119 9C       		.byte	0x9c
  734 011a 2C010000 		.4byte	0x12c
  735 011e 0B       		.uleb128 0xb
- 736 011f 50010000 		.4byte	.LASF21
+ 736 011f FA000000 		.4byte	.LASF21
  737 0123 01       		.byte	0x1
  738 0124 9D       		.byte	0x9d
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 23
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 23
 
 
  739 0125 6B000000 		.4byte	0x6b
@@ -1326,7 +1326,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  741 012a 50       		.byte	0x50
  742 012b 00       		.byte	0
  743 012c 0C       		.uleb128 0xc
- 744 012d C4010000 		.4byte	.LASF24
+ 744 012d 6E010000 		.4byte	.LASF24
  745 0131 01       		.byte	0x1
  746 0132 2901     		.2byte	0x129
  747 0134 76000000 		.4byte	0x76
@@ -1335,7 +1335,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  750 0140 01       		.uleb128 0x1
  751 0141 9C       		.byte	0x9c
  752 0142 0D       		.uleb128 0xd
- 753 0143 A0010000 		.4byte	.LASF20
+ 753 0143 4A010000 		.4byte	.LASF20
  754 0147 01       		.byte	0x1
  755 0148 4C01     		.2byte	0x14c
  756 014a 00000000 		.4byte	.LFB6
@@ -1344,14 +1344,14 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  759 0153 9C       		.byte	0x9c
  760 0154 69010000 		.4byte	0x169
  761 0158 0E       		.uleb128 0xe
- 762 0159 64010000 		.4byte	.LASF22
+ 762 0159 0E010000 		.4byte	.LASF22
  763 015d 01       		.byte	0x1
  764 015e 4C01     		.2byte	0x14c
  765 0160 6B000000 		.4byte	0x6b
  766 0164 13000000 		.4byte	.LLST1
  767 0168 00       		.byte	0
  768 0169 0D       		.uleb128 0xd
- 769 016a 4A030000 		.4byte	.LASF23
+ 769 016a F4020000 		.4byte	.LASF23
  770 016e 01       		.byte	0x1
  771 016f 6F01     		.2byte	0x16f
  772 0171 00000000 		.4byte	.LFB7
@@ -1360,7 +1360,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  775 017a 9C       		.byte	0x9c
  776 017b 90010000 		.4byte	0x190
  777 017f 0E       		.uleb128 0xe
- 778 0180 64010000 		.4byte	.LASF22
+ 778 0180 0E010000 		.4byte	.LASF22
  779 0184 01       		.byte	0x1
  780 0185 6F01     		.2byte	0x16f
  781 0187 6B000000 		.4byte	0x6b
@@ -1376,9 +1376,9 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  791 01a4 01       		.uleb128 0x1
  792 01a5 9C       		.byte	0x9c
  793 01a6 0C       		.uleb128 0xc
- 794 01a7 EB010000 		.4byte	.LASF26
+ 794 01a7 95010000 		.4byte	.LASF26
  795 01ab 01       		.byte	0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 24
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 24
 
 
  796 01ac D001     		.2byte	0x1d0
@@ -1388,7 +1388,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  800 01ba 01       		.uleb128 0x1
  801 01bb 9C       		.byte	0x9c
  802 01bc 08       		.uleb128 0x8
- 803 01bd 78030000 		.4byte	.LASF27
+ 803 01bd 61030000 		.4byte	.LASF27
  804 01c1 01       		.byte	0x1
  805 01c2 C1       		.byte	0xc1
  806 01c3 00000000 		.4byte	.LFB4
@@ -1397,31 +1397,31 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  809 01cc 9C       		.byte	0x9c
  810 01cd 2D020000 		.4byte	0x22d
  811 01d1 0F       		.uleb128 0xf
- 812 01d2 28010000 		.4byte	.LASF28
+ 812 01d2 D2000000 		.4byte	.LASF28
  813 01d6 01       		.byte	0x1
  814 01d7 C1       		.byte	0xc1
  815 01d8 76000000 		.4byte	0x76
  816 01dc 55000000 		.4byte	.LLST3
  817 01e0 0F       		.uleb128 0xf
- 818 01e1 CC000000 		.4byte	.LASF29
+ 818 01e1 76000000 		.4byte	.LASF29
  819 01e5 01       		.byte	0x1
  820 01e6 C1       		.byte	0xc1
  821 01e7 6B000000 		.4byte	0x6b
  822 01eb 76000000 		.4byte	.LLST4
  823 01ef 0A       		.uleb128 0xa
- 824 01f0 70030000 		.4byte	.LASF31
+ 824 01f0 1A030000 		.4byte	.LASF31
  825 01f4 01       		.byte	0x1
  826 01f5 C4       		.byte	0xc4
  827 01f6 6B000000 		.4byte	0x6b
  828 01fa 97000000 		.4byte	.LLST5
  829 01fe 0A       		.uleb128 0xa
- 830 01ff 51020000 		.4byte	.LASF32
+ 830 01ff FB010000 		.4byte	.LASF32
  831 0203 01       		.byte	0x1
  832 0204 C6       		.byte	0xc6
  833 0205 6B000000 		.4byte	0x6b
  834 0209 E1000000 		.4byte	.LLST6
  835 020d 10       		.uleb128 0x10
- 836 020e 59020000 		.4byte	.LASF30
+ 836 020e 03020000 		.4byte	.LASF30
  837 0212 01       		.byte	0x1
  838 0213 C7       		.byte	0xc7
  839 0214 76000000 		.4byte	0x76
@@ -1435,10 +1435,10 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  847 0228 2C010000 		.4byte	0x12c
  848 022c 00       		.byte	0
  849 022d 12       		.uleb128 0x12
- 850 022e 02010000 		.4byte	.LASF39
+ 850 022e AC000000 		.4byte	.LASF39
  851 0232 01       		.byte	0x1
  852 0233 A301     		.2byte	0x1a3
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 25
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 25
 
 
  853 0235 00000000 		.4byte	.LFB9
@@ -1446,7 +1446,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  855 023d 01       		.uleb128 0x1
  856 023e 9C       		.byte	0x9c
  857 023f 0E       		.uleb128 0xe
- 858 0240 47020000 		.4byte	.LASF33
+ 858 0240 F1010000 		.4byte	.LASF33
  859 0244 01       		.byte	0x1
  860 0245 A301     		.2byte	0x1a3
  861 0247 6B000000 		.4byte	0x6b
@@ -1458,7 +1458,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  867 0257 76000000 		.4byte	0x76
  868 025b 15010000 		.4byte	.LLST8
  869 025f 14       		.uleb128 0x14
- 870 0260 F5000000 		.4byte	.LASF35
+ 870 0260 9F000000 		.4byte	.LASF35
  871 0264 01       		.byte	0x1
  872 0265 A601     		.2byte	0x1a6
  873 0267 6B000000 		.4byte	0x6b
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  907 0015 00       		.byte	0
  908 0016 0B       		.uleb128 0xb
  909 0017 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 26
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 26
 
 
  910 0018 3E       		.uleb128 0x3e
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  964 004e 19       		.uleb128 0x19
  965 004f 03       		.uleb128 0x3
  966 0050 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 27
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 27
 
 
  967 0051 3A       		.uleb128 0x3a
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1021 0089 0E       		.uleb128 0xe
  1022 008a 3A       		.uleb128 0x3a
  1023 008b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 28
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 28
 
 
  1024 008c 3B       		.uleb128 0x3b
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1078 00c3 0E       		.uleb128 0xe
  1079 00c4 3A       		.uleb128 0x3a
  1080 00c5 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 29
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 29
 
 
  1081 00c6 3B       		.uleb128 0x3b
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1135 00fd 0B       		.uleb128 0xb
  1136 00fe 49       		.uleb128 0x49
  1137 00ff 13       		.uleb128 0x13
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 30
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 30
 
 
  1138 0100 02       		.uleb128 0x2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1192 0139 03       		.uleb128 0x3
  1193 013a 0E       		.uleb128 0xe
  1194 013b 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 31
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 31
 
 
  1195 013c 0B       		.uleb128 0xb
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1249 0068 0400     		.2byte	0x4
  1250 006a F3       		.byte	0xf3
  1251 006b 01       		.uleb128 0x1
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 32
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 32
 
 
  1252 006c 50       		.byte	0x50
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1306 00f8 07000000 		.4byte	.LVL24-1
  1307 00fc 0100     		.2byte	0x1
  1308 00fe 50       		.byte	0x50
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 33
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 33
 
 
  1309 00ff 07000000 		.4byte	.LVL24-1
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1363 0010 00000000 		.4byte	.LFB2
  1364 0014 6C000000 		.4byte	.LFE2
  1365 0018 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 34
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 34
 
 
  1366 001c 20000000 		.4byte	.LFE3
@@ -2033,182 +2033,182 @@ ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 1
  1397      52545F49 
  1397      6E74436C 
  1397      6F636B5F 
- 1398              	.LASF38:
- 1399 006f 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
- 1399      73657273 
- 1399      5C4B796C 
- 1399      655C446F 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 35
+ 1398              	.LASF10:
+ 1399 006f 75696E74 		.ascii	"uint16\000"
+ 1399      313600
+ 1400              	.LASF29:
+ 1401 0076 72657374 		.ascii	"restart\000"
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 35
 
 
- 1399      776E6C6F 
- 1400 009d 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloadable.cydsn\000"
- 1400      43686573 
- 1400      73426F61 
- 1400      72645C4D 
- 1400      6963726F 
- 1401              	.LASF10:
- 1402 00c5 75696E74 		.ascii	"uint16\000"
- 1402      313600
- 1403              	.LASF29:
- 1404 00cc 72657374 		.ascii	"restart\000"
- 1404      61727400 
- 1405              	.LASF19:
- 1406 00d4 44656275 		.ascii	"Debug_UART_IntClock_StandbyPower\000"
- 1406      675F5541 
- 1406      52545F49 
- 1406      6E74436C 
- 1406      6F636B5F 
- 1407              	.LASF35:
- 1408 00f5 6F6C6453 		.ascii	"oldSrc\000"
- 1408      726300
- 1409              	.LASF9:
- 1410 00fc 75696E74 		.ascii	"uint8\000"
- 1410      3800
- 1411              	.LASF39:
- 1412 0102 44656275 		.ascii	"Debug_UART_IntClock_SetSourceRegister\000"
- 1412      675F5541 
- 1412      52545F49 
- 1412      6E74436C 
- 1412      6F636B5F 
- 1413              	.LASF28:
- 1414 0128 636C6B44 		.ascii	"clkDivider\000"
- 1414      69766964 
- 1414      657200
- 1415              	.LASF11:
- 1416 0133 666C6F61 		.ascii	"float\000"
- 1416      7400
- 1417              	.LASF6:
- 1418 0139 6C6F6E67 		.ascii	"long long int\000"
- 1418      206C6F6E 
- 1418      6720696E 
- 1418      7400
- 1419              	.LASF4:
- 1420 0147 6C6F6E67 		.ascii	"long int\000"
- 1420      20696E74 
- 1420      00
- 1421              	.LASF21:
- 1422 0150 73746174 		.ascii	"state\000"
- 1422      6500
- 1423              	.LASF1:
- 1424 0156 756E7369 		.ascii	"unsigned char\000"
- 1424      676E6564 
- 1424      20636861 
- 1424      7200
- 1425              	.LASF22:
- 1426 0164 6D6F6465 		.ascii	"modeBitMask\000"
- 1426      4269744D 
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 36
+ 1401      61727400 
+ 1402              	.LASF19:
+ 1403 007e 44656275 		.ascii	"Debug_UART_IntClock_StandbyPower\000"
+ 1403      675F5541 
+ 1403      52545F49 
+ 1403      6E74436C 
+ 1403      6F636B5F 
+ 1404              	.LASF35:
+ 1405 009f 6F6C6453 		.ascii	"oldSrc\000"
+ 1405      726300
+ 1406              	.LASF9:
+ 1407 00a6 75696E74 		.ascii	"uint8\000"
+ 1407      3800
+ 1408              	.LASF39:
+ 1409 00ac 44656275 		.ascii	"Debug_UART_IntClock_SetSourceRegister\000"
+ 1409      675F5541 
+ 1409      52545F49 
+ 1409      6E74436C 
+ 1409      6F636B5F 
+ 1410              	.LASF28:
+ 1411 00d2 636C6B44 		.ascii	"clkDivider\000"
+ 1411      69766964 
+ 1411      657200
+ 1412              	.LASF11:
+ 1413 00dd 666C6F61 		.ascii	"float\000"
+ 1413      7400
+ 1414              	.LASF6:
+ 1415 00e3 6C6F6E67 		.ascii	"long long int\000"
+ 1415      206C6F6E 
+ 1415      6720696E 
+ 1415      7400
+ 1416              	.LASF4:
+ 1417 00f1 6C6F6E67 		.ascii	"long int\000"
+ 1417      20696E74 
+ 1417      00
+ 1418              	.LASF21:
+ 1419 00fa 73746174 		.ascii	"state\000"
+ 1419      6500
+ 1420              	.LASF1:
+ 1421 0100 756E7369 		.ascii	"unsigned char\000"
+ 1421      676E6564 
+ 1421      20636861 
+ 1421      7200
+ 1422              	.LASF22:
+ 1423 010e 6D6F6465 		.ascii	"modeBitMask\000"
+ 1423      4269744D 
+ 1423      61736B00 
+ 1424              	.LASF0:
+ 1425 011a 7369676E 		.ascii	"signed char\000"
+ 1425      65642063 
+ 1425      68617200 
+ 1426              	.LASF7:
+ 1427 0126 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1427      206C6F6E 
+ 1427      6720756E 
+ 1427      7369676E 
+ 1427      65642069 
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 36
 
 
- 1426      61736B00 
- 1427              	.LASF0:
- 1428 0170 7369676E 		.ascii	"signed char\000"
- 1428      65642063 
- 1428      68617200 
- 1429              	.LASF7:
- 1430 017c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1430      206C6F6E 
- 1430      6720756E 
- 1430      7369676E 
- 1430      65642069 
- 1431              	.LASF8:
- 1432 0193 756E7369 		.ascii	"unsigned int\000"
- 1432      676E6564 
- 1432      20696E74 
- 1432      00
- 1433              	.LASF20:
- 1434 01a0 44656275 		.ascii	"Debug_UART_IntClock_SetModeRegister\000"
- 1434      675F5541 
- 1434      52545F49 
- 1434      6E74436C 
- 1434      6F636B5F 
- 1435              	.LASF24:
- 1436 01c4 44656275 		.ascii	"Debug_UART_IntClock_GetDividerRegister\000"
- 1436      675F5541 
- 1436      52545F49 
- 1436      6E74436C 
- 1436      6F636B5F 
- 1437              	.LASF26:
- 1438 01eb 44656275 		.ascii	"Debug_UART_IntClock_GetSourceRegister\000"
- 1438      675F5541 
- 1438      52545F49 
- 1438      6E74436C 
- 1438      6F636B5F 
- 1439              	.LASF3:
- 1440 0211 73686F72 		.ascii	"short unsigned int\000"
- 1440      7420756E 
- 1440      7369676E 
- 1440      65642069 
- 1440      6E7400
- 1441              	.LASF18:
- 1442 0224 44656275 		.ascii	"Debug_UART_IntClock_StopBlock\000"
- 1442      675F5541 
- 1442      52545F49 
- 1442      6E74436C 
- 1442      6F636B5F 
- 1443              	.LASF13:
- 1444 0242 63686172 		.ascii	"char\000"
- 1444      00
- 1445              	.LASF33:
- 1446 0247 636C6B53 		.ascii	"clkSource\000"
- 1446      6F757263 
- 1446      6500
- 1447              	.LASF32:
- 1448 0251 63757272 		.ascii	"currSrc\000"
- 1448      53726300 
- 1449              	.LASF30:
-ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccoamd53.s 			page 37
+ 1428              	.LASF8:
+ 1429 013d 756E7369 		.ascii	"unsigned int\000"
+ 1429      676E6564 
+ 1429      20696E74 
+ 1429      00
+ 1430              	.LASF20:
+ 1431 014a 44656275 		.ascii	"Debug_UART_IntClock_SetModeRegister\000"
+ 1431      675F5541 
+ 1431      52545F49 
+ 1431      6E74436C 
+ 1431      6F636B5F 
+ 1432              	.LASF24:
+ 1433 016e 44656275 		.ascii	"Debug_UART_IntClock_GetDividerRegister\000"
+ 1433      675F5541 
+ 1433      52545F49 
+ 1433      6E74436C 
+ 1433      6F636B5F 
+ 1434              	.LASF26:
+ 1435 0195 44656275 		.ascii	"Debug_UART_IntClock_GetSourceRegister\000"
+ 1435      675F5541 
+ 1435      52545F49 
+ 1435      6E74436C 
+ 1435      6F636B5F 
+ 1436              	.LASF3:
+ 1437 01bb 73686F72 		.ascii	"short unsigned int\000"
+ 1437      7420756E 
+ 1437      7369676E 
+ 1437      65642069 
+ 1437      6E7400
+ 1438              	.LASF18:
+ 1439 01ce 44656275 		.ascii	"Debug_UART_IntClock_StopBlock\000"
+ 1439      675F5541 
+ 1439      52545F49 
+ 1439      6E74436C 
+ 1439      6F636B5F 
+ 1440              	.LASF13:
+ 1441 01ec 63686172 		.ascii	"char\000"
+ 1441      00
+ 1442              	.LASF33:
+ 1443 01f1 636C6B53 		.ascii	"clkSource\000"
+ 1443      6F757263 
+ 1443      6500
+ 1444              	.LASF32:
+ 1445 01fb 63757272 		.ascii	"currSrc\000"
+ 1445      53726300 
+ 1446              	.LASF30:
+ 1447 0203 6F6C6444 		.ascii	"oldDivider\000"
+ 1447      69766964 
+ 1447      657200
+ 1448              	.LASF36:
+ 1449 020e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1449      4320342E 
+ 1449      392E3320 
+ 1449      32303135 
+ 1449      30333033 
+ 1450 0241 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1450      20726576 
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccTiFWrO.s 			page 37
 
 
- 1450 0259 6F6C6444 		.ascii	"oldDivider\000"
- 1450      69766964 
- 1450      657200
- 1451              	.LASF36:
- 1452 0264 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1452      4320342E 
- 1452      392E3320 
- 1452      32303135 
- 1452      30333033 
- 1453 0297 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1453      20726576 
- 1453      6973696F 
- 1453      6E203232 
- 1453      31323230 
- 1454 02ca 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
- 1454      74643D67 
- 1454      6E753939 
- 1454      202D6666 
- 1454      756E6374 
- 1455              	.LASF14:
- 1456 02fd 72656738 		.ascii	"reg8\000"
- 1456      00
- 1457              	.LASF5:
- 1458 0302 6C6F6E67 		.ascii	"long unsigned int\000"
- 1458      20756E73 
- 1458      69676E65 
- 1458      6420696E 
- 1458      7400
- 1459              	.LASF12:
- 1460 0314 646F7562 		.ascii	"double\000"
- 1460      6C6500
- 1461              	.LASF37:
- 1462 031b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Debug_UART_IntClock.c\000"
- 1462      6E657261 
- 1462      7465645F 
- 1462      536F7572 
- 1462      63655C50 
- 1463              	.LASF23:
- 1464 034a 44656275 		.ascii	"Debug_UART_IntClock_ClearModeRegister\000"
- 1464      675F5541 
- 1464      52545F49 
- 1464      6E74436C 
- 1464      6F636B5F 
- 1465              	.LASF31:
- 1466 0370 656E6162 		.ascii	"enabled\000"
- 1466      6C656400 
+ 1450      6973696F 
+ 1450      6E203232 
+ 1450      31323230 
+ 1451 0274 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 1451      74643D67 
+ 1451      6E753939 
+ 1451      202D6666 
+ 1451      756E6374 
+ 1452              	.LASF14:
+ 1453 02a7 72656738 		.ascii	"reg8\000"
+ 1453      00
+ 1454              	.LASF5:
+ 1455 02ac 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1455      20756E73 
+ 1455      69676E65 
+ 1455      6420696E 
+ 1455      7400
+ 1456              	.LASF12:
+ 1457 02be 646F7562 		.ascii	"double\000"
+ 1457      6C6500
+ 1458              	.LASF37:
+ 1459 02c5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Debug_UART_IntClock.c\000"
+ 1459      6E657261 
+ 1459      7465645F 
+ 1459      536F7572 
+ 1459      63655C50 
+ 1460              	.LASF23:
+ 1461 02f4 44656275 		.ascii	"Debug_UART_IntClock_ClearModeRegister\000"
+ 1461      675F5541 
+ 1461      52545F49 
+ 1461      6E74436C 
+ 1461      6F636B5F 
+ 1462              	.LASF31:
+ 1463 031a 656E6162 		.ascii	"enabled\000"
+ 1463      6C656400 
+ 1464              	.LASF38:
+ 1465 0322 453A5C55 		.ascii	"E:\\Uconn\\Senior Design\\WiFiChessBoard\\Micro\\Bo"
+ 1465      636F6E6E 
+ 1465      5C53656E 
+ 1465      696F7220 
+ 1465      44657369 
+ 1466 0350 6F746C6F 		.ascii	"otloadable.cydsn\000"
+ 1466      61646162 
+ 1466      6C652E63 
+ 1466      7964736E 
+ 1466      00
  1467              	.LASF27:
- 1468 0378 44656275 		.ascii	"Debug_UART_IntClock_SetDividerRegister\000"
+ 1468 0361 44656275 		.ascii	"Debug_UART_IntClock_SetDividerRegister\000"
  1468      675F5541 
  1468      52545F49 
  1468      6E74436C 

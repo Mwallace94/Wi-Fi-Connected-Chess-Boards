@@ -1,5 +1,5 @@
 #include "main.h"
-/*
+
 int main() {
     
     init();
@@ -10,8 +10,8 @@ int main() {
         
     }
 }
-*/
 
+/*
 int main() {
     
     init();
@@ -33,6 +33,7 @@ int main() {
         
     }
 }
+    */
 
 
 void init() {
@@ -51,6 +52,11 @@ void debug() {
     char message[64] = "";
     char temp;
     char length;
+    
+    extern int16 x_pos;
+    extern int16 y_pos;
+    
+    char buffer[6] = "";
 
     if(Debug_UART_GetRxBufferSize() > 0) {
 
@@ -131,15 +137,21 @@ void debug() {
                 Debug_UART_PutString(esp_transmit(".gib", "4"));
                 break;
             case 't':
-                move.fromCol = 11;
-                move.fromRow = 0;
-                move.toCol = 10;
-                move.toRow = 3;
+                move.fromCol = col_square;
+                move.fromRow = row_square;    
+                move.toCol = atoi(message + 3);
+                move.toRow = atoi(message + 1);
                 movepiece(move);
                 break;
             case 'g':
                 game();
                 break;
+            case 'p':
+                Debug_UART_PutString("X = ");
+                Debug_UART_PutString(itoa(x_pos, buffer, 10));
+                Debug_UART_PutString(", Y = ");
+                Debug_UART_PutString(itoa(y_pos, buffer, 10));
+                Debug_UART_PutString("\r\n\r\n");
             default:
                 break;
         }

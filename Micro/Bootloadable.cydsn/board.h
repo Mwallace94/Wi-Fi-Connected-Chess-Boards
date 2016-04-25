@@ -39,6 +39,8 @@ void moveRow(int dis);
 void moveCol(int dis);
 void moveColHalf(int dis);
 void moveRowHalf(int dis);
+void absolute_x();
+void absolute_y();
 
 // Reed Switch Variables
 
