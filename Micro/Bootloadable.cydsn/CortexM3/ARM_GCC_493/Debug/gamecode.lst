@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
   29:.\gamecode.c  **** // Initialization functions.
   30:.\gamecode.c  **** 
   31:.\gamecode.c  **** /*
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 2
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 2
 
 
   32:.\gamecode.c  **** 	Initalizes the game state and board state.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
   52:.\gamecode.c  **** 	strcpy(bres1, "");
   61              		.loc 1 52 0
   62 0008 154C     		ldr	r4, .L7+4
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 3
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 3
 
 
   63 000a 0023     		movs	r3, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
   65:.\gamecode.c  **** 
   66:.\gamecode.c  **** 		Debug_UART_PutString("Not connected.\n");
  105              		.loc 1 66 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 4
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 4
 
 
  106 004a 0C48     		ldr	r0, .L7+32
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
   76:.\gamecode.c  **** 
   77:.\gamecode.c  **** 	Debug_UART_PutString("CONNECTED\n");
  151              		.loc 1 77 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 5
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 5
 
 
  152 0002 1E48     		ldr	r0, .L15
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
   89:.\gamecode.c  **** 	}
   90:.\gamecode.c  **** 
   91:.\gamecode.c  **** 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 6
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 6
 
 
  195              		.loc 1 91 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  233 007a 38BD     		pop	{r3, r4, r5, pc}
  234              	.L16:
  235              		.align	2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 7
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 7
 
 
  236              	.L15:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  279              	.LVL18:
  119:.\gamecode.c  ****     strncpy(bres1, recv, 1);
  280              		.loc 1 119 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 8
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 8
 
 
  281 0016 2046     		mov	r0, r4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  320 0052 112A     		cmp	r2, #17
  321 0054 03D1     		bne	.L20
  132:.\gamecode.c  **** 		game_state = READY;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 9
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 9
 
 
  322              		.loc 1 132 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  363 0094 8C000000 		.word	.LC12
  364 0098 00000000 		.word	recv
  365 009c 00000000 		.word	game_state
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 10
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 10
 
 
  366 00a0 50000000 		.word	.LC8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  162:.\gamecode.c  **** 		esp_transmit(bstr_gib, "4");
  404              		.loc 1 162 0
  405 001a 3548     		ldr	r0, .L34+8
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 11
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 11
 
 
  406 001c 3549     		ldr	r1, .L34+12
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  447 0058 44E0     		b	.L31
  448              	.L30:
  175:.\gamecode.c  **** 	}
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 12
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 12
 
 
  176:.\gamecode.c  **** 	char movementOpp1[4] = { bres8[1], bres8[0], bres8[3], bres8[2] };
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  492              		.loc 1 186 0
  493 00b2 0FCB     		ldmia	r3, {r0, r1, r2, r3}
  494 00b4 FFF7FEFF 		bl	movepiece
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 13
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 13
 
 
  495              	.LVL32:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  538              		.cfi_endproc
  539              	.LFE67:
  540              		.size	state_waiting, .-state_waiting
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 14
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 14
 
 
  541              		.section	.text.diff_boards,"ax",%progbits
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  580 001c 2344     		add	r3, r3, r4
  581 001e 394A     		ldr	r2, .L54+4
  582 0020 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 15
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 15
 
 
  583 0022 012B     		cmp	r3, #1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  225:.\gamecode.c  **** 
  226:.\gamecode.c  ****     				diff_loc[1][0] = i;
  625              		.loc 1 226 0 is_stmt 1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 16
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 16
 
 
  626 0070 234B     		ldr	r3, .L54
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  665 009a 1BD1     		bne	.L45
  666              		.loc 1 237 0 is_stmt 0 discriminator 1
  667 009c 05EB4502 		add	r2, r5, r5, lsl #1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 17
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 17
 
 
  668 00a0 9200     		lsls	r2, r2, #2
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  708 00e8 9D60     		str	r5, [r3, #8]
  252:.\gamecode.c  ****     				diff_loc[1][1] = j;
  709              		.loc 1 252 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 18
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 18
 
 
  710 00ea DC60     		str	r4, [r3, #12]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  753              		.cfi_startproc
  754              		@ args = 0, pretend = 0, frame = 0
  755              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 19
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 19
 
 
  756              		@ link register save eliminated.
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  266:.\gamecode.c  **** 		case 5: return 0x05;
  804              		.loc 1 266 0
  805 0028 0520     		movs	r0, #5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 20
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 20
 
 
  806              	.LVL60:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  852              		.loc 1 274 0
  853 0048 0D20     		movs	r0, #13
  854              	.LVL76:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 21
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 21
 
 
  855 004a 7047     		bx	lr
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  898              		.cfi_def_cfa_offset 80
  285:.\gamecode.c  **** 
  286:.\gamecode.c  **** 	Debug_UART_PutString("MOVING");
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 22
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 22
 
 
  899              		.loc 1 286 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  933 0034 FFF7FEFF 		bl	read_reed_switches
  934              	.LVL89:
  307:.\gamecode.c  **** 		memcpy(&update1_board, &board, sizeof(board));
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 23
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 23
 
 
  935              		.loc 1 307 0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  319:.\gamecode.c  **** 			(move1[1][1] - move1[0][1]) == 2)) {
  320:.\gamecode.c  **** 
  321:.\gamecode.c  **** 			castling = 1;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 24
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 24
 
 
  977              		.loc 1 321 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  328:.\gamecode.c  **** 
  329:.\gamecode.c  **** 	// Moved piece to graveyard, get corresponding attack OR castling.
  330:.\gamecode.c  **** 	if((move1[1][1] % 10) == 0 || (move1[1][1] % 10) == 1 || castling) {
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 25
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 25
 
 
  1021              		.loc 1 330 0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1060 00f6 9C68     		ldr	r4, [r3, #8]
  1061 00f8 0894     		str	r4, [sp, #32]
  346:.\gamecode.c  ****             move2[1][1] = diff_loc[1][1];
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 26
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 26
 
 
  1062              		.loc 1 346 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  358:.\gamecode.c  **** 	char msg[13] = {0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
  1101              		.loc 1 358 0
  1102 0138 2E23     		movs	r3, #46
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 27
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 27
 
 
  1103 013a 8DF80430 		strb	r3, [sp, #4]
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1147 019a 1649     		ldr	r1, .L92+36
  1148 019c 0922     		movs	r2, #9
  1149 019e FFF7FEFF 		bl	strncpy
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 28
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 28
 
 
  1150              	.LVL108:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1191 01d4 00000000 		.word	initial_board
  1192 01d8 00000000 		.word	board
  1193 01dc 00000000 		.word	update1_board
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 29
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 29
 
 
  1194 01e0 00000000 		.word	diff_loc
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1236 0012 0E4B     		ldr	r3, .L102
  1237 0014 1B68     		ldr	r3, [r3]
  1238 0016 2BB9     		cbnz	r3, .L96
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 30
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 30
 
 
  389:.\gamecode.c  **** 			Debug_UART_PutString("Attempting to connect again.\n");
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1275              		.loc 1 406 0
  1276 0046 FFF7FEFF 		bl	state_moving
  1277              	.LVL119:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 31
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 31
 
 
  1278 004a E2E7     		b	.L95
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1332 0010 2E       		.byte	46
  1333 0011 67       		.byte	103
  1334 0012 69       		.byte	105
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 32
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 32
 
 
  1335 0013 62       		.byte	98
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1368      590A00
  1369 008b 00       		.space	1
  1370              	.LC12:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 33
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 33
 
 
  1371 008c 3400     		.ascii	"4\000"
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1408 0006 00000000 		.4byte	.Ldebug_abbrev0
  1409 000a 04       		.byte	0x4
  1410 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 34
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 34
 
 
  1411 000c F4010000 		.4byte	.LASF67
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1465 007b 03       		.byte	0x3
  1466 007c D4       		.byte	0xd4
  1467 007d 6F000000 		.4byte	0x6f
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 35
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 35
 
 
  1468 0081 05       		.uleb128 0x5
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1522 00ed 08       		.byte	0x8
  1523 00ee 04       		.byte	0x4
  1524 00ef E2020000 		.4byte	.LASF18
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 36
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 36
 
 
  1525 00f3 03       		.uleb128 0x3
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1579 015f 00000000 		.4byte	.LFB63
  1580 0163 04000000 		.4byte	.LFE63-.LFB63
  1581 0167 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 37
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 37
 
 
  1582 0168 9C       		.byte	0x9c
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1636 01da 01       		.uleb128 0x1
  1637 01db 31       		.byte	0x31
  1638 01dc 12       		.uleb128 0x12
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 38
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 38
 
 
  1639 01dd 01       		.uleb128 0x1
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1693 0243 A8000000 		.4byte	.LFE65-.LFB65
  1694 0247 01       		.uleb128 0x1
  1695 0248 9C       		.byte	0x9c
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 39
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 39
 
 
  1696 0249 1C030000 		.4byte	0x31c
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1750 02ac 11       		.uleb128 0x11
  1751 02ad 32000000 		.4byte	.LVL12
  1752 02b1 420A0000 		.4byte	0xa42
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 40
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 40
 
 
  1753 02b5 C3020000 		.4byte	0x2c3
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1807 0321 01       		.byte	0x1
  1808 0322 70       		.byte	0x70
  1809 0323 68000000 		.4byte	0x68
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 41
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 41
 
 
  1810 0327 00000000 		.4byte	.LFB66
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1864 038d 00       		.byte	0
  1865 038e 11       		.uleb128 0x11
  1866 038f 2A000000 		.4byte	.LVL20
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 42
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 42
 
 
  1867 0393 A80A0000 		.4byte	0xaa8
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1921 03f4 50       		.byte	0x50
  1922 03f5 02       		.uleb128 0x2
  1923 03f6 74       		.byte	0x74
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 43
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 43
 
 
  1924 03f7 00       		.sleb128 0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  1978 0466 12       		.uleb128 0x12
  1979 0467 01       		.uleb128 0x1
  1980 0468 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 44
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 44
 
 
  1981 0469 05       		.uleb128 0x5
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2035 04c7 11       		.uleb128 0x11
  2036 04c8 34000000 		.4byte	.LVL30
  2037 04cc 420A0000 		.4byte	0xa42
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 45
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 45
 
 
  2038 04d0 DB040000 		.4byte	0x4db
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2092 053c 7800     		.ascii	"x\000"
  2093 053e 01       		.byte	0x1
  2094 053f C7       		.byte	0xc7
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 46
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 46
 
 
  2095 0540 3B010000 		.4byte	0x13b
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2149 05b7 B8000000 		.4byte	.LASF35
  2150 05bb 01       		.byte	0x1
  2151 05bc 1C01     		.2byte	0x11c
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 47
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 47
 
 
  2152 05be 68000000 		.4byte	0x68
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2206 0633 00       		.byte	0
  2207 0634 13       		.uleb128 0x13
  2208 0635 0E000000 		.4byte	.LVL84
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 48
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 48
 
 
  2209 0639 CA0A0000 		.4byte	0xaca
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2263 069d 12       		.uleb128 0x12
  2264 069e 01       		.uleb128 0x1
  2265 069f 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 49
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 49
 
 
  2266 06a0 05       		.uleb128 0x5
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2320 0706 50       		.byte	0x50
  2321 0707 03       		.uleb128 0x3
  2322 0708 91       		.byte	0x91
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 50
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 50
 
 
  2323 0709 60       		.sleb128 -32
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2377 0770 12       		.uleb128 0x12
  2378 0771 01       		.uleb128 0x1
  2379 0772 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 51
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 51
 
 
  2380 0773 03       		.uleb128 0x3
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2434 07d1 00       		.byte	0
  2435 07d2 11       		.uleb128 0x11
  2436 07d3 A2010000 		.4byte	.LVL108
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 52
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 52
 
 
  2437 07d7 780A0000 		.4byte	0xa78
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2491 083d 48080000 		.4byte	0x848
  2492 0841 09       		.uleb128 0x9
  2493 0842 83000000 		.4byte	0x83
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 53
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 53
 
 
  2494 0846 0C       		.byte	0xc
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2548 08cf 06       		.byte	0x6
  2549 08d0 19       		.byte	0x19
  2550 08d1 DA000000 		.4byte	0xda
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 54
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 54
 
 
  2551 08d5 05       		.uleb128 0x5
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2605 094a 08       		.byte	0x8
  2606 094b 33       		.byte	0x33
  2607 094c 35090000 		.4byte	0x935
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 55
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 55
 
 
  2608 0950 05       		.uleb128 0x5
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2662 09c5 83000000 		.4byte	0x83
  2663 09c9 00       		.byte	0
  2664 09ca 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 56
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 56
 
 
  2665 09cb 21       		.uleb128 0x21
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2719 0a3d 03       		.byte	0x3
  2720 0a3e 00000000 		.4byte	update2_board
  2721 0a42 22       		.uleb128 0x22
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 57
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 57
 
 
  2722 0a43 A7030000 		.4byte	.LASF62
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2776 0abe 06       		.byte	0x6
  2777 0abf 25       		.byte	0x25
  2778 0ac0 CA0A0000 		.4byte	0xaca
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 58
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 58
 
 
  2779 0ac4 23       		.uleb128 0x23
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2833 0018 3E       		.uleb128 0x3e
  2834 0019 0B       		.uleb128 0xb
  2835 001a 03       		.uleb128 0x3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 59
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 59
 
 
  2836 001b 0E       		.uleb128 0xe
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2890 0051 13       		.uleb128 0x13
  2891 0052 01       		.uleb128 0x1
  2892 0053 13       		.uleb128 0x13
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 60
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 60
 
 
  2893 0054 00       		.byte	0
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  2947 008a 0B       		.uleb128 0xb
  2948 008b 3B       		.uleb128 0x3b
  2949 008c 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 61
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 61
 
 
  2950 008d 01       		.uleb128 0x1
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3004 00c4 898201   		.uleb128 0x4109
  3005 00c7 01       		.byte	0x1
  3006 00c8 11       		.uleb128 0x11
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 62
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 62
 
 
  3007 00c9 01       		.uleb128 0x1
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3061 0106 03       		.uleb128 0x3
  3062 0107 0E       		.uleb128 0xe
  3063 0108 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 63
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 63
 
 
  3064 0109 0B       		.uleb128 0xb
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3118 0140 3A       		.uleb128 0x3a
  3119 0141 0B       		.uleb128 0xb
  3120 0142 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 64
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 64
 
 
  3121 0143 05       		.uleb128 0x5
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3175 017b 13       		.uleb128 0x13
  3176 017c 00       		.byte	0
  3177 017d 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 65
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 65
 
 
  3178 017e 1C       		.uleb128 0x1c
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3232 01b4 49       		.uleb128 0x49
  3233 01b5 13       		.uleb128 0x13
  3234 01b6 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 66
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 66
 
 
  3235 01b7 19       		.uleb128 0x19
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3289 01ed 00       		.byte	0
  3290 01ee 24       		.uleb128 0x24
  3291 01ef 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 67
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 67
 
 
  3292 01f0 01       		.byte	0x1
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3346 0226 3C       		.uleb128 0x3c
  3347 0227 19       		.uleb128 0x19
  3348 0228 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 68
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 68
 
 
  3349 0229 13       		.uleb128 0x13
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3403 004f 55       		.byte	0x55
  3404 0050 00000000 		.4byte	0
  3405 0054 00000000 		.4byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 69
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 69
 
 
  3406              	.LLST2:
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3460 00db 26000000 		.4byte	.LVL58
  3461 00df 0100     		.2byte	0x1
  3462 00e1 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 70
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 70
 
 
  3463 00e2 26000000 		.4byte	.LVL58
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3517 015e 50       		.byte	0x50
  3518 015f 3A000000 		.4byte	.LVL68
  3519 0163 3C000000 		.4byte	.LVL69
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 71
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 71
 
 
  3520 0167 0400     		.2byte	0x4
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3574 01e0 50000000 		.4byte	.LVL79
  3575 01e4 0400     		.2byte	0x4
  3576 01e6 F3       		.byte	0xf3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 72
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 72
 
 
  3577 01e7 01       		.uleb128 0x1
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3631 001c 80000000 		.4byte	.LFE64-.LFB64
  3632 0020 00000000 		.4byte	.LFB65
  3633 0024 A8000000 		.4byte	.LFE65-.LFB65
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 73
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 73
 
 
  3634 0028 00000000 		.4byte	.LFB66
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3679              	.LASF10:
  3680 001d 73697A65 		.ascii	"size_t\000"
  3680      5F7400
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 74
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 74
 
 
  3681              	.LASF28:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3710 00ac 696E7431 		.ascii	"int16\000"
  3710      3600
  3711              	.LASF14:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 75
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 75
 
 
  3712 00b2 75696E74 		.ascii	"uint8\000"
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3740      676E6564 
  3740      20636861 
  3740      7200
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 76
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 76
 
 
  3741              	.LASF0:
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3768 01ca 696E7433 		.ascii	"int32_t\000"
  3768      325F7400 
  3769              	.LASF9:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 77
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 77
 
 
  3770 01d2 5F5F696E 		.ascii	"__int32_t\000"
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3792      64652E63 
  3792      00
  3793              	.LASF58:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 78
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 78
 
 
  3794 02d4 75706461 		.ascii	"update1_board\000"
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 1
  3816              	.LASF45:
  3817 0387 636F6C5F 		.ascii	"col_square\000"
  3817      73717561 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\cckCoPFB.s 			page 79
+ARM GAS  C:\Users\Nick\AppData\Local\Temp\cclqVIXg.s 			page 79
 
 
  3817      726500

@@ -9,9 +9,9 @@
 #define STEPS_PER_MM 10
     
 #define MIN_X_POS 0
-#define MAX_X_POS 10000
+#define MAX_X_POS 641
 #define MIN_Y_POS 0
-#define MAX_Y_POS 10000
+#define MAX_Y_POS 430
     
 // Motor Variables
 

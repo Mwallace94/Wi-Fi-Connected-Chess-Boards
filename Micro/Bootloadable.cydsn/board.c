@@ -266,14 +266,18 @@ void moveRow(int dis) {
 }
 
 void moveRowHalf(int dis) {
-    move_y(25 * dis * -1);
+    move_y((int)(25.5 * dis * -1));
 }
 
 void moveColHalf(int dis) {
-    move_x(25 * dis);
+    move_x((int)(25.5 * dis));
 }
 
 void movepiece(struct movement move) {
+    
+    if(move.toCol > 11 || move.toCol < 0 || move.toRow < 0 || move.toRow > 7) return; 
+    
+    read_reed_switches();
     
     moveRow(row_square - move.fromRow);
     moveCol(col_square - move.fromCol);
@@ -287,7 +291,7 @@ void movepiece(struct movement move) {
     
     int rowdis = move.fromRow - move.toRow;
     int coldis = move.fromCol - move.toCol;
-    
+    /*
     //diagnal movement if clear path
     if (abs(rowdis) == abs(coldis)) {
         int temp = 0;
@@ -300,27 +304,50 @@ void movepiece(struct movement move) {
                 move_y(rowdis / abs(rowdis) * -1);
             }
         }
+        
+        absolute_x();
+        absolute_y();
+    
+        Em_Write(0);
         return;
     }
-
+    */
     //col movement if clear path
     if (rowdis == 0) {
         int temp = 0;
         for(int i = 1; i <= abs(coldis); i++) {
-            if (board[move.fromRow][move.fromCol + i * coldis / abs(coldis)] != 0) temp++;
+            if (board[move.fromRow][move.fromCol + i * coldis / abs(coldis) * -1] != 0) temp++;
         }
-        moveCol(coldis);
-        return;
+        if (temp != 0) {
+            temp++;
+        } else {
+            moveCol(coldis);
+            
+            absolute_x();
+            absolute_y();
+        
+            Em_Write(0);
+            return;
+        }
     }
 
     //row movement if clear path
     if (coldis == 0) {
         int temp = 0;
         for(int i = 1; i <= abs(rowdis); i++) {
-            if (board[move.fromRow + i * rowdis / abs(rowdis)][move.fromCol] != 0) temp++;
+            if (board[move.fromRow + i * rowdis / abs(rowdis) * -1][move.fromCol] != 0) temp++;
         }
-        moveRow(rowdis);
-        return;
+        if( temp != 0) {
+            temp++;
+        } else {
+            moveRow(rowdis);
+            
+            absolute_x();
+            absolute_y();
+        
+            Em_Write(0);
+            return;
+        }
     }
 
     //up or down indicator for end adjustment, where down is 1 and up -1
@@ -384,6 +411,9 @@ void absolute_x() {
 }
 
 void absolute_y() {
-    int absY = (int) (15 + ((7 - row_square) / 2) + (51.3 - (((11 - col_square) / 4) * .45)) * row_square);
+    int absY = 15 + 3 * ((11 - col_square) / 4);
+    int temp = (11 - col_square) / 4;
+    int temp1 = (int) ((51.3 - (((float) temp) * .4)) * ((float) row_square));
+    absY = absY + temp1;
     move_y(absY - y_pos);
 }
