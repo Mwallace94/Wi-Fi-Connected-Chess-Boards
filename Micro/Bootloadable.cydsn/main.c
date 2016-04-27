@@ -153,6 +153,10 @@ void debug() {
                 Debug_UART_PutString(", Y = ");
                 Debug_UART_PutString(itoa(y_pos, buffer, 10));
                 Debug_UART_PutString("\r\n\r\n");
+                break;
+            case 'q':
+                CySoftwareReset();
+                break;
             default:
                 break;
         }

@@ -143,11 +143,11 @@ void playturn() {
       printf("\n");
 */
       printf("Finished Reading\n");
-      t.fromRow = (int)str[0]; 
-      t.fromCol = (int)str[1]; 
+      t.fromRow = (int) str[0]; 
+      t.fromCol = (int) str[1]; 
       t.piece = getPieceFromPos(t.fromRow, t.fromCol);
-      t.toRow = (int)str[2];
-      t.toCol = (int)str[3];
+      t.toRow =  (int) str[2];
+      t.toCol =  (int) str[3];
       printf("move(%c %d %d %d %d)\n", t.piece, t.fromRow, t.fromCol, t.toRow, t.toCol);
       if(t.piece == 0) printStateNoGrave();
       takenPiece = '\0';
@@ -894,6 +894,7 @@ int isCheckForEnemy(){
         if(isLegal(t)){
           if(firsttransition == 0){
             tonly.fromRow =i; tonly.fromCol = j; tonly.toRow = l; tonly.toCol=m; tonly.piece = teststate[i][j];
+            firsttransition = 1;
           }
           printf("Piece that places oppoenent in check: %d \n", t.piece);
           k++;
@@ -910,7 +911,7 @@ int isCheckForEnemy(){
         return 2;
     }
     return 1;
-  }else if(k > 2){
+  }else if(k > 1){
     t.piece = 13;
     if(isCheckMate(t) == 1){
       return 2;
@@ -1216,6 +1217,7 @@ int checkBlockKing(transition t){
           }
         }
         printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
+        printf()
         return 0;
       }
       else{

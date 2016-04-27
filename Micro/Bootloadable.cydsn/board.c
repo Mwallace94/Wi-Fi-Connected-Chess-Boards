@@ -273,11 +273,31 @@ void moveColHalf(int dis) {
     move_x((int)(25.5 * dis));
 }
 
+void graveyard(struct movement move) {
+ 
+    if(board[move.toRow][move.toCol] == 1) {
+        struct movement move2;
+        move2.fromCol = move.toCol;
+        move2.fromRow = move.toRow;
+        for(int i = 10; i < 12; i++) {
+            for(int j = 0; j < 7; j++) {
+                if (board[j][i] == 0) {
+                    move2.toCol = i;
+                    move2.toRow = j;
+                    movepiece(move2);
+                    read_reed_switches();
+                    return;
+                }
+            }
+        }
+    }
+}
+
 void movepiece(struct movement move) {
     
     if(move.toCol > 11 || move.toCol < 0 || move.toRow < 0 || move.toRow > 7) return; 
     
-    read_reed_switches();
+    graveyard(move);
     
     moveRow(row_square - move.fromRow);
     moveCol(col_square - move.fromCol);
