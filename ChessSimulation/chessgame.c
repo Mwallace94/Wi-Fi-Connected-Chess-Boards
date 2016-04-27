@@ -43,6 +43,7 @@ int yourcolor;
 int theircolor;
 char takenPiece;
 char** state[BROWS][BCOLS];
+char** nextstate[BROWS][BCOLS];
 char** teststate[BROWS][BCOLS];
 int enpassantB = 0;
 int enpassantW = 0;
@@ -60,7 +61,9 @@ char goodMove[9];
 void initStartState();
 void printState();
 void printStateNoGrave();
+void printNextStateNoGrave();
 void zeroState();
+void initStartNextState();
 transition compareStates();
 int isLegal(transition t);
 void moveToGraveyard(char piece);
@@ -80,6 +83,7 @@ int main(int argc, char* argv[]) {
   yourcolor = WHITE;
   theircolor = BLACK;
   initStartState();
+  initStartNextState();
   printState();
 
   //used to test moves with transitions
@@ -291,6 +295,32 @@ void initStartState() {
   state[7][9] = BROOK;
 }
 
+//initialize for nextstage, testng purposes
+void initStartNextState() {
+  //zeroState();
+  int i;
+  for(i = 2; i <= 9; i++) {
+    nextstate[1][i] = WPAWN;
+    nextstate[6][i] = BPAWN;
+  }
+  nextstate[0][2] = WROOK;
+  nextstate[0][3] = WKNIGHT;
+  nextstate[0][4] = WBISHOP;
+  nextstate[0][5] = WQUEEN;
+  nextstate[0][6] = WKING;
+  nextstate[0][7] = WBISHOP;
+  nextstate[0][8] = WKNIGHT;
+  nextstate[0][9] = WROOK;
+
+  nextstate[7][2] = BROOK;
+  nextstate[7][3] = BKNIGHT;
+  nextstate[7][4] = BBISHOP;
+  nextstate[7][5] = BQUEEN;
+  nextstate[7][6] = BKING;
+  nextstate[7][7] = BBISHOP;
+  nextstate[7][8] = BKNIGHT;
+  nextstate[7][9] = BROOK;
+}
 
 void initTestState(){
   int i,j;
@@ -352,7 +382,7 @@ int testMoveForCheck(transition t){
   		  goodMove[6] = (char)2;
   		  goodMove[7] = (char)7;
   		  goodMove[8] = (char)5;
-      }else if(castleConfirmed == 4){
+      }else{
         teststate[7][9] = EMPTY;
         teststate[7][7] = BROOK;
         goodMove[5] = (char)7;
@@ -406,6 +436,41 @@ void printTestState() {
   }
 }
 
+//prints for nextstate, test
+void printNextStateNoGrave() {
+  int i, j;
+  for(i = 0; i < BROWS; i++) {
+    for(j = 2; j < BCOLS-2; j++) {
+      printf("%d\t", (int) nextstate[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+//compares states difference, testing
+//returns an array of size 12; sectioned by 6. from piece row col, to piece row col. allows for 2 total pieces to move.
+/*
+transition compareStates() {
+  int i, j;
+  transition t;
+  for(i = 0; i < BROWS; i++) {
+    for(j = 0; j < BCOLS; j++) {
+      if (state[i][j] != nextstate[i][j] && state[i][j] != 0) {
+        printf("piece %d moved from: %d, %d \n", (int) state[i][j], i, j);
+        t.piece = state[i][j];
+        t.fromRow = i;
+        t.fromCol = j;
+      }
+      if (state[i][j] != nextstate[i][j] && nextstate[i][j] != 0) {
+        printf("piece %d moved to: %d, %d \n", (int) nextstate[i][j], i, j);
+        t.toRow = i;
+        t.toCol = j;
+      }
+    }
+  }
+  return t;
+}
+*/
 // zeros out a state
 void zeroState() {
   int i, j;
@@ -447,7 +512,7 @@ int isLegal(transition t) {
 	  return 0;
 	}
 	//enpassant 
-      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 4)){
+      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 3)){
         enpassantW =1;
         return 1;
 	}
@@ -470,7 +535,7 @@ int isLegal(transition t) {
 	 return 0;
    }
 	 //enpassant
-     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 3)){
+     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 4)){
        enpassantB = 1;
        return 1;
 	}
@@ -776,6 +841,26 @@ void castlingMaintenance(){
   if(state[7][9] != BROOK && !rightRookBMovedOnce){ rightRookBMovedOnce = 1;}
   if(state[7][6] != BKING && (kingBMovedOnce != 0)){ kingBMovedOnce = 1;}
   if(state[0][6] != WKING && (kingWMovedOnce != 0)){kingWMovedOnce = 1;}
+}
+
+void castlingAction(int caseNumber){
+  if(!caseNumber || caseNumber > 4){
+    exit(-1);
+  }else{
+	 if(caseNumber == 1){
+      nextstate[0][2] = EMPTY;
+      nextstate[0][5] = WROOK;
+    }else if(caseNumber ==2){
+      nextstate[0][9] = EMPTY;
+      nextstate[0][7] = WROOK;
+    }else if(caseNumber ==3){
+      nextstate[7][2] = EMPTY;
+      nextstate[7][5] = BROOK;
+    }else {
+      nextstate[7][9] = EMPTY;
+      nextstate[7][7] = BROOK;
+    }
+  }
 }
 
 int isCheckForEnemy(){
@@ -1132,6 +1217,7 @@ int checkBlockKing(transition t){
           }
         }
         printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
+        printf()
         return 0;
       }
       else{
@@ -1183,3 +1269,12 @@ void restoreMove(transition t){
     teststate[t.fromRow][t.fromCol] = t.piece;
   }
 }
+    //below perhaps used to detect piece collision
+    //verticalCollision();
+    //horizontalCollision();
+
+    // if enemy piece is moved to the graveyard detect move and make sure next piece takes that piece and is legel.
+    // Keep old state, but create flag with position taken to make sure your piece takes theres
+    // int partialMove(transition) {
+			//this
+    // }
