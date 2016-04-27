@@ -606,7 +606,7 @@ def main():
         displaytext = "Connected."
         state = CONNECTED
         mycolor = WHITE
-    else if response == b'\x03':
+    elif response == b'\x03':
         displaytext = "Connected."
         state = CONNECTED
         mycolor = BLACK
@@ -746,15 +746,17 @@ def main():
             movepiece(pieces, movementOpp1)
 
             # Pawn promotion
-            if pieces[dataOpponent[3]][dataOpponent[2]][1] in [WPAWN, BPAWN]:
+            if pieces[dataOpponent[3]][dataOpponent[2]][1] == WPAWN and dataOpponent[2] == 7:
 
                 pieces[dataOpponent[3]][dataOpponent[2]][0].undraw()
-                
-                if mycolor == WHITE:
-                    pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
-                else if mycolor == BLACK:
-                    pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)
-                    
+                pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((dataOpponent[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)   
+                pieces[dataOpponent[3]][dataOpponent[2]][0].setSize((SQ_SZ_HALF))
+                pieces[dataOpponent[3]][dataOpponent[2]][0].draw(win)
+
+            elif pieces[dataOpponent[3]][dataOpponent[2]][1] == BPAWN and dataOpponent[2] == 0:
+
+                pieces[dataOpponent[3]][dataOpponent[2]][0].undraw()
+                pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((dataOpponent[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
                 pieces[dataOpponent[3]][dataOpponent[2]][0].setSize((SQ_SZ_HALF))
                 pieces[dataOpponent[3]][dataOpponent[2]][0].draw(win)
 
@@ -858,7 +860,7 @@ def main():
                     
                     if mycolor == WHITE:
                         pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)
-                    else if mycolor == BLACK:
+                    elif mycolor == BLACK:
                         pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
                         
                     pieces[moves[3]][moves[2]][0].setSize((SQ_SZ_HALF))
