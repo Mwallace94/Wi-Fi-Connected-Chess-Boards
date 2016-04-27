@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.254ms
+Loading plugins phase: Elapsed time ==> 0s.256ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 -s E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 -s C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 3s.025ms
+Elaboration phase: Elapsed time ==> 3s.054ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.081ms
+HDL generation phase: Elapsed time ==> 0s.110ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.081ms
 ======================================================================
 Compiling:  Bootloadable.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Bootloadable.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Bootloadable.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Apr 26 13:07:59 2016
+Wed Apr 27 14:10:29 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Bootloadable.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Apr 26 13:07:59 2016
+Wed Apr 27 14:10:29 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v'
@@ -90,11 +90,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  Bootloadable.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Apr 26 13:07:59 2016
+Wed Apr 27 14:10:29 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -105,8 +105,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.ctl'.
-Linking 'E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.v'.
+Linking 'C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.ctl'.
+Linking 'C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'.
@@ -122,11 +122,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  Bootloadable.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 -verilog Bootloadable.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Apr 26 13:08:00 2016
+Wed Apr 27 14:10:30 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -137,8 +137,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.ctl'.
-Linking 'E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.v'.
+Linking 'C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.ctl'.
+Linking 'C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\codegentemp\Bootloadable.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'.
@@ -883,16 +883,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -dcpsoc3 Bootloadable.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.210ms
+Warp synthesis phase: Elapsed time ==> 1s.384ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Tuesday, 26 April 2016 13:08:00
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 Bootloadable.v -verilog
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Wednesday, 27 April 2016 14:10:31
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Kyle\Downloads\classes\Senior_Design\WiFiChessBoard\Micro\Bootloadable.cydsn\Bootloadable.cyprj -d CY8C5287AXI-LP095 Bootloadable.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.034ms
+Design parsing phase: Elapsed time ==> 0s.040ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -4084,8 +4084,8 @@ SAR ADC                       :    0 :    1 :    1 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    1 :    1 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.088ms
-Tech mapping phase: Elapsed time ==> 0s.194ms
+Technology Mapping: Elapsed time ==> 0s.082ms
+Tech mapping phase: Elapsed time ==> 0s.177ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -4133,7 +4133,7 @@ IO_3@[IOP=(2)][IoId=(3)] : \LCD:LCDPort(3)\ (fixed)
 IO_4@[IOP=(2)][IoId=(4)] : \LCD:LCDPort(4)\ (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : \LCD:LCDPort(5)\ (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : \LCD:LCDPort(6)\ (fixed)
-Analog Placement phase: Elapsed time ==> 0s.070ms
+Analog Placement phase: Elapsed time ==> 0s.092ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -4151,7 +4151,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.431ms
+Analog Code Generation phase: Elapsed time ==> 0s.442ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -4179,17 +4179,17 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.002ms
+PLD Packing: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.112ms
+Partitioning: Elapsed time ==> 0s.104ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 321, final cost is 321 (0.00% improvement).</CYPRESSTAG>
@@ -7495,32 +7495,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connectio
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.005ms
-Digital Placement phase: Elapsed time ==> 1s.559ms
+Digital component placer commit/Report: Elapsed time ==> 0s.007ms
+Digital Placement phase: Elapsed time ==> 1s.639ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 2s.180ms
+Digital Routing phase: Elapsed time ==> 2s.424ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.735ms
+Bitstream and API generation phase: Elapsed time ==> 0s.703ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.109ms
+Bitstream verification phase: Elapsed time ==> 0s.115ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Bootloadable_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.456ms
+Static timing analysis phase: Elapsed time ==> 0s.489ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.001ms
+Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.260ms
+Design database save phase: Elapsed time ==> 0s.268ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 6s.048ms
+cydsfit: Elapsed time ==> 6s.412ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 6s.095ms
-API generation phase: Elapsed time ==> 2s.625ms
-Dependency generation phase: Elapsed time ==> 0s.025ms
+Fitter phase: Elapsed time ==> 6s.477ms
+API generation phase: Elapsed time ==> 2s.792ms
+Dependency generation phase: Elapsed time ==> 0s.026ms
 Cleanup phase: Elapsed time ==> 0s.000ms

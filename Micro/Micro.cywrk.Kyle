@@ -491,7 +491,7 @@
 <v>Micro\Bootloader\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Micro\Bootloadable\TopDesign">
 <ExpandedNodeIds>
 <v>Micro</v>
 <v>Micro\Bootloadable</v>
@@ -664,34 +664,6 @@
 <VisibleNodeIds>
 <v>Micro</v>
 <v>Micro\Bootloadable</v>
-<v>Micro\Bootloadable\CortexM3</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\board.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Bootloadable.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_0.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_1.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_10.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_11.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_2.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_3.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_4.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_5.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_6.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_7.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_8.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\Col_9.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\cybootloader.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>Micro\Bootloadable\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -757,7 +729,11 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\Bootloadable.cydsn\main.c" />
+<name v=".\Bootloadable.cydsn\gamecode.c" />
+<name v=".\Bootloadable.cydsn\board.c" />
+</OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
