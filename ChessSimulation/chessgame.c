@@ -195,7 +195,16 @@ void playturn() {
        //promotion
       if(yourcolor == WHITE && t.toRow == 7 && t.piece ==WPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] =  2;
+      	goodMove[0] = 1;
+      	tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+        teststate[t.toRow][t.toCol] = WQUEEN;
+        write(comm_fd,goodMove,9);
+
+      	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
       	if(read(comm_fd,str,1*sizeof(char)) == 0) {
       		printf("Read Error\n");
@@ -210,13 +219,22 @@ void playturn() {
 			teststate[t.toRow][t.toCol] = 9;//knight
       	}else if(promocase == 4){
       		teststate[t.toRow][t.toCol] = 8;//rook
-      	}
+      	}*/
       }
 
       //promotion
       else if(yourcolor == BLACK && t.toRow == 0 && t.piece == BPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] =  2;
+      	goodMove[0] = 1;
+      	 tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+        teststate[t.toRow][t.toCol] = BQUEEN;
+        write(comm_fd,goodMove,9);
+
+      	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
       	if(read(comm_fd,str,1*sizeof(char)) == 0) {
       		printf("Read Error\n");
@@ -231,7 +249,7 @@ void playturn() {
 			teststate[t.toRow][t.toCol] = 3;//knight
       	}else if(promocase  == 4){
       		teststate[t.toRow][t.toCol] = 2;//rook
-      	}
+      	}*/
       }
 
       else{
