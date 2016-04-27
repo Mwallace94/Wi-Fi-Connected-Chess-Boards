@@ -195,7 +195,7 @@ void playturn() {
        //promotion
       if(yourcolor == WHITE && t.toRow == 7 && t.piece ==WPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] = 1;
+      	goodMove[0] = 2;
       	tprev.piece = t.piece;
         tprev.fromRow = t.fromRow;
         tprev.fromCol = t.fromCol;
@@ -225,7 +225,7 @@ void playturn() {
       //promotion
       else if(yourcolor == BLACK && t.toRow == 0 && t.piece == BPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] = 1;
+      	goodMove[0] = 2;
       	 tprev.piece = t.piece;
         tprev.fromRow = t.fromRow;
         tprev.fromCol = t.fromCol;
@@ -1035,7 +1035,7 @@ int checkBlockKing(transition t){
           }
         }
       }else if(t.toCol > t.fromCol){
-        for(i = t.fromCol+1; i< t.toRow; i++){
+        for(i = t.fromCol+1; i< t.toCol; i++){
           for(j = 0; j < 8; j++){
             for(k = 2; k < 10; k++){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
@@ -1054,7 +1054,7 @@ int checkBlockKing(transition t){
           }
         }
       }else if(t.toCol < t.fromCol){
-        for(i = t.fromCol-1; i> t.toRow; i--){
+        for(i = t.fromCol-1; i> t.toCol; i--){
           for(j = 0; j < 8; j++){
             for(k = 2; k < 10; k++){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
@@ -1085,8 +1085,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j-i;
-                  tnew.toCol = k+i;
+                  tnew.toRow = t.fromRow-i;
+                  tnew.toCol = t.fromCol+i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1104,8 +1104,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j-i;
-                  tnew.toCol = k-i;
+                  tnew.toRow = t.fromRow-i;
+                  tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1127,8 +1127,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j+i;
-                  tnew.toCol = k+i;
+                  tnew.toRow = t.fromRow+i;
+                  tnew.toCol = t.fromCol+i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1146,8 +1146,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j+i;
-                  tnew.toCol = k-i;
+                  tnew.toRow = t.fromRow+i;
+                  tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
