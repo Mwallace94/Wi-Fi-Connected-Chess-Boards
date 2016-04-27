@@ -297,7 +297,8 @@ void movepiece(struct movement move) {
     
     if(move.toCol > 11 || move.toCol < 0 || move.toRow < 0 || move.toRow > 7) return; 
     
-    graveyard(move);
+    //graveyard(move);
+    CyDelay(500);
     
     moveRow(row_square - move.fromRow);
     moveCol(col_square - move.fromCol);
@@ -305,7 +306,7 @@ void movepiece(struct movement move) {
     row_square = move.toRow;
     col_square = move.toCol;
     
-    CyDelay(1000);
+    CyDelay(500);
 
     Em_Write(1);
     

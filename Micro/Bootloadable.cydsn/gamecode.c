@@ -183,8 +183,8 @@ int state_waiting(enum Wait x) {
     // Clear buffer ASAP
     strncpy(bres8, "", 8);
 
-	if(	movementOpp2[0] != 0 && movementOpp2[1] != 0 && 
-		movementOpp2[2] != 0 && movementOpp2[3] != 0) {
+	if(	movementOpp2[0] != 0 || movementOpp2[1] != 0 || 
+		movementOpp2[2] != 0 || movementOpp2[3] != 0) {
             
 		Debug_UART_PutString(movementOpp2);
         move.fromCol = (int) movementOpp2[0];
@@ -192,6 +192,7 @@ int state_waiting(enum Wait x) {
         move.toCol = (int) movementOpp2[2];
         move.toRow = (int) movementOpp2[3];
 		movepiece(move);
+        read_reed_switches();
         
         // Clear move struct by setting to 12 (will not execute).
         move.fromCol = 12;
