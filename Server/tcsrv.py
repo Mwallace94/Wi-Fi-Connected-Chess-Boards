@@ -140,6 +140,8 @@ class myHandler(socketserver.BaseRequestHandler):
                                         elif isValid == 2:
                                                 self.request.sendto(retval, self.players[0])
                                                 self.movesToSend[1] = moves
+                                                self.pstates[0] = WAITING
+                                                self.pstates[1] = MOVING
                                                 self.response[0] = b'24'
                                                 
                                         else:
@@ -173,6 +175,8 @@ class myHandler(socketserver.BaseRequestHandler):
                                         elif isValid == 2:
                                                 self.request.sendto(retval, self.players[1])
                                                 self.movesToSend[0] = moves
+                                                self.pstates[0] = MOVING
+                                                self.pstates[1] = WAITING
                                                 self.response[0] = b'25'
                                                 
                                         else:
