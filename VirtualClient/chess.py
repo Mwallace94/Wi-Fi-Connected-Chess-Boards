@@ -6,6 +6,9 @@ import time
 PORT = 666
 SERVER = '192.168.173.1'
 
+BLACK = 0
+WHITE = 6
+
 BPAWN = 1
 BROOK = 2
 BKNIGHT = 3
@@ -595,10 +598,18 @@ def main():
     sock.sendto(b'.connect', (SERVER, PORT))
     response = sock.recv(1)
 
+    # Will change based on when client connected to server.
+    mycolor = WHITE
     displaytext = ""
-    if response == b'\x01' or response == b'\x03':
+    
+    if response == b'\x01':
         displaytext = "Connected."
         state = CONNECTED
+        mycolor = WHITE
+    else if response == b'\x03':
+        displaytext = "Connected."
+        state = CONNECTED
+        mycolor = BLACK
 
     t3.undraw()
     t3 = Text(Point(370, 450), displaytext)
@@ -734,6 +745,19 @@ def main():
             print(movementOpp1)
             movepiece(pieces, movementOpp1)
 
+            # Pawn promotion
+            if pieces[dataOpponent[3]][dataOpponent[2]][1] in [WPAWN, BPAWN]:
+
+                pieces[dataOpponent[3]][dataOpponent[2]][0].undraw()
+                
+                if mycolor == WHITE:
+                    pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
+                else if mycolor == BLACK:
+                    pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)
+                    
+                pieces[dataOpponent[3]][dataOpponent[2]][0].setSize((SQ_SZ_HALF))
+                pieces[dataOpponent[3]][dataOpponent[2]][0].draw(win)
+
             # Clear these values after they have been executed.
             movementOpp1 = ((0, 0), 0, 0, 0, 0)
             movementOpp2 = ((0, 0), 0, 0, 0, 0)
@@ -812,7 +836,7 @@ def main():
             (isValid, moves) = parseSimReturn(dataSelf)
         
             print(isValid)
-            if isValid:
+            if isValid > 0:
 
                 # Create move set.
                 movement1 = (pieces[moves[1]][moves[0]], moves[1], moves[0], moves[3], moves[2])
@@ -826,6 +850,19 @@ def main():
                 # movement1 only exists if move was valid, so always do it.
                 print(movement1)
                 movepiece(pieces, movement1)
+
+                # Pawn promotion
+                if isValid > 1:
+
+                    pieces[moves[3]][moves[2]][0].undraw()
+                    
+                    if mycolor == WHITE:
+                        pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)
+                    else if mycolor == BLACK:
+                        pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
+                        
+                    pieces[moves[3]][moves[2]][0].setSize((SQ_SZ_HALF))
+                    pieces[moves[3]][moves[2]][0].draw(win)
 
                 # Clear these values after they have been executed.
                 movement1 = ((0, 0), 0, 0, 0, 0)
