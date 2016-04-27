@@ -54,7 +54,7 @@ int rightRookBMovedOnce = 0;
 int rightRookWMovedOnce = 0;
 int castleConfirmed = 0;
 int testing = 0;
-  
+transition tprev;
 char goodMove[9];
 
 void initStartState();
@@ -236,8 +236,12 @@ void playturn() {
 
       else{
       	goodMove[0] = 1;
-    	//write(comm_fd,goodMove,1);
-    	write(comm_fd,goodMove,9);
+    	  tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+    	  write(comm_fd,goodMove,9);
       }
    
       int i, j;
@@ -448,8 +452,11 @@ int isLegal(transition t) {
 	}
 	//enpassant 
       else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 4)){
-        enpassantW =1;
-        return 1;
+      if(tprev.piece == BPAWN && tprev.fromRow == 6 && tprev.toRow == 4){
+            enpassantW = 1;
+            return 1;
+        }
+       return 0;
 	}
     else{
 		return 0;
@@ -471,8 +478,11 @@ int isLegal(transition t) {
    }
 	 //enpassant
      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 3)){
-       enpassantB = 1;
-       return 1;
+        if(tprev.piece == WPAWN && tprev.fromRow == 1 && tprev.toRow == 3){
+            enpassantB = 1;
+            return 1;
+        }
+       return 0;
 	}
 	else {
 	   return 0;
