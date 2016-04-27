@@ -152,22 +152,15 @@ int state_waiting(enum Wait x) {
 
 	Debug_UART_PutString("WAITING");
 
-	// write ".gib"
-    /*
-    esp_transmit(bstr_gib, "4");
-    strncpy(bres8, recv, 8);
-    if(x == NATURAL) {
-	    strncpy(bres8, "", 8);
-    }
-    */
+    strncpy(bres8, "", 8);
     
-	while(bres8[1] == 0x00 || bres8[2] == 0x00) {
-		CyDelay(5000);
+	while(bres8[1] == 0x00) {
+		CyDelay(2000);
 
 		esp_transmit(bstr_gib, "4");
         memcpy(bres8, recv, 8);
         
-		Debug_UART_PutString(bres8);
+		Debug_UART_PutChar(bres8[1] + 48);
 
 		if(bres8[0] == 0x31 || bres8[0] == '1'){
 			game_state = CONNECTED;
@@ -186,6 +179,9 @@ int state_waiting(enum Wait x) {
 	}
 	char movementOpp1[4] = { bres8[1], bres8[0], bres8[3], bres8[2] };
 	char movementOpp2[4] = { bres8[5], bres8[4], bres8[7], bres8[6] };
+    
+    // Clear buffer ASAP
+    strncpy(bres8, "", 8);
 
 	if(	movementOpp2[0] != 0 && movementOpp2[1] != 0 && 
 		movementOpp2[2] != 0 && movementOpp2[3] != 0) {
@@ -196,6 +192,12 @@ int state_waiting(enum Wait x) {
         move.toCol = (int) movementOpp2[2];
         move.toRow = (int) movementOpp2[3];
 		movepiece(move);
+        
+        // Clear move struct by setting to 12 (will not execute).
+        move.fromCol = 12;
+        move.fromRow = 12;
+        move.toCol = 12;
+        move.toRow = 12;
 	}
 	Debug_UART_PutString(movementOpp1);
     
@@ -204,6 +206,12 @@ int state_waiting(enum Wait x) {
     move.toCol = (int) movementOpp1[2];
     move.toRow = (int) movementOpp1[3];
 	movepiece(move);
+    
+    // Clear move struct by setting to 12 (will not execute).
+    move.fromCol = 12;
+    move.fromRow = 12;
+    move.toCol = 12;
+    move.toRow = 12;
 
 	game_state = MOVING;
 	return game_state;
@@ -310,11 +318,6 @@ uint8 itoc(int i) {
 	Helpers: diff_boards(bold, bnew)
 */
 int state_moving() {
-    
-    // Get move if it wasn't gotten in state_waiting.
-    //esp_transmit(bstr_gib, "4");
-    //strncpy(bres8, recv, 8);
-    //state_waiting(ARTIFICIAL);
 
 	Debug_UART_PutString("MOVING");
 

@@ -40,7 +40,7 @@ static char blank[9] = "";
         Debug_UART_PutChar(size + 48);
         uint8 temp = size;
         char msg[size];
-        strcpy(recv, blank);
+        strncpy(recv, blank, 9);
         
         for(int i = 0; i < size; i++) {
             if (strstr(msg, "+IPD,") != NULL) {
