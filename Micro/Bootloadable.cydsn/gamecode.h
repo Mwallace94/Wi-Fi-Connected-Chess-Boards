@@ -23,6 +23,11 @@ struct movement move;
 #define READY          2
 #define WAITING        3
 #define MOVING         4
+    
+enum Wait {
+    NATURAL = 1,
+    ARTIFICIAL = 2
+};
 
 int game_state;
 
@@ -42,7 +47,7 @@ int state_connected();
 
 int state_ready();
 
-int state_waiting();
+int state_waiting(enum Wait x);
 
 int state_moving();
 
