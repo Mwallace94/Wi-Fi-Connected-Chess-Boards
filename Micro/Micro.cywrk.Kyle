@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Micro\Bootloadable\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Micro\Bootloadable\Source Files\board.c">
 <ExpandedNodeIds>
 <v>Micro</v>
 <v>Micro\Bootloadable</v>
@@ -218,7 +218,6 @@
 <v>Micro\Bootloadable\Generated_Source\PSoC5\Stp_2\Stp_2_aliases.h</v>
 <v>Micro\Bootloadable\Generated_Source\PSoC5\cybootloader.c</v>
 <v>Micro\Bootloadable\Generated_Source\PSoC5\cybootloader.icf</v>
-<v>Micro\Bootloadable\Generated_Source\PSoC5\cycodeshareexport.ld</v>
 <v>Micro\Bootloadable\Generated_Source\PSoC5\cycodeshareimport.ld</v>
 <v>Micro\Bootloadable\Generated_Source\PSoC5\cycodeshareimport.scat</v>
 <v>Micro\Bootloadable\Generated_Source\PSoC5\cydevice.h</v>
@@ -439,7 +438,6 @@
 <v>Micro\Bootloader\Generated_Source\PSoC5\Stp_2\Stp_2.c</v>
 <v>Micro\Bootloader\Generated_Source\PSoC5\Stp_2\Stp_2.h</v>
 <v>Micro\Bootloader\Generated_Source\PSoC5\Stp_2\Stp_2_aliases.h</v>
-<v>Micro\Bootloader\Generated_Source\PSoC5\cycodeshareexport.ld</v>
 <v>Micro\Bootloader\Generated_Source\PSoC5\cycodeshareimport.ld</v>
 <v>Micro\Bootloader\Generated_Source\PSoC5\cycodeshareimport.scat</v>
 <v>Micro\Bootloader\Generated_Source\PSoC5\cydevice.h</v>
@@ -759,14 +757,7 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs>
-<name v=".\Bootloader.cydsn\gamecode.c" />
-<name v=".\Bootloader.cydsn\espwifi.c" />
-<name v=".\Bootloader.cydsn\espwifi.h" />
-<name v=".\Bootloadable.cydsn\espwifi.c" />
-<name v=".\Bootloadable.cydsn\espwifi.h" />
-<name v=".\Bootloadable.cydsn\main.c" />
-</OpenDocs>
+<OpenDocs />
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
