@@ -955,7 +955,11 @@ int checkSaveSelf(transition t) {
         }
       }
     }
-    printf("\nThe king can save himself\n");
+    if (saveable) {
+      printf("\nThe king can save himself\n");
+    } else {
+      printf("\nThe king can't save himself\n");
+    }
     return saveable;
 }
 
@@ -1103,7 +1107,7 @@ int checkBlockKing(transition t){
           }
         }
       }else{
-      	printf("HI\n");
+      	printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
         return blockable;
       } 
     }
@@ -1148,6 +1152,7 @@ int checkBlockKing(transition t){
             }
           }
         }else{
+          printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
           return blockable;
         }
       }else if(t.toRow > t.fromRow){
