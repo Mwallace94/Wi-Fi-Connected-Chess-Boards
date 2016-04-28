@@ -1109,7 +1109,8 @@ int checkBlockKing(transition t){
       }else{
       	printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
         return blockable;
-      } 
+      }
+
     }
     else if(t.piece == BBISHOP || t.piece == WBISHOP){
       if(t.toRow < t.fromRow){
@@ -1203,10 +1204,9 @@ int checkBlockKing(transition t){
           printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
           return 0;
         }
-    }else{
-      printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
-      return 0;
     }
+    printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
+    return 0;
 }
 
 int checkSaveKing(transition t){
