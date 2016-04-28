@@ -789,35 +789,31 @@ def main():
                 state = CONNECTED
                 break
 
+            # Not clicked in board space, start over.
+            if(point.y > 400 or point.x < 100 and point.x > 500):
+                continue
+
             # Determines if piece was selected, or an empty square.
-            temp = (0, 0)
-    
-            # Clicked in the board space
-            if(point.y <= 400):
-                temp = pieces[fromrow][fromcol]
+            temp = pieces[fromrow][fromcol]            
+            if temp == (0, 0):
+                continue
 
-            # Clicked in the graveyard
-            if fromrow == 0 or fromrow == 1 or fromrow == 10 or fromrow == 11:
-                temp = (0, 0) 
+            squares[fromrow][fromcol].setFill("lime")
+            
+            point2 = win.getMouse()
+            torow = point2.x // SQUARE_SZ
+            tocol = point2.y // SQUARE_SZ
 
-            if temp != (0, 0):
-                
-                squares[fromrow][fromcol].setFill("lime")
-                point2 = win.getMouse()
-
-                # Not clicked on board again.
-                if(point2.y > 400):
-                    continue
-
-                torow = point2.x // SQUARE_SZ
-                tocol = point2.y // SQUARE_SZ
-                
-                if fromrow < 2 or fromrow > 9:
-                    squares[fromrow][fromcol].setFill("linen")
-                elif (fromrow + fromcol) % 2 == 0:
-                    squares[fromrow][fromcol].setFill("gray")
-                else: 
-                    squares[fromrow][fromcol].setFill("white")
+            # Not clicked in board space again, start over.
+            if(point2.y > 400 or point2.x < 100 or point2.x > 500):
+                continue
+            
+            if fromrow < 2 or fromrow > 9:
+                squares[fromrow][fromcol].setFill("linen")
+            elif (fromrow + fromcol) % 2 == 0:
+                squares[fromrow][fromcol].setFill("gray")
+            else: 
+                squares[fromrow][fromcol].setFill("white")
 
             # Helper for creating msg.
             def concat(i):

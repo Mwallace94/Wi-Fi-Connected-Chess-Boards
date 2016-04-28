@@ -1150,6 +1150,7 @@ int checkBlockKing(transition t){
                   tnew.toRow = t.fromRow+i;
                   tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
+                  printf("GO HOME\n\n");
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
                     blockable = 1;
