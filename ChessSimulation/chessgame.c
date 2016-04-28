@@ -202,7 +202,7 @@ void playturn() {
         tprev.toRow = t.toRow;
         tprev.toCol = t.toCol;
         teststate[t.toRow][t.toCol] = WQUEEN;
-        write(comm_fd,goodMove,9);
+        //write(comm_fd,goodMove,9);
 
       	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
@@ -232,7 +232,7 @@ void playturn() {
         tprev.toRow = t.toRow;
         tprev.toCol = t.toCol;
         teststate[t.toRow][t.toCol] = BQUEEN;
-        write(comm_fd,goodMove,9);
+        //write(comm_fd,goodMove,9);
 
       	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
@@ -259,7 +259,7 @@ void playturn() {
         tprev.fromCol = t.fromCol;
         tprev.toRow = t.toRow;
         tprev.toCol = t.toCol;
-    	  write(comm_fd,goodMove,9);
+    	  //write(comm_fd,goodMove,9);
       }
    
       int i, j;
@@ -276,10 +276,13 @@ void playturn() {
         printf("Opponent has been placed in check\n\n\n");
       }else if(checkmate == 2){
         gameOn = 0;
+        goodMove[0] = 3;
         printf("Opponent has been placed in checkmate\n\n\n");
       }else{
         printf("Opponent has not been placed in check\n\n\n");
       }
+
+      write(comm_fd,goodMove,9);
 
     if(yourcolor == WHITE) {yourcolor = BLACK; theircolor = WHITE;}
     else if(yourcolor == BLACK) {yourcolor = WHITE; theircolor = BLACK;}
@@ -1186,7 +1189,6 @@ int checkBlockKing(transition t){
                   tnew.toRow = t.fromRow+i;
                   tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
-                  printf("GO HOME\n\n");
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
                     blockable = 1;
