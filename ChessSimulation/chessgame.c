@@ -599,7 +599,7 @@ int isLegal(transition t) {
          else if((i == t.toCol) && teststate[t.fromRow][t.toCol] == '\0'){
            return 1;
          }
-         if(teststate[t.fromRow][t.toCol] != '\0') return 0;
+         if(teststate[t.fromRow][i] != '\0') return 0;
        }
      }
    }
@@ -729,16 +729,16 @@ if(t.piece == BKING || t.piece == WKING) {
 	 
      return 0;
    }else if(dis == 2){ 
-        printf("Castling\n\n\n");
      if((kingWMovedOnce == 0) && t.piece == WKING){
        if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
-
+        printf("Castling");
 
          //printf("Castling # 1\n\n\n");
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
 		     castleConfirmed = 2;
+printf("Castling");
 
          //printf("Castling # 2\n\n\n");
          return 1;
@@ -746,11 +746,14 @@ if(t.piece == BKING || t.piece == WKING) {
      }else if((kingBMovedOnce == 0) && t.piece == BKING){
        if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
-     
+     printf("Castling");
+
         //printf("Castling # 3\n\n\n");
          return 1;
        }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == BROOK){
          castleConfirmed = 4;
+         printf("Castling");
+
          //printf("Castling # 4\n\n\n");
          return 1;
        }
@@ -810,7 +813,6 @@ void castlingMaintenance(){
 int isCheckForEnemy(){
   transition t;
   transition tonly;
-  int firsttransition = 0;
   int k = 0; 
   int i,j,l,m;
   for(i = 0; i < 8 ; i++){
@@ -835,10 +837,10 @@ int isCheckForEnemy(){
         t.toCol = m;
         t.piece = teststate[i][j];
         testing = 1;
-        if(isLegal(t)){
-          if(firsttransition == 0){
+        int result = isLegal(t);
+        if(result == 1){
+          if(k == 0){
             tonly.fromRow =i; tonly.fromCol = j; tonly.toRow = l; tonly.toCol=m; tonly.piece = teststate[i][j];
-            firsttransition = 1;
           }
           printf("Piece that places oppoenent in check: %d \n", t.piece);
           k++;
@@ -988,12 +990,12 @@ int checkBlockKing(transition t){
   transition tnew;
     if(t.piece == WQUEEN || t.piece == BQUEEN){
       if(t.fromRow == t.toRow || t.fromCol == t.toCol){
-        if(yourcolor == WHITE) t.piece == WROOK;
-        else{t.piece == BROOK;}
+        if(yourcolor == WHITE) t.piece = WROOK;
+        else{t.piece = BROOK;}
       }
       else{
-        if(yourcolor == WHITE) t.piece == WBISHOP;
-        else{t.piece == BBISHOP;}
+        if(yourcolor == WHITE) t.piece = WBISHOP;
+        else{t.piece = BBISHOP;}
       }
     }
     if(t.piece == BROOK || t.piece == WROOK){
@@ -1005,7 +1007,7 @@ int checkBlockKing(transition t){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
                 tnew.toRow = i;
-                tnew.toCol = k;
+                tnew.toCol = t.fromCol;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
                   printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1024,7 +1026,7 @@ int checkBlockKing(transition t){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
                 tnew.toRow = i;
-                tnew.toCol = k;
+                tnew.toCol = t.fromCol;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
                   printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1042,7 +1044,7 @@ int checkBlockKing(transition t){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
-                tnew.toRow = j;
+                tnew.toRow = t.fromRow;
                 tnew.toCol = i;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
@@ -1061,7 +1063,7 @@ int checkBlockKing(transition t){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
-                tnew.toRow = j;
+                tnew.toRow = t.fromRow;
                 tnew.toCol = i;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
@@ -1074,6 +1076,7 @@ int checkBlockKing(transition t){
           }
         }
       }else{
+      	printf("HI\n");
         return blockable;
       } 
     }
