@@ -453,6 +453,7 @@ int isLegal(transition t) {
   int dis = ydis + xdis;//x +y
 
   if(!moverightcolor(t.piece)) return 0;
+  if(t.toRow- t.fromRow == 0 && t.toCol - t.fromCol == 0) return 0;
   //only important for which color you are, but this is ambiguous at the time. AKA will black and white be always on same side or user disgression.
   //will create both directions I suppose, but will be white towards player and black away for not
   if(t.piece == WPAWN) {
@@ -1188,7 +1189,6 @@ int checkSaveKing(transition t){
           tnew.piece = teststate[i][j];
           if(isLegal(tnew)){
             saveable = 1;
-            testing = 0;
             printf("\nA piece can kill the piece putting opponent in check\n");
             return saveable;
           }
