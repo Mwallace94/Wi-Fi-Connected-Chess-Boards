@@ -461,7 +461,7 @@ int isLegal(transition t) {
     int xdist = t.toCol - t.fromCol;
     //should always be true for move only
     if(ydist == 1 && !xdis && (teststate[t.toRow][t.toCol] == '\0')) return 1;
-    else if(t.fromRow == 1 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow-1][t.toCol] == '\0')) return 1;
+    else if(t.fromRow == 1 && ydist == 2 && xdist == 0 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow-1][t.toCol] == '\0')) return 1;
     //taking a piece
     else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')) {
       if(teststate[t.toRow][t.toCol] >= 1 &&  teststate[t.toRow][t.toCol] <= 6){
@@ -486,7 +486,7 @@ int isLegal(transition t) {
    int xdist = t.toCol - t.fromCol;
    //should always be true for move only
    if(ydist == 1 && !xdis && (teststate[t.toRow][t.toCol] == '\0')) return 1;
-   else if(t.fromRow == 6 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
+   else if(t.fromRow == 6 && ydist == 2 && xdist == 0 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
    //add taking piece here
 
    else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
@@ -728,8 +728,8 @@ if(t.piece == BKING || t.piece == WKING) {
      }
 	 
      return 0;
-   }else if(dis == 2){ 
-     if((kingWMovedOnce == 0) && t.piece == WKING){
+   }else if(dis == 2 && ydis == 0){ 
+     if((kingWMovedOnce == 0) && t.piece == WKING && t.fromRow == 0 && t.fromCol == 6){
        if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
         printf("Castling");
@@ -738,12 +738,12 @@ if(t.piece == BKING || t.piece == WKING) {
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
 		     castleConfirmed = 2;
-printf("Castling");
+          printf("Castling");
 
          //printf("Castling # 2\n\n\n");
          return 1;
        }
-     }else if((kingBMovedOnce == 0) && t.piece == BKING){
+     }else if((kingBMovedOnce == 0) && t.piece == BKING && t.fromRow == 7 && t.fromCol == 6){
        if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
      printf("Castling");

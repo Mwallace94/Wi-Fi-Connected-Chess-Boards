@@ -470,6 +470,9 @@ int state_moving() {
 	while(!strcmp(bres9, "")) {
 		esp_transmit(msg, "13");
 	    strncpy(bres9, recv, 9);
+        if(bres9[0] == 0x00) {
+            break;   
+        }
     }
 
 	if(bres9[0] != 0x01) {
