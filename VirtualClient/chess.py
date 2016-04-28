@@ -841,7 +841,8 @@ def main():
                 if isValid == 3:
 
                     t3.undraw()
-                    if moves == (0, 0, 0, 0, 0, 0, 0, 0):
+                    print(moves)
+                    if moves == b'\x00\x00\x00\x00\x00\x00\x00\x00':
                         t3 = Text(Point(370, 450), "You lost.")
                         t3.draw(win)
                         state = CONNECTED
@@ -880,8 +881,11 @@ def main():
                 movement1 = ((0, 0), 0, 0, 0, 0)
                 movement2 = ((0, 0), 0, 0, 0, 0)
 
-                # Finally, transition state. 
-                state = WAITING
+                # Finally, transition state.
+                if isValid == 3:
+                    state = CONNECTED
+                else:
+                    state = WAITING
 
                 # State only changes when move is valid, otherwise player must try again.
         

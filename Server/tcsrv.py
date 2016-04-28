@@ -148,7 +148,8 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Checkmate
                                         elif isValid == 3:
                                                 self.request.sendto(retval, self.players[0])
-                                                self.movesToSend[1] = moves
+                                                if moves != b'\x00\x00\x00\x00\x00\x00\x00\x00':
+                                                        self.movesToSend[1] = moves
                                                 self.pstates[0] = CONNECTED
                                                 self.pstates[1] = CONNECTED
                                                 self.response[0] = b'34'
@@ -191,7 +192,8 @@ class myHandler(socketserver.BaseRequestHandler):
                                         # Checkmate
                                         elif isValid == 3:
                                                 self.request.sendto(retval, self.players[1])
-                                                self.movesToSend[0] = moves
+                                                if moves != b'\x00\x00\x00\x00\x00\x00\x00\x00':
+                                                        self.movesToSend[1] = moves
                                                 self.pstates[0] = CONNECTED
                                                 self.pstates[1] = CONNECTED
                                                 self.response[0] = b'35'
