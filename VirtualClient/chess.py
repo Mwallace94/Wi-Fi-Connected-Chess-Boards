@@ -670,7 +670,7 @@ def main():
                 sock.sendto(b'.gib', (SERVER, PORT))
                 response = sock.recv(1)
                 
-                print(response)
+                # print(response)
                         
             displaytext = ""
             if response == b'\x11':
@@ -721,7 +721,7 @@ def main():
                 sock.sendto(b'.gib', (SERVER, PORT))
                 dataOpponent = sock.recv(8)
                 
-                print(dataOpponent)
+                # print(dataOpponent)
 
                 # Python may turn \x33 into '1'. Check for both.
                 if dataOpponent in [b'\x33', b'3']:
@@ -738,11 +738,11 @@ def main():
 
             # If movement2 exists, it must be done, and done before movement1.
             if movementOpp2[1:] != (0, 0, 0, 0):
-                print(movementOpp2)
+                print("Prerequisite movement: ", movementOpp2)
                 movepiece(pieces, movementOpp2)
 
             # movement1 only exists when dataOpponent is non-empty or non-junk. It must always be done.
-            print(movementOpp1)
+            print("Opponent's movement: ", movementOpp1)
             movepiece(pieces, movementOpp1)
 
             # Pawn promotion
@@ -830,10 +830,10 @@ def main():
             sock.sendto(msg, (SERVER, PORT))
             dataSelf = sock.recv(9)
             
-            print(dataSelf)
+            # print(dataSelf)
             (isValid, moves) = parseSimReturn(dataSelf)
         
-            print(isValid)
+            # print(isValid)
             if isValid > 0:
 
                 # Checkmate (must be checked before movement
@@ -841,7 +841,7 @@ def main():
                 if isValid == 3:
 
                     t3.undraw()
-                    print(moves)
+                    # print(moves)
                     if moves == b'\x00\x00\x00\x00\x00\x00\x00\x00':
                         t3 = Text(Point(370, 450), "You lost.")
                         t3.draw(win)
@@ -857,11 +857,11 @@ def main():
 
                 # If movement2 exists, you must do it, and do it before movement1.
                 if movement2[1:] != (0, 0, 0, 0):
-                    print(movement2)
+                    print("Prerequisite movement: ", movement2)
                     movepiece(pieces, movement2)
 
                 # movement1 only exists if move was valid, so always do it.
-                print(movement1)
+                print("My movement: ", movement1)
                 movepiece(pieces, movement1)
 
                 # Pawn promotion (should be checked after movement).

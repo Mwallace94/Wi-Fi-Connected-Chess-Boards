@@ -193,7 +193,7 @@ class myHandler(socketserver.BaseRequestHandler):
                                         elif isValid == 3:
                                                 self.request.sendto(retval, self.players[1])
                                                 if moves != b'\x00\x00\x00\x00\x00\x00\x00\x00':
-                                                        self.movesToSend[1] = moves
+                                                        self.movesToSend[0] = moves
                                                 self.pstates[0] = CONNECTED
                                                 self.pstates[1] = CONNECTED
                                                 self.response[0] = b'35'

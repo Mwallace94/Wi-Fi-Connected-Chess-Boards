@@ -47,24 +47,24 @@ int initialize() {
 */
 int state_notconnected() {
 
-	Debug_UART_PutString("NOTCONNECTED\n");
+	Debug_UART_PutString("\r\nState: Not connected\r\n\r\n");
 
 	// write ".connect"
 	strcpy(bres1, "");
 		esp_transmit(bstr_connect, "8");
         strncpy(bres1, recv, 1);
-        Debug_UART_PutChar(recv[0] + 48);
-        Debug_UART_PutString("<-here\n");
+        //Debug_UART_PutChar(recv[0] + 48);
+        //Debug_UART_PutString("<-here\n");
 	
 
 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
 
-		Debug_UART_PutString("Connected.\n");
+		//Debug_UART_PutString("Connected.\n");
 		game_state = CONNECTED;
 	}
 	else {
 
-		Debug_UART_PutString("Not connected.\n");
+		//Debug_UART_PutString("Not connected.\n");
 		game_state = NOTCONNECTED;
 	}
 	return game_state;
@@ -75,32 +75,32 @@ int state_notconnected() {
 */
 int state_connected() {
 
-	Debug_UART_PutString("CONNECTED\n");
+	Debug_UART_PutString("\r\nState: Connected\r\n\r\n");
 
 	// write ".ready"
 	strcpy(bres1, "");
 	esp_transmit(bstr_ready, "6");
     strncpy(bres1, recv, 1);
-    Debug_UART_PutChar(recv[0] + 48);
-    Debug_UART_PutString("<-here\n");
+    //Debug_UART_PutChar(recv[0] + 48);
+    //Debug_UART_PutString("<-here\n");
 
 	if(bres1[0] == 0x11){
-		Debug_UART_PutString("Ready.");
+		Debug_UART_PutString("Ready.\r\n");
 		game_state = READY;
 	}
 
 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
 
-		Debug_UART_PutString("Your turn.");
+		Debug_UART_PutString("Your turn.\r\n");
 		game_state = MOVING;
 	}
 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
 
-		Debug_UART_PutString("Their turn.");
+		Debug_UART_PutString("Their turn.\r\n");
 		game_state = WAITING;
 	}
 	else {
-		Debug_UART_PutString("Connection State Failure.");
+		Debug_UART_PutString("Connection State Failure.\r\n");
 		game_state = CONNECTED;
 	}
 
@@ -112,7 +112,7 @@ int state_connected() {
 */
 int state_ready() {
 
-	Debug_UART_PutString("READY\n");
+	Debug_UART_PutString("\r\nState: Ready\r\n\r\n");
 
 	//write ".gib"
 	strcpy(bres1, "");
@@ -126,7 +126,7 @@ int state_ready() {
 		esp_transmit(bstr_gib, "4");
         strncpy(bres1, recv, 1);
 
-		Debug_UART_PutString(&bres1[0]);
+		//Debug_UART_PutString(&bres1[0]);
 	}
 
 	if(bres1[0] == 0x11) {
@@ -134,12 +134,12 @@ int state_ready() {
 	} 
 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
 
-		Debug_UART_PutString("Your turn.");
+		Debug_UART_PutString("Your turn.\r\n");
 		game_state = MOVING;
 	} 
 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
 
-		Debug_UART_PutString("Their turn.");
+		Debug_UART_PutString("Their turn.\r\n");
 		game_state = WAITING;
 	}
 	return game_state;
@@ -150,7 +150,7 @@ int state_ready() {
 */
 int state_waiting(enum Wait x) {
 
-	Debug_UART_PutString("WAITING");
+	Debug_UART_PutString("\r\nState: Waiting\r\n\r\n");
 
     strncpy(bres8, "", 8);
     
@@ -160,7 +160,7 @@ int state_waiting(enum Wait x) {
 		esp_transmit(bstr_gib, "4");
         memcpy(bres8, recv, 8);
         
-		Debug_UART_PutChar(bres8[1] + 48);
+		//Debug_UART_PutChar(bres8[1] + 48);
 
 		if(bres8[0] == 0x31 || bres8[0] == '1'){
 			game_state = CONNECTED;
@@ -186,7 +186,7 @@ int state_waiting(enum Wait x) {
 	if(	movementOpp2[0] != 0 || movementOpp2[1] != 0 || 
 		movementOpp2[2] != 0 || movementOpp2[3] != 0) {
             
-		Debug_UART_PutString(movementOpp2);
+		//Debug_UART_PutString(movementOpp2);
         move.fromCol = (int) movementOpp2[0];
         move.fromRow = (int) movementOpp2[1];
         move.toCol = (int) movementOpp2[2];
@@ -200,7 +200,7 @@ int state_waiting(enum Wait x) {
         move.toCol = 12;
         move.toRow = 12;
 	}
-	Debug_UART_PutString(movementOpp1);
+	//Debug_UART_PutString(movementOpp1);
     
     move.fromCol = (int) movementOpp1[0];
     move.fromRow = (int) movementOpp1[1];
@@ -235,7 +235,7 @@ void diff_boards(enum Diff x) {
 
     				// Picked up in graveyard, warn user.
     				if((j % 10) == 0 || (j % 10) == 1) {
-    					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+    					Debug_UART_PutString("Do not pick up graveyard pieces!\r\n");
     				}
     				else {
     					diff_loc[0][0] = i;
@@ -260,7 +260,7 @@ void diff_boards(enum Diff x) {
 
     				// Picked up in graveyard, warn user.
     				if((j % 10) == 0 || (j % 10) == 1) {
-    					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+    					Debug_UART_PutString("Do not pick up graveyard pieces!\r\n");
     				}
     				else {
     					diff_loc[0][0] = i;
@@ -316,16 +316,17 @@ uint8 itoc(int i) {
 
 /*
 	Runs when game_state == MOVING
-	Helpers: diff_boards(bold, bnew)
+	Helpers: diff_boards(bold, bnew), itoc(int i).
 */
 int state_moving() {
 
-	Debug_UART_PutString("MOVING");
+	Debug_UART_PutString("\r\nState: Moving\r\n\r\n");
 
 	// initial_board holds the state of the board just before this call.
     CyDelay(1000);
 	read_reed_switches();
 	memcpy(initial_board, board, sizeof(board));
+    /*
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 12; j++) {
             char on[4] = "";
@@ -335,6 +336,7 @@ int state_moving() {
         }
         Debug_UART_PutString("\r\n\r\n");
     }
+    */
 
 	// Locations of piece movement.
 	int move1[2][2] = { { 0, 0 }, { 0, 0 } };
@@ -350,13 +352,16 @@ int state_moving() {
             move1[0][1] == 10 ||
             move1[0][1] == 11) {
     
+        Debug_UART_PutString("Make your move, then hit Enter.\r\n");
         while( Debug_UART_GetRxBufferSize() <= 0);
         
+        // Checks for Enter/Return key.
         if(Debug_UART_GetChar() == '\r') {
 
 		    //CyDelay(1000);
     		read_reed_switches();
     		memcpy(update1_board, board, sizeof(board));
+            /*
             for(int i = 0; i < 8; i++) {
                 for(int j = 0; j < 12; j++) {
                     char on[4] = "";
@@ -366,6 +371,7 @@ int state_moving() {
                 }
                 Debug_UART_PutString("\r\n\r\n");
             }
+            */
 
     		diff_boards(UPDATE1);
 
@@ -416,9 +422,11 @@ int state_moving() {
                 (move2[0][1] % 10) == 1 ||
                 (move2[1][1] % 10) == 0 || 
                 (move2[1][1] % 10) == 1) {
-                    
+            
+            Debug_UART_PutString("Make your move, then hit Enter.\r\n");        
             while( Debug_UART_GetRxBufferSize() <= 0);
         
+            // Checks for Enter/Return key.
             if(Debug_UART_GetChar() == '\r') {
 
     			//CyDelay(1000);
@@ -475,8 +483,8 @@ int state_moving() {
         }
     }
 
-	if(bres9[0] != 0x01) {
-		Debug_UART_PutString("Invalid move, please undo changes.\n");
+	if(bres9[0] == 0x00) {
+		Debug_UART_PutString("Invalid move, please undo changes.\r\n");
         
         while(  diff_loc[0][0] != 0 ||
                 diff_loc[0][1] != 0 ||
@@ -491,10 +499,30 @@ int state_moving() {
         
 		game_state = MOVING;
 	}
-	else {
-		Debug_UART_PutString("Valid move.\n");
+	else if(bres9[0] == 0x01) {
+		Debug_UART_PutString("Valid move.\r\n");
 		game_state = WAITING;
 	}
+    else if(bres9[0] == 0x03) {
+        
+        if( bres9[1] == 0x00 && 
+            bres9[2] == 0x00 &&
+            bres9[3] == 0x00 &&
+            bres9[4] == 0x00 &&
+            bres9[5] == 0x00 &&
+            bres9[6] == 0x00 &&
+            bres9[7] == 0x00 &&
+            bres9[8] == 0x00) {
+                
+            Debug_UART_PutString("Checkmate. You lost.\r\n\r\n");
+        }
+        else {
+            Debug_UART_PutString("Checkmate. You won.\r\n\r\n");
+        }
+        CyDelay(2000);    
+        CySoftwareReset();
+		//game_state = CONNECTED;
+    }
 	return game_state;
 }
 
@@ -509,7 +537,7 @@ int game() {
 	while(1) {
 
 		if(game_state == NOTCONNECTED) { 
-			Debug_UART_PutString("Attempting to connect again.\n");
+			Debug_UART_PutString("Attempting to connect again.\r\n");
 			state_notconnected(); 
 		}
 

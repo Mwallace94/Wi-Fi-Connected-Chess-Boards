@@ -37,7 +37,7 @@ static char blank[9] = "";
     char* esp_helper(uint32 time) {
         CyDelay(time);
         uint8 size = Esp_UART_GetRxBufferSize();
-        Debug_UART_PutChar(size + 48);
+        //Debug_UART_PutChar(size + 48);
         uint8 temp = size;
         char msg[size];
         strncpy(recv, blank, 9);
@@ -45,10 +45,10 @@ static char blank[9] = "";
         for(int i = 0; i < size; i++) {
             if (strstr(msg, "+IPD,") != NULL) {
                 msg[i] = Esp_UART_GetChar();
-                Debug_UART_PutChar(msg[i]);
+                //Debug_UART_PutChar(msg[i]);
                 temp = msg[i] - 48;
                 Esp_UART_GetChar();
-                Debug_UART_PutString("\n\r!");
+                //Debug_UART_PutString("\n\r!");
                 for(int j = 0; j < temp; j++) {
                     recv[j] = Esp_UART_GetChar();
                 }
@@ -56,7 +56,7 @@ static char blank[9] = "";
                     
             } else {
                 msg[i] = Esp_UART_GetChar();
-                Debug_UART_PutChar(msg[i]);
+                //Debug_UART_PutChar(msg[i]);
             }
         }
         return recv;
