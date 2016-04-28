@@ -911,7 +911,6 @@ int isCheckForYou(){
   }
 }
 
-
 int isCheckMate(transition t){
   if(t.piece == 13){
     testing = 1;
@@ -921,16 +920,44 @@ int isCheckMate(transition t){
   }else{
     testing = 1;
     int kingSurrounding = checkKingSurrounding(t);
+    int saveSelf =  checkSaveSelf(t);
     int saveKing =  checkSaveKing(t);
     int blockKing =  checkBlockKing(t);
     testing = 0;
-    if((kingSurrounding == 0) && (saveKing == 0) && (blockKing == 0)){  
+    if((kingSurrounding == 0) && (saveKing == 0) && (blockKing == 0) && (saveSelf == 0)){  
       return 1;
     }
   }
   return 0;
 }
 
+int checkSaveSelf(transition t) {
+  initTestState();
+  int saveable = 0;
+  if (abs(t.fromRow - t.toRow) <= 1 && abs(t.fromCol - t.fromCol) <= 1) saveable = 1;
+  int i, j;
+  transition tnew;
+  tnew.toRow = t.fromRow;
+  tnew.toCol = t.fromCol;
+  t.piece = theircolor + 3;
+
+    for(i = 0; i < 8; i++){
+      for(j = 2; j < 10; j++){
+        if(teststate[i][j] > (char)(yourcolor) && teststate[i][j] <= (char)(yourcolor+6)){
+          tnew.fromRow = i;
+          tnew.fromCol = j;
+          tnew.piece = teststate[i][j];
+          if(isLegal(tnew)){
+            saveable = 0;
+            printf("\nThe king can't save himself\n");
+            return saveable;
+          }
+        }
+      }
+    }
+    printf("\nThe king can save himself\n");
+    return saveable;
+}
 
 int checkKingSurrounding(transition t){
   initTestState();
@@ -1187,7 +1214,7 @@ int checkSaveKing(transition t){
 
     for(i = 0; i < 8; i++){
       for(j = 2; j < 10; j++){
-        if(teststate[i][j] > (char)(theircolor) && teststate[i][j] <= (char)(theircolor+6)){
+        if(teststate[i][j] > (char)(theircolor) && teststate[i][j] <= (char)(theircolor+5)){
           tnew.fromRow = i;
           tnew.fromCol = j;
           tnew.piece = teststate[i][j];
