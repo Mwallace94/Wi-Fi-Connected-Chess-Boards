@@ -723,12 +723,12 @@ def main():
                 
                 print(dataOpponent)
 
-                # Python may turn \x31 into '1'. Check for both.
-                if dataOpponent in [b'\x31', b'1']:
+                # Python may turn \x33 into '1'. Check for both.
+                if dataOpponent in [b'\x33', b'3']:
                     state = CONNECTED
                     break # out of recv loop.
 
-            if dataOpponent in [b'\x31', b'1']:
+            if dataOpponent in [b'\x33', b'3']:
                 state = CONNECTED
                 break # out of WAITING loop.
 
@@ -836,6 +836,20 @@ def main():
             print(isValid)
             if isValid > 0:
 
+                # Checkmate (must be checked before movement
+                # b/c moves may be filled with zeroes).
+                if isValid == 3:
+
+                    t3.undraw()
+                    if moves == (0, 0, 0, 0, 0, 0, 0, 0):
+                        t3 = Text(Point(370, 450), "You lost.")
+                        t3.draw(win)
+                        state = CONNECTED
+                        break
+                    else:
+                        t3 = Text(Point(370, 450), "You won.")
+                        t3.draw(win)
+                    
                 # Create move set.
                 movement1 = (pieces[moves[1]][moves[0]], moves[1], moves[0], moves[3], moves[2])
                 movement2 = (pieces[moves[5]][moves[4]], moves[5], moves[4], moves[7], moves[6])
@@ -849,8 +863,8 @@ def main():
                 print(movement1)
                 movepiece(pieces, movement1)
 
-                # Pawn promotion
-                if isValid > 1:
+                # Pawn promotion (should be checked after movement).
+                if isValid == 2:
 
                     pieces[moves[3]][moves[2]][0].undraw()
                     

@@ -2,6 +2,7 @@ import socketserver
 import socket
 from collections import defaultdict
 import subprocess
+import time
 
 PORT = 666
 IP = '192.168.173.1'
@@ -143,6 +144,14 @@ class myHandler(socketserver.BaseRequestHandler):
                                                 self.pstates[0] = WAITING
                                                 self.pstates[1] = MOVING
                                                 self.response[0] = b'24'
+
+                                        # Checkmate
+                                        elif isValid == 3:
+                                                self.request.sendto(retval, self.players[0])
+                                                self.movesToSend[1] = moves
+                                                self.pstates[0] = CONNECTED
+                                                self.pstates[1] = CONNECTED
+                                                self.response[0] = b'34'
                                                 
                                         else:
                                                 self.request.sendto(b'\x00', self.players[0])
@@ -178,6 +187,14 @@ class myHandler(socketserver.BaseRequestHandler):
                                                 self.pstates[0] = MOVING
                                                 self.pstates[1] = WAITING
                                                 self.response[0] = b'25'
+
+                                        # Checkmate
+                                        elif isValid == 3:
+                                                self.request.sendto(retval, self.players[1])
+                                                self.movesToSend[0] = moves
+                                                self.pstates[0] = CONNECTED
+                                                self.pstates[1] = CONNECTED
+                                                self.response[0] = b'35'
                                                 
                                         else:
                                                 self.request.sendto(b'\x00', self.players[1])
@@ -203,8 +220,8 @@ class myHandler(socketserver.BaseRequestHandler):
                                         self.movesToSend[1] = b''
 
                 def end(args):
-                        self.movesToSend[0] = b'\x31'
-                        self.movesToSend[1] = b'\x31'
+                        self.movesToSend[0] = b'\x33'
+                        self.movesToSend[1] = b'\x33'
                         self.players[0] = ''
                         self.players[1] = ''
                         self.pstates[0] = CONNECTED
