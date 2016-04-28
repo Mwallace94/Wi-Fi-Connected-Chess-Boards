@@ -939,7 +939,7 @@ int checkSaveSelf(transition t) {
   transition tnew;
   tnew.toRow = t.fromRow;
   tnew.toCol = t.fromCol;
-  t.piece = theircolor + 3;
+  teststate[t.fromRow][t.fromCol] = theircolor + 3;
 
     for(i = 0; i < 8; i++){
       for(j = 2; j < 10; j++){
