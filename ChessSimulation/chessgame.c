@@ -41,6 +41,7 @@ typedef struct{
 
 int yourcolor;
 int theircolor;
+int checkmate;
 char takenPiece;
 char** state[BROWS][BCOLS];
 char** teststate[BROWS][BCOLS];
@@ -144,6 +145,13 @@ void playturn() {
       t.piece = getPieceFromPos(t.fromRow, t.fromCol);
       t.toRow =  (int) str[2];
       t.toCol =  (int) str[3];
+      if(checkmate == 2){
+        printf("Game has been won.\n");
+        goodMove[0] = 3;
+        gameOn = 0;
+        write(comm_fd,goodMove,9);
+        break;
+      }
       printf("move(%c %d %d %d %d)\n", t.piece, t.fromRow, t.fromCol, t.toRow, t.toCol);
       if(t.piece == 0) printStateNoGrave();
       takenPiece = '\0';
@@ -271,11 +279,11 @@ void playturn() {
       castlingMaintenance();
       printTestState();
       
-      int checkmate = isCheckForEnemy(t);
+      checkmate = isCheckForEnemy(t);
       if(checkmate == 1){
         printf("Opponent has been placed in check\n\n\n");
       }else if(checkmate == 2){
-        gameOn = 0;
+        //gameOn = 0;
         goodMove[0] = 3;
         printf("Opponent has been placed in checkmate\n\n\n");
       }else{
