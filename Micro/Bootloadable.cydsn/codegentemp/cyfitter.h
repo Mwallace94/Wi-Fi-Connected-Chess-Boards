@@ -1152,11 +1152,11 @@
 #define Col_11__SLW CYREG_PRT4_SLW
 
 /* Esp_Rx */
-#define Esp_Rx__0__INTTYPE CYREG_PICU5_INTTYPE1
-#define Esp_Rx__0__MASK 0x02u
-#define Esp_Rx__0__PC CYREG_PRT5_PC1
+#define Esp_Rx__0__INTTYPE CYREG_PICU5_INTTYPE0
+#define Esp_Rx__0__MASK 0x01u
+#define Esp_Rx__0__PC CYREG_PRT5_PC0
 #define Esp_Rx__0__PORT 5u
-#define Esp_Rx__0__SHIFT 1
+#define Esp_Rx__0__SHIFT 0
 #define Esp_Rx__AG CYREG_PRT5_AG
 #define Esp_Rx__AMUX CYREG_PRT5_AMUX
 #define Esp_Rx__BIE CYREG_PRT5_BIE
@@ -1171,7 +1171,7 @@
 #define Esp_Rx__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU5_BASE
 #define Esp_Rx__LCD_COM_SEG CYREG_PRT5_LCD_COM_SEG
 #define Esp_Rx__LCD_EN CYREG_PRT5_LCD_EN
-#define Esp_Rx__MASK 0x02u
+#define Esp_Rx__MASK 0x01u
 #define Esp_Rx__PORT 5u
 #define Esp_Rx__PRT CYREG_PRT5_PRT
 #define Esp_Rx__PRTDSI__CAPS_SEL CYREG_PRT5_CAPS_SEL
@@ -1182,15 +1182,15 @@
 #define Esp_Rx__PRTDSI__OUT_SEL1 CYREG_PRT5_OUT_SEL1
 #define Esp_Rx__PRTDSI__SYNC_OUT CYREG_PRT5_SYNC_OUT
 #define Esp_Rx__PS CYREG_PRT5_PS
-#define Esp_Rx__SHIFT 1
+#define Esp_Rx__SHIFT 0
 #define Esp_Rx__SLW CYREG_PRT5_SLW
 
 /* Esp_Tx */
-#define Esp_Tx__0__INTTYPE CYREG_PICU5_INTTYPE0
-#define Esp_Tx__0__MASK 0x01u
-#define Esp_Tx__0__PC CYREG_PRT5_PC0
+#define Esp_Tx__0__INTTYPE CYREG_PICU5_INTTYPE1
+#define Esp_Tx__0__MASK 0x02u
+#define Esp_Tx__0__PC CYREG_PRT5_PC1
 #define Esp_Tx__0__PORT 5u
-#define Esp_Tx__0__SHIFT 0
+#define Esp_Tx__0__SHIFT 1
 #define Esp_Tx__AG CYREG_PRT5_AG
 #define Esp_Tx__AMUX CYREG_PRT5_AMUX
 #define Esp_Tx__BIE CYREG_PRT5_BIE
@@ -1205,7 +1205,7 @@
 #define Esp_Tx__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU5_BASE
 #define Esp_Tx__LCD_COM_SEG CYREG_PRT5_LCD_COM_SEG
 #define Esp_Tx__LCD_EN CYREG_PRT5_LCD_EN
-#define Esp_Tx__MASK 0x01u
+#define Esp_Tx__MASK 0x02u
 #define Esp_Tx__PORT 5u
 #define Esp_Tx__PRT CYREG_PRT5_PRT
 #define Esp_Tx__PRTDSI__CAPS_SEL CYREG_PRT5_CAPS_SEL
@@ -1216,7 +1216,7 @@
 #define Esp_Tx__PRTDSI__OUT_SEL1 CYREG_PRT5_OUT_SEL1
 #define Esp_Tx__PRTDSI__SYNC_OUT CYREG_PRT5_SYNC_OUT
 #define Esp_Tx__PS CYREG_PRT5_PS
-#define Esp_Tx__SHIFT 0
+#define Esp_Tx__SHIFT 1
 #define Esp_Tx__SLW CYREG_PRT5_SLW
 
 /* Esp_Rst */
@@ -1584,7 +1584,7 @@
 #define BCLK__BUS_CLK__KHZ 48000U
 #define BCLK__BUS_CLK__MHZ 48U
 #define CY_PROJECT_NAME "Bootloadable"
-#define CY_VERSION "PSoC Creator  3.3"
+#define CY_VERSION "PSoC Creator  3.3 CP2"
 #define CYDEV_CHIP_DIE_LEOPARD 1u
 #define CYDEV_CHIP_DIE_PANTHER 18u
 #define CYDEV_CHIP_DIE_PSOC4A 10u

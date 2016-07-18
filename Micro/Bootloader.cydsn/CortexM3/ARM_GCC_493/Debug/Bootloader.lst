@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
   30:.\Generated_Source\PSoC5/Bootloader.c **** * The Checksum and SizeBytes are forcefully set in code. We then post process
   31:.\Generated_Source\PSoC5/Bootloader.c **** * the hex file from the linker and inject their values. When the hex file
   32:.\Generated_Source\PSoC5/Bootloader.c **** * is loaded into the device, these two variables should have valid values.
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 2
 
 
   33:.\Generated_Source\PSoC5/Bootloader.c **** * Because the compiler can do optimization to remove the constant
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
   87:.\Generated_Source\PSoC5/Bootloader.c **** 
   88:.\Generated_Source\PSoC5/Bootloader.c **** #if ((0u != Bootloader_DUAL_APP_BOOTLOADER)  || (CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLEANDBOOT
   89:.\Generated_Source\PSoC5/Bootloader.c **** /**
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 3
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 3
 
 
   90:.\Generated_Source\PSoC5/Bootloader.c ****  *  This variable is intended to keep the active application number. It applies
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  144:.\Generated_Source\PSoC5/Bootloader.c **** #if (((0u != Bootloader_DUAL_APP_BOOTLOADER) && (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LAUNCHER)) \
  145:.\Generated_Source\PSoC5/Bootloader.c ****                                           || (CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLEANDBOOTLOA
  146:.\Generated_Source\PSoC5/Bootloader.c ****     static uint8 Bootloader_CheckImage(uint8 appNumber, uint8 arrayNumber, uint16 row, uint16 rowNu
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 4
 
 
  147:.\Generated_Source\PSoC5/Bootloader.c ****                                     ;                                    
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  201:.\Generated_Source\PSoC5/Bootloader.c ****         for(idx = 0u; idx < Bootloader_MAX_NUM_OF_BTLDB; idx++)
  202:.\Generated_Source\PSoC5/Bootloader.c ****         {
  203:.\Generated_Source\PSoC5/Bootloader.c ****             (void)Bootloader_SetFlashByte((uint32) Bootloader_MD_BTLDB_ACTIVE_OFFSET(idx),
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 5
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 5
 
 
  204:.\Generated_Source\PSoC5/Bootloader.c ****                                                 (uint8)(idx == activeApp));
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  258:.\Generated_Source\PSoC5/Bootloader.c ****             result = Bootloader_MD_BTLDB_ACTIVE_1;
  259:.\Generated_Source\PSoC5/Bootloader.c ****         }
  260:.\Generated_Source\PSoC5/Bootloader.c ****         else
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 6
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 6
 
 
  261:.\Generated_Source\PSoC5/Bootloader.c ****         {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  315:.\Generated_Source\PSoC5/Bootloader.c ****             Bootloader_runningApp = Bootloader_RUNNING_APPLICATION_UNKNOWN;
  316:.\Generated_Source\PSoC5/Bootloader.c ****         }
  317:.\Generated_Source\PSoC5/Bootloader.c ****     }
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 7
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 7
 
 
  318:.\Generated_Source\PSoC5/Bootloader.c **** }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  372:.\Generated_Source\PSoC5/Bootloader.c **** *     This computes a 16-bit checksum for the provided number of bytes contained
  373:.\Generated_Source\PSoC5/Bootloader.c **** *     in the provided buffer.
  374:.\Generated_Source\PSoC5/Bootloader.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 8
 
 
  375:.\Generated_Source\PSoC5/Bootloader.c **** *  \param buffer
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  423:.\Generated_Source\PSoC5/Bootloader.c ****             crc = ~crc;
  424:.\Generated_Source\PSoC5/Bootloader.c ****             tmp = crc;
  425:.\Generated_Source\PSoC5/Bootloader.c ****             crc = ( uint16 )(crc << 8u) | (tmp >> 8u);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 9
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 9
 
 
  426:.\Generated_Source\PSoC5/Bootloader.c ****         }
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
   67              		.type	Bootloader_LaunchBootloadable, %function
   68              	Bootloader_LaunchBootloadable:
   69              	.LFB70:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 10
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 10
 
 
  444:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  498:.\Generated_Source\PSoC5/Bootloader.c ****             result = Bootloader_ERR_VERIFY;
  499:.\Generated_Source\PSoC5/Bootloader.c ****             break;
  500:.\Generated_Source\PSoC5/Bootloader.c ****         }    
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 11
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 11
 
 
  501:.\Generated_Source\PSoC5/Bootloader.c ****     }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  555:.\Generated_Source\PSoC5/Bootloader.c **** * Function Name: Bootloader_CopyRow
  556:.\Generated_Source\PSoC5/Bootloader.c **** ****************************************************************************//**
  557:.\Generated_Source\PSoC5/Bootloader.c **** * \internal
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 12
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 12
 
 
  558:.\Generated_Source\PSoC5/Bootloader.c **** *
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  612:.\Generated_Source\PSoC5/Bootloader.c **** * \n Before performing the copying operation the new Stack application image 
  613:.\Generated_Source\PSoC5/Bootloader.c **** *    should be received and stored at the temporary location by the current 
  614:.\Generated_Source\PSoC5/Bootloader.c **** *    Stack application. The "need-to-copy" flag should be set in app#2 metadata 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 13
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 13
 
 
  615:.\Generated_Source\PSoC5/Bootloader.c **** *    indicating that copying operation is required.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  669:.\Generated_Source\PSoC5/Bootloader.c ****     uint16 srcRow = ((((CY_FLASH_NUMBER_ROWS - dstRow - 2u) + 1u) >> 1u) + dstRow); 
  670:.\Generated_Source\PSoC5/Bootloader.c ****     
  671:.\Generated_Source\PSoC5/Bootloader.c ****     /* Taking length from app#2's metadata*/
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 14
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 14
 
 
  672:.\Generated_Source\PSoC5/Bootloader.c ****     uint32 srcLength = Bootloader_GetMetadata(Bootloader_GET_BTLDB_LENGTH, Bootloader_MD_BTLDB_ACTI
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  726:.\Generated_Source\PSoC5/Bootloader.c ****     }    
  727:.\Generated_Source\PSoC5/Bootloader.c ****     
  728:.\Generated_Source\PSoC5/Bootloader.c ****     /* Copy metadata app#2 -> app#1*/
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 15
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 15
 
 
  729:.\Generated_Source\PSoC5/Bootloader.c ****     if (CYRET_SUCCESS == copyStatus)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  783:.\Generated_Source\PSoC5/Bootloader.c **** }
  784:.\Generated_Source\PSoC5/Bootloader.c **** #endif /*(0u != Bootloader_COPIER_AVAIL) && (CY_PSOC4)*/
  785:.\Generated_Source\PSoC5/Bootloader.c **** #endif /*(CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LAUNCHER)*/
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 16
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 16
 
 
  786:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  840:.\Generated_Source\PSoC5/Bootloader.c ****     #if(0u != Bootloader_DUAL_APP_BOOTLOADER)
  841:.\Generated_Source\PSoC5/Bootloader.c ****         cystatus app0Status = CYRET_BAD_DATA;
  842:.\Generated_Source\PSoC5/Bootloader.c ****         cystatus app1Status = CYRET_BAD_DATA;  
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 17
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 17
 
 
  843:.\Generated_Source\PSoC5/Bootloader.c ****     #endif /*0u != Bootloader_DUAL_APP_BOOTLOADER*/
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  897:.\Generated_Source\PSoC5/Bootloader.c ****             * |      |        |       |        |       | switching is disabled, then   |           
  898:.\Generated_Source\PSoC5/Bootloader.c ****             * |      |        |       |        |       | stay in Bootloader            |           
  899:.\Generated_Source\PSoC5/Bootloader.c ****             * |  11  |    1   |   0   |   1    |   0   | Bootloader                    | Launcher  
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 18
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 18
 
 
  900:.\Generated_Source\PSoC5/Bootloader.c ****             * |  12  |    1   |   0   |   1    |   1   | app#2                         | app#2     
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  954:.\Generated_Source\PSoC5/Bootloader.c ****                 /* Cases # 3, 4, 7, and 8 */
  955:.\Generated_Source\PSoC5/Bootloader.c ****                 if (CYRET_SUCCESS == app1Status)
  956:.\Generated_Source\PSoC5/Bootloader.c ****                 {
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 19
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 19
 
 
  957:.\Generated_Source\PSoC5/Bootloader.c ****                     /* Cases # 4 and 8 */
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1011:.\Generated_Source\PSoC5/Bootloader.c ****                 Bootloader_SetActiveAppInMetadata(Bootloader_activeApp);      
 1012:.\Generated_Source\PSoC5/Bootloader.c ****             }
 1013:.\Generated_Source\PSoC5/Bootloader.c ****         #endif /* CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LAUNCHER */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 20
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 20
 
 
 1014:.\Generated_Source\PSoC5/Bootloader.c ****     #else /*SINGLE_APP BOOTLOADER*/
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1068:.\Generated_Source\PSoC5/Bootloader.c ****         {
 1069:.\Generated_Source\PSoC5/Bootloader.c ****             /***********************************************************************
 1070:.\Generated_Source\PSoC5/Bootloader.c ****             * If the Bootloader/Launcher application calculated checksum does not match
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 21
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 21
 
 
 1071:.\Generated_Source\PSoC5/Bootloader.c ****             * the checksum stored in special Bootloader_Checksum constant 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1125:.\Generated_Source\PSoC5/Bootloader.c **** ****************************************************************************//**
 1126:.\Generated_Source\PSoC5/Bootloader.c **** * \internal
 1127:.\Generated_Source\PSoC5/Bootloader.c **** *
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 22
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 22
 
 
 1128:.\Generated_Source\PSoC5/Bootloader.c **** * \brief
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1182:.\Generated_Source\PSoC5/Bootloader.c ****         {
 1183:.\Generated_Source\PSoC5/Bootloader.c ****             /* Set active application in metadata */
 1184:.\Generated_Source\PSoC5/Bootloader.c ****             uint8 CYDATA idx;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 23
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 23
 
 
 1185:.\Generated_Source\PSoC5/Bootloader.c ****             for(idx = 0u; idx < Bootloader_MAX_NUM_OF_BTLDB; idx++)
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1239:.\Generated_Source\PSoC5/Bootloader.c ****     }
 1240:.\Generated_Source\PSoC5/Bootloader.c **** 
 1241:.\Generated_Source\PSoC5/Bootloader.c **** #endif /* (CY_PSOC4) */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 24
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 24
 
 
 1242:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1296:.\Generated_Source\PSoC5/Bootloader.c **** 
 1297:.\Generated_Source\PSoC5/Bootloader.c **** /* Moves argument appAddr (RO) into PC, moving execution to appAddr */
 1298:.\Generated_Source\PSoC5/Bootloader.c **** #if defined (__ARMCC_VERSION)
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 25
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 25
 
 
 1299:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  106 0008 FFF7FEFF 		bl	CySoftwareReset
  107              	.LVL8:
  108 000c 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 26
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 26
 
 
  109              	.L8:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1354:.\Generated_Source\PSoC5/Bootloader.c **** 
 1355:.\Generated_Source\PSoC5/Bootloader.c ****     {
 1356:.\Generated_Source\PSoC5/Bootloader.c ****         uint32 CYDATA idx;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 27
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 27
 
 
 1357:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1411:.\Generated_Source\PSoC5/Bootloader.c ****                 ? (CY_FLASH_SIZE >> 3u)
 1412:.\Generated_Source\PSoC5/Bootloader.c ****                 : (end >> 3u);
 1413:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 28
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 28
 
 
 1414:.\Generated_Source\PSoC5/Bootloader.c ****             for (; idx < end; ++idx)
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1468:.\Generated_Source\PSoC5/Bootloader.c **** {
 1469:.\Generated_Source\PSoC5/Bootloader.c ****     uint16 CYDATA firstRow = 0xFFFFu;
 1470:.\Generated_Source\PSoC5/Bootloader.c ****     uint16 CYDATA lastRow = 0xFFFFu;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 29
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 29
 
 
 1471:.\Generated_Source\PSoC5/Bootloader.c ****     uint8 CYDATA ackCode = CYRET_SUCCESS;
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1525:.\Generated_Source\PSoC5/Bootloader.c ****         lastRow = (uint16) Bootloader_GetMetadata(Bootloader_GET_BTLDR_LAST_ROW,
 1526:.\Generated_Source\PSoC5/Bootloader.c ****                                                         Bootloader_USER_APPLICATION);    
 1527:.\Generated_Source\PSoC5/Bootloader.c ****     
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 30
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 30
 
 
 1528:.\Generated_Source\PSoC5/Bootloader.c ****     #else /* Classic Dual-app and the general Launcher-Combination use cases */    
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1582:.\Generated_Source\PSoC5/Bootloader.c ****         *  The first Bootloadable application is active:
 1583:.\Generated_Source\PSoC5/Bootloader.c ****         *   ---------------------------------------------------------------------------
 1584:.\Generated_Source\PSoC5/Bootloader.c ****         *  | Bootloader   | Bootloadable # 1 |     | Bootloadable # 2 |     | M2 | M1 |
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 31
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 31
 
 
 1585:.\Generated_Source\PSoC5/Bootloader.c ****         *   ---------------------------------------------------------------------------
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1639:.\Generated_Source\PSoC5/Bootloader.c ****                    
 1640:.\Generated_Source\PSoC5/Bootloader.c **** #else
 1641:.\Generated_Source\PSoC5/Bootloader.c **** void Bootloader_HostLink(uint8 timeOut) CYLARGE 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 32
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 32
 
 
 1642:.\Generated_Source\PSoC5/Bootloader.c ****                    
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1696:.\Generated_Source\PSoC5/Bootloader.c ****         #endif  /* (0u == Bootloader_FAST_APP_VALIDATION) ||
 1697:.\Generated_Source\PSoC5/Bootloader.c ****                    (CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLEANDBOOTLOADER) */
 1698:.\Generated_Source\PSoC5/Bootloader.c ****     #endif  /* (CY_PSOC4) */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 33
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 33
 
 
 1699:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1753:.\Generated_Source\PSoC5/Bootloader.c ****    
 1754:.\Generated_Source\PSoC5/Bootloader.c ****                 if (packetBuffer[Bootloader_EOP_ADDR(pktSize)] != Bootloader_EOP)
 1755:.\Generated_Source\PSoC5/Bootloader.c ****                 {
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 34
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 34
 
 
 1756:.\Generated_Source\PSoC5/Bootloader.c ****                     ackCode = Bootloader_ERR_DATA;
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1810:.\Generated_Source\PSoC5/Bootloader.c ****                             ackCode = Bootloader_ERR_APP;
 1811:.\Generated_Source\PSoC5/Bootloader.c ****                         }
 1812:.\Generated_Source\PSoC5/Bootloader.c ****                     }
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 35
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 35
 
 
 1813:.\Generated_Source\PSoC5/Bootloader.c ****                     break;
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1867:.\Generated_Source\PSoC5/Bootloader.c ****                                       (int16)pktSize - 3);
 1868:.\Generated_Source\PSoC5/Bootloader.c ****                     #else              
 1869:.\Generated_Source\PSoC5/Bootloader.c ****                         /*Data is in packetBuffer[], needs to be copied to dataBuffer[]*/
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 36
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 36
 
 
 1870:.\Generated_Source\PSoC5/Bootloader.c ****                         (void) memcpy(dataBuffer, &packetBuffer[Bootloader_DATA_ADDR + 3u],
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1924:.\Generated_Source\PSoC5/Bootloader.c ****                     {
 1925:.\Generated_Source\PSoC5/Bootloader.c ****                         startAddr = CY_FLASH_BASE + ((uint32)btldrData * CYDEV_FLS_SECTOR_SIZE)
 1926:.\Generated_Source\PSoC5/Bootloader.c ****                                             + ((uint32)rowNum * CYDEV_FLS_ROW_SIZE);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 37
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 37
 
 
 1927:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 1981:.\Generated_Source\PSoC5/Bootloader.c ****                             arrayIdBtlderEnds = (uint8) (*Bootloader_SizeBytesAccess / CY_FLASH_SIZ
 1982:.\Generated_Source\PSoC5/Bootloader.c **** 
 1983:.\Generated_Source\PSoC5/Bootloader.c ****                             if (btldrData == arrayIdBtlderEnds)
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 38
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 38
 
 
 1984:.\Generated_Source\PSoC5/Bootloader.c ****                             {
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2038:.\Generated_Source\PSoC5/Bootloader.c ****                             packetBuffer[Bootloader_DATA_ADDR] =
 2039:.\Generated_Source\PSoC5/Bootloader.c ****                                 (uint8)Bootloader_ValidateBootloadable(btldrData);
 2040:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 39
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 39
 
 
 2041:.\Generated_Source\PSoC5/Bootloader.c ****                             packetBuffer[Bootloader_DATA_ADDR + 1u] =
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2095:.\Generated_Source\PSoC5/Bootloader.c **** 
 2096:.\Generated_Source\PSoC5/Bootloader.c ****         #endif  /* (0u != Bootloader_CMD_ERASE_ROW_AVAIL) */
 2097:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 40
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 40
 
 
 2098:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2152:.\Generated_Source\PSoC5/Bootloader.c **** 
 2153:.\Generated_Source\PSoC5/Bootloader.c ****                         /*Checking if row number is within array address range*/
 2154:.\Generated_Source\PSoC5/Bootloader.c ****                         ackCode = Bootloader_CHECK_ROW_NUMBER(dataOffset, upperRange);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 41
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 41
 
 
 2155:.\Generated_Source\PSoC5/Bootloader.c ****                     
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2209:.\Generated_Source\PSoC5/Bootloader.c ****                             /**********************************************************************
 2210:.\Generated_Source\PSoC5/Bootloader.c ****                             * No check is required in case when there is no app#1 present in Upgrad
 2211:.\Generated_Source\PSoC5/Bootloader.c ****                             * use case (no user application downloaded yet).                       
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 42
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 42
 
 
 2212:.\Generated_Source\PSoC5/Bootloader.c ****                             ***********************************************************************
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2266:.\Generated_Source\PSoC5/Bootloader.c **** 
 2267:.\Generated_Source\PSoC5/Bootloader.c ****                         /**************************************************************************
 2268:.\Generated_Source\PSoC5/Bootloader.c ****                         * Clear a row that contains metadata, when the "Fast bootloadable applicati
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 43
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 43
 
 
 2269:.\Generated_Source\PSoC5/Bootloader.c ****                         * validation" option is enabled.
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2323:.\Generated_Source\PSoC5/Bootloader.c **** 
 2324:.\Generated_Source\PSoC5/Bootloader.c ****                                 /* Set up flag that metadata was cleared */
 2325:.\Generated_Source\PSoC5/Bootloader.c ****                                 clearedMetaData = 1u;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 44
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 44
 
 
 2326:.\Generated_Source\PSoC5/Bootloader.c ****                             }
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2380:.\Generated_Source\PSoC5/Bootloader.c ****                     /* Don't acknowledge the packet, just get ready to accept the next one */
 2381:.\Generated_Source\PSoC5/Bootloader.c ****                     continue;
 2382:.\Generated_Source\PSoC5/Bootloader.c ****                 }
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 45
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 45
 
 
 2383:.\Generated_Source\PSoC5/Bootloader.c ****                 break;
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2437:.\Generated_Source\PSoC5/Bootloader.c ****                             #endif  /* (CY_PSOC3) */
 2438:.\Generated_Source\PSoC5/Bootloader.c **** 
 2439:.\Generated_Source\PSoC5/Bootloader.c ****                             dataOffset += pktSize;
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 46
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 46
 
 
 2440:.\Generated_Source\PSoC5/Bootloader.c ****                         }
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2494:.\Generated_Source\PSoC5/Bootloader.c ****                 }
 2495:.\Generated_Source\PSoC5/Bootloader.c ****             #endif /*(Bootloader_SECURITY_KEY_AVAIL == 1u)*/
 2496:.\Generated_Source\PSoC5/Bootloader.c ****                 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 47
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 47
 
 
 2497:.\Generated_Source\PSoC5/Bootloader.c ****                 #if (CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLEANDBOOTLOADER) 
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2551:.\Generated_Source\PSoC5/Bootloader.c ****                             /* Checking if row number is within array address range */
 2552:.\Generated_Source\PSoC5/Bootloader.c ****                             ackCode = Bootloader_CHECK_ROW_NUMBER(rowNum, 
 2553:.\Generated_Source\PSoC5/Bootloader.c ****                                                        Bootloader_NUMBER_OF_ROWS_IN_EEPROM_ARRAY);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 48
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 48
 
 
 2554:.\Generated_Source\PSoC5/Bootloader.c ****                     
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2608:.\Generated_Source\PSoC5/Bootloader.c ****                             rowAddr = CYDEV_ECC_BASE + ((uint32)btldrData * (CYDEV_FLS_SECTOR_SIZE 
 2609:.\Generated_Source\PSoC5/Bootloader.c ****                                         + ((uint32)rowNum * CYDEV_ECC_ROW_SIZE);
 2610:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 49
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 49
 
 
 2611:.\Generated_Source\PSoC5/Bootloader.c ****                             for(tmpIndex = 0u; tmpIndex < CYDEV_ECC_ROW_SIZE; tmpIndex++)
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2665:.\Generated_Source\PSoC5/Bootloader.c ****                 if (0u != (needToCopyFlag & Bootloader_NEED_TO_COPY_MASK))
 2666:.\Generated_Source\PSoC5/Bootloader.c ****                 {  
 2667:.\Generated_Source\PSoC5/Bootloader.c ****                     Bootloader_SET_RUN_TYPE(Bootloader_SCHEDULE_BTLDR);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 50
 
 
 2668:.\Generated_Source\PSoC5/Bootloader.c ****                 }
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2722:.\Generated_Source\PSoC5/Bootloader.c ****                     }
 2723:.\Generated_Source\PSoC5/Bootloader.c ****                 }    
 2724:.\Generated_Source\PSoC5/Bootloader.c ****                 else /* No callback function defined, so return "Error Command" status */
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 51
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 51
 
 
 2725:.\Generated_Source\PSoC5/Bootloader.c ****             #endif /* (!CY_PSOC3) */
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  138 0006 0C46     		mov	r4, r1
  139 0008 1646     		mov	r6, r2
  140 000a 02AF     		add	r7, sp, #8
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 52
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 52
 
 
  141 000c 27F8022D 		strh	r2, [r7, #-2]!	@ movhi
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  178 0048 FFF7FEFF 		bl	Debug_UART_CyBtldrCommWrite
  179              	.LVL14:
 2781:.\Generated_Source\PSoC5/Bootloader.c **** }
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 53
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 53
 
 
  180              		.loc 1 2781 0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  231              		.cfi_offset 14, -4
  232 0002 0546     		mov	r5, r0
  233 0004 0E46     		mov	r6, r1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 54
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 54
 
 
  234 0006 1446     		mov	r4, r2
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  280              		.thumb
  281              		.thumb_func
  282              		.type	Bootloader_SetFlashByte, %function
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 55
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 55
 
 
  283              	Bootloader_SetFlashByte:
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  306              		.loc 1 2812 0
  307 000e 20F0FF04 		bic	r4, r0, #255
  308              	.LVL29:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 56
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 56
 
 
 2813:.\Generated_Source\PSoC5/Bootloader.c ****     uint16 idx;
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  338              	.LVL36:
 2836:.\Generated_Source\PSoC5/Bootloader.c ****     #endif /* (CY_PSOC5) */
 2837:.\Generated_Source\PSoC5/Bootloader.c **** }
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 57
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 57
 
 
  339              		.loc 1 2837 0
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  366 0002 0138     		subs	r0, r0, #1
  367              	.LVL39:
  368 0004 0B28     		cmp	r0, #11
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 58
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 58
 
 
  369 0006 67D8     		bhi	.L26
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  411              	.L30:
 2877:.\Generated_Source\PSoC5/Bootloader.c **** 
 2878:.\Generated_Source\PSoC5/Bootloader.c ****     case Bootloader_GET_BTLDR_LAST_ROW:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 59
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 59
 
 
 2879:.\Generated_Source\PSoC5/Bootloader.c ****         fieldPtr  = Bootloader_MD_BTLDR_LAST_ROW_OFFSET(appId);
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2893:.\Generated_Source\PSoC5/Bootloader.c **** 
 2894:.\Generated_Source\PSoC5/Bootloader.c ****     case Bootloader_GET_BTLDB_STATUS:
 2895:.\Generated_Source\PSoC5/Bootloader.c ****         fieldPtr  = Bootloader_MD_BTLDB_VERIFIED_OFFSET(appId);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 60
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 60
 
 
  451              		.loc 1 2895 0
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  490              		.loc 1 2908 0
  491 0098 4942     		negs	r1, r1
  492              	.LVL64:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 61
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 61
 
 
  493 009a 0902     		lsls	r1, r1, #8
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  532 00ca 0902     		lsls	r1, r1, #8
  533 00cc 01F57F31 		add	r1, r1, #261120
  534 00d0 01F57871 		add	r1, r1, #992
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 62
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 62
 
 
  535              	.LVL74:
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2944:.\Generated_Source\PSoC5/Bootloader.c ****             result |= (uint32) CY_GET_XTND_REG8((volatile uint8 *)(fieldPtr     )) <<  8u;
 2945:.\Generated_Source\PSoC5/Bootloader.c ****         }
 2946:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 63
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 63
 
 
 2947:.\Generated_Source\PSoC5/Bootloader.c ****         if (4u == fieldSize)
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2971:.\Generated_Source\PSoC5/Bootloader.c ****     #endif /* (CY_PSOC3) */
 2972:.\Generated_Source\PSoC5/Bootloader.c **** 
 2973:.\Generated_Source\PSoC5/Bootloader.c ****     return (result);
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 64
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 64
 
 
 2974:.\Generated_Source\PSoC5/Bootloader.c **** }
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  644 002a 00BF     		.align	2
  645              	.L49:
  646 002c FA460040 		.word	1073759994
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 65
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 65
 
 
  647              	.LBE2:
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  696              	.LVL97:
 1362:.\Generated_Source\PSoC5/Bootloader.c **** 
  697              		.loc 1 1362 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 66
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 66
 
 
  698 0026 0024     		movs	r4, #0
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  742 0050 0F4B     		ldr	r3, .L64
  743 0052 9F42     		cmp	r7, r3
  744 0054 01D0     		beq	.L60
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 67
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 67
 
 
 1412:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  789              	.LVL117:
  790              	.L61:
  791 0086 0620     		movs	r0, #6
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 68
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 68
 
 
  792 0088 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  840 0016 15E0     		b	.L73
  841              	.LVL122:
  842              	.L71:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 69
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 69
 
 
  843              	.LBB4:
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  891 0050 FA460040 		.word	1073759994
  892              		.cfi_endproc
  893              	.LFE68:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 70
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 70
 
 
  894              		.size	Bootloader_Exit, .-Bootloader_Exit
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  941              		.loc 1 1665 0
  942 0020 5746     		mov	r7, r10
 1651:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 71
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 71
 
 
  943              		.loc 1 1651 0
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  986 005a 012A     		cmp	r2, #1
  987 005c 24D1     		bne	.L121
 1736:.\Generated_Source\PSoC5/Bootloader.c ****                                packetBuffer[Bootloader_SIZE_ADDR];
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 72
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 72
 
 
  988              		.loc 1 1736 0
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1032              	.L120:
 1732:.\Generated_Source\PSoC5/Bootloader.c ****         }
  1033              		.loc 1 1732 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 73
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 73
 
 
  1034 00a4 0426     		movs	r6, #4
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1082 00e8 DD00     		.2byte	(.L95-.L89)/2
  1083 00ea 4201     		.2byte	(.L96-.L89)/2
  1084              		.p2align 1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 74
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 74
 
 
  1085              	.L88:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1128 0136 05E0     		b	.L98
  1129              	.LVL156:
  1130              	.L97:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 75
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 75
 
 
 1998:.\Generated_Source\PSoC5/Bootloader.c ****                             {
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1173 0174 DBB2     		uxtb	r3, r3
  1174 0176 3F2B     		cmp	r3, #63
  1175 0178 02D8     		bhi	.L135
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 76
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 76
 
 
 2072:.\Generated_Source\PSoC5/Bootloader.c ****                             }
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1220 01c6 4023     		movs	r3, #64
 2123:.\Generated_Source\PSoC5/Bootloader.c ****                             upperRange = Bootloader_NUMBER_OF_ROWS_IN_EEPROM_ARRAY;
  1221              		.loc 1 2123 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 77
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 77
 
 
  1222 01c8 4FF01008 		mov	r8, #16
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1265 0206 C1F30F23 		ubfx	r3, r1, #8, #16
  1266              	.LVL175:
 2178:.\Generated_Source\PSoC5/Bootloader.c ****                             {
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 78
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 78
 
 
  1267              		.loc 1 2178 0
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1313 023c 0426     		movs	r6, #4
  1314              	.LBE20:
 1770:.\Generated_Source\PSoC5/Bootloader.c ****         if(ackCode == CYRET_SUCCESS)
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 79
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 79
 
 
  1315              		.loc 1 1770 0
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1360              		.loc 1 2504 0
  1361 0286 4FF0000A 		mov	r10, #0
 2501:.\Generated_Source\PSoC5/Bootloader.c **** 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 80
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 80
 
 
  1362              		.loc 1 2501 0
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1405 02ca 5A48     		ldr	r0, .L158+8
  1406 02cc 1022     		movs	r2, #16
  1407 02ce FFF7FEFF 		bl	Bootloader_Calc8BitSum
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 81
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 81
 
 
  1408              	.LVL194:
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1453              	.L112:
 2613:.\Generated_Source\PSoC5/Bootloader.c ****                             }
  1454              		.loc 1 2613 0 discriminator 3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 82
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 82
 
 
  1455 030e 995C     		ldrb	r1, [r3, r2]	@ zero_extendqisi2
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1502              	.LVL211:
 2643:.\Generated_Source\PSoC5/Bootloader.c ****                 }
  1503              		.loc 1 2643 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 83
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 83
 
 
  1504 0356 0122     		movs	r2, #1
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2704:.\Generated_Source\PSoC5/Bootloader.c ****                     Bootloader_outPacket.pOutputBuffer = &packetBuffer[Bootloader_DATA_ADDR];
  1547              		.loc 1 2704 0
  1548 038a 0021     		movs	r1, #0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 84
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 84
 
 
  1549 038c 0491     		str	r1, [sp, #16]
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1591              	.L156:
 2716:.\Generated_Source\PSoC5/Bootloader.c ****                         rspSize = 0u;
  1592              		.loc 1 2716 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 85
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 85
 
 
  1593 03bc 0E26     		movs	r6, #14
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1636              		.loc 1 1770 0
  1637 03da 0022     		movs	r2, #0
  1638 03dc 3EE0     		b	.L86
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 86
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 86
 
 
  1639              	.L131:
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1683              	.LBB16:
 2363:.\Generated_Source\PSoC5/Bootloader.c ****                 }
  1684              		.loc 1 2363 0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 87
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 87
 
 
  1685 03fc 4FF0000A 		mov	r10, #0
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1730              		.loc 1 1770 0
  1731 041c 0022     		movs	r2, #0
  1732 041e 1DE0     		b	.L86
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 88
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 88
 
 
  1733              	.L146:
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
 2569:.\Generated_Source\PSoC5/Bootloader.c ****                                                        Bootloader_NUMBER_OF_ROWS_IN_ARRAY);
  1779              		.loc 1 2569 0
  1780 044c 1E46     		mov	r6, r3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 89
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 89
 
 
  1781              	.LBE19:
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1825 0476 0DF51F7D 		add	sp, sp, #636
  1826              		.cfi_def_cfa_offset 36
  1827              		@ sp needed
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 90
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 90
 
 
  1828 047a BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1876              	.LVL243:
  1877 0024 C0B2     		uxtb	r0, r0
  1878              	.LVL244:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 91
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 91
 
 
 1063:.\Generated_Source\PSoC5/Bootloader.c **** 
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1922              	.LVL251:
  1923 005c 38BD     		pop	{r3, r4, r5, pc}
  1924              	.LVL252:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 92
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 92
 
 
  1925              	.L169:
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1979              		.file 5 ".\\Generated_Source\\PSoC5\\Bootloader.h"
  1980              		.file 6 ".\\Generated_Source\\PSoC5\\Bootloader_PVT.h"
  1981              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 93
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 93
 
 
  1982              		.file 8 ".\\Generated_Source\\PSoC5\\Debug_UART.h"
@@ -5531,21 +5531,21 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  1989 0006 00000000 		.4byte	.Ldebug_abbrev0
  1990 000a 04       		.byte	0x4
  1991 000b 01       		.uleb128 0x1
- 1992 000c 8E040000 		.4byte	.LASF108
+ 1992 000c 97040000 		.4byte	.LASF108
  1993 0010 01       		.byte	0x1
  1994 0011 19000000 		.4byte	.LASF109
- 1995 0015 96000000 		.4byte	.LASF110
+ 1995 0015 0C040000 		.4byte	.LASF110
  1996 0019 50010000 		.4byte	.Ldebug_ranges0+0x150
  1997 001d 00000000 		.4byte	0
  1998 0021 00000000 		.4byte	.Ldebug_line0
  1999 0025 02       		.uleb128 0x2
  2000 0026 01       		.byte	0x1
  2001 0027 06       		.byte	0x6
- 2002 0028 6A010000 		.4byte	.LASF0
+ 2002 0028 38010000 		.4byte	.LASF0
  2003 002c 02       		.uleb128 0x2
  2004 002d 01       		.byte	0x1
  2005 002e 08       		.byte	0x8
- 2006 002f A7020000 		.4byte	.LASF1
+ 2006 002f 75020000 		.4byte	.LASF1
  2007 0033 02       		.uleb128 0x2
  2008 0034 02       		.byte	0x2
  2009 0035 05       		.byte	0x5
@@ -5553,56 +5553,56 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2011 003a 02       		.uleb128 0x2
  2012 003b 02       		.byte	0x2
  2013 003c 07       		.byte	0x7
- 2014 003d CA030000 		.4byte	.LASF3
+ 2014 003d 98030000 		.4byte	.LASF3
  2015 0041 03       		.uleb128 0x3
- 2016 0042 CC050000 		.4byte	.LASF9
+ 2016 0042 D5050000 		.4byte	.LASF9
  2017 0046 02       		.byte	0x2
  2018 0047 3F       		.byte	0x3f
  2019 0048 4C000000 		.4byte	0x4c
  2020 004c 02       		.uleb128 0x2
  2021 004d 04       		.byte	0x4
  2022 004e 05       		.byte	0x5
- 2023 004f D7010000 		.4byte	.LASF4
+ 2023 004f A5010000 		.4byte	.LASF4
  2024 0053 02       		.uleb128 0x2
  2025 0054 04       		.byte	0x4
  2026 0055 07       		.byte	0x7
- 2027 0056 4A050000 		.4byte	.LASF5
+ 2027 0056 53050000 		.4byte	.LASF5
  2028 005a 02       		.uleb128 0x2
  2029 005b 08       		.byte	0x8
  2030 005c 05       		.byte	0x5
- 2031 005d A4010000 		.4byte	.LASF6
+ 2031 005d 72010000 		.4byte	.LASF6
  2032 0061 02       		.uleb128 0x2
  2033 0062 08       		.byte	0x8
  2034 0063 07       		.byte	0x7
- 2035 0064 27030000 		.4byte	.LASF7
+ 2035 0064 F5020000 		.4byte	.LASF7
  2036 0068 04       		.uleb128 0x4
  2037 0069 04       		.byte	0x4
  2038 006a 05       		.byte	0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 94
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 94
 
 
  2039 006b 696E7400 		.ascii	"int\000"
  2040 006f 02       		.uleb128 0x2
  2041 0070 04       		.byte	0x4
  2042 0071 07       		.byte	0x7
- 2043 0072 76060000 		.4byte	.LASF8
+ 2043 0072 7F060000 		.4byte	.LASF8
  2044 0076 03       		.uleb128 0x3
  2045 0077 84000000 		.4byte	.LASF10
  2046 007b 03       		.byte	0x3
  2047 007c 2C       		.byte	0x2c
  2048 007d 41000000 		.4byte	0x41
  2049 0081 03       		.uleb128 0x3
- 2050 0082 48010000 		.4byte	.LASF11
+ 2050 0082 16010000 		.4byte	.LASF11
  2051 0086 04       		.byte	0x4
  2052 0087 C2       		.byte	0xc2
  2053 0088 2C000000 		.4byte	0x2c
  2054 008c 03       		.uleb128 0x3
- 2055 008d 2E010000 		.4byte	.LASF12
+ 2055 008d FC000000 		.4byte	.LASF12
  2056 0091 04       		.byte	0x4
  2057 0092 C3       		.byte	0xc3
  2058 0093 3A000000 		.4byte	0x3a
  2059 0097 03       		.uleb128 0x3
- 2060 0098 3E050000 		.4byte	.LASF13
+ 2060 0098 47050000 		.4byte	.LASF13
  2061 009c 04       		.byte	0x4
  2062 009d C4       		.byte	0xc4
  2063 009e 53000000 		.4byte	0x53
@@ -5613,18 +5613,18 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2068 00a9 02       		.uleb128 0x2
  2069 00aa 08       		.byte	0x8
  2070 00ab 04       		.byte	0x4
- 2071 00ac 64050000 		.4byte	.LASF15
+ 2071 00ac 6D050000 		.4byte	.LASF15
  2072 00b0 02       		.uleb128 0x2
  2073 00b1 01       		.byte	0x1
  2074 00b2 08       		.byte	0x8
- 2075 00b3 1A040000 		.4byte	.LASF16
+ 2075 00b3 E8030000 		.4byte	.LASF16
  2076 00b7 05       		.uleb128 0x5
- 2077 00b8 2C040000 		.4byte	.LASF17
+ 2077 00b8 FA030000 		.4byte	.LASF17
  2078 00bc 04       		.byte	0x4
  2079 00bd 6401     		.2byte	0x164
  2080 00bf 53000000 		.4byte	0x53
  2081 00c3 05       		.uleb128 0x5
- 2082 00c4 45050000 		.4byte	.LASF18
+ 2082 00c4 4E050000 		.4byte	.LASF18
  2083 00c8 04       		.byte	0x4
  2084 00c9 6C01     		.2byte	0x16c
  2085 00cb CF000000 		.4byte	0xcf
@@ -5638,26 +5638,26 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2093 00dc 04       		.byte	0x4
  2094 00dd 08       		.uleb128 0x8
  2095 00de 08       		.byte	0x8
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 95
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 95
 
 
  2096 00df 05       		.byte	0x5
  2097 00e0 50       		.byte	0x50
  2098 00e1 0A010000 		.4byte	0x10a
  2099 00e5 09       		.uleb128 0x9
- 2100 00e6 17060000 		.4byte	.LASF20
+ 2100 00e6 20060000 		.4byte	.LASF20
  2101 00ea 05       		.byte	0x5
  2102 00eb 52       		.byte	0x52
  2103 00ec 81000000 		.4byte	0x81
  2104 00f0 00       		.byte	0
  2105 00f1 09       		.uleb128 0x9
- 2106 00f2 CA010000 		.4byte	.LASF21
+ 2106 00f2 98010000 		.4byte	.LASF21
  2107 00f6 05       		.byte	0x5
  2108 00f7 53       		.byte	0x53
  2109 00f8 8C000000 		.4byte	0x8c
  2110 00fc 02       		.byte	0x2
  2111 00fd 09       		.uleb128 0x9
- 2112 00fe 79020000 		.4byte	.LASF22
+ 2112 00fe 47020000 		.4byte	.LASF22
  2113 0102 05       		.byte	0x5
  2114 0103 54       		.byte	0x54
  2115 0104 0A010000 		.4byte	0x10a
@@ -5667,7 +5667,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2119 010b 04       		.byte	0x4
  2120 010c 81000000 		.4byte	0x81
  2121 0110 03       		.uleb128 0x3
- 2122 0111 D6050000 		.4byte	.LASF23
+ 2122 0111 DF050000 		.4byte	.LASF23
  2123 0115 05       		.byte	0x5
  2124 0116 55       		.byte	0x55
  2125 0117 DD000000 		.4byte	0xdd
@@ -5677,34 +5677,34 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2129 011e 57       		.byte	0x57
  2130 011f 48010000 		.4byte	0x148
  2131 0123 09       		.uleb128 0x9
- 2132 0124 C3030000 		.4byte	.LASF24
+ 2132 0124 91030000 		.4byte	.LASF24
  2133 0128 05       		.byte	0x5
  2134 0129 59       		.byte	0x59
  2135 012a B7000000 		.4byte	0xb7
  2136 012e 00       		.byte	0
  2137 012f 09       		.uleb128 0x9
- 2138 0130 CA010000 		.4byte	.LASF21
+ 2138 0130 98010000 		.4byte	.LASF21
  2139 0134 05       		.byte	0x5
  2140 0135 5A       		.byte	0x5a
  2141 0136 8C000000 		.4byte	0x8c
  2142 013a 04       		.byte	0x4
  2143 013b 09       		.uleb128 0x9
- 2144 013c 76010000 		.4byte	.LASF25
+ 2144 013c 44010000 		.4byte	.LASF25
  2145 0140 05       		.byte	0x5
  2146 0141 5B       		.byte	0x5b
  2147 0142 0A010000 		.4byte	0x10a
  2148 0146 08       		.byte	0x8
  2149 0147 00       		.byte	0
  2150 0148 03       		.uleb128 0x3
- 2151 0149 DD030000 		.4byte	.LASF26
+ 2151 0149 AB030000 		.4byte	.LASF26
  2152 014d 05       		.byte	0x5
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 96
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 96
 
 
  2153 014e 5C       		.byte	0x5c
  2154 014f 1B010000 		.4byte	0x11b
  2155 0153 03       		.uleb128 0x3
- 2156 0154 3E040000 		.4byte	.LASF27
+ 2156 0154 8C060000 		.4byte	.LASF27
  2157 0158 05       		.byte	0x5
  2158 0159 60       		.byte	0x60
  2159 015a 5E010000 		.4byte	0x15e
@@ -5730,19 +5730,19 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2179 0183 16       		.byte	0x16
  2180 0184 AD010000 		.4byte	0x1ad
  2181 0188 09       		.uleb128 0x9
- 2182 0189 84040000 		.4byte	.LASF28
+ 2182 0189 8D040000 		.4byte	.LASF28
  2183 018d 06       		.byte	0x6
  2184 018e 18       		.byte	0x18
  2185 018f 97000000 		.4byte	0x97
  2186 0193 00       		.byte	0
  2187 0194 09       		.uleb128 0x9
- 2188 0195 1F060000 		.4byte	.LASF29
+ 2188 0195 28060000 		.4byte	.LASF29
  2189 0199 06       		.byte	0x6
  2190 019a 19       		.byte	0x19
  2191 019b 81000000 		.4byte	0x81
  2192 019f 04       		.byte	0x4
  2193 01a0 09       		.uleb128 0x9
- 2194 01a1 58010000 		.4byte	.LASF30
+ 2194 01a1 26010000 		.4byte	.LASF30
  2195 01a5 06       		.byte	0x6
  2196 01a6 1A       		.byte	0x1a
  2197 01a7 AD010000 		.4byte	0x1ad
@@ -5756,15 +5756,15 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2205 01bb 02       		.byte	0x2
  2206 01bc 00       		.byte	0
  2207 01bd 03       		.uleb128 0x3
- 2208 01be B2010000 		.4byte	.LASF31
+ 2208 01be 80010000 		.4byte	.LASF31
  2209 01c2 06       		.byte	0x6
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 97
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 97
 
 
  2210 01c3 1C       		.byte	0x1c
  2211 01c4 80010000 		.4byte	0x180
  2212 01c8 0F       		.uleb128 0xf
- 2213 01c9 E6020000 		.4byte	.LASF37
+ 2213 01c9 B4020000 		.4byte	.LASF37
  2214 01cd 01       		.byte	0x1
  2215 01ce 8101     		.2byte	0x181
  2216 01d0 8C000000 		.4byte	0x8c
@@ -5774,13 +5774,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2220 01dd 9C       		.byte	0x9c
  2221 01de 13020000 		.4byte	0x213
  2222 01e2 10       		.uleb128 0x10
- 2223 01e3 27050000 		.4byte	.LASF32
+ 2223 01e3 30050000 		.4byte	.LASF32
  2224 01e7 01       		.byte	0x1
  2225 01e8 8101     		.2byte	0x181
  2226 01ea 13020000 		.4byte	0x213
  2227 01ee 00000000 		.4byte	.LLST0
  2228 01f2 10       		.uleb128 0x10
- 2229 01f3 87050000 		.4byte	.LASF33
+ 2229 01f3 90050000 		.4byte	.LASF33
  2230 01f7 01       		.byte	0x1
  2231 01f8 8101     		.2byte	0x181
  2232 01fa 8C000000 		.4byte	0x8c
@@ -5798,7 +5798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2244 0219 12       		.uleb128 0x12
  2245 021a 81000000 		.4byte	0x81
  2246 021e 13       		.uleb128 0x13
- 2247 021f 8C050000 		.4byte	.LASF35
+ 2247 021f 95050000 		.4byte	.LASF35
  2248 0223 01       		.byte	0x1
  2249 0224 1E05     		.2byte	0x51e
  2250 0226 00000000 		.4byte	.LFB70
@@ -5815,10 +5815,10 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2261 0241 50       		.byte	0x50
  2262 0242 00       		.byte	0
  2263 0243 13       		.uleb128 0x13
- 2264 0244 11010000 		.4byte	.LASF36
+ 2264 0244 DF000000 		.4byte	.LASF36
  2265 0248 01       		.byte	0x1
  2266 0249 7004     		.2byte	0x470
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 98
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 98
 
 
  2267 024b 00000000 		.4byte	.LFB67
@@ -5831,7 +5831,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2274 025e A20B0000 		.4byte	0xba2
  2275 0262 00       		.byte	0
  2276 0263 0F       		.uleb128 0xf
- 2277 0264 E0010000 		.4byte	.LASF38
+ 2277 0264 AE010000 		.4byte	.LASF38
  2278 0268 01       		.byte	0x1
  2279 0269 C90A     		.2byte	0xac9
  2280 026b B7000000 		.4byte	0xb7
@@ -5841,25 +5841,25 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2284 0278 9C       		.byte	0x9c
  2285 0279 FA020000 		.4byte	0x2fa
  2286 027d 10       		.uleb128 0x10
- 2287 027e C3030000 		.4byte	.LASF24
+ 2287 027e 91030000 		.4byte	.LASF24
  2288 0282 01       		.byte	0x1
  2289 0283 C90A     		.2byte	0xac9
  2290 0285 81000000 		.4byte	0x81
  2291 0289 69000000 		.4byte	.LLST3
  2292 028d 10       		.uleb128 0x10
- 2293 028e 27050000 		.4byte	.LASF32
+ 2293 028e 30050000 		.4byte	.LASF32
  2294 0292 01       		.byte	0x1
  2295 0293 C90A     		.2byte	0xac9
  2296 0295 0A010000 		.4byte	0x10a
  2297 0299 A2000000 		.4byte	.LLST4
  2298 029d 10       		.uleb128 0x10
- 2299 029e 87050000 		.4byte	.LASF33
+ 2299 029e 90050000 		.4byte	.LASF33
  2300 02a2 01       		.byte	0x1
  2301 02a3 C90A     		.2byte	0xac9
  2302 02a5 8C000000 		.4byte	0x8c
  2303 02a9 CB000000 		.4byte	.LLST5
  2304 02ad 16       		.uleb128 0x16
- 2305 02ae 3F010000 		.4byte	.LASF39
+ 2305 02ae 0D010000 		.4byte	.LASF39
  2306 02b2 01       		.byte	0x1
  2307 02b3 CC0A     		.2byte	0xacc
  2308 02b5 8C000000 		.4byte	0x8c
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2321 02d1 01       		.uleb128 0x1
  2322 02d2 50       		.byte	0x50
  2323 02d3 02       		.uleb128 0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 99
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 99
 
 
  2324 02d4 74       		.byte	0x74
@@ -5914,7 +5914,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2354 02f8 00       		.byte	0
  2355 02f9 00       		.byte	0
  2356 02fa 1A       		.uleb128 0x1a
- 2357 02fb A1030000 		.4byte	.LASF43
+ 2357 02fb 6F030000 		.4byte	.LASF43
  2358 02ff 01       		.byte	0x1
  2359 0300 C901     		.2byte	0x1c9
  2360 0302 00000000 		.4byte	.LFB64
@@ -5923,7 +5923,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2363 030b 9C       		.byte	0x9c
  2364 030c 1F030000 		.4byte	0x31f
  2365 0310 14       		.uleb128 0x14
- 2366 0311 6C020000 		.4byte	.LASF40
+ 2366 0311 3A020000 		.4byte	.LASF40
  2367 0315 01       		.byte	0x1
  2368 0316 C901     		.2byte	0x1c9
  2369 0318 53010000 		.4byte	0x153
@@ -5931,14 +5931,14 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2371 031d 50       		.byte	0x50
  2372 031e 00       		.byte	0
  2373 031f 1B       		.uleb128 0x1b
- 2374 0320 AA050000 		.4byte	.LASF51
+ 2374 0320 B3050000 		.4byte	.LASF51
  2375 0324 01       		.byte	0x1
  2376 0325 1302     		.2byte	0x213
  2377 0327 81000000 		.4byte	0x81
  2378 032b 00000000 		.4byte	.LFB65
  2379 032f 30000000 		.4byte	.LFE65-.LFB65
  2380 0333 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 100
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 100
 
 
  2381 0334 9C       		.byte	0x9c
@@ -5950,13 +5950,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2387 0341 97000000 		.4byte	0x97
  2388 0345 FF000000 		.4byte	.LLST7
  2389 0349 10       		.uleb128 0x10
- 2390 034a A1020000 		.4byte	.LASF42
+ 2390 034a 6F020000 		.4byte	.LASF42
  2391 034e 01       		.byte	0x1
  2392 034f 1302     		.2byte	0x213
  2393 0351 97000000 		.4byte	0x97
  2394 0355 2B010000 		.4byte	.LLST8
  2395 0359 10       		.uleb128 0x10
- 2396 035a 87050000 		.4byte	.LASF33
+ 2396 035a 90050000 		.4byte	.LASF33
  2397 035e 01       		.byte	0x1
  2398 035f 1302     		.2byte	0x213
  2399 0361 97000000 		.4byte	0x97
@@ -5978,7 +5978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2415 0387 00       		.byte	0
  2416 0388 00       		.byte	0
  2417 0389 1A       		.uleb128 0x1a
- 2418 038a DA000000 		.4byte	.LASF44
+ 2418 038a A8000000 		.4byte	.LASF44
  2419 038e 01       		.byte	0x1
  2420 038f ED0A     		.2byte	0xaed
  2421 0391 00000000 		.4byte	.LFB74
@@ -5987,22 +5987,22 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2424 039a 9C       		.byte	0x9c
  2425 039b 3F040000 		.4byte	0x43f
  2426 039f 10       		.uleb128 0x10
- 2427 03a0 61060000 		.4byte	.LASF45
+ 2427 03a0 6A060000 		.4byte	.LASF45
  2428 03a4 01       		.byte	0x1
  2429 03a5 ED0A     		.2byte	0xaed
  2430 03a7 97000000 		.4byte	0x97
  2431 03ab 9F010000 		.4byte	.LLST11
  2432 03af 10       		.uleb128 0x10
- 2433 03b0 FF000000 		.4byte	.LASF46
+ 2433 03b0 CD000000 		.4byte	.LASF46
  2434 03b4 01       		.byte	0x1
  2435 03b5 ED0A     		.2byte	0xaed
  2436 03b7 81000000 		.4byte	0x81
  2437 03bb C0010000 		.4byte	.LLST12
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 101
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 101
 
 
  2438 03bf 16       		.uleb128 0x16
- 2439 03c0 6B050000 		.4byte	.LASF47
+ 2439 03c0 74050000 		.4byte	.LASF47
  2440 03c4 01       		.byte	0x1
  2441 03c5 EF0A     		.2byte	0xaef
  2442 03c7 97000000 		.4byte	0x97
@@ -6016,14 +6016,14 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2450 03dc 91       		.byte	0x91
  2451 03dd F07D     		.sleb128 -272
  2452 03df 1C       		.uleb128 0x1c
- 2453 03e0 0F060000 		.4byte	.LASF49
+ 2453 03e0 18060000 		.4byte	.LASF49
  2454 03e4 01       		.byte	0x1
  2455 03e5 F30A     		.2byte	0xaf3
  2456 03e7 81000000 		.4byte	0x81
  2457 03eb 01       		.uleb128 0x1
  2458 03ec 55       		.byte	0x55
  2459 03ed 16       		.uleb128 0x16
- 2460 03ee 86020000 		.4byte	.LASF50
+ 2460 03ee 54020000 		.4byte	.LASF50
  2461 03f2 01       		.byte	0x1
  2462 03f3 F90A     		.2byte	0xaf9
  2463 03f5 8C000000 		.4byte	0x8c
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2492 0432 75       		.byte	0x75
  2493 0433 00       		.sleb128 0
  2494 0434 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 102
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 102
 
 
  2495 0435 15       		.uleb128 0x15
@@ -6073,7 +6073,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2504 044d FF       		.byte	0xff
  2505 044e 00       		.byte	0
  2506 044f 1B       		.uleb128 0x1b
- 2507 0450 B5020000 		.4byte	.LASF52
+ 2507 0450 83020000 		.4byte	.LASF52
  2508 0454 01       		.byte	0x1
  2509 0455 2A0B     		.2byte	0xb2a
  2510 0457 97000000 		.4byte	0x97
@@ -6083,7 +6083,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2514 0464 9C       		.byte	0x9c
  2515 0465 C9040000 		.4byte	0x4c9
  2516 0469 10       		.uleb128 0x10
- 2517 046a 72030000 		.4byte	.LASF53
+ 2517 046a 40030000 		.4byte	.LASF53
  2518 046e 01       		.byte	0x1
  2519 046f 2A0B     		.2byte	0xb2a
  2520 0471 81000000 		.4byte	0x81
@@ -6095,13 +6095,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2526 0481 81000000 		.4byte	0x81
  2527 0485 74020000 		.4byte	.LLST17
  2528 0489 16       		.uleb128 0x16
- 2529 048a 8D020000 		.4byte	.LASF55
+ 2529 048a 5B020000 		.4byte	.LASF55
  2530 048e 01       		.byte	0x1
  2531 048f 2C0B     		.2byte	0xb2c
  2532 0491 97000000 		.4byte	0x97
  2533 0495 C1030000 		.4byte	.LLST18
  2534 0499 16       		.uleb128 0x16
- 2535 049a B9030000 		.4byte	.LASF56
+ 2535 049a 87030000 		.4byte	.LASF56
  2536 049e 01       		.byte	0x1
  2537 049f 2D0B     		.2byte	0xb2d
  2538 04a1 81000000 		.4byte	0x81
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2549 04c2 18       		.uleb128 0x18
  2550 04c3 01       		.uleb128 0x1
  2551 04c4 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 103
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 103
 
 
  2552 04c5 01       		.uleb128 0x1
@@ -6126,7 +6126,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2554 04c7 00       		.byte	0
  2555 04c8 00       		.byte	0
  2556 04c9 1A       		.uleb128 0x1a
- 2557 04ca 5E030000 		.4byte	.LASF58
+ 2557 04ca 2C030000 		.4byte	.LASF58
  2558 04ce 01       		.byte	0x1
  2559 04cf CA04     		.2byte	0x4ca
  2560 04d1 00000000 		.4byte	.LFB69
@@ -6138,7 +6138,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2566 04e0 0E000000 		.4byte	.LBB2
  2567 04e4 22000000 		.4byte	.LBE2-.LBB2
  2568 04e8 16       		.uleb128 0x16
- 2569 04e9 07010000 		.4byte	.LASF59
+ 2569 04e9 D5000000 		.4byte	.LASF59
  2570 04ed 01       		.byte	0x1
  2571 04ee E604     		.2byte	0x4e6
  2572 04f0 81000000 		.4byte	0x81
@@ -6178,11 +6178,11 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2606 052d 1E020000 		.4byte	0x21e
  2607 0531 00       		.byte	0
  2608 0532 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 104
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 104
 
 
  2609 0533 1B       		.uleb128 0x1b
- 2610 0534 84010000 		.4byte	.LASF60
+ 2610 0534 52010000 		.4byte	.LASF60
  2611 0538 01       		.byte	0x1
  2612 0539 4905     		.2byte	0x549
  2613 053b B7000000 		.4byte	0xb7
@@ -6216,7 +6216,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2641 0585 81000000 		.4byte	0x81
  2642 0589 2B060000 		.4byte	.LLST25
  2643 058d 16       		.uleb128 0x16
- 2644 058e 36020000 		.4byte	.LASF62
+ 2644 058e 04020000 		.4byte	.LASF62
  2645 0592 01       		.byte	0x1
  2646 0593 5205     		.2byte	0x552
  2647 0595 81000000 		.4byte	0x81
@@ -6226,7 +6226,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2651 05a2 10000000 		.4byte	.LBE3-.LBB3
  2652 05a6 BB050000 		.4byte	0x5bb
  2653 05aa 16       		.uleb128 0x16
- 2654 05ab 09020000 		.4byte	.LASF63
+ 2654 05ab D7010000 		.4byte	.LASF63
  2655 05af 01       		.byte	0x1
  2656 05b0 6B05     		.2byte	0x56b
  2657 05b2 81000000 		.4byte	0x81
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2663 05c4 D4050000 		.4byte	0x5d4
  2664 05c8 18       		.uleb128 0x18
  2665 05c9 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 105
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 105
 
 
  2666 05ca 51       		.byte	0x51
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2720 061b 50       		.byte	0x50
  2721 061c 01       		.uleb128 0x1
  2722 061d 33       		.byte	0x33
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 106
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 106
 
 
  2723 061e 00       		.byte	0
@@ -6319,7 +6319,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2738 0633 00       		.byte	0
  2739 0634 00       		.byte	0
  2740 0635 1A       		.uleb128 0x1a
- 2741 0636 FF050000 		.4byte	.LASF64
+ 2741 0636 08060000 		.4byte	.LASF64
  2742 063a 01       		.byte	0x1
  2743 063b 9504     		.2byte	0x495
  2744 063d 00000000 		.4byte	.LFB68
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2777 0687 D0FF0F   		.uleb128 0x3ffd0
  2778 068a 00       		.byte	0
  2779 068b 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 107
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 107
 
 
  2780 068c 15       		.uleb128 0x15
@@ -6369,7 +6369,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2785 069a A20B0000 		.4byte	0xba2
  2786 069e 00       		.byte	0
  2787 069f 13       		.uleb128 0x13
- 2788 06a0 57040000 		.4byte	.LASF65
+ 2788 06a0 60040000 		.4byte	.LASF65
  2789 06a4 01       		.byte	0x1
  2790 06a5 6606     		.2byte	0x666
  2791 06a7 00000000 		.4byte	.LFB72
@@ -6378,13 +6378,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2794 06b0 9C       		.byte	0x9c
  2795 06b1 7C0A0000 		.4byte	0xa7c
  2796 06b5 10       		.uleb128 0x10
- 2797 06b6 6B040000 		.4byte	.LASF66
+ 2797 06b6 74040000 		.4byte	.LASF66
  2798 06ba 01       		.byte	0x1
  2799 06bb 6606     		.2byte	0x666
  2800 06bd 81000000 		.4byte	0x81
  2801 06c1 DD060000 		.4byte	.LLST30
  2802 06c5 1C       		.uleb128 0x1c
- 2803 06c6 2B020000 		.4byte	.LASF67
+ 2803 06c6 F9010000 		.4byte	.LASF67
  2804 06ca 01       		.byte	0x1
  2805 06cb 6D06     		.2byte	0x66d
  2806 06cd 8C000000 		.4byte	0x8c
@@ -6392,7 +6392,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2808 06d2 91       		.byte	0x91
  2809 06d3 56       		.sleb128 -42
  2810 06d4 16       		.uleb128 0x16
- 2811 06d5 7C040000 		.4byte	.LASF68
+ 2811 06d5 85040000 		.4byte	.LASF68
  2812 06d9 01       		.byte	0x1
  2813 06da 6E06     		.2byte	0x66e
  2814 06dc 8C000000 		.4byte	0x8c
@@ -6404,13 +6404,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2820 06ec 81000000 		.4byte	0x81
  2821 06f0 B8070000 		.4byte	.LLST32
  2822 06f4 16       		.uleb128 0x16
- 2823 06f5 3E030000 		.4byte	.LASF70
+ 2823 06f5 0C030000 		.4byte	.LASF70
  2824 06f9 01       		.byte	0x1
  2825 06fa 7006     		.2byte	0x670
  2826 06fc 8C000000 		.4byte	0x8c
  2827 0700 07090000 		.4byte	.LLST33
  2828 0704 16       		.uleb128 0x16
- 2829 0705 35040000 		.4byte	.LASF71
+ 2829 0705 03040000 		.4byte	.LASF71
  2830 0709 01       		.byte	0x1
  2831 070a 7106     		.2byte	0x671
  2832 070c B7000000 		.4byte	0xb7
@@ -6418,32 +6418,32 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2834 0714 16       		.uleb128 0x16
  2835 0715 48000000 		.4byte	.LASF72
  2836 0719 01       		.byte	0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 108
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 108
 
 
  2837 071a 7206     		.2byte	0x672
  2838 071c 8C000000 		.4byte	0x8c
  2839 0720 6C090000 		.4byte	.LLST35
  2840 0724 16       		.uleb128 0x16
- 2841 0725 96020000 		.4byte	.LASF73
+ 2841 0725 64020000 		.4byte	.LASF73
  2842 0729 01       		.byte	0x1
  2843 072a 7306     		.2byte	0x673
  2844 072c 81000000 		.4byte	0x81
  2845 0730 AD090000 		.4byte	.LLST36
  2846 0734 16       		.uleb128 0x16
- 2847 0735 59020000 		.4byte	.LASF74
+ 2847 0735 27020000 		.4byte	.LASF74
  2848 0739 01       		.byte	0x1
  2849 073a 8106     		.2byte	0x681
  2850 073c 81000000 		.4byte	0x81
  2851 0740 D7090000 		.4byte	.LLST37
  2852 0744 16       		.uleb128 0x16
- 2853 0745 C8000000 		.4byte	.LASF75
+ 2853 0745 96000000 		.4byte	.LASF75
  2854 0749 01       		.byte	0x1
  2855 074a 8206     		.2byte	0x682
  2856 074c 8C000000 		.4byte	0x8c
  2857 0750 0D0A0000 		.4byte	.LLST38
  2858 0754 1C       		.uleb128 0x1c
- 2859 0755 F8030000 		.4byte	.LASF76
+ 2859 0755 C6030000 		.4byte	.LASF76
  2860 0759 01       		.byte	0x1
  2861 075a 8506     		.2byte	0x685
  2862 075c 7C0A0000 		.4byte	0xa7c
@@ -6451,7 +6451,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2864 0761 91       		.byte	0x91
  2865 0762 A87D     		.sleb128 -344
  2866 0764 1C       		.uleb128 0x1c
- 2867 0765 CC020000 		.4byte	.LASF77
+ 2867 0765 9A020000 		.4byte	.LASF77
  2868 0769 01       		.byte	0x1
  2869 076a 8606     		.2byte	0x686
  2870 076c 7C0A0000 		.4byte	0xa7c
@@ -6478,10 +6478,10 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2891 07a2 8C000000 		.4byte	0x8c
  2892 07a6 D70A0000 		.4byte	.LLST40
  2893 07aa 16       		.uleb128 0x16
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 109
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 109
 
 
- 2894 07ab F7010000 		.4byte	.LASF80
+ 2894 07ab C5010000 		.4byte	.LASF80
  2895 07af 01       		.byte	0x1
  2896 07b0 AC07     		.2byte	0x7ac
  2897 07b2 81000000 		.4byte	0x81
@@ -6491,7 +6491,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2901 07bc F0000000 		.4byte	.Ldebug_ranges0+0xf0
  2902 07c0 60080000 		.4byte	0x860
  2903 07c4 16       		.uleb128 0x16
- 2904 07c5 C1050000 		.4byte	.LASF81
+ 2904 07c5 CA050000 		.4byte	.LASF81
  2905 07c9 01       		.byte	0x1
  2906 07ca 3508     		.2byte	0x835
  2907 07cc 8C000000 		.4byte	0x8c
@@ -6506,7 +6506,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2916 07e5 8C000000 		.4byte	0x8c
  2917 07e9 330B0000 		.4byte	.LLST43
  2918 07ed 16       		.uleb128 0x16
- 2919 07ee 58060000 		.4byte	.LASF82
+ 2919 07ee 61060000 		.4byte	.LASF82
  2920 07f2 01       		.byte	0x1
  2921 07f3 5E08     		.2byte	0x85e
  2922 07f5 8C000000 		.4byte	0x8c
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2948 081f 50       		.byte	0x50
  2949 0820 02       		.uleb128 0x2
  2950 0821 79       		.byte	0x79
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 110
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 110
 
 
  2951 0822 00       		.sleb128 0
@@ -6585,7 +6585,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  2992 0865 1A000000 		.4byte	.LBE12-.LBB12
  2993 0869 7E080000 		.4byte	0x87e
  2994 086d 1C       		.uleb128 0x1c
- 2995 086e F2000000 		.4byte	.LASF83
+ 2995 086e C0000000 		.4byte	.LASF83
  2996 0872 01       		.byte	0x1
  2997 0873 A609     		.2byte	0x9a6
  2998 0875 BD010000 		.4byte	0x1bd
@@ -6597,8 +6597,8 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3004 087f 30010000 		.4byte	.Ldebug_ranges0+0x130
  3005 0883 48090000 		.4byte	0x948
  3006 0887 16       		.uleb128 0x16
- 3007 0888 86020000 		.4byte	.LASF50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 111
+ 3007 0888 54020000 		.4byte	.LASF50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 111
 
 
  3008 088c 01       		.byte	0x1
@@ -6606,19 +6606,19 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3010 088f 8C000000 		.4byte	0x8c
  3011 0893 AA0B0000 		.4byte	.LLST45
  3012 0897 16       		.uleb128 0x16
- 3013 0898 35010000 		.4byte	.LASF84
+ 3013 0898 03010000 		.4byte	.LASF84
  3014 089c 01       		.byte	0x1
  3015 089d EA09     		.2byte	0x9ea
  3016 089f 8C000000 		.4byte	0x8c
  3017 08a3 C80B0000 		.4byte	.LLST46
  3018 08a7 16       		.uleb128 0x16
- 3019 08a8 5C050000 		.4byte	.LASF85
+ 3019 08a8 65050000 		.4byte	.LASF85
  3020 08ac 01       		.byte	0x1
  3021 08ad ED09     		.2byte	0x9ed
  3022 08af 97000000 		.4byte	0x97
  3023 08b3 DB0B0000 		.4byte	.LLST47
  3024 08b7 16       		.uleb128 0x16
- 3025 08b8 3F010000 		.4byte	.LASF39
+ 3025 08b8 0D010000 		.4byte	.LASF39
  3026 08bc 01       		.byte	0x1
  3027 08bd EE09     		.2byte	0x9ee
  3028 08bf 81000000 		.4byte	0x81
@@ -6628,7 +6628,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3032 08cc 20000000 		.4byte	.LBE14-.LBB14
  3033 08d0 E5080000 		.4byte	0x8e5
  3034 08d4 16       		.uleb128 0x16
- 3035 08d5 11020000 		.4byte	.LASF86
+ 3035 08d5 DF010000 		.4byte	.LASF86
  3036 08d9 01       		.byte	0x1
  3037 08da 2E0A     		.2byte	0xa2e
  3038 08dc 8C000000 		.4byte	0x8c
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3062 090f 01       		.uleb128 0x1
  3063 0910 52       		.byte	0x52
  3064 0911 03       		.uleb128 0x3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 112
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 112
 
 
  3065 0912 0A       		.byte	0xa
@@ -6704,7 +6704,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3105 094d 42000000 		.4byte	.LBE15-.LBB15
  3106 0951 8A090000 		.4byte	0x98a
  3107 0955 1C       		.uleb128 0x1c
- 3108 0956 45020000 		.4byte	.LASF87
+ 3108 0956 13020000 		.4byte	.LASF87
  3109 095a 01       		.byte	0x1
  3110 095b 870A     		.2byte	0xa87
  3111 095d 10010000 		.4byte	0x110
@@ -6712,13 +6712,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3113 0962 91       		.byte	0x91
  3114 0963 E87A     		.sleb128 -664
  3115 0965 1C       		.uleb128 0x1c
- 3116 0966 05040000 		.4byte	.LASF88
+ 3116 0966 D3030000 		.4byte	.LASF88
  3117 096a 01       		.byte	0x1
  3118 096b 880A     		.2byte	0xa88
  3119 096d 48010000 		.4byte	0x148
  3120 0971 03       		.uleb128 0x3
  3121 0972 91       		.byte	0x91
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 113
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 113
 
 
  3122 0973 F07A     		.sleb128 -656
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3176 09cb 01       		.uleb128 0x1
  3177 09cc 52       		.byte	0x52
  3178 09cd 02       		.uleb128 0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 114
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 114
 
 
  3179 09ce 78       		.byte	0x78
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3233 0a30 490A0000 		.4byte	0xa49
  3234 0a34 18       		.uleb128 0x18
  3235 0a35 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 115
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 115
 
 
  3236 0a36 52       		.byte	0x52
@@ -6898,12 +6898,12 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3290 0a85 21       		.uleb128 0x21
  3291 0a86 D4000000 		.4byte	0xd4
  3292 0a8a 2B01     		.2byte	0x12b
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 116
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 116
 
 
  3293 0a8c 00       		.byte	0
  3294 0a8d 1A       		.uleb128 0x1a
- 3295 0a8e 1A020000 		.4byte	.LASF89
+ 3295 0a8e E8010000 		.4byte	.LASF89
  3296 0a92 01       		.byte	0x1
  3297 0a93 4303     		.2byte	0x343
  3298 0a95 00000000 		.4byte	.LFB66
@@ -6912,13 +6912,13 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3301 0a9e 9C       		.byte	0x9c
  3302 0a9f 310B0000 		.4byte	0xb31
  3303 0aa3 16       		.uleb128 0x16
- 3304 0aa4 73040000 		.4byte	.LASF90
+ 3304 0aa4 7C040000 		.4byte	.LASF90
  3305 0aa8 01       		.byte	0x1
  3306 0aa9 4D03     		.2byte	0x34d
  3307 0aab B7000000 		.4byte	0xb7
  3308 0aaf 960C0000 		.4byte	.LLST50
  3309 0ab3 16       		.uleb128 0x16
- 3310 0ab4 36020000 		.4byte	.LASF62
+ 3310 0ab4 04020000 		.4byte	.LASF62
  3311 0ab8 01       		.byte	0x1
  3312 0ab9 5003     		.2byte	0x350
  3313 0abb 81000000 		.4byte	0x81
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3347 0afe 01       		.uleb128 0x1
  3348 0aff 30       		.byte	0x30
  3349 0b00 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 117
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 117
 
 
  3350 0b01 17       		.uleb128 0x17
@@ -6986,7 +6986,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3372 0b2c 43020000 		.4byte	0x243
  3373 0b30 00       		.byte	0
  3374 0b31 22       		.uleb128 0x22
- 3375 0b32 73050000 		.4byte	.LASF91
+ 3375 0b32 7C050000 		.4byte	.LASF91
  3376 0b36 01       		.byte	0x1
  3377 0b37 6F       		.byte	0x6f
  3378 0b38 53010000 		.4byte	0x153
@@ -6994,7 +6994,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3380 0b3d 03       		.byte	0x3
  3381 0b3e 00000000 		.4byte	Bootloader_callback
  3382 0b42 23       		.uleb128 0x23
- 3383 0b43 4A030000 		.4byte	.LASF92
+ 3383 0b43 18030000 		.4byte	.LASF92
  3384 0b47 01       		.byte	0x1
  3385 0b48 2E       		.byte	0x2e
  3386 0b49 19020000 		.4byte	0x219
@@ -7002,7 +7002,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3388 0b4e 03       		.byte	0x3
  3389 0b4f 00000000 		.4byte	Bootloader_Checksum
  3390 0b53 23       		.uleb128 0x23
- 3391 0b54 87030000 		.4byte	.LASF93
+ 3391 0b54 55030000 		.4byte	.LASF93
  3392 0b58 01       		.byte	0x1
  3393 0b59 32       		.byte	0x32
  3394 0b5a 13020000 		.4byte	0x213
@@ -7010,7 +7010,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3396 0b5f 03       		.byte	0x3
  3397 0b60 00000000 		.4byte	Bootloader_ChecksumAccess
  3398 0b64 23       		.uleb128 0x23
- 3399 0b65 28060000 		.4byte	.LASF94
+ 3399 0b65 31060000 		.4byte	.LASF94
  3400 0b69 01       		.byte	0x1
  3401 0b6a 3A       		.byte	0x3a
  3402 0b6b 750B0000 		.4byte	0xb75
@@ -7018,12 +7018,12 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3404 0b70 03       		.byte	0x3
  3405 0b71 00000000 		.4byte	Bootloader_SizeBytes
  3406 0b75 12       		.uleb128 0x12
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 118
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 118
 
 
  3407 0b76 97000000 		.4byte	0x97
  3408 0b7a 23       		.uleb128 0x23
- 3409 0b7b 3D060000 		.4byte	.LASF95
+ 3409 0b7b 46060000 		.4byte	.LASF95
  3410 0b7f 01       		.byte	0x1
  3411 0b80 3B       		.byte	0x3b
  3412 0b81 8B0B0000 		.4byte	0xb8b
@@ -7034,18 +7034,18 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3417 0b8c 04       		.byte	0x4
  3418 0b8d 750B0000 		.4byte	0xb75
  3419 0b91 24       		.uleb128 0x24
- 3420 0b92 69060000 		.4byte	.LASF96
+ 3420 0b92 72060000 		.4byte	.LASF96
  3421 0b96 07       		.byte	0x7
  3422 0b97 2A06     		.2byte	0x62a
  3423 0b99 9D0B0000 		.4byte	0xb9d
  3424 0b9d 06       		.uleb128 0x6
  3425 0b9e 76000000 		.4byte	0x76
  3426 0ba2 25       		.uleb128 0x25
- 3427 0ba3 2E050000 		.4byte	.LASF99
+ 3427 0ba3 37050000 		.4byte	.LASF99
  3428 0ba7 0A       		.byte	0xa
  3429 0ba8 7C       		.byte	0x7c
  3430 0ba9 26       		.uleb128 0x26
- 3431 0baa 83060000 		.4byte	.LASF97
+ 3431 0baa A5060000 		.4byte	.LASF97
  3432 0bae 08       		.byte	0x8
  3433 0baf A8       		.byte	0xa8
  3434 0bb0 B7000000 		.4byte	0xb7
@@ -7063,7 +7063,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3446 0bce 04       		.byte	0x4
  3447 0bcf 8C000000 		.4byte	0x8c
  3448 0bd3 27       		.uleb128 0x27
- 3449 0bd4 04030000 		.4byte	.LASF102
+ 3449 0bd4 D2020000 		.4byte	.LASF102
  3450 0bd8 0A       		.byte	0xa
  3451 0bd9 80       		.byte	0x80
  3452 0bda E40B0000 		.4byte	0xbe4
@@ -7071,14 +7071,14 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3454 0bdf 81000000 		.4byte	0x81
  3455 0be3 00       		.byte	0
  3456 0be4 26       		.uleb128 0x26
- 3457 0be5 F0050000 		.4byte	.LASF98
+ 3457 0be5 F9050000 		.4byte	.LASF98
  3458 0be9 09       		.byte	0x9
  3459 0bea 4A       		.byte	0x4a
  3460 0beb B7000000 		.4byte	0xb7
  3461 0bef 030C0000 		.4byte	0xc03
  3462 0bf3 0C       		.uleb128 0xc
  3463 0bf4 81000000 		.4byte	0x81
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 119
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 119
 
 
  3464 0bf8 0C       		.uleb128 0xc
@@ -7087,11 +7087,11 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3467 0bfe 13020000 		.4byte	0x213
  3468 0c02 00       		.byte	0
  3469 0c03 25       		.uleb128 0x25
- 3470 0c04 1F040000 		.4byte	.LASF100
+ 3470 0c04 ED030000 		.4byte	.LASF100
  3471 0c08 0A       		.byte	0xa
  3472 0c09 96       		.byte	0x96
  3473 0c0a 26       		.uleb128 0x26
- 3474 0c0b 78030000 		.4byte	.LASF101
+ 3474 0c0b 46030000 		.4byte	.LASF101
  3475 0c0f 09       		.byte	0x9
  3476 0c10 48       		.byte	0x48
  3477 0c11 B7000000 		.4byte	0xb7
@@ -7106,7 +7106,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3486 0c29 8C000000 		.4byte	0x8c
  3487 0c2d 00       		.byte	0
  3488 0c2e 28       		.uleb128 0x28
- 3489 0c2f D3000000 		.4byte	.LASF103
+ 3489 0c2f A1000000 		.4byte	.LASF103
  3490 0c33 DB000000 		.4byte	0xdb
  3491 0c37 4B0C0000 		.4byte	0xc4b
  3492 0c3b 0C       		.uleb128 0xc
@@ -7121,11 +7121,11 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3501 0c4d 510C0000 		.4byte	0xc51
  3502 0c51 29       		.uleb128 0x29
  3503 0c52 25       		.uleb128 0x25
- 3504 0c53 D7020000 		.4byte	.LASF104
+ 3504 0c53 A5020000 		.4byte	.LASF104
  3505 0c57 09       		.byte	0x9
  3506 0c58 54       		.byte	0x54
  3507 0c59 28       		.uleb128 0x28
- 3508 0c5a C3010000 		.4byte	.LASF105
+ 3508 0c5a 91010000 		.4byte	.LASF105
  3509 0c5e DB000000 		.4byte	0xdb
  3510 0c62 760C0000 		.4byte	0xc76
  3511 0c66 0C       		.uleb128 0xc
@@ -7136,19 +7136,19 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3516 0c71 D4000000 		.4byte	0xd4
  3517 0c75 00       		.byte	0
  3518 0c76 2A       		.uleb128 0x2a
- 3519 0c77 4E010000 		.4byte	.LASF111
+ 3519 0c77 1C010000 		.4byte	.LASF111
  3520 0c7b 09       		.byte	0x9
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 120
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 120
 
 
  3521 0c7c 46       		.byte	0x46
  3522 0c7d B7000000 		.4byte	0xb7
  3523 0c81 25       		.uleb128 0x25
- 3524 0c82 0B030000 		.4byte	.LASF106
+ 3524 0c82 D9020000 		.4byte	.LASF106
  3525 0c86 08       		.byte	0x8
  3526 0c87 A5       		.byte	0xa5
  3527 0c88 2B       		.uleb128 0x2b
- 3528 0c89 9F060000 		.4byte	.LASF107
+ 3528 0c89 C1060000 		.4byte	.LASF107
  3529 0c8d 08       		.byte	0x8
  3530 0c8e AA       		.byte	0xaa
  3531 0c8f B7000000 		.4byte	0xb7
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3575 001f 16       		.uleb128 0x16
  3576 0020 00       		.byte	0
  3577 0021 03       		.uleb128 0x3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 121
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 121
 
 
  3578 0022 0E       		.uleb128 0xe
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3632 0058 3B       		.uleb128 0x3b
  3633 0059 0B       		.uleb128 0xb
  3634 005a 01       		.uleb128 0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 122
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 122
 
 
  3635 005b 13       		.uleb128 0x13
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3689 0091 00       		.byte	0
  3690 0092 49       		.uleb128 0x49
  3691 0093 13       		.uleb128 0x13
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 123
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 123
 
 
  3692 0094 2F       		.uleb128 0x2f
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3746 00cb 13       		.uleb128 0x13
  3747 00cc 02       		.uleb128 0x2
  3748 00cd 17       		.uleb128 0x17
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 124
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 124
 
 
  3749 00ce 00       		.byte	0
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3803 0107 00       		.byte	0
  3804 0108 00       		.byte	0
  3805 0109 16       		.uleb128 0x16
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 125
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 125
 
 
  3806 010a 34       		.uleb128 0x34
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3860 0147 27       		.uleb128 0x27
  3861 0148 19       		.uleb128 0x19
  3862 0149 11       		.uleb128 0x11
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 126
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 126
 
 
  3863 014a 01       		.uleb128 0x1
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3917 0182 0B       		.uleb128 0xb
  3918 0183 01       		.byte	0x1
  3919 0184 11       		.uleb128 0x11
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 127
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 127
 
 
  3920 0185 01       		.uleb128 0x1
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  3974 01bd 00       		.byte	0
  3975 01be 00       		.byte	0
  3976 01bf 23       		.uleb128 0x23
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 128
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 128
 
 
  3977 01c0 34       		.uleb128 0x34
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4031 01f6 19       		.uleb128 0x19
  4032 01f7 03       		.uleb128 0x3
  4033 01f8 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 129
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 129
 
 
  4034 01f9 3A       		.uleb128 0x3a
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4088 022f 00       		.byte	0
  4089 0230 00       		.byte	0
  4090 0231 00       		.byte	0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 130
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 130
 
 
  4091 0232 2A       		.uleb128 0x2a
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4145 001d 00000000 		.4byte	0
  4146              	.LLST1:
  4147 0021 00000000 		.4byte	.LVL0
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 131
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 131
 
 
  4148 0025 10000000 		.4byte	.LVL4
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4202 00ad 28000000 		.4byte	.LVL11
  4203 00b1 2B000000 		.4byte	.LVL12-1
  4204 00b5 0100     		.2byte	0x1
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 132
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 132
 
 
  4205 00b7 50       		.byte	0x50
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4259 0140 56       		.byte	0x56
  4260 0141 2A000000 		.4byte	.LVL24
  4261 0145 30000000 		.4byte	.LFE65
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 133
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 133
 
 
  4262 0149 0400     		.2byte	0x4
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4316 01cf 3A000000 		.4byte	.LFE74
  4317 01d3 0400     		.2byte	0x4
  4318 01d5 F3       		.byte	0xf3
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 134
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 134
 
 
  4319 01d6 01       		.uleb128 0x1
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4373 024f 00000000 		.4byte	0
  4374              	.LLST16:
  4375 0253 00000000 		.4byte	.LVL37
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 135
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 135
 
 
  4376 0257 04000000 		.4byte	.LVL39
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4430 02d5 01       		.uleb128 0x1
  4431 02d6 51       		.byte	0x51
  4432 02d7 9F       		.byte	0x9f
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 136
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 136
 
 
  4433 02d8 58000000 		.4byte	.LVL51
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4487 0354 9F       		.byte	0x9f
  4488 0355 A8000000 		.4byte	.LVL66
  4489 0359 AA000000 		.4byte	.LVL67
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 137
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 137
 
 
  4490 035d 0100     		.2byte	0x1
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4544 03db 48000000 		.4byte	.LVL48
  4545 03df 0100     		.2byte	0x1
  4546 03e1 51       		.byte	0x51
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 138
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 138
 
 
  4547 03e2 54000000 		.4byte	.LVL50
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4601 0474 28000000 		.4byte	.LVL42
  4602 0478 0200     		.2byte	0x2
  4603 047a 31       		.byte	0x31
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 139
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 139
 
 
  4604 047b 9F       		.byte	0x9f
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4658 04fe 32       		.byte	0x32
  4659 04ff 9F       		.byte	0x9f
  4660 0500 C4000000 		.4byte	.LVL71
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 140
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 140
 
 
  4661 0504 C8000000 		.4byte	.LVL72
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4715 0585 00010000 		.4byte	.LVL83
  4716 0589 0100     		.2byte	0x1
  4717 058b 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 141
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 141
 
 
  4718 058c 00010000 		.4byte	.LVL83
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4772 0611 58000000 		.4byte	.LVL107
  4773 0615 0100     		.2byte	0x1
  4774 0617 57       		.byte	0x57
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 142
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 142
 
 
  4775 0618 5A000000 		.4byte	.LVL108
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4829 06a8 F3       		.byte	0xf3
  4830 06a9 01       		.uleb128 0x1
  4831 06aa 50       		.byte	0x50
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 143
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 143
 
 
  4832 06ab 9F       		.byte	0x9f
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4886 0732 80020000 		.4byte	.LVL188
  4887 0736 0200     		.2byte	0x2
  4888 0738 30       		.byte	0x30
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 144
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 144
 
 
  4889 0739 9F       		.byte	0x9f
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  4943 07c2 56       		.byte	0x56
  4944 07c3 C4000000 		.4byte	.LVL150
  4945 07c7 0A010000 		.4byte	.LVL152
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 145
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 145
 
 
  4946 07cb 0200     		.2byte	0x2
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5000 084e 0100     		.2byte	0x1
  5001 0850 53       		.byte	0x53
  5002 0851 D6020000 		.4byte	.LVL196
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 146
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 146
 
 
  5003 0855 E8020000 		.4byte	.LVL198
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5057 08dc 52040000 		.4byte	.LVL234
  5058 08e0 5C040000 		.4byte	.LVL235
  5059 08e4 0200     		.2byte	0x2
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 147
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 147
 
 
  5060 08e6 34       		.byte	0x34
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5114 0958 50       		.byte	0x50
  5115 0959 A4000000 		.4byte	.LVL144
  5116 095d B8000000 		.4byte	.LVL148
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 148
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 148
 
 
  5117 0961 0100     		.2byte	0x1
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5171 09ed 31       		.byte	0x31
  5172 09ee 9F       		.byte	0x9f
  5173 09ef 5C040000 		.4byte	.LVL235
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 149
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 149
 
 
  5174 09f3 66040000 		.4byte	.LVL237
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5228 0a79 38       		.byte	0x38
  5229 0a7a 24       		.byte	0x24
  5230 0a7b 91       		.byte	0x91
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 150
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 150
 
 
  5231 0a7c AD7D     		.sleb128 -339
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5285 0b04 00000000 		.4byte	0
  5286              	.LLST42:
  5287 0b08 C6010000 		.4byte	.LVL167
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 151
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 151
 
 
  5288 0b0c CE010000 		.4byte	.LVL168
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5342 0b78 12020000 		.4byte	.LVL176
  5343 0b7c 0100     		.2byte	0x1
  5344 0b7e 53       		.byte	0x53
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 152
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 152
 
 
  5345 0b7f 12020000 		.4byte	.LVL176
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5399 0c0a 79       		.byte	0x79
  5400 0c0b 00       		.sleb128 0
  5401 0c0c 38       		.byte	0x38
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 153
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 153
 
 
  5402 0c0d 24       		.byte	0x24
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5456 0c92 00000000 		.4byte	0
  5457              	.LLST50:
  5458 0c96 02000000 		.4byte	.LVL239
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 154
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 154
 
 
  5459 0c9a 10000000 		.4byte	.LVL241
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5513 0048 00000000 		.4byte	.LFB75
  5514 004c 14010000 		.4byte	.LFE75-.LFB75
  5515 0050 00000000 		.4byte	.LFB69
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 155
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 155
 
 
  5516 0054 30000000 		.4byte	.LFE69-.LFB69
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5570 00a4 1C040000 		.4byte	.LBE36
  5571 00a8 20040000 		.4byte	.LBB37
  5572 00ac 22040000 		.4byte	.LBE37
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 156
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 156
 
 
  5573 00b0 26040000 		.4byte	.LBB38
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5627 0188 00000000 		.4byte	.LFB75
  5628 018c 14010000 		.4byte	.LFE75
  5629 0190 00000000 		.4byte	.LFB69
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 157
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 157
 
 
  5630 0194 30000000 		.4byte	.LFE69
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5665 006a 61636B43 		.ascii	"ackCode\000"
  5665      6F646500 
  5666              	.LASF19:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 158
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 158
 
 
  5667 0072 73697A65 		.ascii	"sizetype\000"
@@ -9435,486 +9435,490 @@ ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 1
  5673 008c 62746C64 		.ascii	"btldrData\000"
  5673      72446174 
  5673      6100
- 5674              	.LASF110:
- 5675 0096 453A5C50 		.ascii	"E:\\Projects\\WiFiChessBoard\\Micro\\Bootloader.cyd"
- 5675      726F6A65 
- 5675      6374735C 
- 5675      57694669 
- 5675      43686573 
- 5676 00c5 736E00   		.ascii	"sn\000"
- 5677              	.LASF75:
- 5678 00c8 64617461 		.ascii	"dataOffset\000"
- 5678      4F666673 
- 5678      657400
- 5679              	.LASF103:
- 5680 00d3 6D656D63 		.ascii	"memcpy\000"
- 5680      707900
- 5681              	.LASF44:
- 5682 00da 426F6F74 		.ascii	"Bootloader_SetFlashByte\000"
- 5682      6C6F6164 
- 5682      65725F53 
- 5682      6574466C 
- 5682      61736842 
- 5683              	.LASF83:
- 5684 00f2 42746C64 		.ascii	"BtldrVersion\000"
- 5684      72566572 
- 5684      73696F6E 
- 5684      00
- 5685              	.LASF46:
- 5686 00ff 72756E54 		.ascii	"runType\000"
- 5686      79706500 
- 5687              	.LASF59:
- 5688 0107 61637469 		.ascii	"activeApp\000"
- 5688      76654170 
- 5688      7000
- 5689              	.LASF36:
- 5690 0111 426F6F74 		.ascii	"Bootloader_LaunchApplication\000"
- 5690      6C6F6164 
- 5690      65725F4C 
- 5690      61756E63 
- 5690      68417070 
- 5691              	.LASF12:
- 5692 012e 75696E74 		.ascii	"uint16\000"
- 5692      313600
- 5693              	.LASF84:
- 5694 0135 746D7052 		.ascii	"tmpRowNum\000"
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 159
+ 5674              	.LASF75:
+ 5675 0096 64617461 		.ascii	"dataOffset\000"
+ 5675      4F666673 
+ 5675      657400
+ 5676              	.LASF103:
+ 5677 00a1 6D656D63 		.ascii	"memcpy\000"
+ 5677      707900
+ 5678              	.LASF44:
+ 5679 00a8 426F6F74 		.ascii	"Bootloader_SetFlashByte\000"
+ 5679      6C6F6164 
+ 5679      65725F53 
+ 5679      6574466C 
+ 5679      61736842 
+ 5680              	.LASF83:
+ 5681 00c0 42746C64 		.ascii	"BtldrVersion\000"
+ 5681      72566572 
+ 5681      73696F6E 
+ 5681      00
+ 5682              	.LASF46:
+ 5683 00cd 72756E54 		.ascii	"runType\000"
+ 5683      79706500 
+ 5684              	.LASF59:
+ 5685 00d5 61637469 		.ascii	"activeApp\000"
+ 5685      76654170 
+ 5685      7000
+ 5686              	.LASF36:
+ 5687 00df 426F6F74 		.ascii	"Bootloader_LaunchApplication\000"
+ 5687      6C6F6164 
+ 5687      65725F4C 
+ 5687      61756E63 
+ 5687      68417070 
+ 5688              	.LASF12:
+ 5689 00fc 75696E74 		.ascii	"uint16\000"
+ 5689      313600
+ 5690              	.LASF84:
+ 5691 0103 746D7052 		.ascii	"tmpRowNum\000"
+ 5691      6F774E75 
+ 5691      6D00
+ 5692              	.LASF39:
+ 5693 010d 63686563 		.ascii	"checksum\000"
+ 5693      6B73756D 
+ 5693      00
+ 5694              	.LASF11:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 159
 
 
- 5694      6F774E75 
- 5694      6D00
- 5695              	.LASF39:
- 5696 013f 63686563 		.ascii	"checksum\000"
- 5696      6B73756D 
- 5696      00
- 5697              	.LASF11:
- 5698 0148 75696E74 		.ascii	"uint8\000"
- 5698      3800
- 5699              	.LASF111:
- 5700 014e 43795365 		.ascii	"CySetTemp\000"
- 5700      7454656D 
- 5700      7000
- 5701              	.LASF30:
- 5702 0158 426F6F74 		.ascii	"BootLoaderVersion\000"
- 5702      4C6F6164 
- 5702      65725665 
- 5702      7273696F 
- 5702      6E00
- 5703              	.LASF0:
- 5704 016a 7369676E 		.ascii	"signed char\000"
- 5704      65642063 
- 5704      68617200 
- 5705              	.LASF25:
- 5706 0176 704F7574 		.ascii	"pOutputBuffer\000"
- 5706      70757442 
- 5706      75666665 
- 5706      7200
- 5707              	.LASF60:
- 5708 0184 426F6F74 		.ascii	"Bootloader_ValidateBootloadable\000"
- 5708      6C6F6164 
- 5708      65725F56 
- 5708      616C6964 
- 5708      61746542 
- 5709              	.LASF6:
- 5710 01a4 6C6F6E67 		.ascii	"long long int\000"
- 5710      206C6F6E 
- 5710      6720696E 
- 5710      7400
- 5711              	.LASF31:
- 5712 01b2 426F6F74 		.ascii	"Bootloader_ENTER\000"
- 5712      6C6F6164 
- 5712      65725F45 
- 5712      4E544552 
- 5712      00
- 5713              	.LASF105:
- 5714 01c3 6D656D73 		.ascii	"memset\000"
- 5714      657400
- 5715              	.LASF21:
- 5716 01ca 7061636B 		.ascii	"packetLength\000"
- 5716      65744C65 
- 5716      6E677468 
- 5716      00
- 5717              	.LASF4:
- 5718 01d7 6C6F6E67 		.ascii	"long int\000"
- 5718      20696E74 
- 5718      00
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 160
+ 5695 0116 75696E74 		.ascii	"uint8\000"
+ 5695      3800
+ 5696              	.LASF111:
+ 5697 011c 43795365 		.ascii	"CySetTemp\000"
+ 5697      7454656D 
+ 5697      7000
+ 5698              	.LASF30:
+ 5699 0126 426F6F74 		.ascii	"BootLoaderVersion\000"
+ 5699      4C6F6164 
+ 5699      65725665 
+ 5699      7273696F 
+ 5699      6E00
+ 5700              	.LASF0:
+ 5701 0138 7369676E 		.ascii	"signed char\000"
+ 5701      65642063 
+ 5701      68617200 
+ 5702              	.LASF25:
+ 5703 0144 704F7574 		.ascii	"pOutputBuffer\000"
+ 5703      70757442 
+ 5703      75666665 
+ 5703      7200
+ 5704              	.LASF60:
+ 5705 0152 426F6F74 		.ascii	"Bootloader_ValidateBootloadable\000"
+ 5705      6C6F6164 
+ 5705      65725F56 
+ 5705      616C6964 
+ 5705      61746542 
+ 5706              	.LASF6:
+ 5707 0172 6C6F6E67 		.ascii	"long long int\000"
+ 5707      206C6F6E 
+ 5707      6720696E 
+ 5707      7400
+ 5708              	.LASF31:
+ 5709 0180 426F6F74 		.ascii	"Bootloader_ENTER\000"
+ 5709      6C6F6164 
+ 5709      65725F45 
+ 5709      4E544552 
+ 5709      00
+ 5710              	.LASF105:
+ 5711 0191 6D656D73 		.ascii	"memset\000"
+ 5711      657400
+ 5712              	.LASF21:
+ 5713 0198 7061636B 		.ascii	"packetLength\000"
+ 5713      65744C65 
+ 5713      6E677468 
+ 5713      00
+ 5714              	.LASF4:
+ 5715 01a5 6C6F6E67 		.ascii	"long int\000"
+ 5715      20696E74 
+ 5715      00
+ 5716              	.LASF38:
+ 5717 01ae 426F6F74 		.ascii	"Bootloader_WritePacket\000"
+ 5717      6C6F6164 
+ 5717      65725F57 
+ 5717      72697465 
+ 5717      5061636B 
+ 5718              	.LASF80:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 160
 
 
- 5719              	.LASF38:
- 5720 01e0 426F6F74 		.ascii	"Bootloader_WritePacket\000"
- 5720      6C6F6164 
- 5720      65725F57 
- 5720      72697465 
- 5720      5061636B 
- 5721              	.LASF80:
- 5722 01f7 61727261 		.ascii	"arrayIdBtlderEnds\000"
- 5722      79496442 
- 5722      746C6465 
- 5722      72456E64 
- 5722      7300
- 5723              	.LASF63:
- 5724 0209 63757242 		.ascii	"curByte\000"
- 5724      79746500 
- 5725              	.LASF86:
- 5726 0211 746D7049 		.ascii	"tmpIndex\000"
- 5726      6E646578 
- 5726      00
- 5727              	.LASF89:
- 5728 021a 426F6F74 		.ascii	"Bootloader_Start\000"
- 5728      6C6F6164 
- 5728      65725F53 
- 5728      74617274 
- 5728      00
- 5729              	.LASF67:
- 5730 022b 6E756D62 		.ascii	"numberRead\000"
- 5730      65725265 
- 5730      616400
- 5731              	.LASF62:
- 5732 0236 63616C63 		.ascii	"calcedChecksum\000"
- 5732      65644368 
- 5732      65636B73 
- 5732      756D00
- 5733              	.LASF87:
- 5734 0245 426F6F74 		.ascii	"Bootloader_inPacket\000"
- 5734      6C6F6164 
- 5734      65725F69 
- 5734      6E506163 
- 5734      6B657400 
- 5735              	.LASF74:
- 5736 0259 636F6D6D 		.ascii	"communicationState\000"
- 5736      756E6963 
- 5736      6174696F 
- 5736      6E537461 
- 5736      746500
- 5737              	.LASF40:
- 5738 026c 75736572 		.ascii	"userCallback\000"
- 5738      43616C6C 
- 5738      6261636B 
- 5738      00
- 5739              	.LASF22:
- 5740 0279 70496E70 		.ascii	"pInputBuffer\000"
- 5740      75744275 
- 5740      66666572 
- 5740      00
- 5741              	.LASF50:
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 161
+ 5719 01c5 61727261 		.ascii	"arrayIdBtlderEnds\000"
+ 5719      79496442 
+ 5719      746C6465 
+ 5719      72456E64 
+ 5719      7300
+ 5720              	.LASF63:
+ 5721 01d7 63757242 		.ascii	"curByte\000"
+ 5721      79746500 
+ 5722              	.LASF86:
+ 5723 01df 746D7049 		.ascii	"tmpIndex\000"
+ 5723      6E646578 
+ 5723      00
+ 5724              	.LASF89:
+ 5725 01e8 426F6F74 		.ascii	"Bootloader_Start\000"
+ 5725      6C6F6164 
+ 5725      65725F53 
+ 5725      74617274 
+ 5725      00
+ 5726              	.LASF67:
+ 5727 01f9 6E756D62 		.ascii	"numberRead\000"
+ 5727      65725265 
+ 5727      616400
+ 5728              	.LASF62:
+ 5729 0204 63616C63 		.ascii	"calcedChecksum\000"
+ 5729      65644368 
+ 5729      65636B73 
+ 5729      756D00
+ 5730              	.LASF87:
+ 5731 0213 426F6F74 		.ascii	"Bootloader_inPacket\000"
+ 5731      6C6F6164 
+ 5731      65725F69 
+ 5731      6E506163 
+ 5731      6B657400 
+ 5732              	.LASF74:
+ 5733 0227 636F6D6D 		.ascii	"communicationState\000"
+ 5733      756E6963 
+ 5733      6174696F 
+ 5733      6E537461 
+ 5733      746500
+ 5734              	.LASF40:
+ 5735 023a 75736572 		.ascii	"userCallback\000"
+ 5735      43616C6C 
+ 5735      6261636B 
+ 5735      00
+ 5736              	.LASF22:
+ 5737 0247 70496E70 		.ascii	"pInputBuffer\000"
+ 5737      75744275 
+ 5737      66666572 
+ 5737      00
+ 5738              	.LASF50:
+ 5739 0254 726F774E 		.ascii	"rowNum\000"
+ 5739      756D00
+ 5740              	.LASF55:
+ 5741 025b 6669656C 		.ascii	"fieldPtr\000"
+ 5741      64507472 
+ 5741      00
+ 5742              	.LASF73:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 161
 
 
- 5742 0286 726F774E 		.ascii	"rowNum\000"
- 5742      756D00
- 5743              	.LASF55:
- 5744 028d 6669656C 		.ascii	"fieldPtr\000"
- 5744      64507472 
- 5744      00
- 5745              	.LASF73:
- 5746 0296 74696D65 		.ascii	"timeOutCnt\000"
- 5746      4F757443 
- 5746      6E7400
- 5747              	.LASF42:
- 5748 02a1 73746172 		.ascii	"start\000"
- 5748      7400
- 5749              	.LASF1:
- 5750 02a7 756E7369 		.ascii	"unsigned char\000"
- 5750      676E6564 
- 5750      20636861 
- 5750      7200
- 5751              	.LASF52:
- 5752 02b5 426F6F74 		.ascii	"Bootloader_GetMetadata\000"
- 5752      6C6F6164 
- 5752      65725F47 
- 5752      65744D65 
- 5752      74616461 
- 5753              	.LASF77:
- 5754 02cc 64617461 		.ascii	"dataBuffer\000"
- 5754      42756666 
- 5754      657200
- 5755              	.LASF104:
- 5756 02d7 43794545 		.ascii	"CyEEPROM_Start\000"
- 5756      50524F4D 
- 5756      5F537461 
- 5756      727400
- 5757              	.LASF37:
- 5758 02e6 426F6F74 		.ascii	"Bootloader_CalcPacketChecksum\000"
- 5758      6C6F6164 
- 5758      65725F43 
- 5758      616C6350 
- 5758      61636B65 
- 5759              	.LASF102:
- 5760 0304 43794861 		.ascii	"CyHalt\000"
- 5760      6C7400
- 5761              	.LASF106:
- 5762 030b 44656275 		.ascii	"Debug_UART_CyBtldrCommStart\000"
- 5762      675F5541 
- 5762      52545F43 
- 5762      7942746C 
- 5762      6472436F 
- 5763              	.LASF7:
- 5764 0327 6C6F6E67 		.ascii	"long long unsigned int\000"
- 5764      206C6F6E 
- 5764      6720756E 
- 5764      7369676E 
- 5764      65642069 
- 5765              	.LASF70:
- 5766 033e 706B7443 		.ascii	"pktChecksum\000"
- 5766      6865636B 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 162
+ 5743 0264 74696D65 		.ascii	"timeOutCnt\000"
+ 5743      4F757443 
+ 5743      6E7400
+ 5744              	.LASF42:
+ 5745 026f 73746172 		.ascii	"start\000"
+ 5745      7400
+ 5746              	.LASF1:
+ 5747 0275 756E7369 		.ascii	"unsigned char\000"
+ 5747      676E6564 
+ 5747      20636861 
+ 5747      7200
+ 5748              	.LASF52:
+ 5749 0283 426F6F74 		.ascii	"Bootloader_GetMetadata\000"
+ 5749      6C6F6164 
+ 5749      65725F47 
+ 5749      65744D65 
+ 5749      74616461 
+ 5750              	.LASF77:
+ 5751 029a 64617461 		.ascii	"dataBuffer\000"
+ 5751      42756666 
+ 5751      657200
+ 5752              	.LASF104:
+ 5753 02a5 43794545 		.ascii	"CyEEPROM_Start\000"
+ 5753      50524F4D 
+ 5753      5F537461 
+ 5753      727400
+ 5754              	.LASF37:
+ 5755 02b4 426F6F74 		.ascii	"Bootloader_CalcPacketChecksum\000"
+ 5755      6C6F6164 
+ 5755      65725F43 
+ 5755      616C6350 
+ 5755      61636B65 
+ 5756              	.LASF102:
+ 5757 02d2 43794861 		.ascii	"CyHalt\000"
+ 5757      6C7400
+ 5758              	.LASF106:
+ 5759 02d9 44656275 		.ascii	"Debug_UART_CyBtldrCommStart\000"
+ 5759      675F5541 
+ 5759      52545F43 
+ 5759      7942746C 
+ 5759      6472436F 
+ 5760              	.LASF7:
+ 5761 02f5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 5761      206C6F6E 
+ 5761      6720756E 
+ 5761      7369676E 
+ 5761      65642069 
+ 5762              	.LASF70:
+ 5763 030c 706B7443 		.ascii	"pktChecksum\000"
+ 5763      6865636B 
+ 5763      73756D00 
+ 5764              	.LASF92:
+ 5765 0318 426F6F74 		.ascii	"Bootloader_Checksum\000"
+ 5765      6C6F6164 
+ 5765      65725F43 
+ 5765      6865636B 
+ 5765      73756D00 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 162
 
 
- 5766      73756D00 
- 5767              	.LASF92:
- 5768 034a 426F6F74 		.ascii	"Bootloader_Checksum\000"
- 5768      6C6F6164 
- 5768      65725F43 
- 5768      6865636B 
- 5768      73756D00 
- 5769              	.LASF58:
- 5770 035e 43794274 		.ascii	"CyBtldr_CheckLaunch\000"
- 5770      6C64725F 
- 5770      43686563 
- 5770      6B4C6175 
- 5770      6E636800 
- 5771              	.LASF53:
- 5772 0372 6669656C 		.ascii	"field\000"
- 5772      6400
- 5773              	.LASF101:
- 5774 0378 43795772 		.ascii	"CyWriteRowFull\000"
- 5774      69746552 
- 5774      6F774675 
- 5774      6C6C00
- 5775              	.LASF93:
- 5776 0387 426F6F74 		.ascii	"Bootloader_ChecksumAccess\000"
- 5776      6C6F6164 
- 5776      65725F43 
- 5776      6865636B 
- 5776      73756D41 
- 5777              	.LASF43:
- 5778 03a1 426F6F74 		.ascii	"Bootloader_InitCallback\000"
- 5778      6C6F6164 
- 5778      65725F49 
- 5778      6E697443 
- 5778      616C6C62 
- 5779              	.LASF56:
- 5780 03b9 6669656C 		.ascii	"fieldSize\000"
- 5780      6453697A 
- 5780      6500
- 5781              	.LASF24:
- 5782 03c3 73746174 		.ascii	"status\000"
- 5782      757300
- 5783              	.LASF3:
- 5784 03ca 73686F72 		.ascii	"short unsigned int\000"
- 5784      7420756E 
- 5784      7369676E 
- 5784      65642069 
- 5784      6E7400
- 5785              	.LASF26:
- 5786 03dd 426F6F74 		.ascii	"Bootloader_out_packet_type\000"
- 5786      6C6F6164 
- 5786      65725F6F 
- 5786      75745F70 
- 5786      61636B65 
- 5787              	.LASF76:
- 5788 03f8 7061636B 		.ascii	"packetBuffer\000"
- 5788      65744275 
- 5788      66666572 
- 5788      00
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 163
+ 5766              	.LASF58:
+ 5767 032c 43794274 		.ascii	"CyBtldr_CheckLaunch\000"
+ 5767      6C64725F 
+ 5767      43686563 
+ 5767      6B4C6175 
+ 5767      6E636800 
+ 5768              	.LASF53:
+ 5769 0340 6669656C 		.ascii	"field\000"
+ 5769      6400
+ 5770              	.LASF101:
+ 5771 0346 43795772 		.ascii	"CyWriteRowFull\000"
+ 5771      69746552 
+ 5771      6F774675 
+ 5771      6C6C00
+ 5772              	.LASF93:
+ 5773 0355 426F6F74 		.ascii	"Bootloader_ChecksumAccess\000"
+ 5773      6C6F6164 
+ 5773      65725F43 
+ 5773      6865636B 
+ 5773      73756D41 
+ 5774              	.LASF43:
+ 5775 036f 426F6F74 		.ascii	"Bootloader_InitCallback\000"
+ 5775      6C6F6164 
+ 5775      65725F49 
+ 5775      6E697443 
+ 5775      616C6C62 
+ 5776              	.LASF56:
+ 5777 0387 6669656C 		.ascii	"fieldSize\000"
+ 5777      6453697A 
+ 5777      6500
+ 5778              	.LASF24:
+ 5779 0391 73746174 		.ascii	"status\000"
+ 5779      757300
+ 5780              	.LASF3:
+ 5781 0398 73686F72 		.ascii	"short unsigned int\000"
+ 5781      7420756E 
+ 5781      7369676E 
+ 5781      65642069 
+ 5781      6E7400
+ 5782              	.LASF26:
+ 5783 03ab 426F6F74 		.ascii	"Bootloader_out_packet_type\000"
+ 5783      6C6F6164 
+ 5783      65725F6F 
+ 5783      75745F70 
+ 5783      61636B65 
+ 5784              	.LASF76:
+ 5785 03c6 7061636B 		.ascii	"packetBuffer\000"
+ 5785      65744275 
+ 5785      66666572 
+ 5785      00
+ 5786              	.LASF88:
+ 5787 03d3 426F6F74 		.ascii	"Bootloader_outPacket\000"
+ 5787      6C6F6164 
+ 5787      65725F6F 
+ 5787      75745061 
+ 5787      636B6574 
+ 5788              	.LASF16:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 163
 
 
- 5789              	.LASF88:
- 5790 0405 426F6F74 		.ascii	"Bootloader_outPacket\000"
- 5790      6C6F6164 
- 5790      65725F6F 
- 5790      75745061 
- 5790      636B6574 
- 5791              	.LASF16:
- 5792 041a 63686172 		.ascii	"char\000"
- 5792      00
- 5793              	.LASF100:
- 5794 041f 4379466C 		.ascii	"CyFlushCache\000"
- 5794      75736843 
- 5794      61636865 
- 5794      00
- 5795              	.LASF17:
- 5796 042c 63797374 		.ascii	"cystatus\000"
- 5796      61747573 
- 5796      00
- 5797              	.LASF71:
- 5798 0435 72656164 		.ascii	"readStat\000"
- 5798      53746174 
- 5798      00
- 5799              	.LASF27:
- 5800 043e 426F6F74 		.ascii	"Bootloader_callback_type\000"
+ 5789 03e8 63686172 		.ascii	"char\000"
+ 5789      00
+ 5790              	.LASF100:
+ 5791 03ed 4379466C 		.ascii	"CyFlushCache\000"
+ 5791      75736843 
+ 5791      61636865 
+ 5791      00
+ 5792              	.LASF17:
+ 5793 03fa 63797374 		.ascii	"cystatus\000"
+ 5793      61747573 
+ 5793      00
+ 5794              	.LASF71:
+ 5795 0403 72656164 		.ascii	"readStat\000"
+ 5795      53746174 
+ 5795      00
+ 5796              	.LASF110:
+ 5797 040c 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
+ 5797      73657273 
+ 5797      5C4B796C 
+ 5797      655C446F 
+ 5797      776E6C6F 
+ 5798 043a 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloader.cydsn\000"
+ 5798      43686573 
+ 5798      73426F61 
+ 5798      72645C4D 
+ 5798      6963726F 
+ 5799              	.LASF65:
+ 5800 0460 426F6F74 		.ascii	"Bootloader_HostLink\000"
  5800      6C6F6164 
- 5800      65725F63 
- 5800      616C6C62 
- 5800      61636B5F 
- 5801              	.LASF65:
- 5802 0457 426F6F74 		.ascii	"Bootloader_HostLink\000"
- 5802      6C6F6164 
- 5802      65725F48 
- 5802      6F73744C 
- 5802      696E6B00 
- 5803              	.LASF66:
- 5804 046b 74696D65 		.ascii	"timeOut\000"
- 5804      4F757400 
- 5805              	.LASF90:
- 5806 0473 76616C69 		.ascii	"validApp\000"
- 5806      64417070 
- 5806      00
- 5807              	.LASF68:
- 5808 047c 72737053 		.ascii	"rspSize\000"
- 5808      697A6500 
- 5809              	.LASF28:
- 5810 0484 53696C69 		.ascii	"SiliconId\000"
- 5810      636F6E49 
- 5810      6400
- 5811              	.LASF108:
- 5812 048e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 5812      4320342E 
- 5812      392E3320 
- 5812      32303135 
- 5812      30333033 
- 5813 04c1 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 5813      20726576 
- 5813      6973696F 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 164
+ 5800      65725F48 
+ 5800      6F73744C 
+ 5800      696E6B00 
+ 5801              	.LASF66:
+ 5802 0474 74696D65 		.ascii	"timeOut\000"
+ 5802      4F757400 
+ 5803              	.LASF90:
+ 5804 047c 76616C69 		.ascii	"validApp\000"
+ 5804      64417070 
+ 5804      00
+ 5805              	.LASF68:
+ 5806 0485 72737053 		.ascii	"rspSize\000"
+ 5806      697A6500 
+ 5807              	.LASF28:
+ 5808 048d 53696C69 		.ascii	"SiliconId\000"
+ 5808      636F6E49 
+ 5808      6400
+ 5809              	.LASF108:
+ 5810 0497 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 5810      4320342E 
+ 5810      392E3320 
+ 5810      32303135 
+ 5810      30333033 
+ 5811 04ca 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 5811      20726576 
+ 5811      6973696F 
+ 5811      6E203232 
+ 5811      31323230 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 164
 
 
- 5813      6E203232 
- 5813      31323230 
- 5814 04f4 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
- 5814      74643D67 
- 5814      6E753939 
- 5814      202D6666 
- 5814      756E6374 
- 5815              	.LASF32:
- 5816 0527 62756666 		.ascii	"buffer\000"
- 5816      657200
- 5817              	.LASF99:
- 5818 052e 4379536F 		.ascii	"CySoftwareReset\000"
- 5818      66747761 
- 5818      72655265 
- 5818      73657400 
- 5819              	.LASF13:
- 5820 053e 75696E74 		.ascii	"uint32\000"
- 5820      333200
- 5821              	.LASF18:
- 5822 0545 72656738 		.ascii	"reg8\000"
- 5822      00
- 5823              	.LASF5:
- 5824 054a 6C6F6E67 		.ascii	"long unsigned int\000"
- 5824      20756E73 
- 5824      69676E65 
- 5824      6420696E 
- 5824      7400
- 5825              	.LASF85:
- 5826 055c 726F7741 		.ascii	"rowAddr\000"
- 5826      64647200 
- 5827              	.LASF15:
- 5828 0564 646F7562 		.ascii	"double\000"
- 5828      6C6500
- 5829              	.LASF47:
- 5830 056b 666C7341 		.ascii	"flsAddr\000"
- 5830      64647200 
- 5831              	.LASF91:
- 5832 0573 426F6F74 		.ascii	"Bootloader_callback\000"
- 5832      6C6F6164 
- 5832      65725F63 
- 5832      616C6C62 
- 5832      61636B00 
- 5833              	.LASF33:
- 5834 0587 73697A65 		.ascii	"size\000"
- 5834      00
- 5835              	.LASF35:
- 5836 058c 426F6F74 		.ascii	"Bootloader_LaunchBootloadable\000"
+ 5812 04fd 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 5812      74643D67 
+ 5812      6E753939 
+ 5812      202D6666 
+ 5812      756E6374 
+ 5813              	.LASF32:
+ 5814 0530 62756666 		.ascii	"buffer\000"
+ 5814      657200
+ 5815              	.LASF99:
+ 5816 0537 4379536F 		.ascii	"CySoftwareReset\000"
+ 5816      66747761 
+ 5816      72655265 
+ 5816      73657400 
+ 5817              	.LASF13:
+ 5818 0547 75696E74 		.ascii	"uint32\000"
+ 5818      333200
+ 5819              	.LASF18:
+ 5820 054e 72656738 		.ascii	"reg8\000"
+ 5820      00
+ 5821              	.LASF5:
+ 5822 0553 6C6F6E67 		.ascii	"long unsigned int\000"
+ 5822      20756E73 
+ 5822      69676E65 
+ 5822      6420696E 
+ 5822      7400
+ 5823              	.LASF85:
+ 5824 0565 726F7741 		.ascii	"rowAddr\000"
+ 5824      64647200 
+ 5825              	.LASF15:
+ 5826 056d 646F7562 		.ascii	"double\000"
+ 5826      6C6500
+ 5827              	.LASF47:
+ 5828 0574 666C7341 		.ascii	"flsAddr\000"
+ 5828      64647200 
+ 5829              	.LASF91:
+ 5830 057c 426F6F74 		.ascii	"Bootloader_callback\000"
+ 5830      6C6F6164 
+ 5830      65725F63 
+ 5830      616C6C62 
+ 5830      61636B00 
+ 5831              	.LASF33:
+ 5832 0590 73697A65 		.ascii	"size\000"
+ 5832      00
+ 5833              	.LASF35:
+ 5834 0595 426F6F74 		.ascii	"Bootloader_LaunchBootloadable\000"
+ 5834      6C6F6164 
+ 5834      65725F4C 
+ 5834      61756E63 
+ 5834      68426F6F 
+ 5835              	.LASF51:
+ 5836 05b3 426F6F74 		.ascii	"Bootloader_Calc8BitSum\000"
  5836      6C6F6164 
- 5836      65725F4C 
- 5836      61756E63 
- 5836      68426F6F 
- 5837              	.LASF51:
- 5838 05aa 426F6F74 		.ascii	"Bootloader_Calc8BitSum\000"
- 5838      6C6F6164 
- 5838      65725F43 
- 5838      616C6338 
- 5838      42697453 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 165
+ 5836      65725F43 
+ 5836      616C6338 
+ 5836      42697453 
+ 5837              	.LASF81:
+ 5838 05ca 75707065 		.ascii	"upperRange\000"
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 165
 
 
- 5839              	.LASF81:
- 5840 05c1 75707065 		.ascii	"upperRange\000"
- 5840      7252616E 
- 5840      676500
- 5841              	.LASF9:
- 5842 05cc 5F5F696E 		.ascii	"__int32_t\000"
- 5842      7433325F 
- 5842      7400
- 5843              	.LASF23:
- 5844 05d6 426F6F74 		.ascii	"Bootloader_in_packet_type\000"
- 5844      6C6F6164 
- 5844      65725F69 
- 5844      6E5F7061 
- 5844      636B6574 
- 5845              	.LASF98:
- 5846 05f0 43795772 		.ascii	"CyWriteRowData\000"
- 5846      69746552 
- 5846      6F774461 
- 5846      746100
- 5847              	.LASF64:
- 5848 05ff 426F6F74 		.ascii	"Bootloader_Exit\000"
- 5848      6C6F6164 
- 5848      65725F45 
- 5848      78697400 
- 5849              	.LASF49:
- 5850 060f 61727261 		.ascii	"arrayId\000"
- 5850      79496400 
- 5851              	.LASF20:
- 5852 0617 636F6D6D 		.ascii	"command\000"
- 5852      616E6400 
- 5853              	.LASF29:
- 5854 061f 52657669 		.ascii	"Revision\000"
- 5854      73696F6E 
- 5854      00
- 5855              	.LASF94:
- 5856 0628 426F6F74 		.ascii	"Bootloader_SizeBytes\000"
+ 5838      7252616E 
+ 5838      676500
+ 5839              	.LASF9:
+ 5840 05d5 5F5F696E 		.ascii	"__int32_t\000"
+ 5840      7433325F 
+ 5840      7400
+ 5841              	.LASF23:
+ 5842 05df 426F6F74 		.ascii	"Bootloader_in_packet_type\000"
+ 5842      6C6F6164 
+ 5842      65725F69 
+ 5842      6E5F7061 
+ 5842      636B6574 
+ 5843              	.LASF98:
+ 5844 05f9 43795772 		.ascii	"CyWriteRowData\000"
+ 5844      69746552 
+ 5844      6F774461 
+ 5844      746100
+ 5845              	.LASF64:
+ 5846 0608 426F6F74 		.ascii	"Bootloader_Exit\000"
+ 5846      6C6F6164 
+ 5846      65725F45 
+ 5846      78697400 
+ 5847              	.LASF49:
+ 5848 0618 61727261 		.ascii	"arrayId\000"
+ 5848      79496400 
+ 5849              	.LASF20:
+ 5850 0620 636F6D6D 		.ascii	"command\000"
+ 5850      616E6400 
+ 5851              	.LASF29:
+ 5852 0628 52657669 		.ascii	"Revision\000"
+ 5852      73696F6E 
+ 5852      00
+ 5853              	.LASF94:
+ 5854 0631 426F6F74 		.ascii	"Bootloader_SizeBytes\000"
+ 5854      6C6F6164 
+ 5854      65725F53 
+ 5854      697A6542 
+ 5854      79746573 
+ 5855              	.LASF95:
+ 5856 0646 426F6F74 		.ascii	"Bootloader_SizeBytesAccess\000"
  5856      6C6F6164 
  5856      65725F53 
  5856      697A6542 
  5856      79746573 
- 5857              	.LASF95:
- 5858 063d 426F6F74 		.ascii	"Bootloader_SizeBytesAccess\000"
- 5858      6C6F6164 
- 5858      65725F53 
- 5858      697A6542 
- 5858      79746573 
- 5859              	.LASF82:
- 5860 0658 66697273 		.ascii	"firstRow\000"
- 5860      74526F77 
- 5860      00
- 5861              	.LASF45:
- 5862 0661 61646472 		.ascii	"address\000"
- 5862      65737300 
- 5863              	.LASF96:
- 5864 0669 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 5864      52784275 
- 5864      66666572 
-ARM GAS  C:\Users\Nick\AppData\Local\Temp\ccP0j90S.s 			page 166
+ 5857              	.LASF82:
+ 5858 0661 66697273 		.ascii	"firstRow\000"
+ 5858      74526F77 
+ 5858      00
+ 5859              	.LASF45:
+ 5860 066a 61646472 		.ascii	"address\000"
+ 5860      65737300 
+ 5861              	.LASF96:
+ 5862 0672 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 5862      52784275 
+ 5862      66666572 
+ 5862      00
+ 5863              	.LASF8:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccuM5z4v.s 			page 166
 
 
+ 5864 067f 756E7369 		.ascii	"unsigned int\000"
+ 5864      676E6564 
+ 5864      20696E74 
  5864      00
- 5865              	.LASF8:
- 5866 0676 756E7369 		.ascii	"unsigned int\000"
- 5866      676E6564 
- 5866      20696E74 
- 5866      00
+ 5865              	.LASF27:
+ 5866 068c 426F6F74 		.ascii	"Bootloader_callback_type\000"
+ 5866      6C6F6164 
+ 5866      65725F63 
+ 5866      616C6C62 
+ 5866      61636B5F 
  5867              	.LASF97:
- 5868 0683 44656275 		.ascii	"Debug_UART_CyBtldrCommWrite\000"
+ 5868 06a5 44656275 		.ascii	"Debug_UART_CyBtldrCommWrite\000"
  5868      675F5541 
  5868      52545F43 
  5868      7942746C 
  5868      6472436F 
  5869              	.LASF107:
- 5870 069f 44656275 		.ascii	"Debug_UART_CyBtldrCommRead\000"
+ 5870 06c1 44656275 		.ascii	"Debug_UART_CyBtldrCommRead\000"
  5870      675F5541 
  5870      52545F43 
  5870      7942746C 

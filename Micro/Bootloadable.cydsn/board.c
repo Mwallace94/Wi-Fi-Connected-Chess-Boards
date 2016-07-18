@@ -15,7 +15,7 @@ void move_home() {
             Stp_1_Write(1);
             Stp_2_Write(0);
             Stp_2_Write(1);
-            CyDelay(20);
+            CyDelay(10);
         }      
         else if(!x){
             Dir_1_Write(0);
@@ -25,7 +25,7 @@ void move_home() {
             Stp_1_Write(1);
             Stp_2_Write(0);
             Stp_2_Write(1);
-            CyDelay(20);
+            CyDelay(10);
         }
         x = Lim_1_Read();
         y = Lim_2_Read();
@@ -35,6 +35,12 @@ void move_home() {
     
     x_pos = 0;
     y_pos = 0;
+    
+    col_square = 11;
+    row_square = 0;
+    
+    move_x(37);
+    move_y(15);
 }
 
 void move_x(int16 mm) { 
@@ -62,7 +68,7 @@ void move_x(int16 mm) {
         Stp_1_Write(1);
         Stp_2_Write(0);
         Stp_2_Write(1);
-        CyDelay(20);
+        CyDelay(10);
     }
     
     Slp_1_Write(0);
@@ -95,7 +101,7 @@ void move_y(int16 mm) {
         Stp_1_Write(1);
         Stp_2_Write(0);
         Stp_2_Write(1);
-        CyDelay(20);
+        CyDelay(10);
     }
     
     Slp_1_Write(0);
@@ -248,4 +254,187 @@ void read_reed_switches() {
     board[7][1] = (char) Col_11_Read();
     Row_6_Write(0);
     Row_6_SetDriveMode(Row_6_DM_DIG_HIZ);
+    
+}
+
+void moveCol(int dis) {
+    move_x(51 * dis);
+}
+
+void moveRow(int dis) {
+    move_y(51 * dis * -1);
+}
+
+void moveRowHalf(int dis) {
+    move_y((int)(25.5 * dis * -1));
+}
+
+void moveColHalf(int dis) {
+    move_x((int)(25.5 * dis));
+}
+
+void graveyard(struct movement move) {
+ 
+    if(board[move.toRow][move.toCol] == 1) {
+        struct movement move2;
+        move2.fromCol = move.toCol;
+        move2.fromRow = move.toRow;
+        for(int i = 10; i < 12; i++) {
+            for(int j = 0; j < 7; j++) {
+                if (board[j][i] == 0) {
+                    move2.toCol = i;
+                    move2.toRow = j;
+                    movepiece(move2);
+                    read_reed_switches();
+                    return;
+                }
+            }
+        }
+    }
+}
+
+void movepiece(struct movement move) {
+    
+    if(move.toCol > 11 || move.toCol < 0 || move.toRow < 0 || move.toRow > 7) return; 
+    
+    //graveyard(move);
+    CyDelay(500);
+    
+    moveRow(row_square - move.fromRow);
+    moveCol(col_square - move.fromCol);
+    
+    row_square = move.toRow;
+    col_square = move.toCol;
+    
+    CyDelay(500);
+
+    Em_Write(1);
+    
+    int rowdis = move.fromRow - move.toRow;
+    int coldis = move.fromCol - move.toCol;
+    /*
+    //diagnal movement if clear path
+    if (abs(rowdis) == abs(coldis)) {
+        int temp = 0;
+        for(int i = 1; i <= abs(coldis); i++) {
+            if (board[move.fromRow + i * rowdis / abs(coldis)][move.fromCol + i * coldis / abs(coldis)] != 0) temp++;
+        }
+        if (temp == 0) {
+            for(int i = 0; i < abs(coldis) * 51; i++) {
+                move_x(coldis / abs(coldis));
+                move_y(rowdis / abs(rowdis) * -1);
+            }
+        }
+        
+        absolute_x();
+        absolute_y();
+    
+        Em_Write(0);
+        return;
+    }
+    */
+    //col movement if clear path
+    if (rowdis == 0) {
+        int temp = 0;
+        for(int i = 1; i <= abs(coldis); i++) {
+            if (board[move.fromRow][move.fromCol + i * coldis / abs(coldis) * -1] != 0) temp++;
+        }
+        if (temp != 0) {
+            temp++;
+        } else {
+            moveCol(coldis);
+            
+            absolute_x();
+            absolute_y();
+        
+            Em_Write(0);
+            return;
+        }
+    }
+
+    //row movement if clear path
+    if (coldis == 0) {
+        int temp = 0;
+        for(int i = 1; i <= abs(rowdis); i++) {
+            if (board[move.fromRow + i * rowdis / abs(rowdis) * -1][move.fromCol] != 0) temp++;
+        }
+        if( temp != 0) {
+            temp++;
+        } else {
+            moveRow(rowdis);
+            
+            absolute_x();
+            absolute_y();
+        
+            Em_Write(0);
+            return;
+        }
+    }
+
+    //up or down indicator for end adjustment, where down is 1 and up -1
+    //left or right indicator for end adjustment, where left is -1 and right is 1       
+    int uod = 0, lor = 0;
+
+    //determines the best path between spaces for cols
+
+    if (move.fromCol < move.toCol) {
+        lor = 1;
+    } else if (move.fromCol > move.toCol) {
+        lor = -1;
+    } else if (move.fromCol < 6) {
+        lor = 1;
+    } else {
+        lor = -1;
+    }
+    moveColHalf(lor * -1);
+
+    //determines the best path between spaces for rows
+    if (move.fromRow > move.toRow) {
+        uod = -1;
+    } else if (move.fromRow < move.toRow) {
+        uod = 1;
+    } else if (move.toRow < 4) {
+        uod = -1;
+    } else {
+        uod = 1;
+    }
+
+    //moves across the rows with the adjustment
+    if (rowdis == 0) {
+        moveRowHalf(uod);
+    } else if (rowdis > 0) {
+        moveRowHalf(rowdis / abs(rowdis) * (rowdis * 2 - uod * -1));
+    } else {
+        moveRowHalf(rowdis / abs(rowdis) * (abs(rowdis) * 2 - uod));
+    }
+    //moves across the rows
+    if (coldis == 0) {
+        moveColHalf(lor);
+    } else if (coldis > 0) {
+        moveColHalf(coldis / abs(coldis) * (coldis * 2 - lor * -1));
+    } else {
+        moveColHalf(coldis / abs(coldis) * (abs(coldis) * 2 - lor));
+    }
+
+    //moves row adjustment
+    moveRowHalf(-1 * uod);
+    
+    absolute_x();
+    absolute_y();
+    
+    Em_Write(0);
+    
+}
+
+void absolute_x() {
+    int absX = 599 - (51 * col_square) - (row_square / 3);
+    move_x(absX - x_pos);
+}
+
+void absolute_y() {
+    int absY = 15 + 3 * ((11 - col_square) / 4);
+    int temp = (11 - col_square) / 4;
+    int temp1 = (int) ((51.3 - (((float) temp) * .4)) * ((float) row_square));
+    absY = absY + temp1;
+    move_y(absY - y_pos);
 }

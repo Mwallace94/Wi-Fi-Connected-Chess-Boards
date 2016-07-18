@@ -1,21 +1,31 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include<project.h>
+#include <project.h>
+#include <stdlib.h>
 
 // Motor Constants
     
-#define STEPS_PER_MM 70.8
+#define STEPS_PER_MM 10
     
 #define MIN_X_POS 0
-#define MAX_X_POS 1000
+#define MAX_X_POS 641
 #define MIN_Y_POS 0
-#define MAX_Y_POS 1000
+#define MAX_Y_POS 430
     
 // Motor Variables
+
+struct movement {
+	int fromRow;
+	int fromCol;
+	int toRow;
+	int toCol;
+};
     
 int16 x_pos;
 int16 y_pos;
+int16 row_square;
+int16 col_square;
     
 // Motor Functions
 
@@ -24,9 +34,17 @@ void move_x(int16 mm);
 void move_y(int16 mm);
 void limitTest();
 
+void movepiece(struct movement move);
+void moveRow(int dis);
+void moveCol(int dis);
+void moveColHalf(int dis);
+void moveRowHalf(int dis);
+void absolute_x();
+void absolute_y();
+
 // Reed Switch Variables
 
-static char board[8][12];
+char board[8][12];
 
 // Reed Switch Functions
 

@@ -6,6 +6,9 @@ import time
 PORT = 666
 SERVER = '192.168.173.1'
 
+BLACK = 0
+WHITE = 6
+
 BPAWN = 1
 BROOK = 2
 BKNIGHT = 3
@@ -593,12 +596,20 @@ def main():
     state = NOTCONNECTED
     sock = setup_connection()
     sock.sendto(b'.connect', (SERVER, PORT))
-    response = sock.recv(4)
+    response = sock.recv(1)
 
+    # Will change based on when client connected to server.
+    mycolor = WHITE
     displaytext = ""
-    if response == b'\x01' or response == b'\x03':
+    
+    if response == b'\x01':
         displaytext = "Connected."
         state = CONNECTED
+        mycolor = WHITE
+    elif response == b'\x03':
+        displaytext = "Connected."
+        state = CONNECTED
+        mycolor = BLACK
 
     t3.undraw()
     t3 = Text(Point(370, 450), displaytext)
@@ -659,7 +670,7 @@ def main():
                 sock.sendto(b'.gib', (SERVER, PORT))
                 response = sock.recv(1)
                 
-                print(response)
+                # print(response)
                         
             displaytext = ""
             if response == b'\x11':
@@ -710,14 +721,14 @@ def main():
                 sock.sendto(b'.gib', (SERVER, PORT))
                 dataOpponent = sock.recv(8)
                 
-                print(dataOpponent)
+                # print(dataOpponent)
 
-                # Python may turn \x31 into '1'. Check for both.
-                if dataOpponent in [b'\x31', b'1']:
+                # Python may turn \x33 into '1'. Check for both.
+                if dataOpponent in [b'\x33', b'3']:
                     state = CONNECTED
                     break # out of recv loop.
 
-            if dataOpponent in [b'\x31', b'1']:
+            if dataOpponent in [b'\x33', b'3']:
                 state = CONNECTED
                 break # out of WAITING loop.
 
@@ -727,12 +738,27 @@ def main():
 
             # If movement2 exists, it must be done, and done before movement1.
             if movementOpp2[1:] != (0, 0, 0, 0):
-                print(movementOpp2)
+                print("Prerequisite movement: ", movementOpp2)
                 movepiece(pieces, movementOpp2)
 
             # movement1 only exists when dataOpponent is non-empty or non-junk. It must always be done.
-            print(movementOpp1)
+            print("Opponent's movement: ", movementOpp1)
             movepiece(pieces, movementOpp1)
+
+            # Pawn promotion
+            if pieces[dataOpponent[3]][dataOpponent[2]][1] == WPAWN and dataOpponent[2] == 7:
+
+                pieces[dataOpponent[3]][dataOpponent[2]][0].undraw()
+                pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((dataOpponent[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)   
+                pieces[dataOpponent[3]][dataOpponent[2]][0].setSize((SQ_SZ_HALF))
+                pieces[dataOpponent[3]][dataOpponent[2]][0].draw(win)
+
+            elif pieces[dataOpponent[3]][dataOpponent[2]][1] == BPAWN and dataOpponent[2] == 0:
+
+                pieces[dataOpponent[3]][dataOpponent[2]][0].undraw()
+                pieces[dataOpponent[3]][dataOpponent[2]] = (Text(Point((dataOpponent[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
+                pieces[dataOpponent[3]][dataOpponent[2]][0].setSize((SQ_SZ_HALF))
+                pieces[dataOpponent[3]][dataOpponent[2]][0].draw(win)
 
             # Clear these values after they have been executed.
             movementOpp1 = ((0, 0), 0, 0, 0, 0)
@@ -763,35 +789,31 @@ def main():
                 state = CONNECTED
                 break
 
+            # Not clicked in board space, start over.
+            if(point.y > 400 or point.x < 100 and point.x > 500):
+                continue
+
             # Determines if piece was selected, or an empty square.
-            temp = (0, 0)
-    
-            # Clicked in the board space
-            if(point.y <= 400):
-                temp = pieces[fromrow][fromcol]
+            temp = pieces[fromrow][fromcol]            
+            if temp == (0, 0):
+                continue
 
-            # Clicked in the graveyard
-            if fromrow == 0 or fromrow == 1 or fromrow == 10 or fromrow == 11:
-                temp = (0, 0) 
+            squares[fromrow][fromcol].setFill("lime")
+            
+            point2 = win.getMouse()
+            torow = point2.x // SQUARE_SZ
+            tocol = point2.y // SQUARE_SZ
 
-            if temp != (0, 0):
-                
-                squares[fromrow][fromcol].setFill("lime")
-                point2 = win.getMouse()
-
-                # Not clicked on board again.
-                if(point2.y > 400):
-                    continue
-
-                torow = point2.x // SQUARE_SZ
-                tocol = point2.y // SQUARE_SZ
-                
-                if fromrow < 2 or fromrow > 9:
-                    squares[fromrow][fromcol].setFill("linen")
-                elif (fromrow + fromcol) % 2 == 0:
-                    squares[fromrow][fromcol].setFill("gray")
-                else: 
-                    squares[fromrow][fromcol].setFill("white")
+            # Not clicked in board space again, start over.
+            if(point2.y > 400 or point2.x < 100 or point2.x > 500):
+                continue
+            
+            if fromrow < 2 or fromrow > 9:
+                squares[fromrow][fromcol].setFill("linen")
+            elif (fromrow + fromcol) % 2 == 0:
+                squares[fromrow][fromcol].setFill("gray")
+            else: 
+                squares[fromrow][fromcol].setFill("white")
 
             # Helper for creating msg.
             def concat(i):
@@ -808,31 +830,62 @@ def main():
             sock.sendto(msg, (SERVER, PORT))
             dataSelf = sock.recv(9)
             
-            print(dataSelf)
+            # print(dataSelf)
             (isValid, moves) = parseSimReturn(dataSelf)
         
-            print(isValid)
-            if isValid:
+            # print(isValid)
+            if isValid > 0:
 
+                # Checkmate (must be checked before movement
+                # b/c moves may be filled with zeroes).
+                if isValid == 3:
+
+                    t3.undraw()
+                    # print(moves)
+                    if moves == b'\x00\x00\x00\x00\x00\x00\x00\x00':
+                        t3 = Text(Point(370, 450), "You lost.")
+                        t3.draw(win)
+                        state = CONNECTED
+                        break
+                    else:
+                        t3 = Text(Point(370, 450), "You won.")
+                        t3.draw(win)
+                    
                 # Create move set.
                 movement1 = (pieces[moves[1]][moves[0]], moves[1], moves[0], moves[3], moves[2])
                 movement2 = (pieces[moves[5]][moves[4]], moves[5], moves[4], moves[7], moves[6])
 
                 # If movement2 exists, you must do it, and do it before movement1.
                 if movement2[1:] != (0, 0, 0, 0):
-                    print(movement2)
+                    print("Prerequisite movement: ", movement2)
                     movepiece(pieces, movement2)
 
                 # movement1 only exists if move was valid, so always do it.
-                print(movement1)
+                print("My movement: ", movement1)
                 movepiece(pieces, movement1)
+
+                # Pawn promotion (should be checked after movement).
+                if isValid == 2:
+
+                    pieces[moves[3]][moves[2]][0].undraw()
+                    
+                    if mycolor == WHITE:
+                        pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), 375), '♕'), WQUEEN)
+                    elif mycolor == BLACK:
+                        pieces[moves[3]][moves[2]] = (Text(Point((moves[3] * SQUARE_SZ) + (SQ_SZ_HALF), (SQ_SZ_HALF)), '♛'), BQUEEN)
+                        
+                    pieces[moves[3]][moves[2]][0].setSize((SQ_SZ_HALF))
+                    pieces[moves[3]][moves[2]][0].draw(win)
 
                 # Clear these values after they have been executed.
                 movement1 = ((0, 0), 0, 0, 0, 0)
                 movement2 = ((0, 0), 0, 0, 0, 0)
 
-                # Finally, transition state. 
-                state = WAITING
+                # Finally, transition state.
+                if isValid == 3:
+                    state = CONNECTED
+                else:
+                    state = WAITING
 
                 # State only changes when move is valid, otherwise player must try again.
         

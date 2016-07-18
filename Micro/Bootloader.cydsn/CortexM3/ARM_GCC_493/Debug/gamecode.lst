@@ -1,0 +1,4702 @@
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"gamecode.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.initialize,"ax",%progbits
+  19              		.align	2
+  20              		.global	initialize
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	initialize, %function
+  24              	initialize:
+  25              	.LFB63:
+  26              		.file 1 ".\\gamecode.c"
+   1:.\gamecode.c  **** 
+   2:.\gamecode.c  **** #include "gamecode.h"
+   3:.\gamecode.c  **** #include <strings.h>
+   4:.\gamecode.c  **** 
+   5:.\gamecode.c  **** // Common messages to send to server
+   6:.\gamecode.c  **** //.connect
+   7:.\gamecode.c  **** char bstr_connect[8] = { 0x2E, 0x63, 0x6F, 0x6E, 0x6E, 0x65, 0x63, 0x74 };
+   8:.\gamecode.c  **** //.ready
+   9:.\gamecode.c  **** char bstr_ready[6] = {0x2E, 0x72, 0x65, 0x61, 0x64, 0x79};
+  10:.\gamecode.c  **** //.gib
+  11:.\gamecode.c  **** char bstr_gib[4] = {0x2E, 0x67, 0x69, 0x62};
+  12:.\gamecode.c  **** 
+  13:.\gamecode.c  **** // Can receive response from server of sizes 1, 8, or 9.
+  14:.\gamecode.c  **** char bres1[1];
+  15:.\gamecode.c  **** char bres8[8];
+  16:.\gamecode.c  **** char bres9[9];
+  17:.\gamecode.c  **** 
+  18:.\gamecode.c  **** int diff_loc[2][2];
+  19:.\gamecode.c  **** // Different board states to use at this time.
+  20:.\gamecode.c  **** char initial_board[8][12];
+  21:.\gamecode.c  **** char update1_board[8][12];
+  22:.\gamecode.c  **** char update2_board[8][12];
+  23:.\gamecode.c  **** 
+  24:.\gamecode.c  **** enum Diff {
+  25:.\gamecode.c  ****     UPDATE1 = 1,
+  26:.\gamecode.c  ****     UPDATE2 = 2,
+  27:.\gamecode.c  **** };
+  28:.\gamecode.c  **** 
+  29:.\gamecode.c  **** // Initialization functions.
+  30:.\gamecode.c  **** 
+  31:.\gamecode.c  **** /*
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 2
+
+
+  32:.\gamecode.c  **** 	Initalizes the game state and board state.
+  33:.\gamecode.c  **** */
+  34:.\gamecode.c  **** int initialize() {
+  27              		.loc 1 34 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  35:.\gamecode.c  **** 
+  36:.\gamecode.c  **** 	int new_game_state;
+  37:.\gamecode.c  **** 
+  38:.\gamecode.c  **** 	new_game_state = CONNECTED;
+  39:.\gamecode.c  **** 	return new_game_state;
+  40:.\gamecode.c  **** }
+  33              		.loc 1 40 0
+  34 0000 0120     		movs	r0, #1
+  35 0002 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE63:
+  38              		.size	initialize, .-initialize
+  39              		.section	.text.state_notconnected,"ax",%progbits
+  40              		.align	2
+  41              		.global	state_notconnected
+  42              		.thumb
+  43              		.thumb_func
+  44              		.type	state_notconnected, %function
+  45              	state_notconnected:
+  46              	.LFB64:
+  41:.\gamecode.c  **** 
+  42:.\gamecode.c  **** // State functions.
+  43:.\gamecode.c  **** 
+  44:.\gamecode.c  **** /*
+  45:.\gamecode.c  **** 	Runs when game_state == NOTCONNECTED
+  46:.\gamecode.c  **** */
+  47:.\gamecode.c  **** int state_notconnected() {
+  47              		.loc 1 47 0
+  48              		.cfi_startproc
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51 0000 38B5     		push	{r3, r4, r5, lr}
+  52              		.cfi_def_cfa_offset 16
+  53              		.cfi_offset 3, -16
+  54              		.cfi_offset 4, -12
+  55              		.cfi_offset 5, -8
+  56              		.cfi_offset 14, -4
+  48:.\gamecode.c  **** 
+  49:.\gamecode.c  **** 	Debug_UART_PutString("NOTCONNECTED\n");
+  57              		.loc 1 49 0
+  58 0002 1648     		ldr	r0, .L7
+  59 0004 FFF7FEFF 		bl	Debug_UART_PutString
+  60              	.LVL1:
+  50:.\gamecode.c  **** 
+  51:.\gamecode.c  **** 	// write ".connect"
+  52:.\gamecode.c  **** 	strcpy(bres1, "");
+  61              		.loc 1 52 0
+  62 0008 154C     		ldr	r4, .L7+4
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 3
+
+
+  63 000a 0023     		movs	r3, #0
+  64 000c 2370     		strb	r3, [r4]
+  53:.\gamecode.c  **** 		esp_transmit(bstr_connect, "8");
+  65              		.loc 1 53 0
+  66 000e 1548     		ldr	r0, .L7+8
+  67 0010 1549     		ldr	r1, .L7+12
+  68 0012 FFF7FEFF 		bl	esp_transmit
+  69              	.LVL2:
+  54:.\gamecode.c  ****         strncpy(bres1, recv, 1);
+  70              		.loc 1 54 0
+  71 0016 154D     		ldr	r5, .L7+16
+  72 0018 2046     		mov	r0, r4
+  73 001a 2946     		mov	r1, r5
+  74 001c 0122     		movs	r2, #1
+  75 001e FFF7FEFF 		bl	strncpy
+  76              	.LVL3:
+  55:.\gamecode.c  ****         Debug_UART_PutChar(recv[0] + 48);
+  77              		.loc 1 55 0
+  78 0022 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+  79 0024 3030     		adds	r0, r0, #48
+  80 0026 C0B2     		uxtb	r0, r0
+  81 0028 FFF7FEFF 		bl	Debug_UART_PutChar
+  82              	.LVL4:
+  56:.\gamecode.c  ****         Debug_UART_PutString("<-here\n");
+  83              		.loc 1 56 0
+  84 002c 1048     		ldr	r0, .L7+20
+  85 002e FFF7FEFF 		bl	Debug_UART_PutString
+  86              	.LVL5:
+  57:.\gamecode.c  **** 	
+  58:.\gamecode.c  **** 
+  59:.\gamecode.c  **** 	if(bres1[0] == 0x01 || bres1[0] == 0x03) {
+  87              		.loc 1 59 0
+  88 0032 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+  89 0034 012B     		cmp	r3, #1
+  90 0036 01D0     		beq	.L3
+  91              		.loc 1 59 0 is_stmt 0 discriminator 1
+  92 0038 032B     		cmp	r3, #3
+  93 003a 06D1     		bne	.L4
+  94              	.L3:
+  60:.\gamecode.c  **** 
+  61:.\gamecode.c  **** 		Debug_UART_PutString("Connected.\n");
+  95              		.loc 1 61 0 is_stmt 1
+  96 003c 0D48     		ldr	r0, .L7+24
+  97 003e FFF7FEFF 		bl	Debug_UART_PutString
+  98              	.LVL6:
+  62:.\gamecode.c  **** 		game_state = CONNECTED;
+  99              		.loc 1 62 0
+ 100 0042 0122     		movs	r2, #1
+ 101 0044 0C4B     		ldr	r3, .L7+28
+ 102 0046 1A60     		str	r2, [r3]
+ 103 0048 05E0     		b	.L5
+ 104              	.L4:
+  63:.\gamecode.c  **** 	}
+  64:.\gamecode.c  **** 	else {
+  65:.\gamecode.c  **** 
+  66:.\gamecode.c  **** 		Debug_UART_PutString("Not connected.\n");
+ 105              		.loc 1 66 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 4
+
+
+ 106 004a 0C48     		ldr	r0, .L7+32
+ 107 004c FFF7FEFF 		bl	Debug_UART_PutString
+ 108              	.LVL7:
+  67:.\gamecode.c  **** 		game_state = NOTCONNECTED;
+ 109              		.loc 1 67 0
+ 110 0050 0022     		movs	r2, #0
+ 111 0052 094B     		ldr	r3, .L7+28
+ 112 0054 1A60     		str	r2, [r3]
+ 113              	.L5:
+  68:.\gamecode.c  **** 	}
+  69:.\gamecode.c  **** 	return game_state;
+  70:.\gamecode.c  **** }
+ 114              		.loc 1 70 0
+ 115 0056 084B     		ldr	r3, .L7+28
+ 116 0058 1868     		ldr	r0, [r3]
+ 117 005a 38BD     		pop	{r3, r4, r5, pc}
+ 118              	.L8:
+ 119              		.align	2
+ 120              	.L7:
+ 121 005c 00000000 		.word	.LC0
+ 122 0060 00000000 		.word	bres1
+ 123 0064 00000000 		.word	.LANCHOR0
+ 124 0068 10000000 		.word	.LC1
+ 125 006c 00000000 		.word	recv
+ 126 0070 14000000 		.word	.LC2
+ 127 0074 1C000000 		.word	.LC3
+ 128 0078 00000000 		.word	game_state
+ 129 007c 28000000 		.word	.LC4
+ 130              		.cfi_endproc
+ 131              	.LFE64:
+ 132              		.size	state_notconnected, .-state_notconnected
+ 133              		.section	.text.state_connected,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	state_connected
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	state_connected, %function
+ 139              	state_connected:
+ 140              	.LFB65:
+  71:.\gamecode.c  **** 
+  72:.\gamecode.c  **** /*
+  73:.\gamecode.c  **** 	Runs when game_state == CONNECTED
+  74:.\gamecode.c  **** */
+  75:.\gamecode.c  **** int state_connected() {
+ 141              		.loc 1 75 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145 0000 38B5     		push	{r3, r4, r5, lr}
+ 146              		.cfi_def_cfa_offset 16
+ 147              		.cfi_offset 3, -16
+ 148              		.cfi_offset 4, -12
+ 149              		.cfi_offset 5, -8
+ 150              		.cfi_offset 14, -4
+  76:.\gamecode.c  **** 
+  77:.\gamecode.c  **** 	Debug_UART_PutString("CONNECTED\n");
+ 151              		.loc 1 77 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 5
+
+
+ 152 0002 1E48     		ldr	r0, .L15
+ 153 0004 FFF7FEFF 		bl	Debug_UART_PutString
+ 154              	.LVL8:
+  78:.\gamecode.c  **** 
+  79:.\gamecode.c  **** 	// write ".ready"
+  80:.\gamecode.c  **** 	strcpy(bres1, "");
+ 155              		.loc 1 80 0
+ 156 0008 1D4C     		ldr	r4, .L15+4
+ 157 000a 0023     		movs	r3, #0
+ 158 000c 2370     		strb	r3, [r4]
+  81:.\gamecode.c  **** 	esp_transmit(bstr_ready, "6");
+ 159              		.loc 1 81 0
+ 160 000e 1D48     		ldr	r0, .L15+8
+ 161 0010 1D49     		ldr	r1, .L15+12
+ 162 0012 FFF7FEFF 		bl	esp_transmit
+ 163              	.LVL9:
+  82:.\gamecode.c  ****     strncpy(bres1, recv, 1);
+ 164              		.loc 1 82 0
+ 165 0016 1D4D     		ldr	r5, .L15+16
+ 166 0018 2046     		mov	r0, r4
+ 167 001a 2946     		mov	r1, r5
+ 168 001c 0122     		movs	r2, #1
+ 169 001e FFF7FEFF 		bl	strncpy
+ 170              	.LVL10:
+  83:.\gamecode.c  ****     Debug_UART_PutChar(recv[0] + 48);
+ 171              		.loc 1 83 0
+ 172 0022 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 173 0024 3030     		adds	r0, r0, #48
+ 174 0026 C0B2     		uxtb	r0, r0
+ 175 0028 FFF7FEFF 		bl	Debug_UART_PutChar
+ 176              	.LVL11:
+  84:.\gamecode.c  ****     Debug_UART_PutString("<-here\n");
+ 177              		.loc 1 84 0
+ 178 002c 1848     		ldr	r0, .L15+20
+ 179 002e FFF7FEFF 		bl	Debug_UART_PutString
+ 180              	.LVL12:
+  85:.\gamecode.c  **** 
+  86:.\gamecode.c  **** 	if(bres1[0] == 0x11){
+ 181              		.loc 1 86 0
+ 182 0032 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 183 0034 112B     		cmp	r3, #17
+ 184 0036 06D1     		bne	.L10
+  87:.\gamecode.c  **** 		Debug_UART_PutString("Ready.");
+ 185              		.loc 1 87 0
+ 186 0038 1648     		ldr	r0, .L15+24
+ 187 003a FFF7FEFF 		bl	Debug_UART_PutString
+ 188              	.LVL13:
+  88:.\gamecode.c  **** 		game_state = READY;
+ 189              		.loc 1 88 0
+ 190 003e 0222     		movs	r2, #2
+ 191 0040 154B     		ldr	r3, .L15+28
+ 192 0042 1A60     		str	r2, [r3]
+ 193 0044 17E0     		b	.L11
+ 194              	.L10:
+  89:.\gamecode.c  **** 	}
+  90:.\gamecode.c  **** 
+  91:.\gamecode.c  **** 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 6
+
+
+ 195              		.loc 1 91 0
+ 196 0046 212B     		cmp	r3, #33
+ 197 0048 06D1     		bne	.L12
+  92:.\gamecode.c  **** 
+  93:.\gamecode.c  **** 		Debug_UART_PutString("Your turn.");
+ 198              		.loc 1 93 0
+ 199 004a 1448     		ldr	r0, .L15+32
+ 200 004c FFF7FEFF 		bl	Debug_UART_PutString
+ 201              	.LVL14:
+  94:.\gamecode.c  **** 		game_state = MOVING;
+ 202              		.loc 1 94 0
+ 203 0050 0422     		movs	r2, #4
+ 204 0052 114B     		ldr	r3, .L15+28
+ 205 0054 1A60     		str	r2, [r3]
+ 206 0056 0EE0     		b	.L11
+ 207              	.L12:
+  95:.\gamecode.c  **** 	}
+  96:.\gamecode.c  **** 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
+ 208              		.loc 1 96 0
+ 209 0058 222B     		cmp	r3, #34
+ 210 005a 06D1     		bne	.L13
+  97:.\gamecode.c  **** 
+  98:.\gamecode.c  **** 		Debug_UART_PutString("Their turn.");
+ 211              		.loc 1 98 0
+ 212 005c 1048     		ldr	r0, .L15+36
+ 213 005e FFF7FEFF 		bl	Debug_UART_PutString
+ 214              	.LVL15:
+  99:.\gamecode.c  **** 		game_state = WAITING;
+ 215              		.loc 1 99 0
+ 216 0062 0322     		movs	r2, #3
+ 217 0064 0C4B     		ldr	r3, .L15+28
+ 218 0066 1A60     		str	r2, [r3]
+ 219 0068 05E0     		b	.L11
+ 220              	.L13:
+ 100:.\gamecode.c  **** 	}
+ 101:.\gamecode.c  **** 	else {
+ 102:.\gamecode.c  **** 		Debug_UART_PutString("Connection State Failure.");
+ 221              		.loc 1 102 0
+ 222 006a 0E48     		ldr	r0, .L15+40
+ 223 006c FFF7FEFF 		bl	Debug_UART_PutString
+ 224              	.LVL16:
+ 103:.\gamecode.c  **** 		game_state = CONNECTED;
+ 225              		.loc 1 103 0
+ 226 0070 0122     		movs	r2, #1
+ 227 0072 094B     		ldr	r3, .L15+28
+ 228 0074 1A60     		str	r2, [r3]
+ 229              	.L11:
+ 104:.\gamecode.c  **** 	}
+ 105:.\gamecode.c  **** 
+ 106:.\gamecode.c  **** 	return game_state;
+ 107:.\gamecode.c  **** }
+ 230              		.loc 1 107 0
+ 231 0076 084B     		ldr	r3, .L15+28
+ 232 0078 1868     		ldr	r0, [r3]
+ 233 007a 38BD     		pop	{r3, r4, r5, pc}
+ 234              	.L16:
+ 235              		.align	2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 7
+
+
+ 236              	.L15:
+ 237 007c 38000000 		.word	.LC5
+ 238 0080 00000000 		.word	bres1
+ 239 0084 08000000 		.word	.LANCHOR0+8
+ 240 0088 44000000 		.word	.LC6
+ 241 008c 00000000 		.word	recv
+ 242 0090 14000000 		.word	.LC2
+ 243 0094 48000000 		.word	.LC7
+ 244 0098 00000000 		.word	game_state
+ 245 009c 50000000 		.word	.LC8
+ 246 00a0 5C000000 		.word	.LC9
+ 247 00a4 68000000 		.word	.LC10
+ 248              		.cfi_endproc
+ 249              	.LFE65:
+ 250              		.size	state_connected, .-state_connected
+ 251              		.section	.text.state_ready,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	state_ready
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	state_ready, %function
+ 257              	state_ready:
+ 258              	.LFB66:
+ 108:.\gamecode.c  **** 
+ 109:.\gamecode.c  **** /*
+ 110:.\gamecode.c  **** 	Runs when game_state == READY
+ 111:.\gamecode.c  **** */
+ 112:.\gamecode.c  **** int state_ready() {
+ 259              		.loc 1 112 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263 0000 10B5     		push	{r4, lr}
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 4, -8
+ 266              		.cfi_offset 14, -4
+ 113:.\gamecode.c  **** 
+ 114:.\gamecode.c  **** 	Debug_UART_PutString("READY\n");
+ 267              		.loc 1 114 0
+ 268 0002 2148     		ldr	r0, .L24
+ 269 0004 FFF7FEFF 		bl	Debug_UART_PutString
+ 270              	.LVL17:
+ 115:.\gamecode.c  **** 
+ 116:.\gamecode.c  **** 	//write ".gib"
+ 117:.\gamecode.c  **** 	strcpy(bres1, "");
+ 271              		.loc 1 117 0
+ 272 0008 204C     		ldr	r4, .L24+4
+ 273 000a 0023     		movs	r3, #0
+ 274 000c 2370     		strb	r3, [r4]
+ 118:.\gamecode.c  **** 	esp_transmit(bstr_gib, "4");
+ 275              		.loc 1 118 0
+ 276 000e 2048     		ldr	r0, .L24+8
+ 277 0010 2049     		ldr	r1, .L24+12
+ 278 0012 FFF7FEFF 		bl	esp_transmit
+ 279              	.LVL18:
+ 119:.\gamecode.c  ****     strncpy(bres1, recv, 1);
+ 280              		.loc 1 119 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 8
+
+
+ 281 0016 2046     		mov	r0, r4
+ 282 0018 1F49     		ldr	r1, .L24+16
+ 283 001a 0122     		movs	r2, #1
+ 284 001c FFF7FEFF 		bl	strncpy
+ 285              	.LVL19:
+ 120:.\gamecode.c  ****     
+ 121:.\gamecode.c  **** 	while(	bres1[0] != 0x21 && bres1[0] != 0x22 && 
+ 286              		.loc 1 121 0
+ 287 0020 10E0     		b	.L18
+ 288              	.L19:
+ 122:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 123:.\gamecode.c  **** 		CyDelay(5000);
+ 289              		.loc 1 123 0
+ 290 0022 41F28830 		movw	r0, #5000
+ 291 0026 FFF7FEFF 		bl	CyDelay
+ 292              	.LVL20:
+ 124:.\gamecode.c  **** 
+ 125:.\gamecode.c  **** 		esp_transmit(bstr_gib, "4");
+ 293              		.loc 1 125 0
+ 294 002a 1948     		ldr	r0, .L24+8
+ 295 002c 1949     		ldr	r1, .L24+12
+ 296 002e FFF7FEFF 		bl	esp_transmit
+ 297              	.LVL21:
+ 126:.\gamecode.c  ****         strncpy(bres1, recv, 1);
+ 298              		.loc 1 126 0
+ 299 0032 164C     		ldr	r4, .L24+4
+ 300 0034 2046     		mov	r0, r4
+ 301 0036 1849     		ldr	r1, .L24+16
+ 302 0038 0122     		movs	r2, #1
+ 303 003a FFF7FEFF 		bl	strncpy
+ 304              	.LVL22:
+ 127:.\gamecode.c  **** 
+ 128:.\gamecode.c  **** 		Debug_UART_PutString(&bres1[0]);
+ 305              		.loc 1 128 0
+ 306 003e 2046     		mov	r0, r4
+ 307 0040 FFF7FEFF 		bl	Debug_UART_PutString
+ 308              	.LVL23:
+ 309              	.L18:
+ 121:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 310              		.loc 1 121 0
+ 311 0044 114B     		ldr	r3, .L24+4
+ 312 0046 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 122:.\gamecode.c  **** 		CyDelay(5000);
+ 313              		.loc 1 122 0
+ 314 0048 A2F12103 		sub	r3, r2, #33
+ 315 004c DBB2     		uxtb	r3, r3
+ 121:.\gamecode.c  **** 			bres1[0] != '!'  && bres1[0] != '"') { 
+ 316              		.loc 1 121 0
+ 317 004e 012B     		cmp	r3, #1
+ 318 0050 E7D8     		bhi	.L19
+ 129:.\gamecode.c  **** 	}
+ 130:.\gamecode.c  **** 
+ 131:.\gamecode.c  **** 	if(bres1[0] == 0x11) {
+ 319              		.loc 1 131 0
+ 320 0052 112A     		cmp	r2, #17
+ 321 0054 03D1     		bne	.L20
+ 132:.\gamecode.c  **** 		game_state = READY;
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 9
+
+
+ 322              		.loc 1 132 0
+ 323 0056 0222     		movs	r2, #2
+ 324 0058 104B     		ldr	r3, .L24+20
+ 325 005a 1A60     		str	r2, [r3]
+ 326 005c 10E0     		b	.L21
+ 327              	.L20:
+ 133:.\gamecode.c  **** 	} 
+ 134:.\gamecode.c  **** 	else if(bres1[0] == 0x21 || bres1[0] == '!') {
+ 328              		.loc 1 134 0
+ 329 005e 212A     		cmp	r2, #33
+ 330 0060 06D1     		bne	.L22
+ 135:.\gamecode.c  **** 
+ 136:.\gamecode.c  **** 		Debug_UART_PutString("Your turn.");
+ 331              		.loc 1 136 0
+ 332 0062 0F48     		ldr	r0, .L24+24
+ 333 0064 FFF7FEFF 		bl	Debug_UART_PutString
+ 334              	.LVL24:
+ 137:.\gamecode.c  **** 		game_state = MOVING;
+ 335              		.loc 1 137 0
+ 336 0068 0422     		movs	r2, #4
+ 337 006a 0C4B     		ldr	r3, .L24+20
+ 338 006c 1A60     		str	r2, [r3]
+ 339 006e 07E0     		b	.L21
+ 340              	.L22:
+ 138:.\gamecode.c  **** 	} 
+ 139:.\gamecode.c  **** 	else if(bres1[0] == 0x22 || bres1[0] == '"') {
+ 341              		.loc 1 139 0
+ 342 0070 222A     		cmp	r2, #34
+ 343 0072 05D1     		bne	.L21
+ 140:.\gamecode.c  **** 
+ 141:.\gamecode.c  **** 		Debug_UART_PutString("Their turn.");
+ 344              		.loc 1 141 0
+ 345 0074 0B48     		ldr	r0, .L24+28
+ 346 0076 FFF7FEFF 		bl	Debug_UART_PutString
+ 347              	.LVL25:
+ 142:.\gamecode.c  **** 		game_state = WAITING;
+ 348              		.loc 1 142 0
+ 349 007a 0322     		movs	r2, #3
+ 350 007c 074B     		ldr	r3, .L24+20
+ 351 007e 1A60     		str	r2, [r3]
+ 352              	.L21:
+ 143:.\gamecode.c  **** 	}
+ 144:.\gamecode.c  **** 	return game_state;
+ 145:.\gamecode.c  **** }
+ 353              		.loc 1 145 0
+ 354 0080 064B     		ldr	r3, .L24+20
+ 355 0082 1868     		ldr	r0, [r3]
+ 356 0084 10BD     		pop	{r4, pc}
+ 357              	.L25:
+ 358 0086 00BF     		.align	2
+ 359              	.L24:
+ 360 0088 84000000 		.word	.LC11
+ 361 008c 00000000 		.word	bres1
+ 362 0090 10000000 		.word	.LANCHOR0+16
+ 363 0094 8C000000 		.word	.LC12
+ 364 0098 00000000 		.word	recv
+ 365 009c 00000000 		.word	game_state
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 10
+
+
+ 366 00a0 50000000 		.word	.LC8
+ 367 00a4 5C000000 		.word	.LC9
+ 368              		.cfi_endproc
+ 369              	.LFE66:
+ 370              		.size	state_ready, .-state_ready
+ 371              		.section	.text.state_waiting,"ax",%progbits
+ 372              		.align	2
+ 373              		.global	state_waiting
+ 374              		.thumb
+ 375              		.thumb_func
+ 376              		.type	state_waiting, %function
+ 377              	state_waiting:
+ 378              	.LFB67:
+ 146:.\gamecode.c  **** 
+ 147:.\gamecode.c  **** /*
+ 148:.\gamecode.c  **** 	Runs when game_state == WAITING
+ 149:.\gamecode.c  **** */
+ 150:.\gamecode.c  **** int state_waiting() {
+ 379              		.loc 1 150 0
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 8
+ 382              		@ frame_needed = 0, uses_anonymous_args = 0
+ 383 0000 10B5     		push	{r4, lr}
+ 384              		.cfi_def_cfa_offset 8
+ 385              		.cfi_offset 4, -8
+ 386              		.cfi_offset 14, -4
+ 387 0002 82B0     		sub	sp, sp, #8
+ 388              		.cfi_def_cfa_offset 16
+ 151:.\gamecode.c  **** 
+ 152:.\gamecode.c  **** 	Debug_UART_PutString("WAITING");
+ 389              		.loc 1 152 0
+ 390 0004 3848     		ldr	r0, .L34
+ 391 0006 FFF7FEFF 		bl	Debug_UART_PutString
+ 392              	.LVL26:
+ 153:.\gamecode.c  **** 
+ 154:.\gamecode.c  **** 	// write ".gib"
+ 155:.\gamecode.c  **** 	strcpy(bres8, "");
+ 393              		.loc 1 155 0
+ 394 000a 0022     		movs	r2, #0
+ 395 000c 374B     		ldr	r3, .L34+4
+ 396 000e 1A70     		strb	r2, [r3]
+ 156:.\gamecode.c  ****     //esp_transmit(bstr_gib, "4");
+ 157:.\gamecode.c  ****     //strncpy(bres8, recv, 8);
+ 158:.\gamecode.c  ****     
+ 159:.\gamecode.c  **** 	while(bres8[1] == 0x00) {
+ 397              		.loc 1 159 0
+ 398 0010 17E0     		b	.L27
+ 399              	.L29:
+ 160:.\gamecode.c  **** 		CyDelay(5000);
+ 400              		.loc 1 160 0
+ 401 0012 41F28830 		movw	r0, #5000
+ 402 0016 FFF7FEFF 		bl	CyDelay
+ 403              	.LVL27:
+ 161:.\gamecode.c  **** 
+ 162:.\gamecode.c  **** 		esp_transmit(bstr_gib, "4");
+ 404              		.loc 1 162 0
+ 405 001a 3548     		ldr	r0, .L34+8
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 11
+
+
+ 406 001c 3549     		ldr	r1, .L34+12
+ 407 001e FFF7FEFF 		bl	esp_transmit
+ 408              	.LVL28:
+ 163:.\gamecode.c  ****         strncpy(bres8, recv, 8);
+ 409              		.loc 1 163 0
+ 410 0022 324C     		ldr	r4, .L34+4
+ 411 0024 2046     		mov	r0, r4
+ 412 0026 3449     		ldr	r1, .L34+16
+ 413 0028 0822     		movs	r2, #8
+ 414 002a FFF7FEFF 		bl	strncpy
+ 415              	.LVL29:
+ 164:.\gamecode.c  ****         
+ 165:.\gamecode.c  **** 		Debug_UART_PutString(bres8);
+ 416              		.loc 1 165 0
+ 417 002e 2046     		mov	r0, r4
+ 418 0030 FFF7FEFF 		bl	Debug_UART_PutString
+ 419              	.LVL30:
+ 166:.\gamecode.c  **** 
+ 167:.\gamecode.c  **** 		if(bres8[0] == 0x31 || bres8[0] == '1'){
+ 420              		.loc 1 167 0
+ 421 0034 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 422 0036 312B     		cmp	r3, #49
+ 423 0038 03D1     		bne	.L27
+ 168:.\gamecode.c  **** 			game_state = CONNECTED;
+ 424              		.loc 1 168 0
+ 425 003a 0122     		movs	r2, #1
+ 426 003c 2F4B     		ldr	r3, .L34+20
+ 427 003e 1A60     		str	r2, [r3]
+ 169:.\gamecode.c  **** 			break;
+ 428              		.loc 1 169 0
+ 429 0040 03E0     		b	.L28
+ 430              	.L27:
+ 159:.\gamecode.c  **** 		CyDelay(5000);
+ 431              		.loc 1 159 0
+ 432 0042 2A4B     		ldr	r3, .L34+4
+ 433 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 434 0046 002B     		cmp	r3, #0
+ 435 0048 E3D0     		beq	.L29
+ 436              	.L28:
+ 170:.\gamecode.c  **** 		}
+ 171:.\gamecode.c  **** 	}
+ 172:.\gamecode.c  **** 	if(bres8[0] == 0x31 || bres8[0] == '1'){
+ 437              		.loc 1 172 0
+ 438 004a 284B     		ldr	r3, .L34+4
+ 439 004c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 440 004e 312A     		cmp	r2, #49
+ 441 0050 03D1     		bne	.L30
+ 173:.\gamecode.c  **** 		game_state = CONNECTED;
+ 442              		.loc 1 173 0
+ 443 0052 0120     		movs	r0, #1
+ 444 0054 294B     		ldr	r3, .L34+20
+ 445 0056 1860     		str	r0, [r3]
+ 174:.\gamecode.c  **** 		return game_state;
+ 446              		.loc 1 174 0
+ 447 0058 44E0     		b	.L31
+ 448              	.L30:
+ 175:.\gamecode.c  **** 	}
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 12
+
+
+ 176:.\gamecode.c  **** 	char movementOpp1[4] = { bres8[1], bres8[0], bres8[3], bres8[2] };
+ 449              		.loc 1 176 0
+ 450 005a 244B     		ldr	r3, .L34+4
+ 451 005c 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2
+ 452 005e 8DF80410 		strb	r1, [sp, #4]
+ 453 0062 8DF80520 		strb	r2, [sp, #5]
+ 454 0066 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 455 0068 8DF80620 		strb	r2, [sp, #6]
+ 456 006c 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 457 006e 8DF80720 		strb	r2, [sp, #7]
+ 177:.\gamecode.c  **** 	char movementOpp2[4] = { bres8[5], bres8[4], bres8[7], bres8[6] };
+ 458              		.loc 1 177 0
+ 459 0072 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
+ 460 0074 8DF80020 		strb	r2, [sp]
+ 461 0078 1979     		ldrb	r1, [r3, #4]	@ zero_extendqisi2
+ 462 007a 8DF80110 		strb	r1, [sp, #1]
+ 463 007e D879     		ldrb	r0, [r3, #7]	@ zero_extendqisi2
+ 464 0080 8DF80200 		strb	r0, [sp, #2]
+ 465 0084 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 466 0086 8DF80330 		strb	r3, [sp, #3]
+ 178:.\gamecode.c  **** 
+ 179:.\gamecode.c  **** 	if(	movementOpp2[0] != 0 && movementOpp2[1] != 0 && 
+ 467              		.loc 1 179 0
+ 468 008a AAB1     		cbz	r2, .L32
+ 469              		.loc 1 179 0 is_stmt 0 discriminator 1
+ 470 008c A1B1     		cbz	r1, .L32
+ 471              		.loc 1 179 0 discriminator 2
+ 472 008e 98B1     		cbz	r0, .L32
+ 180:.\gamecode.c  **** 		movementOpp2[2] != 0 && movementOpp2[3] != 0) {
+ 473              		.loc 1 180 0 is_stmt 1
+ 474 0090 93B1     		cbz	r3, .L32
+ 181:.\gamecode.c  **** 		Debug_UART_PutString(movementOpp2);
+ 475              		.loc 1 181 0
+ 476 0092 6846     		mov	r0, sp
+ 477 0094 FFF7FEFF 		bl	Debug_UART_PutString
+ 478              	.LVL31:
+ 182:.\gamecode.c  ****         move.fromCol = (int) movementOpp2[0];
+ 479              		.loc 1 182 0
+ 480 0098 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 481 009c 184B     		ldr	r3, .L34+24
+ 482 009e 5A60     		str	r2, [r3, #4]
+ 183:.\gamecode.c  ****         move.fromRow = (int) movementOpp2[1];
+ 483              		.loc 1 183 0
+ 484 00a0 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
+ 485 00a4 1A60     		str	r2, [r3]
+ 184:.\gamecode.c  ****         move.toCol = (int) movementOpp2[2];
+ 486              		.loc 1 184 0
+ 487 00a6 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
+ 488 00aa DA60     		str	r2, [r3, #12]
+ 185:.\gamecode.c  ****         move.toRow = (int) movementOpp2[3];
+ 489              		.loc 1 185 0
+ 490 00ac 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 491 00b0 9A60     		str	r2, [r3, #8]
+ 186:.\gamecode.c  **** 		movepiece(move);
+ 492              		.loc 1 186 0
+ 493 00b2 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 494 00b4 FFF7FEFF 		bl	movepiece
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 13
+
+
+ 495              	.LVL32:
+ 496              	.L32:
+ 187:.\gamecode.c  **** 	}
+ 188:.\gamecode.c  **** 	Debug_UART_PutString(movementOpp1);
+ 497              		.loc 1 188 0
+ 498 00b8 01A8     		add	r0, sp, #4
+ 499 00ba FFF7FEFF 		bl	Debug_UART_PutString
+ 500              	.LVL33:
+ 189:.\gamecode.c  ****     move.fromCol = (int) movementOpp1[0];
+ 501              		.loc 1 189 0
+ 502 00be 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 503 00c2 0F4B     		ldr	r3, .L34+24
+ 504 00c4 5A60     		str	r2, [r3, #4]
+ 190:.\gamecode.c  ****     move.fromRow = (int) movementOpp1[1];
+ 505              		.loc 1 190 0
+ 506 00c6 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
+ 507 00ca 1A60     		str	r2, [r3]
+ 191:.\gamecode.c  ****     move.toCol = (int) movementOpp1[2];
+ 508              		.loc 1 191 0
+ 509 00cc 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+ 510 00d0 DA60     		str	r2, [r3, #12]
+ 192:.\gamecode.c  ****     move.toRow = (int) movementOpp1[3];
+ 511              		.loc 1 192 0
+ 512 00d2 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ 513 00d6 9A60     		str	r2, [r3, #8]
+ 193:.\gamecode.c  **** 	movepiece(move);
+ 514              		.loc 1 193 0
+ 515 00d8 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 516 00da FFF7FEFF 		bl	movepiece
+ 517              	.LVL34:
+ 194:.\gamecode.c  **** 
+ 195:.\gamecode.c  **** 	game_state = MOVING;
+ 518              		.loc 1 195 0
+ 519 00de 0420     		movs	r0, #4
+ 520 00e0 064B     		ldr	r3, .L34+20
+ 521 00e2 1860     		str	r0, [r3]
+ 522              	.L31:
+ 196:.\gamecode.c  **** 	return game_state;
+ 197:.\gamecode.c  **** }
+ 523              		.loc 1 197 0
+ 524 00e4 02B0     		add	sp, sp, #8
+ 525              		.cfi_def_cfa_offset 8
+ 526              		@ sp needed
+ 527 00e6 10BD     		pop	{r4, pc}
+ 528              	.L35:
+ 529              		.align	2
+ 530              	.L34:
+ 531 00e8 90000000 		.word	.LC13
+ 532 00ec 00000000 		.word	bres8
+ 533 00f0 10000000 		.word	.LANCHOR0+16
+ 534 00f4 8C000000 		.word	.LC12
+ 535 00f8 00000000 		.word	recv
+ 536 00fc 00000000 		.word	game_state
+ 537 0100 00000000 		.word	move
+ 538              		.cfi_endproc
+ 539              	.LFE67:
+ 540              		.size	state_waiting, .-state_waiting
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 14
+
+
+ 541              		.section	.text.diff_boards,"ax",%progbits
+ 542              		.align	2
+ 543              		.global	diff_boards
+ 544              		.thumb
+ 545              		.thumb_func
+ 546              		.type	diff_boards, %function
+ 547              	diff_boards:
+ 548              	.LFB68:
+ 198:.\gamecode.c  **** 
+ 199:.\gamecode.c  **** void diff_boards(enum Diff x) {
+ 549              		.loc 1 199 0
+ 550              		.cfi_startproc
+ 551              		@ args = 0, pretend = 0, frame = 0
+ 552              		@ frame_needed = 0, uses_anonymous_args = 0
+ 553              	.LVL35:
+ 554 0000 38B5     		push	{r3, r4, r5, lr}
+ 555              		.cfi_def_cfa_offset 16
+ 556              		.cfi_offset 3, -16
+ 557              		.cfi_offset 4, -12
+ 558              		.cfi_offset 5, -8
+ 559              		.cfi_offset 14, -4
+ 200:.\gamecode.c  **** 
+ 201:.\gamecode.c  **** 	diff_loc[0][0] = 0;
+ 560              		.loc 1 201 0
+ 561 0002 3F4B     		ldr	r3, .L54
+ 562 0004 0022     		movs	r2, #0
+ 563 0006 1A60     		str	r2, [r3]
+ 202:.\gamecode.c  ****     diff_loc[0][1] = 0;
+ 564              		.loc 1 202 0
+ 565 0008 5A60     		str	r2, [r3, #4]
+ 203:.\gamecode.c  ****     diff_loc[1][0] = 0;
+ 566              		.loc 1 203 0
+ 567 000a 9A60     		str	r2, [r3, #8]
+ 204:.\gamecode.c  ****     diff_loc[1][1] = 0;
+ 568              		.loc 1 204 0
+ 569 000c DA60     		str	r2, [r3, #12]
+ 205:.\gamecode.c  **** 
+ 206:.\gamecode.c  **** 	int i, j;
+ 207:.\gamecode.c  ****     if(x == UPDATE1) {
+ 570              		.loc 1 207 0
+ 571 000e 0128     		cmp	r0, #1
+ 572 0010 38D0     		beq	.L50
+ 573 0012 1546     		mov	r5, r2
+ 574 0014 70E0     		b	.L38
+ 575              	.LVL36:
+ 576              	.L42:
+ 208:.\gamecode.c  ****         for(i = 0; i < 8; i++) {
+ 209:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 210:.\gamecode.c  **** 
+ 211:.\gamecode.c  ****     			// Pick-up location, use diff_loc[0].
+ 212:.\gamecode.c  ****     			if(initial_board[i][j] == 0x01 && update1_board[i][j] == 0x00) {
+ 577              		.loc 1 212 0
+ 578 0016 05EB4503 		add	r3, r5, r5, lsl #1
+ 579 001a 9B00     		lsls	r3, r3, #2
+ 580 001c 2344     		add	r3, r3, r4
+ 581 001e 394A     		ldr	r2, .L54+4
+ 582 0020 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 15
+
+
+ 583 0022 012B     		cmp	r3, #1
+ 584 0024 1BD1     		bne	.L39
+ 585              		.loc 1 212 0 is_stmt 0 discriminator 1
+ 586 0026 05EB4502 		add	r2, r5, r5, lsl #1
+ 587 002a 9200     		lsls	r2, r2, #2
+ 588 002c 2244     		add	r2, r2, r4
+ 589 002e 3649     		ldr	r1, .L54+8
+ 590 0030 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 591 0032 A2B9     		cbnz	r2, .L39
+ 213:.\gamecode.c  **** 
+ 214:.\gamecode.c  ****     				// Picked up in graveyard, warn user.
+ 215:.\gamecode.c  ****     				if((j % 10) == 0 || (j % 10) == 1) {
+ 592              		.loc 1 215 0 is_stmt 1
+ 593 0034 03F16633 		add	r3, r3, #1717986918
+ 594 0038 83FB0432 		smull	r3, r2, r3, r4
+ 595 003c E317     		asrs	r3, r4, #31
+ 596 003e C3EBA203 		rsb	r3, r3, r2, asr #2
+ 597 0042 03EB8303 		add	r3, r3, r3, lsl #2
+ 598 0046 5B00     		lsls	r3, r3, #1
+ 599 0048 E31A     		subs	r3, r4, r3
+ 600 004a 012B     		cmp	r3, #1
+ 601 004c 03D8     		bhi	.L40
+ 216:.\gamecode.c  ****     					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+ 602              		.loc 1 216 0
+ 603 004e 2F48     		ldr	r0, .L54+12
+ 604 0050 FFF7FEFF 		bl	Debug_UART_PutString
+ 605              	.LVL37:
+ 606 0054 0FE0     		b	.L41
+ 607              	.L40:
+ 217:.\gamecode.c  ****     				}
+ 218:.\gamecode.c  ****     				else {
+ 219:.\gamecode.c  ****     					diff_loc[0][0] = i;
+ 608              		.loc 1 219 0
+ 609 0056 2A4B     		ldr	r3, .L54
+ 610 0058 1D60     		str	r5, [r3]
+ 220:.\gamecode.c  ****     					diff_loc[0][1] = j;
+ 611              		.loc 1 220 0
+ 612 005a 5C60     		str	r4, [r3, #4]
+ 613 005c 0BE0     		b	.L41
+ 614              	.L39:
+ 221:.\gamecode.c  ****     				}
+ 222:.\gamecode.c  ****     			}
+ 223:.\gamecode.c  ****     			// Drop-off location, use diff_loc[1].
+ 224:.\gamecode.c  ****     			else if(initial_board[i][j] == 0x00 && update1_board[i][j] == 0x01) {
+ 615              		.loc 1 224 0
+ 616 005e 53B9     		cbnz	r3, .L41
+ 617              		.loc 1 224 0 is_stmt 0 discriminator 1
+ 618 0060 05EB4503 		add	r3, r5, r5, lsl #1
+ 619 0064 9B00     		lsls	r3, r3, #2
+ 620 0066 2344     		add	r3, r3, r4
+ 621 0068 274A     		ldr	r2, .L54+8
+ 622 006a D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 623 006c 012B     		cmp	r3, #1
+ 624 006e 02D1     		bne	.L41
+ 225:.\gamecode.c  **** 
+ 226:.\gamecode.c  ****     				diff_loc[1][0] = i;
+ 625              		.loc 1 226 0 is_stmt 1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 16
+
+
+ 626 0070 234B     		ldr	r3, .L54
+ 627 0072 9D60     		str	r5, [r3, #8]
+ 227:.\gamecode.c  ****     				diff_loc[1][1] = j;
+ 628              		.loc 1 227 0
+ 629 0074 DC60     		str	r4, [r3, #12]
+ 630              	.L41:
+ 209:.\gamecode.c  **** 
+ 631              		.loc 1 209 0 discriminator 2
+ 632 0076 0134     		adds	r4, r4, #1
+ 633              	.LVL38:
+ 634 0078 00E0     		b	.L43
+ 635              	.LVL39:
+ 636              	.L51:
+ 637 007a 0024     		movs	r4, #0
+ 638              	.L43:
+ 639              	.LVL40:
+ 209:.\gamecode.c  **** 
+ 640              		.loc 1 209 0 is_stmt 0 discriminator 1
+ 641 007c 0B2C     		cmp	r4, #11
+ 642 007e CADD     		ble	.L42
+ 208:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 643              		.loc 1 208 0 is_stmt 1 discriminator 2
+ 644 0080 0135     		adds	r5, r5, #1
+ 645              	.LVL41:
+ 646 0082 00E0     		b	.L37
+ 647              	.LVL42:
+ 648              	.L50:
+ 649 0084 0025     		movs	r5, #0
+ 650              	.LVL43:
+ 651              	.L37:
+ 208:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 652              		.loc 1 208 0 is_stmt 0 discriminator 1
+ 653 0086 072D     		cmp	r5, #7
+ 654 0088 F7DD     		ble	.L51
+ 655 008a 38BD     		pop	{r3, r4, r5, pc}
+ 656              	.LVL44:
+ 657              	.L48:
+ 228:.\gamecode.c  ****     			}
+ 229:.\gamecode.c  ****     		}
+ 230:.\gamecode.c  ****     	}    
+ 231:.\gamecode.c  ****     }
+ 232:.\gamecode.c  ****     else {
+ 233:.\gamecode.c  ****         for(i = 0; i < 8; i++) {
+ 234:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 235:.\gamecode.c  **** 
+ 236:.\gamecode.c  ****     			// Pick-up location, use diff_loc[0].
+ 237:.\gamecode.c  ****     			if(update1_board[i][j] == 0x01 && update2_board[i][j] == 0x00) {
+ 658              		.loc 1 237 0 is_stmt 1
+ 659 008c 05EB4503 		add	r3, r5, r5, lsl #1
+ 660 0090 9B00     		lsls	r3, r3, #2
+ 661 0092 2344     		add	r3, r3, r4
+ 662 0094 1C4A     		ldr	r2, .L54+8
+ 663 0096 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 664 0098 012B     		cmp	r3, #1
+ 665 009a 1BD1     		bne	.L45
+ 666              		.loc 1 237 0 is_stmt 0 discriminator 1
+ 667 009c 05EB4502 		add	r2, r5, r5, lsl #1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 17
+
+
+ 668 00a0 9200     		lsls	r2, r2, #2
+ 669 00a2 2244     		add	r2, r2, r4
+ 670 00a4 1A49     		ldr	r1, .L54+16
+ 671 00a6 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 672 00a8 A2B9     		cbnz	r2, .L45
+ 238:.\gamecode.c  **** 
+ 239:.\gamecode.c  ****     				// Picked up in graveyard, warn user.
+ 240:.\gamecode.c  ****     				if((j % 10) == 0 || (j % 10) == 1) {
+ 673              		.loc 1 240 0 is_stmt 1
+ 674 00aa 03F16633 		add	r3, r3, #1717986918
+ 675 00ae 83FB0432 		smull	r3, r2, r3, r4
+ 676 00b2 E317     		asrs	r3, r4, #31
+ 677 00b4 C3EBA203 		rsb	r3, r3, r2, asr #2
+ 678 00b8 03EB8303 		add	r3, r3, r3, lsl #2
+ 679 00bc 5B00     		lsls	r3, r3, #1
+ 680 00be E31A     		subs	r3, r4, r3
+ 681 00c0 012B     		cmp	r3, #1
+ 682 00c2 03D8     		bhi	.L46
+ 241:.\gamecode.c  ****     					Debug_UART_PutString("Do not pick up graveyard pieces!\n");
+ 683              		.loc 1 241 0
+ 684 00c4 1148     		ldr	r0, .L54+12
+ 685 00c6 FFF7FEFF 		bl	Debug_UART_PutString
+ 686              	.LVL45:
+ 687 00ca 0FE0     		b	.L47
+ 688              	.L46:
+ 242:.\gamecode.c  ****     				}
+ 243:.\gamecode.c  ****     				else {
+ 244:.\gamecode.c  ****     					diff_loc[0][0] = i;
+ 689              		.loc 1 244 0
+ 690 00cc 0C4B     		ldr	r3, .L54
+ 691 00ce 1D60     		str	r5, [r3]
+ 245:.\gamecode.c  ****     					diff_loc[0][1] = j;
+ 692              		.loc 1 245 0
+ 693 00d0 5C60     		str	r4, [r3, #4]
+ 694 00d2 0BE0     		b	.L47
+ 695              	.L45:
+ 246:.\gamecode.c  ****     				}
+ 247:.\gamecode.c  ****     			}
+ 248:.\gamecode.c  ****     			// Drop-off location, use diff_loc[1].
+ 249:.\gamecode.c  ****     			else if(update1_board[i][j] == 0x00 && update2_board[i][j] == 0x01) {
+ 696              		.loc 1 249 0
+ 697 00d4 53B9     		cbnz	r3, .L47
+ 698              		.loc 1 249 0 is_stmt 0 discriminator 1
+ 699 00d6 05EB4503 		add	r3, r5, r5, lsl #1
+ 700 00da 9B00     		lsls	r3, r3, #2
+ 701 00dc 2344     		add	r3, r3, r4
+ 702 00de 0C4A     		ldr	r2, .L54+16
+ 703 00e0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 704 00e2 012B     		cmp	r3, #1
+ 705 00e4 02D1     		bne	.L47
+ 250:.\gamecode.c  **** 
+ 251:.\gamecode.c  ****     				diff_loc[1][0] = i;
+ 706              		.loc 1 251 0 is_stmt 1
+ 707 00e6 064B     		ldr	r3, .L54
+ 708 00e8 9D60     		str	r5, [r3, #8]
+ 252:.\gamecode.c  ****     				diff_loc[1][1] = j;
+ 709              		.loc 1 252 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 18
+
+
+ 710 00ea DC60     		str	r4, [r3, #12]
+ 711              	.L47:
+ 234:.\gamecode.c  **** 
+ 712              		.loc 1 234 0 discriminator 2
+ 713 00ec 0134     		adds	r4, r4, #1
+ 714              	.LVL46:
+ 715 00ee 00E0     		b	.L49
+ 716              	.LVL47:
+ 717              	.L52:
+ 718 00f0 0024     		movs	r4, #0
+ 719              	.L49:
+ 720              	.LVL48:
+ 234:.\gamecode.c  **** 
+ 721              		.loc 1 234 0 is_stmt 0 discriminator 1
+ 722 00f2 0B2C     		cmp	r4, #11
+ 723 00f4 CADD     		ble	.L48
+ 233:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 724              		.loc 1 233 0 is_stmt 1 discriminator 2
+ 725 00f6 0135     		adds	r5, r5, #1
+ 726              	.LVL49:
+ 727              	.L38:
+ 233:.\gamecode.c  ****     		for(j = 0; j < 12; j++) {
+ 728              		.loc 1 233 0 is_stmt 0 discriminator 1
+ 729 00f8 072D     		cmp	r5, #7
+ 730 00fa F9DD     		ble	.L52
+ 731 00fc 38BD     		pop	{r3, r4, r5, pc}
+ 732              	.LVL50:
+ 733              	.L55:
+ 734 00fe 00BF     		.align	2
+ 735              	.L54:
+ 736 0100 00000000 		.word	diff_loc
+ 737 0104 00000000 		.word	initial_board
+ 738 0108 00000000 		.word	update1_board
+ 739 010c 98000000 		.word	.LC14
+ 740 0110 00000000 		.word	update2_board
+ 741              		.cfi_endproc
+ 742              	.LFE68:
+ 743              		.size	diff_boards, .-diff_boards
+ 744              		.section	.text.itoc,"ax",%progbits
+ 745              		.align	2
+ 746              		.global	itoc
+ 747              		.thumb
+ 748              		.thumb_func
+ 749              		.type	itoc, %function
+ 750              	itoc:
+ 751              	.LFB69:
+ 253:.\gamecode.c  ****     			}
+ 254:.\gamecode.c  ****     		}
+ 255:.\gamecode.c  ****     	}
+ 256:.\gamecode.c  ****     }
+ 257:.\gamecode.c  **** }
+ 258:.\gamecode.c  **** 
+ 259:.\gamecode.c  **** uint8 itoc(int i) {
+ 752              		.loc 1 259 0 is_stmt 1
+ 753              		.cfi_startproc
+ 754              		@ args = 0, pretend = 0, frame = 0
+ 755              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 19
+
+
+ 756              		@ link register save eliminated.
+ 757              	.LVL51:
+ 260:.\gamecode.c  **** 	switch(i) {
+ 758              		.loc 1 260 0
+ 759 0000 0E28     		cmp	r0, #14
+ 760 0002 25D8     		bhi	.L57
+ 761 0004 DFE800F0 		tbb	[pc, r0]
+ 762              	.L59:
+ 763 0008 08       		.byte	(.L58-.L59)/2
+ 764 0009 26       		.byte	(.L74-.L59)/2
+ 765 000a 0A       		.byte	(.L61-.L59)/2
+ 766 000b 0C       		.byte	(.L62-.L59)/2
+ 767 000c 0E       		.byte	(.L63-.L59)/2
+ 768 000d 10       		.byte	(.L64-.L59)/2
+ 769 000e 12       		.byte	(.L65-.L59)/2
+ 770 000f 14       		.byte	(.L66-.L59)/2
+ 771 0010 16       		.byte	(.L67-.L59)/2
+ 772 0011 18       		.byte	(.L68-.L59)/2
+ 773 0012 1A       		.byte	(.L69-.L59)/2
+ 774 0013 1C       		.byte	(.L70-.L59)/2
+ 775 0014 1E       		.byte	(.L71-.L59)/2
+ 776 0015 20       		.byte	(.L72-.L59)/2
+ 777 0016 22       		.byte	(.L73-.L59)/2
+ 778 0017 00       		.p2align 1
+ 779              	.L58:
+ 261:.\gamecode.c  **** 		case 0: return 0x30;
+ 780              		.loc 1 261 0
+ 781 0018 3020     		movs	r0, #48
+ 782              	.LVL52:
+ 783 001a 7047     		bx	lr
+ 784              	.LVL53:
+ 785              	.L61:
+ 262:.\gamecode.c  **** 		case 1: return 0x31;
+ 263:.\gamecode.c  **** 		case 2: return 0x32;
+ 786              		.loc 1 263 0
+ 787 001c 3220     		movs	r0, #50
+ 788              	.LVL54:
+ 789 001e 7047     		bx	lr
+ 790              	.LVL55:
+ 791              	.L62:
+ 264:.\gamecode.c  **** 		case 3: return 0x33;
+ 792              		.loc 1 264 0
+ 793 0020 3320     		movs	r0, #51
+ 794              	.LVL56:
+ 795 0022 7047     		bx	lr
+ 796              	.LVL57:
+ 797              	.L63:
+ 265:.\gamecode.c  **** 		case 4: return 0x34;
+ 798              		.loc 1 265 0
+ 799 0024 3420     		movs	r0, #52
+ 800              	.LVL58:
+ 801 0026 7047     		bx	lr
+ 802              	.LVL59:
+ 803              	.L64:
+ 266:.\gamecode.c  **** 		case 5: return 0x35;
+ 804              		.loc 1 266 0
+ 805 0028 3520     		movs	r0, #53
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 20
+
+
+ 806              	.LVL60:
+ 807 002a 7047     		bx	lr
+ 808              	.LVL61:
+ 809              	.L65:
+ 267:.\gamecode.c  **** 		case 6: return 0x36;
+ 810              		.loc 1 267 0
+ 811 002c 3620     		movs	r0, #54
+ 812              	.LVL62:
+ 813 002e 7047     		bx	lr
+ 814              	.LVL63:
+ 815              	.L66:
+ 268:.\gamecode.c  **** 		case 7: return 0x37;
+ 816              		.loc 1 268 0
+ 817 0030 3720     		movs	r0, #55
+ 818              	.LVL64:
+ 819 0032 7047     		bx	lr
+ 820              	.LVL65:
+ 821              	.L67:
+ 269:.\gamecode.c  **** 		case 8: return 0x38;
+ 822              		.loc 1 269 0
+ 823 0034 3820     		movs	r0, #56
+ 824              	.LVL66:
+ 825 0036 7047     		bx	lr
+ 826              	.LVL67:
+ 827              	.L68:
+ 270:.\gamecode.c  **** 		case 9: return 0x39;
+ 828              		.loc 1 270 0
+ 829 0038 3920     		movs	r0, #57
+ 830              	.LVL68:
+ 831 003a 7047     		bx	lr
+ 832              	.LVL69:
+ 833              	.L69:
+ 271:.\gamecode.c  **** 		case 10: return 0x41;
+ 834              		.loc 1 271 0
+ 835 003c 4120     		movs	r0, #65
+ 836              	.LVL70:
+ 837 003e 7047     		bx	lr
+ 838              	.LVL71:
+ 839              	.L70:
+ 272:.\gamecode.c  **** 		case 11: return 0x42;
+ 840              		.loc 1 272 0
+ 841 0040 4220     		movs	r0, #66
+ 842              	.LVL72:
+ 843 0042 7047     		bx	lr
+ 844              	.LVL73:
+ 845              	.L71:
+ 273:.\gamecode.c  **** 		case 12: return 0x43;
+ 846              		.loc 1 273 0
+ 847 0044 4320     		movs	r0, #67
+ 848              	.LVL74:
+ 849 0046 7047     		bx	lr
+ 850              	.LVL75:
+ 851              	.L72:
+ 274:.\gamecode.c  **** 		case 13: return 0x44;
+ 852              		.loc 1 274 0
+ 853 0048 4420     		movs	r0, #68
+ 854              	.LVL76:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 21
+
+
+ 855 004a 7047     		bx	lr
+ 856              	.LVL77:
+ 857              	.L73:
+ 275:.\gamecode.c  **** 		case 14: return 0x45;
+ 858              		.loc 1 275 0
+ 859 004c 4520     		movs	r0, #69
+ 860              	.LVL78:
+ 861 004e 7047     		bx	lr
+ 862              	.LVL79:
+ 863              	.L57:
+ 276:.\gamecode.c  **** 		default: return 0x46;
+ 864              		.loc 1 276 0
+ 865 0050 4620     		movs	r0, #70
+ 866              	.LVL80:
+ 867 0052 7047     		bx	lr
+ 868              	.LVL81:
+ 869              	.L74:
+ 262:.\gamecode.c  **** 		case 2: return 0x32;
+ 870              		.loc 1 262 0
+ 871 0054 3120     		movs	r0, #49
+ 872              	.LVL82:
+ 277:.\gamecode.c  **** 	}
+ 278:.\gamecode.c  **** }
+ 873              		.loc 1 278 0
+ 874 0056 7047     		bx	lr
+ 875              		.cfi_endproc
+ 876              	.LFE69:
+ 877              		.size	itoc, .-itoc
+ 878              		.section	.text.state_moving,"ax",%progbits
+ 879              		.align	2
+ 880              		.global	state_moving
+ 881              		.thumb
+ 882              		.thumb_func
+ 883              		.type	state_moving, %function
+ 884              	state_moving:
+ 885              	.LFB70:
+ 279:.\gamecode.c  **** 
+ 280:.\gamecode.c  **** /*
+ 281:.\gamecode.c  **** 	Runs when game_state == MOVING
+ 282:.\gamecode.c  **** 	Helpers: diff_boards(bold, bnew)
+ 283:.\gamecode.c  **** */
+ 284:.\gamecode.c  **** int state_moving() {
+ 886              		.loc 1 284 0
+ 887              		.cfi_startproc
+ 888              		@ args = 0, pretend = 0, frame = 56
+ 889              		@ frame_needed = 0, uses_anonymous_args = 0
+ 890 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 891              		.cfi_def_cfa_offset 20
+ 892              		.cfi_offset 4, -20
+ 893              		.cfi_offset 5, -16
+ 894              		.cfi_offset 6, -12
+ 895              		.cfi_offset 7, -8
+ 896              		.cfi_offset 14, -4
+ 897 0002 8FB0     		sub	sp, sp, #60
+ 898              		.cfi_def_cfa_offset 80
+ 285:.\gamecode.c  **** 
+ 286:.\gamecode.c  **** 	Debug_UART_PutString("MOVING");
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 22
+
+
+ 899              		.loc 1 286 0
+ 900 0004 7248     		ldr	r0, .L92
+ 901 0006 FFF7FEFF 		bl	Debug_UART_PutString
+ 902              	.LVL83:
+ 287:.\gamecode.c  **** 
+ 288:.\gamecode.c  **** 	// initial_board holds the state of the board just before this call.
+ 289:.\gamecode.c  **** 	read_reed_switches();
+ 903              		.loc 1 289 0
+ 904 000a FFF7FEFF 		bl	read_reed_switches
+ 905              	.LVL84:
+ 290:.\gamecode.c  **** 	memcpy(&initial_board, &board, sizeof(board));
+ 906              		.loc 1 290 0
+ 907 000e 7148     		ldr	r0, .L92+4
+ 908 0010 7149     		ldr	r1, .L92+8
+ 909 0012 6022     		movs	r2, #96
+ 910 0014 FFF7FEFF 		bl	memcpy
+ 911              	.LVL85:
+ 291:.\gamecode.c  **** 
+ 292:.\gamecode.c  **** 	// Locations of piece movement.
+ 293:.\gamecode.c  **** 	int move1[2][2] = { { 0, 0 }, { 0, 0 } };
+ 912              		.loc 1 293 0
+ 913 0018 0025     		movs	r5, #0
+ 914 001a 0A95     		str	r5, [sp, #40]
+ 915 001c 0B95     		str	r5, [sp, #44]
+ 916 001e 0C95     		str	r5, [sp, #48]
+ 917 0020 0D95     		str	r5, [sp, #52]
+ 294:.\gamecode.c  **** 	int move2[2][2] = { { 0, 0 }, { 0, 0 } };
+ 918              		.loc 1 294 0
+ 919 0022 0695     		str	r5, [sp, #24]
+ 920 0024 0795     		str	r5, [sp, #28]
+ 921 0026 0895     		str	r5, [sp, #32]
+ 922 0028 0995     		str	r5, [sp, #36]
+ 923              	.LVL86:
+ 295:.\gamecode.c  **** 	char locs[4] = { 0x00, 0x00, 0x00, 0x00 };
+ 296:.\gamecode.c  **** 
+ 297:.\gamecode.c  **** 	// Flag for castling.
+ 298:.\gamecode.c  **** 	int castling = 0;
+ 299:.\gamecode.c  **** 
+ 300:.\gamecode.c  **** 	while(  move1[0][0] == 0 && 
+ 924              		.loc 1 300 0
+ 925 002a 25E0     		b	.L76
+ 926              	.LVL87:
+ 927              	.L80:
+ 301:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 302:.\gamecode.c  ****             move1[1][0] == 0 &&
+ 303:.\gamecode.c  ****             move1[1][1] == 0) {
+ 304:.\gamecode.c  **** 
+ 305:.\gamecode.c  **** 		CyDelay(1000);
+ 928              		.loc 1 305 0
+ 929 002c 4FF47A70 		mov	r0, #1000
+ 930 0030 FFF7FEFF 		bl	CyDelay
+ 931              	.LVL88:
+ 306:.\gamecode.c  **** 		read_reed_switches();
+ 932              		.loc 1 306 0
+ 933 0034 FFF7FEFF 		bl	read_reed_switches
+ 934              	.LVL89:
+ 307:.\gamecode.c  **** 		memcpy(&update1_board, &board, sizeof(board));
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 23
+
+
+ 935              		.loc 1 307 0
+ 936 0038 6848     		ldr	r0, .L92+12
+ 937 003a 6749     		ldr	r1, .L92+8
+ 938 003c 6022     		movs	r2, #96
+ 939 003e FFF7FEFF 		bl	memcpy
+ 940              	.LVL90:
+ 308:.\gamecode.c  **** 
+ 309:.\gamecode.c  **** 		diff_boards(UPDATE1);
+ 941              		.loc 1 309 0
+ 942 0042 0120     		movs	r0, #1
+ 943 0044 FFF7FEFF 		bl	diff_boards
+ 944              	.LVL91:
+ 310:.\gamecode.c  **** 
+ 311:.\gamecode.c  ****         move1[0][0] = diff_loc[0][0];
+ 945              		.loc 1 311 0
+ 946 0048 654B     		ldr	r3, .L92+16
+ 947 004a 1A68     		ldr	r2, [r3]
+ 948 004c 0A92     		str	r2, [sp, #40]
+ 312:.\gamecode.c  ****         move1[0][1] = diff_loc[0][1];
+ 949              		.loc 1 312 0
+ 950 004e 5968     		ldr	r1, [r3, #4]
+ 951 0050 0B91     		str	r1, [sp, #44]
+ 313:.\gamecode.c  ****         move1[1][0] = diff_loc[1][0];
+ 952              		.loc 1 313 0
+ 953 0052 9868     		ldr	r0, [r3, #8]
+ 954 0054 0C90     		str	r0, [sp, #48]
+ 314:.\gamecode.c  ****         move1[1][1] = diff_loc[1][1];
+ 955              		.loc 1 314 0
+ 956 0056 DB68     		ldr	r3, [r3, #12]
+ 957 0058 0D93     		str	r3, [sp, #52]
+ 315:.\gamecode.c  ****         
+ 316:.\gamecode.c  **** 		if( ((move1[0][0] == 0 && move1[0][1] == 6) || 
+ 958              		.loc 1 316 0
+ 959 005a 0AB1     		cbz	r2, .L77
+ 960              		.loc 1 316 0 is_stmt 0 discriminator 2
+ 961 005c 072A     		cmp	r2, #7
+ 962 005e 0BD1     		bne	.L76
+ 963              	.L77:
+ 964              		.loc 1 316 0 discriminator 3
+ 965 0060 0629     		cmp	r1, #6
+ 966 0062 09D1     		bne	.L76
+ 317:.\gamecode.c  ****             (move1[0][0] == 7 && move1[0][1] == 6 )) &&
+ 318:.\gamecode.c  **** 			((move1[1][1] - move1[0][1]) == -2 || 
+ 967              		.loc 1 318 0 is_stmt 1
+ 968 0064 591A     		subs	r1, r3, r1
+ 317:.\gamecode.c  ****             (move1[0][0] == 7 && move1[0][1] == 6 )) &&
+ 969              		.loc 1 317 0
+ 970 0066 11F1020F 		cmn	r1, #2
+ 971 006a 02D0     		beq	.L89
+ 972              		.loc 1 318 0
+ 973 006c 0229     		cmp	r1, #2
+ 974 006e 03D1     		bne	.L76
+ 975 0070 01E0     		b	.L90
+ 976              	.L89:
+ 319:.\gamecode.c  **** 			(move1[1][1] - move1[0][1]) == 2)) {
+ 320:.\gamecode.c  **** 
+ 321:.\gamecode.c  **** 			castling = 1;
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 24
+
+
+ 977              		.loc 1 321 0
+ 978 0072 0125     		movs	r5, #1
+ 979              	.LVL92:
+ 980 0074 00E0     		b	.L76
+ 981              	.LVL93:
+ 982              	.L90:
+ 983 0076 0125     		movs	r5, #1
+ 984              	.LVL94:
+ 985              	.L76:
+ 300:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 986              		.loc 1 300 0
+ 987 0078 0A9C     		ldr	r4, [sp, #40]
+ 988 007a 34B9     		cbnz	r4, .L79
+ 300:.\gamecode.c  ****             move1[0][1] == 0 &&
+ 989              		.loc 1 300 0 is_stmt 0 discriminator 1
+ 990 007c 0B9B     		ldr	r3, [sp, #44]
+ 991 007e 23B9     		cbnz	r3, .L79
+ 301:.\gamecode.c  ****             move1[1][0] == 0 &&
+ 992              		.loc 1 301 0 is_stmt 1
+ 993 0080 0C9B     		ldr	r3, [sp, #48]
+ 994 0082 13B9     		cbnz	r3, .L79
+ 302:.\gamecode.c  ****             move1[1][1] == 0) {
+ 995              		.loc 1 302 0
+ 996 0084 0D9B     		ldr	r3, [sp, #52]
+ 997 0086 002B     		cmp	r3, #0
+ 998 0088 D0D0     		beq	.L80
+ 999              	.L79:
+ 322:.\gamecode.c  **** 		}
+ 323:.\gamecode.c  **** 	}
+ 324:.\gamecode.c  **** 	locs[0] = itoc(move1[0][1]); 
+ 1000              		.loc 1 324 0
+ 1001 008a 0B98     		ldr	r0, [sp, #44]
+ 1002 008c FFF7FEFF 		bl	itoc
+ 1003              	.LVL95:
+ 1004 0090 8DF81400 		strb	r0, [sp, #20]
+ 325:.\gamecode.c  **** 	locs[1]	= itoc(move1[0][0]); 
+ 1005              		.loc 1 325 0
+ 1006 0094 2046     		mov	r0, r4
+ 1007 0096 FFF7FEFF 		bl	itoc
+ 1008              	.LVL96:
+ 1009 009a 8DF81500 		strb	r0, [sp, #21]
+ 326:.\gamecode.c  **** 	locs[2]	= itoc(move1[1][1]); 
+ 1010              		.loc 1 326 0
+ 1011 009e 0D9C     		ldr	r4, [sp, #52]
+ 1012 00a0 2046     		mov	r0, r4
+ 1013 00a2 FFF7FEFF 		bl	itoc
+ 1014              	.LVL97:
+ 1015 00a6 8DF81600 		strb	r0, [sp, #22]
+ 327:.\gamecode.c  **** 	locs[3]	= itoc(move1[1][0]);
+ 1016              		.loc 1 327 0
+ 1017 00aa 0C98     		ldr	r0, [sp, #48]
+ 1018 00ac FFF7FEFF 		bl	itoc
+ 1019              	.LVL98:
+ 1020 00b0 8DF81700 		strb	r0, [sp, #23]
+ 328:.\gamecode.c  **** 
+ 329:.\gamecode.c  **** 	// Moved piece to graveyard, get corresponding attack OR castling.
+ 330:.\gamecode.c  **** 	if((move1[1][1] % 10) == 0 || (move1[1][1] % 10) == 1 || castling) {
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 25
+
+
+ 1021              		.loc 1 330 0
+ 1022 00b4 4B4B     		ldr	r3, .L92+20
+ 1023 00b6 83FB0432 		smull	r3, r2, r3, r4
+ 1024 00ba E317     		asrs	r3, r4, #31
+ 1025 00bc C3EBA203 		rsb	r3, r3, r2, asr #2
+ 1026 00c0 03EB8303 		add	r3, r3, r3, lsl #2
+ 1027 00c4 5B00     		lsls	r3, r3, #1
+ 1028 00c6 E31A     		subs	r3, r4, r3
+ 1029 00c8 012B     		cmp	r3, #1
+ 1030 00ca 2CD9     		bls	.L83
+ 1031              		.loc 1 330 0 is_stmt 0 discriminator 1
+ 1032 00cc 5DBB     		cbnz	r5, .L83
+ 1033 00ce 33E0     		b	.L82
+ 1034              	.L84:
+ 331:.\gamecode.c  **** 
+ 332:.\gamecode.c  **** 		while(  move2[0][0] == 0 && 
+ 333:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 334:.\gamecode.c  ****                 move2[1][0] == 0 &&
+ 335:.\gamecode.c  ****                 move2[1][1] == 0) {
+ 336:.\gamecode.c  **** 
+ 337:.\gamecode.c  **** 			CyDelay(1000);
+ 1035              		.loc 1 337 0 is_stmt 1
+ 1036 00d0 4FF47A70 		mov	r0, #1000
+ 1037 00d4 FFF7FEFF 		bl	CyDelay
+ 1038              	.LVL99:
+ 338:.\gamecode.c  **** 			read_reed_switches();
+ 1039              		.loc 1 338 0
+ 1040 00d8 FFF7FEFF 		bl	read_reed_switches
+ 1041              	.LVL100:
+ 339:.\gamecode.c  **** 			memcpy(&update2_board, &board, sizeof(board));
+ 1042              		.loc 1 339 0
+ 1043 00dc 4248     		ldr	r0, .L92+24
+ 1044 00de 3E49     		ldr	r1, .L92+8
+ 1045 00e0 6022     		movs	r2, #96
+ 1046 00e2 FFF7FEFF 		bl	memcpy
+ 1047              	.LVL101:
+ 340:.\gamecode.c  **** 
+ 341:.\gamecode.c  ****             diff_boards(UPDATE2);
+ 1048              		.loc 1 341 0
+ 1049 00e6 0220     		movs	r0, #2
+ 1050 00e8 FFF7FEFF 		bl	diff_boards
+ 1051              	.LVL102:
+ 342:.\gamecode.c  **** 
+ 343:.\gamecode.c  ****             move2[0][0] = diff_loc[0][0];
+ 1052              		.loc 1 343 0
+ 1053 00ec 3C4B     		ldr	r3, .L92+16
+ 1054 00ee 1F68     		ldr	r7, [r3]
+ 1055 00f0 0697     		str	r7, [sp, #24]
+ 344:.\gamecode.c  ****             move2[0][1] = diff_loc[0][1];
+ 1056              		.loc 1 344 0
+ 1057 00f2 5868     		ldr	r0, [r3, #4]
+ 1058 00f4 0790     		str	r0, [sp, #28]
+ 345:.\gamecode.c  ****             move2[1][0] = diff_loc[1][0];
+ 1059              		.loc 1 345 0
+ 1060 00f6 9C68     		ldr	r4, [r3, #8]
+ 1061 00f8 0894     		str	r4, [sp, #32]
+ 346:.\gamecode.c  ****             move2[1][1] = diff_loc[1][1];
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 26
+
+
+ 1062              		.loc 1 346 0
+ 1063 00fa DE68     		ldr	r6, [r3, #12]
+ 1064 00fc 0996     		str	r6, [sp, #36]
+ 347:.\gamecode.c  ****         
+ 348:.\gamecode.c  **** 			if(!castling) {
+ 1065              		.loc 1 348 0
+ 1066 00fe 95B9     		cbnz	r5, .L83
+ 349:.\gamecode.c  **** 	            locs[0] = itoc(move2[0][1]); 
+ 1067              		.loc 1 349 0
+ 1068 0100 FFF7FEFF 		bl	itoc
+ 1069              	.LVL103:
+ 1070 0104 8DF81400 		strb	r0, [sp, #20]
+ 350:.\gamecode.c  **** 	            locs[1]	= itoc(move2[0][0]); 
+ 1071              		.loc 1 350 0
+ 1072 0108 3846     		mov	r0, r7
+ 1073 010a FFF7FEFF 		bl	itoc
+ 1074              	.LVL104:
+ 1075 010e 8DF81500 		strb	r0, [sp, #21]
+ 351:.\gamecode.c  **** 	            locs[2]	= itoc(move2[1][1]); 
+ 1076              		.loc 1 351 0
+ 1077 0112 3046     		mov	r0, r6
+ 1078 0114 FFF7FEFF 		bl	itoc
+ 1079              	.LVL105:
+ 1080 0118 8DF81600 		strb	r0, [sp, #22]
+ 352:.\gamecode.c  **** 	            locs[3]	= itoc(move2[1][0]);
+ 1081              		.loc 1 352 0
+ 1082 011c 2046     		mov	r0, r4
+ 1083 011e FFF7FEFF 		bl	itoc
+ 1084              	.LVL106:
+ 1085 0122 8DF81700 		strb	r0, [sp, #23]
+ 1086              	.L83:
+ 332:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 1087              		.loc 1 332 0
+ 1088 0126 069B     		ldr	r3, [sp, #24]
+ 1089 0128 33B9     		cbnz	r3, .L82
+ 332:.\gamecode.c  ****                 move2[0][1] == 0 &&
+ 1090              		.loc 1 332 0 is_stmt 0 discriminator 1
+ 1091 012a 079B     		ldr	r3, [sp, #28]
+ 1092 012c 23B9     		cbnz	r3, .L82
+ 333:.\gamecode.c  ****                 move2[1][0] == 0 &&
+ 1093              		.loc 1 333 0 is_stmt 1
+ 1094 012e 089B     		ldr	r3, [sp, #32]
+ 1095 0130 13B9     		cbnz	r3, .L82
+ 334:.\gamecode.c  ****                 move2[1][1] == 0) {
+ 1096              		.loc 1 334 0
+ 1097 0132 099B     		ldr	r3, [sp, #36]
+ 1098 0134 002B     		cmp	r3, #0
+ 1099 0136 CBD0     		beq	.L84
+ 1100              	.L82:
+ 353:.\gamecode.c  **** 			}
+ 354:.\gamecode.c  **** 		}
+ 355:.\gamecode.c  **** 	}
+ 356:.\gamecode.c  **** 	// Construct message to send to server.
+ 357:.\gamecode.c  **** 	// ".move (space) fromCol (s) fromRow (s) toCol (s) toRow"
+ 358:.\gamecode.c  **** 	char msg[13] = {0x2E, 0x6D, 0x6F, 0x76, 0x65, 0x20, 
+ 1101              		.loc 1 358 0
+ 1102 0138 2E23     		movs	r3, #46
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 27
+
+
+ 1103 013a 8DF80430 		strb	r3, [sp, #4]
+ 1104 013e 6D23     		movs	r3, #109
+ 1105 0140 8DF80530 		strb	r3, [sp, #5]
+ 1106 0144 6F23     		movs	r3, #111
+ 1107 0146 8DF80630 		strb	r3, [sp, #6]
+ 1108 014a 7623     		movs	r3, #118
+ 1109 014c 8DF80730 		strb	r3, [sp, #7]
+ 1110 0150 6523     		movs	r3, #101
+ 1111 0152 8DF80830 		strb	r3, [sp, #8]
+ 1112 0156 2023     		movs	r3, #32
+ 1113 0158 8DF80930 		strb	r3, [sp, #9]
+ 359:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1114              		.loc 1 359 0
+ 1115 015c 9DF81420 		ldrb	r2, [sp, #20]	@ zero_extendqisi2
+ 358:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1116              		.loc 1 358 0
+ 1117 0160 8DF80A20 		strb	r2, [sp, #10]
+ 1118 0164 8DF80B30 		strb	r3, [sp, #11]
+ 1119              		.loc 1 359 0
+ 1120 0168 9DF81520 		ldrb	r2, [sp, #21]	@ zero_extendqisi2
+ 358:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1121              		.loc 1 358 0
+ 1122 016c 8DF80C20 		strb	r2, [sp, #12]
+ 1123 0170 8DF80D30 		strb	r3, [sp, #13]
+ 1124              		.loc 1 359 0
+ 1125 0174 9DF81620 		ldrb	r2, [sp, #22]	@ zero_extendqisi2
+ 358:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1126              		.loc 1 358 0
+ 1127 0178 8DF80E20 		strb	r2, [sp, #14]
+ 1128 017c 8DF80F30 		strb	r3, [sp, #15]
+ 1129              		.loc 1 359 0
+ 1130 0180 9DF81730 		ldrb	r3, [sp, #23]	@ zero_extendqisi2
+ 358:.\gamecode.c  **** 			        locs[0], 0x20, locs[1], 0x20, locs[2], 0x20, locs[3] };
+ 1131              		.loc 1 358 0
+ 1132 0184 8DF81030 		strb	r3, [sp, #16]
+ 360:.\gamecode.c  **** 
+ 361:.\gamecode.c  **** 	strcpy(bres9, "");
+ 1133              		.loc 1 361 0
+ 1134 0188 0022     		movs	r2, #0
+ 1135 018a 184B     		ldr	r3, .L92+28
+ 1136 018c 1A70     		strb	r2, [r3]
+ 362:.\gamecode.c  **** 	while(!strcmp(bres9, "")) {
+ 1137              		.loc 1 362 0
+ 1138 018e 08E0     		b	.L85
+ 1139              	.L86:
+ 363:.\gamecode.c  **** 		esp_transmit(msg, "13");
+ 1140              		.loc 1 363 0
+ 1141 0190 01A8     		add	r0, sp, #4
+ 1142 0192 1749     		ldr	r1, .L92+32
+ 1143 0194 FFF7FEFF 		bl	esp_transmit
+ 1144              	.LVL107:
+ 364:.\gamecode.c  **** 	    strncpy(bres9, recv, 9);
+ 1145              		.loc 1 364 0
+ 1146 0198 1448     		ldr	r0, .L92+28
+ 1147 019a 1649     		ldr	r1, .L92+36
+ 1148 019c 0922     		movs	r2, #9
+ 1149 019e FFF7FEFF 		bl	strncpy
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 28
+
+
+ 1150              	.LVL108:
+ 1151              	.L85:
+ 362:.\gamecode.c  **** 	while(!strcmp(bres9, "")) {
+ 1152              		.loc 1 362 0
+ 1153 01a2 124B     		ldr	r3, .L92+28
+ 1154 01a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1155 01a6 002B     		cmp	r3, #0
+ 1156 01a8 F2D0     		beq	.L86
+ 365:.\gamecode.c  ****     }
+ 366:.\gamecode.c  **** 
+ 367:.\gamecode.c  **** 	if(bres9[0] != 0x01) {
+ 1157              		.loc 1 367 0
+ 1158 01aa 012B     		cmp	r3, #1
+ 1159 01ac 06D0     		beq	.L87
+ 368:.\gamecode.c  **** 		Debug_UART_PutString("Invalid move, please undo changes.\n");
+ 1160              		.loc 1 368 0
+ 1161 01ae 1248     		ldr	r0, .L92+40
+ 1162 01b0 FFF7FEFF 		bl	Debug_UART_PutString
+ 1163              	.LVL109:
+ 369:.\gamecode.c  **** 		game_state = MOVING;
+ 1164              		.loc 1 369 0
+ 1165 01b4 0422     		movs	r2, #4
+ 1166 01b6 114B     		ldr	r3, .L92+44
+ 1167 01b8 1A60     		str	r2, [r3]
+ 1168 01ba 05E0     		b	.L88
+ 1169              	.L87:
+ 370:.\gamecode.c  **** 	}
+ 371:.\gamecode.c  **** 	else {
+ 372:.\gamecode.c  **** 		Debug_UART_PutString("Valid move.\n");
+ 1170              		.loc 1 372 0
+ 1171 01bc 1048     		ldr	r0, .L92+48
+ 1172 01be FFF7FEFF 		bl	Debug_UART_PutString
+ 1173              	.LVL110:
+ 373:.\gamecode.c  **** 		game_state = WAITING;
+ 1174              		.loc 1 373 0
+ 1175 01c2 0322     		movs	r2, #3
+ 1176 01c4 0D4B     		ldr	r3, .L92+44
+ 1177 01c6 1A60     		str	r2, [r3]
+ 1178              	.L88:
+ 374:.\gamecode.c  **** 	}
+ 375:.\gamecode.c  **** 	return game_state;
+ 376:.\gamecode.c  **** }
+ 1179              		.loc 1 376 0
+ 1180 01c8 0C4B     		ldr	r3, .L92+44
+ 1181 01ca 1868     		ldr	r0, [r3]
+ 1182 01cc 0FB0     		add	sp, sp, #60
+ 1183              		.cfi_def_cfa_offset 20
+ 1184              		@ sp needed
+ 1185 01ce F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1186              	.LVL111:
+ 1187              	.L93:
+ 1188              		.align	2
+ 1189              	.L92:
+ 1190 01d0 BC000000 		.word	.LC15
+ 1191 01d4 00000000 		.word	initial_board
+ 1192 01d8 00000000 		.word	board
+ 1193 01dc 00000000 		.word	update1_board
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 29
+
+
+ 1194 01e0 00000000 		.word	diff_loc
+ 1195 01e4 67666666 		.word	1717986919
+ 1196 01e8 00000000 		.word	update2_board
+ 1197 01ec 00000000 		.word	bres9
+ 1198 01f0 C4000000 		.word	.LC16
+ 1199 01f4 00000000 		.word	recv
+ 1200 01f8 C8000000 		.word	.LC17
+ 1201 01fc 00000000 		.word	game_state
+ 1202 0200 EC000000 		.word	.LC18
+ 1203              		.cfi_endproc
+ 1204              	.LFE70:
+ 1205              		.size	state_moving, .-state_moving
+ 1206              		.section	.text.game,"ax",%progbits
+ 1207              		.align	2
+ 1208              		.global	game
+ 1209              		.thumb
+ 1210              		.thumb_func
+ 1211              		.type	game, %function
+ 1212              	game:
+ 1213              	.LFB71:
+ 377:.\gamecode.c  **** 
+ 378:.\gamecode.c  **** int game() {
+ 1214              		.loc 1 378 0
+ 1215              		.cfi_startproc
+ 1216              		@ Volatile: function does not return.
+ 1217              		@ args = 0, pretend = 0, frame = 0
+ 1218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1219 0000 08B5     		push	{r3, lr}
+ 1220              		.cfi_def_cfa_offset 8
+ 1221              		.cfi_offset 3, -8
+ 1222              		.cfi_offset 14, -4
+ 379:.\gamecode.c  **** 
+ 380:.\gamecode.c  **** 	game_state = NOTCONNECTED;
+ 1223              		.loc 1 380 0
+ 1224 0002 124C     		ldr	r4, .L102
+ 1225 0004 0023     		movs	r3, #0
+ 1226 0006 2360     		str	r3, [r4]
+ 381:.\gamecode.c  ****     
+ 382:.\gamecode.c  ****     move_home();
+ 1227              		.loc 1 382 0
+ 1228 0008 FFF7FEFF 		bl	move_home
+ 1229              	.LVL112:
+ 383:.\gamecode.c  **** 
+ 384:.\gamecode.c  **** 	game_state = state_notconnected();
+ 1230              		.loc 1 384 0
+ 1231 000c FFF7FEFF 		bl	state_notconnected
+ 1232              	.LVL113:
+ 1233 0010 2060     		str	r0, [r4]
+ 1234              	.L95:
+ 385:.\gamecode.c  **** 
+ 386:.\gamecode.c  **** 	while(1) {
+ 387:.\gamecode.c  **** 
+ 388:.\gamecode.c  **** 		if(game_state == NOTCONNECTED) { 
+ 1235              		.loc 1 388 0
+ 1236 0012 0E4B     		ldr	r3, .L102
+ 1237 0014 1B68     		ldr	r3, [r3]
+ 1238 0016 2BB9     		cbnz	r3, .L96
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 30
+
+
+ 389:.\gamecode.c  **** 			Debug_UART_PutString("Attempting to connect again.\n");
+ 1239              		.loc 1 389 0
+ 1240 0018 0D48     		ldr	r0, .L102+4
+ 1241 001a FFF7FEFF 		bl	Debug_UART_PutString
+ 1242              	.LVL114:
+ 390:.\gamecode.c  **** 			state_notconnected(); 
+ 1243              		.loc 1 390 0
+ 1244 001e FFF7FEFF 		bl	state_notconnected
+ 1245              	.LVL115:
+ 1246 0022 F6E7     		b	.L95
+ 1247              	.L96:
+ 391:.\gamecode.c  **** 		}
+ 392:.\gamecode.c  **** 
+ 393:.\gamecode.c  **** 		else if(game_state == CONNECTED) {
+ 1248              		.loc 1 393 0
+ 1249 0024 012B     		cmp	r3, #1
+ 1250 0026 02D1     		bne	.L98
+ 394:.\gamecode.c  **** 		 	state_connected();
+ 1251              		.loc 1 394 0
+ 1252 0028 FFF7FEFF 		bl	state_connected
+ 1253              	.LVL116:
+ 1254 002c F1E7     		b	.L95
+ 1255              	.L98:
+ 395:.\gamecode.c  **** 		}
+ 396:.\gamecode.c  **** 
+ 397:.\gamecode.c  **** 		else if(game_state == READY) {
+ 1256              		.loc 1 397 0
+ 1257 002e 022B     		cmp	r3, #2
+ 1258 0030 02D1     		bne	.L99
+ 398:.\gamecode.c  **** 		 	state_ready();
+ 1259              		.loc 1 398 0
+ 1260 0032 FFF7FEFF 		bl	state_ready
+ 1261              	.LVL117:
+ 1262 0036 ECE7     		b	.L95
+ 1263              	.L99:
+ 399:.\gamecode.c  **** 		}
+ 400:.\gamecode.c  **** 
+ 401:.\gamecode.c  **** 		else if(game_state == WAITING) { 
+ 1264              		.loc 1 401 0
+ 1265 0038 032B     		cmp	r3, #3
+ 1266 003a 02D1     		bne	.L100
+ 402:.\gamecode.c  **** 			state_waiting(); 
+ 1267              		.loc 1 402 0
+ 1268 003c FFF7FEFF 		bl	state_waiting
+ 1269              	.LVL118:
+ 1270 0040 E7E7     		b	.L95
+ 1271              	.L100:
+ 403:.\gamecode.c  **** 		}
+ 404:.\gamecode.c  **** 
+ 405:.\gamecode.c  **** 		else if(game_state == MOVING) {
+ 1272              		.loc 1 405 0
+ 1273 0042 042B     		cmp	r3, #4
+ 1274 0044 E5D1     		bne	.L95
+ 406:.\gamecode.c  **** 			state_moving(); 
+ 1275              		.loc 1 406 0
+ 1276 0046 FFF7FEFF 		bl	state_moving
+ 1277              	.LVL119:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 31
+
+
+ 1278 004a E2E7     		b	.L95
+ 1279              	.L103:
+ 1280              		.align	2
+ 1281              	.L102:
+ 1282 004c 00000000 		.word	game_state
+ 1283 0050 FC000000 		.word	.LC19
+ 1284              		.cfi_endproc
+ 1285              	.LFE71:
+ 1286              		.size	game, .-game
+ 1287              		.comm	update2_board,96,4
+ 1288              		.comm	update1_board,96,4
+ 1289              		.comm	initial_board,96,4
+ 1290              		.comm	diff_loc,16,4
+ 1291              		.comm	bres9,9,4
+ 1292              		.comm	bres8,8,4
+ 1293              		.comm	bres1,1,4
+ 1294              		.global	bstr_gib
+ 1295              		.global	bstr_ready
+ 1296              		.global	bstr_connect
+ 1297              		.comm	game_state,4,4
+ 1298              		.comm	move,16,4
+ 1299              		.comm	recv,9,4
+ 1300              		.comm	board,96,4
+ 1301              		.comm	col_square,2,2
+ 1302              		.comm	row_square,2,2
+ 1303              		.comm	y_pos,2,2
+ 1304              		.comm	x_pos,2,2
+ 1305              		.data
+ 1306              		.align	2
+ 1307              		.set	.LANCHOR0,. + 0
+ 1308              		.type	bstr_connect, %object
+ 1309              		.size	bstr_connect, 8
+ 1310              	bstr_connect:
+ 1311 0000 2E       		.byte	46
+ 1312 0001 63       		.byte	99
+ 1313 0002 6F       		.byte	111
+ 1314 0003 6E       		.byte	110
+ 1315 0004 6E       		.byte	110
+ 1316 0005 65       		.byte	101
+ 1317 0006 63       		.byte	99
+ 1318 0007 74       		.byte	116
+ 1319              		.type	bstr_ready, %object
+ 1320              		.size	bstr_ready, 6
+ 1321              	bstr_ready:
+ 1322 0008 2E       		.byte	46
+ 1323 0009 72       		.byte	114
+ 1324 000a 65       		.byte	101
+ 1325 000b 61       		.byte	97
+ 1326 000c 64       		.byte	100
+ 1327 000d 79       		.byte	121
+ 1328 000e 0000     		.space	2
+ 1329              		.type	bstr_gib, %object
+ 1330              		.size	bstr_gib, 4
+ 1331              	bstr_gib:
+ 1332 0010 2E       		.byte	46
+ 1333 0011 67       		.byte	103
+ 1334 0012 69       		.byte	105
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 32
+
+
+ 1335 0013 62       		.byte	98
+ 1336              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 1337              		.align	2
+ 1338              	.LC0:
+ 1339 0000 4E4F5443 		.ascii	"NOTCONNECTED\012\000"
+ 1339      4F4E4E45 
+ 1339      43544544 
+ 1339      0A00
+ 1340 000e 0000     		.space	2
+ 1341              	.LC1:
+ 1342 0010 3800     		.ascii	"8\000"
+ 1343 0012 0000     		.space	2
+ 1344              	.LC2:
+ 1345 0014 3C2D6865 		.ascii	"<-here\012\000"
+ 1345      72650A00 
+ 1346              	.LC3:
+ 1347 001c 436F6E6E 		.ascii	"Connected.\012\000"
+ 1347      65637465 
+ 1347      642E0A00 
+ 1348              	.LC4:
+ 1349 0028 4E6F7420 		.ascii	"Not connected.\012\000"
+ 1349      636F6E6E 
+ 1349      65637465 
+ 1349      642E0A00 
+ 1350              	.LC5:
+ 1351 0038 434F4E4E 		.ascii	"CONNECTED\012\000"
+ 1351      45435445 
+ 1351      440A00
+ 1352 0043 00       		.space	1
+ 1353              	.LC6:
+ 1354 0044 3600     		.ascii	"6\000"
+ 1355 0046 0000     		.space	2
+ 1356              	.LC7:
+ 1357 0048 52656164 		.ascii	"Ready.\000"
+ 1357      792E00
+ 1358 004f 00       		.space	1
+ 1359              	.LC8:
+ 1360 0050 596F7572 		.ascii	"Your turn.\000"
+ 1360      20747572 
+ 1360      6E2E00
+ 1361 005b 00       		.space	1
+ 1362              	.LC9:
+ 1363 005c 54686569 		.ascii	"Their turn.\000"
+ 1363      72207475 
+ 1363      726E2E00 
+ 1364              	.LC10:
+ 1365 0068 436F6E6E 		.ascii	"Connection State Failure.\000"
+ 1365      65637469 
+ 1365      6F6E2053 
+ 1365      74617465 
+ 1365      20466169 
+ 1366 0082 0000     		.space	2
+ 1367              	.LC11:
+ 1368 0084 52454144 		.ascii	"READY\012\000"
+ 1368      590A00
+ 1369 008b 00       		.space	1
+ 1370              	.LC12:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 33
+
+
+ 1371 008c 3400     		.ascii	"4\000"
+ 1372 008e 0000     		.space	2
+ 1373              	.LC13:
+ 1374 0090 57414954 		.ascii	"WAITING\000"
+ 1374      494E4700 
+ 1375              	.LC14:
+ 1376 0098 446F206E 		.ascii	"Do not pick up graveyard pieces!\012\000"
+ 1376      6F742070 
+ 1376      69636B20 
+ 1376      75702067 
+ 1376      72617665 
+ 1377 00ba 0000     		.space	2
+ 1378              	.LC15:
+ 1379 00bc 4D4F5649 		.ascii	"MOVING\000"
+ 1379      4E4700
+ 1380 00c3 00       		.space	1
+ 1381              	.LC16:
+ 1382 00c4 313300   		.ascii	"13\000"
+ 1383 00c7 00       		.space	1
+ 1384              	.LC17:
+ 1385 00c8 496E7661 		.ascii	"Invalid move, please undo changes.\012\000"
+ 1385      6C696420 
+ 1385      6D6F7665 
+ 1385      2C20706C 
+ 1385      65617365 
+ 1386              	.LC18:
+ 1387 00ec 56616C69 		.ascii	"Valid move.\012\000"
+ 1387      64206D6F 
+ 1387      76652E0A 
+ 1387      00
+ 1388 00f9 000000   		.space	3
+ 1389              	.LC19:
+ 1390 00fc 41747465 		.ascii	"Attempting to connect again.\012\000"
+ 1390      6D707469 
+ 1390      6E672074 
+ 1390      6F20636F 
+ 1390      6E6E6563 
+ 1391 011a 0000     		.text
+ 1392              	.Letext0:
+ 1393              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1394              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1395              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1396              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 1397              		.file 6 ".\\board.h"
+ 1398              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 1399              		.file 8 ".\\gamecode.h"
+ 1400              		.file 9 ".\\espwifi.h"
+ 1401              		.file 10 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9
+ 1402              		.file 11 "Generated_Source\\PSoC5/Debug_UART.h"
+ 1403              		.file 12 "Generated_Source\\PSoC5/CyLib.h"
+ 1404              		.section	.debug_info,"",%progbits
+ 1405              	.Ldebug_info0:
+ 1406 0000 FA0A0000 		.4byte	0xafa
+ 1407 0004 0400     		.2byte	0x4
+ 1408 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1409 000a 04       		.byte	0x4
+ 1410 000b 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 34
+
+
+ 1411 000c 48020000 		.4byte	.LASF67
+ 1412 0010 01       		.byte	0x1
+ 1413 0011 1B030000 		.4byte	.LASF68
+ 1414 0015 D2010000 		.4byte	.LASF69
+ 1415 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1416 001d 00000000 		.4byte	0
+ 1417 0021 00000000 		.4byte	.Ldebug_line0
+ 1418 0025 02       		.uleb128 0x2
+ 1419 0026 01       		.byte	0x1
+ 1420 0027 06       		.byte	0x6
+ 1421 0028 42010000 		.4byte	.LASF0
+ 1422 002c 02       		.uleb128 0x2
+ 1423 002d 01       		.byte	0x1
+ 1424 002e 08       		.byte	0x8
+ 1425 002f 34010000 		.4byte	.LASF1
+ 1426 0033 02       		.uleb128 0x2
+ 1427 0034 02       		.byte	0x2
+ 1428 0035 05       		.byte	0x5
+ 1429 0036 86000000 		.4byte	.LASF2
+ 1430 003a 02       		.uleb128 0x2
+ 1431 003b 02       		.byte	0x2
+ 1432 003c 07       		.byte	0x7
+ 1433 003d 30020000 		.4byte	.LASF3
+ 1434 0041 03       		.uleb128 0x3
+ 1435 0042 26020000 		.4byte	.LASF9
+ 1436 0046 02       		.byte	0x2
+ 1437 0047 3F       		.byte	0x3f
+ 1438 0048 4C000000 		.4byte	0x4c
+ 1439 004c 02       		.uleb128 0x2
+ 1440 004d 04       		.byte	0x4
+ 1441 004e 05       		.byte	0x5
+ 1442 004f F0000000 		.4byte	.LASF4
+ 1443 0053 02       		.uleb128 0x2
+ 1444 0054 04       		.byte	0x4
+ 1445 0055 07       		.byte	0x7
+ 1446 0056 09030000 		.4byte	.LASF5
+ 1447 005a 02       		.uleb128 0x2
+ 1448 005b 08       		.byte	0x8
+ 1449 005c 05       		.byte	0x5
+ 1450 005d D1000000 		.4byte	.LASF6
+ 1451 0061 02       		.uleb128 0x2
+ 1452 0062 08       		.byte	0x8
+ 1453 0063 07       		.byte	0x7
+ 1454 0064 4E010000 		.4byte	.LASF7
+ 1455 0068 04       		.uleb128 0x4
+ 1456 0069 04       		.byte	0x4
+ 1457 006a 05       		.byte	0x5
+ 1458 006b 696E7400 		.ascii	"int\000"
+ 1459 006f 02       		.uleb128 0x2
+ 1460 0070 04       		.byte	0x4
+ 1461 0071 07       		.byte	0x7
+ 1462 0072 71010000 		.4byte	.LASF8
+ 1463 0076 03       		.uleb128 0x3
+ 1464 0077 1D000000 		.4byte	.LASF10
+ 1465 007b 03       		.byte	0x3
+ 1466 007c D4       		.byte	0xd4
+ 1467 007d 6F000000 		.4byte	0x6f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 35
+
+
+ 1468 0081 05       		.uleb128 0x5
+ 1469 0082 04       		.byte	0x4
+ 1470 0083 02       		.uleb128 0x2
+ 1471 0084 04       		.byte	0x4
+ 1472 0085 07       		.byte	0x7
+ 1473 0086 34000000 		.4byte	.LASF11
+ 1474 008a 06       		.uleb128 0x6
+ 1475 008b 04       		.byte	0x4
+ 1476 008c 90000000 		.4byte	0x90
+ 1477 0090 02       		.uleb128 0x2
+ 1478 0091 01       		.byte	0x1
+ 1479 0092 08       		.byte	0x8
+ 1480 0093 C5010000 		.4byte	.LASF12
+ 1481 0097 06       		.uleb128 0x6
+ 1482 0098 04       		.byte	0x4
+ 1483 0099 9D000000 		.4byte	0x9d
+ 1484 009d 07       		.uleb128 0x7
+ 1485 009e 90000000 		.4byte	0x90
+ 1486 00a2 08       		.uleb128 0x8
+ 1487 00a3 90000000 		.4byte	0x90
+ 1488 00a7 B2000000 		.4byte	0xb2
+ 1489 00ab 09       		.uleb128 0x9
+ 1490 00ac 83000000 		.4byte	0x83
+ 1491 00b0 07       		.byte	0x7
+ 1492 00b1 00       		.byte	0
+ 1493 00b2 06       		.uleb128 0x6
+ 1494 00b3 04       		.byte	0x4
+ 1495 00b4 B8000000 		.4byte	0xb8
+ 1496 00b8 0A       		.uleb128 0xa
+ 1497 00b9 03       		.uleb128 0x3
+ 1498 00ba CA010000 		.4byte	.LASF13
+ 1499 00be 04       		.byte	0x4
+ 1500 00bf 2C       		.byte	0x2c
+ 1501 00c0 41000000 		.4byte	0x41
+ 1502 00c4 03       		.uleb128 0x3
+ 1503 00c5 B2000000 		.4byte	.LASF14
+ 1504 00c9 05       		.byte	0x5
+ 1505 00ca C2       		.byte	0xc2
+ 1506 00cb 2C000000 		.4byte	0x2c
+ 1507 00cf 03       		.uleb128 0x3
+ 1508 00d0 02030000 		.4byte	.LASF15
+ 1509 00d4 05       		.byte	0x5
+ 1510 00d5 C4       		.byte	0xc4
+ 1511 00d6 53000000 		.4byte	0x53
+ 1512 00da 03       		.uleb128 0x3
+ 1513 00db AC000000 		.4byte	.LASF16
+ 1514 00df 05       		.byte	0x5
+ 1515 00e0 C6       		.byte	0xc6
+ 1516 00e1 33000000 		.4byte	0x33
+ 1517 00e5 02       		.uleb128 0x2
+ 1518 00e6 04       		.byte	0x4
+ 1519 00e7 04       		.byte	0x4
+ 1520 00e8 CB000000 		.4byte	.LASF17
+ 1521 00ec 02       		.uleb128 0x2
+ 1522 00ed 08       		.byte	0x8
+ 1523 00ee 04       		.byte	0x4
+ 1524 00ef 36030000 		.4byte	.LASF18
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 36
+
+
+ 1525 00f3 03       		.uleb128 0x3
+ 1526 00f4 3D000000 		.4byte	.LASF19
+ 1527 00f8 05       		.byte	0x5
+ 1528 00f9 D3       		.byte	0xd3
+ 1529 00fa 90000000 		.4byte	0x90
+ 1530 00fe 0B       		.uleb128 0xb
+ 1531 00ff DF000000 		.4byte	.LASF70
+ 1532 0103 10       		.byte	0x10
+ 1533 0104 06       		.byte	0x6
+ 1534 0105 12       		.byte	0x12
+ 1535 0106 3B010000 		.4byte	0x13b
+ 1536 010a 0C       		.uleb128 0xc
+ 1537 010b E8000000 		.4byte	.LASF20
+ 1538 010f 06       		.byte	0x6
+ 1539 0110 13       		.byte	0x13
+ 1540 0111 68000000 		.4byte	0x68
+ 1541 0115 00       		.byte	0
+ 1542 0116 0C       		.uleb128 0xc
+ 1543 0117 08000000 		.4byte	.LASF21
+ 1544 011b 06       		.byte	0x6
+ 1545 011c 14       		.byte	0x14
+ 1546 011d 68000000 		.4byte	0x68
+ 1547 0121 04       		.byte	0x4
+ 1548 0122 0C       		.uleb128 0xc
+ 1549 0123 A8010000 		.4byte	.LASF22
+ 1550 0127 06       		.byte	0x6
+ 1551 0128 15       		.byte	0x15
+ 1552 0129 68000000 		.4byte	0x68
+ 1553 012d 08       		.byte	0x8
+ 1554 012e 0C       		.uleb128 0xc
+ 1555 012f C5000000 		.4byte	.LASF23
+ 1556 0133 06       		.byte	0x6
+ 1557 0134 16       		.byte	0x16
+ 1558 0135 68000000 		.4byte	0x68
+ 1559 0139 0C       		.byte	0xc
+ 1560 013a 00       		.byte	0
+ 1561 013b 0D       		.uleb128 0xd
+ 1562 013c 49030000 		.4byte	.LASF71
+ 1563 0140 01       		.byte	0x1
+ 1564 0141 01       		.byte	0x1
+ 1565 0142 18       		.byte	0x18
+ 1566 0143 54010000 		.4byte	0x154
+ 1567 0147 0E       		.uleb128 0xe
+ 1568 0148 6A000000 		.4byte	.LASF24
+ 1569 014c 01       		.sleb128 1
+ 1570 014d 0E       		.uleb128 0xe
+ 1571 014e 72000000 		.4byte	.LASF25
+ 1572 0152 02       		.sleb128 2
+ 1573 0153 00       		.byte	0
+ 1574 0154 0F       		.uleb128 0xf
+ 1575 0155 29010000 		.4byte	.LASF26
+ 1576 0159 01       		.byte	0x1
+ 1577 015a 22       		.byte	0x22
+ 1578 015b 68000000 		.4byte	0x68
+ 1579 015f 00000000 		.4byte	.LFB63
+ 1580 0163 04000000 		.4byte	.LFE63-.LFB63
+ 1581 0167 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 37
+
+
+ 1582 0168 9C       		.byte	0x9c
+ 1583 0169 7A010000 		.4byte	0x17a
+ 1584 016d 10       		.uleb128 0x10
+ 1585 016e 0A010000 		.4byte	.LASF31
+ 1586 0172 01       		.byte	0x1
+ 1587 0173 24       		.byte	0x24
+ 1588 0174 68000000 		.4byte	0x68
+ 1589 0178 01       		.byte	0x1
+ 1590 0179 00       		.byte	0
+ 1591 017a 0F       		.uleb128 0xf
+ 1592 017b 72030000 		.4byte	.LASF27
+ 1593 017f 01       		.byte	0x1
+ 1594 0180 2F       		.byte	0x2f
+ 1595 0181 68000000 		.4byte	0x68
+ 1596 0185 00000000 		.4byte	.LFB64
+ 1597 0189 80000000 		.4byte	.LFE64-.LFB64
+ 1598 018d 01       		.uleb128 0x1
+ 1599 018e 9C       		.byte	0x9c
+ 1600 018f 34020000 		.4byte	0x234
+ 1601 0193 11       		.uleb128 0x11
+ 1602 0194 08000000 		.4byte	.LVL1
+ 1603 0198 420A0000 		.4byte	0xa42
+ 1604 019c AA010000 		.4byte	0x1aa
+ 1605 01a0 12       		.uleb128 0x12
+ 1606 01a1 01       		.uleb128 0x1
+ 1607 01a2 50       		.byte	0x50
+ 1608 01a3 05       		.uleb128 0x5
+ 1609 01a4 03       		.byte	0x3
+ 1610 01a5 00000000 		.4byte	.LC0
+ 1611 01a9 00       		.byte	0
+ 1612 01aa 11       		.uleb128 0x11
+ 1613 01ab 16000000 		.4byte	.LVL2
+ 1614 01af 5E0A0000 		.4byte	0xa5e
+ 1615 01b3 CA010000 		.4byte	0x1ca
+ 1616 01b7 12       		.uleb128 0x12
+ 1617 01b8 01       		.uleb128 0x1
+ 1618 01b9 51       		.byte	0x51
+ 1619 01ba 05       		.uleb128 0x5
+ 1620 01bb 03       		.byte	0x3
+ 1621 01bc 10000000 		.4byte	.LC1
+ 1622 01c0 12       		.uleb128 0x12
+ 1623 01c1 01       		.uleb128 0x1
+ 1624 01c2 50       		.byte	0x50
+ 1625 01c3 05       		.uleb128 0x5
+ 1626 01c4 03       		.byte	0x3
+ 1627 01c5 00000000 		.4byte	.LANCHOR0
+ 1628 01c9 00       		.byte	0
+ 1629 01ca 11       		.uleb128 0x11
+ 1630 01cb 22000000 		.4byte	.LVL3
+ 1631 01cf 780A0000 		.4byte	0xa78
+ 1632 01d3 E9010000 		.4byte	0x1e9
+ 1633 01d7 12       		.uleb128 0x12
+ 1634 01d8 01       		.uleb128 0x1
+ 1635 01d9 52       		.byte	0x52
+ 1636 01da 01       		.uleb128 0x1
+ 1637 01db 31       		.byte	0x31
+ 1638 01dc 12       		.uleb128 0x12
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 38
+
+
+ 1639 01dd 01       		.uleb128 0x1
+ 1640 01de 51       		.byte	0x51
+ 1641 01df 02       		.uleb128 0x2
+ 1642 01e0 75       		.byte	0x75
+ 1643 01e1 00       		.sleb128 0
+ 1644 01e2 12       		.uleb128 0x12
+ 1645 01e3 01       		.uleb128 0x1
+ 1646 01e4 50       		.byte	0x50
+ 1647 01e5 02       		.uleb128 0x2
+ 1648 01e6 74       		.byte	0x74
+ 1649 01e7 00       		.sleb128 0
+ 1650 01e8 00       		.byte	0
+ 1651 01e9 13       		.uleb128 0x13
+ 1652 01ea 2C000000 		.4byte	.LVL4
+ 1653 01ee 970A0000 		.4byte	0xa97
+ 1654 01f2 11       		.uleb128 0x11
+ 1655 01f3 32000000 		.4byte	.LVL5
+ 1656 01f7 420A0000 		.4byte	0xa42
+ 1657 01fb 09020000 		.4byte	0x209
+ 1658 01ff 12       		.uleb128 0x12
+ 1659 0200 01       		.uleb128 0x1
+ 1660 0201 50       		.byte	0x50
+ 1661 0202 05       		.uleb128 0x5
+ 1662 0203 03       		.byte	0x3
+ 1663 0204 14000000 		.4byte	.LC2
+ 1664 0208 00       		.byte	0
+ 1665 0209 11       		.uleb128 0x11
+ 1666 020a 42000000 		.4byte	.LVL6
+ 1667 020e 420A0000 		.4byte	0xa42
+ 1668 0212 20020000 		.4byte	0x220
+ 1669 0216 12       		.uleb128 0x12
+ 1670 0217 01       		.uleb128 0x1
+ 1671 0218 50       		.byte	0x50
+ 1672 0219 05       		.uleb128 0x5
+ 1673 021a 03       		.byte	0x3
+ 1674 021b 1C000000 		.4byte	.LC3
+ 1675 021f 00       		.byte	0
+ 1676 0220 14       		.uleb128 0x14
+ 1677 0221 50000000 		.4byte	.LVL7
+ 1678 0225 420A0000 		.4byte	0xa42
+ 1679 0229 12       		.uleb128 0x12
+ 1680 022a 01       		.uleb128 0x1
+ 1681 022b 50       		.byte	0x50
+ 1682 022c 05       		.uleb128 0x5
+ 1683 022d 03       		.byte	0x3
+ 1684 022e 28000000 		.4byte	.LC4
+ 1685 0232 00       		.byte	0
+ 1686 0233 00       		.byte	0
+ 1687 0234 0F       		.uleb128 0xf
+ 1688 0235 24000000 		.4byte	.LASF28
+ 1689 0239 01       		.byte	0x1
+ 1690 023a 4B       		.byte	0x4b
+ 1691 023b 68000000 		.4byte	0x68
+ 1692 023f 00000000 		.4byte	.LFB65
+ 1693 0243 A8000000 		.4byte	.LFE65-.LFB65
+ 1694 0247 01       		.uleb128 0x1
+ 1695 0248 9C       		.byte	0x9c
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 39
+
+
+ 1696 0249 1C030000 		.4byte	0x31c
+ 1697 024d 11       		.uleb128 0x11
+ 1698 024e 08000000 		.4byte	.LVL8
+ 1699 0252 420A0000 		.4byte	0xa42
+ 1700 0256 64020000 		.4byte	0x264
+ 1701 025a 12       		.uleb128 0x12
+ 1702 025b 01       		.uleb128 0x1
+ 1703 025c 50       		.byte	0x50
+ 1704 025d 05       		.uleb128 0x5
+ 1705 025e 03       		.byte	0x3
+ 1706 025f 38000000 		.4byte	.LC5
+ 1707 0263 00       		.byte	0
+ 1708 0264 11       		.uleb128 0x11
+ 1709 0265 16000000 		.4byte	.LVL9
+ 1710 0269 5E0A0000 		.4byte	0xa5e
+ 1711 026d 84020000 		.4byte	0x284
+ 1712 0271 12       		.uleb128 0x12
+ 1713 0272 01       		.uleb128 0x1
+ 1714 0273 51       		.byte	0x51
+ 1715 0274 05       		.uleb128 0x5
+ 1716 0275 03       		.byte	0x3
+ 1717 0276 44000000 		.4byte	.LC6
+ 1718 027a 12       		.uleb128 0x12
+ 1719 027b 01       		.uleb128 0x1
+ 1720 027c 50       		.byte	0x50
+ 1721 027d 05       		.uleb128 0x5
+ 1722 027e 03       		.byte	0x3
+ 1723 027f 08000000 		.4byte	.LANCHOR0+8
+ 1724 0283 00       		.byte	0
+ 1725 0284 11       		.uleb128 0x11
+ 1726 0285 22000000 		.4byte	.LVL10
+ 1727 0289 780A0000 		.4byte	0xa78
+ 1728 028d A3020000 		.4byte	0x2a3
+ 1729 0291 12       		.uleb128 0x12
+ 1730 0292 01       		.uleb128 0x1
+ 1731 0293 52       		.byte	0x52
+ 1732 0294 01       		.uleb128 0x1
+ 1733 0295 31       		.byte	0x31
+ 1734 0296 12       		.uleb128 0x12
+ 1735 0297 01       		.uleb128 0x1
+ 1736 0298 51       		.byte	0x51
+ 1737 0299 02       		.uleb128 0x2
+ 1738 029a 75       		.byte	0x75
+ 1739 029b 00       		.sleb128 0
+ 1740 029c 12       		.uleb128 0x12
+ 1741 029d 01       		.uleb128 0x1
+ 1742 029e 50       		.byte	0x50
+ 1743 029f 02       		.uleb128 0x2
+ 1744 02a0 74       		.byte	0x74
+ 1745 02a1 00       		.sleb128 0
+ 1746 02a2 00       		.byte	0
+ 1747 02a3 13       		.uleb128 0x13
+ 1748 02a4 2C000000 		.4byte	.LVL11
+ 1749 02a8 970A0000 		.4byte	0xa97
+ 1750 02ac 11       		.uleb128 0x11
+ 1751 02ad 32000000 		.4byte	.LVL12
+ 1752 02b1 420A0000 		.4byte	0xa42
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 40
+
+
+ 1753 02b5 C3020000 		.4byte	0x2c3
+ 1754 02b9 12       		.uleb128 0x12
+ 1755 02ba 01       		.uleb128 0x1
+ 1756 02bb 50       		.byte	0x50
+ 1757 02bc 05       		.uleb128 0x5
+ 1758 02bd 03       		.byte	0x3
+ 1759 02be 14000000 		.4byte	.LC2
+ 1760 02c2 00       		.byte	0
+ 1761 02c3 11       		.uleb128 0x11
+ 1762 02c4 3E000000 		.4byte	.LVL13
+ 1763 02c8 420A0000 		.4byte	0xa42
+ 1764 02cc DA020000 		.4byte	0x2da
+ 1765 02d0 12       		.uleb128 0x12
+ 1766 02d1 01       		.uleb128 0x1
+ 1767 02d2 50       		.byte	0x50
+ 1768 02d3 05       		.uleb128 0x5
+ 1769 02d4 03       		.byte	0x3
+ 1770 02d5 48000000 		.4byte	.LC7
+ 1771 02d9 00       		.byte	0
+ 1772 02da 11       		.uleb128 0x11
+ 1773 02db 50000000 		.4byte	.LVL14
+ 1774 02df 420A0000 		.4byte	0xa42
+ 1775 02e3 F1020000 		.4byte	0x2f1
+ 1776 02e7 12       		.uleb128 0x12
+ 1777 02e8 01       		.uleb128 0x1
+ 1778 02e9 50       		.byte	0x50
+ 1779 02ea 05       		.uleb128 0x5
+ 1780 02eb 03       		.byte	0x3
+ 1781 02ec 50000000 		.4byte	.LC8
+ 1782 02f0 00       		.byte	0
+ 1783 02f1 11       		.uleb128 0x11
+ 1784 02f2 62000000 		.4byte	.LVL15
+ 1785 02f6 420A0000 		.4byte	0xa42
+ 1786 02fa 08030000 		.4byte	0x308
+ 1787 02fe 12       		.uleb128 0x12
+ 1788 02ff 01       		.uleb128 0x1
+ 1789 0300 50       		.byte	0x50
+ 1790 0301 05       		.uleb128 0x5
+ 1791 0302 03       		.byte	0x3
+ 1792 0303 5C000000 		.4byte	.LC9
+ 1793 0307 00       		.byte	0
+ 1794 0308 14       		.uleb128 0x14
+ 1795 0309 70000000 		.4byte	.LVL16
+ 1796 030d 420A0000 		.4byte	0xa42
+ 1797 0311 12       		.uleb128 0x12
+ 1798 0312 01       		.uleb128 0x1
+ 1799 0313 50       		.byte	0x50
+ 1800 0314 05       		.uleb128 0x5
+ 1801 0315 03       		.byte	0x3
+ 1802 0316 68000000 		.4byte	.LC10
+ 1803 031a 00       		.byte	0
+ 1804 031b 00       		.byte	0
+ 1805 031c 0F       		.uleb128 0xf
+ 1806 031d 5E000000 		.4byte	.LASF29
+ 1807 0321 01       		.byte	0x1
+ 1808 0322 70       		.byte	0x70
+ 1809 0323 68000000 		.4byte	0x68
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 41
+
+
+ 1810 0327 00000000 		.4byte	.LFB66
+ 1811 032b A8000000 		.4byte	.LFE66-.LFB66
+ 1812 032f 01       		.uleb128 0x1
+ 1813 0330 9C       		.byte	0x9c
+ 1814 0331 24040000 		.4byte	0x424
+ 1815 0335 11       		.uleb128 0x11
+ 1816 0336 08000000 		.4byte	.LVL17
+ 1817 033a 420A0000 		.4byte	0xa42
+ 1818 033e 4C030000 		.4byte	0x34c
+ 1819 0342 12       		.uleb128 0x12
+ 1820 0343 01       		.uleb128 0x1
+ 1821 0344 50       		.byte	0x50
+ 1822 0345 05       		.uleb128 0x5
+ 1823 0346 03       		.byte	0x3
+ 1824 0347 84000000 		.4byte	.LC11
+ 1825 034b 00       		.byte	0
+ 1826 034c 11       		.uleb128 0x11
+ 1827 034d 16000000 		.4byte	.LVL18
+ 1828 0351 5E0A0000 		.4byte	0xa5e
+ 1829 0355 6C030000 		.4byte	0x36c
+ 1830 0359 12       		.uleb128 0x12
+ 1831 035a 01       		.uleb128 0x1
+ 1832 035b 51       		.byte	0x51
+ 1833 035c 05       		.uleb128 0x5
+ 1834 035d 03       		.byte	0x3
+ 1835 035e 8C000000 		.4byte	.LC12
+ 1836 0362 12       		.uleb128 0x12
+ 1837 0363 01       		.uleb128 0x1
+ 1838 0364 50       		.byte	0x50
+ 1839 0365 05       		.uleb128 0x5
+ 1840 0366 03       		.byte	0x3
+ 1841 0367 10000000 		.4byte	.LANCHOR0+16
+ 1842 036b 00       		.byte	0
+ 1843 036c 11       		.uleb128 0x11
+ 1844 036d 20000000 		.4byte	.LVL19
+ 1845 0371 780A0000 		.4byte	0xa78
+ 1846 0375 8E030000 		.4byte	0x38e
+ 1847 0379 12       		.uleb128 0x12
+ 1848 037a 01       		.uleb128 0x1
+ 1849 037b 52       		.byte	0x52
+ 1850 037c 01       		.uleb128 0x1
+ 1851 037d 31       		.byte	0x31
+ 1852 037e 12       		.uleb128 0x12
+ 1853 037f 01       		.uleb128 0x1
+ 1854 0380 51       		.byte	0x51
+ 1855 0381 05       		.uleb128 0x5
+ 1856 0382 03       		.byte	0x3
+ 1857 0383 00000000 		.4byte	recv
+ 1858 0387 12       		.uleb128 0x12
+ 1859 0388 01       		.uleb128 0x1
+ 1860 0389 50       		.byte	0x50
+ 1861 038a 02       		.uleb128 0x2
+ 1862 038b 74       		.byte	0x74
+ 1863 038c 00       		.sleb128 0
+ 1864 038d 00       		.byte	0
+ 1865 038e 11       		.uleb128 0x11
+ 1866 038f 2A000000 		.4byte	.LVL20
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 42
+
+
+ 1867 0393 A80A0000 		.4byte	0xaa8
+ 1868 0397 A3030000 		.4byte	0x3a3
+ 1869 039b 12       		.uleb128 0x12
+ 1870 039c 01       		.uleb128 0x1
+ 1871 039d 50       		.byte	0x50
+ 1872 039e 03       		.uleb128 0x3
+ 1873 039f 0A       		.byte	0xa
+ 1874 03a0 8813     		.2byte	0x1388
+ 1875 03a2 00       		.byte	0
+ 1876 03a3 11       		.uleb128 0x11
+ 1877 03a4 32000000 		.4byte	.LVL21
+ 1878 03a8 5E0A0000 		.4byte	0xa5e
+ 1879 03ac C3030000 		.4byte	0x3c3
+ 1880 03b0 12       		.uleb128 0x12
+ 1881 03b1 01       		.uleb128 0x1
+ 1882 03b2 51       		.byte	0x51
+ 1883 03b3 05       		.uleb128 0x5
+ 1884 03b4 03       		.byte	0x3
+ 1885 03b5 8C000000 		.4byte	.LC12
+ 1886 03b9 12       		.uleb128 0x12
+ 1887 03ba 01       		.uleb128 0x1
+ 1888 03bb 50       		.byte	0x50
+ 1889 03bc 05       		.uleb128 0x5
+ 1890 03bd 03       		.byte	0x3
+ 1891 03be 10000000 		.4byte	.LANCHOR0+16
+ 1892 03c2 00       		.byte	0
+ 1893 03c3 11       		.uleb128 0x11
+ 1894 03c4 3E000000 		.4byte	.LVL22
+ 1895 03c8 780A0000 		.4byte	0xa78
+ 1896 03cc E5030000 		.4byte	0x3e5
+ 1897 03d0 12       		.uleb128 0x12
+ 1898 03d1 01       		.uleb128 0x1
+ 1899 03d2 52       		.byte	0x52
+ 1900 03d3 01       		.uleb128 0x1
+ 1901 03d4 31       		.byte	0x31
+ 1902 03d5 12       		.uleb128 0x12
+ 1903 03d6 01       		.uleb128 0x1
+ 1904 03d7 51       		.byte	0x51
+ 1905 03d8 05       		.uleb128 0x5
+ 1906 03d9 03       		.byte	0x3
+ 1907 03da 00000000 		.4byte	recv
+ 1908 03de 12       		.uleb128 0x12
+ 1909 03df 01       		.uleb128 0x1
+ 1910 03e0 50       		.byte	0x50
+ 1911 03e1 02       		.uleb128 0x2
+ 1912 03e2 74       		.byte	0x74
+ 1913 03e3 00       		.sleb128 0
+ 1914 03e4 00       		.byte	0
+ 1915 03e5 11       		.uleb128 0x11
+ 1916 03e6 44000000 		.4byte	.LVL23
+ 1917 03ea 420A0000 		.4byte	0xa42
+ 1918 03ee F9030000 		.4byte	0x3f9
+ 1919 03f2 12       		.uleb128 0x12
+ 1920 03f3 01       		.uleb128 0x1
+ 1921 03f4 50       		.byte	0x50
+ 1922 03f5 02       		.uleb128 0x2
+ 1923 03f6 74       		.byte	0x74
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 43
+
+
+ 1924 03f7 00       		.sleb128 0
+ 1925 03f8 00       		.byte	0
+ 1926 03f9 11       		.uleb128 0x11
+ 1927 03fa 68000000 		.4byte	.LVL24
+ 1928 03fe 420A0000 		.4byte	0xa42
+ 1929 0402 10040000 		.4byte	0x410
+ 1930 0406 12       		.uleb128 0x12
+ 1931 0407 01       		.uleb128 0x1
+ 1932 0408 50       		.byte	0x50
+ 1933 0409 05       		.uleb128 0x5
+ 1934 040a 03       		.byte	0x3
+ 1935 040b 50000000 		.4byte	.LC8
+ 1936 040f 00       		.byte	0
+ 1937 0410 14       		.uleb128 0x14
+ 1938 0411 7A000000 		.4byte	.LVL25
+ 1939 0415 420A0000 		.4byte	0xa42
+ 1940 0419 12       		.uleb128 0x12
+ 1941 041a 01       		.uleb128 0x1
+ 1942 041b 50       		.byte	0x50
+ 1943 041c 05       		.uleb128 0x5
+ 1944 041d 03       		.byte	0x3
+ 1945 041e 5C000000 		.4byte	.LC9
+ 1946 0422 00       		.byte	0
+ 1947 0423 00       		.byte	0
+ 1948 0424 0F       		.uleb128 0xf
+ 1949 0425 64030000 		.4byte	.LASF30
+ 1950 0429 01       		.byte	0x1
+ 1951 042a 96       		.byte	0x96
+ 1952 042b 68000000 		.4byte	0x68
+ 1953 042f 00000000 		.4byte	.LFB67
+ 1954 0433 04010000 		.4byte	.LFE67-.LFB67
+ 1955 0437 01       		.uleb128 0x1
+ 1956 0438 9C       		.byte	0x9c
+ 1957 0439 16050000 		.4byte	0x516
+ 1958 043d 15       		.uleb128 0x15
+ 1959 043e 8F030000 		.4byte	.LASF32
+ 1960 0442 01       		.byte	0x1
+ 1961 0443 B0       		.byte	0xb0
+ 1962 0444 16050000 		.4byte	0x516
+ 1963 0448 02       		.uleb128 0x2
+ 1964 0449 91       		.byte	0x91
+ 1965 044a 74       		.sleb128 -12
+ 1966 044b 15       		.uleb128 0x15
+ 1967 044c AE010000 		.4byte	.LASF33
+ 1968 0450 01       		.byte	0x1
+ 1969 0451 B1       		.byte	0xb1
+ 1970 0452 16050000 		.4byte	0x516
+ 1971 0456 02       		.uleb128 0x2
+ 1972 0457 91       		.byte	0x91
+ 1973 0458 70       		.sleb128 -16
+ 1974 0459 11       		.uleb128 0x11
+ 1975 045a 0A000000 		.4byte	.LVL26
+ 1976 045e 420A0000 		.4byte	0xa42
+ 1977 0462 70040000 		.4byte	0x470
+ 1978 0466 12       		.uleb128 0x12
+ 1979 0467 01       		.uleb128 0x1
+ 1980 0468 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 44
+
+
+ 1981 0469 05       		.uleb128 0x5
+ 1982 046a 03       		.byte	0x3
+ 1983 046b 90000000 		.4byte	.LC13
+ 1984 046f 00       		.byte	0
+ 1985 0470 11       		.uleb128 0x11
+ 1986 0471 1A000000 		.4byte	.LVL27
+ 1987 0475 A80A0000 		.4byte	0xaa8
+ 1988 0479 85040000 		.4byte	0x485
+ 1989 047d 12       		.uleb128 0x12
+ 1990 047e 01       		.uleb128 0x1
+ 1991 047f 50       		.byte	0x50
+ 1992 0480 03       		.uleb128 0x3
+ 1993 0481 0A       		.byte	0xa
+ 1994 0482 8813     		.2byte	0x1388
+ 1995 0484 00       		.byte	0
+ 1996 0485 11       		.uleb128 0x11
+ 1997 0486 22000000 		.4byte	.LVL28
+ 1998 048a 5E0A0000 		.4byte	0xa5e
+ 1999 048e A5040000 		.4byte	0x4a5
+ 2000 0492 12       		.uleb128 0x12
+ 2001 0493 01       		.uleb128 0x1
+ 2002 0494 51       		.byte	0x51
+ 2003 0495 05       		.uleb128 0x5
+ 2004 0496 03       		.byte	0x3
+ 2005 0497 8C000000 		.4byte	.LC12
+ 2006 049b 12       		.uleb128 0x12
+ 2007 049c 01       		.uleb128 0x1
+ 2008 049d 50       		.byte	0x50
+ 2009 049e 05       		.uleb128 0x5
+ 2010 049f 03       		.byte	0x3
+ 2011 04a0 10000000 		.4byte	.LANCHOR0+16
+ 2012 04a4 00       		.byte	0
+ 2013 04a5 11       		.uleb128 0x11
+ 2014 04a6 2E000000 		.4byte	.LVL29
+ 2015 04aa 780A0000 		.4byte	0xa78
+ 2016 04ae C7040000 		.4byte	0x4c7
+ 2017 04b2 12       		.uleb128 0x12
+ 2018 04b3 01       		.uleb128 0x1
+ 2019 04b4 52       		.byte	0x52
+ 2020 04b5 01       		.uleb128 0x1
+ 2021 04b6 38       		.byte	0x38
+ 2022 04b7 12       		.uleb128 0x12
+ 2023 04b8 01       		.uleb128 0x1
+ 2024 04b9 51       		.byte	0x51
+ 2025 04ba 05       		.uleb128 0x5
+ 2026 04bb 03       		.byte	0x3
+ 2027 04bc 00000000 		.4byte	recv
+ 2028 04c0 12       		.uleb128 0x12
+ 2029 04c1 01       		.uleb128 0x1
+ 2030 04c2 50       		.byte	0x50
+ 2031 04c3 02       		.uleb128 0x2
+ 2032 04c4 74       		.byte	0x74
+ 2033 04c5 00       		.sleb128 0
+ 2034 04c6 00       		.byte	0
+ 2035 04c7 11       		.uleb128 0x11
+ 2036 04c8 34000000 		.4byte	.LVL30
+ 2037 04cc 420A0000 		.4byte	0xa42
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 45
+
+
+ 2038 04d0 DB040000 		.4byte	0x4db
+ 2039 04d4 12       		.uleb128 0x12
+ 2040 04d5 01       		.uleb128 0x1
+ 2041 04d6 50       		.byte	0x50
+ 2042 04d7 02       		.uleb128 0x2
+ 2043 04d8 74       		.byte	0x74
+ 2044 04d9 00       		.sleb128 0
+ 2045 04da 00       		.byte	0
+ 2046 04db 11       		.uleb128 0x11
+ 2047 04dc 98000000 		.4byte	.LVL31
+ 2048 04e0 420A0000 		.4byte	0xa42
+ 2049 04e4 EF040000 		.4byte	0x4ef
+ 2050 04e8 12       		.uleb128 0x12
+ 2051 04e9 01       		.uleb128 0x1
+ 2052 04ea 50       		.byte	0x50
+ 2053 04eb 02       		.uleb128 0x2
+ 2054 04ec 7D       		.byte	0x7d
+ 2055 04ed 00       		.sleb128 0
+ 2056 04ee 00       		.byte	0
+ 2057 04ef 13       		.uleb128 0x13
+ 2058 04f0 B8000000 		.4byte	.LVL32
+ 2059 04f4 B90A0000 		.4byte	0xab9
+ 2060 04f8 11       		.uleb128 0x11
+ 2061 04f9 BE000000 		.4byte	.LVL33
+ 2062 04fd 420A0000 		.4byte	0xa42
+ 2063 0501 0C050000 		.4byte	0x50c
+ 2064 0505 12       		.uleb128 0x12
+ 2065 0506 01       		.uleb128 0x1
+ 2066 0507 50       		.byte	0x50
+ 2067 0508 02       		.uleb128 0x2
+ 2068 0509 91       		.byte	0x91
+ 2069 050a 74       		.sleb128 -12
+ 2070 050b 00       		.byte	0
+ 2071 050c 13       		.uleb128 0x13
+ 2072 050d DE000000 		.4byte	.LVL34
+ 2073 0511 B90A0000 		.4byte	0xab9
+ 2074 0515 00       		.byte	0
+ 2075 0516 08       		.uleb128 0x8
+ 2076 0517 90000000 		.4byte	0x90
+ 2077 051b 26050000 		.4byte	0x526
+ 2078 051f 09       		.uleb128 0x9
+ 2079 0520 83000000 		.4byte	0x83
+ 2080 0524 03       		.byte	0x3
+ 2081 0525 00       		.byte	0
+ 2082 0526 16       		.uleb128 0x16
+ 2083 0527 3D030000 		.4byte	.LASF34
+ 2084 052b 01       		.byte	0x1
+ 2085 052c C7       		.byte	0xc7
+ 2086 052d 00000000 		.4byte	.LFB68
+ 2087 0531 14010000 		.4byte	.LFE68-.LFB68
+ 2088 0535 01       		.uleb128 0x1
+ 2089 0536 9C       		.byte	0x9c
+ 2090 0537 8D050000 		.4byte	0x58d
+ 2091 053b 17       		.uleb128 0x17
+ 2092 053c 7800     		.ascii	"x\000"
+ 2093 053e 01       		.byte	0x1
+ 2094 053f C7       		.byte	0xc7
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 46
+
+
+ 2095 0540 3B010000 		.4byte	0x13b
+ 2096 0544 00000000 		.4byte	.LLST0
+ 2097 0548 18       		.uleb128 0x18
+ 2098 0549 6900     		.ascii	"i\000"
+ 2099 054b 01       		.byte	0x1
+ 2100 054c CE       		.byte	0xce
+ 2101 054d 68000000 		.4byte	0x68
+ 2102 0551 3A000000 		.4byte	.LLST1
+ 2103 0555 18       		.uleb128 0x18
+ 2104 0556 6A00     		.ascii	"j\000"
+ 2105 0558 01       		.byte	0x1
+ 2106 0559 CE       		.byte	0xce
+ 2107 055a 68000000 		.4byte	0x68
+ 2108 055e 58000000 		.4byte	.LLST2
+ 2109 0562 11       		.uleb128 0x11
+ 2110 0563 54000000 		.4byte	.LVL37
+ 2111 0567 420A0000 		.4byte	0xa42
+ 2112 056b 79050000 		.4byte	0x579
+ 2113 056f 12       		.uleb128 0x12
+ 2114 0570 01       		.uleb128 0x1
+ 2115 0571 50       		.byte	0x50
+ 2116 0572 05       		.uleb128 0x5
+ 2117 0573 03       		.byte	0x3
+ 2118 0574 98000000 		.4byte	.LC14
+ 2119 0578 00       		.byte	0
+ 2120 0579 14       		.uleb128 0x14
+ 2121 057a CA000000 		.4byte	.LVL45
+ 2122 057e 420A0000 		.4byte	0xa42
+ 2123 0582 12       		.uleb128 0x12
+ 2124 0583 01       		.uleb128 0x1
+ 2125 0584 50       		.byte	0x50
+ 2126 0585 05       		.uleb128 0x5
+ 2127 0586 03       		.byte	0x3
+ 2128 0587 98000000 		.4byte	.LC14
+ 2129 058b 00       		.byte	0
+ 2130 058c 00       		.byte	0
+ 2131 058d 19       		.uleb128 0x19
+ 2132 058e BB010000 		.4byte	.LASF72
+ 2133 0592 01       		.byte	0x1
+ 2134 0593 0301     		.2byte	0x103
+ 2135 0595 C4000000 		.4byte	0xc4
+ 2136 0599 00000000 		.4byte	.LFB69
+ 2137 059d 58000000 		.4byte	.LFE69-.LFB69
+ 2138 05a1 01       		.uleb128 0x1
+ 2139 05a2 9C       		.byte	0x9c
+ 2140 05a3 B6050000 		.4byte	0x5b6
+ 2141 05a7 1A       		.uleb128 0x1a
+ 2142 05a8 6900     		.ascii	"i\000"
+ 2143 05aa 01       		.byte	0x1
+ 2144 05ab 0301     		.2byte	0x103
+ 2145 05ad 68000000 		.4byte	0x68
+ 2146 05b1 8C000000 		.4byte	.LLST3
+ 2147 05b5 00       		.byte	0
+ 2148 05b6 1B       		.uleb128 0x1b
+ 2149 05b7 B8000000 		.4byte	.LASF35
+ 2150 05bb 01       		.byte	0x1
+ 2151 05bc 1C01     		.2byte	0x11c
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 47
+
+
+ 2152 05be 68000000 		.4byte	0x68
+ 2153 05c2 00000000 		.4byte	.LFB70
+ 2154 05c6 04020000 		.4byte	.LFE70-.LFB70
+ 2155 05ca 01       		.uleb128 0x1
+ 2156 05cb 9C       		.byte	0x9c
+ 2157 05cc 22080000 		.4byte	0x822
+ 2158 05d0 1C       		.uleb128 0x1c
+ 2159 05d1 65010000 		.4byte	.LASF36
+ 2160 05d5 01       		.byte	0x1
+ 2161 05d6 2501     		.2byte	0x125
+ 2162 05d8 22080000 		.4byte	0x822
+ 2163 05dc 02       		.uleb128 0x2
+ 2164 05dd 91       		.byte	0x91
+ 2165 05de 58       		.sleb128 -40
+ 2166 05df 1C       		.uleb128 0x1c
+ 2167 05e0 6B010000 		.4byte	.LASF37
+ 2168 05e4 01       		.byte	0x1
+ 2169 05e5 2601     		.2byte	0x126
+ 2170 05e7 22080000 		.4byte	0x822
+ 2171 05eb 02       		.uleb128 0x2
+ 2172 05ec 91       		.byte	0x91
+ 2173 05ed 48       		.sleb128 -56
+ 2174 05ee 1C       		.uleb128 0x1c
+ 2175 05ef 43020000 		.4byte	.LASF38
+ 2176 05f3 01       		.byte	0x1
+ 2177 05f4 2701     		.2byte	0x127
+ 2178 05f6 16050000 		.4byte	0x516
+ 2179 05fa 02       		.uleb128 0x2
+ 2180 05fb 91       		.byte	0x91
+ 2181 05fc 44       		.sleb128 -60
+ 2182 05fd 1D       		.uleb128 0x1d
+ 2183 05fe 4E030000 		.4byte	.LASF39
+ 2184 0602 01       		.byte	0x1
+ 2185 0603 2A01     		.2byte	0x12a
+ 2186 0605 68000000 		.4byte	0x68
+ 2187 0609 24020000 		.4byte	.LLST4
+ 2188 060d 1E       		.uleb128 0x1e
+ 2189 060e 6D736700 		.ascii	"msg\000"
+ 2190 0612 01       		.byte	0x1
+ 2191 0613 6601     		.2byte	0x166
+ 2192 0615 38080000 		.4byte	0x838
+ 2193 0619 03       		.uleb128 0x3
+ 2194 061a 91       		.byte	0x91
+ 2195 061b B47F     		.sleb128 -76
+ 2196 061d 11       		.uleb128 0x11
+ 2197 061e 0A000000 		.4byte	.LVL83
+ 2198 0622 420A0000 		.4byte	0xa42
+ 2199 0626 34060000 		.4byte	0x634
+ 2200 062a 12       		.uleb128 0x12
+ 2201 062b 01       		.uleb128 0x1
+ 2202 062c 50       		.byte	0x50
+ 2203 062d 05       		.uleb128 0x5
+ 2204 062e 03       		.byte	0x3
+ 2205 062f BC000000 		.4byte	.LC15
+ 2206 0633 00       		.byte	0
+ 2207 0634 13       		.uleb128 0x13
+ 2208 0635 0E000000 		.4byte	.LVL84
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 48
+
+
+ 2209 0639 CA0A0000 		.4byte	0xaca
+ 2210 063d 11       		.uleb128 0x11
+ 2211 063e 18000000 		.4byte	.LVL85
+ 2212 0642 D70A0000 		.4byte	0xad7
+ 2213 0646 63060000 		.4byte	0x663
+ 2214 064a 12       		.uleb128 0x12
+ 2215 064b 01       		.uleb128 0x1
+ 2216 064c 52       		.byte	0x52
+ 2217 064d 02       		.uleb128 0x2
+ 2218 064e 08       		.byte	0x8
+ 2219 064f 60       		.byte	0x60
+ 2220 0650 12       		.uleb128 0x12
+ 2221 0651 01       		.uleb128 0x1
+ 2222 0652 51       		.byte	0x51
+ 2223 0653 05       		.uleb128 0x5
+ 2224 0654 03       		.byte	0x3
+ 2225 0655 00000000 		.4byte	board
+ 2226 0659 12       		.uleb128 0x12
+ 2227 065a 01       		.uleb128 0x1
+ 2228 065b 50       		.byte	0x50
+ 2229 065c 05       		.uleb128 0x5
+ 2230 065d 03       		.byte	0x3
+ 2231 065e 00000000 		.4byte	initial_board
+ 2232 0662 00       		.byte	0
+ 2233 0663 11       		.uleb128 0x11
+ 2234 0664 34000000 		.4byte	.LVL88
+ 2235 0668 A80A0000 		.4byte	0xaa8
+ 2236 066c 78060000 		.4byte	0x678
+ 2237 0670 12       		.uleb128 0x12
+ 2238 0671 01       		.uleb128 0x1
+ 2239 0672 50       		.byte	0x50
+ 2240 0673 03       		.uleb128 0x3
+ 2241 0674 0A       		.byte	0xa
+ 2242 0675 E803     		.2byte	0x3e8
+ 2243 0677 00       		.byte	0
+ 2244 0678 13       		.uleb128 0x13
+ 2245 0679 38000000 		.4byte	.LVL89
+ 2246 067d CA0A0000 		.4byte	0xaca
+ 2247 0681 11       		.uleb128 0x11
+ 2248 0682 42000000 		.4byte	.LVL90
+ 2249 0686 D70A0000 		.4byte	0xad7
+ 2250 068a A7060000 		.4byte	0x6a7
+ 2251 068e 12       		.uleb128 0x12
+ 2252 068f 01       		.uleb128 0x1
+ 2253 0690 52       		.byte	0x52
+ 2254 0691 02       		.uleb128 0x2
+ 2255 0692 08       		.byte	0x8
+ 2256 0693 60       		.byte	0x60
+ 2257 0694 12       		.uleb128 0x12
+ 2258 0695 01       		.uleb128 0x1
+ 2259 0696 51       		.byte	0x51
+ 2260 0697 05       		.uleb128 0x5
+ 2261 0698 03       		.byte	0x3
+ 2262 0699 00000000 		.4byte	board
+ 2263 069d 12       		.uleb128 0x12
+ 2264 069e 01       		.uleb128 0x1
+ 2265 069f 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 49
+
+
+ 2266 06a0 05       		.uleb128 0x5
+ 2267 06a1 03       		.byte	0x3
+ 2268 06a2 00000000 		.4byte	update1_board
+ 2269 06a6 00       		.byte	0
+ 2270 06a7 11       		.uleb128 0x11
+ 2271 06a8 48000000 		.4byte	.LVL91
+ 2272 06ac 26050000 		.4byte	0x526
+ 2273 06b0 BA060000 		.4byte	0x6ba
+ 2274 06b4 12       		.uleb128 0x12
+ 2275 06b5 01       		.uleb128 0x1
+ 2276 06b6 50       		.byte	0x50
+ 2277 06b7 01       		.uleb128 0x1
+ 2278 06b8 31       		.byte	0x31
+ 2279 06b9 00       		.byte	0
+ 2280 06ba 11       		.uleb128 0x11
+ 2281 06bb 90000000 		.4byte	.LVL95
+ 2282 06bf 8D050000 		.4byte	0x58d
+ 2283 06c3 CF060000 		.4byte	0x6cf
+ 2284 06c7 12       		.uleb128 0x12
+ 2285 06c8 01       		.uleb128 0x1
+ 2286 06c9 50       		.byte	0x50
+ 2287 06ca 03       		.uleb128 0x3
+ 2288 06cb 91       		.byte	0x91
+ 2289 06cc 5C       		.sleb128 -36
+ 2290 06cd 06       		.byte	0x6
+ 2291 06ce 00       		.byte	0
+ 2292 06cf 11       		.uleb128 0x11
+ 2293 06d0 9A000000 		.4byte	.LVL96
+ 2294 06d4 8D050000 		.4byte	0x58d
+ 2295 06d8 E3060000 		.4byte	0x6e3
+ 2296 06dc 12       		.uleb128 0x12
+ 2297 06dd 01       		.uleb128 0x1
+ 2298 06de 50       		.byte	0x50
+ 2299 06df 02       		.uleb128 0x2
+ 2300 06e0 74       		.byte	0x74
+ 2301 06e1 00       		.sleb128 0
+ 2302 06e2 00       		.byte	0
+ 2303 06e3 11       		.uleb128 0x11
+ 2304 06e4 A6000000 		.4byte	.LVL97
+ 2305 06e8 8D050000 		.4byte	0x58d
+ 2306 06ec F7060000 		.4byte	0x6f7
+ 2307 06f0 12       		.uleb128 0x12
+ 2308 06f1 01       		.uleb128 0x1
+ 2309 06f2 50       		.byte	0x50
+ 2310 06f3 02       		.uleb128 0x2
+ 2311 06f4 74       		.byte	0x74
+ 2312 06f5 00       		.sleb128 0
+ 2313 06f6 00       		.byte	0
+ 2314 06f7 11       		.uleb128 0x11
+ 2315 06f8 B0000000 		.4byte	.LVL98
+ 2316 06fc 8D050000 		.4byte	0x58d
+ 2317 0700 0C070000 		.4byte	0x70c
+ 2318 0704 12       		.uleb128 0x12
+ 2319 0705 01       		.uleb128 0x1
+ 2320 0706 50       		.byte	0x50
+ 2321 0707 03       		.uleb128 0x3
+ 2322 0708 91       		.byte	0x91
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 50
+
+
+ 2323 0709 60       		.sleb128 -32
+ 2324 070a 06       		.byte	0x6
+ 2325 070b 00       		.byte	0
+ 2326 070c 11       		.uleb128 0x11
+ 2327 070d D8000000 		.4byte	.LVL99
+ 2328 0711 A80A0000 		.4byte	0xaa8
+ 2329 0715 21070000 		.4byte	0x721
+ 2330 0719 12       		.uleb128 0x12
+ 2331 071a 01       		.uleb128 0x1
+ 2332 071b 50       		.byte	0x50
+ 2333 071c 03       		.uleb128 0x3
+ 2334 071d 0A       		.byte	0xa
+ 2335 071e E803     		.2byte	0x3e8
+ 2336 0720 00       		.byte	0
+ 2337 0721 13       		.uleb128 0x13
+ 2338 0722 DC000000 		.4byte	.LVL100
+ 2339 0726 CA0A0000 		.4byte	0xaca
+ 2340 072a 11       		.uleb128 0x11
+ 2341 072b E6000000 		.4byte	.LVL101
+ 2342 072f D70A0000 		.4byte	0xad7
+ 2343 0733 50070000 		.4byte	0x750
+ 2344 0737 12       		.uleb128 0x12
+ 2345 0738 01       		.uleb128 0x1
+ 2346 0739 52       		.byte	0x52
+ 2347 073a 02       		.uleb128 0x2
+ 2348 073b 08       		.byte	0x8
+ 2349 073c 60       		.byte	0x60
+ 2350 073d 12       		.uleb128 0x12
+ 2351 073e 01       		.uleb128 0x1
+ 2352 073f 51       		.byte	0x51
+ 2353 0740 05       		.uleb128 0x5
+ 2354 0741 03       		.byte	0x3
+ 2355 0742 00000000 		.4byte	board
+ 2356 0746 12       		.uleb128 0x12
+ 2357 0747 01       		.uleb128 0x1
+ 2358 0748 50       		.byte	0x50
+ 2359 0749 05       		.uleb128 0x5
+ 2360 074a 03       		.byte	0x3
+ 2361 074b 00000000 		.4byte	update2_board
+ 2362 074f 00       		.byte	0
+ 2363 0750 11       		.uleb128 0x11
+ 2364 0751 EC000000 		.4byte	.LVL102
+ 2365 0755 26050000 		.4byte	0x526
+ 2366 0759 63070000 		.4byte	0x763
+ 2367 075d 12       		.uleb128 0x12
+ 2368 075e 01       		.uleb128 0x1
+ 2369 075f 50       		.byte	0x50
+ 2370 0760 01       		.uleb128 0x1
+ 2371 0761 32       		.byte	0x32
+ 2372 0762 00       		.byte	0
+ 2373 0763 11       		.uleb128 0x11
+ 2374 0764 04010000 		.4byte	.LVL103
+ 2375 0768 8D050000 		.4byte	0x58d
+ 2376 076c 78070000 		.4byte	0x778
+ 2377 0770 12       		.uleb128 0x12
+ 2378 0771 01       		.uleb128 0x1
+ 2379 0772 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 51
+
+
+ 2380 0773 03       		.uleb128 0x3
+ 2381 0774 91       		.byte	0x91
+ 2382 0775 4C       		.sleb128 -52
+ 2383 0776 06       		.byte	0x6
+ 2384 0777 00       		.byte	0
+ 2385 0778 11       		.uleb128 0x11
+ 2386 0779 0E010000 		.4byte	.LVL104
+ 2387 077d 8D050000 		.4byte	0x58d
+ 2388 0781 8C070000 		.4byte	0x78c
+ 2389 0785 12       		.uleb128 0x12
+ 2390 0786 01       		.uleb128 0x1
+ 2391 0787 50       		.byte	0x50
+ 2392 0788 02       		.uleb128 0x2
+ 2393 0789 77       		.byte	0x77
+ 2394 078a 00       		.sleb128 0
+ 2395 078b 00       		.byte	0
+ 2396 078c 11       		.uleb128 0x11
+ 2397 078d 18010000 		.4byte	.LVL105
+ 2398 0791 8D050000 		.4byte	0x58d
+ 2399 0795 A0070000 		.4byte	0x7a0
+ 2400 0799 12       		.uleb128 0x12
+ 2401 079a 01       		.uleb128 0x1
+ 2402 079b 50       		.byte	0x50
+ 2403 079c 02       		.uleb128 0x2
+ 2404 079d 76       		.byte	0x76
+ 2405 079e 00       		.sleb128 0
+ 2406 079f 00       		.byte	0
+ 2407 07a0 11       		.uleb128 0x11
+ 2408 07a1 22010000 		.4byte	.LVL106
+ 2409 07a5 8D050000 		.4byte	0x58d
+ 2410 07a9 B4070000 		.4byte	0x7b4
+ 2411 07ad 12       		.uleb128 0x12
+ 2412 07ae 01       		.uleb128 0x1
+ 2413 07af 50       		.byte	0x50
+ 2414 07b0 02       		.uleb128 0x2
+ 2415 07b1 74       		.byte	0x74
+ 2416 07b2 00       		.sleb128 0
+ 2417 07b3 00       		.byte	0
+ 2418 07b4 11       		.uleb128 0x11
+ 2419 07b5 98010000 		.4byte	.LVL107
+ 2420 07b9 5E0A0000 		.4byte	0xa5e
+ 2421 07bd D2070000 		.4byte	0x7d2
+ 2422 07c1 12       		.uleb128 0x12
+ 2423 07c2 01       		.uleb128 0x1
+ 2424 07c3 51       		.byte	0x51
+ 2425 07c4 05       		.uleb128 0x5
+ 2426 07c5 03       		.byte	0x3
+ 2427 07c6 C4000000 		.4byte	.LC16
+ 2428 07ca 12       		.uleb128 0x12
+ 2429 07cb 01       		.uleb128 0x1
+ 2430 07cc 50       		.byte	0x50
+ 2431 07cd 03       		.uleb128 0x3
+ 2432 07ce 91       		.byte	0x91
+ 2433 07cf B47F     		.sleb128 -76
+ 2434 07d1 00       		.byte	0
+ 2435 07d2 11       		.uleb128 0x11
+ 2436 07d3 A2010000 		.4byte	.LVL108
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 52
+
+
+ 2437 07d7 780A0000 		.4byte	0xa78
+ 2438 07db F7070000 		.4byte	0x7f7
+ 2439 07df 12       		.uleb128 0x12
+ 2440 07e0 01       		.uleb128 0x1
+ 2441 07e1 52       		.byte	0x52
+ 2442 07e2 01       		.uleb128 0x1
+ 2443 07e3 39       		.byte	0x39
+ 2444 07e4 12       		.uleb128 0x12
+ 2445 07e5 01       		.uleb128 0x1
+ 2446 07e6 51       		.byte	0x51
+ 2447 07e7 05       		.uleb128 0x5
+ 2448 07e8 03       		.byte	0x3
+ 2449 07e9 00000000 		.4byte	recv
+ 2450 07ed 12       		.uleb128 0x12
+ 2451 07ee 01       		.uleb128 0x1
+ 2452 07ef 50       		.byte	0x50
+ 2453 07f0 05       		.uleb128 0x5
+ 2454 07f1 03       		.byte	0x3
+ 2455 07f2 00000000 		.4byte	bres9
+ 2456 07f6 00       		.byte	0
+ 2457 07f7 11       		.uleb128 0x11
+ 2458 07f8 B4010000 		.4byte	.LVL109
+ 2459 07fc 420A0000 		.4byte	0xa42
+ 2460 0800 0E080000 		.4byte	0x80e
+ 2461 0804 12       		.uleb128 0x12
+ 2462 0805 01       		.uleb128 0x1
+ 2463 0806 50       		.byte	0x50
+ 2464 0807 05       		.uleb128 0x5
+ 2465 0808 03       		.byte	0x3
+ 2466 0809 C8000000 		.4byte	.LC17
+ 2467 080d 00       		.byte	0
+ 2468 080e 14       		.uleb128 0x14
+ 2469 080f C2010000 		.4byte	.LVL110
+ 2470 0813 420A0000 		.4byte	0xa42
+ 2471 0817 12       		.uleb128 0x12
+ 2472 0818 01       		.uleb128 0x1
+ 2473 0819 50       		.byte	0x50
+ 2474 081a 05       		.uleb128 0x5
+ 2475 081b 03       		.byte	0x3
+ 2476 081c EC000000 		.4byte	.LC18
+ 2477 0820 00       		.byte	0
+ 2478 0821 00       		.byte	0
+ 2479 0822 08       		.uleb128 0x8
+ 2480 0823 68000000 		.4byte	0x68
+ 2481 0827 38080000 		.4byte	0x838
+ 2482 082b 09       		.uleb128 0x9
+ 2483 082c 83000000 		.4byte	0x83
+ 2484 0830 01       		.byte	0x1
+ 2485 0831 09       		.uleb128 0x9
+ 2486 0832 83000000 		.4byte	0x83
+ 2487 0836 01       		.byte	0x1
+ 2488 0837 00       		.byte	0
+ 2489 0838 08       		.uleb128 0x8
+ 2490 0839 90000000 		.4byte	0x90
+ 2491 083d 48080000 		.4byte	0x848
+ 2492 0841 09       		.uleb128 0x9
+ 2493 0842 83000000 		.4byte	0x83
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 53
+
+
+ 2494 0846 0C       		.byte	0xc
+ 2495 0847 00       		.byte	0
+ 2496 0848 1B       		.uleb128 0x1b
+ 2497 0849 C0010000 		.4byte	.LASF40
+ 2498 084d 01       		.byte	0x1
+ 2499 084e 7A01     		.2byte	0x17a
+ 2500 0850 68000000 		.4byte	0x68
+ 2501 0854 00000000 		.4byte	.LFB71
+ 2502 0858 54000000 		.4byte	.LFE71-.LFB71
+ 2503 085c 01       		.uleb128 0x1
+ 2504 085d 9C       		.byte	0x9c
+ 2505 085e B9080000 		.4byte	0x8b9
+ 2506 0862 13       		.uleb128 0x13
+ 2507 0863 0C000000 		.4byte	.LVL112
+ 2508 0867 F40A0000 		.4byte	0xaf4
+ 2509 086b 13       		.uleb128 0x13
+ 2510 086c 10000000 		.4byte	.LVL113
+ 2511 0870 7A010000 		.4byte	0x17a
+ 2512 0874 11       		.uleb128 0x11
+ 2513 0875 1E000000 		.4byte	.LVL114
+ 2514 0879 420A0000 		.4byte	0xa42
+ 2515 087d 8B080000 		.4byte	0x88b
+ 2516 0881 12       		.uleb128 0x12
+ 2517 0882 01       		.uleb128 0x1
+ 2518 0883 50       		.byte	0x50
+ 2519 0884 05       		.uleb128 0x5
+ 2520 0885 03       		.byte	0x3
+ 2521 0886 FC000000 		.4byte	.LC19
+ 2522 088a 00       		.byte	0
+ 2523 088b 13       		.uleb128 0x13
+ 2524 088c 22000000 		.4byte	.LVL115
+ 2525 0890 7A010000 		.4byte	0x17a
+ 2526 0894 13       		.uleb128 0x13
+ 2527 0895 2C000000 		.4byte	.LVL116
+ 2528 0899 34020000 		.4byte	0x234
+ 2529 089d 13       		.uleb128 0x13
+ 2530 089e 36000000 		.4byte	.LVL117
+ 2531 08a2 1C030000 		.4byte	0x31c
+ 2532 08a6 13       		.uleb128 0x13
+ 2533 08a7 40000000 		.4byte	.LVL118
+ 2534 08ab 24040000 		.4byte	0x424
+ 2535 08af 13       		.uleb128 0x13
+ 2536 08b0 4A000000 		.4byte	.LVL119
+ 2537 08b4 B6050000 		.4byte	0x5b6
+ 2538 08b8 00       		.byte	0
+ 2539 08b9 1F       		.uleb128 0x1f
+ 2540 08ba A7030000 		.4byte	.LASF41
+ 2541 08be 07       		.byte	0x7
+ 2542 08bf 2A06     		.2byte	0x62a
+ 2543 08c1 C5080000 		.4byte	0x8c5
+ 2544 08c5 20       		.uleb128 0x20
+ 2545 08c6 B9000000 		.4byte	0xb9
+ 2546 08ca 21       		.uleb128 0x21
+ 2547 08cb F9000000 		.4byte	.LASF42
+ 2548 08cf 06       		.byte	0x6
+ 2549 08d0 19       		.byte	0x19
+ 2550 08d1 DA000000 		.4byte	0xda
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 54
+
+
+ 2551 08d5 05       		.uleb128 0x5
+ 2552 08d6 03       		.byte	0x3
+ 2553 08d7 00000000 		.4byte	x_pos
+ 2554 08db 21       		.uleb128 0x21
+ 2555 08dc FC020000 		.4byte	.LASF43
+ 2556 08e0 06       		.byte	0x6
+ 2557 08e1 1A       		.byte	0x1a
+ 2558 08e2 DA000000 		.4byte	0xda
+ 2559 08e6 05       		.uleb128 0x5
+ 2560 08e7 03       		.byte	0x3
+ 2561 08e8 00000000 		.4byte	y_pos
+ 2562 08ec 21       		.uleb128 0x21
+ 2563 08ed E1020000 		.4byte	.LASF44
+ 2564 08f1 06       		.byte	0x6
+ 2565 08f2 1B       		.byte	0x1b
+ 2566 08f3 DA000000 		.4byte	0xda
+ 2567 08f7 05       		.uleb128 0x5
+ 2568 08f8 03       		.byte	0x3
+ 2569 08f9 00000000 		.4byte	row_square
+ 2570 08fd 21       		.uleb128 0x21
+ 2571 08fe 9C030000 		.4byte	.LASF45
+ 2572 0902 06       		.byte	0x6
+ 2573 0903 1C       		.byte	0x1c
+ 2574 0904 DA000000 		.4byte	0xda
+ 2575 0908 05       		.uleb128 0x5
+ 2576 0909 03       		.byte	0x3
+ 2577 090a 00000000 		.4byte	col_square
+ 2578 090e 08       		.uleb128 0x8
+ 2579 090f 90000000 		.4byte	0x90
+ 2580 0913 24090000 		.4byte	0x924
+ 2581 0917 09       		.uleb128 0x9
+ 2582 0918 83000000 		.4byte	0x83
+ 2583 091c 07       		.byte	0x7
+ 2584 091d 09       		.uleb128 0x9
+ 2585 091e 83000000 		.4byte	0x83
+ 2586 0922 0B       		.byte	0xb
+ 2587 0923 00       		.byte	0
+ 2588 0924 21       		.uleb128 0x21
+ 2589 0925 23010000 		.4byte	.LASF46
+ 2590 0929 06       		.byte	0x6
+ 2591 092a 2D       		.byte	0x2d
+ 2592 092b 0E090000 		.4byte	0x90e
+ 2593 092f 05       		.uleb128 0x5
+ 2594 0930 03       		.byte	0x3
+ 2595 0931 00000000 		.4byte	board
+ 2596 0935 08       		.uleb128 0x8
+ 2597 0936 90000000 		.4byte	0x90
+ 2598 093a 45090000 		.4byte	0x945
+ 2599 093e 09       		.uleb128 0x9
+ 2600 093f 83000000 		.4byte	0x83
+ 2601 0943 08       		.byte	0x8
+ 2602 0944 00       		.byte	0
+ 2603 0945 21       		.uleb128 0x21
+ 2604 0946 EC020000 		.4byte	.LASF47
+ 2605 094a 08       		.byte	0x8
+ 2606 094b 33       		.byte	0x33
+ 2607 094c 35090000 		.4byte	0x935
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 55
+
+
+ 2608 0950 05       		.uleb128 0x5
+ 2609 0951 03       		.byte	0x3
+ 2610 0952 00000000 		.4byte	recv
+ 2611 0956 21       		.uleb128 0x21
+ 2612 0957 D1030000 		.4byte	.LASF48
+ 2613 095b 08       		.byte	0x8
+ 2614 095c 11       		.byte	0x11
+ 2615 095d FE000000 		.4byte	0xfe
+ 2616 0961 05       		.uleb128 0x5
+ 2617 0962 03       		.byte	0x3
+ 2618 0963 00000000 		.4byte	move
+ 2619 0967 21       		.uleb128 0x21
+ 2620 0968 F1020000 		.4byte	.LASF49
+ 2621 096c 08       		.byte	0x8
+ 2622 096d 1B       		.byte	0x1b
+ 2623 096e 68000000 		.4byte	0x68
+ 2624 0972 05       		.uleb128 0x5
+ 2625 0973 03       		.byte	0x3
+ 2626 0974 00000000 		.4byte	game_state
+ 2627 0978 21       		.uleb128 0x21
+ 2628 0979 10000000 		.4byte	.LASF50
+ 2629 097d 01       		.byte	0x1
+ 2630 097e 07       		.byte	0x7
+ 2631 097f A2000000 		.4byte	0xa2
+ 2632 0983 05       		.uleb128 0x5
+ 2633 0984 03       		.byte	0x3
+ 2634 0985 00000000 		.4byte	bstr_connect
+ 2635 0989 08       		.uleb128 0x8
+ 2636 098a 90000000 		.4byte	0x90
+ 2637 098e 99090000 		.4byte	0x999
+ 2638 0992 09       		.uleb128 0x9
+ 2639 0993 83000000 		.4byte	0x83
+ 2640 0997 05       		.byte	0x5
+ 2641 0998 00       		.byte	0
+ 2642 0999 21       		.uleb128 0x21
+ 2643 099a FF000000 		.4byte	.LASF51
+ 2644 099e 01       		.byte	0x1
+ 2645 099f 09       		.byte	0x9
+ 2646 09a0 89090000 		.4byte	0x989
+ 2647 09a4 05       		.uleb128 0x5
+ 2648 09a5 03       		.byte	0x3
+ 2649 09a6 00000000 		.4byte	bstr_ready
+ 2650 09aa 21       		.uleb128 0x21
+ 2651 09ab 7E010000 		.4byte	.LASF52
+ 2652 09af 01       		.byte	0x1
+ 2653 09b0 0B       		.byte	0xb
+ 2654 09b1 16050000 		.4byte	0x516
+ 2655 09b5 05       		.uleb128 0x5
+ 2656 09b6 03       		.byte	0x3
+ 2657 09b7 00000000 		.4byte	bstr_gib
+ 2658 09bb 08       		.uleb128 0x8
+ 2659 09bc 90000000 		.4byte	0x90
+ 2660 09c0 CB090000 		.4byte	0x9cb
+ 2661 09c4 09       		.uleb128 0x9
+ 2662 09c5 83000000 		.4byte	0x83
+ 2663 09c9 00       		.byte	0
+ 2664 09ca 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 56
+
+
+ 2665 09cb 21       		.uleb128 0x21
+ 2666 09cc 51000000 		.4byte	.LASF53
+ 2667 09d0 01       		.byte	0x1
+ 2668 09d1 0E       		.byte	0xe
+ 2669 09d2 BB090000 		.4byte	0x9bb
+ 2670 09d6 05       		.uleb128 0x5
+ 2671 09d7 03       		.byte	0x3
+ 2672 09d8 00000000 		.4byte	bres1
+ 2673 09dc 21       		.uleb128 0x21
+ 2674 09dd 7A000000 		.4byte	.LASF54
+ 2675 09e1 01       		.byte	0x1
+ 2676 09e2 0F       		.byte	0xf
+ 2677 09e3 A2000000 		.4byte	0xa2
+ 2678 09e7 05       		.uleb128 0x5
+ 2679 09e8 03       		.byte	0x3
+ 2680 09e9 00000000 		.4byte	bres8
+ 2681 09ed 21       		.uleb128 0x21
+ 2682 09ee 80000000 		.4byte	.LASF55
+ 2683 09f2 01       		.byte	0x1
+ 2684 09f3 10       		.byte	0x10
+ 2685 09f4 35090000 		.4byte	0x935
+ 2686 09f8 05       		.uleb128 0x5
+ 2687 09f9 03       		.byte	0x3
+ 2688 09fa 00000000 		.4byte	bres9
+ 2689 09fe 21       		.uleb128 0x21
+ 2690 09ff A3000000 		.4byte	.LASF56
+ 2691 0a03 01       		.byte	0x1
+ 2692 0a04 12       		.byte	0x12
+ 2693 0a05 22080000 		.4byte	0x822
+ 2694 0a09 05       		.uleb128 0x5
+ 2695 0a0a 03       		.byte	0x3
+ 2696 0a0b 00000000 		.4byte	diff_loc
+ 2697 0a0f 21       		.uleb128 0x21
+ 2698 0a10 43000000 		.4byte	.LASF57
+ 2699 0a14 01       		.byte	0x1
+ 2700 0a15 14       		.byte	0x14
+ 2701 0a16 0E090000 		.4byte	0x90e
+ 2702 0a1a 05       		.uleb128 0x5
+ 2703 0a1b 03       		.byte	0x3
+ 2704 0a1c 00000000 		.4byte	initial_board
+ 2705 0a20 21       		.uleb128 0x21
+ 2706 0a21 28030000 		.4byte	.LASF58
+ 2707 0a25 01       		.byte	0x1
+ 2708 0a26 15       		.byte	0x15
+ 2709 0a27 0E090000 		.4byte	0x90e
+ 2710 0a2b 05       		.uleb128 0x5
+ 2711 0a2c 03       		.byte	0x3
+ 2712 0a2d 00000000 		.4byte	update1_board
+ 2713 0a31 21       		.uleb128 0x21
+ 2714 0a32 9A010000 		.4byte	.LASF59
+ 2715 0a36 01       		.byte	0x1
+ 2716 0a37 16       		.byte	0x16
+ 2717 0a38 0E090000 		.4byte	0x90e
+ 2718 0a3c 05       		.uleb128 0x5
+ 2719 0a3d 03       		.byte	0x3
+ 2720 0a3e 00000000 		.4byte	update2_board
+ 2721 0a42 22       		.uleb128 0x22
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 57
+
+
+ 2722 0a43 BC030000 		.4byte	.LASF62
+ 2723 0a47 0B       		.byte	0xb
+ 2724 0a48 8B       		.byte	0x8b
+ 2725 0a49 530A0000 		.4byte	0xa53
+ 2726 0a4d 23       		.uleb128 0x23
+ 2727 0a4e 530A0000 		.4byte	0xa53
+ 2728 0a52 00       		.byte	0
+ 2729 0a53 06       		.uleb128 0x6
+ 2730 0a54 04       		.byte	0x4
+ 2731 0a55 590A0000 		.4byte	0xa59
+ 2732 0a59 07       		.uleb128 0x7
+ 2733 0a5a F3000000 		.4byte	0xf3
+ 2734 0a5e 24       		.uleb128 0x24
+ 2735 0a5f 57030000 		.4byte	.LASF60
+ 2736 0a63 09       		.byte	0x9
+ 2737 0a64 15       		.byte	0x15
+ 2738 0a65 8A000000 		.4byte	0x8a
+ 2739 0a69 780A0000 		.4byte	0xa78
+ 2740 0a6d 23       		.uleb128 0x23
+ 2741 0a6e 8A000000 		.4byte	0x8a
+ 2742 0a72 23       		.uleb128 0x23
+ 2743 0a73 8A000000 		.4byte	0x8a
+ 2744 0a77 00       		.byte	0
+ 2745 0a78 24       		.uleb128 0x24
+ 2746 0a79 00000000 		.4byte	.LASF61
+ 2747 0a7d 0A       		.byte	0xa
+ 2748 0a7e 24       		.byte	0x24
+ 2749 0a7f 8A000000 		.4byte	0x8a
+ 2750 0a83 970A0000 		.4byte	0xa97
+ 2751 0a87 23       		.uleb128 0x23
+ 2752 0a88 8A000000 		.4byte	0x8a
+ 2753 0a8c 23       		.uleb128 0x23
+ 2754 0a8d 97000000 		.4byte	0x97
+ 2755 0a91 23       		.uleb128 0x23
+ 2756 0a92 76000000 		.4byte	0x76
+ 2757 0a96 00       		.byte	0
+ 2758 0a97 22       		.uleb128 0x22
+ 2759 0a98 87010000 		.4byte	.LASF63
+ 2760 0a9c 0B       		.byte	0xb
+ 2761 0a9d 8A       		.byte	0x8a
+ 2762 0a9e A80A0000 		.4byte	0xaa8
+ 2763 0aa2 23       		.uleb128 0x23
+ 2764 0aa3 C4000000 		.4byte	0xc4
+ 2765 0aa7 00       		.byte	0
+ 2766 0aa8 22       		.uleb128 0x22
+ 2767 0aa9 B4030000 		.4byte	.LASF64
+ 2768 0aad 0C       		.byte	0xc
+ 2769 0aae 77       		.byte	0x77
+ 2770 0aaf B90A0000 		.4byte	0xab9
+ 2771 0ab3 23       		.uleb128 0x23
+ 2772 0ab4 CF000000 		.4byte	0xcf
+ 2773 0ab8 00       		.byte	0
+ 2774 0ab9 22       		.uleb128 0x22
+ 2775 0aba 85030000 		.4byte	.LASF65
+ 2776 0abe 06       		.byte	0x6
+ 2777 0abf 25       		.byte	0x25
+ 2778 0ac0 CA0A0000 		.4byte	0xaca
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 58
+
+
+ 2779 0ac4 23       		.uleb128 0x23
+ 2780 0ac5 FE000000 		.4byte	0xfe
+ 2781 0ac9 00       		.byte	0
+ 2782 0aca 25       		.uleb128 0x25
+ 2783 0acb 90000000 		.4byte	.LASF73
+ 2784 0acf 06       		.byte	0x6
+ 2785 0ad0 31       		.byte	0x31
+ 2786 0ad1 D70A0000 		.4byte	0xad7
+ 2787 0ad5 26       		.uleb128 0x26
+ 2788 0ad6 00       		.byte	0
+ 2789 0ad7 27       		.uleb128 0x27
+ 2790 0ad8 57000000 		.4byte	.LASF66
+ 2791 0adc 81000000 		.4byte	0x81
+ 2792 0ae0 F40A0000 		.4byte	0xaf4
+ 2793 0ae4 23       		.uleb128 0x23
+ 2794 0ae5 81000000 		.4byte	0x81
+ 2795 0ae9 23       		.uleb128 0x23
+ 2796 0aea B2000000 		.4byte	0xb2
+ 2797 0aee 23       		.uleb128 0x23
+ 2798 0aef 83000000 		.4byte	0x83
+ 2799 0af3 00       		.byte	0
+ 2800 0af4 28       		.uleb128 0x28
+ 2801 0af5 19010000 		.4byte	.LASF74
+ 2802 0af9 06       		.byte	0x6
+ 2803 0afa 20       		.byte	0x20
+ 2804 0afb 26       		.uleb128 0x26
+ 2805 0afc 00       		.byte	0
+ 2806 0afd 00       		.byte	0
+ 2807              		.section	.debug_abbrev,"",%progbits
+ 2808              	.Ldebug_abbrev0:
+ 2809 0000 01       		.uleb128 0x1
+ 2810 0001 11       		.uleb128 0x11
+ 2811 0002 01       		.byte	0x1
+ 2812 0003 25       		.uleb128 0x25
+ 2813 0004 0E       		.uleb128 0xe
+ 2814 0005 13       		.uleb128 0x13
+ 2815 0006 0B       		.uleb128 0xb
+ 2816 0007 03       		.uleb128 0x3
+ 2817 0008 0E       		.uleb128 0xe
+ 2818 0009 1B       		.uleb128 0x1b
+ 2819 000a 0E       		.uleb128 0xe
+ 2820 000b 55       		.uleb128 0x55
+ 2821 000c 17       		.uleb128 0x17
+ 2822 000d 11       		.uleb128 0x11
+ 2823 000e 01       		.uleb128 0x1
+ 2824 000f 10       		.uleb128 0x10
+ 2825 0010 17       		.uleb128 0x17
+ 2826 0011 00       		.byte	0
+ 2827 0012 00       		.byte	0
+ 2828 0013 02       		.uleb128 0x2
+ 2829 0014 24       		.uleb128 0x24
+ 2830 0015 00       		.byte	0
+ 2831 0016 0B       		.uleb128 0xb
+ 2832 0017 0B       		.uleb128 0xb
+ 2833 0018 3E       		.uleb128 0x3e
+ 2834 0019 0B       		.uleb128 0xb
+ 2835 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 59
+
+
+ 2836 001b 0E       		.uleb128 0xe
+ 2837 001c 00       		.byte	0
+ 2838 001d 00       		.byte	0
+ 2839 001e 03       		.uleb128 0x3
+ 2840 001f 16       		.uleb128 0x16
+ 2841 0020 00       		.byte	0
+ 2842 0021 03       		.uleb128 0x3
+ 2843 0022 0E       		.uleb128 0xe
+ 2844 0023 3A       		.uleb128 0x3a
+ 2845 0024 0B       		.uleb128 0xb
+ 2846 0025 3B       		.uleb128 0x3b
+ 2847 0026 0B       		.uleb128 0xb
+ 2848 0027 49       		.uleb128 0x49
+ 2849 0028 13       		.uleb128 0x13
+ 2850 0029 00       		.byte	0
+ 2851 002a 00       		.byte	0
+ 2852 002b 04       		.uleb128 0x4
+ 2853 002c 24       		.uleb128 0x24
+ 2854 002d 00       		.byte	0
+ 2855 002e 0B       		.uleb128 0xb
+ 2856 002f 0B       		.uleb128 0xb
+ 2857 0030 3E       		.uleb128 0x3e
+ 2858 0031 0B       		.uleb128 0xb
+ 2859 0032 03       		.uleb128 0x3
+ 2860 0033 08       		.uleb128 0x8
+ 2861 0034 00       		.byte	0
+ 2862 0035 00       		.byte	0
+ 2863 0036 05       		.uleb128 0x5
+ 2864 0037 0F       		.uleb128 0xf
+ 2865 0038 00       		.byte	0
+ 2866 0039 0B       		.uleb128 0xb
+ 2867 003a 0B       		.uleb128 0xb
+ 2868 003b 00       		.byte	0
+ 2869 003c 00       		.byte	0
+ 2870 003d 06       		.uleb128 0x6
+ 2871 003e 0F       		.uleb128 0xf
+ 2872 003f 00       		.byte	0
+ 2873 0040 0B       		.uleb128 0xb
+ 2874 0041 0B       		.uleb128 0xb
+ 2875 0042 49       		.uleb128 0x49
+ 2876 0043 13       		.uleb128 0x13
+ 2877 0044 00       		.byte	0
+ 2878 0045 00       		.byte	0
+ 2879 0046 07       		.uleb128 0x7
+ 2880 0047 26       		.uleb128 0x26
+ 2881 0048 00       		.byte	0
+ 2882 0049 49       		.uleb128 0x49
+ 2883 004a 13       		.uleb128 0x13
+ 2884 004b 00       		.byte	0
+ 2885 004c 00       		.byte	0
+ 2886 004d 08       		.uleb128 0x8
+ 2887 004e 01       		.uleb128 0x1
+ 2888 004f 01       		.byte	0x1
+ 2889 0050 49       		.uleb128 0x49
+ 2890 0051 13       		.uleb128 0x13
+ 2891 0052 01       		.uleb128 0x1
+ 2892 0053 13       		.uleb128 0x13
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 60
+
+
+ 2893 0054 00       		.byte	0
+ 2894 0055 00       		.byte	0
+ 2895 0056 09       		.uleb128 0x9
+ 2896 0057 21       		.uleb128 0x21
+ 2897 0058 00       		.byte	0
+ 2898 0059 49       		.uleb128 0x49
+ 2899 005a 13       		.uleb128 0x13
+ 2900 005b 2F       		.uleb128 0x2f
+ 2901 005c 0B       		.uleb128 0xb
+ 2902 005d 00       		.byte	0
+ 2903 005e 00       		.byte	0
+ 2904 005f 0A       		.uleb128 0xa
+ 2905 0060 26       		.uleb128 0x26
+ 2906 0061 00       		.byte	0
+ 2907 0062 00       		.byte	0
+ 2908 0063 00       		.byte	0
+ 2909 0064 0B       		.uleb128 0xb
+ 2910 0065 13       		.uleb128 0x13
+ 2911 0066 01       		.byte	0x1
+ 2912 0067 03       		.uleb128 0x3
+ 2913 0068 0E       		.uleb128 0xe
+ 2914 0069 0B       		.uleb128 0xb
+ 2915 006a 0B       		.uleb128 0xb
+ 2916 006b 3A       		.uleb128 0x3a
+ 2917 006c 0B       		.uleb128 0xb
+ 2918 006d 3B       		.uleb128 0x3b
+ 2919 006e 0B       		.uleb128 0xb
+ 2920 006f 01       		.uleb128 0x1
+ 2921 0070 13       		.uleb128 0x13
+ 2922 0071 00       		.byte	0
+ 2923 0072 00       		.byte	0
+ 2924 0073 0C       		.uleb128 0xc
+ 2925 0074 0D       		.uleb128 0xd
+ 2926 0075 00       		.byte	0
+ 2927 0076 03       		.uleb128 0x3
+ 2928 0077 0E       		.uleb128 0xe
+ 2929 0078 3A       		.uleb128 0x3a
+ 2930 0079 0B       		.uleb128 0xb
+ 2931 007a 3B       		.uleb128 0x3b
+ 2932 007b 0B       		.uleb128 0xb
+ 2933 007c 49       		.uleb128 0x49
+ 2934 007d 13       		.uleb128 0x13
+ 2935 007e 38       		.uleb128 0x38
+ 2936 007f 0B       		.uleb128 0xb
+ 2937 0080 00       		.byte	0
+ 2938 0081 00       		.byte	0
+ 2939 0082 0D       		.uleb128 0xd
+ 2940 0083 04       		.uleb128 0x4
+ 2941 0084 01       		.byte	0x1
+ 2942 0085 03       		.uleb128 0x3
+ 2943 0086 0E       		.uleb128 0xe
+ 2944 0087 0B       		.uleb128 0xb
+ 2945 0088 0B       		.uleb128 0xb
+ 2946 0089 3A       		.uleb128 0x3a
+ 2947 008a 0B       		.uleb128 0xb
+ 2948 008b 3B       		.uleb128 0x3b
+ 2949 008c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 61
+
+
+ 2950 008d 01       		.uleb128 0x1
+ 2951 008e 13       		.uleb128 0x13
+ 2952 008f 00       		.byte	0
+ 2953 0090 00       		.byte	0
+ 2954 0091 0E       		.uleb128 0xe
+ 2955 0092 28       		.uleb128 0x28
+ 2956 0093 00       		.byte	0
+ 2957 0094 03       		.uleb128 0x3
+ 2958 0095 0E       		.uleb128 0xe
+ 2959 0096 1C       		.uleb128 0x1c
+ 2960 0097 0D       		.uleb128 0xd
+ 2961 0098 00       		.byte	0
+ 2962 0099 00       		.byte	0
+ 2963 009a 0F       		.uleb128 0xf
+ 2964 009b 2E       		.uleb128 0x2e
+ 2965 009c 01       		.byte	0x1
+ 2966 009d 3F       		.uleb128 0x3f
+ 2967 009e 19       		.uleb128 0x19
+ 2968 009f 03       		.uleb128 0x3
+ 2969 00a0 0E       		.uleb128 0xe
+ 2970 00a1 3A       		.uleb128 0x3a
+ 2971 00a2 0B       		.uleb128 0xb
+ 2972 00a3 3B       		.uleb128 0x3b
+ 2973 00a4 0B       		.uleb128 0xb
+ 2974 00a5 49       		.uleb128 0x49
+ 2975 00a6 13       		.uleb128 0x13
+ 2976 00a7 11       		.uleb128 0x11
+ 2977 00a8 01       		.uleb128 0x1
+ 2978 00a9 12       		.uleb128 0x12
+ 2979 00aa 06       		.uleb128 0x6
+ 2980 00ab 40       		.uleb128 0x40
+ 2981 00ac 18       		.uleb128 0x18
+ 2982 00ad 9742     		.uleb128 0x2117
+ 2983 00af 19       		.uleb128 0x19
+ 2984 00b0 01       		.uleb128 0x1
+ 2985 00b1 13       		.uleb128 0x13
+ 2986 00b2 00       		.byte	0
+ 2987 00b3 00       		.byte	0
+ 2988 00b4 10       		.uleb128 0x10
+ 2989 00b5 34       		.uleb128 0x34
+ 2990 00b6 00       		.byte	0
+ 2991 00b7 03       		.uleb128 0x3
+ 2992 00b8 0E       		.uleb128 0xe
+ 2993 00b9 3A       		.uleb128 0x3a
+ 2994 00ba 0B       		.uleb128 0xb
+ 2995 00bb 3B       		.uleb128 0x3b
+ 2996 00bc 0B       		.uleb128 0xb
+ 2997 00bd 49       		.uleb128 0x49
+ 2998 00be 13       		.uleb128 0x13
+ 2999 00bf 1C       		.uleb128 0x1c
+ 3000 00c0 0B       		.uleb128 0xb
+ 3001 00c1 00       		.byte	0
+ 3002 00c2 00       		.byte	0
+ 3003 00c3 11       		.uleb128 0x11
+ 3004 00c4 898201   		.uleb128 0x4109
+ 3005 00c7 01       		.byte	0x1
+ 3006 00c8 11       		.uleb128 0x11
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 62
+
+
+ 3007 00c9 01       		.uleb128 0x1
+ 3008 00ca 31       		.uleb128 0x31
+ 3009 00cb 13       		.uleb128 0x13
+ 3010 00cc 01       		.uleb128 0x1
+ 3011 00cd 13       		.uleb128 0x13
+ 3012 00ce 00       		.byte	0
+ 3013 00cf 00       		.byte	0
+ 3014 00d0 12       		.uleb128 0x12
+ 3015 00d1 8A8201   		.uleb128 0x410a
+ 3016 00d4 00       		.byte	0
+ 3017 00d5 02       		.uleb128 0x2
+ 3018 00d6 18       		.uleb128 0x18
+ 3019 00d7 9142     		.uleb128 0x2111
+ 3020 00d9 18       		.uleb128 0x18
+ 3021 00da 00       		.byte	0
+ 3022 00db 00       		.byte	0
+ 3023 00dc 13       		.uleb128 0x13
+ 3024 00dd 898201   		.uleb128 0x4109
+ 3025 00e0 00       		.byte	0
+ 3026 00e1 11       		.uleb128 0x11
+ 3027 00e2 01       		.uleb128 0x1
+ 3028 00e3 31       		.uleb128 0x31
+ 3029 00e4 13       		.uleb128 0x13
+ 3030 00e5 00       		.byte	0
+ 3031 00e6 00       		.byte	0
+ 3032 00e7 14       		.uleb128 0x14
+ 3033 00e8 898201   		.uleb128 0x4109
+ 3034 00eb 01       		.byte	0x1
+ 3035 00ec 11       		.uleb128 0x11
+ 3036 00ed 01       		.uleb128 0x1
+ 3037 00ee 31       		.uleb128 0x31
+ 3038 00ef 13       		.uleb128 0x13
+ 3039 00f0 00       		.byte	0
+ 3040 00f1 00       		.byte	0
+ 3041 00f2 15       		.uleb128 0x15
+ 3042 00f3 34       		.uleb128 0x34
+ 3043 00f4 00       		.byte	0
+ 3044 00f5 03       		.uleb128 0x3
+ 3045 00f6 0E       		.uleb128 0xe
+ 3046 00f7 3A       		.uleb128 0x3a
+ 3047 00f8 0B       		.uleb128 0xb
+ 3048 00f9 3B       		.uleb128 0x3b
+ 3049 00fa 0B       		.uleb128 0xb
+ 3050 00fb 49       		.uleb128 0x49
+ 3051 00fc 13       		.uleb128 0x13
+ 3052 00fd 02       		.uleb128 0x2
+ 3053 00fe 18       		.uleb128 0x18
+ 3054 00ff 00       		.byte	0
+ 3055 0100 00       		.byte	0
+ 3056 0101 16       		.uleb128 0x16
+ 3057 0102 2E       		.uleb128 0x2e
+ 3058 0103 01       		.byte	0x1
+ 3059 0104 3F       		.uleb128 0x3f
+ 3060 0105 19       		.uleb128 0x19
+ 3061 0106 03       		.uleb128 0x3
+ 3062 0107 0E       		.uleb128 0xe
+ 3063 0108 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 63
+
+
+ 3064 0109 0B       		.uleb128 0xb
+ 3065 010a 3B       		.uleb128 0x3b
+ 3066 010b 0B       		.uleb128 0xb
+ 3067 010c 27       		.uleb128 0x27
+ 3068 010d 19       		.uleb128 0x19
+ 3069 010e 11       		.uleb128 0x11
+ 3070 010f 01       		.uleb128 0x1
+ 3071 0110 12       		.uleb128 0x12
+ 3072 0111 06       		.uleb128 0x6
+ 3073 0112 40       		.uleb128 0x40
+ 3074 0113 18       		.uleb128 0x18
+ 3075 0114 9742     		.uleb128 0x2117
+ 3076 0116 19       		.uleb128 0x19
+ 3077 0117 01       		.uleb128 0x1
+ 3078 0118 13       		.uleb128 0x13
+ 3079 0119 00       		.byte	0
+ 3080 011a 00       		.byte	0
+ 3081 011b 17       		.uleb128 0x17
+ 3082 011c 05       		.uleb128 0x5
+ 3083 011d 00       		.byte	0
+ 3084 011e 03       		.uleb128 0x3
+ 3085 011f 08       		.uleb128 0x8
+ 3086 0120 3A       		.uleb128 0x3a
+ 3087 0121 0B       		.uleb128 0xb
+ 3088 0122 3B       		.uleb128 0x3b
+ 3089 0123 0B       		.uleb128 0xb
+ 3090 0124 49       		.uleb128 0x49
+ 3091 0125 13       		.uleb128 0x13
+ 3092 0126 02       		.uleb128 0x2
+ 3093 0127 17       		.uleb128 0x17
+ 3094 0128 00       		.byte	0
+ 3095 0129 00       		.byte	0
+ 3096 012a 18       		.uleb128 0x18
+ 3097 012b 34       		.uleb128 0x34
+ 3098 012c 00       		.byte	0
+ 3099 012d 03       		.uleb128 0x3
+ 3100 012e 08       		.uleb128 0x8
+ 3101 012f 3A       		.uleb128 0x3a
+ 3102 0130 0B       		.uleb128 0xb
+ 3103 0131 3B       		.uleb128 0x3b
+ 3104 0132 0B       		.uleb128 0xb
+ 3105 0133 49       		.uleb128 0x49
+ 3106 0134 13       		.uleb128 0x13
+ 3107 0135 02       		.uleb128 0x2
+ 3108 0136 17       		.uleb128 0x17
+ 3109 0137 00       		.byte	0
+ 3110 0138 00       		.byte	0
+ 3111 0139 19       		.uleb128 0x19
+ 3112 013a 2E       		.uleb128 0x2e
+ 3113 013b 01       		.byte	0x1
+ 3114 013c 3F       		.uleb128 0x3f
+ 3115 013d 19       		.uleb128 0x19
+ 3116 013e 03       		.uleb128 0x3
+ 3117 013f 0E       		.uleb128 0xe
+ 3118 0140 3A       		.uleb128 0x3a
+ 3119 0141 0B       		.uleb128 0xb
+ 3120 0142 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 64
+
+
+ 3121 0143 05       		.uleb128 0x5
+ 3122 0144 27       		.uleb128 0x27
+ 3123 0145 19       		.uleb128 0x19
+ 3124 0146 49       		.uleb128 0x49
+ 3125 0147 13       		.uleb128 0x13
+ 3126 0148 11       		.uleb128 0x11
+ 3127 0149 01       		.uleb128 0x1
+ 3128 014a 12       		.uleb128 0x12
+ 3129 014b 06       		.uleb128 0x6
+ 3130 014c 40       		.uleb128 0x40
+ 3131 014d 18       		.uleb128 0x18
+ 3132 014e 9742     		.uleb128 0x2117
+ 3133 0150 19       		.uleb128 0x19
+ 3134 0151 01       		.uleb128 0x1
+ 3135 0152 13       		.uleb128 0x13
+ 3136 0153 00       		.byte	0
+ 3137 0154 00       		.byte	0
+ 3138 0155 1A       		.uleb128 0x1a
+ 3139 0156 05       		.uleb128 0x5
+ 3140 0157 00       		.byte	0
+ 3141 0158 03       		.uleb128 0x3
+ 3142 0159 08       		.uleb128 0x8
+ 3143 015a 3A       		.uleb128 0x3a
+ 3144 015b 0B       		.uleb128 0xb
+ 3145 015c 3B       		.uleb128 0x3b
+ 3146 015d 05       		.uleb128 0x5
+ 3147 015e 49       		.uleb128 0x49
+ 3148 015f 13       		.uleb128 0x13
+ 3149 0160 02       		.uleb128 0x2
+ 3150 0161 17       		.uleb128 0x17
+ 3151 0162 00       		.byte	0
+ 3152 0163 00       		.byte	0
+ 3153 0164 1B       		.uleb128 0x1b
+ 3154 0165 2E       		.uleb128 0x2e
+ 3155 0166 01       		.byte	0x1
+ 3156 0167 3F       		.uleb128 0x3f
+ 3157 0168 19       		.uleb128 0x19
+ 3158 0169 03       		.uleb128 0x3
+ 3159 016a 0E       		.uleb128 0xe
+ 3160 016b 3A       		.uleb128 0x3a
+ 3161 016c 0B       		.uleb128 0xb
+ 3162 016d 3B       		.uleb128 0x3b
+ 3163 016e 05       		.uleb128 0x5
+ 3164 016f 49       		.uleb128 0x49
+ 3165 0170 13       		.uleb128 0x13
+ 3166 0171 11       		.uleb128 0x11
+ 3167 0172 01       		.uleb128 0x1
+ 3168 0173 12       		.uleb128 0x12
+ 3169 0174 06       		.uleb128 0x6
+ 3170 0175 40       		.uleb128 0x40
+ 3171 0176 18       		.uleb128 0x18
+ 3172 0177 9742     		.uleb128 0x2117
+ 3173 0179 19       		.uleb128 0x19
+ 3174 017a 01       		.uleb128 0x1
+ 3175 017b 13       		.uleb128 0x13
+ 3176 017c 00       		.byte	0
+ 3177 017d 00       		.byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 65
+
+
+ 3178 017e 1C       		.uleb128 0x1c
+ 3179 017f 34       		.uleb128 0x34
+ 3180 0180 00       		.byte	0
+ 3181 0181 03       		.uleb128 0x3
+ 3182 0182 0E       		.uleb128 0xe
+ 3183 0183 3A       		.uleb128 0x3a
+ 3184 0184 0B       		.uleb128 0xb
+ 3185 0185 3B       		.uleb128 0x3b
+ 3186 0186 05       		.uleb128 0x5
+ 3187 0187 49       		.uleb128 0x49
+ 3188 0188 13       		.uleb128 0x13
+ 3189 0189 02       		.uleb128 0x2
+ 3190 018a 18       		.uleb128 0x18
+ 3191 018b 00       		.byte	0
+ 3192 018c 00       		.byte	0
+ 3193 018d 1D       		.uleb128 0x1d
+ 3194 018e 34       		.uleb128 0x34
+ 3195 018f 00       		.byte	0
+ 3196 0190 03       		.uleb128 0x3
+ 3197 0191 0E       		.uleb128 0xe
+ 3198 0192 3A       		.uleb128 0x3a
+ 3199 0193 0B       		.uleb128 0xb
+ 3200 0194 3B       		.uleb128 0x3b
+ 3201 0195 05       		.uleb128 0x5
+ 3202 0196 49       		.uleb128 0x49
+ 3203 0197 13       		.uleb128 0x13
+ 3204 0198 02       		.uleb128 0x2
+ 3205 0199 17       		.uleb128 0x17
+ 3206 019a 00       		.byte	0
+ 3207 019b 00       		.byte	0
+ 3208 019c 1E       		.uleb128 0x1e
+ 3209 019d 34       		.uleb128 0x34
+ 3210 019e 00       		.byte	0
+ 3211 019f 03       		.uleb128 0x3
+ 3212 01a0 08       		.uleb128 0x8
+ 3213 01a1 3A       		.uleb128 0x3a
+ 3214 01a2 0B       		.uleb128 0xb
+ 3215 01a3 3B       		.uleb128 0x3b
+ 3216 01a4 05       		.uleb128 0x5
+ 3217 01a5 49       		.uleb128 0x49
+ 3218 01a6 13       		.uleb128 0x13
+ 3219 01a7 02       		.uleb128 0x2
+ 3220 01a8 18       		.uleb128 0x18
+ 3221 01a9 00       		.byte	0
+ 3222 01aa 00       		.byte	0
+ 3223 01ab 1F       		.uleb128 0x1f
+ 3224 01ac 34       		.uleb128 0x34
+ 3225 01ad 00       		.byte	0
+ 3226 01ae 03       		.uleb128 0x3
+ 3227 01af 0E       		.uleb128 0xe
+ 3228 01b0 3A       		.uleb128 0x3a
+ 3229 01b1 0B       		.uleb128 0xb
+ 3230 01b2 3B       		.uleb128 0x3b
+ 3231 01b3 05       		.uleb128 0x5
+ 3232 01b4 49       		.uleb128 0x49
+ 3233 01b5 13       		.uleb128 0x13
+ 3234 01b6 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 66
+
+
+ 3235 01b7 19       		.uleb128 0x19
+ 3236 01b8 3C       		.uleb128 0x3c
+ 3237 01b9 19       		.uleb128 0x19
+ 3238 01ba 00       		.byte	0
+ 3239 01bb 00       		.byte	0
+ 3240 01bc 20       		.uleb128 0x20
+ 3241 01bd 35       		.uleb128 0x35
+ 3242 01be 00       		.byte	0
+ 3243 01bf 49       		.uleb128 0x49
+ 3244 01c0 13       		.uleb128 0x13
+ 3245 01c1 00       		.byte	0
+ 3246 01c2 00       		.byte	0
+ 3247 01c3 21       		.uleb128 0x21
+ 3248 01c4 34       		.uleb128 0x34
+ 3249 01c5 00       		.byte	0
+ 3250 01c6 03       		.uleb128 0x3
+ 3251 01c7 0E       		.uleb128 0xe
+ 3252 01c8 3A       		.uleb128 0x3a
+ 3253 01c9 0B       		.uleb128 0xb
+ 3254 01ca 3B       		.uleb128 0x3b
+ 3255 01cb 0B       		.uleb128 0xb
+ 3256 01cc 49       		.uleb128 0x49
+ 3257 01cd 13       		.uleb128 0x13
+ 3258 01ce 3F       		.uleb128 0x3f
+ 3259 01cf 19       		.uleb128 0x19
+ 3260 01d0 02       		.uleb128 0x2
+ 3261 01d1 18       		.uleb128 0x18
+ 3262 01d2 00       		.byte	0
+ 3263 01d3 00       		.byte	0
+ 3264 01d4 22       		.uleb128 0x22
+ 3265 01d5 2E       		.uleb128 0x2e
+ 3266 01d6 01       		.byte	0x1
+ 3267 01d7 3F       		.uleb128 0x3f
+ 3268 01d8 19       		.uleb128 0x19
+ 3269 01d9 03       		.uleb128 0x3
+ 3270 01da 0E       		.uleb128 0xe
+ 3271 01db 3A       		.uleb128 0x3a
+ 3272 01dc 0B       		.uleb128 0xb
+ 3273 01dd 3B       		.uleb128 0x3b
+ 3274 01de 0B       		.uleb128 0xb
+ 3275 01df 27       		.uleb128 0x27
+ 3276 01e0 19       		.uleb128 0x19
+ 3277 01e1 3C       		.uleb128 0x3c
+ 3278 01e2 19       		.uleb128 0x19
+ 3279 01e3 01       		.uleb128 0x1
+ 3280 01e4 13       		.uleb128 0x13
+ 3281 01e5 00       		.byte	0
+ 3282 01e6 00       		.byte	0
+ 3283 01e7 23       		.uleb128 0x23
+ 3284 01e8 05       		.uleb128 0x5
+ 3285 01e9 00       		.byte	0
+ 3286 01ea 49       		.uleb128 0x49
+ 3287 01eb 13       		.uleb128 0x13
+ 3288 01ec 00       		.byte	0
+ 3289 01ed 00       		.byte	0
+ 3290 01ee 24       		.uleb128 0x24
+ 3291 01ef 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 67
+
+
+ 3292 01f0 01       		.byte	0x1
+ 3293 01f1 3F       		.uleb128 0x3f
+ 3294 01f2 19       		.uleb128 0x19
+ 3295 01f3 03       		.uleb128 0x3
+ 3296 01f4 0E       		.uleb128 0xe
+ 3297 01f5 3A       		.uleb128 0x3a
+ 3298 01f6 0B       		.uleb128 0xb
+ 3299 01f7 3B       		.uleb128 0x3b
+ 3300 01f8 0B       		.uleb128 0xb
+ 3301 01f9 27       		.uleb128 0x27
+ 3302 01fa 19       		.uleb128 0x19
+ 3303 01fb 49       		.uleb128 0x49
+ 3304 01fc 13       		.uleb128 0x13
+ 3305 01fd 3C       		.uleb128 0x3c
+ 3306 01fe 19       		.uleb128 0x19
+ 3307 01ff 01       		.uleb128 0x1
+ 3308 0200 13       		.uleb128 0x13
+ 3309 0201 00       		.byte	0
+ 3310 0202 00       		.byte	0
+ 3311 0203 25       		.uleb128 0x25
+ 3312 0204 2E       		.uleb128 0x2e
+ 3313 0205 01       		.byte	0x1
+ 3314 0206 3F       		.uleb128 0x3f
+ 3315 0207 19       		.uleb128 0x19
+ 3316 0208 03       		.uleb128 0x3
+ 3317 0209 0E       		.uleb128 0xe
+ 3318 020a 3A       		.uleb128 0x3a
+ 3319 020b 0B       		.uleb128 0xb
+ 3320 020c 3B       		.uleb128 0x3b
+ 3321 020d 0B       		.uleb128 0xb
+ 3322 020e 3C       		.uleb128 0x3c
+ 3323 020f 19       		.uleb128 0x19
+ 3324 0210 01       		.uleb128 0x1
+ 3325 0211 13       		.uleb128 0x13
+ 3326 0212 00       		.byte	0
+ 3327 0213 00       		.byte	0
+ 3328 0214 26       		.uleb128 0x26
+ 3329 0215 18       		.uleb128 0x18
+ 3330 0216 00       		.byte	0
+ 3331 0217 00       		.byte	0
+ 3332 0218 00       		.byte	0
+ 3333 0219 27       		.uleb128 0x27
+ 3334 021a 2E       		.uleb128 0x2e
+ 3335 021b 01       		.byte	0x1
+ 3336 021c 3F       		.uleb128 0x3f
+ 3337 021d 19       		.uleb128 0x19
+ 3338 021e 03       		.uleb128 0x3
+ 3339 021f 0E       		.uleb128 0xe
+ 3340 0220 27       		.uleb128 0x27
+ 3341 0221 19       		.uleb128 0x19
+ 3342 0222 49       		.uleb128 0x49
+ 3343 0223 13       		.uleb128 0x13
+ 3344 0224 34       		.uleb128 0x34
+ 3345 0225 19       		.uleb128 0x19
+ 3346 0226 3C       		.uleb128 0x3c
+ 3347 0227 19       		.uleb128 0x19
+ 3348 0228 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 68
+
+
+ 3349 0229 13       		.uleb128 0x13
+ 3350 022a 00       		.byte	0
+ 3351 022b 00       		.byte	0
+ 3352 022c 28       		.uleb128 0x28
+ 3353 022d 2E       		.uleb128 0x2e
+ 3354 022e 01       		.byte	0x1
+ 3355 022f 3F       		.uleb128 0x3f
+ 3356 0230 19       		.uleb128 0x19
+ 3357 0231 03       		.uleb128 0x3
+ 3358 0232 0E       		.uleb128 0xe
+ 3359 0233 3A       		.uleb128 0x3a
+ 3360 0234 0B       		.uleb128 0xb
+ 3361 0235 3B       		.uleb128 0x3b
+ 3362 0236 0B       		.uleb128 0xb
+ 3363 0237 3C       		.uleb128 0x3c
+ 3364 0238 19       		.uleb128 0x19
+ 3365 0239 00       		.byte	0
+ 3366 023a 00       		.byte	0
+ 3367 023b 00       		.byte	0
+ 3368              		.section	.debug_loc,"",%progbits
+ 3369              	.Ldebug_loc0:
+ 3370              	.LLST0:
+ 3371 0000 00000000 		.4byte	.LVL35
+ 3372 0004 16000000 		.4byte	.LVL36
+ 3373 0008 0100     		.2byte	0x1
+ 3374 000a 50       		.byte	0x50
+ 3375 000b 16000000 		.4byte	.LVL36
+ 3376 000f 84000000 		.4byte	.LVL42
+ 3377 0013 0400     		.2byte	0x4
+ 3378 0015 F3       		.byte	0xf3
+ 3379 0016 01       		.uleb128 0x1
+ 3380 0017 50       		.byte	0x50
+ 3381 0018 9F       		.byte	0x9f
+ 3382 0019 84000000 		.4byte	.LVL42
+ 3383 001d 86000000 		.4byte	.LVL43
+ 3384 0021 0100     		.2byte	0x1
+ 3385 0023 50       		.byte	0x50
+ 3386 0024 86000000 		.4byte	.LVL43
+ 3387 0028 14010000 		.4byte	.LFE68
+ 3388 002c 0400     		.2byte	0x4
+ 3389 002e F3       		.byte	0xf3
+ 3390 002f 01       		.uleb128 0x1
+ 3391 0030 50       		.byte	0x50
+ 3392 0031 9F       		.byte	0x9f
+ 3393 0032 00000000 		.4byte	0
+ 3394 0036 00000000 		.4byte	0
+ 3395              	.LLST1:
+ 3396 003a 16000000 		.4byte	.LVL36
+ 3397 003e 84000000 		.4byte	.LVL42
+ 3398 0042 0100     		.2byte	0x1
+ 3399 0044 55       		.byte	0x55
+ 3400 0045 86000000 		.4byte	.LVL43
+ 3401 0049 FE000000 		.4byte	.LVL50
+ 3402 004d 0100     		.2byte	0x1
+ 3403 004f 55       		.byte	0x55
+ 3404 0050 00000000 		.4byte	0
+ 3405 0054 00000000 		.4byte	0
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 69
+
+
+ 3406              	.LLST2:
+ 3407 0058 16000000 		.4byte	.LVL36
+ 3408 005c 7A000000 		.4byte	.LVL39
+ 3409 0060 0100     		.2byte	0x1
+ 3410 0062 54       		.byte	0x54
+ 3411 0063 7C000000 		.4byte	.LVL40
+ 3412 0067 84000000 		.4byte	.LVL42
+ 3413 006b 0100     		.2byte	0x1
+ 3414 006d 54       		.byte	0x54
+ 3415 006e 8C000000 		.4byte	.LVL44
+ 3416 0072 F0000000 		.4byte	.LVL47
+ 3417 0076 0100     		.2byte	0x1
+ 3418 0078 54       		.byte	0x54
+ 3419 0079 F2000000 		.4byte	.LVL48
+ 3420 007d F8000000 		.4byte	.LVL49
+ 3421 0081 0100     		.2byte	0x1
+ 3422 0083 54       		.byte	0x54
+ 3423 0084 00000000 		.4byte	0
+ 3424 0088 00000000 		.4byte	0
+ 3425              	.LLST3:
+ 3426 008c 00000000 		.4byte	.LVL51
+ 3427 0090 1A000000 		.4byte	.LVL52
+ 3428 0094 0100     		.2byte	0x1
+ 3429 0096 50       		.byte	0x50
+ 3430 0097 1A000000 		.4byte	.LVL52
+ 3431 009b 1C000000 		.4byte	.LVL53
+ 3432 009f 0400     		.2byte	0x4
+ 3433 00a1 F3       		.byte	0xf3
+ 3434 00a2 01       		.uleb128 0x1
+ 3435 00a3 50       		.byte	0x50
+ 3436 00a4 9F       		.byte	0x9f
+ 3437 00a5 1C000000 		.4byte	.LVL53
+ 3438 00a9 1E000000 		.4byte	.LVL54
+ 3439 00ad 0100     		.2byte	0x1
+ 3440 00af 50       		.byte	0x50
+ 3441 00b0 1E000000 		.4byte	.LVL54
+ 3442 00b4 20000000 		.4byte	.LVL55
+ 3443 00b8 0400     		.2byte	0x4
+ 3444 00ba F3       		.byte	0xf3
+ 3445 00bb 01       		.uleb128 0x1
+ 3446 00bc 50       		.byte	0x50
+ 3447 00bd 9F       		.byte	0x9f
+ 3448 00be 20000000 		.4byte	.LVL55
+ 3449 00c2 22000000 		.4byte	.LVL56
+ 3450 00c6 0100     		.2byte	0x1
+ 3451 00c8 50       		.byte	0x50
+ 3452 00c9 22000000 		.4byte	.LVL56
+ 3453 00cd 24000000 		.4byte	.LVL57
+ 3454 00d1 0400     		.2byte	0x4
+ 3455 00d3 F3       		.byte	0xf3
+ 3456 00d4 01       		.uleb128 0x1
+ 3457 00d5 50       		.byte	0x50
+ 3458 00d6 9F       		.byte	0x9f
+ 3459 00d7 24000000 		.4byte	.LVL57
+ 3460 00db 26000000 		.4byte	.LVL58
+ 3461 00df 0100     		.2byte	0x1
+ 3462 00e1 50       		.byte	0x50
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 70
+
+
+ 3463 00e2 26000000 		.4byte	.LVL58
+ 3464 00e6 28000000 		.4byte	.LVL59
+ 3465 00ea 0400     		.2byte	0x4
+ 3466 00ec F3       		.byte	0xf3
+ 3467 00ed 01       		.uleb128 0x1
+ 3468 00ee 50       		.byte	0x50
+ 3469 00ef 9F       		.byte	0x9f
+ 3470 00f0 28000000 		.4byte	.LVL59
+ 3471 00f4 2A000000 		.4byte	.LVL60
+ 3472 00f8 0100     		.2byte	0x1
+ 3473 00fa 50       		.byte	0x50
+ 3474 00fb 2A000000 		.4byte	.LVL60
+ 3475 00ff 2C000000 		.4byte	.LVL61
+ 3476 0103 0400     		.2byte	0x4
+ 3477 0105 F3       		.byte	0xf3
+ 3478 0106 01       		.uleb128 0x1
+ 3479 0107 50       		.byte	0x50
+ 3480 0108 9F       		.byte	0x9f
+ 3481 0109 2C000000 		.4byte	.LVL61
+ 3482 010d 2E000000 		.4byte	.LVL62
+ 3483 0111 0100     		.2byte	0x1
+ 3484 0113 50       		.byte	0x50
+ 3485 0114 2E000000 		.4byte	.LVL62
+ 3486 0118 30000000 		.4byte	.LVL63
+ 3487 011c 0400     		.2byte	0x4
+ 3488 011e F3       		.byte	0xf3
+ 3489 011f 01       		.uleb128 0x1
+ 3490 0120 50       		.byte	0x50
+ 3491 0121 9F       		.byte	0x9f
+ 3492 0122 30000000 		.4byte	.LVL63
+ 3493 0126 32000000 		.4byte	.LVL64
+ 3494 012a 0100     		.2byte	0x1
+ 3495 012c 50       		.byte	0x50
+ 3496 012d 32000000 		.4byte	.LVL64
+ 3497 0131 34000000 		.4byte	.LVL65
+ 3498 0135 0400     		.2byte	0x4
+ 3499 0137 F3       		.byte	0xf3
+ 3500 0138 01       		.uleb128 0x1
+ 3501 0139 50       		.byte	0x50
+ 3502 013a 9F       		.byte	0x9f
+ 3503 013b 34000000 		.4byte	.LVL65
+ 3504 013f 36000000 		.4byte	.LVL66
+ 3505 0143 0100     		.2byte	0x1
+ 3506 0145 50       		.byte	0x50
+ 3507 0146 36000000 		.4byte	.LVL66
+ 3508 014a 38000000 		.4byte	.LVL67
+ 3509 014e 0400     		.2byte	0x4
+ 3510 0150 F3       		.byte	0xf3
+ 3511 0151 01       		.uleb128 0x1
+ 3512 0152 50       		.byte	0x50
+ 3513 0153 9F       		.byte	0x9f
+ 3514 0154 38000000 		.4byte	.LVL67
+ 3515 0158 3A000000 		.4byte	.LVL68
+ 3516 015c 0100     		.2byte	0x1
+ 3517 015e 50       		.byte	0x50
+ 3518 015f 3A000000 		.4byte	.LVL68
+ 3519 0163 3C000000 		.4byte	.LVL69
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 71
+
+
+ 3520 0167 0400     		.2byte	0x4
+ 3521 0169 F3       		.byte	0xf3
+ 3522 016a 01       		.uleb128 0x1
+ 3523 016b 50       		.byte	0x50
+ 3524 016c 9F       		.byte	0x9f
+ 3525 016d 3C000000 		.4byte	.LVL69
+ 3526 0171 3E000000 		.4byte	.LVL70
+ 3527 0175 0100     		.2byte	0x1
+ 3528 0177 50       		.byte	0x50
+ 3529 0178 3E000000 		.4byte	.LVL70
+ 3530 017c 40000000 		.4byte	.LVL71
+ 3531 0180 0400     		.2byte	0x4
+ 3532 0182 F3       		.byte	0xf3
+ 3533 0183 01       		.uleb128 0x1
+ 3534 0184 50       		.byte	0x50
+ 3535 0185 9F       		.byte	0x9f
+ 3536 0186 40000000 		.4byte	.LVL71
+ 3537 018a 42000000 		.4byte	.LVL72
+ 3538 018e 0100     		.2byte	0x1
+ 3539 0190 50       		.byte	0x50
+ 3540 0191 42000000 		.4byte	.LVL72
+ 3541 0195 44000000 		.4byte	.LVL73
+ 3542 0199 0400     		.2byte	0x4
+ 3543 019b F3       		.byte	0xf3
+ 3544 019c 01       		.uleb128 0x1
+ 3545 019d 50       		.byte	0x50
+ 3546 019e 9F       		.byte	0x9f
+ 3547 019f 44000000 		.4byte	.LVL73
+ 3548 01a3 46000000 		.4byte	.LVL74
+ 3549 01a7 0100     		.2byte	0x1
+ 3550 01a9 50       		.byte	0x50
+ 3551 01aa 46000000 		.4byte	.LVL74
+ 3552 01ae 48000000 		.4byte	.LVL75
+ 3553 01b2 0400     		.2byte	0x4
+ 3554 01b4 F3       		.byte	0xf3
+ 3555 01b5 01       		.uleb128 0x1
+ 3556 01b6 50       		.byte	0x50
+ 3557 01b7 9F       		.byte	0x9f
+ 3558 01b8 48000000 		.4byte	.LVL75
+ 3559 01bc 4A000000 		.4byte	.LVL76
+ 3560 01c0 0100     		.2byte	0x1
+ 3561 01c2 50       		.byte	0x50
+ 3562 01c3 4A000000 		.4byte	.LVL76
+ 3563 01c7 4C000000 		.4byte	.LVL77
+ 3564 01cb 0400     		.2byte	0x4
+ 3565 01cd F3       		.byte	0xf3
+ 3566 01ce 01       		.uleb128 0x1
+ 3567 01cf 50       		.byte	0x50
+ 3568 01d0 9F       		.byte	0x9f
+ 3569 01d1 4C000000 		.4byte	.LVL77
+ 3570 01d5 4E000000 		.4byte	.LVL78
+ 3571 01d9 0100     		.2byte	0x1
+ 3572 01db 50       		.byte	0x50
+ 3573 01dc 4E000000 		.4byte	.LVL78
+ 3574 01e0 50000000 		.4byte	.LVL79
+ 3575 01e4 0400     		.2byte	0x4
+ 3576 01e6 F3       		.byte	0xf3
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 72
+
+
+ 3577 01e7 01       		.uleb128 0x1
+ 3578 01e8 50       		.byte	0x50
+ 3579 01e9 9F       		.byte	0x9f
+ 3580 01ea 50000000 		.4byte	.LVL79
+ 3581 01ee 52000000 		.4byte	.LVL80
+ 3582 01f2 0100     		.2byte	0x1
+ 3583 01f4 50       		.byte	0x50
+ 3584 01f5 52000000 		.4byte	.LVL80
+ 3585 01f9 54000000 		.4byte	.LVL81
+ 3586 01fd 0400     		.2byte	0x4
+ 3587 01ff F3       		.byte	0xf3
+ 3588 0200 01       		.uleb128 0x1
+ 3589 0201 50       		.byte	0x50
+ 3590 0202 9F       		.byte	0x9f
+ 3591 0203 54000000 		.4byte	.LVL81
+ 3592 0207 56000000 		.4byte	.LVL82
+ 3593 020b 0100     		.2byte	0x1
+ 3594 020d 50       		.byte	0x50
+ 3595 020e 56000000 		.4byte	.LVL82
+ 3596 0212 58000000 		.4byte	.LFE69
+ 3597 0216 0400     		.2byte	0x4
+ 3598 0218 F3       		.byte	0xf3
+ 3599 0219 01       		.uleb128 0x1
+ 3600 021a 50       		.byte	0x50
+ 3601 021b 9F       		.byte	0x9f
+ 3602 021c 00000000 		.4byte	0
+ 3603 0220 00000000 		.4byte	0
+ 3604              	.LLST4:
+ 3605 0224 2A000000 		.4byte	.LVL86
+ 3606 0228 2C000000 		.4byte	.LVL87
+ 3607 022c 0200     		.2byte	0x2
+ 3608 022e 30       		.byte	0x30
+ 3609 022f 9F       		.byte	0x9f
+ 3610 0230 2C000000 		.4byte	.LVL87
+ 3611 0234 74000000 		.4byte	.LVL92
+ 3612 0238 0100     		.2byte	0x1
+ 3613 023a 55       		.byte	0x55
+ 3614 023b 76000000 		.4byte	.LVL93
+ 3615 023f D0010000 		.4byte	.LVL111
+ 3616 0243 0100     		.2byte	0x1
+ 3617 0245 55       		.byte	0x55
+ 3618 0246 00000000 		.4byte	0
+ 3619 024a 00000000 		.4byte	0
+ 3620              		.section	.debug_aranges,"",%progbits
+ 3621 0000 5C000000 		.4byte	0x5c
+ 3622 0004 0200     		.2byte	0x2
+ 3623 0006 00000000 		.4byte	.Ldebug_info0
+ 3624 000a 04       		.byte	0x4
+ 3625 000b 00       		.byte	0
+ 3626 000c 0000     		.2byte	0
+ 3627 000e 0000     		.2byte	0
+ 3628 0010 00000000 		.4byte	.LFB63
+ 3629 0014 04000000 		.4byte	.LFE63-.LFB63
+ 3630 0018 00000000 		.4byte	.LFB64
+ 3631 001c 80000000 		.4byte	.LFE64-.LFB64
+ 3632 0020 00000000 		.4byte	.LFB65
+ 3633 0024 A8000000 		.4byte	.LFE65-.LFB65
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 73
+
+
+ 3634 0028 00000000 		.4byte	.LFB66
+ 3635 002c A8000000 		.4byte	.LFE66-.LFB66
+ 3636 0030 00000000 		.4byte	.LFB67
+ 3637 0034 04010000 		.4byte	.LFE67-.LFB67
+ 3638 0038 00000000 		.4byte	.LFB68
+ 3639 003c 14010000 		.4byte	.LFE68-.LFB68
+ 3640 0040 00000000 		.4byte	.LFB69
+ 3641 0044 58000000 		.4byte	.LFE69-.LFB69
+ 3642 0048 00000000 		.4byte	.LFB70
+ 3643 004c 04020000 		.4byte	.LFE70-.LFB70
+ 3644 0050 00000000 		.4byte	.LFB71
+ 3645 0054 54000000 		.4byte	.LFE71-.LFB71
+ 3646 0058 00000000 		.4byte	0
+ 3647 005c 00000000 		.4byte	0
+ 3648              		.section	.debug_ranges,"",%progbits
+ 3649              	.Ldebug_ranges0:
+ 3650 0000 00000000 		.4byte	.LFB63
+ 3651 0004 04000000 		.4byte	.LFE63
+ 3652 0008 00000000 		.4byte	.LFB64
+ 3653 000c 80000000 		.4byte	.LFE64
+ 3654 0010 00000000 		.4byte	.LFB65
+ 3655 0014 A8000000 		.4byte	.LFE65
+ 3656 0018 00000000 		.4byte	.LFB66
+ 3657 001c A8000000 		.4byte	.LFE66
+ 3658 0020 00000000 		.4byte	.LFB67
+ 3659 0024 04010000 		.4byte	.LFE67
+ 3660 0028 00000000 		.4byte	.LFB68
+ 3661 002c 14010000 		.4byte	.LFE68
+ 3662 0030 00000000 		.4byte	.LFB69
+ 3663 0034 58000000 		.4byte	.LFE69
+ 3664 0038 00000000 		.4byte	.LFB70
+ 3665 003c 04020000 		.4byte	.LFE70
+ 3666 0040 00000000 		.4byte	.LFB71
+ 3667 0044 54000000 		.4byte	.LFE71
+ 3668 0048 00000000 		.4byte	0
+ 3669 004c 00000000 		.4byte	0
+ 3670              		.section	.debug_line,"",%progbits
+ 3671              	.Ldebug_line0:
+ 3672 0000 18040000 		.section	.debug_str,"MS",%progbits,1
+ 3672      02002202 
+ 3672      00000201 
+ 3672      FB0E0D00 
+ 3672      01010101 
+ 3673              	.LASF61:
+ 3674 0000 7374726E 		.ascii	"strncpy\000"
+ 3674      63707900 
+ 3675              	.LASF21:
+ 3676 0008 66726F6D 		.ascii	"fromCol\000"
+ 3676      436F6C00 
+ 3677              	.LASF50:
+ 3678 0010 62737472 		.ascii	"bstr_connect\000"
+ 3678      5F636F6E 
+ 3678      6E656374 
+ 3678      00
+ 3679              	.LASF10:
+ 3680 001d 73697A65 		.ascii	"size_t\000"
+ 3680      5F7400
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 74
+
+
+ 3681              	.LASF28:
+ 3682 0024 73746174 		.ascii	"state_connected\000"
+ 3682      655F636F 
+ 3682      6E6E6563 
+ 3682      74656400 
+ 3683              	.LASF11:
+ 3684 0034 73697A65 		.ascii	"sizetype\000"
+ 3684      74797065 
+ 3684      00
+ 3685              	.LASF19:
+ 3686 003d 63686172 		.ascii	"char8\000"
+ 3686      3800
+ 3687              	.LASF57:
+ 3688 0043 696E6974 		.ascii	"initial_board\000"
+ 3688      69616C5F 
+ 3688      626F6172 
+ 3688      6400
+ 3689              	.LASF53:
+ 3690 0051 62726573 		.ascii	"bres1\000"
+ 3690      3100
+ 3691              	.LASF66:
+ 3692 0057 6D656D63 		.ascii	"memcpy\000"
+ 3692      707900
+ 3693              	.LASF29:
+ 3694 005e 73746174 		.ascii	"state_ready\000"
+ 3694      655F7265 
+ 3694      61647900 
+ 3695              	.LASF24:
+ 3696 006a 55504441 		.ascii	"UPDATE1\000"
+ 3696      54453100 
+ 3697              	.LASF25:
+ 3698 0072 55504441 		.ascii	"UPDATE2\000"
+ 3698      54453200 
+ 3699              	.LASF54:
+ 3700 007a 62726573 		.ascii	"bres8\000"
+ 3700      3800
+ 3701              	.LASF55:
+ 3702 0080 62726573 		.ascii	"bres9\000"
+ 3702      3900
+ 3703              	.LASF2:
+ 3704 0086 73686F72 		.ascii	"short int\000"
+ 3704      7420696E 
+ 3704      7400
+ 3705              	.LASF73:
+ 3706 0090 72656164 		.ascii	"read_reed_switches\000"
+ 3706      5F726565 
+ 3706      645F7377 
+ 3706      69746368 
+ 3706      657300
+ 3707              	.LASF56:
+ 3708 00a3 64696666 		.ascii	"diff_loc\000"
+ 3708      5F6C6F63 
+ 3708      00
+ 3709              	.LASF16:
+ 3710 00ac 696E7431 		.ascii	"int16\000"
+ 3710      3600
+ 3711              	.LASF14:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 75
+
+
+ 3712 00b2 75696E74 		.ascii	"uint8\000"
+ 3712      3800
+ 3713              	.LASF35:
+ 3714 00b8 73746174 		.ascii	"state_moving\000"
+ 3714      655F6D6F 
+ 3714      76696E67 
+ 3714      00
+ 3715              	.LASF23:
+ 3716 00c5 746F436F 		.ascii	"toCol\000"
+ 3716      6C00
+ 3717              	.LASF17:
+ 3718 00cb 666C6F61 		.ascii	"float\000"
+ 3718      7400
+ 3719              	.LASF6:
+ 3720 00d1 6C6F6E67 		.ascii	"long long int\000"
+ 3720      206C6F6E 
+ 3720      6720696E 
+ 3720      7400
+ 3721              	.LASF70:
+ 3722 00df 6D6F7665 		.ascii	"movement\000"
+ 3722      6D656E74 
+ 3722      00
+ 3723              	.LASF20:
+ 3724 00e8 66726F6D 		.ascii	"fromRow\000"
+ 3724      526F7700 
+ 3725              	.LASF4:
+ 3726 00f0 6C6F6E67 		.ascii	"long int\000"
+ 3726      20696E74 
+ 3726      00
+ 3727              	.LASF42:
+ 3728 00f9 785F706F 		.ascii	"x_pos\000"
+ 3728      7300
+ 3729              	.LASF51:
+ 3730 00ff 62737472 		.ascii	"bstr_ready\000"
+ 3730      5F726561 
+ 3730      647900
+ 3731              	.LASF31:
+ 3732 010a 6E65775F 		.ascii	"new_game_state\000"
+ 3732      67616D65 
+ 3732      5F737461 
+ 3732      746500
+ 3733              	.LASF74:
+ 3734 0119 6D6F7665 		.ascii	"move_home\000"
+ 3734      5F686F6D 
+ 3734      6500
+ 3735              	.LASF46:
+ 3736 0123 626F6172 		.ascii	"board\000"
+ 3736      6400
+ 3737              	.LASF26:
+ 3738 0129 696E6974 		.ascii	"initialize\000"
+ 3738      69616C69 
+ 3738      7A6500
+ 3739              	.LASF1:
+ 3740 0134 756E7369 		.ascii	"unsigned char\000"
+ 3740      676E6564 
+ 3740      20636861 
+ 3740      7200
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 76
+
+
+ 3741              	.LASF0:
+ 3742 0142 7369676E 		.ascii	"signed char\000"
+ 3742      65642063 
+ 3742      68617200 
+ 3743              	.LASF7:
+ 3744 014e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3744      206C6F6E 
+ 3744      6720756E 
+ 3744      7369676E 
+ 3744      65642069 
+ 3745              	.LASF36:
+ 3746 0165 6D6F7665 		.ascii	"move1\000"
+ 3746      3100
+ 3747              	.LASF37:
+ 3748 016b 6D6F7665 		.ascii	"move2\000"
+ 3748      3200
+ 3749              	.LASF8:
+ 3750 0171 756E7369 		.ascii	"unsigned int\000"
+ 3750      676E6564 
+ 3750      20696E74 
+ 3750      00
+ 3751              	.LASF52:
+ 3752 017e 62737472 		.ascii	"bstr_gib\000"
+ 3752      5F676962 
+ 3752      00
+ 3753              	.LASF63:
+ 3754 0187 44656275 		.ascii	"Debug_UART_PutChar\000"
+ 3754      675F5541 
+ 3754      52545F50 
+ 3754      75744368 
+ 3754      617200
+ 3755              	.LASF59:
+ 3756 019a 75706461 		.ascii	"update2_board\000"
+ 3756      7465325F 
+ 3756      626F6172 
+ 3756      6400
+ 3757              	.LASF22:
+ 3758 01a8 746F526F 		.ascii	"toRow\000"
+ 3758      7700
+ 3759              	.LASF33:
+ 3760 01ae 6D6F7665 		.ascii	"movementOpp2\000"
+ 3760      6D656E74 
+ 3760      4F707032 
+ 3760      00
+ 3761              	.LASF72:
+ 3762 01bb 69746F63 		.ascii	"itoc\000"
+ 3762      00
+ 3763              	.LASF40:
+ 3764 01c0 67616D65 		.ascii	"game\000"
+ 3764      00
+ 3765              	.LASF12:
+ 3766 01c5 63686172 		.ascii	"char\000"
+ 3766      00
+ 3767              	.LASF13:
+ 3768 01ca 696E7433 		.ascii	"int32_t\000"
+ 3768      325F7400 
+ 3769              	.LASF69:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 77
+
+
+ 3770 01d2 433A5C55 		.ascii	"C:\\Users\\Kyle\\Downloads\\classes\\Senior_Design\\"
+ 3770      73657273 
+ 3770      5C4B796C 
+ 3770      655C446F 
+ 3770      776E6C6F 
+ 3771 0200 57694669 		.ascii	"WiFiChessBoard\\Micro\\Bootloader.cydsn\000"
+ 3771      43686573 
+ 3771      73426F61 
+ 3771      72645C4D 
+ 3771      6963726F 
+ 3772              	.LASF9:
+ 3773 0226 5F5F696E 		.ascii	"__int32_t\000"
+ 3773      7433325F 
+ 3773      7400
+ 3774              	.LASF3:
+ 3775 0230 73686F72 		.ascii	"short unsigned int\000"
+ 3775      7420756E 
+ 3775      7369676E 
+ 3775      65642069 
+ 3775      6E7400
+ 3776              	.LASF38:
+ 3777 0243 6C6F6373 		.ascii	"locs\000"
+ 3777      00
+ 3778              	.LASF67:
+ 3779 0248 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3779      4320342E 
+ 3779      392E3320 
+ 3779      32303135 
+ 3779      30333033 
+ 3780 027b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 3780      20726576 
+ 3780      6973696F 
+ 3780      6E203232 
+ 3780      31323230 
+ 3781 02ae 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 3781      74643D67 
+ 3781      6E753939 
+ 3781      202D6666 
+ 3781      756E6374 
+ 3782              	.LASF44:
+ 3783 02e1 726F775F 		.ascii	"row_square\000"
+ 3783      73717561 
+ 3783      726500
+ 3784              	.LASF47:
+ 3785 02ec 72656376 		.ascii	"recv\000"
+ 3785      00
+ 3786              	.LASF49:
+ 3787 02f1 67616D65 		.ascii	"game_state\000"
+ 3787      5F737461 
+ 3787      746500
+ 3788              	.LASF43:
+ 3789 02fc 795F706F 		.ascii	"y_pos\000"
+ 3789      7300
+ 3790              	.LASF15:
+ 3791 0302 75696E74 		.ascii	"uint32\000"
+ 3791      333200
+ 3792              	.LASF5:
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 78
+
+
+ 3793 0309 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3793      20756E73 
+ 3793      69676E65 
+ 3793      6420696E 
+ 3793      7400
+ 3794              	.LASF68:
+ 3795 031b 2E5C6761 		.ascii	".\\gamecode.c\000"
+ 3795      6D65636F 
+ 3795      64652E63 
+ 3795      00
+ 3796              	.LASF58:
+ 3797 0328 75706461 		.ascii	"update1_board\000"
+ 3797      7465315F 
+ 3797      626F6172 
+ 3797      6400
+ 3798              	.LASF18:
+ 3799 0336 646F7562 		.ascii	"double\000"
+ 3799      6C6500
+ 3800              	.LASF34:
+ 3801 033d 64696666 		.ascii	"diff_boards\000"
+ 3801      5F626F61 
+ 3801      72647300 
+ 3802              	.LASF71:
+ 3803 0349 44696666 		.ascii	"Diff\000"
+ 3803      00
+ 3804              	.LASF39:
+ 3805 034e 63617374 		.ascii	"castling\000"
+ 3805      6C696E67 
+ 3805      00
+ 3806              	.LASF60:
+ 3807 0357 6573705F 		.ascii	"esp_transmit\000"
+ 3807      7472616E 
+ 3807      736D6974 
+ 3807      00
+ 3808              	.LASF30:
+ 3809 0364 73746174 		.ascii	"state_waiting\000"
+ 3809      655F7761 
+ 3809      6974696E 
+ 3809      6700
+ 3810              	.LASF27:
+ 3811 0372 73746174 		.ascii	"state_notconnected\000"
+ 3811      655F6E6F 
+ 3811      74636F6E 
+ 3811      6E656374 
+ 3811      656400
+ 3812              	.LASF65:
+ 3813 0385 6D6F7665 		.ascii	"movepiece\000"
+ 3813      70696563 
+ 3813      6500
+ 3814              	.LASF32:
+ 3815 038f 6D6F7665 		.ascii	"movementOpp1\000"
+ 3815      6D656E74 
+ 3815      4F707031 
+ 3815      00
+ 3816              	.LASF45:
+ 3817 039c 636F6C5F 		.ascii	"col_square\000"
+ 3817      73717561 
+ARM GAS  C:\Users\Kyle\AppData\Local\Temp\ccydrMeo.s 			page 79
+
+
+ 3817      726500
+ 3818              	.LASF41:
+ 3819 03a7 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3819      52784275 
+ 3819      66666572 
+ 3819      00
+ 3820              	.LASF64:
+ 3821 03b4 43794465 		.ascii	"CyDelay\000"
+ 3821      6C617900 
+ 3822              	.LASF62:
+ 3823 03bc 44656275 		.ascii	"Debug_UART_PutString\000"
+ 3823      675F5541 
+ 3823      52545F50 
+ 3823      75745374 
+ 3823      72696E67 
+ 3824              	.LASF48:
+ 3825 03d1 6D6F7665 		.ascii	"move\000"
+ 3825      00
+ 3826              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,26 +1,5 @@
---------------- Build Started: 04/10/2016 23:41:50 Project: Bootloader, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Build Started: 04/28/2016 16:47:00 Project: Bootloader, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=c99 -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/CyLib.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=c99 -c .\Generated_Source\PSoC5\CyLib.c -o .\CortexM3\ARM_GCC_493\Debug\CyLib.o
-In file included from .\Generated_Source\PSoC5\CyLib.c:19:0:
-.\Generated_Source\PSoC5\CyLib.c: In function 'CyFlushCache':
-.\Generated_Source\PSoC5\CyLib.h:442:34: error: 'asm' undeclared (first use in this function)
-         #define CY_SYS_ISB       asm volatile ("isb \n")
-                                  ^
-.\Generated_Source\PSoC5\CyLib.c:2407:9: note: in expansion of macro 'CY_SYS_ISB'
-         CY_SYS_ISB;
-         ^
-.\Generated_Source\PSoC5\CyLib.h:442:34: note: each undeclared identifier is reported only once for each function it appears in
-         #define CY_SYS_ISB       asm volatile ("isb \n")
-                                  ^
-.\Generated_Source\PSoC5\CyLib.c:2407:9: note: in expansion of macro 'CY_SYS_ISB'
-         CY_SYS_ISB;
-         ^
-.\Generated_Source\PSoC5\CyLib.h:442:38: error: expected ';' before 'volatile'
-         #define CY_SYS_ISB       asm volatile ("isb \n")
-                                      ^
-.\Generated_Source\PSoC5\CyLib.c:2407:9: note: in expansion of macro 'CY_SYS_ISB'
-         CY_SYS_ISB;
-         ^
-The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
---------------- Build Failed: 04/10/2016 23:41:50 ---------------
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+--------------- Build Succeeded: 04/28/2016 16:47:01 ---------------

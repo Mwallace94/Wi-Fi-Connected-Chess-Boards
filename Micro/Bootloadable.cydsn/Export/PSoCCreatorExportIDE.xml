@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="Bootloadable" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" Version="5.20" Type="Bootloadable">
+  <Project Name="Bootloadable" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" Version="5.20" Type="Bootloadable">
     <CMSIS_SVD_File>Bootloadable.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,19 +34,24 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="BUILD" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
+      <Folder BuildType="BUILD" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
           <File BuildType="BUILD" Toolchain="">.\board.c</File>
+          <File BuildType="BUILD" Toolchain="">.\espwifi.c</File>
+          <File BuildType="BUILD" Toolchain="">.\gamecode.c</File>
           <File BuildType="BUILD" Toolchain="">.\cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="">.\main.h</File>
           <File BuildType="BUILD" Toolchain="">.\board.h</File>
+          <File BuildType="BUILD" Toolchain="">.\espwifi.h</File>
+          <File BuildType="BUILD" Toolchain="">.\gamecode.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn\Generated_Source\PSoC5">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Generated_Source\PSoC5">
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cyfitter_cfg.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cybootloader.icf</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cybootloader.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cymetadata.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cydevice.h</File>
@@ -159,6 +164,10 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Esp_UART_IntClock.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Debug_UART_IntClock.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Debug_UART_IntClock.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cycodeshareimport.ld</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cycodeshareimport.scat</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cm3gcc.ld</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Cm3RealView.scat</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Cm3Start.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\core_cm3_psoc5.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\core_cm3.h</File>
@@ -179,6 +188,7 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cyutils.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\core_cmFunc.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\core_cmInstr.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Cm3Iar.icf</File>
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\CyBootAsmIar.s</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\project.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Row_0_aliases.h</File>
@@ -205,49 +215,50 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Row_7_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Row_7.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Row_7.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\cycodeshareexport.ld</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC3">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC4">
-        <Files Root="E:\Projects\WiFiChessBoard\Micro\Bootloadable.cydsn" />
+        <Files Root="E:\Documents\GitHub\WiFiChessBoard\Micro\Bootloadable.cydsn" />
       </Folder>
     </Folders>
   </Project>

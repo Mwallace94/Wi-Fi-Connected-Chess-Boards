@@ -11,13 +11,37 @@ int main() {
     }
 }
 
+/*
+int main() {
+    
+    init();
+    
+    CyDelay(1000);
+    
+    Esp_UART_PutString("AT\n\n");
+    
+    while(1) {
+
+        if(Debug_UART_GetRxBufferSize() > 0) {
+            char temp = Debug_UART_GetChar();
+            Esp_UART_PutChar(temp);
+            if(temp == '\r') Esp_UART_PutChar('\n');
+        }
+        if(Esp_UART_GetRxBufferSize() > 0) {
+            Debug_UART_PutChar(Esp_UART_GetChar());
+        }
+        
+    }
+}
+*/
+
 void init() {
     CyGlobalIntEnable;
     
     Bootloader_Start();
     
     Debug_UART_Start();
-    Debug_UART_PutString("CSE 4940: Wireless Chess Board\n\n");
+    Debug_UART_PutString("CSE 4940: Wireless Chess Board\r\n\r\n");
     
     Esp_UART_Start();
     
@@ -26,23 +50,24 @@ void init() {
 
 void debug() {
 
-    char message[8] = "";
+    char message[64] = "";
     char temp;
     char length;
 
-    if(Debug_UART_GetRxBufferSize > 0) {
+    if(Debug_UART_GetRxBufferSize() > 0) {
 
         for(int i = 0; (temp = Debug_UART_GetChar()) != '\r'; i++) {
             Debug_UART_PutChar(temp);
             message[i] = temp;
+            while(Debug_UART_GetRxBufferSize() == 0);
         }
-
-        Debug_UART_PutChar('\r');
+        
+        Debug_UART_PutString("\r\n");
         Debug_UART_ClearRxBuffer();
 
         length = strlen(message);
 
-        char num[4];
+        char num[16] = "";
         switch(message[0]) {
             case 'x':
                 if(length > 3) {
@@ -54,6 +79,7 @@ void debug() {
                     } else {
                         move_x((int16) (atoi(num)));
                     }
+                    Debug_UART_PutString("moving x\r\n\r\n");
                 }
                 break;
             case 'y' :
@@ -66,38 +92,55 @@ void debug() {
                     } else {
                         move_y((int16) (atoi(num)));
                     }
+                    Debug_UART_PutString("moving y\r\n\r\n");
                 }
                 break;
             case 'h':
                 move_home();
-                Debug_UART_PutString("moving home\n");
+                Debug_UART_PutString("moving home\r\n\r\n");
                 break;
             case 'e':
                 if(message[2] == 'o' && message[3] == 'n') {
                     Em_Write(1);
-                    Debug_UART_PutString("magnet now on\n");
+                    Debug_UART_PutString("magnet now on\r\n\r\n");
                 } else {
                     Em_Write(0);
-                    Debug_UART_PutString("magnet now off\n");
+                    Debug_UART_PutString("magnet now off\r\n\r\n");
                 }
                 break;
             case 'r':
                 read_reed_switches();
                 for(int i = 0; i < 8; i++) {
                     for(int j = 0; j < 12; j++) {
-                        char on[3];
+                        char on[4] = "";
                         on[0] = on[2] = ' ';
                         on[1] = board[i][j] + 48;
                         Debug_UART_PutString(on);
                     }
-                    Debug_UART_PutString("\n\r");
+                    Debug_UART_PutString("\r\n\r\n");
                 }
                 break;
             case 'l':
                 Debug_UART_PutChar((char) (Lim_1_Read() + 65));
                 Debug_UART_PutString(" ");
                 Debug_UART_PutChar((char) (Lim_2_Read() + 65));
-                Debug_UART_PutString("\n");
+                Debug_UART_PutString("\r\n\r\n");
+                break;
+            case 'w':
+                Debug_UART_PutString(esp_transmit(".connect", "8"));
+                Debug_UART_PutString(esp_transmit(".ready", "6"));
+                Debug_UART_PutString(esp_transmit(".gib", "4"));
+                Debug_UART_PutString(esp_transmit(".gib", "4"));
+                break;              
+            case 't':
+                move.fromCol = 11;
+                move.fromRow = 0;
+                move.toCol = 10;
+                move.toRow = 3;
+                movepiece(move);
+                break;
+            case 'g':
+                game();
                 break;
             default:
                 break;

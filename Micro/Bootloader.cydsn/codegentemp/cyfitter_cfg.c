@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name: cyfitter_cfg.c
 * 
-* PSoC Creator  3.3
+* PSoC Creator  3.3 CP2
 *
 * Description:
 * This file contains device initialization code.
@@ -30,7 +30,9 @@
     #define CYPACKED_ATTR __attribute__ ((packed))
     #define CYALIGNED __attribute__ ((aligned))
     #define CY_CFG_UNUSED __attribute__ ((unused))
-    #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
+    #ifndef CY_CFG_SECTION
+        #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
+    #endif
     
     #if defined(__ARMCC_VERSION)
         #define CY_CFG_MEMORY_BARRIER() __memory_changed()
@@ -336,7 +338,7 @@ void cyfitter_cfg(void)
 
 	/* IOPINS0_5 Address: CYREG_PRT5_DR Size (bytes): 10 */
 	static const uint8 CYCODE BS_IOPINS0_5_VAL[] = {
-		0x01u, 0x00u, 0x02u, 0x05u, 0x05u, 0x00u, 0x01u, 0x00u, 0x00u, 0x00u};
+		0x02u, 0x00u, 0x05u, 0x02u, 0x02u, 0x00u, 0x02u, 0x00u, 0x00u, 0x00u};
 
 	/* IOPINS0_6 Address: CYREG_PRT6_DM0 Size (bytes): 8 */
 	static const uint8 CYCODE BS_IOPINS0_6_VAL[] = {
@@ -357,7 +359,7 @@ void cyfitter_cfg(void)
 			0x40006503u, /* Base address: 0x40006500 Count: 3 */
 			0x40010702u, /* Base address: 0x40010700 Count: 2 */
 			0x40010866u, /* Base address: 0x40010800 Count: 102 */
-			0x40010949u, /* Base address: 0x40010900 Count: 73 */
+			0x40010948u, /* Base address: 0x40010900 Count: 72 */
 			0x40010A18u, /* Base address: 0x40010A00 Count: 24 */
 			0x40010B3Cu, /* Base address: 0x40010B00 Count: 60 */
 			0x40011702u, /* Base address: 0x40011700 Count: 2 */
@@ -369,7 +371,7 @@ void cyfitter_cfg(void)
 			0x40014104u, /* Base address: 0x40014100 Count: 4 */
 			0x40014204u, /* Base address: 0x40014200 Count: 4 */
 			0x40014307u, /* Base address: 0x40014300 Count: 7 */
-			0x40014703u, /* Base address: 0x40014700 Count: 3 */
+			0x40014704u, /* Base address: 0x40014700 Count: 4 */
 			0x40014806u, /* Base address: 0x40014800 Count: 6 */
 			0x40014C06u, /* Base address: 0x40014C00 Count: 6 */
 			0x40014D0Bu, /* Base address: 0x40014D00 Count: 11 */
@@ -382,8 +384,8 @@ void cyfitter_cfg(void)
 			{0x08u, 0x40u},
 			{0x09u, 0x40u},
 			{0x24u, 0x0Fu},
-			{0x28u, 0x01u},
-			{0x29u, 0x01u},
+			{0x28u, 0x02u},
+			{0x29u, 0x02u},
 			{0x34u, 0xC0u},
 			{0x64u, 0x07u},
 			{0x88u, 0x0Fu},
@@ -555,7 +557,7 @@ void cyfitter_cfg(void)
 			{0xA1u, 0x20u},
 			{0xA2u, 0x80u},
 			{0xA5u, 0x02u},
-			{0xAAu, 0x40u},
+			{0xB4u, 0x80u},
 			{0xC0u, 0xF7u},
 			{0xC2u, 0x6Fu},
 			{0xC4u, 0xAAu},
@@ -568,7 +570,6 @@ void cyfitter_cfg(void)
 			{0xD8u, 0x8Du},
 			{0xE4u, 0x08u},
 			{0xE6u, 0x40u},
-			{0xEAu, 0x04u},
 			{0x83u, 0x01u},
 			{0x85u, 0x02u},
 			{0x89u, 0x02u},
@@ -634,7 +635,7 @@ void cyfitter_cfg(void)
 			{0x51u, 0x10u},
 			{0x52u, 0x80u},
 			{0x5Au, 0x08u},
-			{0x5Eu, 0x40u},
+			{0x5Cu, 0x80u},
 			{0x66u, 0x40u},
 			{0x67u, 0x01u},
 			{0x6Au, 0x14u},
@@ -937,8 +938,9 @@ void cyfitter_cfg(void)
 			{0xA7u, 0x80u},
 			{0xE2u, 0x40u},
 			{0x86u, 0x02u},
-			{0x9Eu, 0x20u},
-			{0xAAu, 0x20u},
+			{0xA6u, 0x20u},
+			{0xB6u, 0x20u},
+			{0xEAu, 0x08u},
 			{0x81u, 0x80u},
 			{0x87u, 0x80u},
 			{0x9Du, 0x80u},
@@ -948,17 +950,17 @@ void cyfitter_cfg(void)
 			{0x0Du, 0x80u},
 			{0x66u, 0x02u},
 			{0x9Au, 0x02u},
-			{0x9Eu, 0x20u},
+			{0xA6u, 0x20u},
 			{0xC2u, 0x01u},
 			{0xD8u, 0x01u},
-			{0x06u, 0x20u},
+			{0x02u, 0x20u},
 			{0x5Cu, 0x10u},
 			{0x8Du, 0x80u},
 			{0x90u, 0x10u},
-			{0x9Eu, 0x20u},
 			{0xA1u, 0x80u},
+			{0xA6u, 0x20u},
 			{0xB4u, 0x10u},
-			{0xC0u, 0x04u},
+			{0xC0u, 0x08u},
 			{0xD6u, 0x04u},
 			{0xE2u, 0x08u},
 			{0xE8u, 0x08u},

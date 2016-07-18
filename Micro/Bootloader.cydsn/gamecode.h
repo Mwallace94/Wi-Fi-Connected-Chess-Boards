@@ -3,17 +3,28 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include "board.h"
+#include "espwifi.h"
+    
+// Server and port
+
+#define SERVER "192.168.173.1"
+#define PORT   666
+
+//initialization of movement struct
+struct movement move;        
 
 // States of game (a la state machine)
 
-int game_state;
+#define NOTCONNECTED   0
+#define CONNECTED      1
+#define READY          2
+#define WAITING        3
+#define MOVING         4
 
-#define NOTCONNECTED = 0
-#define CONNECTED    = 1
-#define READY        = 2
-#define WAITING      = 3
-#define MOVING       = 4
+int game_state;
 
 // Functions for initialization (and helpers)
 
@@ -25,6 +36,8 @@ int initialize();
 // These will be run inside individual while loops in main()
 // Each of these returns an updated game_state.
 
+int state_notconnected();
+
 int state_connected();
 
 int state_ready();
@@ -33,7 +46,9 @@ int state_waiting();
 
 int state_moving();
 
+int game();
 
+extern char recv[9];
 
 
 

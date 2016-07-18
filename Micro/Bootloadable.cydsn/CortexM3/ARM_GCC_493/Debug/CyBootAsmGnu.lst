@@ -22,7 +22,7 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
    1              	/*******************************************************************************
    2              	* File Name: cydevicegnu.inc
    3              	* OBSOLETE: Do not use this file. Use the _trm version instead.
-   4              	* PSoC Creator  3.3
+   4              	* PSoC Creator  3.3 CP2
    5              	*
    6              	* Description:
    7              	* This file provides all of the address values for the entire PSoC device.
@@ -5662,7 +5662,7 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
    1              	/*******************************************************************************
    2              	* File Name: cydevicegnu_trm.inc
    3              	* 
-   4              	* PSoC Creator  3.3
+   4              	* PSoC Creator  3.3 CP2
    5              	*
    6              	* Description:
    7              	* This file provides all of the address values for the entire PSoC device.
@@ -12508,11 +12508,11 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1152              	.set Col_11__SLW, CYREG_PRT4_SLW
  1153              	
  1154              	/* Esp_Rx */
- 1155              	.set Esp_Rx__0__INTTYPE, CYREG_PICU5_INTTYPE1
- 1156              	.set Esp_Rx__0__MASK, 0x02
- 1157              	.set Esp_Rx__0__PC, CYREG_PRT5_PC1
+ 1155              	.set Esp_Rx__0__INTTYPE, CYREG_PICU5_INTTYPE0
+ 1156              	.set Esp_Rx__0__MASK, 0x01
+ 1157              	.set Esp_Rx__0__PC, CYREG_PRT5_PC0
  1158              	.set Esp_Rx__0__PORT, 5
- 1159              	.set Esp_Rx__0__SHIFT, 1
+ 1159              	.set Esp_Rx__0__SHIFT, 0
  1160              	.set Esp_Rx__AG, CYREG_PRT5_AG
  1161              	.set Esp_Rx__AMUX, CYREG_PRT5_AMUX
  1162              	.set Esp_Rx__BIE, CYREG_PRT5_BIE
@@ -12527,7 +12527,7 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1171              	.set Esp_Rx__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU5_BASE
  1172              	.set Esp_Rx__LCD_COM_SEG, CYREG_PRT5_LCD_COM_SEG
  1173              	.set Esp_Rx__LCD_EN, CYREG_PRT5_LCD_EN
- 1174              	.set Esp_Rx__MASK, 0x02
+ 1174              	.set Esp_Rx__MASK, 0x01
  1175              	.set Esp_Rx__PORT, 5
  1176              	.set Esp_Rx__PRT, CYREG_PRT5_PRT
  1177              	.set Esp_Rx__PRTDSI__CAPS_SEL, CYREG_PRT5_CAPS_SEL
@@ -12541,15 +12541,15 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
 ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 210
 
 
- 1185              	.set Esp_Rx__SHIFT, 1
+ 1185              	.set Esp_Rx__SHIFT, 0
  1186              	.set Esp_Rx__SLW, CYREG_PRT5_SLW
  1187              	
  1188              	/* Esp_Tx */
- 1189              	.set Esp_Tx__0__INTTYPE, CYREG_PICU5_INTTYPE0
- 1190              	.set Esp_Tx__0__MASK, 0x01
- 1191              	.set Esp_Tx__0__PC, CYREG_PRT5_PC0
+ 1189              	.set Esp_Tx__0__INTTYPE, CYREG_PICU5_INTTYPE1
+ 1190              	.set Esp_Tx__0__MASK, 0x02
+ 1191              	.set Esp_Tx__0__PC, CYREG_PRT5_PC1
  1192              	.set Esp_Tx__0__PORT, 5
- 1193              	.set Esp_Tx__0__SHIFT, 0
+ 1193              	.set Esp_Tx__0__SHIFT, 1
  1194              	.set Esp_Tx__AG, CYREG_PRT5_AG
  1195              	.set Esp_Tx__AMUX, CYREG_PRT5_AMUX
  1196              	.set Esp_Tx__BIE, CYREG_PRT5_BIE
@@ -12564,7 +12564,7 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1205              	.set Esp_Tx__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU5_BASE
  1206              	.set Esp_Tx__LCD_COM_SEG, CYREG_PRT5_LCD_COM_SEG
  1207              	.set Esp_Tx__LCD_EN, CYREG_PRT5_LCD_EN
- 1208              	.set Esp_Tx__MASK, 0x01
+ 1208              	.set Esp_Tx__MASK, 0x02
  1209              	.set Esp_Tx__PORT, 5
  1210              	.set Esp_Tx__PRT, CYREG_PRT5_PRT
  1211              	.set Esp_Tx__PRTDSI__CAPS_SEL, CYREG_PRT5_CAPS_SEL
@@ -12575,7 +12575,7 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1216              	.set Esp_Tx__PRTDSI__OUT_SEL1, CYREG_PRT5_OUT_SEL1
  1217              	.set Esp_Tx__PRTDSI__SYNC_OUT, CYREG_PRT5_SYNC_OUT
  1218              	.set Esp_Tx__PS, CYREG_PRT5_PS
- 1219              	.set Esp_Tx__SHIFT, 0
+ 1219              	.set Esp_Tx__SHIFT, 1
  1220              	.set Esp_Tx__SLW, CYREG_PRT5_SLW
  1221              	
  1222              	/* Esp_Rst */

@@ -41,9 +41,9 @@ typedef struct{
 
 int yourcolor;
 int theircolor;
+int checkmate;
 char takenPiece;
 char** state[BROWS][BCOLS];
-char** nextstate[BROWS][BCOLS];
 char** teststate[BROWS][BCOLS];
 int enpassantB = 0;
 int enpassantW = 0;
@@ -55,15 +55,13 @@ int rightRookBMovedOnce = 0;
 int rightRookWMovedOnce = 0;
 int castleConfirmed = 0;
 int testing = 0;
-  
+transition tprev;
 char goodMove[9];
 
 void initStartState();
 void printState();
 void printStateNoGrave();
-void printNextStateNoGrave();
 void zeroState();
-void initStartNextState();
 transition compareStates();
 int isLegal(transition t);
 void moveToGraveyard(char piece);
@@ -83,7 +81,6 @@ int main(int argc, char* argv[]) {
   yourcolor = WHITE;
   theircolor = BLACK;
   initStartState();
-  initStartNextState();
   printState();
 
   //used to test moves with transitions
@@ -124,13 +121,13 @@ void playturn() {
   transition t; 
   int gameOn = 1;
   while(gameOn) {
-    for(reset = 0; reset < 9; reset++){
-      goodMove[reset] = '\0';
-    }
     initTestState();
     int move = 0;
     int isCheck = 0;
     while(move == 0) {
+      for(reset = 0; reset < 9; reset++) {
+      	goodMove[reset] = '\0';
+      }
       initTestState();
       //if(scanf("%d %d %d %d %d", &t.piece, &t.fromRow, &t.fromCol, &t.toRow, &t.toCol) == EOF)  return;
       if(read(comm_fd,str,4*sizeof(char)) == 0) {
@@ -143,11 +140,18 @@ void playturn() {
       printf("\n");
 */
       printf("Finished Reading\n");
-      t.fromRow = (int)str[0]; 
-      t.fromCol = (int)str[1]; 
+      t.fromRow = (int) str[0]; 
+      t.fromCol = (int) str[1]; 
       t.piece = getPieceFromPos(t.fromRow, t.fromCol);
-      t.toRow = (int)str[2];
-      t.toCol = (int)str[3];
+      t.toRow =  (int) str[2];
+      t.toCol =  (int) str[3];
+      if(checkmate == 2){
+        printf("Game has been won.\n");
+        goodMove[0] = 3;
+        gameOn = 0;
+        write(comm_fd,goodMove,9);
+        break;
+      }
       printf("move(%c %d %d %d %d)\n", t.piece, t.fromRow, t.fromCol, t.toRow, t.toCol);
       if(t.piece == 0) printStateNoGrave();
       takenPiece = '\0';
@@ -197,9 +201,18 @@ void playturn() {
       printf("\n");
 
        //promotion
-      if(yourcolor == WHITE && t.toCol == 7 && t.piece ==WPAWN){
+      if(yourcolor == WHITE && t.toRow == 7 && t.piece ==WPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] =  2;
+      	goodMove[0] = 2;
+      	tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+        teststate[t.toRow][t.toCol] = WQUEEN;
+        //write(comm_fd,goodMove,9);
+
+      	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
       	if(read(comm_fd,str,1*sizeof(char)) == 0) {
       		printf("Read Error\n");
@@ -214,13 +227,22 @@ void playturn() {
 			teststate[t.toRow][t.toCol] = 9;//knight
       	}else if(promocase == 4){
       		teststate[t.toRow][t.toCol] = 8;//rook
-      	}
+      	}*/
       }
 
       //promotion
-      else if(yourcolor == BLACK && t.toCol == 0 && t.piece == BPAWN){
+      else if(yourcolor == BLACK && t.toRow == 0 && t.piece == BPAWN){
       	printf("Pawn is up for promotion\n");
-      	goodMove[0] =  2;
+      	goodMove[0] = 2;
+      	 tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+        teststate[t.toRow][t.toCol] = BQUEEN;
+        //write(comm_fd,goodMove,9);
+
+      	/*goodMove[0] =  2;
       	write(comm_fd,goodMove,9);
       	if(read(comm_fd,str,1*sizeof(char)) == 0) {
       		printf("Read Error\n");
@@ -235,13 +257,17 @@ void playturn() {
 			teststate[t.toRow][t.toCol] = 3;//knight
       	}else if(promocase  == 4){
       		teststate[t.toRow][t.toCol] = 2;//rook
-      	}
+      	}*/
       }
 
       else{
       	goodMove[0] = 1;
-    	//write(comm_fd,goodMove,1);
-    	write(comm_fd,goodMove,9);
+    	  tprev.piece = t.piece;
+        tprev.fromRow = t.fromRow;
+        tprev.fromCol = t.fromCol;
+        tprev.toRow = t.toRow;
+        tprev.toCol = t.toCol;
+    	  //write(comm_fd,goodMove,9);
       }
    
       int i, j;
@@ -253,15 +279,18 @@ void playturn() {
       castlingMaintenance();
       printTestState();
       
-      int checkmate = isCheckForEnemy(t);
+      checkmate = isCheckForEnemy(t);
       if(checkmate == 1){
         printf("Opponent has been placed in check\n\n\n");
       }else if(checkmate == 2){
-        gameOn = 0;
+        //gameOn = 0;
+        goodMove[0] = 3;
         printf("Opponent has been placed in checkmate\n\n\n");
       }else{
         printf("Opponent has not been placed in check\n\n\n");
       }
+
+      write(comm_fd,goodMove,9);
 
     if(yourcolor == WHITE) {yourcolor = BLACK; theircolor = WHITE;}
     else if(yourcolor == BLACK) {yourcolor = WHITE; theircolor = BLACK;}
@@ -295,32 +324,6 @@ void initStartState() {
   state[7][9] = BROOK;
 }
 
-//initialize for nextstage, testng purposes
-void initStartNextState() {
-  //zeroState();
-  int i;
-  for(i = 2; i <= 9; i++) {
-    nextstate[1][i] = WPAWN;
-    nextstate[6][i] = BPAWN;
-  }
-  nextstate[0][2] = WROOK;
-  nextstate[0][3] = WKNIGHT;
-  nextstate[0][4] = WBISHOP;
-  nextstate[0][5] = WQUEEN;
-  nextstate[0][6] = WKING;
-  nextstate[0][7] = WBISHOP;
-  nextstate[0][8] = WKNIGHT;
-  nextstate[0][9] = WROOK;
-
-  nextstate[7][2] = BROOK;
-  nextstate[7][3] = BKNIGHT;
-  nextstate[7][4] = BBISHOP;
-  nextstate[7][5] = BQUEEN;
-  nextstate[7][6] = BKING;
-  nextstate[7][7] = BBISHOP;
-  nextstate[7][8] = BKNIGHT;
-  nextstate[7][9] = BROOK;
-}
 
 void initTestState(){
   int i,j;
@@ -357,38 +360,38 @@ int testMoveForCheck(transition t){
   }  
   if(castleConfirmed){
     if(castleConfirmed < 1 || castleConfirmed > 4){
-      printf("Castling # %d \n\n\n", castleConfirmed);
-      printf("What happened?\n\n\n");
+      //printf("Castling # %d \n\n\n", castleConfirmed);
+      //printf("What happened?\n\n\n");
       exit(-1);
     }else{
       if(castleConfirmed == 1){
         teststate[0][2] = EMPTY;
         teststate[0][5] = WROOK;
         goodMove[5] = (char)0;
-  		goodMove[6] = (char)2;
-  		goodMove[7] = (char)0;
-  		goodMove[8] = (char)5;
+  		  goodMove[6] = (char)2;
+  		  goodMove[7] = (char)0;
+  		  goodMove[8] = (char)5;
       }else if(castleConfirmed ==2){
         teststate[0][9] = EMPTY;
         teststate[0][7] = WROOK;
         goodMove[5] = (char)0;
-  		goodMove[6] = (char)9;
-  		goodMove[7] = (char)0;
-  		goodMove[8] = (char)7;
+  		  goodMove[6] = (char)9;
+  		  goodMove[7] = (char)0;
+  		  goodMove[8] = (char)7;
       }else if(castleConfirmed ==3){
         teststate[7][2] = EMPTY;
         teststate[7][5] = BROOK;
         goodMove[5] = (char)7;
-  		goodMove[6] = (char)2;
-  		goodMove[7] = (char)7;
-  		goodMove[8] = (char)5;
-      }else{
+  		  goodMove[6] = (char)2;
+  		  goodMove[7] = (char)7;
+  		  goodMove[8] = (char)5;
+      }else if(castleConfirmed == 4){
         teststate[7][9] = EMPTY;
         teststate[7][7] = BROOK;
         goodMove[5] = (char)7;
-  		goodMove[6] = (char)9;
-  		goodMove[7] = (char)7;
-  		goodMove[8] = (char)2;
+  		  goodMove[6] = (char)9;
+  		  goodMove[7] = (char)7;
+  		  goodMove[8] = (char)7;
       }
     }
   }
@@ -436,41 +439,6 @@ void printTestState() {
   }
 }
 
-//prints for nextstate, test
-void printNextStateNoGrave() {
-  int i, j;
-  for(i = 0; i < BROWS; i++) {
-    for(j = 2; j < BCOLS-2; j++) {
-      printf("%d\t", (int) nextstate[i][j]);
-    }
-    printf("\n");
-  }
-}
-
-//compares states difference, testing
-//returns an array of size 12; sectioned by 6. from piece row col, to piece row col. allows for 2 total pieces to move.
-/*
-transition compareStates() {
-  int i, j;
-  transition t;
-  for(i = 0; i < BROWS; i++) {
-    for(j = 0; j < BCOLS; j++) {
-      if (state[i][j] != nextstate[i][j] && state[i][j] != 0) {
-        printf("piece %d moved from: %d, %d \n", (int) state[i][j], i, j);
-        t.piece = state[i][j];
-        t.fromRow = i;
-        t.fromCol = j;
-      }
-      if (state[i][j] != nextstate[i][j] && nextstate[i][j] != 0) {
-        printf("piece %d moved to: %d, %d \n", (int) nextstate[i][j], i, j);
-        t.toRow = i;
-        t.toCol = j;
-      }
-    }
-  }
-  return t;
-}
-*/
 // zeros out a state
 void zeroState() {
   int i, j;
@@ -496,6 +464,7 @@ int isLegal(transition t) {
   int dis = ydis + xdis;//x +y
 
   if(!moverightcolor(t.piece)) return 0;
+  if(t.toRow- t.fromRow == 0 && t.toCol - t.fromCol == 0) return 0;
   //only important for which color you are, but this is ambiguous at the time. AKA will black and white be always on same side or user disgression.
   //will create both directions I suppose, but will be white towards player and black away for not
   if(t.piece == WPAWN) {
@@ -503,7 +472,7 @@ int isLegal(transition t) {
     int xdist = t.toCol - t.fromCol;
     //should always be true for move only
     if(ydist == 1 && !xdis && (teststate[t.toRow][t.toCol] == '\0')) return 1;
-    else if(t.fromRow == 1 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow-1][t.toCol] == '\0')) return 1;
+    else if(t.fromRow == 1 && ydist == 2 && xdist == 0 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow-1][t.toCol] == '\0')) return 1;
     //taking a piece
     else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')) {
       if(teststate[t.toRow][t.toCol] >= 1 &&  teststate[t.toRow][t.toCol] <= 6){
@@ -512,9 +481,12 @@ int isLegal(transition t) {
 	  return 0;
 	}
 	//enpassant 
-      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 3)){
-        enpassantW =1;
-        return 1;
+      else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == BPAWN && (t.fromRow == 4)){
+      if(tprev.piece == BPAWN && tprev.fromRow == 6 && tprev.toRow == 4){
+            enpassantW = 1;
+            return 1;
+        }
+       return 0;
 	}
     else{
 		return 0;
@@ -525,7 +497,7 @@ int isLegal(transition t) {
    int xdist = t.toCol - t.fromCol;
    //should always be true for move only
    if(ydist == 1 && !xdis && (teststate[t.toRow][t.toCol] == '\0')) return 1;
-   else if(t.fromRow == 6 && ydist == 2 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
+   else if(t.fromRow == 6 && ydist == 2 && xdist == 0 && (teststate[t.toRow][t.toCol] == '\0') && (teststate[t.toRow+1][t.toCol] == '\0')) return 1;
    //add taking piece here
 
    else if(ydist == 1 && abs(xdist) == 1 && (teststate[t.toRow][t.toCol] != '\0')){
@@ -535,9 +507,12 @@ int isLegal(transition t) {
 	 return 0;
    }
 	 //enpassant
-     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 4)){
-       enpassantB = 1;
-       return 1;
+     else if(ydist == 1 && abs(xdist) == 1 && teststate[t.fromRow][t.toCol] == WPAWN && (t.fromRow == 3)){
+        if(tprev.piece == WPAWN && tprev.fromRow == 1 && tprev.toRow == 3){
+            enpassantB = 1;
+            return 1;
+        }
+       return 0;
 	}
 	else {
 	   return 0;
@@ -635,7 +610,7 @@ int isLegal(transition t) {
          else if((i == t.toCol) && teststate[t.fromRow][t.toCol] == '\0'){
            return 1;
          }
-         if(teststate[t.fromRow][t.toCol] != '\0') return 0;
+         if(teststate[t.fromRow][i] != '\0') return 0;
        }
      }
    }
@@ -742,44 +717,59 @@ int isLegal(transition t) {
  
 if(t.piece == BKING || t.piece == WKING) {
    if((dis == 1 || (dis == 2 && (xdis && ydis))) && teststate[t.toRow][t.toCol] == '\0'){
-	   printf("Position 1\n\n\n");
+	   //printf("Position 1\n\n\n");
+      if(t.piece == BKING){
+        kingBMovedOnce  = 1;
+      }else if(t.piece == WKING){
+        kingWMovedOnce = 1;
+      }
     return 1;
    }
    else if((dis == 1  || (dis == 2 && (xdis && ydis)))&& teststate[t.toRow][t.toCol] != '\0'){
      if(t.piece == WKING && teststate[t.toRow][t.toCol] >= 1 && teststate[t.toRow][t.toCol] <= 6){
-           printf("Position 2\n\n\n");
+      if(t.piece == WKING){
+        kingWMovedOnce = 1;
+      }
+           //printf("Position 2\n\n\n");
        return 1;
      }else if(t.piece == BKING && teststate[t.toRow][t.toCol] >= 7 && teststate[t.toRow][t.toCol] <= 12){
-           printf("Position 3\n\n\n");
-
+        kingBMovedOnce  = 1;
+           //printf("Position 3\n\n\n");
        return 1;
      }
 	 
      return 0;
-   }else if(dis == 2){ 
-        printf("Castling\n\n\n");
-     if((kingWMovedOnce == 0) && t.piece == WKING){
+   }else if(dis == 2 && ydis == 0){ 
+     if((kingWMovedOnce == 0) && t.piece == WKING && t.fromRow == 0 && t.fromCol == 6){
        if(!leftRookWMovedOnce && (t.toCol < t.fromCol) && (teststate[0][3] == '\0' && teststate[0][4] == '\0' && teststate[0][5] == '\0') && teststate[0][2] == WROOK){
          castleConfirmed = 1;
-         printf("Castling # 1\n\n\n");
+        printf("Castling");
+
+         //printf("Castling # 1\n\n\n");
          return 1;
 	   }else if(!rightRookWMovedOnce && (t.toCol > t.fromCol) && (teststate[0][7] == '\0' && teststate[0][8] == '\0') && teststate[0][9] == WROOK){
 		     castleConfirmed = 2;
-         printf("Castling # 2\n\n\n");
+          printf("Castling");
+
+         //printf("Castling # 2\n\n\n");
          return 1;
        }
-     }else if((kingBMovedOnce == 0) && t.piece == BKING){
+     }else if((kingBMovedOnce == 0) && t.piece == BKING && t.fromRow == 7 && t.fromCol == 6){
        if(!leftRookBMovedOnce && (t.toCol < t.fromCol) && (teststate[7][3] == '\0' && teststate[7][4] == '\0' && teststate[7][5] == '\0') && teststate[7][2] == BROOK){
 		    castleConfirmed = 3;
-        printf("Castling # 3\n\n\n");
+     printf("Castling");
+
+        //printf("Castling # 3\n\n\n");
          return 1;
-       }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == WROOK){
+       }else if(!rightRookBMovedOnce && (t.toCol > t.fromCol) && (teststate[7][7] == '\0' && teststate[7][8] == '\0') && teststate[7][9] == BROOK){
          castleConfirmed = 4;
-         printf("Castling # 4\n\n\n");
+         printf("Castling");
+
+         //printf("Castling # 4\n\n\n");
          return 1;
        }
      }else{
-      printf("WTF\n\n\n");
+      //printf("WTF\n\n\n");
        return 0;
      }
    }
@@ -831,30 +821,9 @@ void castlingMaintenance(){
   if(state[0][6] != WKING && (kingWMovedOnce != 0)){kingWMovedOnce = 1;}
 }
 
-void castlingAction(int caseNumber){
-  if(!caseNumber || caseNumber > 4){
-    exit(-1);
-  }else{
-	 if(caseNumber == 1){
-      nextstate[0][2] = EMPTY;
-      nextstate[0][5] = WROOK;
-    }else if(caseNumber ==2){
-      nextstate[0][9] = EMPTY;
-      nextstate[0][7] = WROOK;
-    }else if(caseNumber ==3){
-      nextstate[7][2] = EMPTY;
-      nextstate[7][5] = BROOK;
-    }else {
-      nextstate[7][9] = EMPTY;
-      nextstate[7][7] = BROOK;
-    }
-  }
-}
-
 int isCheckForEnemy(){
   transition t;
   transition tonly;
-  int firsttransition = 0;
   int k = 0; 
   int i,j,l,m;
   for(i = 0; i < 8 ; i++){
@@ -879,8 +848,9 @@ int isCheckForEnemy(){
         t.toCol = m;
         t.piece = teststate[i][j];
         testing = 1;
-        if(isLegal(t)){
-          if(firsttransition == 0){
+        int result = isLegal(t);
+        if(result == 1){
+          if(k == 0){
             tonly.fromRow =i; tonly.fromCol = j; tonly.toRow = l; tonly.toCol=m; tonly.piece = teststate[i][j];
           }
           printf("Piece that places oppoenent in check: %d \n", t.piece);
@@ -898,7 +868,7 @@ int isCheckForEnemy(){
         return 2;
     }
     return 1;
-  }else if(k > 2){
+  }else if(k > 1){
     t.piece = 13;
     if(isCheckMate(t) == 1){
       return 2;
@@ -952,7 +922,6 @@ int isCheckForYou(){
   }
 }
 
-
 int isCheckMate(transition t){
   if(t.piece == 13){
     testing = 1;
@@ -962,16 +931,48 @@ int isCheckMate(transition t){
   }else{
     testing = 1;
     int kingSurrounding = checkKingSurrounding(t);
+    int saveSelf =  checkSaveSelf(t);
     int saveKing =  checkSaveKing(t);
     int blockKing =  checkBlockKing(t);
     testing = 0;
-    if((kingSurrounding == 0) && (saveKing == 0) && (blockKing == 0)){  
+    if((kingSurrounding == 0) && (saveKing == 0) && (blockKing == 0) && (saveSelf == 0)){  
       return 1;
     }
   }
   return 0;
 }
 
+int checkSaveSelf(transition t) {
+  initTestState();
+  int saveable = 0;
+  if (abs(t.fromRow - t.toRow) <= 1 && abs(t.fromCol - t.fromCol) <= 1) saveable = 1;
+  int i, j;
+  transition tnew;
+  tnew.toRow = t.fromRow;
+  tnew.toCol = t.fromCol;
+  teststate[t.fromRow][t.fromCol] = theircolor + 3;
+
+    for(i = 0; i < 8; i++){
+      for(j = 2; j < 10; j++){
+        if(teststate[i][j] > (char)(yourcolor) && teststate[i][j] <= (char)(yourcolor+6)){
+          tnew.fromRow = i;
+          tnew.fromCol = j;
+          tnew.piece = teststate[i][j];
+          if(isLegal(tnew)){
+            saveable = 0;
+            printf("\nThe king can't save himself\n");
+            return saveable;
+          }
+        }
+      }
+    }
+    if (saveable) {
+      printf("\nThe king can save himself\n");
+    } else {
+      printf("\nThe king can't save himself\n");
+    }
+    return saveable;
+}
 
 int checkKingSurrounding(transition t){
   initTestState();
@@ -1031,12 +1032,12 @@ int checkBlockKing(transition t){
   transition tnew;
     if(t.piece == WQUEEN || t.piece == BQUEEN){
       if(t.fromRow == t.toRow || t.fromCol == t.toCol){
-        if(yourcolor == WHITE) t.piece == WROOK;
-        else{t.piece == BROOK;}
+        if(yourcolor == WHITE) t.piece = WROOK;
+        else{t.piece = BROOK;}
       }
       else{
-        if(yourcolor == WHITE) t.piece == WBISHOP;
-        else{t.piece == BBISHOP;}
+        if(yourcolor == WHITE) t.piece = WBISHOP;
+        else{t.piece = BBISHOP;}
       }
     }
     if(t.piece == BROOK || t.piece == WROOK){
@@ -1048,7 +1049,7 @@ int checkBlockKing(transition t){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
                 tnew.toRow = i;
-                tnew.toCol = k;
+                tnew.toCol = t.fromCol;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
                   printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1067,7 +1068,7 @@ int checkBlockKing(transition t){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
                 tnew.toRow = i;
-                tnew.toCol = k;
+                tnew.toCol = t.fromCol;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
                   printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1079,13 +1080,13 @@ int checkBlockKing(transition t){
           }
         }
       }else if(t.toCol > t.fromCol){
-        for(i = t.fromCol+1; i< t.toRow; i++){
+        for(i = t.fromCol+1; i< t.toCol; i++){
           for(j = 0; j < 8; j++){
             for(k = 2; k < 10; k++){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
-                tnew.toRow = j;
+                tnew.toRow = t.fromRow;
                 tnew.toCol = i;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
@@ -1098,13 +1099,13 @@ int checkBlockKing(transition t){
           }
         }
       }else if(t.toCol < t.fromCol){
-        for(i = t.fromCol-1; i> t.toRow; i--){
+        for(i = t.fromCol-1; i> t.toCol; i--){
           for(j = 0; j < 8; j++){
             for(k = 2; k < 10; k++){
               if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                 tnew.fromRow = j;
                 tnew.fromCol = k;
-                tnew.toRow = j;
+                tnew.toRow = t.fromRow;
                 tnew.toCol = i;
                 tnew.piece = teststate[j][k];
                 if(isLegal(tnew)){
@@ -1117,8 +1118,10 @@ int checkBlockKing(transition t){
           }
         }
       }else{
+      	printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
         return blockable;
-      } 
+      }
+
     }
     else if(t.piece == BBISHOP || t.piece == WBISHOP){
       if(t.toRow < t.fromRow){
@@ -1129,8 +1132,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j-i;
-                  tnew.toCol = k+i;
+                  tnew.toRow = t.fromRow-i;
+                  tnew.toCol = t.fromCol+i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1148,8 +1151,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j-i;
-                  tnew.toCol = k-i;
+                  tnew.toRow = t.fromRow-i;
+                  tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1161,6 +1164,7 @@ int checkBlockKing(transition t){
             }
           }
         }else{
+          printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
           return blockable;
         }
       }else if(t.toRow > t.fromRow){
@@ -1171,8 +1175,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j+i;
-                  tnew.toCol = k+i;
+                  tnew.toRow = t.fromRow+i;
+                  tnew.toCol = t.fromCol+i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1190,8 +1194,8 @@ int checkBlockKing(transition t){
                 if(teststate[j][k] > (char)(theircolor) && teststate[j][k] <= (char)(theircolor+5)){
                   tnew.fromRow = j;
                   tnew.fromCol = k;
-                  tnew.toRow = j+i;
-                  tnew.toCol = k-i;
+                  tnew.toRow = t.fromRow+i;
+                  tnew.toCol = t.fromCol-i;
                   tnew.piece = teststate[j][k];
                   if(isLegal(tnew)){
                     printf("%s\n", "\nThe path of the threatening piece can be blocked\n" );
@@ -1210,10 +1214,9 @@ int checkBlockKing(transition t){
           printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
           return 0;
         }
-    }else{
-      printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
-      return 0;
     }
+    printf("%s\n", "\nThe path of the threatening piece cannot be blocked\n" );
+    return 0;
 }
 
 int checkSaveKing(transition t){
@@ -1226,13 +1229,12 @@ int checkSaveKing(transition t){
 
     for(i = 0; i < 8; i++){
       for(j = 2; j < 10; j++){
-        if(teststate[i][j] > (char)(theircolor) && teststate[i][j] <= (char)(theircolor+6)){
+        if(teststate[i][j] > (char)(theircolor) && teststate[i][j] <= (char)(theircolor+5)){
           tnew.fromRow = i;
           tnew.fromCol = j;
           tnew.piece = teststate[i][j];
           if(isLegal(tnew)){
             saveable = 1;
-            testing = 0;
             printf("\nA piece can kill the piece putting opponent in check\n");
             return saveable;
           }
@@ -1255,12 +1257,3 @@ void restoreMove(transition t){
     teststate[t.fromRow][t.fromCol] = t.piece;
   }
 }
-    //below perhaps used to detect piece collision
-    //verticalCollision();
-    //horizontalCollision();
-
-    // if enemy piece is moved to the graveyard detect move and make sure next piece takes that piece and is legel.
-    // Keep old state, but create flag with position taken to make sure your piece takes theres
-    // int partialMove(transition) {
-			//this
-    // }
